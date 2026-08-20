@@ -1892,8 +1892,16 @@ function voltarLoja(){
 
 /* INICIAR */
 
-atualizarCarrinho();
-
+atualizarCarrinho(); 
+ const SUPABASE_URL = "https://uubslcjoybeehinnwhtg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_...";
+ 
+const supabaseScript = document.createElement("script");
+supabaseScript.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+supabaseScript.onload = () => {
+  window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+};
+  document.head.appendChild(supabaseScript);
 </script>
 
 </body>
