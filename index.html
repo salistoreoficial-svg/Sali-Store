@@ -3,189 +3,519 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SALI STORE | Moda Feminina</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #fff;
-  color: #111;
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fff;
+  color:#111;
 }
 
-/* TOPO */
-.topo {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
+button,input,select{
+  font:inherit;
 }
 
-/* CABEÇALHO */
-header {
-  background: #fff;
-  text-align: center;
-  padding: 20px 15px 12px;
-  border-bottom: 1px solid #eee;
+.topo{
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  font-size:14px;
 }
 
-.logo-img {
-  width: 150px;
-  max-width: 45%;
-  border-radius: 12px;
-  display: block;
-  margin: 0 auto 18px;
+header{
+  background:#fff;
+  padding:18px 15px 12px;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
-/* MENU */
-nav {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 5px 5px 12px;
-  scrollbar-width: none;
+.cabecalho{
+  max-width:1100px;
+  margin:auto;
 }
 
-nav::-webkit-scrollbar {
-  display: none;
+.logo-area{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
 }
 
-nav a {
-  color: #111;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
+.logo{
+  width:115px;
+  height:115px;
+  object-fit:cover;
+  border-radius:15px;
 }
 
-/* BANNER */
-.hero {
-  background: linear-gradient(135deg, #ffd5e5, #ff86b7);
-  padding: 55px 22px;
-  text-align: center;
+.carrinho-botao{
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:30px;
+  font-weight:800;
+  cursor:pointer;
+  position:relative;
 }
 
-.hero h1 {
-  font-size: 38px;
-  margin-bottom: 15px;
+.contador{
+  background:#ff1493;
+  min-width:23px;
+  height:23px;
+  padding:0 6px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:4px;
 }
 
-.hero p {
-  font-size: 18px;
-  margin-bottom: 25px;
+nav{
+  display:flex;
+  gap:22px;
+  overflow-x:auto;
+  white-space:nowrap;
+  padding-top:15px;
 }
 
-.botao {
-  display: inline-block;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-  padding: 16px 28px;
-  border-radius: 30px;
-  font-weight: 800;
+nav::-webkit-scrollbar{
+  display:none;
 }
 
-/* PRODUTOS */
-.produtos {
-  padding: 38px 18px;
+nav a{
+  text-decoration:none;
+  color:#111;
+  font-weight:700;
 }
 
-.produtos h2 {
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 28px;
+.hero{
+  background:linear-gradient(135deg,#ffd4e5,#ff88b7);
+  text-align:center;
+  padding:55px 20px;
 }
 
-.grade {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  max-width: 900px;
-  margin: auto;
+.hero h1{
+  font-size:38px;
+  margin-bottom:14px;
 }
 
-.produto {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,.07);
+.hero p{
+  font-size:18px;
+  margin-bottom:25px;
 }
 
-.produto img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  display: block;
+.botao-principal{
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:15px 28px;
+  border-radius:30px;
+  font-weight:800;
+  cursor:pointer;
 }
 
-.info {
-  padding: 14px;
+.produtos{
+  max-width:1050px;
+  margin:auto;
+  padding:38px 16px;
 }
 
-.info h3 {
-  font-size: 16px;
-  margin-bottom: 7px;
+.produtos h2{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:28px;
 }
 
-.preco {
-  color: #e91e63;
-  font-size: 19px;
-  font-weight: 800;
-  margin-bottom: 12px;
+.grade{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-.comprar {
-  width: 100%;
-  border: 0;
-  background: #000;
-  color: #fff;
-  padding: 12px 8px;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
+.produto{
+  border:1px solid #eee;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
 }
 
-/* VANTAGENS */
-.vantagens {
-  background: #fafafa;
-  padding: 30px 20px;
-  text-align: center;
-  line-height: 2;
-  font-weight: 600;
+.produto img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
 }
 
-/* RODAPÉ */
-footer {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
+.info{
+  padding:13px;
 }
 
-footer h3 {
-  color: #ff1493;
-  margin-bottom: 8px;
+.info h3{
+  font-size:16px;
+  margin-bottom:7px;
 }
 
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 34px;
+.preco{
+  color:#e91e63;
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.adicionar{
+  width:100%;
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:12px 8px;
+  border-radius:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.adicionar:active{
+  transform:scale(.98);
+}
+
+.vantagens{
+  text-align:center;
+  background:#fafafa;
+  padding:30px 20px;
+  line-height:2;
+  font-weight:600;
+}
+
+/* FUNDO MODAL */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:50;
+  display:none;
+}
+
+.overlay.ativo{
+  display:block;
+}
+
+/* CARRINHO */
+.carrinho{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:min(92%,430px);
+  height:100%;
+  background:#fff;
+  z-index:60;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
+
+.carrinho.aberto{
+  right:0;
+}
+
+.carrinho-topo{
+  padding:20px;
+  border-bottom:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.fechar{
+  border:0;
+  background:#f2f2f2;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:20px;
+}
+
+.itens{
+  flex:1;
+  overflow-y:auto;
+  padding:15px;
+}
+
+.vazio{
+  text-align:center;
+  padding:50px 20px;
+  color:#777;
+}
+
+.item-carrinho{
+  display:flex;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+}
+
+.item-carrinho img{
+  width:80px;
+  height:105px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.item-dados{
+  flex:1;
+}
+
+.item-dados h4{
+  margin-bottom:6px;
+}
+
+.item-dados strong{
+  color:#e91e63;
+}
+
+.quantidade{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+
+.quantidade button{
+  width:30px;
+  height:30px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:8px;
+}
+
+.remover{
+  border:0;
+  background:none;
+  color:#d60000;
+  margin-top:9px;
+  font-size:13px;
+}
+
+.carrinho-rodape{
+  padding:18px;
+  border-top:1px solid #eee;
+}
+
+.total-linha{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.finalizar{
+  width:100%;
+  border:0;
+  background:#ff1493;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  font-weight:900;
+  font-size:16px;
+}
+
+/* CHECKOUT */
+.checkout{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:80;
+  overflow-y:auto;
+  display:none;
+}
+
+.checkout.ativo{
+  display:block;
+}
+
+.checkout-conteudo{
+  max-width:600px;
+  margin:auto;
+  padding:22px 18px 60px;
+}
+
+.checkout-topo{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.voltar{
+  border:0;
+  background:#f2f2f2;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:20px;
+}
+
+.checkout h2{
+  font-size:27px;
+}
+
+.bloco{
+  border:1px solid #eee;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.bloco h3{
+  margin-bottom:15px;
+}
+
+.campo{
+  margin-bottom:14px;
+}
+
+.campo label{
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.campo input,
+.campo select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  outline:none;
+}
+
+.duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.resumo-item{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+}
+
+.resumo-total{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:900;
+  margin-top:15px;
+}
+
+.pagamento-aviso{
+  padding:14px;
+  background:#fff3f8;
+  border-radius:10px;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.confirmar-pedido{
+  width:100%;
+  background:#000;
+  color:#fff;
+  border:0;
+  padding:16px;
+  border-radius:12px;
+  font-weight:900;
+  font-size:17px;
+}
+
+/* CONFIRMAÇÃO */
+.sucesso{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
+
+.sucesso.ativo{
+  display:flex;
+}
+
+.sucesso-box{
+  max-width:420px;
+}
+
+.check{
+  width:85px;
+  height:85px;
+  border-radius:50%;
+  background:#ff1493;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+  margin:0 auto 20px;
+}
+
+.sucesso h2{
+  margin-bottom:12px;
+}
+
+.numero-pedido{
+  font-weight:900;
+  color:#e91e63;
+  margin:15px 0;
+}
+
+.sucesso button{
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:14px 25px;
+  border-radius:30px;
+  font-weight:800;
+  margin-top:18px;
+}
+
+footer{
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:30px 20px;
+}
+
+footer h3{
+  color:#ff1493;
+  margin-bottom:8px;
+}
+
+@media(min-width:700px){
+  .grade{
+    grid-template-columns:repeat(4,1fr);
   }
 
-  .grade {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .info {
-    padding: 10px;
+  .logo{
+    width:130px;
+    height:130px;
   }
 }
 </style>
@@ -194,81 +524,553 @@ footer h3 {
 <body>
 
 <div class="topo">
-  🛍️ Moda feminina • Novidades toda semana
+🛍️ Moda feminina • Novidades toda semana
 </div>
 
 <header>
+  <div class="cabecalho">
 
-  <img
-    src="815BCB89-C59E-479D-83FF-454243870EB3.png"
-    alt="SALI STORE"
-    class="logo-img"
-  >
+    <div class="logo-area">
 
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#novidades">Novidades</a>
-    <a href="#vestidos">Vestidos</a>
-    <a href="#conjuntos">Conjuntos</a>
-    <a href="#blusas">Blusas</a>
-    <a href="#calcas">Calças</a>
-  </nav>
+      <img
+        class="logo"
+        src="815BCB89-C59E-479D-83FF-454243870EB3.png"
+        alt="SALI STORE"
+      >
 
+      <button class="carrinho-botao" onclick="abrirCarrinho()">
+        🛒 Carrinho
+        <span class="contador" id="contador">0</span>
+      </button>
+
+    </div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#novidades">Novidades</a>
+      <a href="#vestidos">Vestidos</a>
+      <a href="#conjuntos">Conjuntos</a>
+      <a href="#blusas">Blusas</a>
+      <a href="#calcas">Calças</a>
+    </nav>
+
+  </div>
 </header>
 
 <section class="hero" id="inicio">
   <h1>Vista-se de SALI ✨</h1>
   <p>Moda feminina para você se sentir ainda mais linda.</p>
-  <a class="botao" href="#novidades">VER NOVIDADES</a>
+
+  <button
+    class="botao-principal"
+    onclick="document.getElementById('novidades').scrollIntoView({behavior:'smooth'})">
+    VER NOVIDADES
+  </button>
 </section>
 
 <section class="produtos" id="novidades">
 
-  <h2>✨ Novidades</h2>
+<h2>✨ Novidades</h2>
 
-  <div class="grade">
+<div class="grade">
 
-    <div class="produto">
-      <img
-        src="AB0ECD64-5FFA-4265-92D5-9167066B51FE.png"
-        alt="Vestido SALI"
-      >
+  <div class="produto">
 
-      <div class="info">
-        <h3>Vestido SALI</h3>
-        <div class="preco">R$ 49,99</div>
-        <button class="comprar" onclick="window.location.href='https://wa.me/5592985949004'">COMPRAR</button>
-      </div>
-    </div>
+    <img
+      src="AB0ECD64-5FFA-4265-92D5-9167066B51FE.png"
+      alt="Vestido SALI"
+    >
 
-    <div class="produto">
-      <img
-        src="1F51613E-DBE2-4D72-83EC-C461362D065D.jpeg"
-        alt="Look SALI"
-      >
+    <div class="info">
+      <h3>Vestido SALI</h3>
+      <div class="preco">R$ 49,99</div>
 
-      <div class="info">
-        <h3>Look SALI</h3>
-        <div class="preco">R$ 49,99</div>
-        <button class="comprar" onclick="window.location.href='https://wa.me/5592985949004'">COMPRAR</button>
-      </div>
+      <button
+        class="adicionar"
+        onclick="adicionarProduto(
+          1,
+          'Vestido SALI',
+          49.99,
+          'AB0ECD64-5FFA-4265-92D5-9167066B51FE.png'
+        )">
+        ADICIONAR AO CARRINHO
+      </button>
     </div>
 
   </div>
 
+  <div class="produto">
+
+    <img
+      src="1F51613E-DBE2-4D72-83EC-C461362D065D.jpeg"
+      alt="Look SALI"
+    >
+
+    <div class="info">
+      <h3>Look SALI</h3>
+      <div class="preco">R$ 49,99</div>
+
+      <button
+        class="adicionar"
+        onclick="adicionarProduto(
+          2,
+          'Look SALI',
+          49.99,
+          '1F51613E-DBE2-4D72-83EC-C461362D065D.jpeg'
+        )">
+        ADICIONAR AO CARRINHO
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 </section>
 
 <section class="vantagens">
-  <p>🚚 Entrega disponível</p>
-  <p>🛍️ Retirada na loja</p>
-  <p>💖 Novidades toda semana</p>
-  <p>🔒 Compra segura</p>
+<p>🚚 Entrega disponível</p>
+<p>🛍️ Retirada na loja</p>
+<p>💖 Novidades toda semana</p>
+<p>🔒 Compra segura</p>
 </section>
 
 <footer>
-  <h3>SALI STORE</h3>
-  <p>Moda feminina feita para você 💕</p>
+<h3>SALI STORE</h3>
+<p>Moda feminina feita para você 💕</p>
 </footer>
+
+<!-- FUNDO -->
+<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
+
+<!-- CARRINHO -->
+<aside class="carrinho" id="carrinho">
+
+  <div class="carrinho-topo">
+    <h2>🛒 Seu carrinho</h2>
+    <button class="fechar" onclick="fecharCarrinho()">×</button>
+  </div>
+
+  <div class="itens" id="itensCarrinho"></div>
+
+  <div class="carrinho-rodape">
+
+    <div class="total-linha">
+      <span>Total</span>
+      <span id="totalCarrinho">R$ 0,00</span>
+    </div>
+
+    <button class="finalizar" onclick="abrirCheckout()">
+      FINALIZAR PEDIDO
+    </button>
+
+  </div>
+</aside>
+
+<!-- CHECKOUT -->
+<section class="checkout" id="checkout">
+
+<div class="checkout-conteudo">
+
+  <div class="checkout-topo">
+    <button class="voltar" onclick="fecharCheckout()">←</button>
+    <h2>Finalizar pedido</h2>
+  </div>
+
+  <div class="bloco">
+
+    <h3>👤 Seus dados</h3>
+
+    <div class="campo">
+      <label>Nome completo</label>
+      <input id="nome" type="text" placeholder="Digite seu nome">
+    </div>
+
+    <div class="campo">
+      <label>WhatsApp</label>
+      <input id="telefone" type="tel" placeholder="(92) 99999-9999">
+    </div>
+
+  </div>
+
+  <div class="bloco">
+
+    <h3>🚚 Como deseja receber?</h3>
+
+    <div class="campo">
+      <select id="entrega" onchange="verificarEntrega()">
+        <option value="">Escolha uma opção</option>
+        <option value="retirada">Retirada na loja</option>
+        <option value="entrega">Entrega</option>
+      </select>
+    </div>
+
+    <div id="enderecoArea" style="display:none;">
+
+      <div class="campo">
+        <label>Endereço</label>
+        <input id="endereco" type="text" placeholder="Rua / Avenida">
+      </div>
+
+      <div class="duplo">
+
+        <div class="campo">
+          <label>Número</label>
+          <input id="numero" type="text">
+        </div>
+
+        <div class="campo">
+          <label>Bairro</label>
+          <input id="bairro" type="text">
+        </div>
+
+      </div>
+
+      <div class="campo">
+        <label>Complemento</label>
+        <input id="complemento" type="text" placeholder="Opcional">
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="bloco">
+
+    <h3>🛍️ Resumo do pedido</h3>
+
+    <div id="resumoCheckout"></div>
+
+    <div class="resumo-total">
+      <span>Total</span>
+      <span id="totalCheckout">R$ 0,00</span>
+    </div>
+
+  </div>
+
+  <div class="bloco">
+
+    <h3>💳 Pagamento</h3>
+
+    <div class="pagamento-aviso">
+      Pix e cartão serão ativados na próxima etapa.
+      Por enquanto estamos configurando e testando o checkout da SALI.
+    </div>
+
+  </div>
+
+  <button class="confirmar-pedido" onclick="confirmarPedido()">
+    CONFIRMAR PEDIDO
+  </button>
+
+</div>
+</section>
+
+<!-- SUCESSO -->
+<section class="sucesso" id="sucesso">
+
+<div class="sucesso-box">
+
+  <div class="check">✓</div>
+
+  <h2>Pedido confirmado!</h2>
+
+  <p>
+    Obrigada por comprar na SALI STORE 💕
+  </p>
+
+  <div class="numero-pedido" id="numeroPedido"></div>
+
+  <p>
+    Estamos preparando a próxima etapa para deixar seus pedidos
+    registrados diretamente no sistema da loja.
+  </p>
+
+  <button onclick="voltarLoja()">
+    VOLTAR PARA A LOJA
+  </button>
+
+</div>
+</section>
+
+<script>
+
+let carrinho = JSON.parse(localStorage.getItem("saliCarrinho")) || [];
+
+function salvarCarrinho(){
+  localStorage.setItem("saliCarrinho",JSON.stringify(carrinho));
+  atualizarCarrinho();
+}
+
+function moeda(valor){
+  return valor.toLocaleString("pt-BR",{
+    style:"currency",
+    currency:"BRL"
+  });
+}
+
+function adicionarProduto(id,nome,preco,foto){
+
+  const existente = carrinho.find(item => item.id === id);
+
+  if(existente){
+    existente.quantidade++;
+  }else{
+    carrinho.push({
+      id,
+      nome,
+      preco,
+      foto,
+      quantidade:1
+    });
+  }
+
+  salvarCarrinho();
+  abrirCarrinho();
+}
+
+function aumentar(id){
+
+  const item = carrinho.find(item => item.id === id);
+
+  if(item){
+    item.quantidade++;
+  }
+
+  salvarCarrinho();
+}
+
+function diminuir(id){
+
+  const item = carrinho.find(item => item.id === id);
+
+  if(!item) return;
+
+  item.quantidade--;
+
+  if(item.quantidade <= 0){
+    carrinho = carrinho.filter(item => item.id !== id);
+  }
+
+  salvarCarrinho();
+}
+
+function remover(id){
+
+  carrinho = carrinho.filter(item => item.id !== id);
+
+  salvarCarrinho();
+}
+
+function atualizarCarrinho(){
+
+  const area = document.getElementById("itensCarrinho");
+  const contador = document.getElementById("contador");
+
+  const quantidadeTotal = carrinho.reduce(
+    (soma,item) => soma + item.quantidade,
+    0
+  );
+
+  contador.textContent = quantidadeTotal;
+
+  if(carrinho.length === 0){
+
+    area.innerHTML =
+      '<div class="vazio">Seu carrinho está vazio 🛍️</div>';
+
+    document.getElementById("totalCarrinho").textContent =
+      moeda(0);
+
+    return;
+  }
+
+  area.innerHTML = carrinho.map(item => `
+
+    <div class="item-carrinho">
+
+      <img src="${item.foto}" alt="${item.nome}">
+
+      <div class="item-dados">
+
+        <h4>${item.nome}</h4>
+
+        <strong>${moeda(item.preco)}</strong>
+
+        <div class="quantidade">
+
+          <button onclick="diminuir(${item.id})">−</button>
+
+          <span>${item.quantidade}</span>
+
+          <button onclick="aumentar(${item.id})">+</button>
+
+        </div>
+
+        <button
+          class="remover"
+          onclick="remover(${item.id})">
+          Remover
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+  const total = carrinho.reduce(
+    (soma,item) => soma + item.preco * item.quantidade,
+    0
+  );
+
+  document.getElementById("totalCarrinho").textContent =
+    moeda(total);
+}
+
+function abrirCarrinho(){
+
+  document.getElementById("carrinho").classList.add("aberto");
+  document.getElementById("overlay").classList.add("ativo");
+}
+
+function fecharCarrinho(){
+
+  document.getElementById("carrinho").classList.remove("aberto");
+  document.getElementById("overlay").classList.remove("ativo");
+}
+
+function abrirCheckout(){
+
+  if(carrinho.length === 0){
+    alert("Seu carrinho está vazio.");
+    return;
+  }
+
+  fecharCarrinho();
+
+  document.getElementById("checkout").classList.add("ativo");
+
+  atualizarCheckout();
+}
+
+function fecharCheckout(){
+
+  document.getElementById("checkout").classList.remove("ativo");
+}
+
+function atualizarCheckout(){
+
+  const resumo = document.getElementById("resumoCheckout");
+
+  resumo.innerHTML = carrinho.map(item => `
+
+    <div class="resumo-item">
+
+      <span>
+        ${item.quantidade}x ${item.nome}
+      </span>
+
+      <strong>
+        ${moeda(item.preco * item.quantidade)}
+      </strong>
+
+    </div>
+
+  `).join("");
+
+  const total = carrinho.reduce(
+    (soma,item) => soma + item.preco * item.quantidade,
+    0
+  );
+
+  document.getElementById("totalCheckout").textContent =
+    moeda(total);
+}
+
+function verificarEntrega(){
+
+  const escolha =
+    document.getElementById("entrega").value;
+
+  document.getElementById("enderecoArea").style.display =
+    escolha === "entrega" ? "block" : "none";
+}
+
+function confirmarPedido(){
+
+  const nome =
+    document.getElementById("nome").value.trim();
+
+  const telefone =
+    document.getElementById("telefone").value.trim();
+
+  const entrega =
+    document.getElementById("entrega").value;
+
+  if(!nome){
+    alert("Digite seu nome.");
+    return;
+  }
+
+  if(!telefone){
+    alert("Digite seu WhatsApp.");
+    return;
+  }
+
+  if(!entrega){
+    alert("Escolha entrega ou retirada.");
+    return;
+  }
+
+  if(entrega === "entrega"){
+
+    const endereco =
+      document.getElementById("endereco").value.trim();
+
+    const numero =
+      document.getElementById("numero").value.trim();
+
+    const bairro =
+      document.getElementById("bairro").value.trim();
+
+    if(!endereco || !numero || !bairro){
+      alert("Preencha o endereço de entrega.");
+      return;
+    }
+  }
+
+  const pedido =
+    "SALI-" +
+    Date.now()
+      .toString()
+      .slice(-6);
+
+  document.getElementById("numeroPedido").textContent =
+    "Pedido #" + pedido;
+
+  document.getElementById("checkout").classList.remove("ativo");
+
+  document.getElementById("sucesso").classList.add("ativo");
+
+  carrinho = [];
+
+  salvarCarrinho();
+}
+
+function voltarLoja(){
+
+  document.getElementById("sucesso").classList.remove("ativo");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+atualizarCarrinho();
+
+</script>
 
 </body>
 </html>
