@@ -1824,12 +1824,68 @@ function confirmarPedido(){
   moeda(total) +
   "</strong>";
 
+  
+if (!window.supabaseClient) {
+  alert("Aguarde alguns segundos e tente confirmar o pedido novamente.");
+  return;
+}
+
+let enderecoPedido = "Retirada na loja";
+
+if (
+  entrega === "cidade" ||
+  entrega === "bola" ||
+  entrega === "caixa"
+) {
+  const ruaPedido = document.getElementById("endereco")?.value.trim() || "";
+  const numeroPedidoEndereco = document.getElementById("numero")?.value.trim() || "";
+  const bairroPedido = document.getElementById("bairro")?.value.trim() || "";
+
+  enderecoPedido =
+    ruaPedido + ", nº " +
+    numeroPedidoEndereco + ", " +
+    bairroPedido;
+}
+
+if (entrega === "barcos") {
+  enderecoPedido =
+    document.getElementById("barcoDestino")?.value.trim() ||
+    "Barco/Jato";
+}
+
+const pagamentoSelecionado =
+  document.querySelector('input[name="pagamento"]:checked')?.value ||
+  document.getElementById("pagamento")?.value ||
+  "Não informado";
+
+const { error: erroPedido } = await window.supabaseClient
+  .from("Pedidos")
+  .insert([
+    {
+      numero_pedido: numeroPedido,
+      Nome_cliente: nome,
+      Telefone: telefone,
+      endereço: enderecoPedido,
+      Tipo_entrega: entrega,
+      Valor_entrega: valorFrete,
+      produtos: JSON.stringify(carrinho),
+      Subtotal: subtotal,
+      Total: total,
+      forma_pagamento: pagamentoSelecionado,
+      Status: "Novo"
+    }
+  ]);
+
+if (erroPedido) {
+  console.error("Erro ao salvar pedido:", erroPedido);
+  alert("Não foi possível registrar o pedido. Tente novamente.");
+  return;
+}
   document.getElementById(
     "checkout"
   ).classList.remove(
     "ativo"
   );
-
   document.getElementById(
     "sucesso"
   ).classList.add(
