@@ -1862,18 +1862,18 @@ const { error: erroPedido } = await window.supabaseClient
   .from("Pedidos")
   .insert([
     {
-      numero_pedido: numeroPedido,
-      Nome_cliente: nome,
-      Telefone: telefone,
-      endereço: enderecoPedido,
-      Tipo_entrega: entrega,
-      Valor_entrega: valorFrete,
-      produtos: JSON.stringify(carrinho),
-      Subtotal: subtotal,
-      Total: total,
-      forma_pagamento: pagamentoSelecionado,
-      Status: "Novo"
-    }
+  numero_pedido: numeroPedido,
+  nome_cliente: nome,
+  Telefone: telefone,
+  endereço: enderecoPedido,
+  tipo_entrega: entrega,
+  valor_entrega: valorFrete,
+  produtos: JSON.stringify(carrinho),
+  subtotal: subtotal,
+  total: total,
+  forma_pagamento: pagamentoSelecionado,
+  status: "Novo"
+}
   ]);
 
 if (erroPedido) {
