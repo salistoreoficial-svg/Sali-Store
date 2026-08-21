@@ -1401,7 +1401,8 @@ function atualizarCarrinho(){
           <h4>
             ${item.nome}
           </h4>
-
+${item.tamanho ? '<small>Tamanho: ' + item.tamanho + '</small><br>' : ''}
+${item.estampa ? '<small>Estampa: ' + item.estampa + '</small><br>' : ''}
           <strong>
             ${moeda(item.preco)}
           </strong>
@@ -1409,7 +1410,7 @@ function atualizarCarrinho(){
           <div class="quantidade">
 
             <button
-              onclick="diminuir(${item.id})">
+              onclick='diminuir(${JSON.stringify(item.id)})'
               −
             </button>
 
@@ -1418,7 +1419,7 @@ function atualizarCarrinho(){
             </span>
 
             <button
-              onclick="aumentar(${item.id})">
+              onclick='aumentar(${JSON.stringify(item.id)})'
               +
             </button>
 
@@ -1426,7 +1427,7 @@ function atualizarCarrinho(){
 
           <button
             class="remover"
-            onclick="remover(${item.id})">
+            onclick='remover(${JSON.stringify(item.id)})'
 
             Remover
 
