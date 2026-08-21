@@ -1878,7 +1878,7 @@ const { error: erroPedido } = await window.supabaseClient
 
 if (erroPedido) {
   console.error("Erro ao salvar pedido:", erroPedido);
-  alert("Não foi possível registrar o pedido. Tente novamente.");
+  alert("ERRO SUPABASE: " + (erroPedido?.message || JSON.stringify(erroPedido)));
   return;
 }
   document.getElementById(
