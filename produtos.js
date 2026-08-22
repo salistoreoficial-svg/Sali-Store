@@ -66,4 +66,8 @@ function carregarProdutos() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", carregarProdutos);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", carregarProdutos);
+} else {
+  carregarProdutos();
+}
