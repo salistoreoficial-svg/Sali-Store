@@ -66,4 +66,4 @@ function carregarProdutos() {
   });
 }
 
-carregarProdutos();
+document.addEventListener("DOMContentLoaded", carregarProdutos);
