@@ -148,15 +148,49 @@ function adicionarEstilosSali(){
     /* FOTO PRINCIPAL */
 
     .sali-modal-foto{
-      width:100%;
-      max-height:490px;
-      aspect-ratio:3/4;
-      object-fit:cover;
-      border-radius:18px;
-      background:#eee;
-      display:block;
-    }
+  width:100%;
+  height:380px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:18px;
+  background:#eee;
+  display:block;
+}
+@media(max-width:480px){
 
+  .sali-modal{
+    max-height:92vh;
+    padding:12px;
+  }
+
+  .sali-modal-foto{
+    height:330px;
+  }
+
+  .sali-modal-info{
+    padding-top:12px;
+  }
+
+  .sali-modal-info h2{
+    font-size:21px;
+  }
+
+  .sali-modal-preco{
+    font-size:23px;
+    margin-bottom:15px;
+  }
+
+  .sali-secao-opcao{
+    margin-bottom:15px;
+  }
+
+  .sali-estampa-botao{
+    flex:0 0 68px;
+    width:68px;
+    height:88px;
+  }
+
+}
 
     /* INFO */
 
