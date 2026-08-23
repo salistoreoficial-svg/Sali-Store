@@ -14,60 +14,144 @@ const produtos = [
     categoria: "Conjuntos"
   }
 ];
-function carregarProdutos() {
-  const lista = document.getElementById("listaProdutos");
 
-  if (!lista) return;
+function carregarProdutos(){
+
+  const lista =
+    document.getElementById(
+      "listaProdutos"
+    );
+
+  if(!lista){
+    return;
+  }
 
   lista.innerHTML = "";
 
-  produtos.forEach((produto) => {
-    const card = document.createElement("div");
-    card.className = "produto";
+  produtos.forEach(
+    produto => {
 
-    const imagem = document.createElement("img");
-    imagem.src = produto.imagem;
-    imagem.alt = produto.nome;
+      const card =
+        document.createElement(
+          "div"
+        );
 
-    const info = document.createElement("div");
-    info.className = "info";
+      card.className =
+        "produto";
 
-    const nome = document.createElement("h3");
-    nome.textContent = produto.nome;
+      const imagem =
+        document.createElement(
+          "img"
+        );
 
-    const preco = document.createElement("div");
-    preco.className = "preco";
-    preco.textContent = produto.preco.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
+      imagem.src =
+        produto.imagem;
 
-    const botao = document.createElement("button");
-    botao.className = "adicionar";
-    botao.textContent = "ADICIONAR AO CARRINHO";
+      imagem.alt =
+        produto.nome;
 
-    botao.addEventListener("click", () => {
-      adicionarProduto(
-        produto.id,
-        produto.nome,
-        produto.preco,
-        produto.imagem
+      const info =
+        document.createElement(
+          "div"
+        );
+
+      info.className =
+        "info";
+
+      const nome =
+        document.createElement(
+          "h3"
+        );
+
+      nome.textContent =
+        produto.nome;
+
+      const preco =
+        document.createElement(
+          "div"
+        );
+
+      preco.className =
+        "preco";
+
+      preco.textContent =
+        produto.preco.toLocaleString(
+          "pt-BR",
+          {
+            style:"currency",
+            currency:"BRL"
+          }
+        );
+
+      const botao =
+        document.createElement(
+          "button"
+        );
+
+      botao.type =
+        "button";
+
+      botao.className =
+        "adicionar";
+
+      botao.textContent =
+        "ADICIONAR AO CARRINHO";
+
+      botao.addEventListener(
+        "click",
+        () => {
+
+          adicionarProduto(
+            produto.id,
+            produto.nome,
+            produto.preco,
+            produto.imagem
+          );
+
+        }
       );
-    });
 
-    info.appendChild(nome);
-    info.appendChild(preco);
-    info.appendChild(botao);
+      info.appendChild(
+        nome
+      );
 
-    card.appendChild(imagem);
-    card.appendChild(info);
+      info.appendChild(
+        preco
+      );
 
-    lista.appendChild(card);
-  });
+      info.appendChild(
+        botao
+      );
+
+      card.appendChild(
+        imagem
+      );
+
+      card.appendChild(
+        info
+      );
+
+      lista.appendChild(
+        card
+      );
+
+    }
+  );
+
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", carregarProdutos);
-} else {
+if(
+  document.readyState ===
+  "loading"
+){
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    carregarProdutos
+  );
+
+}else{
+
   carregarProdutos();
+
 }
