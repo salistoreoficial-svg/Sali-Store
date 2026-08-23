@@ -1,6 +1,7 @@
 /* =========================================
    SALI STORE
-   PRODUTOS + VARIANTES + MODAL
+   PRODUTOS + VARIANTES VISUAIS
+   ESTAMPAS COM FOTO + TAMANHOS EM BOTÕES
 ========================================= */
 
 const SALI_SUPABASE_URL =
@@ -13,7 +14,7 @@ let clienteProdutosSali = null;
 
 
 /* =========================================
-   CONEXÃO
+   CONECTAR AO SUPABASE
 ========================================= */
 
 function conectarProdutosSali(){
@@ -40,7 +41,6 @@ function conectarProdutosSali(){
     );
 
   return true;
-
 }
 
 
@@ -66,107 +66,248 @@ function adicionarEstilosSali(){
 
   style.textContent = `
 
+    /* BOTÃO DA VITRINE */
+
+    .sali-escolher-opcoes{
+      width:100%;
+      border:0;
+      background:#000;
+      color:#fff;
+      padding:14px 10px;
+      border-radius:12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+
+    /* FUNDO DO MODAL */
+
     .sali-modal-overlay{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.65);
+      background:rgba(0,0,0,.68);
       display:none;
       align-items:flex-end;
       justify-content:center;
       z-index:99999;
-      padding:12px;
+      padding:10px;
     }
 
     .sali-modal-overlay.ativo{
       display:flex;
     }
 
+
+    /* JANELA */
+
     .sali-modal{
+      position:relative;
       width:100%;
       max-width:520px;
-      max-height:92vh;
+      max-height:94vh;
       overflow-y:auto;
       background:#fff;
-      border-radius:22px 22px 16px 16px;
-      padding:18px;
-      position:relative;
-      animation:saliSubir .22s ease;
+      border-radius:24px 24px 16px 16px;
+      padding:16px;
+      animation:saliSubir .2s ease;
     }
 
     @keyframes saliSubir{
+
       from{
-        transform:translateY(35px);
         opacity:0;
+        transform:translateY(30px);
       }
+
       to{
-        transform:translateY(0);
         opacity:1;
+        transform:translateY(0);
       }
+
     }
+
+
+    /* FECHAR */
 
     .sali-modal-fechar{
       position:absolute;
+      z-index:10;
       top:12px;
       right:12px;
-      width:40px;
-      height:40px;
+      width:42px;
+      height:42px;
       border:0;
       border-radius:50%;
       background:#000;
       color:#fff;
-      font-size:22px;
+      font-size:26px;
       font-weight:900;
-      z-index:5;
     }
+
+
+    /* FOTO PRINCIPAL */
 
     .sali-modal-foto{
       width:100%;
+      max-height:490px;
       aspect-ratio:3/4;
       object-fit:cover;
-      border-radius:16px;
+      border-radius:18px;
       background:#eee;
       display:block;
     }
 
+
+    /* INFO */
+
     .sali-modal-info{
-      padding-top:16px;
+      padding:15px 2px 3px;
     }
 
     .sali-modal-info h2{
       font-size:23px;
-      margin-bottom:7px;
+      line-height:1.15;
+      margin:0 0 7px;
     }
 
     .sali-modal-preco{
       color:#e52d86;
-      font-size:24px;
+      font-size:25px;
       font-weight:900;
-      margin-bottom:18px;
+      margin-bottom:20px;
     }
 
-    .sali-campo-opcao{
-      margin-bottom:14px;
-    }
 
-    .sali-campo-opcao label{
-      display:block;
-      font-size:14px;
+    /* TÍTULOS */
+
+    .sali-titulo-opcao{
+      font-size:15px;
       font-weight:900;
-      margin-bottom:7px;
+      margin-bottom:10px;
     }
 
-    .sali-campo-opcao select{
+    .sali-secao-opcao{
+      margin-bottom:20px;
+    }
+
+
+    /* MINIATURAS DAS ESTAMPAS */
+
+    .sali-estampas{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      padding:2px 2px 7px;
+      scrollbar-width:thin;
+    }
+
+    .sali-estampa-botao{
+      flex:0 0 76px;
+      width:76px;
+      height:98px;
+      padding:3px;
+      border:2px solid #ddd;
+      border-radius:13px;
+      background:#fff;
+      cursor:pointer;
+      position:relative;
+      transition:.15s;
+    }
+
+    .sali-estampa-botao img{
       width:100%;
-      padding:13px;
-      border:1px solid #ccc;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:9px;
+      background:#eee;
+    }
+
+    .sali-estampa-botao.selecionada{
+      border:3px solid #e52d86;
+      transform:scale(1.03);
+    }
+
+    .sali-estampa-botao.selecionada::after{
+      content:"✓";
+      position:absolute;
+      right:-5px;
+      top:-7px;
+      width:23px;
+      height:23px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#e52d86;
+      color:#fff;
+      font-size:13px;
+      font-weight:900;
+      border:2px solid #fff;
+    }
+
+    .sali-estampa-botao.esgotada{
+      opacity:.38;
+      cursor:not-allowed;
+    }
+
+    .sali-sem-foto-estampa{
+      width:100%;
+      height:100%;
+      background:#f1f1f1;
+      border-radius:9px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-size:10px;
+      color:#777;
+      padding:5px;
+    }
+
+
+    /* TAMANHOS */
+
+    .sali-tamanhos{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+    }
+
+    .sali-tamanho-botao{
+      min-width:54px;
+      min-height:45px;
+      padding:10px 14px;
+      border:2px solid #ddd;
       border-radius:11px;
       background:#fff;
-      font-size:15px;
+      color:#111;
+      font-weight:900;
+      cursor:pointer;
     }
 
+    .sali-tamanho-botao.unico{
+      min-width:100%;
+    }
+
+    .sali-tamanho-botao.selecionado{
+      border-color:#e52d86;
+      background:#fff0f7;
+      color:#bd1762;
+    }
+
+    .sali-tamanho-botao.esgotado{
+      opacity:.35;
+      text-decoration:line-through;
+      cursor:not-allowed;
+    }
+
+
+    /* STATUS */
+
     .sali-status-modal{
+      margin:5px 0 15px;
       font-size:13px;
-      margin:10px 0 15px;
       color:#666;
     }
 
@@ -180,31 +321,25 @@ function adicionarEstilosSali(){
       font-weight:800;
     }
 
+
+    /* CARRINHO */
+
     .sali-modal-adicionar{
       width:100%;
       border:0;
-      border-radius:12px;
+      border-radius:13px;
       background:#000;
       color:#fff;
-      padding:16px;
-      font-weight:900;
+      padding:17px 12px;
       font-size:16px;
+      font-weight:900;
     }
 
     .sali-modal-adicionar:disabled{
-      opacity:.45;
+      opacity:.42;
       cursor:not-allowed;
     }
 
-    .sali-escolher-opcoes{
-      width:100%;
-      border:0;
-      background:#000;
-      color:#fff;
-      padding:14px 10px;
-      border-radius:12px;
-      font-weight:900;
-    }
 
     body.sali-modal-aberto{
       overflow:hidden;
@@ -212,10 +347,7 @@ function adicionarEstilosSali(){
 
   `;
 
-  document.head.appendChild(
-    style
-  );
-
+  document.head.appendChild(style);
 }
 
 
@@ -234,7 +366,6 @@ function moedaProduto(valor){
       currency:"BRL"
     }
   );
-
 }
 
 
@@ -243,7 +374,6 @@ function textoSeguro(valor){
   return String(
     valor ?? ""
   ).trim();
-
 }
 
 
@@ -259,27 +389,42 @@ function tamanhoExibicao(valor){
   const normalizado =
     tamanho
     .toLowerCase()
-    .replace(
-      "único",
-      "unico"
-    );
+    .replaceAll("ú","u");
 
   if(
-    normalizado.includes(
-      "tamanho unico"
-    )
+    normalizado.includes("tamanho unico")
     ||
-    normalizado.includes(
-      "veste 36 ao 42"
-    )
+    normalizado.includes("veste 36 ao 42")
   ){
 
-    return "Tamanho único (veste 36 ao 42 ✅)";
-
+    return "Tamanho único • veste 36 ao 42 ✅";
   }
 
   return tamanho;
+}
 
+
+function ehTamanhoUnico(valor){
+
+  const texto =
+    tamanhoExibicao(valor)
+    .toLowerCase();
+
+  return texto.includes(
+    "tamanho único"
+  );
+}
+
+
+function chaveVisual(variante){
+
+  return (
+    textoSeguro(variante.cor)
+    +
+    "|||"
+    +
+    textoSeguro(variante.estampa)
+  );
 }
 
 
@@ -296,25 +441,10 @@ function nomeVisual(variante){
     );
 
   if(cor && estampa){
-    return `${cor} • ${estampa}`;
+    return cor + " - " + estampa;
   }
 
   return estampa || cor || "";
-
-}
-
-
-function chaveVisual(variante){
-
-  return [
-    textoSeguro(
-      variante.cor
-    ),
-    textoSeguro(
-      variante.estampa
-    )
-  ].join("|||");
-
 }
 
 
@@ -329,31 +459,29 @@ async function buscarProdutos(){
     error
   } =
   await clienteProdutosSali
-  .from("Produtos")
-  .select("*")
-  .eq(
-    "ativo",
-    true
-  )
-  .order(
-    "created_at",
-    {
-      ascending:false
-    }
-  );
+    .from("Produtos")
+    .select("*")
+    .eq("ativo",true)
+    .order(
+      "created_at",
+      {
+        ascending:false
+      }
+    );
 
   if(error){
     throw error;
   }
 
   return data || [];
-
 }
 
 
-async function buscarVariantes(
-  produtos
-){
+/* =========================================
+   BUSCAR VARIANTES
+========================================= */
+
+async function buscarVariantes(produtos){
 
   if(!produtos.length){
     return [];
@@ -362,9 +490,7 @@ async function buscarVariantes(
   const ids =
     produtos.map(
       produto =>
-        Number(
-          produto.id
-        )
+        Number(produto.id)
     );
 
   const {
@@ -372,70 +498,78 @@ async function buscarVariantes(
     error
   } =
   await clienteProdutosSali
-  .from("Variantes")
-  .select(
-    "id,produto_id,cor,tamanho,estampa,estoque,ativo,foto_url"
-  )
-  .in(
-    "produto_id",
-    ids
-  )
-  .eq(
-    "ativo",
-    true
-  )
-  .order(
-    "id",
-    {
-      ascending:true
-    }
-  );
+    .from("Variantes")
+    .select(`
+      id,
+      produto_id,
+      cor,
+      tamanho,
+      estampa,
+      estoque,
+      ativo,
+      foto_url
+    `)
+    .in(
+      "produto_id",
+      ids
+    )
+    .eq(
+      "ativo",
+      true
+    )
+    .order(
+      "id",
+      {
+        ascending:true
+      }
+    );
 
   if(error){
 
-    console.error(error);
+    console.error(
+      "Erro ao buscar variantes:",
+      error
+    );
 
     return [];
-
   }
 
   return data || [];
-
 }
 
 
-function agruparVariantes(
-  variantes
-){
+/* =========================================
+   AGRUPAR VARIANTES
+========================================= */
+
+function agruparVariantes(variantes){
 
   const mapa = {};
 
   variantes.forEach(
     variante => {
 
-      const id =
+      const produtoId =
         String(
           variante.produto_id
         );
 
-      if(!mapa[id]){
-        mapa[id] = [];
+      if(!mapa[produtoId]){
+        mapa[produtoId] = [];
       }
 
-      mapa[id].push(
+      mapa[produtoId].push(
         variante
       );
-
     }
   );
 
   return mapa;
-
 }
 
 
 /* =========================================
-   MODAL
+   MODAL BASE
 ========================================= */
 
 function garantirModal(){
@@ -449,9 +583,7 @@ function garantirModal(){
   }
 
   const overlay =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
   overlay.id =
     "saliModalOverlay";
@@ -461,49 +593,50 @@ function garantirModal(){
 
   overlay.innerHTML = `
 
-    <div
-      class="sali-modal"
-      id="saliModal"
-    >
+    <div class="sali-modal">
 
       <button
-        class="sali-modal-fechar"
         type="button"
+        class="sali-modal-fechar"
         onclick="fecharModalProduto()"
       >
         ×
       </button>
 
       <img
-        class="sali-modal-foto"
         id="saliModalFoto"
+        class="sali-modal-foto"
         alt="Produto SALI"
       >
 
       <div class="sali-modal-info">
 
-        <h2
-          id="saliModalNome"
-        ></h2>
+        <h2 id="saliModalNome"></h2>
 
         <div
-          class="sali-modal-preco"
           id="saliModalPreco"
+          class="sali-modal-preco"
         ></div>
 
         <div
-          id="saliModalOpcoes"
+          id="saliAreaEstampas"
+          class="sali-secao-opcao"
         ></div>
 
         <div
-          class="sali-status-modal"
+          id="saliAreaTamanhos"
+          class="sali-secao-opcao"
+        ></div>
+
+        <div
           id="saliModalStatus"
+          class="sali-status-modal"
         ></div>
 
         <button
           type="button"
-          class="sali-modal-adicionar"
           id="saliModalAdicionar"
+          class="sali-modal-adicionar"
         >
           ADICIONAR AO CARRINHO
         </button>
@@ -521,37 +654,37 @@ function garantirModal(){
       if(event.target === overlay){
         fecharModalProduto();
       }
-
     }
   );
 
   document.body.appendChild(
     overlay
   );
-
 }
 
 
 function fecharModalProduto(){
 
-  document
-  .getElementById(
-    "saliModalOverlay"
-  )
-  ?.classList
-  .remove("ativo");
+  const overlay =
+    document.getElementById(
+      "saliModalOverlay"
+    );
 
-  document.body
-  .classList
-  .remove(
+  if(overlay){
+
+    overlay.classList.remove(
+      "ativo"
+    );
+  }
+
+  document.body.classList.remove(
     "sali-modal-aberto"
   );
-
 }
 
 
 /* =========================================
-   ABRIR VARIANTES
+   ABRIR PRODUTO COM VARIANTES
 ========================================= */
 
 function abrirModalProduto(
@@ -566,7 +699,7 @@ function abrirModalProduto(
       "saliModalOverlay"
     );
 
-  const foto =
+  const fotoPrincipal =
     document.getElementById(
       "saliModalFoto"
     );
@@ -581,9 +714,14 @@ function abrirModalProduto(
       "saliModalPreco"
     );
 
-  const opcoes =
+  const areaEstampas =
     document.getElementById(
-      "saliModalOpcoes"
+      "saliAreaEstampas"
+    );
+
+  const areaTamanhos =
+    document.getElementById(
+      "saliAreaTamanhos"
     );
 
   const status =
@@ -591,384 +729,583 @@ function abrirModalProduto(
       "saliModalStatus"
     );
 
-  const botao =
+  const botaoAdicionar =
     document.getElementById(
       "saliModalAdicionar"
     );
 
 
-  foto.src =
+  fotoPrincipal.src =
     produto.foto_url || "";
 
   nome.textContent =
-    produto.nome;
+    produto.nome ||
+    "Produto SALI";
 
   preco.textContent =
     moedaProduto(
       produto.preco
     );
 
-  opcoes.innerHTML = "";
+
+  areaEstampas.innerHTML = "";
+  areaTamanhos.innerHTML = "";
 
   status.textContent = "";
 
-  botao.disabled = true;
+  botaoAdicionar.disabled =
+    true;
 
+
+  let visualSelecionado =
+    null;
+
+  let tamanhoSelecionado =
+    null;
+
+
+  /* =====================================
+     AGRUPAR COR / ESTAMPA
+  ===================================== */
 
   const visuais = [];
 
-  const chaves =
+  const chavesCriadas =
     new Set();
 
 
   variantes.forEach(
     variante => {
 
-      const visual =
-        nomeVisual(
-          variante
-        );
+      const chave =
+        chaveVisual(variante);
 
-      if(!visual){
+      const nome =
+        nomeVisual(variante);
+
+
+      /*
+        Se não tiver cor nem estampa,
+        não precisamos mostrar miniatura.
+      */
+
+      if(!nome){
         return;
       }
 
-      const chave =
-        chaveVisual(
-          variante
-        );
 
       if(
-        chaves.has(
-          chave
-        )
+        chavesCriadas.has(chave)
       ){
         return;
       }
 
-      chaves.add(
-        chave
-      );
+
+      chavesCriadas.add(chave);
+
+
+      const variantesDoVisual =
+        variantes.filter(
+          item =>
+            chaveVisual(item) ===
+            chave
+        );
+
+
+      const foto =
+        variantesDoVisual.find(
+          item =>
+            item.foto_url
+        )?.foto_url
+        ||
+        produto.foto_url
+        ||
+        "";
+
+
+      const temEstoque =
+        variantesDoVisual.some(
+          item =>
+            Number(
+              item.estoque || 0
+            ) > 0
+        );
+
 
       visuais.push({
         chave,
-        nome:visual
+        nome,
+        foto,
+        temEstoque
       });
 
     }
   );
 
 
-  const tamanhos =
-    [
-      ...new Set(
-        variantes
-        .map(
-          variante =>
-            textoSeguro(
-              variante.tamanho
-            )
-        )
-        .filter(Boolean)
-      )
-    ];
-
-
-  let selectVisual = null;
-
-  let selectTamanho = null;
-
+  /* =====================================
+     MOSTRAR MINIATURAS
+  ===================================== */
 
   if(visuais.length){
 
-    const campo =
+    const titulo =
       document.createElement(
         "div"
       );
 
-    campo.className =
-      "sali-campo-opcao";
+    titulo.className =
+      "sali-titulo-opcao";
 
-    const label =
+    titulo.textContent =
+      visuais.length === 1
+      ? "Estampa"
+      : "Escolha a estampa";
+
+
+    const grade =
       document.createElement(
-        "label"
+        "div"
       );
 
-    label.textContent =
-      "Cor / Estampa";
-
-    selectVisual =
-      document.createElement(
-        "select"
-      );
-
-
-    if(visuais.length > 1){
-
-      selectVisual.innerHTML =
-        `
-          <option value="">
-            Selecione
-          </option>
-        `;
-
-    }
+    grade.className =
+      "sali-estampas";
 
 
     visuais.forEach(
-      item => {
+      visual => {
 
-        const option =
+        const botao =
           document.createElement(
-            "option"
+            "button"
           );
 
-        option.value =
-          item.chave;
+        botao.type =
+          "button";
 
-        option.textContent =
-          item.nome;
+        botao.className =
+          "sali-estampa-botao";
 
-        selectVisual.appendChild(
-          option
+        botao.title =
+          visual.nome;
+
+        botao.setAttribute(
+          "aria-label",
+          visual.nome
+        );
+
+
+        if(
+          !visual.temEstoque
+        ){
+
+          botao.classList.add(
+            "esgotada"
+          );
+
+          botao.disabled = true;
+        }
+
+
+        if(visual.foto){
+
+          const img =
+            document.createElement(
+              "img"
+            );
+
+          img.src =
+            visual.foto;
+
+          img.alt =
+            visual.nome;
+
+          botao.appendChild(
+            img
+          );
+
+        }else{
+
+          const semFoto =
+            document.createElement(
+              "div"
+            );
+
+          semFoto.className =
+            "sali-sem-foto-estampa";
+
+          semFoto.textContent =
+            "Sem foto";
+
+          botao.appendChild(
+            semFoto
+          );
+        }
+
+
+        botao.addEventListener(
+          "click",
+          function(){
+
+            if(
+              !visual.temEstoque
+            ){
+              return;
+            }
+
+
+            visualSelecionado =
+              visual.chave;
+
+            tamanhoSelecionado =
+              null;
+
+
+            document
+              .querySelectorAll(
+                ".sali-estampa-botao"
+              )
+              .forEach(
+                item =>
+                  item.classList.remove(
+                    "selecionada"
+                  )
+              );
+
+
+            botao.classList.add(
+              "selecionada"
+            );
+
+
+            fotoPrincipal.src =
+              visual.foto ||
+              produto.foto_url ||
+              "";
+
+
+            renderizarTamanhos();
+
+            atualizarEstado();
+
+          }
+        );
+
+
+        grade.appendChild(
+          botao
         );
 
       }
     );
 
 
-    if(visuais.length === 1){
-
-      selectVisual.value =
-        visuais[0].chave;
-
-    }
-
-
-    campo.appendChild(
-      label
+    areaEstampas.appendChild(
+      titulo
     );
 
-    campo.appendChild(
-      selectVisual
-    );
-
-    opcoes.appendChild(
-      campo
+    areaEstampas.appendChild(
+      grade
     );
 
   }
 
 
-  if(tamanhos.length){
+  /* =====================================
+     FILTRAR VARIANTES
+  ===================================== */
 
-    const campo =
-      document.createElement(
-        "div"
-      );
-
-    campo.className =
-      "sali-campo-opcao";
-
-    const label =
-      document.createElement(
-        "label"
-      );
-
-    label.textContent =
-      "Tamanho";
-
-    selectTamanho =
-      document.createElement(
-        "select"
-      );
-
-    campo.appendChild(
-      label
-    );
-
-    campo.appendChild(
-      selectTamanho
-    );
-
-    opcoes.appendChild(
-      campo
-    );
-
-  }
-
-
-  function variantesDoVisual(){
-
-    let lista =
-      [...variantes];
+  function variantesAtuais(){
 
     if(
-      selectVisual &&
-      selectVisual.value
+      visuais.length &&
+      !visualSelecionado
     ){
 
-      lista =
-        lista.filter(
-          variante =>
-            chaveVisual(
-              variante
-            ) ===
-            selectVisual.value
-        );
-
+      return [];
     }
 
-    return lista;
 
+    if(!visuais.length){
+
+      return [
+        ...variantes
+      ];
+    }
+
+
+    return variantes.filter(
+      variante =>
+        chaveVisual(variante) ===
+        visualSelecionado
+    );
   }
 
 
-  function preencherTamanhos(){
+  /* =====================================
+     RENDER TAMANHOS
+  ===================================== */
 
-    if(!selectTamanho){
-      return;
-    }
+  function renderizarTamanhos(){
 
-    selectTamanho.innerHTML = "";
+    areaTamanhos.innerHTML = "";
 
 
     if(
-      selectVisual &&
-      visuais.length > 1 &&
-      !selectVisual.value
+      visuais.length &&
+      !visualSelecionado
     ){
 
-      selectTamanho.innerHTML =
-        `
-          <option value="">
-            Escolha primeiro a cor/estampa
-          </option>
-        `;
-
-      selectTamanho.disabled =
-        true;
-
       return;
-
     }
-
-
-    selectTamanho.disabled =
-      false;
 
 
     const lista =
-      variantesDoVisual();
+      variantesAtuais();
 
 
-    const unicos =
-      [
-        ...new Set(
-          lista
-          .map(
-            variante =>
-              textoSeguro(
-                variante.tamanho
-              )
-          )
-          .filter(Boolean)
-        )
-      ];
+    const tamanhos =
+      [];
 
 
-    if(unicos.length > 1){
+    lista.forEach(
+      variante => {
 
-      selectTamanho.innerHTML =
-        `
-          <option value="">
-            Selecione o tamanho
-          </option>
-        `;
-
-    }
-
-
-    unicos.forEach(
-      tamanho => {
-
-        const option =
-          document.createElement(
-            "option"
+        const tamanho =
+          textoSeguro(
+            variante.tamanho
           );
 
-        option.value =
-          tamanho;
 
-        option.textContent =
-          tamanhoExibicao(
-            tamanho
+        if(!tamanho){
+          return;
+        }
+
+
+        if(
+          tamanhos.some(
+            item =>
+              item.valor === tamanho
+          )
+        ){
+          return;
+        }
+
+
+        const variantesTamanho =
+          lista.filter(
+            item =>
+              textoSeguro(
+                item.tamanho
+              ) === tamanho
           );
 
 
         const temEstoque =
-          lista.some(
-            variante =>
-              textoSeguro(
-                variante.tamanho
-              ) ===
-              tamanho
-              &&
+          variantesTamanho.some(
+            item =>
               Number(
-                variante.estoque ||
-                0
+                item.estoque || 0
               ) > 0
           );
 
 
-        if(!temEstoque){
+        tamanhos.push({
+          valor:tamanho,
+          nome:
+            tamanhoExibicao(
+              tamanho
+            ),
+          temEstoque
+        });
 
-          option.disabled =
-            true;
+      }
+    );
 
-          option.textContent +=
-            " — esgotado";
 
+    /*
+      Se não existe tamanho,
+      não mostra seção.
+    */
+
+    if(!tamanhos.length){
+      return;
+    }
+
+
+    const titulo =
+      document.createElement(
+        "div"
+      );
+
+    titulo.className =
+      "sali-titulo-opcao";
+
+    titulo.textContent =
+      "Escolha o tamanho";
+
+
+    const grade =
+      document.createElement(
+        "div"
+      );
+
+    grade.className =
+      "sali-tamanhos";
+
+
+    tamanhos.forEach(
+      tamanho => {
+
+        const botao =
+          document.createElement(
+            "button"
+          );
+
+        botao.type =
+          "button";
+
+        botao.className =
+          "sali-tamanho-botao";
+
+
+        if(
+          ehTamanhoUnico(
+            tamanho.valor
+          )
+        ){
+
+          botao.classList.add(
+            "unico"
+          );
         }
 
 
-        selectTamanho.appendChild(
-          option
+        botao.textContent =
+          tamanho.nome;
+
+
+        if(
+          !tamanho.temEstoque
+        ){
+
+          botao.disabled = true;
+
+          botao.classList.add(
+            "esgotado"
+          );
+        }
+
+
+        botao.addEventListener(
+          "click",
+          function(){
+
+            if(
+              !tamanho.temEstoque
+            ){
+              return;
+            }
+
+
+            tamanhoSelecionado =
+              tamanho.valor;
+
+
+            areaTamanhos
+              .querySelectorAll(
+                ".sali-tamanho-botao"
+              )
+              .forEach(
+                item =>
+                  item.classList.remove(
+                    "selecionado"
+                  )
+              );
+
+
+            botao.classList.add(
+              "selecionado"
+            );
+
+
+            atualizarEstado();
+
+          }
+        );
+
+
+        grade.appendChild(
+          botao
         );
 
       }
     );
 
 
-    if(unicos.length === 1){
+    areaTamanhos.appendChild(
+      titulo
+    );
 
-      selectTamanho.value =
-        unicos[0];
+    areaTamanhos.appendChild(
+      grade
+    );
 
+
+    /*
+      Se houver só um tamanho disponível,
+      seleciona automaticamente.
+    */
+
+    const disponiveis =
+      tamanhos.filter(
+        tamanho =>
+          tamanho.temEstoque
+      );
+
+
+    if(disponiveis.length === 1){
+
+      tamanhoSelecionado =
+        disponiveis[0].valor;
+
+
+      const botaoUnico =
+        grade.querySelector(
+          ".sali-tamanho-botao:not(.esgotado)"
+        );
+
+
+      if(botaoUnico){
+
+        botaoUnico.classList.add(
+          "selecionado"
+        );
+      }
     }
 
   }
 
 
-  function varianteSelecionada(){
+  /* =====================================
+     VARIANTE ESCOLHIDA
+  ===================================== */
+
+  function obterVarianteSelecionada(){
 
     let lista =
-      variantesDoVisual();
+      variantesAtuais();
 
 
     if(
-      selectVisual &&
-      visuais.length > 1 &&
-      !selectVisual.value
+      visuais.length &&
+      !visualSelecionado
     ){
       return null;
     }
 
 
-    if(
-      selectTamanho &&
-      selectTamanho.value
-    ){
+    if(tamanhoSelecionado){
 
       lista =
         lista.filter(
@@ -976,17 +1313,30 @@ function abrirModalProduto(
             textoSeguro(
               variante.tamanho
             ) ===
-            selectTamanho.value
+            tamanhoSelecionado
         );
-
     }
 
 
+    /*
+      Se existem tamanhos e nenhum foi escolhido,
+      ainda não está pronto.
+    */
+
+    const temTamanhos =
+      lista.some(
+        variante =>
+          textoSeguro(
+            variante.tamanho
+          )
+      );
+
+
     if(
-      selectTamanho &&
-      selectTamanho.options.length > 1 &&
-      !selectTamanho.value
+      temTamanhos &&
+      !tamanhoSelecionado
     ){
+
       return null;
     }
 
@@ -995,79 +1345,63 @@ function abrirModalProduto(
       lista.find(
         variante =>
           Number(
-            variante.estoque ||
-            0
+            variante.estoque || 0
           ) > 0
       )
       ||
-      lista[0]
-      ||
       null
     );
-
   }
 
 
-  function atualizarModal(){
+  /* =====================================
+     ATUALIZAR STATUS
+  ===================================== */
+
+  function atualizarEstado(){
 
     const variante =
-      varianteSelecionada();
-
-
-    if(
-      selectVisual &&
-      selectVisual.value
-    ){
-
-      const comFoto =
-        variantes.find(
-          item =>
-            chaveVisual(
-              item
-            ) ===
-            selectVisual.value
-            &&
-            item.foto_url
-        );
-
-      foto.src =
-        comFoto?.foto_url ||
-        produto.foto_url ||
-        "";
-
-    }else{
-
-      foto.src =
-        produto.foto_url ||
-        "";
-
-    }
+      obterVarianteSelecionada();
 
 
     if(!variante){
 
-      status.textContent =
-        "Escolha as opções disponíveis.";
+      botaoAdicionar.disabled =
+        true;
+
+
+      if(
+        visuais.length &&
+        !visualSelecionado
+      ){
+
+        status.textContent =
+          "Escolha uma estampa.";
+
+      }else{
+
+        status.textContent =
+          "Escolha o tamanho.";
+      }
+
 
       status.className =
         "sali-status-modal";
 
-      botao.disabled =
-        true;
-
       return;
-
     }
 
 
     const estoque =
       Number(
-        variante.estoque ||
-        0
+        variante.estoque || 0
       );
 
 
     if(estoque <= 0){
+
+      botaoAdicionar.disabled =
+        true;
 
       status.textContent =
         "Esta opção está esgotada.";
@@ -1075,66 +1409,47 @@ function abrirModalProduto(
       status.className =
         "sali-status-modal esgotado";
 
-      botao.disabled =
-        true;
-
       return;
-
     }
+
+
+    botaoAdicionar.disabled =
+      false;
 
 
     status.textContent =
       estoque === 1
-      ? "Última unidade disponível"
-      : `${estoque} unidades disponíveis`;
+      ? "🔥 Última unidade disponível"
+      : `✅ ${estoque} unidades disponíveis`;
+
 
     status.className =
       "sali-status-modal disponivel";
-
-    botao.disabled =
-      false;
-
   }
 
 
-  if(selectVisual){
+  /* =====================================
+     ADICIONAR AO CARRINHO
+  ===================================== */
 
-    selectVisual.addEventListener(
-      "change",
-      function(){
-
-        preencherTamanhos();
-
-        atualizarModal();
-
-      }
-    );
-
-  }
-
-
-  if(selectTamanho){
-
-    selectTamanho.addEventListener(
-      "change",
-      atualizarModal
-    );
-
-  }
-
-
-  botao.onclick =
+  botaoAdicionar.onclick =
     function(){
 
       const variante =
-        varianteSelecionada();
+        obterVarianteSelecionada();
+
 
       if(!variante){
+
+        alert(
+          "Escolha a estampa e o tamanho."
+        );
+
         return;
       }
 
 
-      const partes = [];
+      const detalhes = [];
 
 
       const visual =
@@ -1142,8 +1457,10 @@ function abrirModalProduto(
           variante
         );
 
+
       if(visual){
-        partes.push(
+
+        detalhes.push(
           visual
         );
       }
@@ -1154,27 +1471,41 @@ function abrirModalProduto(
           variante.tamanho
         );
 
+
       if(tamanho){
-        partes.push(
+
+        detalhes.push(
           tamanho
         );
       }
 
 
       const nomeCarrinho =
-        partes.length
+        detalhes.length
         ? (
             produto.nome +
             " - " +
-            partes.join(
+            detalhes.join(
               " | "
             )
           )
         : produto.nome;
 
 
+      const fotoCarrinho =
+        variante.foto_url
+        ||
+        fotoPrincipal.src
+        ||
+        produto.foto_url;
+
+
       const idCarrinho =
-        `${produto.id}-v${variante.id}`;
+        String(produto.id)
+        +
+        "-v"
+        +
+        String(variante.id);
 
 
       adicionarProduto(
@@ -1183,36 +1514,77 @@ function abrirModalProduto(
         Number(
           produto.preco
         ),
-        variante.foto_url ||
-        produto.foto_url
+        fotoCarrinho
       );
 
 
       fecharModalProduto();
-
     };
 
 
-  preencherTamanhos();
+  /* =====================================
+     SE HOUVER SÓ UMA ESTAMPA
+     SELECIONA AUTOMATICAMENTE
+  ===================================== */
 
-  atualizarModal();
+  const visuaisComEstoque =
+    visuais.filter(
+      visual =>
+        visual.temEstoque
+    );
+
+
+  if(
+    visuais.length === 1
+    &&
+    visuaisComEstoque.length === 1
+  ){
+
+    visualSelecionado =
+      visuais[0].chave;
+
+
+    const unicoBotao =
+      areaEstampas.querySelector(
+        ".sali-estampa-botao"
+      );
+
+
+    if(unicoBotao){
+
+      unicoBotao.classList.add(
+        "selecionada"
+      );
+    }
+
+
+    fotoPrincipal.src =
+      visuais[0].foto
+      ||
+      produto.foto_url
+      ||
+      "";
+  }
+
+
+  renderizarTamanhos();
+
+  atualizarEstado();
 
 
   overlay.classList.add(
     "ativo"
   );
 
-  document.body
-  .classList
-  .add(
+
+  document.body.classList.add(
     "sali-modal-aberto"
   );
-
 }
 
 
 /* =========================================
-   CARD
+   CRIAR CARD
 ========================================= */
 
 function criarCardProduto(
@@ -1229,13 +1601,16 @@ function criarCardProduto(
     "produto";
 
 
+  /* FOTO */
+
   const imagem =
     document.createElement(
       "img"
     );
 
   imagem.src =
-    produto.foto_url || "";
+    produto.foto_url ||
+    "";
 
   imagem.alt =
     produto.nome ||
@@ -1244,6 +1619,8 @@ function criarCardProduto(
   imagem.loading =
     "lazy";
 
+
+  /* INFO */
 
   const info =
     document.createElement(
@@ -1254,6 +1631,8 @@ function criarCardProduto(
     "info";
 
 
+  /* NOME */
+
   const nome =
     document.createElement(
       "h3"
@@ -1263,6 +1642,8 @@ function criarCardProduto(
     produto.nome ||
     "Produto SALI";
 
+
+  /* PREÇO */
 
   const preco =
     document.createElement(
@@ -1278,6 +1659,8 @@ function criarCardProduto(
     );
 
 
+  /* BOTÃO */
+
   const botao =
     document.createElement(
       "button"
@@ -1289,28 +1672,54 @@ function criarCardProduto(
 
   if(variantes.length){
 
-    botao.className =
-      "sali-escolher-opcoes";
+    const temEstoque =
+      variantes.some(
+        variante =>
+          Number(
+            variante.estoque || 0
+          ) > 0
+      );
 
-    botao.textContent =
-      "ESCOLHER OPÇÕES";
 
-    botao.addEventListener(
-      "click",
-      function(){
+    if(!temEstoque){
 
-        abrirModalProduto(
-          produto,
-          variantes
-        );
+      botao.className =
+        "adicionar";
 
-      }
-    );
+      botao.textContent =
+        "ESGOTADO";
+
+      botao.disabled = true;
+
+      botao.style.opacity =
+        ".5";
+
+    }else{
+
+      botao.className =
+        "sali-escolher-opcoes";
+
+      botao.textContent =
+        "ESCOLHER OPÇÕES";
+
+
+      botao.addEventListener(
+        "click",
+        function(){
+
+          abrirModalProduto(
+            produto,
+            variantes
+          );
+        }
+      );
+    }
 
   }else{
 
     botao.className =
       "adicionar";
+
 
     const estoque =
       Number(
@@ -1335,6 +1744,7 @@ function criarCardProduto(
       botao.textContent =
         "ADICIONAR AO CARRINHO";
 
+
       botao.addEventListener(
         "click",
         function(){
@@ -1347,44 +1757,25 @@ function criarCardProduto(
             ),
             produto.foto_url
           );
-
         }
       );
-
     }
-
   }
 
 
-  info.appendChild(
-    nome
-  );
+  info.appendChild(nome);
+  info.appendChild(preco);
+  info.appendChild(botao);
 
-  info.appendChild(
-    preco
-  );
-
-  info.appendChild(
-    botao
-  );
-
-
-  card.appendChild(
-    imagem
-  );
-
-  card.appendChild(
-    info
-  );
-
+  card.appendChild(imagem);
+  card.appendChild(info);
 
   return card;
-
 }
 
 
 /* =========================================
-   CARREGAR
+   CARREGAR PRODUTOS
 ========================================= */
 
 async function carregarProdutos(){
@@ -1404,17 +1795,16 @@ async function carregarProdutos(){
   garantirModal();
 
 
-  lista.innerHTML =
-    `
-      <div style="
-        grid-column:1/-1;
-        text-align:center;
-        padding:30px;
-        color:#777;
-      ">
-        Carregando produtos...
-      </div>
-    `;
+  lista.innerHTML = `
+    <div style="
+      grid-column:1/-1;
+      text-align:center;
+      padding:30px;
+      color:#777;
+    ">
+      Carregando produtos...
+    </div>
+  `;
 
 
   let tentativas = 0;
@@ -1435,25 +1825,22 @@ async function carregarProdutos(){
     );
 
     tentativas++;
-
   }
 
 
   if(!clienteProdutosSali){
 
-    lista.innerHTML =
-      `
-        <div style="
-          grid-column:1/-1;
-          text-align:center;
-          padding:30px;
-        ">
-          Não foi possível carregar os produtos.
-        </div>
-      `;
+    lista.innerHTML = `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:30px;
+      ">
+        Não foi possível carregar os produtos.
+      </div>
+    `;
 
     return;
-
   }
 
 
@@ -1465,20 +1852,18 @@ async function carregarProdutos(){
 
     if(!produtos.length){
 
-      lista.innerHTML =
-        `
-          <div style="
-            grid-column:1/-1;
-            text-align:center;
-            padding:35px;
-            color:#777;
-          ">
-            Nenhum produto disponível no momento.
-          </div>
-        `;
+      lista.innerHTML = `
+        <div style="
+          grid-column:1/-1;
+          text-align:center;
+          padding:35px;
+          color:#777;
+        ">
+          Nenhum produto disponível no momento.
+        </div>
+      `;
 
       return;
-
     }
 
 
@@ -1500,44 +1885,49 @@ async function carregarProdutos(){
     produtos.forEach(
       produto => {
 
+        const variantesProduto =
+          mapa[
+            String(
+              produto.id
+            )
+          ]
+          ||
+          [];
+
+
         const card =
           criarCardProduto(
             produto,
-            mapa[
-              String(
-                produto.id
-              )
-            ] || []
+            variantesProduto
           );
 
 
         lista.appendChild(
           card
         );
-
       }
     );
 
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Erro ao carregar loja:",
+      error
+    );
 
 
-    lista.innerHTML =
-      `
-        <div style="
-          grid-column:1/-1;
-          text-align:center;
-          padding:30px;
-          color:#b00020;
-        ">
-          Erro ao carregar os produtos.
-        </div>
-      `;
-
+    lista.innerHTML = `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:30px;
+        color:#b00020;
+      ">
+        Erro ao carregar os produtos.
+      </div>
+    `;
   }
-
 }
 
 
@@ -1558,5 +1948,4 @@ if(
 }else{
 
   carregarProdutos();
-
 }
