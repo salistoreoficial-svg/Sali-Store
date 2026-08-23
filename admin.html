@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Painel SALI STORE</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f6f6f6;
+  color:#111;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.login-tela{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#ffd3e5,#ff88bb);
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:30px 22px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.login-logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.login-logo h1{
+  color:#e52d86;
+  font-size:34px;
+}
+
+.login-logo p{
+  margin-top:8px;
+  color:#666;
+}
+
+.campo{
+  margin-bottom:15px;
+}
+
+.campo label{
+  display:block;
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.campo input,
+.campo textarea,
+.campo select{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:10px;
+  padding:13px;
+  background:#fff;
+  outline:none;
+}
+
+.campo textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.botao-login{
+  width:100%;
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  font-weight:900;
+  margin-top:8px;
+}
+
+.erro-login{
+  color:#c40000;
+  font-size:14px;
+  margin-top:14px;
+  text-align:center;
+}
+
+.painel{
+  display:none;
+}
+
+.topo{
+  background:#000;
+  color:#fff;
+  padding:15px;
+}
+
+.topo-conteudo{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.topo h1{
+  font-size:22px;
+}
+
+.sair{
+  background:#e52d86;
+  color:#fff;
+  border:0;
+  padding:10px 16px;
+  border-radius:9px;
+  font-weight:800;
+}
+
+.conteudo{
+  max-width:1100px;
+  margin:auto;
+  padding:20px 15px 50px;
+}
+
+.boas-vindas{
+  margin-bottom:22px;
+}
+
+.boas-vindas h2{
+  font-size:26px;
+  margin-bottom:5px;
+}
+
+.boas-vindas p{
+  color:#666;
+}
+
+.estatisticas{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.card-estatistica{
+  background:#fff;
+  border-radius:14px;
+  padding:17px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.card-estatistica small{
+  color:#777;
+}
+
+.card-estatistica strong{
+  display:block;
+  font-size:25px;
+  margin-top:6px;
+}
+
+.bloco{
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.bloco h3{
+  margin-bottom:18px;
+}
+
+.duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.ativo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:10px 0 20px;
+  font-weight:700;
+}
+
+.ativo-area input{
+  width:20px;
+  height:20px;
+}
+
+.botoes-form{
+  display:flex;
+  gap:10px;
+}
+
+.salvar{
+  flex:1;
+  background:#e52d86;
+  color:#fff;
+  border:0;
+  border-radius:11px;
+  padding:14px;
+  font-weight:900;
+}
+
+.cancelar{
+  display:none;
+  border:1px solid #ccc;
+  background:#fff;
+  padding:14px;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.cabecalho-lista{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.buscar{
+  width:100%;
+  max-width:330px;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+
+.lista-produtos{
+  display:grid;
+  gap:12px;
+}
+
+.produto-card{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+  border:1px solid #eee;
+  padding:12px;
+  border-radius:14px;
+  background:#fff;
+}
+
+.produto-card img{
+  width:90px;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#eee;
+}
+
+.produto-info h4{
+  margin-bottom:6px;
+  font-size:18px;
+}
+
+.produto-info .preco{
+  color:#e52d86;
+  font-weight:900;
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.detalhes{
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.status{
+  display:inline-block;
+  margin-top:7px;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.status.ativo{
+  background:#e4f8e8;
+  color:#167329;
+}
+
+.status.inativo{
+  background:#f3f3f3;
+  color:#777;
+}
+
+.acoes{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.editar{
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.excluir{
+  border:0;
+  background:#ffe6e6;
+  color:#c80000;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.alternar{
+  border:0;
+  background:#fff1f7;
+  color:#be1763;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.carregando,
+.sem-produtos{
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+@media(max-width:650px){
+  .duplo{
+    grid-template-columns:1fr;
+  }
+
+  .cabecalho-lista{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .buscar{
+    max-width:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="login-tela" id="loginTela">
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      <h1>SALI STORE</h1>
+      <p>Painel administrativo</p>
+    </div>
+
+    <div class="campo">
+      <label>E-mail</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+      >
+    </div>
+
+    <div class="campo">
+      <label>Senha</label>
+      <input
+        type="password"
+        id="senha"
+        placeholder="Digite sua senha"
+      >
+    </div>
+
+    <button
+      class="botao-login"
+      onclick="entrar()">
+      ENTRAR NO PAINEL
+    </button>
+
+    <div
+      class="erro-login"
+      id="erroLogin">
+    </div>
+
+  </div>
+
+</section>
+
+<section class="painel" id="painel">
+
+  <header class="topo">
+
+    <div class="topo-conteudo">
+
+      <h1>🛍️ SALI STORE</h1>
+
+      <button
+        class="sair"
+        onclick="sair()">
+        SAIR
+      </button>
+
+    </div>
+
+  </header>
+
+  <main class="conteudo">
+
+    <div class="boas-vindas">
+      <h2>Painel de produtos</h2>
+      <p>Cadastre e gerencie os produtos da sua loja.</p>
+    </div>
+
+    <div class="estatisticas">
+
+      <div class="card-estatistica">
+        <small>Produtos cadastrados</small>
+        <strong id="totalProdutos">0</strong>
+      </div>
+
+      <div class="card-estatistica">
+        <small>Estoque total</small>
+        <strong id="estoqueTotal">0</strong>
+      </div>
+
+    </div>
+
+    <div class="bloco">
+
+      <h3 id="tituloFormulario">
+        ➕ Cadastrar produto
+      </h3>
+
+      <input
+        type="hidden"
+        id="produtoId"
+      >
+
+      <div class="campo">
+        <label>Nome do produto</label>
+        <input
+          type="text"
+          id="produtoNome"
+          placeholder="Ex.: Vestido indiano SALI"
+        >
+      </div>
+
+      <div class="duplo">
+
+        <div class="campo">
+          <label>Preço</label>
+          <input
+            type="number"
+            id="produtoPreco"
+            step="0.01"
+            min="0"
+            placeholder="59.99"
+          >
+        </div>
+
+        <div class="campo">
+          <label>Estoque</label>
+          <input
+            type="number"
+            id="produtoEstoque"
+            min="0"
+            placeholder="0"
+          >
+        </div>
+
+      </div>
+
+      <div class="campo">
+        <label>Categoria</label>
+
+        <select id="produtoCategoria">
+
+          <option value="">
+            Selecione
+          </option>
+
+          <option value="Novidades">
+            Novidades
+          </option>
+
+          <option value="Vestidos">
+            Vestidos
+          </option>
+
+          <option value="Conjuntos">
+            Conjuntos
+          </option>
+
+          <option value="Blusas">
+            Blusas
+          </option>
+
+          <option value="Calças">
+            Calças
+          </option>
+
+          <option value="Body">
+            Body
+          </option>
+
+          <option value="Plus Size">
+            Plus Size
+          </option>
+
+        </select>
+      </div>
+
+      <div class="campo">
+        <label>Descrição</label>
+        <textarea
+          id="produtoDescricao"
+          placeholder="Descreva o produto..."
+        ></textarea>
+      </div>
+
+      <div class="campo">
+        <label>URL da foto</label>
+        <input
+          type="text"
+          id="produtoFoto"
+          placeholder="Cole aqui o link da imagem"
+        >
+      </div>
+
+      <label class="ativo-area">
+
+        <input
+          type="checkbox"
+          id="produtoAtivo"
+          checked
+        >
+
+        Produto ativo no site
+
+      </label>
+
+      <div class="botoes-form">
+
+        <button
+          class="salvar"
+          onclick="salvarProduto()"
+          id="botaoSalvar">
+          CADASTRAR PRODUTO
+        </button>
+
+        <button
+          class="cancelar"
+          onclick="cancelarEdicao()"
+          id="botaoCancelar">
+          CANCELAR
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="bloco">
+
+      <div class="cabecalho-lista">
+
+        <h3>📦 Produtos cadastrados</h3>
+
+        <input
+          class="buscar"
+          id="busca"
+          type="search"
+          placeholder="Buscar produto..."
+          oninput="filtrarProdutos()"
+        >
+
+      </div>
+
+      <div
+        class="lista-produtos"
+        id="listaProdutos">
+
+        <div class="carregando">
+          Carregando produtos...
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://uubslcjoybeehinnwhtg.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+let produtos = [];
+
+async function entrar(){
+
+  const email =
+  document.getElementById(
+    "email"
+  ).value.trim();
+
+  const senha =
+  document.getElementById(
+    "senha"
+  ).value;
+
+  const erro =
+  document.getElementById(
+    "erroLogin"
+  );
+
+  erro.textContent = "";
+
+  if(!email || !senha){
+
+    erro.textContent =
+    "Digite o e-mail e a senha.";
+
+    return;
+  }
+
+  const { data, error } =
+  await supabaseClient.auth
+  .signInWithPassword({
+    email:email,
+    password:senha
+  });
+
+  if(error){
+
+    erro.textContent =
+    "E-mail ou senha incorretos.";
+
+    return;
+  }
+
+  if(data.session){
+    mostrarPainel();
+  }
+
+}
+
+async function verificarSessao(){
+
+  const { data } =
+  await supabaseClient.auth
+  .getSession();
+
+  if(data.session){
+    mostrarPainel();
+  }else{
+    mostrarLogin();
+  }
+
+}
+
+async function mostrarPainel(){
+
+  document.getElementById(
+    "loginTela"
+  ).style.display =
+  "none";
+
+  document.getElementById(
+    "painel"
+  ).style.display =
+  "block";
+
+  await carregarProdutos();
+
+}
+
+function mostrarLogin(){
+
+  document.getElementById(
+    "loginTela"
+  ).style.display =
+  "flex";
+
+  document.getElementById(
+    "painel"
+  ).style.display =
+  "none";
+
+}
+
+async function sair(){
+
+  await supabaseClient.auth
+  .signOut();
+
+  mostrarLogin();
+
+}
+
+async function carregarProdutos(){
+
+  const lista =
+  document.getElementById(
+    "listaProdutos"
+  );
+
+  lista.innerHTML =
+  '<div class="carregando">Carregando produtos...</div>';
+
+  const { data, error } =
+  await supabaseClient
+  .from("Produtos")
+  .select("*")
+  .order(
+    "created_at",
+    {
+      ascending:false
+    }
+  );
+
+  if(error){
+
+    lista.innerHTML =
+    '<div class="sem-produtos">Erro ao carregar os produtos.</div>';
+
+    alert(
+      "Erro ao carregar produtos: " +
+      error.message
+    );
+
+    return;
+  }
+
+  produtos =
+  data || [];
+
+  atualizarEstatisticas();
+
+  renderizarProdutos(
+    produtos
+  );
+
+}
+
+function atualizarEstatisticas(){
+
+  document.getElementById(
+    "totalProdutos"
+  ).textContent =
+  produtos.length;
+
+  const estoque =
+  produtos.reduce(
+    (total,produto) =>
+      total +
+      Number(
+        produto.estoque || 0
+      ),
+    0
+  );
+
+  document.getElementById(
+    "estoqueTotal"
+  ).textContent =
+  estoque;
+
+}
+
+function moeda(valor){
+
+  return Number(
+    valor || 0
+  ).toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+}
+
+function renderizarProdutos(lista){
+
+  const area =
+  document.getElementById(
+    "listaProdutos"
+  );
+
+  if(lista.length === 0){
+
+    area.innerHTML =
+    '<div class="sem-produtos">Nenhum produto encontrado.</div>';
+
+    return;
+  }
+
+  area.innerHTML =
+  lista.map(
+    produto => {
+
+      const foto =
+      produto.foto_url ||
+      "";
+
+      return `
+
+        <div class="produto-card">
+
+          <img
+            src="${foto}"
+            alt="${produto.nome || "Produto"}"
+          >
+
+          <div class="produto-info">
+
+            <h4>
+              ${produto.nome || "Sem nome"}
+            </h4>
+
+            <div class="preco">
+              ${moeda(produto.preco)}
+            </div>
+
+            <div class="detalhes">
+
+              Categoria:
+              ${produto.categoria || "Não informada"}
+
+              <br>
+
+              Estoque:
+              ${produto.estoque ?? 0}
+
+            </div>
+
+            <span
+              class="status ${
+                produto.ativo
+                ? "ativo"
+                : "inativo"
+              }">
+
+              ${
+                produto.ativo
+                ? "ATIVO"
+                : "INATIVO"
+              }
+
+            </span>
+
+            <div class="acoes">
+
+              <button
+                class="editar"
+                onclick="editarProduto(${produto.id})">
+                EDITAR
+              </button>
+
+              <button
+                class="alternar"
+                onclick="alternarProduto(${produto.id},${produto.ativo})">
+
+                ${
+                  produto.ativo
+                  ? "DESATIVAR"
+                  : "ATIVAR"
+                }
+
+              </button>
+
+              <button
+                class="excluir"
+                onclick="excluirProduto(${produto.id})">
+                EXCLUIR
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  ).join("");
+
+}
+
+function filtrarProdutos(){
+
+  const busca =
+  document.getElementById(
+    "busca"
+  ).value
+  .trim()
+  .toLowerCase();
+
+  if(!busca){
+
+    renderizarProdutos(
+      produtos
+    );
+
+    return;
+  }
+
+  const filtrados =
+  produtos.filter(
+    produto =>
+
+      String(
+        produto.nome || ""
+      )
+      .toLowerCase()
+      .includes(busca)
+
+      ||
+
+      String(
+        produto.categoria || ""
+      )
+      .toLowerCase()
+      .includes(busca)
+
+  );
+
+  renderizarProdutos(
+    filtrados
+  );
+
+}
+
+async function salvarProduto(){
+
+  const id =
+  document.getElementById(
+    "produtoId"
+  ).value;
+
+  const nome =
+  document.getElementById(
+    "produtoNome"
+  ).value.trim();
+
+  const preco =
+  Number(
+    document.getElementById(
+      "produtoPreco"
+    ).value
+  );
+
+  const estoque =
+  Number(
+    document.getElementById(
+      "produtoEstoque"
+    ).value || 0
+  );
+
+  const categoria =
+  document.getElementById(
+    "produtoCategoria"
+  ).value;
+
+  const descricao =
+  document.getElementById(
+    "produtoDescricao"
+  ).value.trim();
+
+  const foto_url =
+  document.getElementById(
+    "produtoFoto"
+  ).value.trim();
+
+  const ativo =
+  document.getElementById(
+    "produtoAtivo"
+  ).checked;
+
+  if(!nome){
+
+    alert(
+      "Digite o nome do produto."
+    );
+
+    return;
+  }
+
+  if(
+    !preco ||
+    preco <= 0
+  ){
+
+    alert(
+      "Digite um preço válido."
+    );
+
+    return;
+  }
+
+  if(!categoria){
+
+    alert(
+      "Escolha uma categoria."
+    );
+
+    return;
+  }
+
+  const produto = {
+    nome:nome,
+    preco:preco,
+    descricao:descricao,
+    foto_url:foto_url || null,
+    ativo:ativo,
+    categoria:categoria,
+    estoque:estoque
+  };
+
+  let resultado;
+
+  if(id){
+
+    resultado =
+    await supabaseClient
+    .from("Produtos")
+    .update(produto)
+    .eq(
+      "id",
+      id
+    );
+
+  }else{
+
+    resultado =
+    await supabaseClient
+    .from("Produtos")
+    .insert([
+      produto
+    ]);
+
+  }
+
+  if(resultado.error){
+
+    alert(
+      "Erro: " +
+      resultado.error.message
+    );
+
+    return;
+  }
+
+  alert(
+    id
+    ? "Produto atualizado com sucesso! ✅"
+    : "Produto cadastrado com sucesso! ✅"
+  );
+
+  limparFormulario();
+
+  await carregarProdutos();
+
+}
+
+function editarProduto(id){
+
+  const produto =
+  produtos.find(
+    item =>
+      Number(item.id) ===
+      Number(id)
+  );
+
+  if(!produto){
+    return;
+  }
+
+  document.getElementById(
+    "produtoId"
+  ).value =
+  produto.id;
+
+  document.getElementById(
+    "produtoNome"
+  ).value =
+  produto.nome || "";
+
+  document.getElementById(
+    "produtoPreco"
+  ).value =
+  produto.preco || "";
+
+  document.getElementById(
+    "produtoEstoque"
+  ).value =
+  produto.estoque ?? 0;
+
+  document.getElementById(
+    "produtoCategoria"
+  ).value =
+  produto.categoria || "";
+
+  document.getElementById(
+    "produtoDescricao"
+  ).value =
+  produto.descricao || "";
+
+  document.getElementById(
+    "produtoFoto"
+  ).value =
+  produto.foto_url || "";
+
+  document.getElementById(
+    "produtoAtivo"
+  ).checked =
+  produto.ativo !== false;
+
+  document.getElementById(
+    "tituloFormulario"
+  ).textContent =
+  "✏️ Editar produto";
+
+  document.getElementById(
+    "botaoSalvar"
+  ).textContent =
+  "SALVAR ALTERAÇÕES";
+
+  document.getElementById(
+    "botaoCancelar"
+  ).style.display =
+  "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+function cancelarEdicao(){
+  limparFormulario();
+}
+
+function limparFormulario(){
+
+  document.getElementById(
+    "produtoId"
+  ).value = "";
+
+  document.getElementById(
+    "produtoNome"
+  ).value = "";
+
+  document.getElementById(
+    "produtoPreco"
+  ).value = "";
+
+  document.getElementById(
+    "produtoEstoque"
+  ).value = "";
+
+  document.getElementById(
+    "produtoCategoria"
+  ).value = "";
+
+  document.getElementById(
+    "produtoDescricao"
+  ).value = "";
+
+  document.getElementById(
+    "produtoFoto"
+  ).value = "";
+
+  document.getElementById(
+    "produtoAtivo"
+  ).checked = true;
+
+  document.getElementById(
+    "tituloFormulario"
+  ).textContent =
+  "➕ Cadastrar produto";
+
+  document.getElementById(
+    "botaoSalvar"
+  ).textContent =
+  "CADASTRAR PRODUTO";
+
+  document.getElementById(
+    "botaoCancelar"
+  ).style.display =
+  "none";
+
+}
+
+async function alternarProduto(
+  id,
+  ativoAtual
+){
+
+  const { error } =
+  await supabaseClient
+  .from("Produtos")
+  .update({
+    ativo:
+    !ativoAtual
+  })
+  .eq(
+    "id",
+    id
+  );
+
+  if(error){
+
+    alert(
+      "Erro ao alterar produto: " +
+      error.message
+    );
+
+    return;
+  }
+
+  await carregarProdutos();
+
+}
+
+async function excluirProduto(id){
+
+  const produto =
+  produtos.find(
+    item =>
+      Number(item.id) ===
+      Number(id)
+  );
+
+  const confirmar =
+  window.confirm(
+    "Tem certeza que deseja excluir " +
+    (produto?.nome || "este produto") +
+    "?"
+  );
+
+  if(!confirmar){
+    return;
+  }
+
+  const { error } =
+  await supabaseClient
+  .from("Produtos")
+  .delete()
+  .eq(
+    "id",
+    id
+  );
+
+  if(error){
+
+    alert(
+      "Erro ao excluir: " +
+      error.message
+    );
+
+    return;
+  }
+
+  alert(
+    "Produto excluído. ✅"
+  );
+
+  await carregarProdutos();
+
+}
+
+verificarSessao();
+
+</script>
+
+</body>
+</html>
