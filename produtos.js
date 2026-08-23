@@ -59,7 +59,9 @@ function adicionarEstilosSali(){
   }
 
   const style =
-    document.createElement("style");
+    document.createElement(
+      "style"
+    );
 
   style.id =
     "sali-estilos-produtos";
@@ -110,6 +112,7 @@ function adicionarEstilosSali(){
       border-radius:24px 24px 16px 16px;
       padding:16px;
       animation:saliSubir .2s ease;
+      -webkit-overflow-scrolling:touch;
     }
 
     @keyframes saliSubir{
@@ -142,55 +145,25 @@ function adicionarEstilosSali(){
       color:#fff;
       font-size:26px;
       font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
     }
 
 
     /* FOTO PRINCIPAL */
 
     .sali-modal-foto{
-  width:100%;
-  height:380px;
-  object-fit:cover;
-  object-position:center;
-  border-radius:18px;
-  background:#eee;
-  display:block;
-}
-@media(max-width:480px){
+      width:100%;
+      height:380px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:18px;
+      background:#eee;
+      display:block;
+    }
 
-  .sali-modal{
-    max-height:92vh;
-    padding:12px;
-  }
-
-  .sali-modal-foto{
-    height:330px;
-  }
-
-  .sali-modal-info{
-    padding-top:12px;
-  }
-
-  .sali-modal-info h2{
-    font-size:21px;
-  }
-
-  .sali-modal-preco{
-    font-size:23px;
-    margin-bottom:15px;
-  }
-
-  .sali-secao-opcao{
-    margin-bottom:15px;
-  }
-
-  .sali-estampa-botao{
-    flex:0 0 68px;
-    width:68px;
-    height:88px;
-  }
-
-}
 
     /* INFO */
 
@@ -231,8 +204,9 @@ function adicionarEstilosSali(){
       display:flex;
       gap:10px;
       overflow-x:auto;
-      padding:2px 2px 7px;
+      padding:3px 3px 8px;
       scrollbar-width:thin;
+      -webkit-overflow-scrolling:touch;
     }
 
     .sali-estampa-botao{
@@ -321,7 +295,7 @@ function adicionarEstilosSali(){
     }
 
     .sali-tamanho-botao.unico{
-      min-width:100%;
+      width:100%;
     }
 
     .sali-tamanho-botao.selecionado{
@@ -356,7 +330,7 @@ function adicionarEstilosSali(){
     }
 
 
-    /* CARRINHO */
+    /* BOTÃO CARRINHO */
 
     .sali-modal-adicionar{
       width:100%;
@@ -367,6 +341,7 @@ function adicionarEstilosSali(){
       padding:17px 12px;
       font-size:16px;
       font-weight:900;
+      cursor:pointer;
     }
 
     .sali-modal-adicionar:disabled{
@@ -379,9 +354,81 @@ function adicionarEstilosSali(){
       overflow:hidden;
     }
 
+
+    /* =====================================
+       CELULAR
+    ===================================== */
+
+    @media(max-width:480px){
+
+      .sali-modal-overlay{
+        padding:8px;
+      }
+
+      .sali-modal{
+        max-height:94vh;
+        padding:12px;
+        border-radius:22px 22px 14px 14px;
+      }
+
+      .sali-modal-foto{
+        height:280px;
+        object-fit:cover;
+        object-position:center top;
+      }
+
+      .sali-modal-info{
+        padding:8px 2px 2px;
+      }
+
+      .sali-modal-info h2{
+        font-size:21px;
+        margin-bottom:4px;
+      }
+
+      .sali-modal-preco{
+        font-size:23px;
+        margin-bottom:10px;
+      }
+
+      .sali-titulo-opcao{
+        margin-bottom:7px;
+      }
+
+      .sali-secao-opcao{
+        margin-bottom:12px;
+      }
+
+      .sali-estampas{
+        gap:8px;
+      }
+
+      .sali-estampa-botao{
+        flex:0 0 68px;
+        width:68px;
+        height:88px;
+      }
+
+      .sali-tamanho-botao{
+        min-height:42px;
+        padding:9px 11px;
+      }
+
+      .sali-status-modal{
+        margin:4px 0 10px;
+      }
+
+      .sali-modal-adicionar{
+        padding:14px 10px;
+      }
+
+    }
+
   `;
 
-  document.head.appendChild(style);
+  document.head.appendChild(
+    style
+  );
 }
 
 
@@ -422,13 +469,20 @@ function tamanhoExibicao(valor){
 
   const normalizado =
     tamanho
-    .toLowerCase()
-    .replaceAll("ú","u");
+      .toLowerCase()
+      .replaceAll(
+        "ú",
+        "u"
+      );
 
   if(
-    normalizado.includes("tamanho unico")
+    normalizado.includes(
+      "tamanho unico"
+    )
     ||
-    normalizado.includes("veste 36 ao 42")
+    normalizado.includes(
+      "veste 36 ao 42"
+    )
   ){
 
     return "Tamanho único • veste 36 ao 42 ✅";
@@ -441,8 +495,9 @@ function tamanhoExibicao(valor){
 function ehTamanhoUnico(valor){
 
   const texto =
-    tamanhoExibicao(valor)
-    .toLowerCase();
+    tamanhoExibicao(
+      valor
+    ).toLowerCase();
 
   return texto.includes(
     "tamanho único"
@@ -453,11 +508,15 @@ function ehTamanhoUnico(valor){
 function chaveVisual(variante){
 
   return (
-    textoSeguro(variante.cor)
+    textoSeguro(
+      variante.cor
+    )
     +
     "|||"
     +
-    textoSeguro(variante.estampa)
+    textoSeguro(
+      variante.estampa
+    )
   );
 }
 
@@ -474,11 +533,23 @@ function nomeVisual(variante){
       variante.estampa
     );
 
-  if(cor && estampa){
-    return cor + " - " + estampa;
+  if(
+    cor &&
+    estampa
+  ){
+
+    return (
+      cor +
+      " - " +
+      estampa
+    );
   }
 
-  return estampa || cor || "";
+  return (
+    estampa ||
+    cor ||
+    ""
+  );
 }
 
 
@@ -492,16 +563,21 @@ async function buscarProdutos(){
     data,
     error
   } =
-  await clienteProdutosSali
-    .from("Produtos")
-    .select("*")
-    .eq("ativo",true)
-    .order(
-      "created_at",
-      {
-        ascending:false
-      }
-    );
+    await clienteProdutosSali
+      .from(
+        "Produtos"
+      )
+      .select("*")
+      .eq(
+        "ativo",
+        true
+      )
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
   if(error){
     throw error;
@@ -515,48 +591,56 @@ async function buscarProdutos(){
    BUSCAR VARIANTES
 ========================================= */
 
-async function buscarVariantes(produtos){
+async function buscarVariantes(
+  produtos
+){
 
-  if(!produtos.length){
+  if(
+    !produtos.length
+  ){
     return [];
   }
 
   const ids =
     produtos.map(
       produto =>
-        Number(produto.id)
+        Number(
+          produto.id
+        )
     );
 
   const {
     data,
     error
   } =
-  await clienteProdutosSali
-    .from("Variantes")
-    .select(`
-      id,
-      produto_id,
-      cor,
-      tamanho,
-      estampa,
-      estoque,
-      ativo,
-      foto_url
-    `)
-    .in(
-      "produto_id",
-      ids
-    )
-    .eq(
-      "ativo",
-      true
-    )
-    .order(
-      "id",
-      {
-        ascending:true
-      }
-    );
+    await clienteProdutosSali
+      .from(
+        "Variantes"
+      )
+      .select(`
+        id,
+        produto_id,
+        cor,
+        tamanho,
+        estampa,
+        estoque,
+        ativo,
+        foto_url
+      `)
+      .in(
+        "produto_id",
+        ids
+      )
+      .eq(
+        "ativo",
+        true
+      )
+      .order(
+        "id",
+        {
+          ascending:true
+        }
+      );
 
   if(error){
 
@@ -576,7 +660,9 @@ async function buscarVariantes(produtos){
    AGRUPAR VARIANTES
 ========================================= */
 
-function agruparVariantes(variantes){
+function agruparVariantes(
+  variantes
+){
 
   const mapa = {};
 
@@ -588,11 +674,20 @@ function agruparVariantes(variantes){
           variante.produto_id
         );
 
-      if(!mapa[produtoId]){
-        mapa[produtoId] = [];
+      if(
+        !mapa[
+          produtoId
+        ]
+      ){
+
+        mapa[
+          produtoId
+        ] = [];
       }
 
-      mapa[produtoId].push(
+      mapa[
+        produtoId
+      ].push(
         variante
       );
     }
@@ -617,7 +712,9 @@ function garantirModal(){
   }
 
   const overlay =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   overlay.id =
     "saliModalOverlay";
@@ -633,6 +730,7 @@ function garantirModal(){
         type="button"
         class="sali-modal-fechar"
         onclick="fecharModalProduto()"
+        aria-label="Fechar"
       >
         ×
       </button>
@@ -681,15 +779,20 @@ function garantirModal(){
 
   `;
 
+
   overlay.addEventListener(
     "click",
     function(event){
 
-      if(event.target === overlay){
+      if(
+        event.target === overlay
+      ){
+
         fecharModalProduto();
       }
     }
   );
+
 
   document.body.appendChild(
     overlay
@@ -727,6 +830,7 @@ function abrirModalProduto(
 ){
 
   garantirModal();
+
 
   const overlay =
     document.getElementById(
@@ -770,7 +874,8 @@ function abrirModalProduto(
 
 
   fotoPrincipal.src =
-    produto.foto_url || "";
+    produto.foto_url ||
+    "";
 
   nome.textContent =
     produto.nome ||
@@ -782,10 +887,14 @@ function abrirModalProduto(
     );
 
 
-  areaEstampas.innerHTML = "";
-  areaTamanhos.innerHTML = "";
+  areaEstampas.innerHTML =
+    "";
 
-  status.textContent = "";
+  areaTamanhos.innerHTML =
+    "";
+
+  status.textContent =
+    "";
 
   botaoAdicionar.disabled =
     true;
@@ -812,16 +921,15 @@ function abrirModalProduto(
     variante => {
 
       const chave =
-        chaveVisual(variante);
+        chaveVisual(
+          variante
+        );
 
       const nome =
-        nomeVisual(variante);
+        nomeVisual(
+          variante
+        );
 
-
-      /*
-        Se não tiver cor nem estampa,
-        não precisamos mostrar miniatura.
-      */
 
       if(!nome){
         return;
@@ -829,20 +937,25 @@ function abrirModalProduto(
 
 
       if(
-        chavesCriadas.has(chave)
+        chavesCriadas.has(
+          chave
+        )
       ){
         return;
       }
 
 
-      chavesCriadas.add(chave);
+      chavesCriadas.add(
+        chave
+      );
 
 
       const variantesDoVisual =
         variantes.filter(
           item =>
-            chaveVisual(item) ===
-            chave
+            chaveVisual(
+              item
+            ) === chave
         );
 
 
@@ -861,16 +974,17 @@ function abrirModalProduto(
         variantesDoVisual.some(
           item =>
             Number(
-              item.estoque || 0
+              item.estoque ||
+              0
             ) > 0
         );
 
 
       visuais.push({
-        chave,
-        nome,
-        foto,
-        temEstoque
+        chave:chave,
+        nome:nome,
+        foto:foto,
+        temEstoque:temEstoque
       });
 
     }
@@ -878,10 +992,12 @@ function abrirModalProduto(
 
 
   /* =====================================
-     MOSTRAR MINIATURAS
+     MINIATURAS DAS ESTAMPAS
   ===================================== */
 
-  if(visuais.length){
+  if(
+    visuais.length
+  ){
 
     const titulo =
       document.createElement(
@@ -937,11 +1053,14 @@ function abrirModalProduto(
             "esgotada"
           );
 
-          botao.disabled = true;
+          botao.disabled =
+            true;
         }
 
 
-        if(visual.foto){
+        if(
+          visual.foto
+        ){
 
           const img =
             document.createElement(
@@ -995,7 +1114,7 @@ function abrirModalProduto(
               null;
 
 
-            document
+            areaEstampas
               .querySelectorAll(
                 ".sali-estampa-botao"
               )
@@ -1013,8 +1132,10 @@ function abrirModalProduto(
 
 
             fotoPrincipal.src =
-              visual.foto ||
-              produto.foto_url ||
+              visual.foto
+              ||
+              produto.foto_url
+              ||
               "";
 
 
@@ -1046,7 +1167,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     FILTRAR VARIANTES
+     VARIANTES DO VISUAL ESCOLHIDO
   ===================================== */
 
   function variantesAtuais(){
@@ -1055,12 +1176,13 @@ function abrirModalProduto(
       visuais.length &&
       !visualSelecionado
     ){
-
       return [];
     }
 
 
-    if(!visuais.length){
+    if(
+      !visuais.length
+    ){
 
       return [
         ...variantes
@@ -1070,26 +1192,28 @@ function abrirModalProduto(
 
     return variantes.filter(
       variante =>
-        chaveVisual(variante) ===
+        chaveVisual(
+          variante
+        ) ===
         visualSelecionado
     );
   }
 
 
   /* =====================================
-     RENDER TAMANHOS
+     TAMANHOS
   ===================================== */
 
   function renderizarTamanhos(){
 
-    areaTamanhos.innerHTML = "";
+    areaTamanhos.innerHTML =
+      "";
 
 
     if(
       visuais.length &&
       !visualSelecionado
     ){
-
       return;
     }
 
@@ -1119,7 +1243,8 @@ function abrirModalProduto(
         if(
           tamanhos.some(
             item =>
-              item.valor === tamanho
+              item.valor ===
+              tamanho
           )
         ){
           return;
@@ -1139,7 +1264,8 @@ function abrirModalProduto(
           variantesTamanho.some(
             item =>
               Number(
-                item.estoque || 0
+                item.estoque ||
+                0
               ) > 0
           );
 
@@ -1150,19 +1276,17 @@ function abrirModalProduto(
             tamanhoExibicao(
               tamanho
             ),
-          temEstoque
+          temEstoque:
+            temEstoque
         });
 
       }
     );
 
 
-    /*
-      Se não existe tamanho,
-      não mostra seção.
-    */
-
-    if(!tamanhos.length){
+    if(
+      !tamanhos.length
+    ){
       return;
     }
 
@@ -1176,7 +1300,9 @@ function abrirModalProduto(
       "sali-titulo-opcao";
 
     titulo.textContent =
-      "Escolha o tamanho";
+      tamanhos.length === 1
+      ? "Tamanho"
+      : "Escolha o tamanho";
 
 
     const grade =
@@ -1223,7 +1349,8 @@ function abrirModalProduto(
           !tamanho.temEstoque
         ){
 
-          botao.disabled = true;
+          botao.disabled =
+            true;
 
           botao.classList.add(
             "esgotado"
@@ -1286,10 +1413,8 @@ function abrirModalProduto(
     );
 
 
-    /*
-      Se houver só um tamanho disponível,
-      seleciona automaticamente.
-    */
+    /* SE SÓ HOUVER UM TAMANHO,
+       SELECIONA AUTOMATICAMENTE */
 
     const disponiveis =
       tamanhos.filter(
@@ -1298,7 +1423,9 @@ function abrirModalProduto(
       );
 
 
-    if(disponiveis.length === 1){
+    if(
+      disponiveis.length === 1
+    ){
 
       tamanhoSelecionado =
         disponiveis[0].valor;
@@ -1322,7 +1449,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     VARIANTE ESCOLHIDA
+     VARIANTE SELECIONADA
   ===================================== */
 
   function obterVarianteSelecionada(){
@@ -1339,7 +1466,9 @@ function abrirModalProduto(
     }
 
 
-    if(tamanhoSelecionado){
+    if(
+      tamanhoSelecionado
+    ){
 
       lista =
         lista.filter(
@@ -1351,11 +1480,6 @@ function abrirModalProduto(
         );
     }
 
-
-    /*
-      Se existem tamanhos e nenhum foi escolhido,
-      ainda não está pronto.
-    */
 
     const temTamanhos =
       lista.some(
@@ -1379,7 +1503,8 @@ function abrirModalProduto(
       lista.find(
         variante =>
           Number(
-            variante.estoque || 0
+            variante.estoque ||
+            0
           ) > 0
       )
       ||
@@ -1389,7 +1514,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     ATUALIZAR STATUS
+     ATUALIZAR ESTADO
   ===================================== */
 
   function atualizarEstado(){
@@ -1428,11 +1553,14 @@ function abrirModalProduto(
 
     const estoque =
       Number(
-        variante.estoque || 0
+        variante.estoque ||
+        0
       );
 
 
-    if(estoque <= 0){
+    if(
+      estoque <= 0
+    ){
 
       botaoAdicionar.disabled =
         true;
@@ -1483,7 +1611,8 @@ function abrirModalProduto(
       }
 
 
-      const detalhes = [];
+      const detalhes =
+        [];
 
 
       const visual =
@@ -1523,7 +1652,8 @@ function abrirModalProduto(
               " | "
             )
           )
-        : produto.nome;
+        :
+          produto.nome;
 
 
       const fotoCarrinho =
@@ -1535,11 +1665,15 @@ function abrirModalProduto(
 
 
       const idCarrinho =
-        String(produto.id)
+        String(
+          produto.id
+        )
         +
         "-v"
         +
-        String(variante.id);
+        String(
+          variante.id
+        );
 
 
       adicionarProduto(
@@ -1557,43 +1691,55 @@ function abrirModalProduto(
 
 
   /* =====================================
-     SE HOUVER SÓ UMA ESTAMPA
-     SELECIONA AUTOMATICAMENTE
+     SELECIONAR PRIMEIRA ESTAMPA
+     DISPONÍVEL AUTOMATICAMENTE
   ===================================== */
 
-  const visuaisComEstoque =
-    visuais.filter(
+  const primeiraEstampaDisponivel =
+    visuais.find(
       visual =>
         visual.temEstoque
     );
 
 
   if(
-    visuais.length === 1
-    &&
-    visuaisComEstoque.length === 1
+    primeiraEstampaDisponivel
   ){
 
     visualSelecionado =
-      visuais[0].chave;
+      primeiraEstampaDisponivel.chave;
 
 
-    const unicoBotao =
-      areaEstampas.querySelector(
+    const botoesEstampa =
+      areaEstampas.querySelectorAll(
         ".sali-estampa-botao"
       );
 
 
-    if(unicoBotao){
+    const indice =
+      visuais.findIndex(
+        visual =>
+          visual.chave ===
+          primeiraEstampaDisponivel.chave
+      );
 
-      unicoBotao.classList.add(
+
+    if(
+      botoesEstampa[
+        indice
+      ]
+    ){
+
+      botoesEstampa[
+        indice
+      ].classList.add(
         "selecionada"
       );
     }
 
 
     fotoPrincipal.src =
-      visuais[0].foto
+      primeiraEstampaDisponivel.foto
       ||
       produto.foto_url
       ||
@@ -1614,6 +1760,21 @@ function abrirModalProduto(
   document.body.classList.add(
     "sali-modal-aberto"
   );
+
+
+  /* VOLTAR MODAL PARA O TOPO */
+
+  const modal =
+    overlay.querySelector(
+      ".sali-modal"
+    );
+
+  if(modal){
+
+    modal.scrollTop =
+      0;
+  }
+
 }
 
 
@@ -1635,8 +1796,6 @@ function criarCardProduto(
     "produto";
 
 
-  /* FOTO */
-
   const imagem =
     document.createElement(
       "img"
@@ -1654,8 +1813,6 @@ function criarCardProduto(
     "lazy";
 
 
-  /* INFO */
-
   const info =
     document.createElement(
       "div"
@@ -1664,8 +1821,6 @@ function criarCardProduto(
   info.className =
     "info";
 
-
-  /* NOME */
 
   const nome =
     document.createElement(
@@ -1676,8 +1831,6 @@ function criarCardProduto(
     produto.nome ||
     "Produto SALI";
 
-
-  /* PREÇO */
 
   const preco =
     document.createElement(
@@ -1693,8 +1846,6 @@ function criarCardProduto(
     );
 
 
-  /* BOTÃO */
-
   const botao =
     document.createElement(
       "button"
@@ -1704,18 +1855,23 @@ function criarCardProduto(
     "button";
 
 
-  if(variantes.length){
+  if(
+    variantes.length
+  ){
 
     const temEstoque =
       variantes.some(
         variante =>
           Number(
-            variante.estoque || 0
+            variante.estoque ||
+            0
           ) > 0
       );
 
 
-    if(!temEstoque){
+    if(
+      !temEstoque
+    ){
 
       botao.className =
         "adicionar";
@@ -1723,7 +1879,8 @@ function criarCardProduto(
       botao.textContent =
         "ESGOTADO";
 
-      botao.disabled = true;
+      botao.disabled =
+        true;
 
       botao.style.opacity =
         ".5";
@@ -1762,7 +1919,9 @@ function criarCardProduto(
       );
 
 
-    if(estoque <= 0){
+    if(
+      estoque <= 0
+    ){
 
       botao.textContent =
         "ESGOTADO";
@@ -1797,12 +1956,27 @@ function criarCardProduto(
   }
 
 
-  info.appendChild(nome);
-  info.appendChild(preco);
-  info.appendChild(botao);
+  info.appendChild(
+    nome
+  );
 
-  card.appendChild(imagem);
-  card.appendChild(info);
+  info.appendChild(
+    preco
+  );
+
+  info.appendChild(
+    botao
+  );
+
+
+  card.appendChild(
+    imagem
+  );
+
+  card.appendChild(
+    info
+  );
+
 
   return card;
 }
@@ -1841,7 +2015,8 @@ async function carregarProdutos(){
   `;
 
 
-  let tentativas = 0;
+  let tentativas =
+    0;
 
 
   while(
@@ -1862,7 +2037,9 @@ async function carregarProdutos(){
   }
 
 
-  if(!clienteProdutosSali){
+  if(
+    !clienteProdutosSali
+  ){
 
     lista.innerHTML = `
       <div style="
@@ -1884,7 +2061,9 @@ async function carregarProdutos(){
       await buscarProdutos();
 
 
-    if(!produtos.length){
+    if(
+      !produtos.length
+    ){
 
       lista.innerHTML = `
         <div style="
@@ -1913,7 +2092,8 @@ async function carregarProdutos(){
       );
 
 
-    lista.innerHTML = "";
+    lista.innerHTML =
+      "";
 
 
     produtos.forEach(
@@ -1939,6 +2119,7 @@ async function carregarProdutos(){
         lista.appendChild(
           card
         );
+
       }
     );
 
