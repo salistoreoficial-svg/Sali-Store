@@ -1,92 +1,195 @@
-const SUPABASE_URL =
-  "https://uubslcjoybeehinnwhtg.supabase.co";
+/* =========================================
+   PRODUTOS SALI - CARREGADOS DO SUPABASE
+========================================= */
 
-const SUPABASE_KEY =
-  "sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
+let clienteProdutosSali = null;
 
-let supabaseProdutos = null;
+/* CONECTAR AO SUPABASE */
 
-function iniciarSupabaseProdutos() {
-  if (
-    window.supabase &&
-    !supabaseProdutos
-  ) {
-    supabaseProdutos =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
+function conectarProdutosSali(){
+
+  if(clienteProdutosSali){
+    return true;
   }
+
+  /* Se o index.html já criou o cliente */
+  if(window.supabaseClient){
+
+    clienteProdutosSali =
+      window.supabaseClient;
+
+    return true;
+  }
+
+  /* Se a biblioteca já carregou,
+     cria um cliente somente para produtos */
+
+  if(window.supabase){
+
+    clienteProdutosSali =
+      window.supabase.createClient(
+        "https://uubslcjoybeehinnwhtg.supabase.co",
+        "sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz"
+      );
+
+    return true;
+  }
+
+  return false;
 }
 
-async function carregarProdutos() {
+
+/* FORMATAR PREÇO */
+
+function moedaProduto(valor){
+
+  return Number(
+    valor || 0
+  ).toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+}
+
+
+/* CARREGAR PRODUTOS */
+
+async function carregarProdutos(){
 
   const lista =
     document.getElementById(
       "listaProdutos"
     );
 
-  if (!lista) {
-    return;
-  }
-
-  iniciarSupabaseProdutos();
-
-  if (!supabaseProdutos) {
-
-    lista.innerHTML =
-      "<p style='text-align:center;'>Carregando produtos...</p>";
-
-    setTimeout(
-      carregarProdutos,
-      300
-    );
-
+  if(!lista){
     return;
   }
 
   lista.innerHTML =
-    "<p style='text-align:center;'>Carregando produtos...</p>";
+    `
+    <div style="
+      grid-column:1/-1;
+      text-align:center;
+      padding:30px;
+      color:#777;
+    ">
+      Carregando produtos...
+    </div>
+    `;
 
-  const { data, error } =
-    await supabaseProdutos
+  /* Esperar Supabase carregar */
+
+  let tentativas = 0;
+
+  while(
+    !conectarProdutosSali() &&
+    tentativas < 30
+  ){
+
+    await new Promise(
+      resolve =>
+        setTimeout(
+          resolve,
+          200
+        )
+    );
+
+    tentativas++;
+
+  }
+
+  if(!clienteProdutosSali){
+
+    console.error(
+      "Supabase não carregou."
+    );
+
+    lista.innerHTML =
+      `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:30px;
+      ">
+        Não foi possível carregar os produtos.
+      </div>
+      `;
+
+    return;
+  }
+
+
+  /* BUSCAR NO BANCO */
+
+  const {
+    data,
+    error
+  } =
+    await clienteProdutosSali
       .from("Produtos")
       .select("*")
-      .eq("ativo", true)
+      .eq("ativo",true)
       .order(
         "created_at",
         {
-          ascending: false
+          ascending:false
         }
       );
 
-  if (error) {
+
+  if(error){
 
     console.error(
-      "Erro ao carregar produtos:",
+      "Erro Supabase:",
       error
     );
 
     lista.innerHTML =
-      "<p style='text-align:center;'>Não foi possível carregar os produtos.</p>";
+      `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:30px;
+        color:#b00020;
+      ">
+        Erro ao carregar os produtos.
+      </div>
+      `;
 
     return;
   }
+
 
   const produtos =
     data || [];
 
-  lista.innerHTML = "";
 
-  if (
-    produtos.length === 0
-  ) {
+  if(produtos.length === 0){
 
     lista.innerHTML =
-      "<p style='text-align:center;'>Nenhum produto disponível no momento.</p>";
+      `
+      <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:35px;
+        color:#777;
+      ">
+        Nenhum produto disponível no momento.
+      </div>
+      `;
 
     return;
   }
+
+
+  lista.innerHTML = "";
+
+
+  /* CRIAR OS CARDS */
 
   produtos.forEach(
     produto => {
@@ -98,6 +201,9 @@ async function carregarProdutos() {
 
       card.className =
         "produto";
+
+
+      /* FOTO */
 
       const imagem =
         document.createElement(
@@ -115,6 +221,9 @@ async function carregarProdutos() {
       imagem.loading =
         "lazy";
 
+
+      /* INFORMAÇÕES */
+
       const info =
         document.createElement(
           "div"
@@ -122,6 +231,9 @@ async function carregarProdutos() {
 
       info.className =
         "info";
+
+
+      /* NOME */
 
       const nome =
         document.createElement(
@@ -132,6 +244,9 @@ async function carregarProdutos() {
         produto.nome ||
         "Produto SALI";
 
+
+      /* PREÇO */
+
       const preco =
         document.createElement(
           "div"
@@ -141,20 +256,12 @@ async function carregarProdutos() {
         "preco";
 
       preco.textContent =
-        Number(
-          produto.preco || 0
-        ).toLocaleString(
-          "pt-BR",
-          {
-            style: "currency",
-            currency: "BRL"
-          }
+        moedaProduto(
+          produto.preco
         );
 
-      const estoque =
-        Number(
-          produto.estoque || 0
-        );
+
+      /* BOTÃO */
 
       const botao =
         document.createElement(
@@ -167,9 +274,14 @@ async function carregarProdutos() {
       botao.className =
         "adicionar";
 
-      if (
-        estoque <= 0
-      ) {
+
+      const estoque =
+        Number(
+          produto.estoque || 0
+        );
+
+
+      if(estoque <= 0){
 
         botao.textContent =
           "ESGOTADO";
@@ -183,14 +295,14 @@ async function carregarProdutos() {
         botao.style.cursor =
           "not-allowed";
 
-      } else {
+      }else{
 
         botao.textContent =
           "ADICIONAR AO CARRINHO";
 
         botao.addEventListener(
           "click",
-          () => {
+          function(){
 
             adicionarProduto(
               produto.id,
@@ -206,6 +318,7 @@ async function carregarProdutos() {
 
       }
 
+
       info.appendChild(
         nome
       );
@@ -218,6 +331,7 @@ async function carregarProdutos() {
         botao
       );
 
+
       card.appendChild(
         imagem
       );
@@ -225,6 +339,7 @@ async function carregarProdutos() {
       card.appendChild(
         info
       );
+
 
       lista.appendChild(
         card
@@ -235,17 +350,20 @@ async function carregarProdutos() {
 
 }
 
-if (
+
+/* INICIAR */
+
+if(
   document.readyState ===
   "loading"
-) {
+){
 
   document.addEventListener(
     "DOMContentLoaded",
     carregarProdutos
   );
 
-} else {
+}else{
 
   carregarProdutos();
 
