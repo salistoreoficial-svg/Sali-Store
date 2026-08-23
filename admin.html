@@ -46,12 +46,11 @@ button{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:
-    linear-gradient(
-      135deg,
-      #ffd3e5,
-      #ff88bb
-    );
+  background:linear-gradient(
+    135deg,
+    #ffd3e5,
+    #ff88bb
+  );
 }
 
 .login-box{
@@ -60,9 +59,7 @@ button{
   background:#fff;
   padding:30px 22px;
   border-radius:20px;
-  box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.15);
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
 .login-logo{
@@ -86,10 +83,6 @@ button{
   margin-top:14px;
   text-align:center;
 }
-
-/* =========================
-   CAMPOS
-========================= */
 
 .campo{
   margin-bottom:15px;
@@ -153,8 +146,8 @@ button{
   max-width:1100px;
   margin:auto;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
 }
 
@@ -163,9 +156,9 @@ button{
 }
 
 .sair{
+  border:0;
   background:#e52d86;
   color:#fff;
-  border:0;
   padding:10px 16px;
   border-radius:9px;
   font-weight:800;
@@ -196,8 +189,7 @@ button{
 
 .estatisticas{
   display:grid;
-  grid-template-columns:
-    repeat(2,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:12px;
   margin-bottom:22px;
 }
@@ -206,9 +198,7 @@ button{
   background:#fff;
   border-radius:14px;
   padding:17px;
-  box-shadow:
-    0 3px 12px
-    rgba(0,0,0,.06);
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
 .card-estatistica small{
@@ -230,9 +220,7 @@ button{
   border-radius:16px;
   padding:18px;
   margin-bottom:20px;
-  box-shadow:
-    0 3px 12px
-    rgba(0,0,0,.06);
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
 .bloco h3{
@@ -253,29 +241,21 @@ button{
 .subtitulo p{
   color:#777;
   font-size:13px;
-  line-height:1.4;
+  line-height:1.45;
 }
 
 .duplo{
   display:grid;
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
 /* =========================
-   FOTOS
+   FOTOS GERAIS
 ========================= */
 
 .foto-area{
   margin-bottom:20px;
-}
-
-.titulo-foto{
-  display:block;
-  font-size:14px;
-  font-weight:800;
-  margin-bottom:9px;
 }
 
 .escolher-foto{
@@ -298,13 +278,12 @@ button{
   color:#777;
   font-size:12px;
   margin-top:8px;
-  line-height:1.4;
+  line-height:1.45;
 }
 
 .galeria-edicao{
   display:grid;
-  grid-template-columns:
-    repeat(2,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:12px;
   margin-top:15px;
 }
@@ -317,17 +296,16 @@ button{
   position:relative;
 }
 
+.foto-card.principal{
+  border:2px solid #e52d86;
+}
+
 .foto-card img{
   width:100%;
   aspect-ratio:3/4;
   object-fit:cover;
-  display:block;
   border-radius:9px;
-  background:#eee;
-}
-
-.foto-card.principal{
-  border:2px solid #e52d86;
+  display:block;
 }
 
 .badge-principal{
@@ -351,7 +329,7 @@ button{
 .foto-acoes button{
   border:0;
   border-radius:8px;
-  padding:8px 6px;
+  padding:8px;
   font-size:11px;
   font-weight:800;
 }
@@ -367,86 +345,156 @@ button{
 }
 
 /* =========================
-   VARIANTES
+   OPÇÕES / ESTAMPAS
 ========================= */
 
-.variantes-area{
+.opcoes-area{
   display:grid;
-  gap:14px;
-  margin-top:12px;
+  gap:15px;
 }
 
-.variante-card{
+.opcao-card{
   border:1px solid #ddd;
-  border-radius:14px;
-  padding:14px;
+  border-radius:16px;
+  padding:15px;
   background:#fafafa;
 }
 
-.variante-topo{
+.opcao-topo{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:10px;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
-.variante-topo strong{
-  font-size:15px;
+.opcao-topo strong{
+  font-size:16px;
 }
 
-.remover-variante{
+.remover-opcao{
   border:0;
   background:#ffe5e5;
-  color:#be0000;
+  color:#bd0000;
   padding:8px 10px;
   border-radius:8px;
   font-weight:800;
 }
 
-.variante-grid{
+.opcao-grid{
   display:grid;
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:10px;
 }
 
-.variante-foto{
-  margin-top:10px;
+.foto-estampa-area{
+  margin:10px 0 15px;
+  padding:12px;
+  background:#fff;
+  border-radius:12px;
+  border:1px solid #eee;
 }
 
-.variante-foto input{
+.foto-estampa-area label{
+  display:block;
+  font-weight:800;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.foto-estampa-input{
   width:100%;
 }
 
-.preview-variante{
+.preview-estampa{
   margin-top:10px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
 }
 
-.preview-variante img{
-  width:90px;
-  height:115px;
-  border-radius:9px;
+.preview-estampa img{
+  width:85px;
+  height:110px;
   object-fit:cover;
-  background:#eee;
+  border-radius:9px;
 }
 
-.adicionar-variante{
+.remover-foto-estampa{
+  border:0;
+  background:#ffe8e8;
+  color:#b80000;
+  padding:8px 10px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+/* =========================
+   TAMANHOS
+========================= */
+
+.tamanhos-titulo{
+  font-weight:900;
+  font-size:14px;
+  margin:8px 0 10px;
+}
+
+.tamanhos-grade{
+  display:grid;
+  gap:8px;
+}
+
+.tamanho-linha{
+  display:grid;
+  grid-template-columns:1fr 110px;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:10px;
+}
+
+.tamanho-check{
+  display:flex;
+  gap:9px;
+  align-items:center;
+  font-weight:800;
+}
+
+.tamanho-check input{
+  width:20px;
+  height:20px;
+}
+
+.estoque-tamanho{
   width:100%;
-  margin-top:14px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:9px;
+}
+
+.estoque-tamanho:disabled{
+  background:#eee;
+  opacity:.6;
+}
+
+.adicionar-opcao{
+  width:100%;
+  border:1px dashed #e52d86;
   background:#fff0f7;
   color:#bd1762;
-  border:1px dashed #e52d86;
   padding:14px;
-  border-radius:10px;
+  border-radius:11px;
   font-weight:900;
+  margin-top:14px;
 }
 
 .estoque-calculado{
   background:#f4f4f4;
   padding:12px;
   border-radius:10px;
-  margin-top:10px;
+  margin-top:14px;
   font-size:14px;
 }
 
@@ -455,14 +503,14 @@ button{
 }
 
 /* =========================
-   ATIVO
+   ATIVO / BOTÕES
 ========================= */
 
 .ativo-area{
   display:flex;
-  align-items:center;
   gap:10px;
-  margin:10px 0 20px;
+  align-items:center;
+  margin:15px 0 20px;
   font-weight:700;
 }
 
@@ -471,10 +519,6 @@ button{
   height:20px;
 }
 
-/* =========================
-   BOTÕES FORM
-========================= */
-
 .botoes-form{
   display:flex;
   gap:10px;
@@ -482,11 +526,11 @@ button{
 
 .salvar{
   flex:1;
+  border:0;
   background:#e52d86;
   color:#fff;
-  border:0;
-  border-radius:11px;
   padding:14px;
+  border-radius:11px;
   font-weight:900;
 }
 
@@ -504,13 +548,13 @@ button{
 }
 
 /* =========================
-   LISTA PRODUTOS
+   LISTA
 ========================= */
 
 .cabecalho-lista{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:10px;
   margin-bottom:15px;
 }
@@ -530,8 +574,7 @@ button{
 
 .produto-card{
   display:grid;
-  grid-template-columns:
-    90px 1fr;
+  grid-template-columns:90px 1fr;
   gap:14px;
   border:1px solid #eee;
   padding:12px;
@@ -555,10 +598,8 @@ button{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   color:#999;
   font-size:12px;
-  padding:6px;
 }
 
 .produto-info h4{
@@ -568,8 +609,8 @@ button{
 
 .produto-info .preco{
   color:#e52d86;
-  font-weight:900;
   font-size:18px;
+  font-weight:900;
   margin-bottom:6px;
 }
 
@@ -601,35 +642,30 @@ button{
 .acoes{
   display:flex;
   gap:8px;
-  margin-top:12px;
   flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.acoes button{
+  border:0;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:800;
 }
 
 .editar{
-  border:0;
   background:#000;
   color:#fff;
-  padding:9px 13px;
-  border-radius:8px;
-  font-weight:800;
-}
-
-.excluir{
-  border:0;
-  background:#ffe6e6;
-  color:#c80000;
-  padding:9px 13px;
-  border-radius:8px;
-  font-weight:800;
 }
 
 .alternar{
-  border:0;
   background:#fff1f7;
   color:#be1763;
-  padding:9px 13px;
-  border-radius:8px;
-  font-weight:800;
+}
+
+.excluir{
+  background:#ffe6e6;
+  color:#c80000;
 }
 
 .carregando,
@@ -639,15 +675,15 @@ button{
   color:#777;
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
-
 @media(max-width:650px){
 
   .duplo,
-  .variante-grid{
+  .opcao-grid{
     grid-template-columns:1fr;
+  }
+
+  .tamanho-linha{
+    grid-template-columns:1fr 95px;
   }
 
   .cabecalho-lista{
@@ -662,14 +698,9 @@ button{
 }
 
 </style>
-
 </head>
 
 <body>
-
-<!-- =========================
-     LOGIN
-========================= -->
 
 <section
   class="login-tela"
@@ -679,41 +710,26 @@ button{
 <div class="login-box">
 
   <div class="login-logo">
-
     <h1>SALI STORE</h1>
-
-    <p>
-      Painel administrativo
-    </p>
-
+    <p>Painel administrativo</p>
   </div>
 
   <div class="campo">
-
-    <label>
-      E-mail
-    </label>
-
+    <label>E-mail</label>
     <input
       type="email"
       id="email"
       placeholder="Digite seu e-mail"
     >
-
   </div>
 
   <div class="campo">
-
-    <label>
-      Senha
-    </label>
-
+    <label>Senha</label>
     <input
       type="password"
       id="senha"
       placeholder="Digite sua senha"
     >
-
   </div>
 
   <button
@@ -732,9 +748,6 @@ button{
 
 </section>
 
-<!-- =========================
-     PAINEL
-========================= -->
 
 <section
   class="painel"
@@ -745,9 +758,7 @@ button{
 
 <div class="topo-conteudo">
 
-  <h1>
-    🛍️ SALI STORE
-  </h1>
+  <h1>🛍️ SALI STORE</h1>
 
   <button
     class="sair"
@@ -764,48 +775,30 @@ button{
 
 <div class="boas-vindas">
 
-  <h2>
-    Painel de produtos
-  </h2>
+  <h2>Painel de produtos</h2>
 
   <p>
     Cadastre produtos, fotos,
-    tamanhos, cores e estampas.
+    estampas, tamanhos e estoques.
   </p>
 
 </div>
 
+
 <div class="estatisticas">
 
   <div class="card-estatistica">
-
-    <small>
-      Produtos cadastrados
-    </small>
-
-    <strong id="totalProdutos">
-      0
-    </strong>
-
+    <small>Produtos cadastrados</small>
+    <strong id="totalProdutos">0</strong>
   </div>
 
   <div class="card-estatistica">
-
-    <small>
-      Estoque total
-    </small>
-
-    <strong id="estoqueTotal">
-      0
-    </strong>
-
+    <small>Estoque total</small>
+    <strong id="estoqueTotal">0</strong>
   </div>
 
 </div>
 
-<!-- =========================
-     FORM PRODUTO
-========================= -->
 
 <div class="bloco">
 
@@ -818,27 +811,25 @@ button{
   id="produtoId"
 >
 
+
 <div class="campo">
 
-  <label>
-    Nome do produto
-  </label>
+  <label>Nome do produto</label>
 
   <input
     type="text"
     id="produtoNome"
-    placeholder="Ex.: Vestido indiano SALI"
+    placeholder="Ex.: Vestido longo Bella"
   >
 
 </div>
+
 
 <div class="duplo">
 
   <div class="campo">
 
-    <label>
-      Preço
-    </label>
+    <label>Preço</label>
 
     <input
       type="number"
@@ -852,16 +843,13 @@ button{
 
   <div class="campo">
 
-    <label>
-      Estoque geral
-    </label>
+    <label>Estoque geral</label>
 
     <input
       type="number"
       id="produtoEstoque"
       min="0"
       value="0"
-      placeholder="0"
     >
 
   </div>
@@ -869,62 +857,36 @@ button{
 </div>
 
 <div class="foto-ajuda">
-Se você cadastrar variantes abaixo,
-o estoque geral será calculado automaticamente
-pela soma das variantes.
+  O estoque geral é usado somente se o produto
+  não tiver opções de cor/estampa.
 </div>
 
 <br>
 
+
 <div class="campo">
 
-<label>
-  Categoria
-</label>
+<label>Categoria</label>
 
 <select id="produtoCategoria">
 
-<option value="">
-  Selecione
-</option>
-
-<option value="Novidades">
-  Novidades
-</option>
-
-<option value="Vestidos">
-  Vestidos
-</option>
-
-<option value="Conjuntos">
-  Conjuntos
-</option>
-
-<option value="Blusas">
-  Blusas
-</option>
-
-<option value="Calças">
-  Calças
-</option>
-
-<option value="Body">
-  Body
-</option>
-
-<option value="Plus Size">
-  Plus Size
-</option>
+<option value="">Selecione</option>
+<option value="Novidades">Novidades</option>
+<option value="Vestidos">Vestidos</option>
+<option value="Conjuntos">Conjuntos</option>
+<option value="Blusas">Blusas</option>
+<option value="Calças">Calças</option>
+<option value="Body">Body</option>
+<option value="Plus Size">Plus Size</option>
 
 </select>
 
 </div>
 
+
 <div class="campo">
 
-<label>
-  Descrição
-</label>
+<label>Descrição</label>
 
 <textarea
   id="produtoDescricao"
@@ -933,23 +895,18 @@ pela soma das variantes.
 
 </div>
 
-<!-- =========================
-     GALERIA DE FOTOS
-========================= -->
 
 <div class="subtitulo">
 
-  <h4>
-    📸 Fotos do produto
-  </h4>
+  <h4>📸 Fotos do produto</h4>
 
   <p>
-    Escolha várias fotos.
-    Depois defina qual será
-    a foto principal.
+    Selecione várias fotos.
+    A principal será usada na vitrine.
   </p>
 
 </div>
+
 
 <div class="foto-area">
 
@@ -968,11 +925,6 @@ pela soma das variantes.
   onchange="adicionarNovasFotos()"
 >
 
-<div class="foto-ajuda">
-Você pode selecionar várias imagens.
-A foto principal será usada na vitrine da loja.
-</div>
-
 <div
   class="galeria-edicao"
   id="galeriaFotos"
@@ -980,45 +932,46 @@ A foto principal será usada na vitrine da loja.
 
 </div>
 
-<!-- =========================
-     VARIANTES
-========================= -->
 
 <div class="subtitulo">
 
   <h4>
-    🎨 Tamanhos, cores e estampas
+    🎨 Cores / estampas e tamanhos
   </h4>
 
   <p>
-    Cada combinação pode ter
-    estoque e foto próprios.
+    Adicione uma opção para cada cor ou estampa.
+    Dentro dela marque os tamanhos disponíveis.
   </p>
 
 </div>
 
+
 <div
-  class="variantes-area"
-  id="variantesArea"
+  class="opcoes-area"
+  id="opcoesArea"
 ></div>
+
 
 <button
   type="button"
-  class="adicionar-variante"
-  onclick="adicionarVariante()"
+  class="adicionar-opcao"
+  onclick="adicionarOpcao()"
 >
-  + ADICIONAR VARIANTE
+  + ADICIONAR COR / ESTAMPA
 </button>
+
 
 <div class="estoque-calculado">
 
-  Estoque das variantes:
+  Estoque total das variantes:
 
   <strong id="estoqueVariantes">
     0
   </strong>
 
 </div>
+
 
 <label class="ativo-area">
 
@@ -1031,6 +984,7 @@ A foto principal será usada na vitrine da loja.
 Produto ativo no site
 
 </label>
+
 
 <div class="botoes-form">
 
@@ -1054,25 +1008,20 @@ Produto ativo no site
 
 </div>
 
-<!-- =========================
-     PRODUTOS CADASTRADOS
-========================= -->
 
 <div class="bloco">
 
 <div class="cabecalho-lista">
 
-<h3>
-  📦 Produtos cadastrados
-</h3>
+  <h3>📦 Produtos cadastrados</h3>
 
-<input
-  class="buscar"
-  id="busca"
-  type="search"
-  placeholder="Buscar produto..."
-  oninput="filtrarProdutos()"
->
+  <input
+    class="buscar"
+    id="busca"
+    type="search"
+    placeholder="Buscar produto..."
+    oninput="filtrarProdutos()"
+  >
 
 </div>
 
@@ -1093,14 +1042,13 @@ Produto ativo no site
 
 </section>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 /* =========================
-   SUPABASE
+   CONFIGURAÇÃO
 ========================= */
 
 const SUPABASE_URL =
@@ -1118,12 +1066,6 @@ window.supabase.createClient(
   SUPABASE_KEY
 );
 
-/*
-Cliente separado sem login.
-Ele será usado para as leituras públicas
-de Variantes e Fotos_Produtos.
-*/
-
 const supabasePublico =
 window.supabase.createClient(
   SUPABASE_URL,
@@ -1137,11 +1079,39 @@ window.supabase.createClient(
   }
 );
 
+
 let produtos = [];
 
 let fotosFormulario = [];
 
-let variantesFormulario = [];
+let opcoesFormulario = [];
+
+
+const TAMANHOS = [
+  {
+    valor:
+      "Tamanho Único (veste 36 ao 42)",
+    nome:
+      "Tamanho único (veste 36 ao 42 ✅)"
+  },
+  {
+    valor:"P",
+    nome:"P"
+  },
+  {
+    valor:"M",
+    nome:"M"
+  },
+  {
+    valor:"G",
+    nome:"G"
+  },
+  {
+    valor:"GG",
+    nome:"GG"
+  }
+];
+
 
 /* =========================
    LOGIN
@@ -1150,117 +1120,142 @@ let variantesFormulario = [];
 async function entrar(){
 
   const email =
-  document
-  .getElementById("email")
-  .value
-  .trim();
+    document
+      .getElementById("email")
+      .value
+      .trim();
 
   const senha =
-  document
-  .getElementById("senha")
-  .value;
+    document
+      .getElementById("senha")
+      .value;
 
   const erro =
-  document
-  .getElementById("erroLogin");
+    document
+      .getElementById(
+        "erroLogin"
+      );
 
-  erro.textContent = "";
+  erro.textContent =
+    "";
 
-  if(!email || !senha){
+  if(
+    !email ||
+    !senha
+  ){
 
     erro.textContent =
-    "Digite o e-mail e a senha.";
+      "Digite o e-mail e a senha.";
 
     return;
-
   }
+
 
   const {
     data,
     error
   } =
-  await supabaseClient
-  .auth
-  .signInWithPassword({
-    email,
-    password:senha
-  });
+    await supabaseClient
+      .auth
+      .signInWithPassword({
+        email:email,
+        password:senha
+      });
+
 
   if(error){
 
     console.error(error);
 
     erro.textContent =
-    "E-mail ou senha incorretos.";
+      "E-mail ou senha incorretos.";
 
     return;
-
   }
 
+
   if(data.session){
+
     mostrarPainel();
   }
 
 }
 
+
 async function verificarSessao(){
 
-  const { data } =
-  await supabaseClient
-  .auth
-  .getSession();
+  const {
+    data
+  } =
+    await supabaseClient
+      .auth
+      .getSession();
 
-  if(data.session){
+
+  if(
+    data.session
+  ){
 
     mostrarPainel();
 
   }else{
 
     mostrarLogin();
-
   }
 
 }
 
+
 async function mostrarPainel(){
 
   document
-  .getElementById("loginTela")
-  .style.display =
-  "none";
+    .getElementById(
+      "loginTela"
+    )
+    .style.display =
+      "none";
 
   document
-  .getElementById("painel")
-  .style.display =
-  "block";
+    .getElementById(
+      "painel"
+    )
+    .style.display =
+      "block";
 
   await carregarProdutos();
 
 }
 
+
 function mostrarLogin(){
 
   document
-  .getElementById("loginTela")
-  .style.display =
-  "flex";
+    .getElementById(
+      "loginTela"
+    )
+    .style.display =
+      "flex";
 
   document
-  .getElementById("painel")
-  .style.display =
-  "none";
+    .getElementById(
+      "painel"
+    )
+    .style.display =
+      "none";
 
 }
+
 
 async function sair(){
 
   await supabaseClient
-  .auth
-  .signOut();
+    .auth
+    .signOut();
 
   mostrarLogin();
 
 }
+
 
 /* =========================
    UTILIDADES
@@ -1280,6 +1275,36 @@ function moeda(valor){
 
 }
 
+
+function escaparHtml(valor){
+
+  return String(
+    valor ?? ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
 function gerarIdentificador(){
 
   if(
@@ -1288,18 +1313,20 @@ function gerarIdentificador(){
   ){
 
     return crypto.randomUUID();
-
   }
 
   return (
-    Date.now() +
-    "-" +
+    Date.now()
+    +
+    "-"
+    +
     Math.random()
       .toString(36)
       .substring(2)
   );
 
 }
+
 
 function validarArquivoImagem(
   arquivo
@@ -1311,7 +1338,9 @@ function validarArquivoImagem(
 
   if(
     !arquivo.type
-      .startsWith("image/")
+      .startsWith(
+        "image/"
+      )
   ){
 
     alert(
@@ -1321,8 +1350,10 @@ function validarArquivoImagem(
     return false;
   }
 
+
   const limite =
-  10 * 1024 * 1024;
+    10 * 1024 * 1024;
+
 
   if(
     arquivo.size >
@@ -1340,6 +1371,7 @@ function validarArquivoImagem(
 
 }
 
+
 /* =========================
    UPLOAD
 ========================= */
@@ -1353,93 +1385,107 @@ async function enviarArquivoImagem(
     return null;
   }
 
+
   let extensao =
-  arquivo.name
-  .split(".")
-  .pop()
-  .toLowerCase();
+    arquivo.name
+      .split(".")
+      .pop()
+      .toLowerCase();
+
 
   if(
     !extensao ||
     extensao.length > 6
   ){
-    extensao = "jpg";
+
+    extensao =
+      "jpg";
   }
 
-  const nomeArquivo =
-    pasta +
-    "/" +
-    Date.now() +
-    "-" +
-    gerarIdentificador() +
-    "." +
+
+  const caminho =
+    pasta
+    +
+    "/"
+    +
+    Date.now()
+    +
+    "-"
+    +
+    gerarIdentificador()
+    +
+    "."
+    +
     extensao;
 
-  const { error } =
-  await supabaseClient
-  .storage
-  .from(
-    BUCKET_FOTOS
-  )
-  .upload(
-    nomeArquivo,
-    arquivo,
-    {
-      cacheControl:"3600",
-      upsert:false,
-      contentType:
-        arquivo.type ||
-        "image/jpeg"
-    }
-  );
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .storage
+      .from(
+        BUCKET_FOTOS
+      )
+      .upload(
+        caminho,
+        arquivo,
+        {
+          cacheControl:"3600",
+          upsert:false,
+          contentType:
+            arquivo.type ||
+            "image/jpeg"
+        }
+      );
+
 
   if(error){
 
-    console.error(
-      "Erro de upload:",
-      error
-    );
-
     throw new Error(
-      "Não foi possível enviar uma das fotos: " +
+      "Erro ao enviar foto: "
+      +
       error.message
     );
-
   }
 
-  const { data } =
-  supabaseClient
-  .storage
-  .from(
-    BUCKET_FOTOS
-  )
-  .getPublicUrl(
-    nomeArquivo
-  );
+
+  const {
+    data
+  } =
+    supabaseClient
+      .storage
+      .from(
+        BUCKET_FOTOS
+      )
+      .getPublicUrl(
+        caminho
+      );
+
 
   return data.publicUrl;
 
 }
 
+
 /* =========================
-   FOTOS DO PRODUTO
+   GALERIA DO PRODUTO
 ========================= */
 
 function adicionarNovasFotos(){
 
   const input =
-  document.getElementById(
-    "produtoFotosArquivos"
-  );
+    document.getElementById(
+      "produtoFotosArquivos"
+    );
+
 
   const arquivos =
-  Array.from(
-    input.files || []
-  );
+    Array.from(
+      input.files ||
+      []
+    );
 
-  if(!arquivos.length){
-    return;
-  }
 
   arquivos.forEach(
     arquivo => {
@@ -1452,170 +1498,175 @@ function adicionarNovasFotos(){
         return;
       }
 
-      const preview =
-      URL.createObjectURL(
-        arquivo
-      );
 
       fotosFormulario.push({
         id:null,
         foto_url:null,
-        arquivo,
-        preview,
-        principal:false,
-        nova:true
+        arquivo:arquivo,
+        preview:
+          URL.createObjectURL(
+            arquivo
+          ),
+        principal:false
       });
 
     }
   );
 
-  /*
-  Se não existe nenhuma principal,
-  a primeira vira principal.
-  */
 
   if(
     fotosFormulario.length &&
     !fotosFormulario.some(
-      foto => foto.principal
+      foto =>
+        foto.principal
     )
   ){
 
     fotosFormulario[0]
-    .principal =
-    true;
-
+      .principal =
+        true;
   }
 
-  input.value = "";
+
+  input.value =
+    "";
+
 
   renderizarFotosFormulario();
 
 }
 
+
 function renderizarFotosFormulario(){
 
   const area =
-  document.getElementById(
-    "galeriaFotos"
-  );
+    document.getElementById(
+      "galeriaFotos"
+    );
+
 
   if(
-    fotosFormulario.length === 0
+    !fotosFormulario.length
   ){
 
-    area.innerHTML = "";
-
-    return;
-
-  }
-
-  area.innerHTML =
-  fotosFormulario
-  .map(
-    (foto,index) => {
-
-      const url =
-      foto.preview ||
-      foto.foto_url ||
+    area.innerHTML =
       "";
 
-      return `
+    return;
+  }
 
-      <div
-        class="foto-card ${
-          foto.principal
-          ? "principal"
-          : ""
-        }"
-      >
 
-        ${
-          foto.principal
-          ? `
-            <span
-              class="badge-principal"
-            >
-              PRINCIPAL
-            </span>
-          `
-          : ""
-        }
+  area.innerHTML =
+    fotosFormulario
+      .map(
+        (foto,index) => {
 
-        <img
-          src="${url}"
-          alt="Foto do produto"
-        >
+          const url =
+            foto.preview ||
+            foto.foto_url ||
+            "";
 
-        <div class="foto-acoes">
 
-          ${
-            !foto.principal
-            ? `
-            <button
-              type="button"
-              class="definir-principal"
-              onclick="definirFotoPrincipal(${index})"
-            >
-              ⭐ DEFINIR PRINCIPAL
-            </button>
-            `
-            : ""
-          }
+          return `
 
-          <button
-            type="button"
-            class="excluir-foto"
-            onclick="removerFotoFormulario(${index})"
+          <div
+            class="foto-card ${
+              foto.principal
+                ? "principal"
+                : ""
+            }"
           >
-            🗑️ REMOVER
-          </button>
 
-        </div>
+            ${
+              foto.principal
+                ? `
+                  <span
+                    class="badge-principal"
+                  >
+                    PRINCIPAL
+                  </span>
+                `
+                : ""
+            }
 
-      </div>
+            <img
+              src="${url}"
+              alt="Foto"
+            >
 
-      `;
+            <div
+              class="foto-acoes"
+            >
 
-    }
-  )
-  .join("");
+              ${
+                !foto.principal
+                  ? `
+                    <button
+                      type="button"
+                      class="definir-principal"
+                      onclick="definirFotoPrincipal(${index})"
+                    >
+                      ⭐ DEFINIR PRINCIPAL
+                    </button>
+                  `
+                  : ""
+              }
+
+              <button
+                type="button"
+                class="excluir-foto"
+                onclick="removerFotoFormulario(${index})"
+              >
+                🗑️ REMOVER
+              </button>
+
+            </div>
+
+          </div>
+
+          `;
+
+        }
+      )
+      .join("");
 
 }
+
 
 function definirFotoPrincipal(
   indice
 ){
 
   fotosFormulario =
-  fotosFormulario.map(
-    (foto,index) => ({
-      ...foto,
-      principal:
-        index === indice
-    })
-  );
+    fotosFormulario.map(
+      (foto,index) => ({
+        ...foto,
+        principal:
+          index === indice
+      })
+    );
+
 
   renderizarFotosFormulario();
 
 }
 
+
 function removerFotoFormulario(
   indice
 ){
 
-  const foto =
-  fotosFormulario[
-    indice
-  ];
-
   const eraPrincipal =
-  foto?.principal;
+    fotosFormulario[
+      indice
+    ]?.principal;
+
 
   fotosFormulario.splice(
     indice,
     1
   );
+
 
   if(
     eraPrincipal &&
@@ -1623,127 +1674,208 @@ function removerFotoFormulario(
   ){
 
     fotosFormulario[0]
-    .principal =
-    true;
-
+      .principal =
+        true;
   }
+
 
   renderizarFotosFormulario();
 
 }
 
+
 /* =========================
-   VARIANTES
+   OPÇÕES
 ========================= */
 
-function novaVarianteVazia(){
+function criarMapaTamanhos(){
+
+  const mapa = {};
+
+
+  TAMANHOS.forEach(
+    item => {
+
+      mapa[
+        item.valor
+      ] = {
+        ativo:false,
+        estoque:0
+      };
+
+    }
+  );
+
+
+  return mapa;
+
+}
+
+
+function novaOpcao(){
 
   return {
-    id:null,
     cor:"",
     estampa:"",
-    tamanho:
-      "Tamanho Único (veste 36 ao 42)",
-    estoque:0,
-    ativo:true,
     foto_url:null,
     arquivo:null,
-    preview:null
+    preview:null,
+    tamanhos:
+      criarMapaTamanhos()
   };
 
 }
 
-function adicionarVariante(){
 
-  variantesFormulario.push(
-    novaVarianteVazia()
+function adicionarOpcao(){
+
+  opcoesFormulario.push(
+    novaOpcao()
   );
 
-  renderizarVariantes();
+
+  renderizarOpcoes();
 
 }
 
-function removerVariante(
+
+function removerOpcao(
   indice
 ){
 
   const confirmar =
-  window.confirm(
-    "Remover esta variante?"
-  );
+    confirm(
+      "Remover esta cor/estampa?"
+    );
+
 
   if(!confirmar){
     return;
   }
 
-  variantesFormulario.splice(
+
+  opcoesFormulario.splice(
     indice,
     1
   );
 
-  renderizarVariantes();
 
-  atualizarEstoqueVariantes();
+  renderizarOpcoes();
 
 }
 
-function atualizarVariante(
+
+function atualizarOpcao(
   indice,
   campo,
   valor
 ){
 
-  if(
-    !variantesFormulario[
+  const opcao =
+    opcoesFormulario[
       indice
-    ]
-  ){
+    ];
+
+
+  if(!opcao){
     return;
   }
 
-  if(
-    campo ===
-    "estoque"
-  ){
 
-    valor =
-    Math.max(
-      0,
-      Number(valor || 0)
+  opcao[
+    campo
+  ] =
+    valor;
+
+}
+
+
+function alterarTamanho(
+  indiceOpcao,
+  tamanho,
+  marcado
+){
+
+  const opcao =
+    opcoesFormulario[
+      indiceOpcao
+    ];
+
+
+  if(!opcao){
+    return;
+  }
+
+
+  opcao.tamanhos[
+    tamanho
+  ].ativo =
+    Boolean(
+      marcado
     );
 
+
+  if(!marcado){
+
+    opcao.tamanhos[
+      tamanho
+    ].estoque =
+      0;
   }
 
-  if(
-    campo ===
-    "ativo"
-  ){
 
-    valor =
-    Boolean(valor);
+  renderizarOpcoes();
 
+}
+
+
+function alterarEstoqueTamanho(
+  indiceOpcao,
+  tamanho,
+  valor
+){
+
+  const opcao =
+    opcoesFormulario[
+      indiceOpcao
+    ];
+
+
+  if(!opcao){
+    return;
   }
 
-  variantesFormulario[
-    indice
-  ][campo] =
-  valor;
+
+  opcao.tamanhos[
+    tamanho
+  ].estoque =
+    Math.max(
+      0,
+      Number(
+        valor ||
+        0
+      )
+    );
+
 
   atualizarEstoqueVariantes();
 
 }
 
-function escolherFotoVariante(
+
+function escolherFotoOpcao(
   indice,
   input
 ){
 
   const arquivo =
-  input.files?.[0];
+    input.files?.[0];
+
 
   if(!arquivo){
     return;
   }
+
 
   if(
     !validarArquivoImagem(
@@ -1751,403 +1883,393 @@ function escolherFotoVariante(
     )
   ){
 
-    input.value = "";
+    input.value =
+      "";
 
     return;
-
   }
 
-  const variante =
-  variantesFormulario[
-    indice
-  ];
 
-  variante.arquivo =
-  arquivo;
+  const opcao =
+    opcoesFormulario[
+      indice
+    ];
 
-  variante.preview =
-  URL.createObjectURL(
-    arquivo
-  );
 
-  renderizarVariantes();
+  opcao.arquivo =
+    arquivo;
+
+  opcao.preview =
+    URL.createObjectURL(
+      arquivo
+    );
+
+
+  renderizarOpcoes();
 
 }
 
-function removerFotoVariante(
+
+function removerFotoOpcao(
   indice
 ){
 
-  const variante =
-  variantesFormulario[
-    indice
-  ];
+  const opcao =
+    opcoesFormulario[
+      indice
+    ];
 
-  if(!variante){
+
+  if(!opcao){
     return;
   }
 
-  variante.arquivo =
-  null;
 
-  variante.preview =
-  null;
+  opcao.arquivo =
+    null;
 
-  variante.foto_url =
-  null;
+  opcao.preview =
+    null;
 
-  renderizarVariantes();
+  opcao.foto_url =
+    null;
+
+
+  renderizarOpcoes();
 
 }
+
+
+function calcularEstoqueVariantes(){
+
+  let total =
+    0;
+
+
+  opcoesFormulario.forEach(
+    opcao => {
+
+      Object
+        .values(
+          opcao.tamanhos
+        )
+        .forEach(
+          tamanho => {
+
+            if(
+              tamanho.ativo
+            ){
+
+              total +=
+                Number(
+                  tamanho.estoque ||
+                  0
+                );
+            }
+
+          }
+        );
+
+    }
+  );
+
+
+  return total;
+
+}
+
 
 function atualizarEstoqueVariantes(){
 
-  const total =
-  variantesFormulario
-  .filter(
-    variante =>
-      variante.ativo !== false
-  )
-  .reduce(
-    (
-      soma,
-      variante
-    ) =>
-      soma +
-      Number(
-        variante.estoque || 0
-      ),
-    0
-  );
-
   document
-  .getElementById(
-    "estoqueVariantes"
-  )
-  .textContent =
-  total;
+    .getElementById(
+      "estoqueVariantes"
+    )
+    .textContent =
+      calcularEstoqueVariantes();
 
 }
 
-function renderizarVariantes(){
+
+function renderizarOpcoes(){
 
   const area =
-  document.getElementById(
-    "variantesArea"
-  );
+    document.getElementById(
+      "opcoesArea"
+    );
+
 
   if(
-    variantesFormulario
-    .length === 0
+    !opcoesFormulario.length
   ){
 
-    area.innerHTML =
-    `
+    area.innerHTML = `
       <div class="foto-ajuda">
-        Nenhuma variante cadastrada.
-        Você pode usar apenas o estoque geral,
-        ou adicionar tamanhos/cores/estampas.
+        Nenhuma cor ou estampa cadastrada.
+        Se o produto não possui variações,
+        use apenas o estoque geral.
       </div>
     `;
+
 
     atualizarEstoqueVariantes();
 
     return;
-
   }
 
+
   area.innerHTML =
-  variantesFormulario
-  .map(
-    (variante,index) => {
+    opcoesFormulario
+      .map(
+        (opcao,index) => {
 
-      const foto =
-      variante.preview ||
-      variante.foto_url ||
-      "";
+          const foto =
+            opcao.preview ||
+            opcao.foto_url ||
+            "";
 
-      return `
 
-      <div class="variante-card">
+          const linhasTamanho =
+            TAMANHOS.map(
+              tamanho => {
 
-        <div class="variante-topo">
+                const dados =
+                  opcao.tamanhos[
+                    tamanho.valor
+                  ];
 
-          <strong>
-            Variante ${index + 1}
-          </strong>
 
-          <button
-            type="button"
-            class="remover-variante"
-            onclick="removerVariante(${index})"
-          >
-            REMOVER
-          </button>
+                return `
 
-        </div>
-
-        <div class="variante-grid">
-
-          <div class="campo">
-
-            <label>
-              Cor
-            </label>
-
-            <input
-              type="text"
-              value="${escaparHtml(
-                variante.cor || ""
-              )}"
-              placeholder="Ex.: Preto"
-              onchange="
-                atualizarVariante(
-                  ${index},
-                  'cor',
-                  this.value
-                )
-              "
-            >
-
-          </div>
-
-          <div class="campo">
-
-            <label>
-              Estampa
-            </label>
-
-            <input
-              type="text"
-              value="${escaparHtml(
-                variante.estampa || ""
-              )}"
-              placeholder="Ex.: Estampa 01"
-              onchange="
-                atualizarVariante(
-                  ${index},
-                  'estampa',
-                  this.value
-                )
-              "
-            >
-
-          </div>
-
-          <div class="campo">
-
-            <label>
-              Tamanho
-            </label>
-
-            <select
-              onchange="
-                atualizarVariante(
-                  ${index},
-                  'tamanho',
-                  this.value
-                )
-              "
-            >
-
-              ${opcaoTamanho(
-                "Tamanho Único (veste 36 ao 42)",
-                variante.tamanho
-              )}
-
-              ${opcaoTamanho(
-                "P",
-                variante.tamanho
-              )}
-
-              ${opcaoTamanho(
-                "M",
-                variante.tamanho
-              )}
-
-              ${opcaoTamanho(
-                "G",
-                variante.tamanho
-              )}
-
-              ${opcaoTamanho(
-                "GG",
-                variante.tamanho
-              )}
-
-            </select>
-
-          </div>
-
-          <div class="campo">
-
-            <label>
-              Estoque
-            </label>
-
-            <input
-              type="number"
-              min="0"
-              value="${
-                Number(
-                  variante.estoque || 0
-                )
-              }"
-              onchange="
-                atualizarVariante(
-                  ${index},
-                  'estoque',
-                  this.value
-                )
-              "
-            >
-
-          </div>
-
-        </div>
-
-        <label class="ativo-area">
-
-          <input
-            type="checkbox"
-            ${
-              variante.ativo !== false
-              ? "checked"
-              : ""
-            }
-            onchange="
-              atualizarVariante(
-                ${index},
-                'ativo',
-                this.checked
-              )
-            "
-          >
-
-          Variante ativa
-
-        </label>
-
-        <div class="variante-foto">
-
-          <label class="titulo-foto">
-            Foto desta cor/estampa
-          </label>
-
-          <input
-            type="file"
-            accept="image/*"
-            onchange="
-              escolherFotoVariante(
-                ${index},
-                this
-              )
-            "
-          >
-
-          ${
-            foto
-            ? `
-              <div
-                class="preview-variante"
-              >
-
-                <img
-                  src="${foto}"
-                  alt="Foto da variante"
+                <div
+                  class="tamanho-linha"
                 >
 
-                <br>
+                  <label
+                    class="tamanho-check"
+                  >
 
-                <button
-                  type="button"
-                  class="remover-foto-selecionada"
-                  onclick="
-                    removerFotoVariante(
-                      ${index}
+                    <input
+                      type="checkbox"
+                      ${
+                        dados.ativo
+                          ? "checked"
+                          : ""
+                      }
+                      onchange="
+                        alterarTamanho(
+                          ${index},
+                          '${tamanho.valor}',
+                          this.checked
+                        )
+                      "
+                    >
+
+                    ${tamanho.nome}
+
+                  </label>
+
+                  <input
+                    class="estoque-tamanho"
+                    type="number"
+                    min="0"
+                    value="${
+                      Number(
+                        dados.estoque ||
+                        0
+                      )
+                    }"
+                    ${
+                      dados.ativo
+                        ? ""
+                        : "disabled"
+                    }
+                    placeholder="Estoque"
+                    onchange="
+                      alterarEstoqueTamanho(
+                        ${index},
+                        '${tamanho.valor}',
+                        this.value
+                      )
+                    "
+                  >
+
+                </div>
+
+                `;
+
+              }
+            )
+            .join("");
+
+
+          return `
+
+          <div
+            class="opcao-card"
+          >
+
+            <div
+              class="opcao-topo"
+            >
+
+              <strong>
+                Opção ${index + 1}
+              </strong>
+
+              <button
+                type="button"
+                class="remover-opcao"
+                onclick="
+                  removerOpcao(
+                    ${index}
+                  )
+                "
+              >
+                REMOVER
+              </button>
+
+            </div>
+
+
+            <div
+              class="opcao-grid"
+            >
+
+              <div class="campo">
+
+                <label>
+                  Cor
+                </label>
+
+                <input
+                  type="text"
+                  value="${
+                    escaparHtml(
+                      opcao.cor
+                    )
+                  }"
+                  placeholder="Ex.: Rosa"
+                  onchange="
+                    atualizarOpcao(
+                      ${index},
+                      'cor',
+                      this.value
                     )
                   "
                 >
-                  REMOVER FOTO
-                </button>
 
               </div>
-            `
-            : ""
-          }
 
-        </div>
 
-      </div>
+              <div class="campo">
 
-      `;
+                <label>
+                  Nome da estampa
+                </label>
 
-    }
-  )
-  .join("");
+                <input
+                  type="text"
+                  value="${
+                    escaparHtml(
+                      opcao.estampa
+                    )
+                  }"
+                  placeholder="Ex.: Estampa 01"
+                  onchange="
+                    atualizarOpcao(
+                      ${index},
+                      'estampa',
+                      this.value
+                    )
+                  "
+                >
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="foto-estampa-area"
+            >
+
+              <label>
+                📸 Foto desta cor / estampa
+              </label>
+
+              <input
+                class="foto-estampa-input"
+                type="file"
+                accept="image/*"
+                onchange="
+                  escolherFotoOpcao(
+                    ${index},
+                    this
+                  )
+                "
+              >
+
+              ${
+                foto
+                  ? `
+                    <div
+                      class="preview-estampa"
+                    >
+
+                      <img
+                        src="${foto}"
+                        alt="Estampa"
+                      >
+
+                      <button
+                        type="button"
+                        class="remover-foto-estampa"
+                        onclick="
+                          removerFotoOpcao(
+                            ${index}
+                          )
+                        "
+                      >
+                        REMOVER FOTO
+                      </button>
+
+                    </div>
+                  `
+                  : ""
+              }
+
+            </div>
+
+
+            <div
+              class="tamanhos-titulo"
+            >
+              📏 Tamanhos e estoque
+            </div>
+
+
+            <div
+              class="tamanhos-grade"
+            >
+
+              ${linhasTamanho}
+
+            </div>
+
+          </div>
+
+          `;
+
+        }
+      )
+      .join("");
+
 
   atualizarEstoqueVariantes();
 
 }
 
-function opcaoTamanho(
-  valor,
-  selecionado
-){
-
-  return `
-    <option
-      value="${valor}"
-      ${
-        valor === selecionado
-        ? "selected"
-        : ""
-      }
-    >
-      ${
-        valor ===
-        "Tamanho Único (veste 36 ao 42)"
-        ? "Tamanho único (veste 36 ao 42 ✅)"
-        : valor
-      }
-    </option>
-  `;
-
-}
-
-/* =========================
-   PROTEÇÃO DE TEXTO
-========================= */
-
-function escaparHtml(
-  texto
-){
-
-  return String(
-    texto || ""
-  )
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-  .replaceAll(
-    "'",
-    "&#039;"
-  )
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-  .replaceAll(
-    ">",
-    "&gt;"
-  );
-
-}
 
 /* =========================
    CARREGAR PRODUTOS
@@ -2156,53 +2278,53 @@ function escaparHtml(
 async function carregarProdutos(){
 
   const lista =
-  document.getElementById(
-    "listaProdutos"
-  );
+    document.getElementById(
+      "listaProdutos"
+    );
 
-  lista.innerHTML =
-  `
+
+  lista.innerHTML = `
     <div class="carregando">
       Carregando produtos...
     </div>
   `;
 
+
   const {
     data,
     error
   } =
-  await supabaseClient
-  .from("Produtos")
-  .select("*")
-  .order(
-    "created_at",
-    {
-      ascending:false
-    }
-  );
+    await supabaseClient
+      .from(
+        "Produtos"
+      )
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
 
   if(error){
 
     console.error(error);
 
-    lista.innerHTML =
-    `
+    lista.innerHTML = `
       <div class="sem-produtos">
         Erro ao carregar produtos.
       </div>
     `;
 
-    alert(
-      "Erro ao carregar produtos: " +
-      error.message
-    );
-
     return;
-
   }
 
+
   produtos =
-  data || [];
+    data ||
+    [];
+
 
   atualizarEstatisticas();
 
@@ -2212,6 +2334,7 @@ async function carregarProdutos(){
 
 }
 
+
 /* =========================
    ESTATÍSTICAS
 ========================= */
@@ -2219,36 +2342,40 @@ async function carregarProdutos(){
 function atualizarEstatisticas(){
 
   document
-  .getElementById(
-    "totalProdutos"
-  )
-  .textContent =
-  produtos.length;
+    .getElementById(
+      "totalProdutos"
+    )
+    .textContent =
+      produtos.length;
 
-  const estoque =
-  produtos.reduce(
-    (
-      total,
-      produto
-    ) =>
-      total +
-      Number(
-        produto.estoque || 0
-      ),
-    0
-  );
+
+  const total =
+    produtos.reduce(
+      (
+        soma,
+        produto
+      ) =>
+        soma +
+        Number(
+          produto.estoque ||
+          0
+        ),
+      0
+    );
+
 
   document
-  .getElementById(
-    "estoqueTotal"
-  )
-  .textContent =
-  estoque;
+    .getElementById(
+      "estoqueTotal"
+    )
+    .textContent =
+      total;
 
 }
 
+
 /* =========================
-   RENDER PRODUTOS
+   LISTA
 ========================= */
 
 function renderizarProdutos(
@@ -2256,164 +2383,165 @@ function renderizarProdutos(
 ){
 
   const area =
-  document.getElementById(
-    "listaProdutos"
-  );
+    document.getElementById(
+      "listaProdutos"
+    );
+
 
   if(
-    lista.length === 0
+    !lista.length
   ){
 
-    area.innerHTML =
-    `
+    area.innerHTML = `
       <div class="sem-produtos">
         Nenhum produto encontrado.
       </div>
     `;
 
     return;
-
   }
 
+
   area.innerHTML =
-  lista.map(
-    produto => {
+    lista.map(
+      produto => {
 
-      const imagem =
-      produto.foto_url
-      ? `
-        <img
-          src="${produto.foto_url}"
-          alt="${escaparHtml(
-            produto.nome ||
-            "Produto"
-          )}"
-        >
-      `
-      : `
-        <div class="sem-foto">
-          Sem foto
-        </div>
-      `;
+        const imagem =
+          produto.foto_url
+            ? `
+              <img
+                src="${produto.foto_url}"
+                alt="Produto"
+              >
+            `
+            : `
+              <div class="sem-foto">
+                Sem foto
+              </div>
+            `;
 
-      return `
 
-      <div class="produto-card">
+        return `
 
-        ${imagem}
+        <div class="produto-card">
 
-        <div class="produto-info">
+          ${imagem}
 
-          <h4>
-            ${
-              escaparHtml(
-                produto.nome ||
-                "Sem nome"
-              )
-            }
-          </h4>
+          <div class="produto-info">
 
-          <div class="preco">
-            ${
-              moeda(
-                produto.preco
-              )
-            }
-          </div>
-
-          <div class="detalhes">
-
-            Categoria:
-            ${
-              escaparHtml(
-                produto.categoria ||
-                "Não informada"
-              )
-            }
-
-            <br>
-
-            Estoque:
-            ${
-              produto.estoque ?? 0
-            }
-
-          </div>
-
-          <span
-            class="
-              status
+            <h4>
               ${
-                produto.ativo
-                ? "ativo"
-                : "inativo"
+                escaparHtml(
+                  produto.nome ||
+                  "Sem nome"
+                )
               }
-            "
-          >
+            </h4>
 
-            ${
-              produto.ativo
-              ? "ATIVO"
-              : "INATIVO"
-            }
-
-          </span>
-
-          <div class="acoes">
-
-            <button
-              class="editar"
-              onclick="
-                editarProduto(
-                  ${produto.id}
+            <div class="preco">
+              ${
+                moeda(
+                  produto.preco
                 )
-              "
-            >
-              EDITAR
-            </button>
+              }
+            </div>
 
-            <button
-              class="alternar"
-              onclick="
-                alternarProduto(
-                  ${produto.id},
-                  ${produto.ativo}
+            <div class="detalhes">
+
+              Categoria:
+              ${
+                escaparHtml(
+                  produto.categoria ||
+                  "Não informada"
                 )
-              "
+              }
+
+              <br>
+
+              Estoque:
+              ${
+                Number(
+                  produto.estoque ||
+                  0
+                )
+              }
+
+            </div>
+
+
+            <span
+              class="status ${
+                produto.ativo
+                  ? "ativo"
+                  : "inativo"
+              }"
             >
 
               ${
                 produto.ativo
-                ? "DESATIVAR"
-                : "ATIVAR"
+                  ? "ATIVO"
+                  : "INATIVO"
               }
 
-            </button>
+            </span>
 
-            <button
-              class="excluir"
-              onclick="
-                excluirProduto(
-                  ${produto.id}
-                )
-              "
-            >
-              EXCLUIR
-            </button>
+
+            <div class="acoes">
+
+              <button
+                class="editar"
+                onclick="
+                  editarProduto(
+                    ${produto.id}
+                  )
+                "
+              >
+                EDITAR
+              </button>
+
+              <button
+                class="alternar"
+                onclick="
+                  alternarProduto(
+                    ${produto.id},
+                    ${produto.ativo}
+                  )
+                "
+              >
+
+                ${
+                  produto.ativo
+                    ? "DESATIVAR"
+                    : "ATIVAR"
+                }
+
+              </button>
+
+              <button
+                class="excluir"
+                onclick="
+                  excluirProduto(
+                    ${produto.id}
+                  )
+                "
+              >
+                EXCLUIR
+              </button>
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+        `;
 
-      `;
-
-    }
-  )
-  .join("");
+      }
+    )
+    .join("");
 
 }
+
 
 /* =========================
    BUSCA
@@ -2422,11 +2550,14 @@ function renderizarProdutos(
 function filtrarProdutos(){
 
   const busca =
-  document
-  .getElementById("busca")
-  .value
-  .trim()
-  .toLowerCase();
+    document
+      .getElementById(
+        "busca"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
 
   if(!busca){
 
@@ -2435,28 +2566,42 @@ function filtrarProdutos(){
     );
 
     return;
-
   }
 
+
   const filtrados =
-  produtos.filter(
-    produto =>
+    produtos.filter(
+      produto => {
 
-      String(
-        produto.nome || ""
-      )
-      .toLowerCase()
-      .includes(busca)
+        const nome =
+          String(
+            produto.nome ||
+            ""
+          )
+          .toLowerCase();
 
-      ||
 
-      String(
-        produto.categoria || ""
-      )
-      .toLowerCase()
-      .includes(busca)
+        const categoria =
+          String(
+            produto.categoria ||
+            ""
+          )
+          .toLowerCase();
 
-  );
+
+        return (
+          nome.includes(
+            busca
+          )
+          ||
+          categoria.includes(
+            busca
+          )
+        );
+
+      }
+    );
+
 
   renderizarProdutos(
     filtrados
@@ -2464,55 +2609,61 @@ function filtrarProdutos(){
 
 }
 
+
 /* =========================
-   SALVAR FOTOS
+   SALVAR GALERIA
 ========================= */
 
 async function salvarFotosProduto(
   produtoId,
-  fotoLegada=null
+  fotoAntiga=null
 ){
 
-  const fotosSalvas = [];
+  const registros =
+    [];
 
-  /*
-  Envia fotos novas.
-  */
 
   for(
-    let i=0;
-    i<fotosFormulario.length;
+    let i = 0;
+    i < fotosFormulario.length;
     i++
   ){
 
     const foto =
-    fotosFormulario[i];
+      fotosFormulario[i];
+
 
     let url =
-    foto.foto_url ||
-    null;
+      foto.foto_url ||
+      null;
+
 
     if(
       foto.arquivo
     ){
 
       url =
-      await enviarArquivoImagem(
-        foto.arquivo,
-        "galeria"
-      );
-
+        await enviarArquivoImagem(
+          foto.arquivo,
+          "galeria"
+        );
     }
+
 
     if(!url){
       continue;
     }
 
-    fotosSalvas.push({
+
+    registros.push({
       produto_id:
-        Number(produtoId),
-      foto_url:url,
-      ordem:i,
+        Number(
+          produtoId
+        ),
+      foto_url:
+        url,
+      ordem:
+        i,
       principal:
         Boolean(
           foto.principal
@@ -2521,267 +2672,297 @@ async function salvarFotosProduto(
 
   }
 
-  /*
-  Se não houver registro na galeria,
-  mas existe uma foto antiga,
-  preserva ela.
-  */
 
   if(
-    fotosSalvas.length === 0 &&
-    fotoLegada
+    !registros.length &&
+    fotoAntiga
   ){
 
-    fotosSalvas.push({
+    registros.push({
       produto_id:
-        Number(produtoId),
+        Number(
+          produtoId
+        ),
       foto_url:
-        fotoLegada,
-      ordem:0,
-      principal:true
+        fotoAntiga,
+      ordem:
+        0,
+      principal:
+        true
     });
-
   }
 
-  /*
-  Apaga as referências antigas.
-  Não apaga os arquivos do Storage.
-  */
+
+  if(
+    registros.length &&
+    !registros.some(
+      foto =>
+        foto.principal
+    )
+  ){
+
+    registros[0]
+      .principal =
+        true;
+  }
+
+
+  let encontrouPrincipal =
+    false;
+
+
+  registros.forEach(
+    foto => {
+
+      if(
+        foto.principal &&
+        !encontrouPrincipal
+      ){
+
+        encontrouPrincipal =
+          true;
+
+      }else if(
+        foto.principal
+      ){
+
+        foto.principal =
+          false;
+      }
+
+    }
+  );
+
 
   const {
     error:
-    erroExcluir
+      erroExcluir
   } =
-  await supabaseClient
-  .from(
-    "Fotos_Produtos"
-  )
-  .delete()
-  .eq(
-    "produto_id",
-    Number(produtoId)
-  );
+    await supabaseClient
+      .from(
+        "Fotos_Produtos"
+      )
+      .delete()
+      .eq(
+        "produto_id",
+        Number(
+          produtoId
+        )
+      );
+
 
   if(erroExcluir){
 
     throw new Error(
-      "Erro ao atualizar galeria: " +
+      "Erro ao atualizar fotos: "
+      +
       erroExcluir.message
     );
-
   }
+
 
   if(
-    fotosSalvas.length
+    registros.length
   ){
 
-    /*
-    Garante apenas uma principal.
-    */
-
-    if(
-      !fotosSalvas.some(
-        foto =>
-          foto.principal
-      )
-    ){
-
-      fotosSalvas[0]
-      .principal =
-      true;
-
-    }
-
-    let primeiraPrincipal =
-    false;
-
-    fotosSalvas.forEach(
-      foto => {
-
-        if(
-          foto.principal &&
-          !primeiraPrincipal
-        ){
-
-          primeiraPrincipal =
-          true;
-
-        }else if(
-          foto.principal
-        ){
-
-          foto.principal =
-          false;
-
-        }
-
-      }
-    );
-
     const {
-      error:
-      erroInserir
+      error
     } =
-    await supabaseClient
-    .from(
-      "Fotos_Produtos"
-    )
-    .insert(
-      fotosSalvas
-    );
+      await supabaseClient
+        .from(
+          "Fotos_Produtos"
+        )
+        .insert(
+          registros
+        );
 
-    if(erroInserir){
+
+    if(error){
 
       throw new Error(
-        "Erro ao salvar as fotos: " +
-        erroInserir.message
+        "Erro ao salvar fotos: "
+        +
+        error.message
       );
-
     }
 
   }
 
-  const principal =
-  fotosSalvas.find(
-    foto =>
-      foto.principal
-  );
 
   return (
-    principal?.foto_url ||
-    fotosSalvas[0]?.foto_url ||
+    registros.find(
+      foto =>
+        foto.principal
+    )?.foto_url
+    ||
+    registros[0]?.foto_url
+    ||
     null
   );
 
 }
 
+
 /* =========================
-   SALVAR VARIANTES
+   GERAR VARIANTES
 ========================= */
 
 async function salvarVariantesProduto(
   produtoId
 ){
 
-  /*
-  Primeiro faz upload
-  das fotos das variantes.
-  */
+  const registros =
+    [];
 
-  const variantesSalvar = [];
 
   for(
-    const variante of
-    variantesFormulario
+    const opcao of
+    opcoesFormulario
   ){
 
     let fotoUrl =
-    variante.foto_url ||
-    null;
+      opcao.foto_url ||
+      null;
+
 
     if(
-      variante.arquivo
+      opcao.arquivo
     ){
 
       fotoUrl =
-      await enviarArquivoImagem(
-        variante.arquivo,
-        "variantes"
-      );
+        await enviarArquivoImagem(
+          opcao.arquivo,
+          "variantes"
+        );
+    }
+
+
+    for(
+      const tamanho of
+      TAMANHOS
+    ){
+
+      const dados =
+        opcao.tamanhos[
+          tamanho.valor
+        ];
+
+
+      if(
+        !dados ||
+        !dados.ativo
+      ){
+        continue;
+      }
+
+
+      registros.push({
+
+        produto_id:
+          Number(
+            produtoId
+          ),
+
+        cor:
+          String(
+            opcao.cor ||
+            ""
+          ).trim()
+          ||
+          null,
+
+        estampa:
+          String(
+            opcao.estampa ||
+            ""
+          ).trim()
+          ||
+          null,
+
+        tamanho:
+          tamanho.valor,
+
+        estoque:
+          Math.max(
+            0,
+            Number(
+              dados.estoque ||
+              0
+            )
+          ),
+
+        ativo:
+          true,
+
+        foto_url:
+          fotoUrl
+
+      });
 
     }
 
-    variantesSalvar.push({
-
-      produto_id:
-        Number(produtoId),
-
-      cor:
-        String(
-          variante.cor ||
-          ""
-        ).trim() ||
-        null,
-
-      tamanho:
-        variante.tamanho ||
-        "Tamanho Único (veste 36 ao 42)",
-
-      estampa:
-        String(
-          variante.estampa ||
-          ""
-        ).trim() ||
-        null,
-
-      estoque:
-        Math.max(
-          0,
-          Number(
-            variante.estoque ||
-            0
-          )
-        ),
-
-      ativo:
-        variante.ativo !== false,
-
-      foto_url:
-        fotoUrl
-
-    });
-
   }
+
 
   const {
     error:
-    erroExcluir
+      erroExcluir
   } =
-  await supabaseClient
-  .from("Variantes")
-  .delete()
-  .eq(
-    "produto_id",
-    Number(produtoId)
-  );
+    await supabaseClient
+      .from(
+        "Variantes"
+      )
+      .delete()
+      .eq(
+        "produto_id",
+        Number(
+          produtoId
+        )
+      );
+
 
   if(erroExcluir){
 
     throw new Error(
-      "Erro ao atualizar variantes: " +
+      "Erro ao atualizar variantes: "
+      +
       erroExcluir.message
     );
-
   }
 
+
   if(
-    variantesSalvar.length
+    registros.length
   ){
 
     const {
-      error:
-      erroInserir
+      error
     } =
-    await supabaseClient
-    .from("Variantes")
-    .insert(
-      variantesSalvar
-    );
+      await supabaseClient
+        .from(
+          "Variantes"
+        )
+        .insert(
+          registros
+        );
 
-    if(erroInserir){
+
+    if(error){
 
       throw new Error(
-        "Erro ao salvar variantes: " +
-        erroInserir.message
+        "Erro ao salvar variantes: "
+        +
+        error.message
       );
-
     }
 
   }
 
-  return variantesSalvar;
+
+  return registros;
 
 }
+
 
 /* =========================
    SALVAR PRODUTO
@@ -2790,62 +2971,71 @@ async function salvarVariantesProduto(
 async function salvarProduto(){
 
   const id =
-  document
-  .getElementById(
-    "produtoId"
-  )
-  .value;
+    document
+      .getElementById(
+        "produtoId"
+      )
+      .value;
+
 
   const nome =
-  document
-  .getElementById(
-    "produtoNome"
-  )
-  .value
-  .trim();
+    document
+      .getElementById(
+        "produtoNome"
+      )
+      .value
+      .trim();
+
 
   const preco =
-  Number(
-    document
-    .getElementById(
-      "produtoPreco"
-    )
-    .value
-  );
-
-  const estoqueGeral =
-  Math.max(
-    0,
     Number(
       document
-      .getElementById(
-        "produtoEstoque"
+        .getElementById(
+          "produtoPreco"
+        )
+        .value
+    );
+
+
+  const estoqueGeral =
+    Math.max(
+      0,
+      Number(
+        document
+          .getElementById(
+            "produtoEstoque"
+          )
+          .value
+        ||
+        0
       )
-      .value || 0
-    )
-  );
+    );
+
 
   const categoria =
-  document
-  .getElementById(
-    "produtoCategoria"
-  )
-  .value;
+    document
+      .getElementById(
+        "produtoCategoria"
+      )
+      .value;
+
 
   const descricao =
-  document
-  .getElementById(
-    "produtoDescricao"
-  )
-  .value
-  .trim();
+    document
+      .getElementById(
+        "produtoDescricao"
+      )
+      .value
+      .trim();
+
 
   const ativo =
-  document
-  .getElementById(
-    "produtoAtivo"
-  )
-  .checked;
+    document
+      .getElementById(
+        "produtoAtivo"
+      )
+      .checked;
+
 
   if(!nome){
 
@@ -2854,8 +3044,8 @@ async function salvarProduto(){
     );
 
     return;
-
   }
+
 
   if(
     !preco ||
@@ -2867,8 +3057,8 @@ async function salvarProduto(){
     );
 
     return;
-
   }
+
 
   if(!categoria){
 
@@ -2877,92 +3067,161 @@ async function salvarProduto(){
     );
 
     return;
+  }
+
+
+  /*
+    Se criou opção de cor/estampa,
+    ela precisa ter pelo menos
+    um tamanho marcado.
+  */
+
+  for(
+    let i = 0;
+    i < opcoesFormulario.length;
+    i++
+  ){
+
+    const opcao =
+      opcoesFormulario[i];
+
+
+    const algumTamanho =
+      Object.values(
+        opcao.tamanhos
+      )
+      .some(
+        tamanho =>
+          tamanho.ativo
+      );
+
+
+    if(!algumTamanho){
+
+      alert(
+        "Na opção "
+        +
+        (i + 1)
+        +
+        ", escolha pelo menos um tamanho."
+      );
+
+      return;
+    }
+
+
+    if(
+      !String(
+        opcao.cor ||
+        ""
+      ).trim()
+      &&
+      !String(
+        opcao.estampa ||
+        ""
+      ).trim()
+    ){
+
+      alert(
+        "Na opção "
+        +
+        (i + 1)
+        +
+        ", informe uma cor ou uma estampa."
+      );
+
+      return;
+    }
 
   }
 
+
   const estoqueVariantes =
-  variantesFormulario
-  .filter(
-    variante =>
-      variante.ativo !== false
-  )
-  .reduce(
-    (
-      soma,
-      variante
-    ) =>
-      soma +
-      Number(
-        variante.estoque || 0
-      ),
-    0
-  );
+    calcularEstoqueVariantes();
+
 
   const estoqueFinal =
-  variantesFormulario.length
-  ? estoqueVariantes
-  : estoqueGeral;
+    opcoesFormulario.length
+      ? estoqueVariantes
+      : estoqueGeral;
+
 
   const botao =
-  document
-  .getElementById(
-    "botaoSalvar"
-  );
+    document.getElementById(
+      "botaoSalvar"
+    );
 
-  botao.disabled = true;
+
+  botao.disabled =
+    true;
 
   botao.textContent =
-  "SALVANDO...";
+    "SALVANDO...";
+
 
   try{
 
-    /*
-    Primeiro cria/atualiza
-    os dados básicos.
-    */
-
     let produtoId =
-    id
-    ? Number(id)
-    : null;
+      id
+        ? Number(id)
+        : null;
 
-    const dadosBasicos = {
-      nome,
-      preco,
-      descricao,
-      ativo,
-      categoria,
+
+    let fotoAntiga =
+      null;
+
+
+    if(id){
+
+      const anterior =
+        produtos.find(
+          produto =>
+            Number(
+              produto.id
+            ) ===
+            Number(id)
+        );
+
+
+      fotoAntiga =
+        anterior?.foto_url ||
+        null;
+    }
+
+
+    const dadosProduto = {
+      nome:
+        nome,
+      preco:
+        preco,
+      categoria:
+        categoria,
+      descricao:
+        descricao,
+      ativo:
+        ativo,
       estoque:
         estoqueFinal
     };
 
-    let fotoLegada = null;
 
-    if(id){
-
-      const produtoAnterior =
-      produtos.find(
-        produto =>
-          Number(produto.id) ===
-          Number(id)
-      );
-
-      fotoLegada =
-      produtoAnterior?.foto_url ||
-      null;
+    if(produtoId){
 
       const {
         error
       } =
-      await supabaseClient
-      .from("Produtos")
-      .update(
-        dadosBasicos
-      )
-      .eq(
-        "id",
-        produtoId
-      );
+        await supabaseClient
+          .from(
+            "Produtos"
+          )
+          .update(
+            dadosProduto
+          )
+          .eq(
+            "id",
+            produtoId
+          );
+
 
       if(error){
         throw error;
@@ -2974,92 +3233,92 @@ async function salvarProduto(){
         data,
         error
       } =
-      await supabaseClient
-      .from("Produtos")
-      .insert([
-        {
-          ...dadosBasicos,
-          foto_url:null
-        }
-      ])
-      .select(
-        "id"
-      )
-      .single();
+        await supabaseClient
+          .from(
+            "Produtos"
+          )
+          .insert([
+            {
+              ...dadosProduto,
+              foto_url:null
+            }
+          ])
+          .select(
+            "id"
+          )
+          .single();
+
 
       if(error){
         throw error;
       }
 
-      produtoId =
-      data.id;
 
+      produtoId =
+        data.id;
     }
 
-    /*
-    Salva a galeria.
-    */
 
     const fotoPrincipal =
-    await salvarFotosProduto(
-      produtoId,
-      fotoLegada
-    );
+      await salvarFotosProduto(
+        produtoId,
+        fotoAntiga
+      );
 
-    /*
-    Salva as variantes.
-    */
 
     await salvarVariantesProduto(
       produtoId
     );
 
-    /*
-    Atualiza produto com
-    foto principal e estoque final.
-    */
 
     const {
       error:
-      erroFinal
+        erroFinal
     } =
-    await supabaseClient
-    .from("Produtos")
-    .update({
-      foto_url:
-        fotoPrincipal,
-      estoque:
-        estoqueFinal
-    })
-    .eq(
-      "id",
-      produtoId
-    );
+      await supabaseClient
+        .from(
+          "Produtos"
+        )
+        .update({
+          foto_url:
+            fotoPrincipal,
+          estoque:
+            estoqueFinal
+        })
+        .eq(
+          "id",
+          produtoId
+        );
+
 
     if(erroFinal){
       throw erroFinal;
     }
 
+
     alert(
       id
-      ? "Produto atualizado com sucesso! ✅"
-      : "Produto cadastrado com sucesso! ✅"
+        ? "Produto atualizado com sucesso! ✅"
+        : "Produto cadastrado com sucesso! ✅"
     );
+
 
     limparFormulario();
 
     await carregarProdutos();
 
-  }catch(erro){
+  }catch(error){
 
     console.error(
-      erro
+      error
     );
 
+
     alert(
-      "Erro: " +
+      "Erro: "
+      +
       (
-        erro.message ||
+        error.message ||
         "Não foi possível salvar o produto."
       )
     );
@@ -3067,23 +3326,25 @@ async function salvarProduto(){
   }finally{
 
     botao.disabled =
-    false;
+      false;
+
 
     botao.textContent =
-    document
-    .getElementById(
-      "produtoId"
-    )
-    .value
-    ? "SALVAR ALTERAÇÕES"
-    : "CADASTRAR PRODUTO";
+      document
+        .getElementById(
+          "produtoId"
+        )
+        .value
+        ? "SALVAR ALTERAÇÕES"
+        : "CADASTRAR PRODUTO";
 
   }
 
 }
 
+
 /* =========================
-   EDITAR PRODUTO
+   EDITAR
 ========================= */
 
 async function editarProduto(
@@ -3091,145 +3352,148 @@ async function editarProduto(
 ){
 
   const produto =
-  produtos.find(
-    item =>
-      Number(item.id) ===
-      Number(id)
-  );
+    produtos.find(
+      item =>
+        Number(
+          item.id
+        ) ===
+        Number(id)
+    );
+
 
   if(!produto){
     return;
   }
 
-  document
-  .getElementById(
-    "produtoId"
-  )
-  .value =
-  produto.id;
 
   document
-  .getElementById(
-    "produtoNome"
-  )
-  .value =
-  produto.nome || "";
+    .getElementById(
+      "produtoId"
+    )
+    .value =
+      produto.id;
+
 
   document
-  .getElementById(
-    "produtoPreco"
-  )
-  .value =
-  produto.preco || "";
+    .getElementById(
+      "produtoNome"
+    )
+    .value =
+      produto.nome ||
+      "";
+
 
   document
-  .getElementById(
-    "produtoEstoque"
-  )
-  .value =
-  produto.estoque ?? 0;
+    .getElementById(
+      "produtoPreco"
+    )
+    .value =
+      produto.preco ||
+      "";
+
 
   document
-  .getElementById(
-    "produtoCategoria"
-  )
-  .value =
-  produto.categoria || "";
+    .getElementById(
+      "produtoEstoque"
+    )
+    .value =
+      produto.estoque ??
+      0;
+
 
   document
-  .getElementById(
-    "produtoDescricao"
-  )
-  .value =
-  produto.descricao || "";
+    .getElementById(
+      "produtoCategoria"
+    )
+    .value =
+      produto.categoria ||
+      "";
+
 
   document
-  .getElementById(
-    "produtoAtivo"
-  )
-  .checked =
-  produto.ativo !== false;
+    .getElementById(
+      "produtoDescricao"
+    )
+    .value =
+      produto.descricao ||
+      "";
+
 
   document
-  .getElementById(
-    "tituloFormulario"
-  )
-  .textContent =
-  "✏️ Editar produto";
+    .getElementById(
+      "produtoAtivo"
+    )
+    .checked =
+      produto.ativo !== false;
+
 
   document
-  .getElementById(
-    "botaoSalvar"
-  )
-  .textContent =
-  "SALVAR ALTERAÇÕES";
+    .getElementById(
+      "tituloFormulario"
+    )
+    .textContent =
+      "✏️ Editar produto";
+
 
   document
-  .getElementById(
-    "botaoCancelar"
-  )
-  .style.display =
-  "block";
+    .getElementById(
+      "botaoSalvar"
+    )
+    .textContent =
+      "SALVAR ALTERAÇÕES";
 
-  /*
-  Carrega fotos públicas.
-  */
+
+  document
+    .getElementById(
+      "botaoCancelar"
+    )
+    .style.display =
+      "block";
+
+
+  /* FOTOS */
 
   const {
     data:
-    fotos,
-    error:
-    erroFotos
+      fotos
   } =
-  await supabasePublico
-  .from(
-    "Fotos_Produtos"
-  )
-  .select("*")
-  .eq(
-    "produto_id",
-    Number(id)
-  )
-  .order(
-    "ordem",
-    {
-      ascending:true
-    }
-  );
+    await supabasePublico
+      .from(
+        "Fotos_Produtos"
+      )
+      .select("*")
+      .eq(
+        "produto_id",
+        Number(id)
+      )
+      .order(
+        "ordem",
+        {
+          ascending:true
+        }
+      );
 
-  if(erroFotos){
-
-    console.error(
-      "Erro fotos:",
-      erroFotos
-    );
-
-  }
 
   fotosFormulario =
-  (fotos || [])
-  .map(
-    foto => ({
-      id:foto.id,
-      foto_url:
-        foto.foto_url,
-      arquivo:null,
-      preview:null,
-      principal:
-        Boolean(
-          foto.principal
-        ),
-      nova:false
-    })
-  );
+    (fotos || [])
+      .map(
+        foto => ({
+          id:
+            foto.id,
+          foto_url:
+            foto.foto_url,
+          arquivo:null,
+          preview:null,
+          principal:
+            Boolean(
+              foto.principal
+            )
+        })
+      );
 
-  /*
-  Produto antigo ainda não
-  cadastrado em Fotos_Produtos.
-  */
 
   if(
-    fotosFormulario.length === 0 &&
+    !fotosFormulario.length &&
     produto.foto_url
   ){
 
@@ -3239,11 +3503,10 @@ async function editarProduto(
         produto.foto_url,
       arquivo:null,
       preview:null,
-      principal:true,
-      nova:false
+      principal:true
     });
-
   }
+
 
   if(
     fotosFormulario.length &&
@@ -3254,84 +3517,140 @@ async function editarProduto(
   ){
 
     fotosFormulario[0]
-    .principal =
-    true;
-
+      .principal =
+        true;
   }
+
 
   renderizarFotosFormulario();
 
-  /*
-  Carrega variantes públicas.
-  */
+
+  /* VARIANTES */
 
   const {
     data:
-    variantes,
+      variantes,
     error:
-    erroVariantes
+      erroVariantes
   } =
-  await supabasePublico
-  .from("Variantes")
-  .select("*")
-  .eq(
-    "produto_id",
-    Number(id)
-  )
-  .order(
-    "id",
-    {
-      ascending:true
-    }
-  );
+    await supabasePublico
+      .from(
+        "Variantes"
+      )
+      .select("*")
+      .eq(
+        "produto_id",
+        Number(id)
+      )
+      .order(
+        "id",
+        {
+          ascending:true
+        }
+      );
+
 
   if(erroVariantes){
 
     console.error(
-      "Erro variantes:",
       erroVariantes
     );
-
   }
 
-  variantesFormulario =
+
+  const mapa =
+    new Map();
+
+
   (variantes || [])
-  .map(
-    variante => ({
+    .forEach(
+      variante => {
 
-      id:
-        variante.id,
+        const chave =
+          String(
+            variante.cor ||
+            ""
+          )
+          +
+          "|||"
+          +
+          String(
+            variante.estampa ||
+            ""
+          )
+          +
+          "|||"
+          +
+          String(
+            variante.foto_url ||
+            ""
+          );
 
-      cor:
-        variante.cor || "",
 
-      tamanho:
-        variante.tamanho ||
-        "Tamanho Único (veste 36 ao 42)",
+        if(
+          !mapa.has(
+            chave
+          )
+        ){
 
-      estampa:
-        variante.estampa || "",
+          mapa.set(
+            chave,
+            {
+              cor:
+                variante.cor ||
+                "",
+              estampa:
+                variante.estampa ||
+                "",
+              foto_url:
+                variante.foto_url ||
+                null,
+              arquivo:null,
+              preview:null,
+              tamanhos:
+                criarMapaTamanhos()
+            }
+          );
+        }
 
-      estoque:
-        Number(
-          variante.estoque || 0
-        ),
 
-      ativo:
-        variante.ativo !== false,
+        const opcao =
+          mapa.get(
+            chave
+          );
 
-      foto_url:
-        variante.foto_url ||
-        null,
 
-      arquivo:null,
+        if(
+          opcao.tamanhos[
+            variante.tamanho
+          ]
+        ){
 
-      preview:null
+          opcao.tamanhos[
+            variante.tamanho
+          ] = {
+            ativo:
+              variante.ativo !== false,
+            estoque:
+              Number(
+                variante.estoque ||
+                0
+              )
+          };
+        }
 
-    })
-  );
+      }
+    );
 
-  renderizarVariantes();
+
+  opcoesFormulario =
+    Array.from(
+      mapa.values()
+    );
+
+
+  renderizarOpcoes();
+
 
   window.scrollTo({
     top:0,
@@ -3340,8 +3659,9 @@ async function editarProduto(
 
 }
 
+
 /* =========================
-   LIMPAR FORM
+   LIMPAR
 ========================= */
 
 function cancelarEdicao(){
@@ -3350,86 +3670,110 @@ function cancelarEdicao(){
 
 }
 
+
 function limparFormulario(){
 
   document
-  .getElementById(
-    "produtoId"
-  )
-  .value = "";
+    .getElementById(
+      "produtoId"
+    )
+    .value =
+      "";
+
 
   document
-  .getElementById(
-    "produtoNome"
-  )
-  .value = "";
+    .getElementById(
+      "produtoNome"
+    )
+    .value =
+      "";
+
 
   document
-  .getElementById(
-    "produtoPreco"
-  )
-  .value = "";
+    .getElementById(
+      "produtoPreco"
+    )
+    .value =
+      "";
+
 
   document
-  .getElementById(
-    "produtoEstoque"
-  )
-  .value = "0";
+    .getElementById(
+      "produtoEstoque"
+    )
+    .value =
+      "0";
+
 
   document
-  .getElementById(
-    "produtoCategoria"
-  )
-  .value = "";
+    .getElementById(
+      "produtoCategoria"
+    )
+    .value =
+      "";
+
 
   document
-  .getElementById(
-    "produtoDescricao"
-  )
-  .value = "";
+    .getElementById(
+      "produtoDescricao"
+    )
+    .value =
+      "";
+
 
   document
-  .getElementById(
-    "produtoFotosArquivos"
-  )
-  .value = "";
+    .getElementById(
+      "produtoFotosArquivos"
+    )
+    .value =
+      "";
+
 
   document
-  .getElementById(
-    "produtoAtivo"
-  )
-  .checked = true;
+    .getElementById(
+      "produtoAtivo"
+    )
+    .checked =
+      true;
 
-  fotosFormulario = [];
 
-  variantesFormulario = [];
+  fotosFormulario =
+    [];
+
+  opcoesFormulario =
+    [];
+
 
   renderizarFotosFormulario();
 
-  renderizarVariantes();
+  renderizarOpcoes();
+
 
   document
-  .getElementById(
-    "tituloFormulario"
-  )
-  .textContent =
-  "➕ Cadastrar produto";
+    .getElementById(
+      "tituloFormulario"
+    )
+    .textContent =
+      "➕ Cadastrar produto";
+
 
   document
-  .getElementById(
-    "botaoSalvar"
-  )
-  .textContent =
-  "CADASTRAR PRODUTO";
+    .getElementById(
+      "botaoSalvar"
+    )
+    .textContent =
+      "CADASTRAR PRODUTO";
+
 
   document
-  .getElementById(
-    "botaoCancelar"
-  )
-  .style.display =
-  "none";
+    .getElementById(
+      "botaoCancelar"
+    )
+    .style.display =
+      "none";
 
 }
+
 
 /* =========================
    ATIVAR / DESATIVAR
@@ -3440,35 +3784,42 @@ async function alternarProduto(
   ativoAtual
 ){
 
-  const { error } =
-  await supabaseClient
-  .from("Produtos")
-  .update({
-    ativo:
-      !ativoAtual
-  })
-  .eq(
-    "id",
-    id
-  );
+  const {
+    error
+  } =
+    await supabaseClient
+      .from(
+        "Produtos"
+      )
+      .update({
+        ativo:
+          !ativoAtual
+      })
+      .eq(
+        "id",
+        id
+      );
+
 
   if(error){
 
     alert(
-      "Erro ao alterar produto: " +
+      "Erro ao alterar produto: "
+      +
       error.message
     );
 
     return;
-
   }
+
 
   await carregarProdutos();
 
 }
 
+
 /* =========================
-   EXCLUIR
+   EXCLUIR PRODUTO
 ========================= */
 
 async function excluirProduto(
@@ -3476,72 +3827,130 @@ async function excluirProduto(
 ){
 
   const produto =
-  produtos.find(
-    item =>
-      Number(item.id) ===
-      Number(id)
-  );
+    produtos.find(
+      item =>
+        Number(
+          item.id
+        ) ===
+        Number(id)
+    );
+
 
   const confirmar =
-  window.confirm(
-    "Tem certeza que deseja excluir " +
-    (
-      produto?.nome ||
-      "este produto"
-    ) +
-    "?"
-  );
+    window.confirm(
+      "Tem certeza que deseja excluir "
+      +
+      (
+        produto?.nome ||
+        "este produto"
+      )
+      +
+      "?"
+    );
+
 
   if(!confirmar){
     return;
   }
 
-  /*
-  Fotos_Produtos foi criada com
-  CASCADE, então as referências
-  serão apagadas junto ao produto.
 
-  As variantes dependem da FK
-  já existente no banco.
-  */
+  try{
 
-  const {
-    error
-  } =
-  await supabaseClient
-  .from("Produtos")
-  .delete()
-  .eq(
-    "id",
-    id
-  );
+    /*
+      Apaga primeiro as tabelas-filhas.
+      Isso evita erro de foreign key.
+    */
 
-  if(error){
+    const {
+      error:
+        erroVariantes
+    } =
+      await supabaseClient
+        .from(
+          "Variantes"
+        )
+        .delete()
+        .eq(
+          "produto_id",
+          Number(id)
+        );
+
+
+    if(erroVariantes){
+      throw erroVariantes;
+    }
+
+
+    const {
+      error:
+        erroFotos
+    } =
+      await supabaseClient
+        .from(
+          "Fotos_Produtos"
+        )
+        .delete()
+        .eq(
+          "produto_id",
+          Number(id)
+        );
+
+
+    if(erroFotos){
+      throw erroFotos;
+    }
+
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from(
+          "Produtos"
+        )
+        .delete()
+        .eq(
+          "id",
+          Number(id)
+        );
+
+
+    if(error){
+      throw error;
+    }
+
 
     alert(
-      "Erro ao excluir: " +
-      error.message
+      "Produto excluído. ✅"
     );
 
-    return;
 
+    limparFormulario();
+
+    await carregarProdutos();
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+
+    alert(
+      "Erro ao excluir: "
+      +
+      error.message
+    );
   }
-
-  alert(
-    "Produto excluído. ✅"
-  );
-
-  limparFormulario();
-
-  await carregarProdutos();
 
 }
 
-/* ========================= 
-   INICIALIZAÇÃO
+
+/* =========================
+   INICIAR
 ========================= */
 
-renderizarVariantes();
+renderizarOpcoes();
 
 verificarSessao();
 
