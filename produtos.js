@@ -100,7 +100,7 @@ function adicionarEstilosSali(){
     }
 
 
-    /* JANELA */
+    /* JANELA DO PRODUTO */
 
     .sali-modal{
       position:relative;
@@ -165,7 +165,7 @@ function adicionarEstilosSali(){
     }
 
 
-    /* INFO */
+    /* INFORMAÇÕES */
 
     .sali-modal-info{
       padding:15px 2px 3px;
@@ -185,7 +185,7 @@ function adicionarEstilosSali(){
     }
 
 
-    /* TÍTULOS */
+    /* TÍTULOS DAS OPÇÕES */
 
     .sali-titulo-opcao{
       font-size:15px;
@@ -198,7 +198,7 @@ function adicionarEstilosSali(){
     }
 
 
-    /* MINIATURAS DAS ESTAMPAS */
+    /* ESTAMPAS */
 
     .sali-estampas{
       display:flex;
@@ -321,6 +321,11 @@ function adicionarEstilosSali(){
 
     .sali-status-modal.disponivel{
       color:#258238;
+      font-weight:800;
+    }
+
+    .sali-status-modal.alerta{
+      color:#b66a00;
       font-weight:800;
     }
 
@@ -698,7 +703,7 @@ function agruparVariantes(
 
 
 /* =========================================
-   MODAL BASE
+   CRIAR MODAL
 ========================================= */
 
 function garantirModal(){
@@ -908,7 +913,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     AGRUPAR COR / ESTAMPA
+     AGRUPAR ESTAMPAS / CORES
   ===================================== */
 
   const visuais = [];
@@ -955,7 +960,8 @@ function abrirModalProduto(
           item =>
             chaveVisual(
               item
-            ) === chave
+            ) ===
+            chave
         );
 
 
@@ -992,7 +998,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     MINIATURAS DAS ESTAMPAS
+     MOSTRAR ESTAMPAS
   ===================================== */
 
   if(
@@ -1167,7 +1173,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     VARIANTES DO VISUAL ESCOLHIDO
+     VARIANTES ATUAIS
   ===================================== */
 
   function variantesAtuais(){
@@ -1256,7 +1262,8 @@ function abrirModalProduto(
             item =>
               textoSeguro(
                 item.tamanho
-              ) === tamanho
+              ) ===
+              tamanho
           );
 
 
@@ -1449,7 +1456,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     VARIANTE SELECIONADA
+     OBTER VARIANTE SELECIONADA
   ===================================== */
 
   function obterVarianteSelecionada(){
@@ -1514,7 +1521,7 @@ function abrirModalProduto(
 
 
   /* =====================================
-     ATUALIZAR ESTADO
+     STATUS DE ESTOQUE
   ===================================== */
 
   function atualizarEstado(){
@@ -1566,7 +1573,7 @@ function abrirModalProduto(
         true;
 
       status.textContent =
-        "Esta opção está esgotada.";
+        "Produto esgotado";
 
       status.className =
         "sali-status-modal esgotado";
@@ -1579,14 +1586,36 @@ function abrirModalProduto(
       false;
 
 
-    status.textContent =
+    if(
       estoque === 1
-      ? "🔥 Última unidade disponível"
-      : `✅ ${estoque} unidades disponíveis`;
+    ){
 
+      status.textContent =
+        "🔥 Última unidade";
 
-    status.className =
-      "sali-status-modal disponivel";
+      status.className =
+        "sali-status-modal disponivel";
+
+    }else if(
+      estoque <= 3
+    ){
+
+      status.textContent =
+        "⚠️ Poucas unidades disponíveis";
+
+      status.className =
+        "sali-status-modal alerta";
+
+    }else{
+
+      status.textContent =
+        "✅ Disponível";
+
+      status.className =
+        "sali-status-modal disponivel";
+
+    }
+
   }
 
 
@@ -1762,8 +1791,6 @@ function abrirModalProduto(
   );
 
 
-  /* VOLTAR MODAL PARA O TOPO */
-
   const modal =
     overlay.querySelector(
       ".sali-modal"
@@ -1779,7 +1806,7 @@ function abrirModalProduto(
 
 
 /* =========================================
-   CRIAR CARD
+   CRIAR CARD DO PRODUTO
 ========================================= */
 
 function criarCardProduto(
