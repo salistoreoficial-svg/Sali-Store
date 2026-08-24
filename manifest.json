@@ -8,12 +8,17 @@
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "orientation": "portrait",
-  "icons": [
-    {
-     "src": "2FB4D351-BB4F-4790-8933-22B8592A6EEC.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
-}
+"icons": [
+  {
+    "src": "sali-icon-180.png",
+    "sizes": "180x180",
+    "type": "image/png",
+    "purpose": "any"
+  },
+  {
+    "src": "sali-icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }
+]
