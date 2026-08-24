@@ -1852,7 +1852,346 @@ function abrirModalProduto(
 
 }
 
+/* =========================================
+   BOLINHAS DE COR / ESTAMPA NA VITRINE
+========================================= */
 
+function normalizarCorSali(valor){
+
+  return textoSeguro(valor)
+  .toLowerCase()
+  .normalize("NFD")
+  .replace(
+    /[\u0300-\u036f]/g,
+    ""
+  );
+
+}
+
+
+function codigoCorSali(nome){
+
+  const cor =
+  normalizarCorSali(nome);
+
+  const mapa = {
+
+    "preto":"#111111",
+
+    "branco":"#ffffff",
+
+    "off white":"#f6f1e7",
+
+    "bege":"#d7c1a5",
+
+    "nude":"#d7ad95",
+
+    "marrom":"#6e4938",
+
+    "caramelo":"#b97844",
+
+    "rosa":"#e99ab9",
+
+    "pink":"#e52d86",
+
+    "rosa bebe":"#f5c8d9",
+
+    "vermelho":"#c51f32",
+
+    "vinho":"#72243a",
+
+    "azul":"#3867d6",
+
+    "azul bebe":"#a9d7ee",
+
+    "azul marinho":"#182a4d",
+
+    "verde":"#4b8a61",
+
+    "verde militar":"#596044",
+
+    "verde bandeira":"#168447",
+
+    "amarelo":"#f2cf43",
+
+    "laranja":"#e88736",
+
+    "roxo":"#744995",
+
+    "lilas":"#b596cf",
+
+    "cinza":"#9c9c9c",
+
+    "prata":"#c6c8ca",
+
+    "dourado":"#c9a45b"
+
+  };
+
+
+  return (
+    mapa[cor]
+    ||
+    "#d9d9d9"
+  );
+
+}
+
+
+function criarAmostrasCard(
+  variantes,
+  imagemProduto
+){
+
+  const area =
+  document.createElement(
+    "div"
+  );
+
+  area.className =
+  "sali-card-variantes";
+
+
+  if(
+    !variantes ||
+    !variantes.length
+  ){
+
+    return area;
+
+  }
+
+
+  const opcoes = [];
+
+  const chaves =
+  new Set();
+
+
+  variantes.forEach(
+    variante => {
+
+      /*
+        Só mostra opções
+        que possuem estoque.
+      */
+
+      if(
+        Number(
+          variante.estoque || 0
+        ) <= 0
+      ){
+
+        return;
+
+      }
+
+
+      const cor =
+      textoSeguro(
+        variante.cor
+      );
+
+
+      const estampa =
+      textoSeguro(
+        variante.estampa
+      );
+
+
+      if(
+        !cor &&
+        !estampa
+      ){
+
+        return;
+
+      }
+
+
+      const chave =
+      estampa
+      ?
+      "estampa|" + estampa
+      :
+      "cor|" + cor;
+
+
+      if(
+        chaves.has(chave)
+      ){
+
+        return;
+
+      }
+
+
+      chaves.add(chave);
+
+
+      opcoes.push({
+
+        tipo:
+        estampa
+        ?
+        "estampa"
+        :
+        "cor",
+
+        nome:
+        estampa ||
+        cor,
+
+        foto:
+        textoSeguro(
+          variante.foto_url
+        )
+
+      });
+
+    }
+  );
+
+
+  /*
+    Máximo de 4 bolinhas
+    visíveis no card.
+  */
+
+  const limite =
+  4;
+
+
+  opcoes
+  .slice(
+    0,
+    limite
+  )
+  .forEach(
+    opcao => {
+
+      const bolinha =
+      document.createElement(
+        "button"
+      );
+
+
+      bolinha.type =
+      "button";
+
+
+      bolinha.className =
+      "sali-card-cor";
+
+
+      bolinha.title =
+      opcao.nome;
+
+
+      bolinha.setAttribute(
+        "aria-label",
+        opcao.nome
+      );
+
+
+      if(
+        opcao.tipo ===
+        "estampa"
+      ){
+
+        bolinha.classList.add(
+          "estampa"
+        );
+
+
+        if(
+          opcao.foto
+        ){
+
+          bolinha.style.backgroundImage =
+          `url("${opcao.foto}")`;
+
+        }
+
+      }else{
+
+        bolinha.style.background =
+        codigoCorSali(
+          opcao.nome
+        );
+
+      }
+
+
+      /*
+        Ao tocar na bolinha,
+        troca a foto do card.
+      */
+
+      bolinha.addEventListener(
+        "click",
+        function(event){
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+
+          if(
+            opcao.foto &&
+            imagemProduto
+          ){
+
+            imagemProduto.src =
+            opcao.foto;
+
+          }
+
+        }
+      );
+
+
+      area.appendChild(
+        bolinha
+      );
+
+    }
+  );
+
+
+  if(
+    opcoes.length >
+    limite
+  ){
+
+    const mais =
+    document.createElement(
+      "span"
+    );
+
+
+    mais.className =
+    "sali-card-mais";
+
+
+    mais.textContent =
+    "+" +
+    (
+      opcoes.length -
+      limite
+    );
+
+
+    area.appendChild(
+      mais
+    );
+
+  }
+
+
+  return area;
+
+}
 /* =========================================
    CARD DO PRODUTO
 ========================================= */
@@ -1915,7 +2254,11 @@ function criarCardProduto(
   moedaProduto(
     produto.preco
   );
-
+  const amostras =
+  criarAmostrasCard(
+    variantes,
+    imagem
+  );
   const botao =
   document.createElement(
     "button"
@@ -2024,9 +2367,21 @@ function criarCardProduto(
 
   }
 
-  info.appendChild(
+    info.appendChild(
     nome
   );
+
+
+  if(
+    amostras.children.length
+  ){
+
+    info.appendChild(
+      amostras
+    );
+
+  }
+
 
   info.appendChild(
     preco
