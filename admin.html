@@ -670,8 +670,1233 @@ a{
 
 .detalhe-box{
   background:#f7f7f7;
-  border
-  <!-- CANCELAMENTOS -->
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:10px;
+}
+
+.detalhe-box strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.item-pedido{
+  display:grid;
+  grid-template-columns:54px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+.item-pedido:last-child{
+  border-bottom:0;
+}
+
+.item-pedido img{
+  width:54px;
+  height:68px;
+  object-fit:cover;
+  border-radius:8px;
+  background:#eee;
+}
+
+.item-pedido .nome{
+  font-size:13px;
+  font-weight:800;
+  line-height:1.3;
+}
+
+.item-pedido .qtd{
+  font-size:11px;
+  color:#777;
+  margin-top:4px;
+}
+
+.item-pedido .valor{
+  font-size:13px;
+  font-weight:900;
+}
+
+.linha-total{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 0;
+  font-size:14px;
+}
+
+.linha-total.final{
+  font-size:18px;
+  font-weight:900;
+  border-top:1px solid #ddd;
+  margin-top:5px;
+  padding-top:11px;
+}
+
+.status-select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:#fff;
+}
+
+.salvar-status{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
+}
+
+
+/* =========================
+   PRODUTOS
+========================= */
+
+.escolher-foto{
+  display:block;
+  width:100%;
+  background:#111;
+  color:#fff;
+  padding:14px;
+  text-align:center;
+  border-radius:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+#produtoFotosArquivos{
+  display:none;
+}
+
+.galeria-edicao{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+.foto-card{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:8px;
+  background:#fff;
+  position:relative;
+}
+
+.foto-card.principal{
+  border:2px solid var(--rosa);
+}
+
+.foto-card img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:9px;
+  display:block;
+  background:#eee;
+}
+
+.badge-principal{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:var(--rosa);
+  color:#fff;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.foto-acoes{
+  display:grid;
+  gap:6px;
+  margin-top:8px;
+}
+
+.foto-acoes button{
+  border:0;
+  border-radius:8px;
+  padding:8px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.definir-principal{
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
+}
+
+.excluir-foto{
+  background:#ffe8e8;
+  color:#b80000;
+}
+
+.opcoes-area{
+  display:grid;
+  gap:15px;
+}
+
+.opcao-card{
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:15px;
+  background:#fafafa;
+}
+
+.opcao-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.remover-opcao{
+  border:0;
+  background:#ffe5e5;
+  color:#bd0000;
+  padding:8px 10px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.tipo-opcao{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.tipo-opcao button{
+  padding:12px;
+  border:2px solid #ddd;
+  border-radius:10px;
+  background:#fff;
+  font-weight:900;
+}
+
+.tipo-opcao button.selecionado{
+  border-color:var(--rosa);
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
+}
+
+.foto-opcao-area{
+  margin:10px 0 15px;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:12px;
+}
+
+.foto-opcao-area label{
+  display:block;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.preview-opcao{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin-top:10px;
+}
+
+.preview-opcao img{
+  width:95px;
+  height:125px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#eee;
+}
+
+.remover-foto-opcao{
+  border:0;
+  background:#ffe8e8;
+  color:#b80000;
+  padding:9px 11px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.tamanhos-titulo{
+  font-size:14px;
+  font-weight:900;
+  margin:10px 0;
+}
+
+.tamanhos-grade{
+  display:grid;
+  gap:8px;
+}
+
+.tamanho-linha{
+  display:grid;
+  grid-template-columns:1fr 110px;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:10px;
+}
+
+.tamanho-check{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:800;
+}
+
+.tamanho-check input{
+  width:20px;
+  height:20px;
+}
+
+.estoque-tamanho{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:9px;
+}
+
+.estoque-tamanho:disabled{
+  background:#eee;
+  opacity:.55;
+}
+
+.adicionar-opcao{
+  width:100%;
+  border:1px dashed var(--rosa);
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
+  margin-top:14px;
+}
+
+.estoque-calculado{
+  background:#f4f4f4;
+  padding:12px;
+  border-radius:10px;
+  margin-top:14px;
+  font-size:14px;
+}
+
+.estoque-calculado strong{
+  color:var(--rosa);
+}
+
+.ativo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:15px 0 20px;
+  font-weight:700;
+}
+
+.ativo-area input{
+  width:20px;
+  height:20px;
+}
+
+.botoes-form{
+  display:flex;
+  gap:10px;
+}
+
+.salvar{
+  flex:1;
+  border:0;
+  background:var(--rosa);
+  color:#fff;
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
+}
+
+.salvar:disabled{
+  opacity:.6;
+}
+
+.cancelar{
+  display:none;
+  border:1px solid #ccc;
+  background:#fff;
+  padding:14px;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.cabecalho-lista{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.buscar{
+  width:100%;
+  max-width:330px;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+
+.lista-produtos{
+  display:grid;
+  gap:12px;
+}
+
+.produto-card{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+  border:1px solid #eee;
+  padding:12px;
+  border-radius:14px;
+  background:#fff;
+}
+
+.produto-card img{
+  width:90px;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#eee;
+}
+
+.sem-foto{
+  width:90px;
+  height:120px;
+  background:#eee;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#999;
+  font-size:12px;
+  text-align:center;
+}
+
+.produto-info h4{
+  margin-bottom:6px;
+  font-size:18px;
+}
+
+.produto-info .preco{
+  color:var(--rosa);
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.detalhes{
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.status-produto{
+  display:inline-block;
+  margin-top:7px;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.status-produto.ativo{
+  background:#e4f8e8;
+  color:#167329;
+}
+
+.status-produto.inativo{
+  background:#f3f3f3;
+  color:#777;
+}
+
+.acoes{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.acoes button{
+  border:0;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.editar{
+  background:#000;
+  color:#fff;
+}
+
+.alternar{
+  background:#fff1f7;
+  color:#be1763;
+}
+
+.excluir{
+  background:#ffe6e6;
+  color:#c80000;
+}
+
+
+/* =========================
+   LAYOUT / MAIS
+========================= */
+
+.layout-card,
+.entrega-config-card,
+.pagamento-config-card{
+  border:1px solid #eee;
+  border-radius:15px;
+  padding:15px;
+  margin-bottom:12px;
+  background:#fff;
+}
+
+.layout-card h4{
+  font-size:16px;
+  margin-bottom:5px;
+}
+
+.layout-card > p{
+  color:#777;
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+.layout-toggle,
+.entrega-config-topo,
+.pagamento-config-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.layout-toggle{
+  padding:13px 0;
+  border-bottom:1px solid #eee;
+}
+
+.layout-toggle:last-child{
+  border-bottom:0;
+}
+
+.layout-toggle-texto{
+  flex:1;
+}
+
+.layout-toggle-texto strong,
+.entrega-config-topo strong,
+.pagamento-config-card strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:3px;
+}
+
+.layout-toggle-texto small,
+.entrega-config-topo p,
+.pagamento-config-card p{
+  color:#777;
+  font-size:12px;
+  line-height:1.4;
+}
+
+.switch{
+  position:relative;
+  display:inline-block;
+  width:52px;
+  height:30px;
+  flex:0 0 auto;
+}
+
+.switch input{
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.slider{
+  position:absolute;
+  cursor:pointer;
+  inset:0;
+  background:#ccc;
+  transition:.2s;
+  border-radius:30px;
+}
+
+.slider:before{
+  position:absolute;
+  content:"";
+  width:24px;
+  height:24px;
+  left:3px;
+  bottom:3px;
+  background:#fff;
+  transition:.2s;
+  border-radius:50%;
+  box-shadow:0 1px 4px rgba(0,0,0,.2);
+}
+
+.switch input:checked + .slider{
+  background:var(--rosa);
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(22px);
+}
+
+.grade-cores{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.cor-config{
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:10px;
+  background:#fafafa;
+}
+
+.cor-config label{
+  display:block;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.cor-config input[type="color"]{
+  width:100%;
+  height:45px;
+  border:0;
+  background:transparent;
+}
+
+.preview-banner{
+  margin-top:12px;
+  border:1px dashed #ccc;
+  border-radius:13px;
+  overflow:hidden;
+  background:#f7f7f7;
+  min-height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.preview-banner img{
+  width:100%;
+  max-height:280px;
+  object-fit:cover;
+  display:block;
+}
+
+.preview-banner-vazio{
+  color:#999;
+  font-size:12px;
+  padding:30px;
+  text-align:center;
+}
+
+#layoutBannerArquivo{
+  display:none;
+}
+
+.botao-banner,
+.botao-loja{
+  display:block;
+  width:100%;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.remover-banner{
+  width:100%;
+  margin-top:9px;
+  border:0;
+  background:#ffe8e8;
+  color:#b60000;
+  padding:11px;
+  border-radius:10px;
+  font-weight:900;
+}
+
+.salvar-layout,
+.salvar-entregas{
+  width:100%;
+  border:0;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  font-weight:900;
+}
+
+.salvar-layout{
+  background:var(--rosa);
+}
+
+.salvar-entregas{
+  background:#000;
+}
+
+.status-layout,
+.status-entregas{
+  margin-top:10px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.status-layout.sucesso,
+.status-entregas.sucesso{
+  color:#197330;
+}
+
+.status-layout.erro,
+.status-entregas.erro{
+  color:#ba0000;
+}
+
+.entrega-config-topo{
+  align-items:flex-start;
+  margin-bottom:13px;
+}
+
+.taxa-area{
+  background:#f8f8f8;
+  border-radius:11px;
+  padding:12px;
+}
+
+.taxa-area label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.taxa-input-wrap{
+  display:flex;
+  align-items:center;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:#fff;
+  overflow:hidden;
+}
+
+.taxa-input-wrap span{
+  padding-left:12px;
+  font-size:14px;
+  font-weight:900;
+  color:#555;
+}
+
+.taxa-input-wrap input{
+  flex:1;
+  border:0;
+  padding:12px 10px;
+  outline:none;
+  min-width:0;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(min-width:820px){
+
+  body{
+    padding-bottom:0;
+  }
+
+  .nav-admin{
+    top:70px;
+    bottom:auto;
+    left:20px;
+    right:auto;
+    width:190px;
+    display:flex;
+    flex-direction:column;
+    border:0;
+    border-radius:16px;
+    padding:8px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+  }
+
+  .nav-item{
+    flex-direction:row;
+    justify-content:flex-start;
+    gap:10px;
+    padding:11px;
+    font-size:13px;
+  }
+
+  .conteudo{
+    padding-left:225px;
+  }
+
+  .dashboard-grade{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .atalhos{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+}
+
+@media(max-width:650px){
+
+  .duplo{
+    grid-template-columns:1fr;
+  }
+
+  .tamanho-linha{
+    grid-template-columns:1fr 95px;
+  }
+
+  .cabecalho-lista{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .buscar{
+    max-width:none;
+  }
+
+  .grade-cores{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- LOGIN -->
+
+<section
+  class="login-tela"
+  id="loginTela"
+>
+
+  <div class="login-box">
+
+    <div class="login-logo">
+
+      <h1>SALI STORE</h1>
+
+      <p>Painel administrativo</p>
+
+    </div>
+
+    <div class="campo">
+
+      <label>E-mail</label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+      >
+
+    </div>
+
+    <div class="campo">
+
+      <label>Senha</label>
+
+      <input
+        type="password"
+        id="senha"
+        placeholder="Digite sua senha"
+      >
+
+    </div>
+
+    <button
+      class="botao-login"
+      onclick="entrar()"
+    >
+      ENTRAR NO PAINEL
+    </button>
+
+    <div
+      class="erro-login"
+      id="erroLogin"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- PAINEL -->
+
+<section
+  class="painel"
+  id="painel"
+>
+
+<header class="topo">
+
+  <div class="topo-conteudo">
+
+    <div class="marca-admin">
+
+      <div class="marca-icone">
+        S
+      </div>
+
+      <div>
+
+        <h1>SALI STORE</h1>
+
+        <small>Painel de controle</small>
+
+      </div>
+
+    </div>
+
+    <button
+      class="sair"
+      onclick="sair()"
+    >
+      SAIR
+    </button>
+
+  </div>
+
+</header>
+
+
+<!-- MENU -->
+
+<nav class="nav-admin">
+
+  <button
+    class="nav-item ativo"
+    data-pagina="inicio"
+    onclick="abrirPagina('inicio',this)"
+  >
+    <span class="icone">🏠</span>
+    <span>Início</span>
+  </button>
+
+  <button
+    class="nav-item"
+    data-pagina="pedidos"
+    onclick="abrirPagina('pedidos',this)"
+  >
+    <span class="icone">🧾</span>
+    <span>Pedidos</span>
+  </button>
+
+  <button
+    class="nav-item"
+    data-pagina="produtos"
+    onclick="abrirPagina('produtos',this)"
+  >
+    <span class="icone">👗</span>
+    <span>Produtos</span>
+  </button>
+
+  <button
+    class="nav-item"
+    data-pagina="cancelamentos"
+    onclick="abrirPagina('cancelamentos',this)"
+  >
+    <span class="icone">❌</span>
+    <span>Cancelados</span>
+  </button>
+
+  <button
+    class="nav-item"
+    data-pagina="mais"
+    onclick="abrirPagina('mais',this)"
+  >
+    <span class="icone">☰</span>
+    <span>Mais</span>
+  </button>
+
+</nav>
+
+
+<main class="conteudo">
+
+
+<!-- INÍCIO -->
+
+<section
+  class="pagina ativa"
+  id="pagina-inicio"
+>
+
+  <div class="titulo-pagina">
+
+    <h2>Visão geral</h2>
+
+    <p>
+      Acompanhe os pedidos, vendas e estoque da SALI.
+    </p>
+
+  </div>
+
+
+  <div class="dashboard-grade">
+
+    <div class="dash-card destaque">
+
+      <small>Vendas de hoje</small>
+
+      <strong id="dashVendasHoje">
+        R$ 0,00
+      </strong>
+
+      <span
+        class="mini"
+        id="dashPedidosHoje"
+      >
+        0 pedidos hoje
+      </span>
+
+    </div>
+
+
+    <div class="dash-card">
+
+      <small>Pedidos novos</small>
+
+      <strong id="dashNovos">
+        0
+      </strong>
+
+      <span class="mini">
+        Aguardando atendimento
+      </span>
+
+    </div>
+
+
+    <div class="dash-card">
+
+      <small>Em andamento</small>
+
+      <strong id="dashAndamento">
+        0
+      </strong>
+
+      <span class="mini">
+        Confirmados / separação / entrega
+      </span>
+
+    </div>
+
+
+    <div class="dash-card">
+
+      <small>Estoque total</small>
+
+      <strong id="dashEstoque">
+        0
+      </strong>
+
+      <span
+        class="mini"
+        id="dashProdutos"
+      >
+        0 produtos cadastrados
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>⚡ Atalhos</h3>
+
+    <div class="atalhos">
+
+      <button
+        class="atalho"
+        onclick="abrirPagina('pedidos')"
+      >
+        <span>🧾</span>
+        Ver pedidos
+      </button>
+
+      <button
+        class="atalho"
+        onclick="abrirPagina('produtos')"
+      >
+        <span>➕</span>
+        Cadastrar produto
+      </button>
+
+      <button
+        class="atalho"
+        onclick="abrirPagina('cancelamentos')"
+      >
+        <span>❌</span>
+        Cancelamentos
+      </button>
+
+      <button
+        class="atalho"
+        onclick="abrirLojaVisitante()"
+      >
+        <span>🌐</span>
+        Ver minha loja
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>🆕 Últimos pedidos</h3>
+
+    <div id="ultimosPedidos"></div>
+
+  </div>
+
+</section>
+
+
+<!-- PEDIDOS -->
+
+<section
+  class="pagina"
+  id="pagina-pedidos"
+>
+
+  <div class="titulo-pagina">
+
+    <h2>Pedidos</h2>
+
+    <p>
+      Gerencie o atendimento desde o pedido novo até a entrega.
+    </p>
+
+  </div>
+
+
+  <div
+    class="filtros-scroll"
+    id="filtrosPedidos"
+  >
+
+    <button
+      class="filtro-pedido ativo"
+      onclick="filtrarPedidosStatus('Todos',this)"
+    >
+      Todos
+    </button>
+
+    <button
+      class="filtro-pedido"
+      onclick="filtrarPedidosStatus('Novo',this)"
+    >
+      Novos
+    </button>
+
+    <button
+      class="filtro-pedido"
+      onclick="filtrarPedidosStatus('Confirmado',this)"
+    >
+      Confirmados
+    </button>
+
+    <button
+      class="filtro-pedido"
+      onclick="filtrarPedidosStatus('Em separação',this)"
+    >
+      Em separação
+    </button>
+
+    <button
+      class="filtro-pedido"
+      onclick="filtrarPedidosStatus('Saiu para entrega',this)"
+    >
+      Em entrega
+    </button>
+
+    <button
+      class="filtro-pedido"
+      onclick="filtrarPedidosStatus('Entregue',this)"
+    >
+      Entregues
+    </button>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <div
+      class="campo"
+      style="margin-bottom:12px"
+    >
+
+      <input
+        type="search"
+        id="buscaPedidos"
+        placeholder="Buscar número, cliente ou telefone..."
+        oninput="renderizarPedidos()"
+      >
+
+    </div>
+
+
+    <div
+      class="lista-pedidos"
+      id="listaPedidos"
+    >
+
+      <div class="sem-dados">
+        Carregando pedidos...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- CANCELAMENTOS -->
 
 <section
   class="pagina"
@@ -1944,7 +3169,7 @@ const TAMANHOS = [
   }
 
 ];
- /* =========================
+  /* =========================
    LOGIN
 ========================= */
 
@@ -8063,4 +9288,4 @@ verificarSessao();
 
 </body>
 
-</html>   
+</html> 
