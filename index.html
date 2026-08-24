@@ -1,40 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
-<title>SALI STORE | Moda Feminina</title>
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta
+  name="theme-color"
+  content="#ffffff"
+>
+
+<title id="tituloPagina">
+  SALI STORE | Moda Feminina
+</title>
+
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+
 :root{
+
   --pink:#d92f82;
+
   --pink-dark:#a91c5f;
+
   --pink-soft:#fff3f8;
-  --black:#111;
+
+  --black:#111111;
+
   --text:#1b1b1e;
+
   --muted:#727278;
+
   --line:#e9e9ec;
+
   --bg:#f7f7f8;
-  --white:#fff;
+
+  --white:#ffffff;
+
 }
+
 
 html{
   scroll-behavior:smooth;
 }
 
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;
-  background:#fff;
+
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "SF Pro Display",
+  "Segoe UI",
+  Arial,
+  sans-serif;
+
+  background:var(--white);
+
   color:var(--text);
+
   -webkit-font-smoothing:antialiased;
+
 }
+
 
 button,
 input,
@@ -43,9 +83,11 @@ textarea{
   font:inherit;
 }
 
+
 button{
   cursor:pointer;
 }
+
 
 a{
   text-decoration:none;
@@ -53,974 +95,1805 @@ a{
 }
 
 
-/* FAIXA SUPERIOR */
+/* =========================================
+   BARRA SUPERIOR
+========================================= */
 
 .topo{
-  background:#111;
+
+  background:var(--black);
+
   color:#fff;
+
   text-align:center;
+
   padding:9px 15px;
+
   font-size:11px;
+
   font-weight:650;
+
   letter-spacing:.02em;
+
 }
 
 
-/* CABEÇALHO */
+/* =========================================
+   CABEÇALHO
+========================================= */
 
 header{
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line);
+
+  background:
+  rgba(255,255,255,.96);
+
+  backdrop-filter:
+  blur(16px);
+
+  -webkit-backdrop-filter:
+  blur(16px);
+
+  border-bottom:
+  1px solid var(--line);
+
   position:sticky;
+
   top:0;
+
   z-index:20;
+
 }
+
 
 .cabecalho{
+
   max-width:1200px;
+
   margin:auto;
+
   padding:11px 16px;
+
 }
+
 
 .logo-area{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:14px;
+
 }
+
 
 .logo-wrap{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
 }
+
 
 .logo{
+
   width:56px;
+
   height:56px;
+
   object-fit:cover;
+
   border-radius:14px;
+
   background:#111;
+
 }
+
 
 .brand-copy strong{
+
   display:block;
+
   font-size:17px;
+
   letter-spacing:.01em;
+
 }
+
 
 .brand-copy span{
+
   display:block;
+
   color:var(--muted);
+
   font-size:10px;
+
   margin-top:2px;
+
 }
+
 
 .carrinho-botao{
-  border:1px solid #111;
-  background:#111;
+
+  border:1px solid var(--black);
+
+  background:var(--black);
+
   color:#fff;
+
   padding:10px 13px;
+
   border-radius:9px;
+
   font-weight:800;
+
   white-space:nowrap;
+
 }
+
 
 .contador{
+
   background:var(--pink);
+
   min-width:21px;
+
   height:21px;
+
   padding:0 5px;
+
   border-radius:50%;
+
   display:inline-flex;
+
   align-items:center;
+
   justify-content:center;
+
   margin-left:5px;
+
   font-size:10px;
+
 }
 
-
-/* MENU */
 
 nav{
+
   display:flex;
+
   gap:22px;
+
   overflow-x:auto;
+
   white-space:nowrap;
+
   padding-top:12px;
+
   padding-bottom:2px;
+
+  -webkit-overflow-scrolling:touch;
+
 }
+
 
 nav::-webkit-scrollbar{
   display:none;
 }
 
+
 nav a{
+
   font-size:12px;
+
   font-weight:750;
+
   color:#444;
+
 }
 
 
-/* HERO */
+/* =========================================
+   HERO
+========================================= */
 
 .hero{
+
   min-height:520px;
+
   display:flex;
+
   align-items:flex-end;
+
   padding:34px 18px 42px;
+
   background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.04),
-      rgba(0,0,0,.52)
-    ),
-    linear-gradient(
-      135deg,
-      #f2d4e3,
-      #d891b6 45%,
-      #1b1b1d 115%
-    );
+  linear-gradient(
+    180deg,
+    rgba(0,0,0,.04),
+    rgba(0,0,0,.52)
+  ),
+  linear-gradient(
+    135deg,
+    #f2d4e3,
+    #d891b6 45%,
+    #1b1b1d 115%
+  );
+
+  background-size:cover;
+
+  background-position:center;
+
   position:relative;
+
   overflow:hidden;
+
 }
+
 
 .hero:before{
+
   content:"SALI";
+
   position:absolute;
+
   right:-18px;
+
   top:30px;
+
   font-size:120px;
+
   font-weight:900;
+
   letter-spacing:-.08em;
-  color:rgba(255,255,255,.16);
-  transform:rotate(-90deg);
+
+  color:
+  rgba(255,255,255,.16);
+
+  transform:
+  rotate(-90deg);
+
 }
+
+
+.hero.com-banner:before{
+  display:none;
+}
+
 
 .hero-conteudo{
+
   max-width:1200px;
+
   width:100%;
+
   margin:auto;
+
   position:relative;
+
   z-index:1;
+
 }
+
 
 .hero-copy{
+
   max-width:550px;
+
   color:#fff;
+
 }
+
 
 .hero-eyebrow{
+
   display:inline-block;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.35);
+
+  background:
+  rgba(255,255,255,.14);
+
+  border:
+  1px solid
+  rgba(255,255,255,.35);
+
   padding:7px 10px;
+
   border-radius:999px;
+
   font-size:10px;
+
   font-weight:800;
+
   letter-spacing:.08em;
+
   margin-bottom:15px;
+
 }
+
 
 .hero h1{
+
   font-size:48px;
+
   line-height:.98;
+
   letter-spacing:-.055em;
+
   margin-bottom:16px;
+
 }
+
 
 .hero p{
+
   font-size:15px;
+
   line-height:1.55;
-  color:rgba(255,255,255,.9);
+
+  color:
+  rgba(255,255,255,.9);
+
   max-width:450px;
+
   margin-bottom:22px;
+
 }
 
+
 .hero-actions{
+
   display:flex;
+
   gap:9px;
+
   flex-wrap:wrap;
+
 }
+
 
 .botao-principal,
 .botao-secundario{
+
   border:0;
+
   padding:12px 16px;
+
   border-radius:8px;
+
   font-size:11px;
+
   font-weight:850;
+
 }
+
 
 .botao-principal{
+
   background:#fff;
+
   color:#111;
+
 }
+
 
 .botao-secundario{
+
   background:transparent;
+
   color:#fff;
-  border:1px solid rgba(255,255,255,.55);
+
+  border:
+  1px solid
+  rgba(255,255,255,.55);
+
 }
 
 
-/* BENEFÍCIOS */
+/* =========================================
+   BENEFÍCIOS
+========================================= */
 
 .beneficios{
+
   max-width:1200px;
+
   margin:auto;
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  border-bottom:1px solid var(--line);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  border-bottom:
+  1px solid var(--line);
+
 }
 
+
 .beneficio{
+
   padding:17px 14px;
-  border-right:1px solid var(--line);
+
+  border-right:
+  1px solid var(--line);
+
 }
+
 
 .beneficio:nth-child(2n){
   border-right:0;
 }
 
+
 .beneficio:nth-child(-n+2){
-  border-bottom:1px solid var(--line);
+
+  border-bottom:
+  1px solid var(--line);
+
 }
+
 
 .beneficio strong{
+
   display:block;
+
   font-size:11px;
+
 }
+
 
 .beneficio span{
+
   display:block;
+
   color:var(--muted);
+
   font-size:9.5px;
+
   margin-top:3px;
+
   line-height:1.4;
+
 }
 
 
-/* CATEGORIAS */
+/* =========================================
+   CATEGORIAS
+========================================= */
 
 .categorias{
+
   max-width:1200px;
+
   margin:auto;
+
   padding:42px 16px 20px;
+
 }
+
 
 .section-head{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:end;
+
   gap:12px;
+
   margin-bottom:18px;
+
 }
+
 
 .section-head h2{
+
   font-size:28px;
+
   letter-spacing:-.035em;
+
 }
+
 
 .section-head p{
+
   font-size:11px;
+
   color:var(--muted);
+
   max-width:360px;
+
   line-height:1.5;
+
 }
+
 
 .categorias-grid{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:10px;
+
 }
 
+
 .cat{
+
   min-height:185px;
+
   border-radius:13px;
+
   padding:16px;
+
   display:flex;
+
   align-items:flex-end;
+
   position:relative;
+
   overflow:hidden;
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     145deg,
     #f5d5e4,
     #d57aa6
   );
+
 }
+
 
 .cat:nth-child(2){
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     145deg,
-    #eee,
+    #eeeeee,
     #c9c9cd
   );
+
 }
 
+
 .cat:nth-child(3){
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     145deg,
     #f8e7ef,
     #bd6e97
   );
+
 }
+
 
 .cat:nth-child(4){
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     145deg,
-    #ddd,
-    #999
+    #dddddd,
+    #999999
   );
+
 }
 
+
 .cat:before{
+
   content:"";
+
   position:absolute;
+
   inset:0;
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     180deg,
     transparent 45%,
     rgba(0,0,0,.48)
   );
+
 }
+
 
 .cat span{
+
   position:relative;
+
   color:#fff;
+
   font-size:15px;
+
   font-weight:850;
+
 }
+
 
 .cat small{
+
   display:block;
+
   font-size:9px;
+
   font-weight:650;
+
   margin-top:4px;
-  color:rgba(255,255,255,.8);
+
+  color:
+  rgba(255,255,255,.8);
+
 }
 
 
-/* PRODUTOS */
+/* =========================================
+   PRODUTOS
+========================================= */
 
 .produtos{
+
   max-width:1200px;
+
   margin:auto;
+
   padding:42px 16px;
+
 }
+
 
 .produtos h2{
+
   text-align:left;
+
   font-size:30px;
+
   letter-spacing:-.04em;
+
   margin-bottom:6px;
+
 }
+
 
 .produtos-sub{
+
   color:var(--muted);
+
   font-size:11px;
+
   margin-bottom:22px;
+
 }
+
 
 .grade{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:12px;
+
 }
+
 
 .produto{
+
   background:#fff;
+
   border:0;
+
   border-radius:0;
+
   overflow:hidden;
+
   box-shadow:none;
+
 }
 
-.produto img{
+
+.produto > img{
+
   width:100%;
+
   aspect-ratio:3/4;
+
   object-fit:cover;
+
   display:block;
+
   background:#f2f2f3;
+
 }
+
 
 .info{
+
   padding:10px 2px 14px;
+
 }
+
 
 .info h3{
+
   font-size:13px;
+
   margin-bottom:6px;
+
   font-weight:700;
+
   line-height:1.3;
+
 }
+
 
 .preco{
+
   color:#111;
+
   font-size:16px;
+
   font-weight:850;
+
   margin-bottom:10px;
+
 }
+
 
 .adicionar{
+
   width:100%;
-  border:1px solid #111;
-  background:#111;
+
+  border:
+  1px solid var(--black);
+
+  background:var(--black);
+
   color:#fff;
+
   padding:10px 8px;
+
   border-radius:7px;
+
   font-size:10px;
+
   font-weight:850;
+
 }
 
 
-/* EDITORIAL */
+/* =========================================
+   EDITORIAL
+========================================= */
 
 .editorial{
+
   margin:18px 0 0;
-  background:#111;
+
+  background:var(--black);
+
   color:#fff;
+
   padding:48px 18px;
+
 }
+
 
 .editorial-inner{
+
   max-width:1200px;
+
   margin:auto;
+
   display:grid;
+
   gap:20px;
+
 }
+
 
 .editorial h2{
+
   font-size:34px;
+
   line-height:1;
+
   letter-spacing:-.045em;
+
 }
+
 
 .editorial p{
+
   color:#c8c8cc;
+
   font-size:12px;
+
   line-height:1.65;
+
   max-width:520px;
+
 }
+
 
 .editorial .line{
+
   width:48px;
+
   height:3px;
+
   background:var(--pink);
+
   margin-bottom:14px;
+
 }
 
 
-/* CTA */
+/* =========================================
+   CTA
+========================================= */
 
 .cta{
+
   max-width:1200px;
+
   margin:auto;
+
   padding:42px 16px;
+
 }
+
 
 .cta-card{
-  border:1px solid var(--line);
+
+  border:
+  1px solid var(--line);
+
   border-radius:14px;
+
   padding:24px;
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     135deg,
     #fff,
-    #fff7fb
+    var(--pink-soft)
   );
+
 }
+
 
 .cta-card h3{
+
   font-size:22px;
+
   letter-spacing:-.03em;
+
   margin-bottom:8px;
+
 }
+
 
 .cta-card p{
+
   font-size:11px;
+
   color:var(--muted);
+
   line-height:1.55;
+
   margin-bottom:14px;
+
 }
+
 
 .cta-card button{
+
   border:0;
+
   background:var(--pink);
+
   color:#fff;
+
   padding:10px 13px;
+
   border-radius:8px;
+
   font-weight:800;
+
   font-size:10px;
+
 }
-  /* OVERLAY */
+
+
+/* =========================================
+   CARRINHO
+========================================= */
 
 .overlay{
+
   display:none;
+
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.55);
+
+  background:
+  rgba(0,0,0,.55);
+
   z-index:50;
+
 }
+
 
 .overlay.ativo{
   display:block;
 }
 
 
-/* CARRINHO */
-
 .carrinho{
+
   position:fixed;
+
   top:0;
+
   right:-100%;
+
   width:min(93%,430px);
+
   height:100%;
+
   background:#fff;
+
   z-index:60;
+
   transition:.3s;
+
   display:flex;
+
   flex-direction:column;
+
 }
+
 
 .carrinho.aberto{
   right:0;
 }
 
+
 .carrinho-topo{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   padding:18px;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:
+  1px solid var(--line);
+
 }
+
 
 .carrinho-topo h2{
+
   font-size:18px;
+
 }
+
 
 .fechar{
+
   width:36px;
+
   height:36px;
-  border:1px solid var(--line);
+
+  border:
+  1px solid var(--line);
+
   border-radius:50%;
+
   background:#f5f5f6;
+
   font-size:20px;
+
 }
+
 
 .itens{
+
   flex:1;
+
   overflow-y:auto;
+
   padding:14px;
+
 }
+
 
 .vazio{
+
   text-align:center;
+
   color:#777;
+
   padding:55px 20px;
+
 }
+
 
 .item-carrinho{
+
   display:flex;
+
   gap:11px;
+
   padding:13px 0;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:
+  1px solid var(--line);
+
 }
 
+
 .item-carrinho img{
+
   width:76px;
+
   height:100px;
+
   object-fit:cover;
+
   border-radius:8px;
+
 }
+
 
 .item-dados{
   flex:1;
 }
 
+
 .item-dados h4{
+
   margin-bottom:5px;
+
   font-size:13px;
+
 }
+
+
+.item-dados small{
+
+  color:#666;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+}
+
 
 .item-dados strong{
+
+  display:inline-block;
+
   color:var(--pink);
+
   font-size:13px;
+
+  margin-top:4px;
+
 }
+
 
 .quantidade{
+
   display:flex;
+
   align-items:center;
+
   gap:7px;
+
   margin-top:9px;
+
   flex-wrap:wrap;
+
 }
+
 
 .quantidade button{
+
   width:31px;
+
   height:31px;
+
   border:1px solid #ddd;
+
   background:#fff;
+
   border-radius:7px;
+
   font-size:18px;
+
   font-weight:700;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
 }
+
 
 .quantidade span{
+
   min-width:31px;
+
   height:31px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
-  border:1px solid #ddd;
+
+  border:
+  1px solid #ddd;
+
   border-radius:7px;
+
   font-weight:700;
+
   font-size:11px;
+
 }
+
 
 .remover{
+
   display:block;
+
   width:max-content;
+
   height:auto;
+
   padding:6px 9px;
+
   margin-top:8px;
+
   border:0;
+
   background:#fff0f0;
+
   color:#c90000;
+
   font-size:10px;
+
   font-weight:750;
+
   border-radius:6px;
+
 }
+
 
 .carrinho-rodape{
-  border-top:1px solid var(--line);
+
+  border-top:
+  1px solid var(--line);
+
   padding:16px;
+
 }
+
 
 .total-linha{
+
   display:flex;
+
   justify-content:space-between;
+
   font-size:17px;
+
   font-weight:850;
+
   margin-bottom:13px;
+
 }
+
 
 .finalizar{
+
   width:100%;
+
   border:0;
+
   background:var(--pink);
+
   color:#fff;
+
   padding:14px;
+
   border-radius:9px;
+
   font-weight:850;
+
 }
 
 
-/* CHECKOUT */
+/* =========================================
+   CHECKOUT
+========================================= */
 
 .checkout{
+
   display:none;
+
   position:fixed;
+
   inset:0;
+
   background:var(--bg);
+
   z-index:80;
+
   overflow-y:auto;
+
 }
+
 
 .checkout.ativo{
   display:block;
 }
 
+
 .checkout-conteudo{
+
   max-width:620px;
+
   margin:auto;
+
   padding:20px 15px 60px;
+
 }
+
 
 .checkout-topo{
+
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
   margin-bottom:20px;
+
 }
+
 
 .checkout-topo h2{
+
   font-size:24px;
+
   letter-spacing:-.03em;
+
 }
+
 
 .voltar{
+
   width:38px;
+
   height:38px;
-  border:1px solid var(--line);
+
+  border:
+  1px solid var(--line);
+
   background:#fff;
+
   border-radius:50%;
+
   font-size:18px;
+
 }
+
 
 .bloco{
+
   background:#fff;
-  border:1px solid var(--line);
+
+  border:
+  1px solid var(--line);
+
   border-radius:13px;
+
   padding:16px;
+
   margin-bottom:14px;
+
 }
+
 
 .bloco h3{
+
   font-size:14px;
+
   margin-bottom:14px;
+
 }
 
+
 .campo{
+
   margin-bottom:12px;
+
 }
+
 
 .campo:last-child{
   margin-bottom:0;
 }
 
+
 .campo label{
+
   display:block;
+
   font-size:11px;
+
   font-weight:800;
+
   margin-bottom:6px;
+
 }
+
 
 .campo input,
 .campo select,
 .campo textarea{
+
   width:100%;
-  border:1px solid #d4d4d8;
+
+  border:
+  1px solid #d4d4d8;
+
   border-radius:8px;
+
   padding:11px;
+
   outline:none;
+
   background:#fff;
+
 }
+
 
 .campo textarea{
+
   resize:vertical;
+
   min-height:75px;
+
 }
+
 
 .duplo{
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+  1fr 1fr;
+
   gap:9px;
+
 }
+
 
 .frete-info{
+
   background:var(--pink-soft);
+
   border-radius:8px;
+
   padding:11px;
+
   margin-top:10px;
+
   line-height:1.5;
+
   font-size:11px;
+
 }
+
 
 .resumo-item{
+
   display:flex;
+
   justify-content:space-between;
+
   gap:12px;
+
   padding:8px 0;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:
+  1px solid var(--line);
+
   font-size:11px;
+
 }
+
 
 .resumo-linha{
+
   display:flex;
+
   justify-content:space-between;
+
   padding:8px 0;
+
   font-size:11px;
+
 }
+
 
 .resumo-total{
+
   display:flex;
+
   justify-content:space-between;
-  border-top:1px solid #111;
+
+  border-top:
+  1px solid #111;
+
   margin-top:6px;
+
   padding-top:12px;
+
   font-size:17px;
+
   font-weight:850;
+
 }
+
 
 .pagamento-aviso{
+
   background:var(--pink-soft);
+
   padding:12px;
+
   border-radius:8px;
+
   font-size:11px;
+
   line-height:1.55;
+
 }
+
 
 .confirmar-pedido{
+
   width:100%;
+
   border:0;
-  background:#111;
+
+  background:var(--black);
+
   color:#fff;
+
   padding:14px;
+
   border-radius:9px;
+
   font-size:13px;
+
   font-weight:850;
+
 }
 
 
-/* SUCESSO */
+/* =========================================
+   SUCESSO
+========================================= */
 
 .sucesso{
+
   display:none;
+
   position:fixed;
+
   inset:0;
+
   background:#fff;
+
   z-index:100;
+
   align-items:center;
+
   justify-content:center;
+
   text-align:center;
+
   padding:25px;
+
 }
+
 
 .sucesso.ativo{
   display:flex;
 }
 
+
 .sucesso-box{
   max-width:430px;
 }
 
+
 .check{
+
   width:76px;
+
   height:76px;
+
   margin:0 auto 20px;
+
   border-radius:50%;
+
   background:var(--pink);
+
   color:#fff;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   font-size:38px;
+
 }
+
 
 .sucesso h2{
+
   font-size:27px;
+
   margin-bottom:12px;
+
 }
+
 
 .sucesso p{
+
   line-height:1.5;
+
   font-size:12px;
+
 }
+
 
 .numero-pedido{
+
   color:var(--pink);
+
   font-size:18px;
+
   font-weight:850;
+
   margin:16px 0;
+
 }
+
 
 .sucesso button{
+
   margin-top:20px;
+
   border:0;
-  background:#111;
+
+  background:var(--black);
+
   color:#fff;
+
   padding:12px 20px;
+
   border-radius:8px;
+
   font-weight:850;
+
 }
 
 
-/* RODAPÉ */
+/* =========================================
+   RODAPÉ
+========================================= */
 
 footer{
-  background:#111;
+
+  background:var(--black);
+
   color:#fff;
+
   padding:36px 18px;
+
 }
+
 
 .footer-inner{
+
   max-width:1200px;
+
   margin:auto;
+
   display:grid;
+
   gap:18px;
+
 }
+
 
 footer h3{
+
   color:var(--pink);
+
   font-size:18px;
+
 }
+
 
 footer p{
+
   color:#c9c9cd;
+
   font-size:10px;
+
   line-height:1.6;
+
 }
+
 
 .footer-mini{
-  border-top:1px solid #2b2b2e;
+
+  border-top:
+  1px solid #2b2b2e;
+
   padding-top:15px;
+
   color:#8e8e94;
+
   font-size:9px;
+
 }
 
 
-/* RESPONSIVO */
+/* =========================================
+   RESPONSIVO
+========================================= */
 
-@media(min-width:700px){
+@media(
+  min-width:700px
+){
 
   .logo{
+
     width:62px;
+
     height:62px;
+
   }
+
 
   .hero{
+
     min-height:620px;
+
   }
+
 
   .hero h1{
+
     font-size:72px;
+
   }
+
 
   .beneficios{
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
   }
+
 
   .beneficio{
+
     border-bottom:0!important;
-    border-right:1px solid var(--line)!important;
+
+    border-right:
+    1px solid var(--line)!important;
+
   }
+
 
   .beneficio:last-child{
+
     border-right:0!important;
+
   }
+
 
   .categorias-grid{
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
   }
+
 
   .cat{
+
     min-height:260px;
+
   }
+
 
   .grade{
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
     gap:18px;
+
   }
 
+
   .editorial-inner{
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     align-items:center;
+
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="topo">
+
+<!-- =========================================
+     BARRA SUPERIOR
+========================================= -->
+
+<div
+  class="topo"
+  id="barraTopoLoja"
+>
   NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS
 </div>
+
+
+<!-- =========================================
+     CABEÇALHO
+========================================= -->
 
 <header>
 
@@ -1036,13 +1909,14 @@ footer p{
           alt="SALI STORE"
         >
 
+
         <div class="brand-copy">
 
-          <strong>
+          <strong id="nomeLojaCabecalho">
             SALI STORE
           </strong>
 
-          <span>
+          <span id="subtituloLojaCabecalho">
             Moda feminina • Manacapuru
           </span>
 
@@ -1050,20 +1924,25 @@ footer p{
 
       </div>
 
+
       <button
         class="carrinho-botao"
         onclick="abrirCarrinho()"
       >
+
         Sacola
+
         <span
           class="contador"
           id="contador"
         >
           0
         </span>
+
       </button>
 
     </div>
+
 
     <nav>
 
@@ -1075,7 +1954,10 @@ footer p{
         Novidades
       </a>
 
-      <a href="#categorias">
+      <a
+        href="#categorias"
+        id="linkCategorias"
+      >
         Categorias
       </a>
 
@@ -1102,6 +1984,10 @@ footer p{
 </header>
 
 
+<!-- =========================================
+     HERO
+========================================= -->
+
 <section
   class="hero"
   id="inicio"
@@ -1115,13 +2001,16 @@ footer p{
         NOVA COLEÇÃO • SALI STORE
       </span>
 
-      <h1>
+
+      <h1 id="heroTituloLoja">
         Seu look começa aqui.
       </h1>
 
-      <p>
-        Moda feminina com personalidade, peças que valorizam você e novidades que chegam toda semana.
+
+      <p id="heroSubtituloLoja">
+        Novidades, tendências e peças selecionadas para você.
       </p>
+
 
       <div class="hero-actions">
 
@@ -1132,8 +2021,10 @@ footer p{
           COMPRAR AGORA
         </button>
 
+
         <button
           class="botao-secundario"
+          id="botaoVerCategorias"
           onclick="document.getElementById('categorias').scrollIntoView()"
         >
           VER CATEGORIAS
@@ -1148,45 +2039,73 @@ footer p{
 </section>
 
 
-<section class="beneficios">
+<!-- =========================================
+     BENEFÍCIOS
+========================================= -->
+
+<section
+  class="beneficios"
+  id="secaoBeneficios"
+>
 
   <div class="beneficio">
+
     <strong>
       Entrega local
     </strong>
+
     <span>
       Receba seu pedido com praticidade.
     </span>
+
   </div>
 
+
   <div class="beneficio">
+
     <strong>
       Retirada na loja
     </strong>
+
     <span>
       Escolha retirar sem taxa.
     </span>
+
   </div>
 
+
   <div class="beneficio">
+
     <strong>
       Novidades semanais
     </strong>
+
     <span>
       Novos modelos chegando sempre.
     </span>
+
   </div>
 
+
   <div class="beneficio">
+
     <strong>
       Compra segura
     </strong>
+
     <span>
       Seu pedido registrado e acompanhado.
     </span>
+
   </div>
 
 </section>
+
+
+<!-- =========================================
+     CATEGORIAS
+========================================= -->
+
 <section
   class="categorias"
   id="categorias"
@@ -1201,6 +2120,7 @@ footer p{
       </h2>
 
     </div>
+
 
     <p>
       Encontre rapidamente o estilo que combina com você.
@@ -1217,11 +2137,13 @@ footer p{
     >
 
       <span>
+
         Vestidos
 
         <small>
           Do casual ao marcante
         </small>
+
       </span>
 
     </a>
@@ -1233,11 +2155,13 @@ footer p{
     >
 
       <span>
+
         Conjuntos
 
         <small>
           Looks prontos para vestir
         </small>
+
       </span>
 
     </a>
@@ -1249,11 +2173,13 @@ footer p{
     >
 
       <span>
+
         Blusas
 
         <small>
           Essenciais com personalidade
         </small>
+
       </span>
 
     </a>
@@ -1265,11 +2191,13 @@ footer p{
     >
 
       <span>
+
         Calças
 
         <small>
           Modelagens que valorizam
         </small>
+
       </span>
 
     </a>
@@ -1278,6 +2206,10 @@ footer p{
 
 </section>
 
+
+<!-- =========================================
+     PRODUTOS
+========================================= -->
 
 <section
   class="produtos"
@@ -1288,9 +2220,11 @@ footer p{
     Novidades
   </h2>
 
+
   <p class="produtos-sub">
     Os últimos lançamentos da SALI.
   </p>
+
 
   <div
     class="grade"
@@ -1299,6 +2233,10 @@ footer p{
 
 </section>
 
+
+<!-- =========================================
+     EDITORIAL
+========================================= -->
 
 <section class="editorial">
 
@@ -1316,6 +2254,7 @@ footer p{
 
     </div>
 
+
     <p>
       A SALI nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
     </p>
@@ -1325,6 +2264,10 @@ footer p{
 </section>
 
 
+<!-- =========================================
+     CTA
+========================================= -->
+
 <section class="cta">
 
   <div class="cta-card">
@@ -1333,9 +2276,11 @@ footer p{
       Encontrou a sua favorita?
     </h3>
 
+
     <p>
       Adicione à sacola, escolha como deseja receber e finalize o pedido pelo próprio site.
     </p>
+
 
     <button
       onclick="document.getElementById('novidades').scrollIntoView()"
@@ -1348,15 +2293,20 @@ footer p{
 </section>
 
 
+<!-- =========================================
+     RODAPÉ
+========================================= -->
+
 <footer>
 
   <div class="footer-inner">
 
     <div>
 
-      <h3>
+      <h3 id="nomeLojaRodape">
         SALI STORE
       </h3>
+
 
       <p>
         Moda feminina com identidade, novidades e praticidade para comprar online.
@@ -1364,14 +2314,20 @@ footer p{
 
     </div>
 
-    <div class="footer-mini">
+
+    <div
+      class="footer-mini"
+      id="rodapeLocal"
+    >
       SALI STORE • Manacapuru, Amazonas
     </div>
 
   </div>
 
 </footer>
-
+<!-- =========================================
+     OVERLAY DO CARRINHO
+========================================= -->
 
 <div
   class="overlay"
@@ -1379,6 +2335,10 @@ footer p{
   onclick="fecharCarrinho()"
 ></div>
 
+
+<!-- =========================================
+     CARRINHO
+========================================= -->
 
 <aside
   class="carrinho"
@@ -1390,6 +2350,7 @@ footer p{
     <h2>
       Sua sacola
     </h2>
+
 
     <button
       class="fechar"
@@ -1434,6 +2395,10 @@ footer p{
 </aside>
 
 
+<!-- =========================================
+     CHECKOUT
+========================================= -->
+
 <section
   class="checkout"
   id="checkout"
@@ -1450,12 +2415,15 @@ footer p{
         ←
       </button>
 
+
       <h2>
         Finalizar pedido
       </h2>
 
     </div>
 
+
+    <!-- DADOS -->
 
     <div class="bloco">
 
@@ -1496,6 +2464,8 @@ footer p{
     </div>
 
 
+    <!-- ENTREGA -->
+
     <div class="bloco">
 
       <h3>
@@ -1509,6 +2479,7 @@ footer p{
           Como deseja receber?
         </label>
 
+
         <select
           id="entrega"
           onchange="alterarEntrega()"
@@ -1518,21 +2489,26 @@ footer p{
             Selecione
           </option>
 
+
           <option value="retirada">
             Retirada na loja — Grátis
           </option>
+
 
           <option value="cidade">
             Entrega dentro da cidade — R$ 5,00
           </option>
 
+
           <option value="bola">
             Bola até o Novo Manacá — R$ 8,00
           </option>
 
+
           <option value="caixa">
             Caixa d’Água pra lá — R$ 10,00
           </option>
+
 
           <option value="barcos">
             Entrega em barcos e jatos — R$ 5,00
@@ -1550,9 +2526,14 @@ footer p{
       ></div>
 
 
+      <!-- ENDEREÇO NORMAL -->
+
       <div
         id="enderecoArea"
-        style="display:none; margin-top:15px;"
+        style="
+          display:none;
+          margin-top:15px;
+        "
       >
 
         <div class="campo">
@@ -1620,9 +2601,14 @@ footer p{
       </div>
 
 
+      <!-- BARCO / JATO -->
+
       <div
         id="barcoArea"
-        style="display:none; margin-top:15px;"
+        style="
+          display:none;
+          margin-top:15px;
+        "
       >
 
         <div class="campo">
@@ -1658,11 +2644,14 @@ footer p{
     </div>
 
 
+    <!-- RESUMO -->
+
     <div class="bloco">
 
       <h3>
         Resumo do pedido
       </h3>
+
 
       <div id="resumoCheckout"></div>
 
@@ -1708,20 +2697,55 @@ footer p{
     </div>
 
 
+    <!-- PAGAMENTO -->
+
     <div class="bloco">
 
       <h3>
         Pagamento
       </h3>
 
+
+      <div class="campo">
+
+        <label>
+          Forma de pagamento
+        </label>
+
+
+        <select id="pagamento">
+
+          <option value="">
+            Selecione
+          </option>
+
+
+          <option value="Pix">
+            Pix
+          </option>
+
+
+          <option value="Cartão">
+            Cartão
+          </option>
+
+
+          <option value="Dinheiro">
+            Dinheiro
+          </option>
+
+
+          <option value="Pagamento no ato da entrega">
+            Pagamento no ato da entrega
+          </option>
+
+        </select>
+
+      </div>
+
+
       <div class="pagamento-aviso">
-
-        O pagamento por Pix e cartão será ativado na próxima etapa.
-
-        <br><br>
-
-        O valor da entrega já está sendo calculado automaticamente no total do pedido.
-
+        Escolha a forma de pagamento desejada. O pedido será registrado no sistema da SALI.
       </div>
 
     </div>
@@ -1739,6 +2763,10 @@ footer p{
 </section>
 
 
+<!-- =========================================
+     PEDIDO CONFIRMADO
+========================================= -->
+
 <section
   class="sucesso"
   id="sucesso"
@@ -1750,18 +2778,22 @@ footer p{
       ✓
     </div>
 
+
     <h2>
       Pedido confirmado!
     </h2>
+
 
     <p>
       Obrigada por comprar na SALI STORE 💕
     </p>
 
+
     <div
       class="numero-pedido"
       id="numeroPedido"
     ></div>
+
 
     <p id="resumoSucesso"></p>
 
@@ -1777,35 +2809,57 @@ footer p{
 </section>
 
 
+<!-- =========================================
+     JAVASCRIPT PRINCIPAL
+========================================= -->
+
 <script>
 
 let carrinho =
 JSON.parse(
-  localStorage.getItem("saliCarrinho")
-) || [];
+  localStorage.getItem(
+    "saliCarrinho"
+  )
+)
+||
+[];
 
-let valorFrete = 0;
 
-let tipoEntrega = "";
+let valorFrete =
+0;
 
+
+let tipoEntrega =
+"";
+
+
+/* =========================================
+   CARRINHO
+========================================= */
 
 function salvarCarrinho(){
 
   localStorage.setItem(
     "saliCarrinho",
-    JSON.stringify(carrinho)
+    JSON.stringify(
+      carrinho
+    )
   );
+
 
   atualizarCarrinho();
 
 }
 
 
-function moeda(valor){
+function moeda(
+  valor
+){
 
   return Number(
     valor || 0
-  ).toLocaleString(
+  )
+  .toLocaleString(
     "pt-BR",
     {
       style:"currency",
@@ -1819,15 +2873,31 @@ function moeda(valor){
 function calcularSubtotal(){
 
   return carrinho.reduce(
-    (soma,item) =>
+    (
+      soma,
+      item
+    ) =>
       soma +
-      item.preco *
-      item.quantidade,
+      (
+        Number(
+          item.preco ||
+          0
+        )
+        *
+        Number(
+          item.quantidade ||
+          0
+        )
+      ),
     0
   );
 
 }
 
+
+/* =========================================
+   ADICIONAR PRODUTO
+========================================= */
 
 function adicionarProduto(
   id,
@@ -1841,39 +2911,74 @@ function adicionarProduto(
 
   const chaveItem =
   [
-    id,
-    tamanho || "",
-    estampa || "",
-    cor || ""
-  ].join("|");
+    String(
+      id ?? ""
+    ),
+
+    String(
+      tamanho || ""
+    ),
+
+    String(
+      estampa || ""
+    ),
+
+    String(
+      cor || ""
+    )
+  ]
+  .join(
+    "|||"
+  );
 
 
   const existente =
   carrinho.find(
     item =>
-      item.chaveItem === chaveItem
+      item.chaveItem ===
+      chaveItem
   );
 
 
-  if(existente){
+  if(
+    existente
+  ){
 
     existente.quantidade++;
 
   }else{
 
     carrinho.push({
+
       id,
+
       chaveItem,
+
       nome,
-      preco:Number(preco || 0),
-      foto,
-      tamanho,
-      estampa,
-      cor,
+
+      preco:
+      Number(
+        preco || 0
+      ),
+
+      foto:
+      foto || "",
+
+      tamanho:
+      tamanho || "",
+
+      estampa:
+      estampa || "",
+
+      cor:
+      cor || "",
+
       quantidade:1
+
     });
 
   }
+
 
   salvarCarrinho();
 
@@ -1882,14 +2987,17 @@ function adicionarProduto(
 }
 
 
-function aumentar(chaveItem){
+function aumentar(
+  chaveItem
+){
 
   const item =
   carrinho.find(
-    item =>
-      item.chaveItem === chaveItem ||
-      String(item.id) === String(chaveItem)
+    produtoCarrinho =>
+      produtoCarrinho.chaveItem ===
+      chaveItem
   );
+
 
   if(item){
 
@@ -1897,25 +3005,31 @@ function aumentar(chaveItem){
 
   }
 
+
   salvarCarrinho();
 
 }
 
 
-function diminuir(chaveItem){
+function diminuir(
+  chaveItem
+){
 
   const item =
   carrinho.find(
-    item =>
-      item.chaveItem === chaveItem ||
-      String(item.id) === String(chaveItem)
+    produtoCarrinho =>
+      produtoCarrinho.chaveItem ===
+      chaveItem
   );
+
 
   if(!item){
     return;
   }
 
+
   item.quantidade--;
+
 
   if(
     item.quantidade <= 0
@@ -1923,40 +3037,39 @@ function diminuir(chaveItem){
 
     carrinho =
     carrinho.filter(
-      item =>
-        item !== item
-    );
-
-  }
-
-  if(item.quantidade <= 0){
-
-    carrinho =
-    carrinho.filter(
       produtoCarrinho =>
-        produtoCarrinho !== item
+        produtoCarrinho.chaveItem !==
+        chaveItem
     );
 
   }
+
 
   salvarCarrinho();
 
 }
 
 
-function remover(chaveItem){
+function remover(
+  chaveItem
+){
 
   carrinho =
   carrinho.filter(
     item =>
-      item.chaveItem !== chaveItem &&
-      String(item.id) !== String(chaveItem)
+      item.chaveItem !==
+      chaveItem
   );
+
 
   salvarCarrinho();
 
 }
 
+
+/* =========================================
+   RENDERIZAR CARRINHO
+========================================= */
 
 function atualizarCarrinho(){
 
@@ -1965,18 +3078,27 @@ function atualizarCarrinho(){
     "itensCarrinho"
   );
 
+
   const contador =
   document.getElementById(
     "contador"
   );
 
+
   const quantidadeTotal =
   carrinho.reduce(
-    (soma,item) =>
+    (
+      soma,
+      item
+    ) =>
       soma +
-      item.quantidade,
+      Number(
+        item.quantidade ||
+        0
+      ),
     0
   );
+
 
   contador.textContent =
   quantidadeTotal;
@@ -1989,10 +3111,14 @@ function atualizarCarrinho(){
     area.innerHTML =
     '<div class="vazio">Sua sacola está vazia.</div>';
 
+
     document.getElementById(
       "totalCarrinho"
     ).textContent =
-    moeda(0);
+    moeda(
+      0
+    );
+
 
     return;
 
@@ -2007,47 +3133,63 @@ function atualizarCarrinho(){
 
         <img
           src="${item.foto || ""}"
-          alt="${item.nome || "Produto SALI"}"
+          alt="${item.nome || "Produto"}"
         >
+
 
         <div class="item-dados">
 
           <h4>
-            ${item.nome}
+            ${item.nome || "Produto"}
           </h4>
+
 
           ${
             item.cor
             ?
-            '<small>Cor: ' +
-            item.cor +
-            '</small><br>'
+            `
+              <small>
+                Cor: ${item.cor}
+              </small>
+              <br>
+            `
             :
-            ''
+            ""
           }
 
-          ${
-            item.tamanho
-            ?
-            '<small>Tamanho: ' +
-            item.tamanho +
-            '</small><br>'
-            :
-            ''
-          }
 
           ${
             item.estampa
             ?
-            '<small>Estampa: ' +
-            item.estampa +
-            '</small><br>'
+            `
+              <small>
+                Estampa: ${item.estampa}
+              </small>
+              <br>
+            `
             :
-            ''
+            ""
           }
 
+
+          ${
+            item.tamanho
+            ?
+            `
+              <small>
+                Tamanho: ${item.tamanho}
+              </small>
+              <br>
+            `
+            :
+            ""
+          }
+
+
           <strong>
-            ${moeda(item.preco)}
+            ${moeda(
+              item.preco
+            )}
           </strong>
 
 
@@ -2055,18 +3197,20 @@ function atualizarCarrinho(){
 
             <button
               type="button"
-              onclick='diminuir(${JSON.stringify(item.chaveItem || item.id)})'
+              onclick='diminuir(${JSON.stringify(item.chaveItem)})'
             >
               −
             </button>
+
 
             <span>
               ${item.quantidade}
             </span>
 
+
             <button
               type="button"
-              onclick='aumentar(${JSON.stringify(item.chaveItem || item.id)})'
+              onclick='aumentar(${JSON.stringify(item.chaveItem)})'
             >
               +
             </button>
@@ -2077,7 +3221,7 @@ function atualizarCarrinho(){
           <button
             type="button"
             class="remover"
-            onclick='remover(${JSON.stringify(item.chaveItem || item.id)})'
+            onclick='remover(${JSON.stringify(item.chaveItem)})'
           >
             Remover
           </button>
@@ -2087,7 +3231,8 @@ function atualizarCarrinho(){
       </div>
 
     `
-  ).join("");
+  )
+  .join("");
 
 
   document.getElementById(
@@ -2100,17 +3245,24 @@ function atualizarCarrinho(){
 }
 
 
+/* =========================================
+   ABRIR / FECHAR CARRINHO
+========================================= */
+
 function abrirCarrinho(){
 
   document.getElementById(
     "carrinho"
-  ).classList.add(
+  )
+  .classList.add(
     "aberto"
   );
 
+
   document.getElementById(
     "overlay"
-  ).classList.add(
+  )
+  .classList.add(
     "ativo"
   );
 
@@ -2121,18 +3273,25 @@ function fecharCarrinho(){
 
   document.getElementById(
     "carrinho"
-  ).classList.remove(
+  )
+  .classList.remove(
     "aberto"
   );
 
+
   document.getElementById(
     "overlay"
-  ).classList.remove(
+  )
+  .classList.remove(
     "ativo"
   );
 
 }
 
+
+/* =========================================
+   CHECKOUT
+========================================= */
 
 function abrirCheckout(){
 
@@ -2148,13 +3307,17 @@ function abrirCheckout(){
 
   }
 
+
   fecharCarrinho();
+
 
   document.getElementById(
     "checkout"
-  ).classList.add(
+  )
+  .classList.add(
     "ativo"
   );
+
 
   atualizarCheckout();
 
@@ -2165,17 +3328,23 @@ function fecharCheckout(){
 
   document.getElementById(
     "checkout"
-  ).classList.remove(
+  )
+  .classList.remove(
     "ativo"
   );
 
 }
-  function alterarEntrega(){
+  /* =========================================
+   ENTREGA
+========================================= */
+
+function alterarEntrega(){
 
   const entrega =
   document.getElementById(
     "entrega"
   ).value;
+
 
   tipoEntrega =
   entrega;
@@ -2186,10 +3355,12 @@ function fecharCheckout(){
     "enderecoArea"
   );
 
+
   const barcoArea =
   document.getElementById(
     "barcoArea"
   );
+
 
   const freteInfo =
   document.getElementById(
@@ -2200,8 +3371,10 @@ function fecharCheckout(){
   enderecoArea.style.display =
   "none";
 
+
   barcoArea.style.display =
   "none";
+
 
   freteInfo.style.display =
   "block";
@@ -2211,74 +3384,100 @@ function fecharCheckout(){
     entrega === ""
   ){
 
-    valorFrete = 0;
+    valorFrete =
+    0;
+
 
     freteInfo.style.display =
     "none";
 
   }
 
+
   else if(
-    entrega === "retirada"
+    entrega ===
+    "retirada"
   ){
 
-    valorFrete = 0;
+    valorFrete =
+    0;
+
 
     freteInfo.innerHTML =
     "<strong>Retirada na loja</strong><br>Taxa: Grátis";
 
   }
 
+
   else if(
-    entrega === "cidade"
+    entrega ===
+    "cidade"
   ){
 
-    valorFrete = 5;
+    valorFrete =
+    5;
+
 
     enderecoArea.style.display =
     "block";
+
 
     freteInfo.innerHTML =
     "<strong>Entrega dentro da cidade</strong><br>Taxa: R$ 5,00";
 
   }
 
+
   else if(
-    entrega === "bola"
+    entrega ===
+    "bola"
   ){
 
-    valorFrete = 8;
+    valorFrete =
+    8;
+
 
     enderecoArea.style.display =
     "block";
+
 
     freteInfo.innerHTML =
     "<strong>Bola até o Novo Manacá</strong><br>Taxa: R$ 8,00";
 
   }
 
+
   else if(
-    entrega === "caixa"
+    entrega ===
+    "caixa"
   ){
 
-    valorFrete = 10;
+    valorFrete =
+    10;
+
 
     enderecoArea.style.display =
     "block";
+
 
     freteInfo.innerHTML =
     "<strong>Caixa d’Água pra lá</strong><br>Taxa: R$ 10,00";
 
   }
 
+
   else if(
-    entrega === "barcos"
+    entrega ===
+    "barcos"
   ){
 
-    valorFrete = 5;
+    valorFrete =
+    5;
+
 
     barcoArea.style.display =
     "block";
+
 
     freteInfo.innerHTML =
     "<strong>Entrega em barcos e jatos</strong><br>Taxa: R$ 5,00";
@@ -2291,6 +3490,9 @@ function fecharCheckout(){
 }
 
 
+/* =========================================
+   ATUALIZAR CHECKOUT
+========================================= */
 
 function atualizarCheckout(){
 
@@ -2302,54 +3504,77 @@ function atualizarCheckout(){
 
   resumo.innerHTML =
   carrinho.map(
-    item => `
+    item => {
 
-      <div class="resumo-item">
+      const detalhes = [
+        item.cor
+        ?
+        "Cor: " +
+        item.cor
+        :
+        "",
 
-        <span>
-          ${item.quantidade}x
-          ${item.nome}
+        item.estampa
+        ?
+        "Estampa: " +
+        item.estampa
+        :
+        "",
 
-          ${
-            item.cor
-            ?
-            " • " + item.cor
-            :
-            ""
-          }
+        item.tamanho
+        ?
+        "Tamanho: " +
+        item.tamanho
+        :
+        ""
+      ]
+      .filter(
+        Boolean
+      )
+      .join(
+        " • "
+      );
 
-          ${
-            item.estampa
-            ?
-            " • " + item.estampa
-            :
-            ""
-          }
 
-          ${
-            item.tamanho
-            ?
-            " • " + item.tamanho
-            :
-            ""
-          }
-        </span>
+      return `
 
-        <strong>
-          ${moeda(
-            item.preco *
-            item.quantidade
-          )}
-        </strong>
+        <div class="resumo-item">
 
-      </div>
+          <span>
 
-    `
-  ).join("");
+            ${item.quantidade}x
+            ${item.nome}
+
+            ${
+              detalhes
+              ?
+              `<br><small>${detalhes}</small>`
+              :
+              ""
+            }
+
+          </span>
+
+
+          <strong>
+            ${moeda(
+              item.preco *
+              item.quantidade
+            )}
+          </strong>
+
+        </div>
+
+      `;
+
+    }
+  )
+  .join("");
 
 
   const subtotal =
   calcularSubtotal();
+
 
   const total =
   subtotal +
@@ -2386,6 +3611,9 @@ function atualizarCheckout(){
 }
 
 
+/* =========================================
+   CONFIRMAR PEDIDO
+========================================= */
 
 async function confirmarPedido(){
 
@@ -2404,6 +3632,12 @@ async function confirmarPedido(){
   const entrega =
   document.getElementById(
     "entrega"
+  ).value;
+
+
+  const pagamento =
+  document.getElementById(
+    "pagamento"
   ).value;
 
 
@@ -2447,9 +3681,27 @@ async function confirmarPedido(){
 
 
   if(
-    entrega === "cidade" ||
-    entrega === "bola" ||
-    entrega === "caixa"
+    !pagamento
+  ){
+
+    alert(
+      "Escolha a forma de pagamento."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    entrega ===
+    "cidade"
+    ||
+    entrega ===
+    "bola"
+    ||
+    entrega ===
+    "caixa"
   ){
 
     const endereco =
@@ -2471,8 +3723,10 @@ async function confirmarPedido(){
 
 
     if(
-      !endereco ||
-      !numero ||
+      !endereco
+      ||
+      !numero
+      ||
       !bairro
     ){
 
@@ -2488,7 +3742,8 @@ async function confirmarPedido(){
 
 
   if(
-    entrega === "barcos"
+    entrega ===
+    "barcos"
   ){
 
     const destino =
@@ -2512,19 +3767,6 @@ async function confirmarPedido(){
   }
 
 
-  if(
-    !window.supabaseClient
-  ){
-
-    alert(
-      "Aguarde alguns segundos e tente novamente."
-    );
-
-    return;
-
-  }
-
-
   const subtotal =
   calcularSubtotal();
 
@@ -2534,11 +3776,26 @@ async function confirmarPedido(){
   valorFrete;
 
 
-  const numeroPedido =
+  const codigoPedido =
   "SALI-" +
   Date.now()
   .toString()
-  .slice(-6);
+  .slice(
+    -6
+  );
+
+
+  if(
+    !window.supabaseClient
+  ){
+
+    alert(
+      "Aguarde alguns segundos e tente confirmar o pedido novamente."
+    );
+
+    return;
+
+  }
 
 
   let enderecoPedido =
@@ -2546,33 +3803,46 @@ async function confirmarPedido(){
 
 
   if(
-    entrega === "cidade" ||
-    entrega === "bola" ||
-    entrega === "caixa"
+    entrega ===
+    "cidade"
+    ||
+    entrega ===
+    "bola"
+    ||
+    entrega ===
+    "caixa"
   ){
 
     const ruaPedido =
     document.getElementById(
       "endereco"
-    )?.value.trim() || "";
+    )?.value.trim()
+    ||
+    "";
 
 
     const numeroPedidoEndereco =
     document.getElementById(
       "numero"
-    )?.value.trim() || "";
+    )?.value.trim()
+    ||
+    "";
 
 
     const bairroPedido =
     document.getElementById(
       "bairro"
-    )?.value.trim() || "";
+    )?.value.trim()
+    ||
+    "";
 
 
     const complementoPedido =
     document.getElementById(
       "complemento"
-    )?.value.trim() || "";
+    )?.value.trim()
+    ||
+    "";
 
 
     enderecoPedido =
@@ -2594,20 +3864,23 @@ async function confirmarPedido(){
 
 
   if(
-    entrega === "barcos"
+    entrega ===
+    "barcos"
   ){
 
     const destino =
     document.getElementById(
       "barcoDestino"
-    )?.value.trim() ||
+    )?.value.trim()
+    ||
     "Barco/Jato";
 
 
     const observacao =
     document.getElementById(
       "barcoObservacao"
-    )?.value.trim() ||
+    )?.value.trim()
+    ||
     "";
 
 
@@ -2625,139 +3898,166 @@ async function confirmarPedido(){
   }
 
 
-  const pagamentoSelecionado =
+  const botao =
   document.querySelector(
-    'input[name="pagamento"]:checked'
-  )?.value
-  ||
-  document.getElementById(
-    "pagamento"
-  )?.value
-  ||
-  "Não informado";
+    ".confirmar-pedido"
+  );
 
 
-  const {
-    error:erroPedido
-  } =
-  await window.supabaseClient
-  .from(
-    "Pedidos"
-  )
-  .insert([
-    {
+  botao.disabled =
+  true;
 
-      numero_pedido:
-      numeroPedido,
 
-      nome_cliente:
-      nome,
+  botao.textContent =
+  "CONFIRMANDO...";
 
-      Telefone:
-      telefone,
 
-      endereco:
-      enderecoPedido,
+  try{
 
-      tipo_entrega:
-      entrega,
+    const {
+      error:
+      erroPedido
+    } =
+    await window.supabaseClient
+    .from(
+      "Pedidos"
+    )
+    .insert([
+      {
 
-      valor_entrega:
-      valorFrete,
+        numero_pedido:
+        codigoPedido,
 
-      produtos:
-      JSON.stringify(
-        carrinho
-      ),
+        nome_cliente:
+        nome,
 
-      subtotal:
-      subtotal,
+        Telefone:
+        telefone,
 
-      total:
-      total,
+        endereco:
+        enderecoPedido,
 
-      forma_pagamento:
-      pagamentoSelecionado,
+        tipo_entrega:
+        entrega,
 
-      status:
-      "Novo"
+        valor_entrega:
+        valorFrete,
+
+        produtos:
+        JSON.stringify(
+          carrinho
+        ),
+
+        subtotal,
+
+        total,
+
+        forma_pagamento:
+        pagamento,
+
+        status:
+        "Novo"
+
+      }
+    ]);
+
+
+    if(
+      erroPedido
+    ){
+
+      throw erroPedido;
 
     }
-  ]);
 
 
-  if(
-    erroPedido
-  ){
+    document.getElementById(
+      "numeroPedido"
+    ).textContent =
+    "Pedido #" +
+    codigoPedido;
+
+
+    document.getElementById(
+      "resumoSucesso"
+    ).innerHTML =
+    "Total do pedido: <strong>" +
+    moeda(
+      total
+    ) +
+    "</strong>";
+
+
+    document.getElementById(
+      "checkout"
+    )
+    .classList.remove(
+      "ativo"
+    );
+
+
+    document.getElementById(
+      "sucesso"
+    )
+    .classList.add(
+      "ativo"
+    );
+
+
+    carrinho =
+    [];
+
+
+    valorFrete =
+    0;
+
+
+    tipoEntrega =
+    "";
+
+
+    salvarCarrinho();
+
+  }catch(error){
 
     console.error(
       "Erro ao salvar pedido:",
-      erroPedido
+      error
     );
 
 
     alert(
-      "ERRO SUPABASE: " +
+      "Não foi possível confirmar o pedido.\n\n" +
       (
-        erroPedido?.message
-        ||
-        JSON.stringify(
-          erroPedido
-        )
+        error?.message ||
+        "Erro desconhecido"
       )
     );
 
-    return;
+  }finally{
+
+    botao.disabled =
+    false;
+
+
+    botao.textContent =
+    "CONFIRMAR PEDIDO";
 
   }
-
-
-  document.getElementById(
-    "numeroPedido"
-  ).textContent =
-  "Pedido #" +
-  numeroPedido;
-
-
-  document.getElementById(
-    "resumoSucesso"
-  ).innerHTML =
-  "Total do pedido: <strong>" +
-  moeda(total) +
-  "</strong>";
-
-
-  document.getElementById(
-    "checkout"
-  ).classList.remove(
-    "ativo"
-  );
-
-
-  document.getElementById(
-    "sucesso"
-  ).classList.add(
-    "ativo"
-  );
-
-
-  carrinho = [];
-
-  valorFrete = 0;
-
-  tipoEntrega = "";
-
-  salvarCarrinho();
 
 }
 
 
+/* =========================================
+   VOLTAR PARA LOJA
+========================================= */
 
 function voltarLoja(){
 
   document.getElementById(
     "sucesso"
-  ).classList.remove(
+  )
+  .classList.remove(
     "ativo"
   );
 
@@ -2776,6 +4076,48 @@ function voltarLoja(){
 
   document.getElementById(
     "entrega"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "pagamento"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "endereco"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "numero"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "bairro"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "complemento"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "barcoDestino"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "barcoObservacao"
   ).value =
   "";
 
@@ -2806,12 +4148,9 @@ function voltarLoja(){
 }
 
 
-/* INICIAR */
-
-atualizarCarrinho();
-
-
-/* SUPABASE */
+/* =========================================
+   SUPABASE
+========================================= */
 
 const SUPABASE_URL =
 "https://uubslcjoybeehinnwhtg.supabase.co";
@@ -2821,56 +4160,379 @@ const SUPABASE_KEY =
 "sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
 
 
-function iniciarSupabase(){
-
-  if(
-    !window.supabase
-  ){
-
-    console.error(
-      "Biblioteca Supabase não carregou."
-    );
-
-    return;
-
-  }
+const supabaseScript =
+document.createElement(
+  "script"
+);
 
 
-  if(
-    window.supabaseClient
-  ){
+supabaseScript.src =
+"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
 
-    return;
 
-  }
-
+supabaseScript.onload =
+async () => {
 
   window.supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_KEY,
-    {
-      auth:{
-        persistSession:false,
-        autoRefreshToken:false,
-        detectSessionInUrl:false
-      }
-    }
+    SUPABASE_KEY
   );
+
+
+  await carregarConfiguracoesLoja();
+
+};
+
+
+document.head.appendChild(
+  supabaseScript
+);
+
+
+/* =========================================
+   LAYOUT E APARÊNCIA
+========================================= */
+
+async function carregarConfiguracoesLoja(){
+
+  if(
+    !window.supabaseClient
+  ){
+    return;
+  }
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+    await window.supabaseClient
+    .from(
+      "Configuracoes_Loja"
+    )
+    .select("*")
+    .eq(
+      "id",
+      1
+    )
+    .maybeSingle();
+
+
+    if(error){
+
+      console.error(
+        "Erro ao carregar layout:",
+        error
+      );
+
+      return;
+
+    }
+
+
+    if(
+      !data
+    ){
+      return;
+    }
+
+
+    aplicarConfiguracoesLoja(
+      data
+    );
+
+  }catch(error){
+
+    console.error(
+      "Erro nas configurações:",
+      error
+    );
+
+  }
 
 }
 
-</script>
 
+function aplicarConfiguracoesLoja(
+  config
+){
+
+  const raiz =
+  document.documentElement;
+
+
+  const corPrincipal =
+  config.cor_principal ||
+  "#d92f82";
+
+
+  const corSecundaria =
+  config.cor_secundaria ||
+  "#111111";
+
+
+  const corFundo =
+  config.cor_fundo ||
+  "#ffffff";
+
+
+  raiz.style.setProperty(
+    "--pink",
+    corPrincipal
+  );
+
+
+  raiz.style.setProperty(
+    "--black",
+    corSecundaria
+  );
+
+
+  raiz.style.setProperty(
+    "--white",
+    corFundo
+  );
+
+
+  document.body.style.background =
+  corFundo;
+
+
+  /* NOME DA LOJA */
+
+  const nomeLoja =
+  config.nome_loja ||
+  "SALI STORE";
+
+
+  document.getElementById(
+    "nomeLojaCabecalho"
+  ).textContent =
+  nomeLoja;
+
+
+  document.getElementById(
+    "nomeLojaRodape"
+  ).textContent =
+  nomeLoja;
+
+
+  document.getElementById(
+    "tituloPagina"
+  ).textContent =
+  nomeLoja +
+  " | Moda Feminina";
+
+
+  document.getElementById(
+    "rodapeLocal"
+  ).textContent =
+  nomeLoja +
+  " • Manacapuru, Amazonas";
+
+
+  /* SUBTÍTULO */
+
+  document.getElementById(
+    "subtituloLojaCabecalho"
+  ).textContent =
+  config.subtitulo_loja ||
+  "Moda feminina • Manacapuru";
+
+
+  /* BARRA SUPERIOR */
+
+  const barraTopo =
+  document.getElementById(
+    "barraTopoLoja"
+  );
+
+
+  barraTopo.textContent =
+  config.texto_topo ||
+  "";
+
+
+  barraTopo.style.display =
+  config.mostrar_barra_topo ===
+  false
+  ?
+  "none"
+  :
+  "block";
+
+
+  /* HERO */
+
+  document.getElementById(
+    "heroTituloLoja"
+  ).textContent =
+  config.hero_titulo ||
+  "Seu look começa aqui.";
+
+
+  document.getElementById(
+    "heroSubtituloLoja"
+  ).textContent =
+  config.hero_subtitulo ||
+  "Novidades, tendências e peças selecionadas para você.";
+
+
+  const hero =
+  document.getElementById(
+    "inicio"
+  );
+
+
+  if(
+    config.banner_url
+  ){
+
+    hero.style.backgroundImage =
+    `
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,.10),
+        rgba(0,0,0,.58)
+      ),
+      url("${config.banner_url}")
+    `;
+
+
+    hero.classList.add(
+      "com-banner"
+    );
+
+  }else{
+
+    hero.style.backgroundImage =
+    `
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,.04),
+        rgba(0,0,0,.52)
+      ),
+      linear-gradient(
+        135deg,
+        #f2d4e3,
+        #d891b6 45%,
+        #1b1b1d 115%
+      )
+    `;
+
+
+    hero.classList.remove(
+      "com-banner"
+    );
+
+  }
+
+
+  /* BENEFÍCIOS */
+
+  const beneficios =
+  document.getElementById(
+    "secaoBeneficios"
+  );
+
+
+  beneficios.style.display =
+  config.mostrar_beneficios ===
+  false
+  ?
+  "none"
+  :
+  "grid";
+
+
+  /* CATEGORIAS */
+
+  const categorias =
+  document.getElementById(
+    "categorias"
+  );
+
+
+  const linkCategorias =
+  document.getElementById(
+    "linkCategorias"
+  );
+
+
+  const botaoCategorias =
+  document.getElementById(
+    "botaoVerCategorias"
+  );
+
+
+  const mostrarCategorias =
+  config.mostrar_categorias !==
+  false;
+
+
+  categorias.style.display =
+  mostrarCategorias
+  ?
+  "block"
+  :
+  "none";
+
+
+  linkCategorias.style.display =
+  mostrarCategorias
+  ?
+  "inline"
+  :
+  "none";
+
+
+  botaoCategorias.style.display =
+  mostrarCategorias
+  ?
+  "inline-block"
+  :
+  "none";
+
+
+  /* INSTAGRAM */
+
+  if(
+    config.instagram
+  ){
+
+    document.body.setAttribute(
+      "data-instagram",
+      config.instagram
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+atualizarCarrinho();
+
+</script>
+<!-- =========================================
+     PRODUTOS / SUPABASE
+========================================= -->
 
 <script
   src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  onload="iniciarSupabase()"
 ></script>
 
 
-<script src="produtos.js?v=17"></script>
-
+<script
+  src="produtos.js?v=17"
+></script>
 
 </body>
+
 </html>
