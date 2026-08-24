@@ -1,23 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,viewport-fit=cover"
->
-
-<meta
-  name="theme-color"
-  content="#ffffff"
->
-
-<title>
-  SALI STORE • Administração
-</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Painel SALI STORE</title>
 
 <style>
 
@@ -28,59 +15,28 @@
 }
 
 :root{
-
-  --pink:#d92f82;
-  --pink-dark:#a91c5f;
-  --pink-soft:#fff3f8;
-
-  --ink:#17171a;
-  --muted:#707078;
-
-  --bg:#f5f5f7;
-  --panel:#fff;
-
-  --line:#e7e7eb;
-  --line2:#d9d9df;
-
-  --green:#177245;
-  --red:#b92f37;
-  --amber:#9b6400;
-  --blue:#2d66c3;
-
-  --shadow:
-    0 1px 2px rgba(20,20,20,.03),
-    0 10px 30px rgba(20,20,20,.04);
-
-}
-
-html,
-body{
-  background:var(--bg);
+  --rosa:#e52d86;
+  --rosa-escuro:#bd1762;
+  --rosa-claro:#fff0f7;
+  --preto:#000;
+  --cinza:#f6f6f6;
+  --borda:#e7e7e7;
+  --verde:#1d7a35;
+  --amarelo:#a86200;
+  --vermelho:#bd0000;
 }
 
 body{
-
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Text",
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-  color:var(--ink);
-
-  -webkit-font-smoothing:
-    antialiased;
-
-  padding-bottom:74px;
-
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5f5;
+  color:#111;
+  padding-bottom:82px;
 }
 
 button,
 input,
-select,
-textarea{
+textarea,
+select{
   font:inherit;
 }
 
@@ -89,8 +45,8 @@ button{
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 .esconder{
@@ -101,457 +57,176 @@ a{
 /* LOGIN */
 
 .login-tela{
-
   min-height:100vh;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
-  padding:24px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fff,
-      #f8f6f7
-    );
-
+  padding:20px;
+  background:linear-gradient(
+    135deg,
+    #ffd3e5,
+    #ff88bb
+  );
 }
 
 .login-box{
-
   width:100%;
-
-  max-width:390px;
-
+  max-width:420px;
   background:#fff;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:18px;
-
-  padding:30px;
-
-  box-shadow:
-    var(--shadow);
-
+  padding:30px 22px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
 .login-logo{
-
   text-align:center;
-
-  margin-bottom:26px;
-
-}
-
-.login-logo:before{
-
-  content:"SALI";
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  width:70px;
-
-  height:70px;
-
-  margin:
-    0 auto 16px;
-
-  background:#111;
-
-  color:var(--pink);
-
-  border-radius:16px;
-
-  font-size:23px;
-
-  font-weight:900;
-
-  letter-spacing:.08em;
-
+  margin-bottom:25px;
 }
 
 .login-logo h1{
-
-  font-size:24px;
-
-  letter-spacing:-.02em;
-
+  color:var(--rosa);
+  font-size:34px;
 }
 
 .login-logo p{
-
-  color:var(--muted);
-
-  font-size:13px;
-
-  margin-top:6px;
-
+  margin-top:8px;
+  color:#666;
 }
 
+.erro-login{
+  color:#c40000;
+  font-size:14px;
+  margin-top:14px;
+  text-align:center;
+}
+
+.botao-login{
+  width:100%;
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  font-weight:900;
+  margin-top:8px;
+}
+
+
+/* CAMPOS */
 
 .campo{
   margin-bottom:15px;
 }
 
 .campo label{
-
   display:block;
-
-  font-size:12px;
-
-  font-weight:760;
-
+  font-size:14px;
+  font-weight:800;
   margin-bottom:7px;
-
-  color:#3d3d43;
-
 }
 
 .campo input,
-.campo select,
 .campo textarea,
-.buscar{
-
+.campo select{
   width:100%;
-
-  border:
-    1px solid var(--line2);
-
-  border-radius:9px;
-
+  border:1px solid #ccc;
+  border-radius:10px;
+  padding:13px;
   background:#fff;
-
-  padding:
-    11px 12px;
-
   outline:none;
-
-  color:var(--ink);
-
 }
 
 .campo textarea{
-
-  min-height:105px;
-
+  min-height:100px;
   resize:vertical;
-
 }
 
 .campo input:focus,
-.campo select:focus,
 .campo textarea:focus,
-.buscar:focus{
-
-  border-color:var(--pink);
-
-  box-shadow:
-    0 0 0 3px rgba(217,47,130,.08);
-
+.campo select:focus{
+  border-color:var(--rosa);
 }
 
-
-.botao-login,
-.btn-primary{
-
-  border:0;
-
-  background:#111;
-
-  color:#fff;
-
-  border-radius:9px;
-
-  padding:
-    12px 14px;
-
-  font-weight:800;
-
+.duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.botao-login{
-  width:100%;
-}
-
-.erro-login{
-
-  min-height:18px;
-
-  color:#b42318;
-
-  text-align:center;
-
+.foto-ajuda{
+  color:#777;
   font-size:12px;
-
-  margin-top:12px;
-
+  margin-top:8px;
+  line-height:1.45;
 }
 
 
-/* ESTRUTURA */
+/* APP */
 
 .painel{
   display:none;
 }
 
 .topo{
-
   position:sticky;
-
   top:0;
-
-  z-index:900;
-
-  background:
-    rgba(255,255,255,.97);
-
-  backdrop-filter:
-    blur(16px);
-
-  border-bottom:
-    1px solid var(--line);
-
-  padding:
-    10px 15px;
-
-  padding-top:
-    max(
-      10px,
-      env(safe-area-inset-top)
-    );
-
+  z-index:500;
+  background:#000;
+  color:#fff;
+  padding:12px 15px;
+  padding-top:max(12px,env(safe-area-inset-top));
 }
 
 .topo-conteudo{
-
-  max-width:1260px;
-
+  max-width:1180px;
   margin:auto;
-
   display:flex;
-
   align-items:center;
-
-  justify-content:
-    space-between;
-
+  justify-content:space-between;
   gap:12px;
-
 }
 
 .marca-admin{
-
   display:flex;
-
   align-items:center;
-
   gap:10px;
-
 }
 
 .marca-icone{
-
   width:38px;
-
   height:38px;
-
-  border-radius:10px;
-
-  background:#111;
-
-  color:var(--pink);
-
+  border-radius:11px;
+  background:var(--rosa);
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
-  font-size:12px;
-
   font-weight:900;
-
-  letter-spacing:.06em;
-
 }
 
 .marca-admin h1{
-
-  font-size:15px;
-
-  font-weight:850;
-
+  font-size:18px;
 }
 
 .marca-admin small{
-
   display:block;
-
-  font-size:10px;
-
-  color:var(--muted);
-
-  margin-top:2px;
-
-}
-
-.top-actions{
-
-  display:flex;
-
-  gap:7px;
-
-}
-
-.top-action,
-.sair{
-
-  border:
-    1px solid var(--line);
-
-  background:#fff;
-
-  border-radius:8px;
-
-  padding:
-    8px 10px;
-
+  color:#aaa;
   font-size:11px;
-
-  font-weight:750;
-
-  color:#444;
-
+  margin-top:2px;
 }
 
-.top-action.primary{
-
-  background:var(--pink);
-
-  border-color:var(--pink);
-
+.sair{
+  background:#2a2a2a;
   color:#fff;
-
-}
-
-
-/* NAVEGAÇÃO MOBILE */
-
-.nav-admin{
-
-  position:fixed;
-
-  z-index:1200;
-
-  left:0;
-
-  right:0;
-
-  bottom:0;
-
-  background:
-    rgba(255,255,255,.98);
-
-  backdrop-filter:
-    blur(14px);
-
-  border-top:
-    1px solid var(--line);
-
-  padding:
-    5px 8px
-    max(
-      6px,
-      env(safe-area-inset-bottom)
-    );
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
-  gap:2px;
-
-}
-
-.nav-item{
-
   border:0;
-
-  background:transparent;
-
-  border-radius:8px;
-
-  color:#8a8a90;
-
-  padding:
-    6px 2px;
-
-  font-size:9.5px;
-
-  font-weight:720;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  gap:3px;
-
+  padding:9px 12px;
+  border-radius:9px;
+  font-weight:800;
 }
-
-.nav-item .icone{
-
-  font-size:16px;
-
-  line-height:1;
-
-  filter:grayscale(1);
-
-  opacity:.7;
-
-}
-
-.nav-item.ativo{
-
-  color:var(--pink);
-
-  background:
-    var(--pink-soft);
-
-}
-
-.nav-item.ativo .icone{
-
-  filter:none;
-
-  opacity:1;
-
-}
-
-
-/* CONTEÚDO */
 
 .conteudo{
-
-  max-width:1260px;
-
+  max-width:1180px;
   margin:auto;
-
-  padding:
-    20px 15px 46px;
-
+  padding:18px 15px 42px;
 }
 
 .pagina{
@@ -562,1267 +237,344 @@ a{
   display:block;
 }
 
-.page-head{
-
-  display:flex;
-
-  align-items:flex-start;
-
-  justify-content:
-    space-between;
-
-  gap:12px;
-
+.titulo-pagina{
   margin-bottom:18px;
-
 }
 
 .titulo-pagina h2{
-
-  font-size:23px;
-
-  letter-spacing:-.025em;
-
+  font-size:25px;
+  margin-bottom:5px;
 }
 
 .titulo-pagina p{
-
-  font-size:13px;
-
-  color:var(--muted);
-
-  margin-top:5px;
-
+  color:#666;
   line-height:1.45;
-
 }
 
-.page-btn{
 
-  flex:none;
+/* NAV */
 
-  border:0;
-
-  background:var(--pink);
-
-  color:#fff;
-
-  border-radius:8px;
-
-  padding:
-    10px 12px;
-
-  font-size:11px;
-
-  font-weight:800;
-
-}
-
-.section{
-
+.nav-admin{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:1000;
   background:#fff;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:12px;
-
-  margin-bottom:14px;
-
-  overflow:hidden;
-
+  border-top:1px solid #ddd;
+  padding:6px 6px max(7px,env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:2px;
 }
 
-.section-head{
-
-  padding:
-    15px 16px;
-
-  border-bottom:
-    1px solid var(--line);
-
+.nav-item{
+  border:0;
+  background:transparent;
+  padding:7px 2px;
+  border-radius:10px;
+  font-size:10px;
+  font-weight:800;
+  color:#777;
   display:flex;
-
+  flex-direction:column;
   align-items:center;
-
-  justify-content:
-    space-between;
-
-  gap:10px;
-
+  gap:3px;
 }
 
-.section-head h3{
-  font-size:14px;
+.nav-item .icone{
+  font-size:20px;
+  line-height:1;
 }
 
-.section-body{
-  padding:15px 16px;
+.nav-item.ativo{
+  color:var(--rosa);
+  background:var(--rosa-claro);
 }
+
+
+/* BLOCOS */
 
 .bloco{
-
   background:#fff;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:12px;
-
-  padding:16px;
-
-  margin-bottom:14px;
-
+  border-radius:16px;
+  padding:17px;
+  margin-bottom:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
 }
 
 .bloco h3{
-
-  font-size:14px;
-
-  margin-bottom:14px;
-
+  margin-bottom:15px;
 }
 
 .subtitulo{
-
-  border-top:
-    1px solid var(--line);
-
-  margin:
-    24px 0 13px;
-
+  margin:25px 0 12px;
   padding-top:20px;
-
+  border-top:1px solid #eee;
 }
 
 .subtitulo h4{
-  font-size:14px;
+  font-size:18px;
+  margin-bottom:5px;
 }
 
-.subtitulo p,
-.foto-ajuda{
-
-  font-size:11px;
-
-  color:var(--muted);
-
+.subtitulo p{
+  color:#777;
+  font-size:13px;
   line-height:1.5;
-
-  margin-top:5px;
-
-}
-
-.duplo{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:12px;
-
 }
 
 
 /* DASHBOARD */
 
-.kpi-grid{
-
+.dashboard-grade{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:10px;
-
-  margin-bottom:14px;
-
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+  margin-bottom:16px;
 }
 
-.kpi{
-
+.dash-card{
   background:#fff;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:11px;
-
-  padding:14px;
-
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.05);
+  min-height:104px;
 }
 
-.kpi-label{
-
-  font-size:11px;
-
-  color:var(--muted);
-
+.dash-card small{
+  color:#777;
   font-weight:700;
-
 }
 
-.kpi-value{
-
-  font-size:23px;
-
-  font-weight:850;
-
-  letter-spacing:-.03em;
-
-  margin-top:8px;
-
+.dash-card strong{
+  display:block;
+  font-size:25px;
+  margin-top:9px;
 }
 
-.kpi-note{
-
-  font-size:10px;
-
-  color:#929299;
-
+.dash-card .mini{
+  display:block;
+  color:#777;
+  font-size:11px;
   margin-top:5px;
-
 }
 
-.kpi.main{
-
-  border-left:
-    3px solid var(--pink);
-
+.dash-card.destaque{
+  background:#000;
+  color:#fff;
 }
 
-.quick-list{
+.dash-card.destaque small,
+.dash-card.destaque .mini{
+  color:#bbb;
+}
 
+.atalhos{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.quick-item{
-
-  border:0;
-
+.atalho{
+  border:1px solid #eee;
   background:#fff;
-
+  border-radius:13px;
+  padding:15px;
   text-align:left;
+  font-weight:900;
+}
 
-  padding:
-    14px 16px;
+.atalho span{
+  display:block;
+  font-size:24px;
+  margin-bottom:8px;
+}
 
-  border-bottom:
-    1px solid var(--line);
+.alerta-box{
+  padding:13px;
+  border-radius:12px;
+  margin-top:10px;
+  font-size:13px;
+  line-height:1.5;
+}
 
-  font-size:12px;
+.alerta-box.rosa{
+  background:var(--rosa-claro);
+  color:#8f1249;
+}
 
-  font-weight:750;
+.alerta-box.amarelo{
+  background:#fff7df;
+  color:#795000;
+}
 
+
+/* PEDIDOS */
+
+.filtros-scroll{
   display:flex;
-
-  justify-content:
-    space-between;
-
-  align-items:center;
-
-}
-
-.quick-item:nth-child(odd){
-
-  border-right:
-    1px solid var(--line);
-
-}
-
-.quick-item:last-child,
-.quick-item:nth-last-child(2){
-
-  border-bottom:0;
-
-}
-
-.quick-item b{
-
-  color:var(--pink);
-
-  font-size:16px;
-
-}
-
-
-/* LISTAS */
-
-.toolbar{
-
-  display:flex;
-
   gap:8px;
-
-  align-items:center;
-
-  margin-bottom:12px;
-
-}
-
-.toolbar .buscar{
-  flex:1;
-}
-
-.filter-row{
-
-  display:flex;
-
-  gap:7px;
-
   overflow-x:auto;
-
-  padding-bottom:9px;
-
-  margin-bottom:3px;
-
+  padding:2px 1px 10px;
+  margin-bottom:8px;
+  -webkit-overflow-scrolling:touch;
 }
 
 .filtro-pedido{
-
-  white-space:nowrap;
-
-  border:
-    1px solid var(--line2);
-
+  flex:0 0 auto;
+  border:1px solid #ddd;
   background:#fff;
-
-  border-radius:7px;
-
-  padding:
-    7px 10px;
-
-  font-size:10px;
-
-  font-weight:750;
-
-  color:#555;
-
+  border-radius:999px;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:900;
 }
 
 .filtro-pedido.ativo{
-
-  background:#111;
-
+  background:#000;
   color:#fff;
-
-  border-color:#111;
-
+  border-color:#000;
 }
 
-.lista-pedidos,
-.lista-produtos{
-
+.lista-pedidos{
   display:grid;
-
-  gap:0;
-
+  gap:12px;
 }
 
-.pedido-card,
-.produto-card{
-
-  border-bottom:
-    1px solid var(--line);
-
-  padding:
-    14px 0;
-
+.pedido-card{
   background:#fff;
-
-}
-
-.pedido-card:last-child,
-.produto-card:last-child{
-
-  border-bottom:0;
-
+  border-radius:15px;
+  padding:15px;
+  border:1px solid #eee;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
 .pedido-topo{
-
   display:flex;
-
-  justify-content:
-    space-between;
-
-  gap:12px;
-
-  align-items:
-    flex-start;
-
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
 }
 
 .pedido-numero{
-
-  font-size:12px;
-
-  font-weight:850;
-
+  font-weight:900;
+  font-size:16px;
 }
 
 .pedido-data{
-
-  font-size:9.5px;
-
-  color:#939399;
-
-  margin-top:3px;
-
+  font-size:11px;
+  color:#888;
+  margin-top:4px;
 }
 
 .pedido-total{
-
-  font-size:14px;
-
-  font-weight:850;
-
+  font-weight:900;
+  color:var(--rosa);
+  font-size:18px;
 }
 
 .pedido-cliente{
-
-  font-size:12px;
-
-  font-weight:760;
-
-  margin-top:8px;
-
+  margin-top:12px;
+  font-weight:800;
 }
 
 .pedido-resumo{
-
-  font-size:10.5px;
-
-  color:var(--muted);
-
+  font-size:12px;
+  color:#666;
   line-height:1.55;
-
-  margin-top:4px;
-
+  margin-top:7px;
 }
 
-.status-pedido,
-.status-produto{
-
-  display:inline-flex;
-
-  margin-top:8px;
-
-  padding:
-    4px 7px;
-
-  border-radius:6px;
-
-  font-size:9px;
-
-  font-weight:800;
-
-  background:#f1f1f3;
-
+.status-pedido{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  background:#f1f1f1;
   color:#555;
-
 }
 
 .status-pedido.novo{
-
-  background:#fff0f7;
-
-  color:#a3185b;
-
+  background:#fff1f7;
+  color:#b31860;
 }
 
 .status-pedido.confirmado{
-
-  background:#eef4ff;
-
-  color:#285cab;
-
+  background:#e8f2ff;
+  color:#1d5b9e;
 }
 
 .status-pedido.separacao{
-
-  background:#fff7e7;
-
-  color:#8a5a00;
-
+  background:#fff6df;
+  color:#8b5b00;
 }
 
 .status-pedido.entrega{
-
-  background:#f0edff;
-
-  color:#6042a7;
-
+  background:#eee9ff;
+  color:#5d3aa8;
 }
 
-.status-pedido.entregue,
-.status-produto.ativo{
-
-  background:#eaf7ee;
-
-  color:#216f3b;
-
+.status-pedido.entregue{
+  background:#e6f7ea;
+  color:#1c7433;
 }
 
 .status-pedido.cancelado{
-
-  background:#ffeded;
-
-  color:#a82b2b;
-
+  background:#ffe9e9;
+  color:#ad0000;
 }
 
-.status-produto.inativo{
-
-  background:#f1f1f3;
-
-  color:#777;
-
-}
-
-.pedido-acoes,
-.acoes{
-
+.pedido-acoes{
   display:flex;
-
-  gap:6px;
-
+  gap:8px;
   flex-wrap:wrap;
-
-  margin-top:9px;
-
+  margin-top:12px;
 }
 
-.pedido-acoes button,
-.acoes button{
-
-  border:
-    1px solid var(--line);
-
-  border-radius:7px;
-
-  background:#fff;
-
-  padding:
-    7px 9px;
-
-  font-size:9.5px;
-
-  font-weight:800;
-
+.pedido-acoes button{
+  border:0;
+  border-radius:9px;
+  padding:9px 11px;
+  font-size:12px;
+  font-weight:900;
 }
 
-.ver-pedido,
-.editar{
-
-  background:#111!important;
-
-  color:#fff!important;
-
-  border-color:#111!important;
-
+.ver-pedido{
+  background:#000;
+  color:#fff;
 }
 
-.avancar-pedido,
-.alternar{
-
-  background:
-    var(--pink-soft)!important;
-
-  color:
-    var(--pink-dark)!important;
-
+.avancar-pedido{
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
 }
 
-.cancelar-pedido,
-.excluir{
-
-  background:#fff1f1!important;
-
-  color:#a52d34!important;
-
+.cancelar-pedido{
+  background:#ffeaea;
+  color:#b00000;
 }
 
 .sem-dados{
-
   text-align:center;
-
-  color:var(--muted);
-
-  font-size:12px;
-
-  padding:
-    26px 10px;
-
+  padding:32px 15px;
+  color:#777;
 }
 
 
-/* PRODUTOS */
-
-.produto-card{
-
-  display:grid;
-
-  grid-template-columns:
-    66px 1fr;
-
-  gap:11px;
-
-}
-
-.produto-card img,
-.sem-foto{
-
-  width:66px;
-
-  height:88px;
-
-  border-radius:8px;
-
-  object-fit:cover;
-
-  background:#f1f1f2;
-
-}
-
-.sem-foto{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-size:10px;
-
-  color:#999;
-
-}
-
-.produto-info h4{
-  font-size:13px;
-}
-
-.produto-info .preco{
-
-  font-size:13px;
-
-  font-weight:850;
-
-  margin:
-    4px 0;
-
-}
-
-.detalhes{
-
-  font-size:10.5px;
-
-  color:var(--muted);
-
-  line-height:1.5;
-
-}
-
-.cabecalho-lista{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:
-    space-between;
-
-  gap:10px;
-
-  margin-bottom:12px;
-
-}
-
-
-/* FORMULÁRIO DE PRODUTO */
-
-.escolher-foto{
-
-  display:block;
-
-  width:100%;
-
-  background:#111;
-
-  color:#fff;
-
-  text-align:center;
-
-  border-radius:8px;
-
-  padding:11px;
-
-  font-size:11px;
-
-  font-weight:800;
-
-  cursor:pointer;
-
-}
-
-#produtoFotosArquivos{
-  display:none;
-}
-
-.galeria-edicao{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:10px;
-
-  margin-top:12px;
-
-}
-
-.foto-card{
-
-  border:
-    1px solid var(--line);
-
-  border-radius:9px;
-
-  padding:7px;
-
-  position:relative;
-
-}
-
-.foto-card.principal{
-
-  border-color:
-    var(--pink);
-
-}
-
-.foto-card img{
-
-  width:100%;
-
-  aspect-ratio:3/4;
-
-  object-fit:cover;
-
-  border-radius:7px;
-
-}
-
-.badge-principal{
-
-  position:absolute;
-
-  top:11px;
-
-  left:11px;
-
-  background:#111;
-
-  color:#fff;
-
-  border-radius:5px;
-
-  padding:
-    4px 6px;
-
-  font-size:8px;
-
-  font-weight:850;
-
-}
-
-.foto-acoes{
-
-  display:grid;
-
-  gap:5px;
-
-  margin-top:6px;
-
-}
-
-.foto-acoes button,
-.remover-opcao,
-.remover-foto-opcao{
-
-  border:
-    1px solid var(--line);
-
-  background:#fff;
-
-  border-radius:7px;
-
-  padding:7px;
-
-  font-size:9px;
-
-  font-weight:780;
-
-}
-
-.definir-principal{
-
-  background:
-    var(--pink-soft)!important;
-
-  color:
-    var(--pink-dark);
-
-}
-
-.excluir-foto,
-.remover-opcao,
-.remover-foto-opcao{
-
-  background:#fff1f1!important;
-
-  color:#a52d34;
-
-}
-
-.opcoes-area{
-
-  display:grid;
-
-  gap:10px;
-
-}
-
-.opcao-card{
-
-  border:
-    1px solid var(--line);
-
-  border-radius:10px;
-
-  padding:13px;
-
-  background:#fcfcfc;
-
-}
-
-.opcao-topo{
-
-  display:flex;
-
-  justify-content:
-    space-between;
-
-  align-items:center;
-
-  margin-bottom:12px;
-
-}
-
-.tipo-opcao{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:7px;
-
-  margin-bottom:12px;
-
-}
-
-.tipo-opcao button{
-
-  border:
-    1px solid var(--line2);
-
-  background:#fff;
-
-  border-radius:7px;
-
-  padding:9px;
-
-  font-size:10px;
-
-  font-weight:800;
-
-}
-
-.tipo-opcao button.selecionado{
-
-  border-color:
-    var(--pink);
-
-  color:
-    var(--pink-dark);
-
-  background:
-    var(--pink-soft);
-
-}
-
-.foto-opcao-area{
-
-  border:
-    1px solid var(--line);
-
-  border-radius:8px;
-
-  background:#fff;
-
-  padding:10px;
-
-  margin:
-    10px 0;
-
-}
-
-.foto-opcao-area label{
-
-  font-size:11px;
-
-  font-weight:800;
-
-  display:block;
-
-  margin-bottom:7px;
-
-}
-
-.preview-opcao{
-
-  display:flex;
-
-  gap:9px;
-
-  align-items:flex-start;
-
-  margin-top:8px;
-
-}
-
-.preview-opcao img{
-
-  width:78px;
-
-  height:102px;
-
-  object-fit:cover;
-
-  border-radius:7px;
-
-}
-
-.tamanhos-titulo{
-
-  font-size:11px;
-
-  font-weight:800;
-
-  margin:
-    10px 0 7px;
-
-}
-
-.tamanhos-grade{
-
-  display:grid;
-
-  gap:6px;
-
-}
-
-.tamanho-linha{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 92px;
-
-  gap:8px;
-
-  align-items:center;
-
-  border:
-    1px solid var(--line);
-
-  background:#fff;
-
-  border-radius:7px;
-
-  padding:8px;
-
-}
-
-.tamanho-check{
-
-  display:flex;
-
-  gap:7px;
-
-  align-items:center;
-
-  font-size:10.5px;
-
-  font-weight:720;
-
-}
-
-.tamanho-check input{
-
-  width:16px;
-
-  height:16px;
-
-}
-
-.estoque-tamanho{
-
-  width:100%;
-
-  border:
-    1px solid var(--line2);
-
-  border-radius:6px;
-
-  padding:7px;
-
-}
-
-.adicionar-opcao{
-
-  width:100%;
-
-  border:
-    1px dashed #e2aac5;
-
-  background:
-    var(--pink-soft);
-
-  color:
-    var(--pink-dark);
-
-  border-radius:8px;
-
-  padding:11px;
-
-  font-size:10px;
-
-  font-weight:800;
-
-  margin-top:10px;
-
-}
-
-.estoque-calculado{
-
-  background:#f8f8fa;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:8px;
-
-  padding:10px;
-
-  font-size:11px;
-
-  margin-top:10px;
-
-}
-
-.estoque-calculado strong{
-  color:var(--pink);
-}
-
-.ativo-area{
-
-  display:flex;
-
-  gap:8px;
-
-  align-items:center;
-
-  font-size:11px;
-
-  font-weight:720;
-
-  margin:
-    14px 0;
-
-}
-
-.botoes-form{
-
-  display:flex;
-
-  gap:8px;
-
-}
-
-.salvar{
-
-  flex:1;
-
-  border:0;
-
-  background:#111;
-
-  color:#fff;
-
-  border-radius:8px;
-
-  padding:11px;
-
-  font-size:11px;
-
-  font-weight:800;
-
-}
-
-.cancelar{
-
-  display:none;
-
-  border:
-    1px solid var(--line2);
-
-  background:#fff;
-
-  border-radius:8px;
-
-  padding:11px;
-
-  font-size:11px;
-
-  font-weight:750;
-
-}
-
-
-/* CONFIGURAÇÕES */
-
-.settings-list{
-
-  background:#fff;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:12px;
-
-  overflow:hidden;
-
-}
-
-.settings-item{
-
-  width:100%;
-
-  border:0;
-
-  background:#fff;
-
-  padding:
-    14px 15px;
-
-  border-bottom:
-    1px solid var(--line);
-
-  display:grid;
-
-  grid-template-columns:
-    34px 1fr auto;
-
-  gap:10px;
-
-  align-items:center;
-
-  text-align:left;
-
-}
-
-.settings-item:last-child{
-  border-bottom:0;
-}
-
-.settings-icon{
-
-  width:34px;
-
-  height:34px;
-
-  border-radius:9px;
-
-  background:#f3f3f5;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-size:15px;
-
-}
-
-.settings-copy strong{
-
-  font-size:12px;
-
-  display:block;
-
-}
-
-.settings-copy span{
-
-  font-size:10.5px;
-
-  color:var(--muted);
-
-  display:block;
-
-  margin-top:3px;
-
-}
-
-.settings-arrow{
-
-  color:#aaa;
-
-  font-size:18px;
-
-}
-
-
-/* MODAL */
+/* MODAL PEDIDO */
 
 .modal-pedido-overlay{
-
   position:fixed;
-
   inset:0;
-
-  background:
-    rgba(17,17,17,.5);
-
+  background:rgba(0,0,0,.68);
   z-index:3000;
-
   display:none;
-
   align-items:flex-end;
-
   justify-content:center;
-
-  padding:6px;
-
+  padding:8px;
 }
 
 .modal-pedido-overlay.ativo{
@@ -1830,220 +582,574 @@ a{
 }
 
 .modal-pedido{
-
   width:100%;
-
-  max-width:620px;
-
-  max-height:92vh;
-
-  overflow:auto;
-
+  max-width:600px;
   background:#fff;
-
-  border-radius:
-    16px 16px 10px 10px;
-
+  border-radius:22px 22px 16px 16px;
+  max-height:92vh;
+  overflow-y:auto;
   padding:18px;
-
   position:relative;
-
 }
 
 .modal-fechar{
-
   position:absolute;
-
-  right:12px;
-
-  top:12px;
-
-  width:34px;
-
-  height:34px;
-
-  border-radius:8px;
-
-  border:
-    1px solid var(--line);
-
-  background:#f5f5f6;
-
-  font-size:20px;
-
+  right:14px;
+  top:14px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:0;
+  background:#000;
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
 }
 
 .modal-pedido h3{
-
-  font-size:16px;
-
-  padding-right:40px;
-
+  padding-right:48px;
+  margin-bottom:4px;
 }
 
 .modal-pedido .numero{
-
-  color:var(--pink);
-
-  font-size:11px;
-
-  font-weight:800;
-
-  margin:
-    3px 0 14px;
-
+  color:var(--rosa);
+  font-weight:900;
+  margin-bottom:17px;
 }
 
 .detalhe-box{
-
-  background:#fafafa;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:8px;
-
-  padding:10px;
-
-  margin-bottom:8px;
-
-  font-size:11px;
-
+  background:#f7f7f7;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:10px;
 }
 
 .detalhe-box strong{
-
   display:block;
-
-  margin-bottom:4px;
-
+  margin-bottom:5px;
 }
 
 .item-pedido{
-
   display:grid;
-
-  grid-template-columns:
-    46px 1fr auto;
-
-  gap:8px;
-
+  grid-template-columns:54px 1fr auto;
+  gap:10px;
   align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
 
-  padding:
-    8px 0;
-
-  border-bottom:
-    1px solid var(--line);
-
+.item-pedido:last-child{
+  border-bottom:0;
 }
 
 .item-pedido img{
-
-  width:46px;
-
-  height:58px;
-
+  width:54px;
+  height:68px;
   object-fit:cover;
-
-  border-radius:6px;
-
+  border-radius:8px;
+  background:#eee;
 }
 
 .item-pedido .nome{
-
-  font-size:10.5px;
-
-  font-weight:760;
-
+  font-size:13px;
+  font-weight:800;
+  line-height:1.3;
 }
 
 .item-pedido .qtd{
-
-  font-size:9px;
-
+  font-size:11px;
   color:#777;
-
-  margin-top:3px;
-
+  margin-top:4px;
 }
 
 .item-pedido .valor{
-
-  font-size:10.5px;
-
-  font-weight:800;
-
+  font-size:13px;
+  font-weight:900;
 }
 
 .linha-total{
-
   display:flex;
-
-  justify-content:
-    space-between;
-
-  padding:
-    5px 0;
-
-  font-size:11px;
-
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 0;
+  font-size:14px;
 }
 
 .linha-total.final{
-
-  font-size:14px;
-
-  font-weight:850;
-
-  border-top:
-    1px solid var(--line);
-
-  margin-top:4px;
-
-  padding-top:9px;
-
+  font-size:18px;
+  font-weight:900;
+  border-top:1px solid #ddd;
+  margin-top:5px;
+  padding-top:11px;
 }
 
 .status-select{
-
   width:100%;
-
-  border:
-    1px solid var(--line2);
-
-  border-radius:8px;
-
-  padding:10px;
-
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:10px;
   background:#fff;
-
 }
 
 .salvar-status{
-
   width:100%;
-
+  margin-top:10px;
   border:0;
-
-  background:#111;
-
+  background:#000;
   color:#fff;
-
-  border-radius:8px;
-
-  padding:11px;
-
-  font-size:11px;
-
-  font-weight:800;
-
-  margin-top:8px;
-
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
 }
 
 
-/* DESKTOP */
+/* PRODUTOS */
+
+.escolher-foto{
+  display:block;
+  width:100%;
+  background:#111;
+  color:#fff;
+  padding:14px;
+  text-align:center;
+  border-radius:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+#produtoFotosArquivos{
+  display:none;
+}
+
+.galeria-edicao{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+.foto-card{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:8px;
+  background:#fff;
+  position:relative;
+}
+
+.foto-card.principal{
+  border:2px solid var(--rosa);
+}
+
+.foto-card img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:9px;
+  display:block;
+  background:#eee;
+}
+
+.badge-principal{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:var(--rosa);
+  color:#fff;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.foto-acoes{
+  display:grid;
+  gap:6px;
+  margin-top:8px;
+}
+
+.foto-acoes button{
+  border:0;
+  border-radius:8px;
+  padding:8px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.definir-principal{
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
+}
+
+.excluir-foto{
+  background:#ffe8e8;
+  color:#b80000;
+}
+
+.opcoes-area{
+  display:grid;
+  gap:15px;
+}
+
+.opcao-card{
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:15px;
+  background:#fafafa;
+}
+
+.opcao-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.remover-opcao{
+  border:0;
+  background:#ffe5e5;
+  color:#bd0000;
+  padding:8px 10px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.tipo-opcao{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.tipo-opcao button{
+  padding:12px;
+  border:2px solid #ddd;
+  border-radius:10px;
+  background:#fff;
+  font-weight:900;
+}
+
+.tipo-opcao button.selecionado{
+  border-color:var(--rosa);
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
+}
+
+.opcao-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.foto-opcao-area{
+  margin:10px 0 15px;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:12px;
+}
+
+.foto-opcao-area label{
+  display:block;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.preview-opcao{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin-top:10px;
+}
+
+.preview-opcao img{
+  width:95px;
+  height:125px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#eee;
+}
+
+.remover-foto-opcao{
+  border:0;
+  background:#ffe8e8;
+  color:#b80000;
+  padding:9px 11px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.tamanhos-titulo{
+  font-size:14px;
+  font-weight:900;
+  margin:10px 0;
+}
+
+.tamanhos-grade{
+  display:grid;
+  gap:8px;
+}
+
+.tamanho-linha{
+  display:grid;
+  grid-template-columns:1fr 110px;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:10px;
+}
+
+.tamanho-check{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:800;
+}
+
+.tamanho-check input{
+  width:20px;
+  height:20px;
+}
+
+.estoque-tamanho{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:9px;
+}
+
+.estoque-tamanho:disabled{
+  background:#eee;
+  opacity:.55;
+}
+
+.adicionar-opcao{
+  width:100%;
+  border:1px dashed var(--rosa);
+  background:var(--rosa-claro);
+  color:var(--rosa-escuro);
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
+  margin-top:14px;
+}
+
+.estoque-calculado{
+  background:#f4f4f4;
+  padding:12px;
+  border-radius:10px;
+  margin-top:14px;
+  font-size:14px;
+}
+
+.estoque-calculado strong{
+  color:var(--rosa);
+}
+
+.ativo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:15px 0 20px;
+  font-weight:700;
+}
+
+.ativo-area input{
+  width:20px;
+  height:20px;
+}
+
+.botoes-form{
+  display:flex;
+  gap:10px;
+}
+
+.salvar{
+  flex:1;
+  border:0;
+  background:var(--rosa);
+  color:#fff;
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
+}
+
+.salvar:disabled{
+  opacity:.6;
+}
+
+.cancelar{
+  display:none;
+  border:1px solid #ccc;
+  background:#fff;
+  padding:14px;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.cabecalho-lista{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.buscar{
+  width:100%;
+  max-width:330px;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+
+.lista-produtos{
+  display:grid;
+  gap:12px;
+}
+
+.produto-card{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+  border:1px solid #eee;
+  padding:12px;
+  border-radius:14px;
+  background:#fff;
+}
+
+.produto-card img{
+  width:90px;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#eee;
+}
+
+.sem-foto{
+  width:90px;
+  height:120px;
+  background:#eee;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#999;
+  font-size:12px;
+  text-align:center;
+}
+
+.produto-info h4{
+  margin-bottom:6px;
+  font-size:18px;
+}
+
+.produto-info .preco{
+  color:var(--rosa);
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.detalhes{
+  color:#666;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.status-produto{
+  display:inline-block;
+  margin-top:7px;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.status-produto.ativo{
+  background:#e4f8e8;
+  color:#167329;
+}
+
+.status-produto.inativo{
+  background:#f3f3f3;
+  color:#777;
+}
+
+.acoes{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.acoes button{
+  border:0;
+  padding:9px 13px;
+  border-radius:8px;
+  font-weight:800;
+}
+
+.editar{
+  background:#000;
+  color:#fff;
+}
+
+.alternar{
+  background:#fff1f7;
+  color:#be1763;
+}
+
+.excluir{
+  background:#ffe6e6;
+  color:#c80000;
+}
+
+
+/* OUTRAS ABAS */
+
+.config-card{
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:10px;
+  background:#fff;
+}
+
+.config-card strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.config-card p{
+  color:#666;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.config-valor{
+  font-weight:900;
+  color:var(--rosa);
+  margin-top:6px;
+}
+
+.botao-loja{
+  display:block;
+  width:100%;
+  text-align:center;
+  border:0;
+  background:#000;
+  color:#fff;
+  padding:15px;
+  border-radius:12px;
+  font-weight:900;
+}
+
+
+/* RESPONSIVO */
 
 @media(min-width:820px){
 
@@ -2051,146 +1157,69 @@ a{
     padding-bottom:0;
   }
 
-  .topo{
-    padding-left:250px;
-  }
-
   .nav-admin{
-
-    position:fixed;
-
-    top:0;
-
-    bottom:0;
-
-    left:0;
-
+    top:70px;
+    bottom:auto;
+    left:20px;
     right:auto;
-
-    width:225px;
-
-    padding:
-      18px 12px;
-
+    width:190px;
     display:flex;
-
     flex-direction:column;
-
-    gap:4px;
-
-    border-right:
-      1px solid var(--line);
-
-    border-top:0;
-
-    background:#fff;
-
-  }
-
-  .nav-admin:before{
-
-    content:"SALI STORE";
-
-    font-size:16px;
-
-    font-weight:900;
-
-    padding:
-      4px 10px 18px;
-
-    color:#111;
-
+    border:0;
+    border-radius:16px;
+    padding:8px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
   }
 
   .nav-item{
-
     flex-direction:row;
-
     justify-content:flex-start;
-
-    gap:9px;
-
-    font-size:11px;
-
-    padding:
-      9px 10px;
-
+    gap:10px;
+    padding:11px;
+    font-size:13px;
   }
 
   .nav-item .icone{
-    font-size:15px;
+    font-size:19px;
   }
 
   .conteudo{
-    padding-left:255px;
+    padding-left:225px;
   }
 
-  .kpi-grid{
-
-    grid-template-columns:
-      repeat(4,1fr);
-
+  .dashboard-grade{
+    grid-template-columns:repeat(4,1fr);
   }
 
-  .quick-list{
-
-    grid-template-columns:
-      repeat(4,1fr);
-
-  }
-
-  .quick-item{
-
-    border-bottom:0;
-
-    border-right:
-      1px solid var(--line);
-
-  }
-
-  .quick-item:last-child{
-    border-right:0;
-  }
-
-  .galeria-edicao{
-
-    grid-template-columns:
-      repeat(4,1fr);
-
+  .atalhos{
+    grid-template-columns:repeat(4,1fr);
   }
 
 }
 
-
-/* MOBILE */
-
 @media(max-width:650px){
 
-  .duplo{
+  .duplo,
+  .opcao-grid{
     grid-template-columns:1fr;
   }
 
-  .page-head{
-    align-items:center;
-  }
-
-  .page-btn{
-    padding:
-      9px 10px;
+  .tamanho-linha{
+    grid-template-columns:1fr 95px;
   }
 
   .cabecalho-lista{
-
     flex-direction:column;
-
     align-items:stretch;
+  }
 
+  .buscar{
+    max-width:none;
   }
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -2225,8 +1254,7 @@ a{
       <input
         type="email"
         id="email"
-        placeholder="seu@email.com"
-        autocomplete="email"
+        placeholder="Digite seu e-mail"
       >
 
     </div>
@@ -2241,8 +1269,7 @@ a{
       <input
         type="password"
         id="senha"
-        placeholder="Sua senha"
-        autocomplete="current-password"
+        placeholder="Digite sua senha"
       >
 
     </div>
@@ -2255,7 +1282,6 @@ a{
       ENTRAR NO PAINEL
     </button>
 
-
     <div
       class="erro-login"
       id="erroLogin"
@@ -2266,7 +1292,7 @@ a{
 </section>
 
 
-<div
+<section
   class="painel"
   id="painel"
 >
@@ -2279,7 +1305,7 @@ a{
     <div class="marca-admin">
 
       <div class="marca-icone">
-        SALI
+        S
       </div>
 
       <div>
@@ -2289,7 +1315,7 @@ a{
         </h1>
 
         <small>
-          Administração da loja
+          Painel de controle
         </small>
 
       </div>
@@ -2297,24 +1323,12 @@ a{
     </div>
 
 
-    <div class="top-actions">
-
-      <button
-        class="top-action"
-        onclick="abrirLojaVisitante()"
-      >
-        Ver loja
-      </button>
-
-
-      <button
-        class="sair"
-        onclick="sair()"
-      >
-        Sair
-      </button>
-
-    </div>
+    <button
+      class="sair"
+      onclick="sair()"
+    >
+      SAIR
+    </button>
 
   </div>
 
@@ -2328,15 +1342,8 @@ a{
     data-pagina="inicio"
     onclick="abrirPagina('inicio',this)"
   >
-
-    <span class="icone">
-      ⌂
-    </span>
-
-    <span>
-      Início
-    </span>
-
+    <span class="icone">🏠</span>
+    <span>Início</span>
   </button>
 
 
@@ -2345,15 +1352,8 @@ a{
     data-pagina="pedidos"
     onclick="abrirPagina('pedidos',this)"
   >
-
-    <span class="icone">
-      ▤
-    </span>
-
-    <span>
-      Pedidos
-    </span>
-
+    <span class="icone">🧾</span>
+    <span>Pedidos</span>
   </button>
 
 
@@ -2362,15 +1362,8 @@ a{
     data-pagina="produtos"
     onclick="abrirPagina('produtos',this)"
   >
-
-    <span class="icone">
-      ◇
-    </span>
-
-    <span>
-      Produtos
-    </span>
-
+    <span class="icone">👗</span>
+    <span>Produtos</span>
   </button>
 
 
@@ -2379,15 +1372,8 @@ a{
     data-pagina="cancelamentos"
     onclick="abrirPagina('cancelamentos',this)"
   >
-
-    <span class="icone">
-      ×
-    </span>
-
-    <span>
-      Cancelados
-    </span>
-
+    <span class="icone">❌</span>
+    <span>Cancelados</span>
   </button>
 
 
@@ -2396,15 +1382,8 @@ a{
     data-pagina="mais"
     onclick="abrirPagina('mais',this)"
   >
-
-    <span class="icone">
-      ☰
-    </span>
-
-    <span>
-      Mais
-    </span>
-
+    <span class="icone">☰</span>
+    <span>Mais</span>
   </button>
 
 </nav>
@@ -2413,173 +1392,145 @@ a{
 <main class="conteudo">
 
 
+<!-- INÍCIO -->
+
 <section
   class="pagina ativa"
   id="pagina-inicio"
 >
 
-  <div class="page-head">
+  <div class="titulo-pagina">
 
-    <div class="titulo-pagina">
+    <h2>
+      Visão geral
+    </h2>
 
-      <h2>
-        Início
-      </h2>
-
-      <p>
-        Resumo da operação da SALI STORE.
-      </p>
-
-    </div>
-
-
-    <button
-      class="page-btn"
-      onclick="abrirPagina('produtos')"
-    >
-      + Produto
-    </button>
+    <p>
+      Acompanhe os pedidos, vendas e estoque da SALI.
+    </p>
 
   </div>
 
 
-  <div class="kpi-grid">
+  <div class="dashboard-grade">
 
+    <div class="dash-card destaque">
 
-    <div class="kpi main">
-
-      <div class="kpi-label">
+      <small>
         Vendas de hoje
-      </div>
+      </small>
 
-      <div
-        class="kpi-value"
-        id="dashVendasHoje"
-      >
+      <strong id="dashVendasHoje">
         R$ 0,00
-      </div>
+      </strong>
 
-      <div
-        class="kpi-note"
+      <span
+        class="mini"
         id="dashPedidosHoje"
       >
         0 pedidos hoje
-      </div>
+      </span>
 
     </div>
 
 
-    <div class="kpi">
+    <div class="dash-card">
 
-      <div class="kpi-label">
+      <small>
         Pedidos novos
-      </div>
+      </small>
 
-      <div
-        class="kpi-value"
-        id="dashNovos"
-      >
+      <strong id="dashNovos">
         0
-      </div>
+      </strong>
 
-      <div class="kpi-note">
+      <span class="mini">
         Aguardando atendimento
-      </div>
+      </span>
 
     </div>
 
 
-    <div class="kpi">
+    <div class="dash-card">
 
-      <div class="kpi-label">
+      <small>
         Em andamento
-      </div>
+      </small>
 
-      <div
-        class="kpi-value"
-        id="dashAndamento"
-      >
+      <strong id="dashAndamento">
         0
-      </div>
+      </strong>
 
-      <div class="kpi-note">
-        Confirmação, separação e entrega
-      </div>
+      <span class="mini">
+        Confirmados / separação / entrega
+      </span>
 
     </div>
 
 
-    <div class="kpi">
+    <div class="dash-card">
 
-      <div class="kpi-label">
+      <small>
         Estoque total
-      </div>
+      </small>
 
-      <div
-        class="kpi-value"
-        id="dashEstoque"
-      >
+      <strong id="dashEstoque">
         0
-      </div>
+      </strong>
 
-      <div
-        class="kpi-note"
+      <span
+        class="mini"
         id="dashProdutos"
       >
         0 produtos cadastrados
-      </div>
+      </span>
 
     </div>
 
   </div>
 
 
-  <div class="section">
+  <div class="bloco">
 
-    <div class="section-head">
+    <h3>
+      ⚡ Atalhos
+    </h3>
 
-      <h3>
-        Acesso rápido
-      </h3>
-
-    </div>
-
-
-    <div class="quick-list">
+    <div class="atalhos">
 
       <button
-        class="quick-item"
+        class="atalho"
         onclick="abrirPagina('pedidos')"
       >
-        Pedidos
-        <b>›</b>
+        <span>🧾</span>
+        Ver pedidos
       </button>
 
 
       <button
-        class="quick-item"
+        class="atalho"
         onclick="abrirPagina('produtos')"
       >
-        Novo produto
-        <b>›</b>
+        <span>➕</span>
+        Cadastrar produto
       </button>
 
 
       <button
-        class="quick-item"
+        class="atalho"
         onclick="abrirPagina('cancelamentos')"
       >
+        <span>❌</span>
         Cancelamentos
-        <b>›</b>
       </button>
 
 
       <button
-        class="quick-item"
+        class="atalho"
         onclick="abrirLojaVisitante()"
       >
-        Ver loja
-        <b>›</b>
+        <span>🌐</span>
+        Ver minha loja
       </button>
 
     </div>
@@ -2587,69 +1538,39 @@ a{
   </div>
 
 
-  <div class="section">
+  <div class="bloco">
 
-    <div class="section-head">
+    <h3>
+      🆕 Últimos pedidos
+    </h3>
 
-      <h3>
-        Pedidos recentes
-      </h3>
-
-
-      <button
-        class="top-action"
-        onclick="abrirPagina('pedidos')"
-      >
-        Ver todos
-      </button>
-
-    </div>
-
-
-    <div class="section-body">
-
-      <div
-        class="lista-pedidos"
-        id="ultimosPedidos"
-      >
-
-        <div class="sem-dados">
-          Carregando...
-        </div>
-
-      </div>
-
-    </div>
+    <div id="ultimosPedidos"></div>
 
   </div>
 
 </section>
-
+<!-- PEDIDOS -->
 
 <section
   class="pagina"
   id="pagina-pedidos"
 >
 
-  <div class="page-head">
+  <div class="titulo-pagina">
 
-    <div class="titulo-pagina">
+    <h2>
+      Pedidos
+    </h2>
 
-      <h2>
-        Pedidos
-      </h2>
-
-      <p>
-        Acompanhe o pedido da entrada até a entrega.
-      </p>
-
-    </div>
+    <p>
+      Gerencie o atendimento desde o pedido novo até a entrega.
+    </p>
 
   </div>
 
 
   <div
-    class="filter-row"
+    class="filtros-scroll"
     id="filtrosPedidos"
   >
 
@@ -2698,32 +1619,30 @@ a{
   </div>
 
 
-  <div class="section">
+  <div class="bloco">
 
-    <div class="section-body">
+    <div
+      class="campo"
+      style="margin-bottom:12px"
+    >
 
-      <div class="toolbar">
-
-        <input
-          class="buscar"
-          type="search"
-          id="buscaPedidos"
-          placeholder="Buscar pedido, cliente ou telefone"
-          oninput="renderizarPedidos()"
-        >
-
-      </div>
-
-
-      <div
-        class="lista-pedidos"
-        id="listaPedidos"
+      <input
+        type="search"
+        id="buscaPedidos"
+        placeholder="Buscar número, cliente ou telefone..."
+        oninput="renderizarPedidos()"
       >
 
-        <div class="sem-dados">
-          Carregando pedidos...
-        </div>
+    </div>
 
+
+    <div
+      class="lista-pedidos"
+      id="listaPedidos"
+    >
+
+      <div class="sem-dados">
+        Carregando pedidos...
       </div>
 
     </div>
@@ -2733,74 +1652,22 @@ a{
 </section>
 
 
+<!-- PRODUTOS -->
+
 <section
   class="pagina"
   id="pagina-produtos"
 >
 
-  <div class="page-head">
+  <div class="titulo-pagina">
 
-    <div class="titulo-pagina">
+    <h2>
+      Produtos
+    </h2>
 
-      <h2>
-        Produtos
-      </h2>
-
-      <p>
-        Catálogo, variações, tamanhos e estoque.
-      </p>
-
-    </div>
-
-
-    <button
-      class="page-btn"
-      onclick="document.getElementById('produtoNome').focus();window.scrollTo({top:0,behavior:'smooth'})"
-    >
-      + Adicionar
-    </button>
-
-  </div>
-
-
-  <div class="section">
-
-    <div class="section-head">
-
-      <h3>
-        Produtos cadastrados
-      </h3>
-
-    </div>
-
-
-    <div class="section-body">
-
-      <div class="toolbar">
-
-        <input
-          class="buscar"
-          id="busca"
-          type="search"
-          placeholder="Buscar produto"
-          oninput="filtrarProdutos()"
-        >
-
-      </div>
-
-
-      <div
-        class="lista-produtos"
-        id="listaProdutos"
-      >
-
-        <div class="sem-dados">
-          Carregando produtos...
-        </div>
-
-      </div>
-
-    </div>
+    <p>
+      Cadastre fotos, cores, estampas, tamanhos e estoque.
+    </p>
 
   </div>
 
@@ -2808,9 +1675,8 @@ a{
   <div class="bloco">
 
     <h3 id="tituloFormulario">
-      Adicionar produto
+      ➕ Cadastrar produto
     </h3>
-
 
     <input
       type="hidden"
@@ -2871,8 +1737,9 @@ a{
 
 
     <div class="foto-ajuda">
-      Se houver cores ou estampas, o estoque será calculado pelas variantes.
+      Se o produto possuir cores ou estampas, o estoque será calculado pelas variantes.
     </div>
+
 
     <br>
 
@@ -2939,11 +1806,11 @@ a{
     <div class="subtitulo">
 
       <h4>
-        Fotos do produto
+        📸 Fotos do produto
       </h4>
 
       <p>
-        Selecione várias fotos e escolha a principal da vitrine.
+        Você pode selecionar várias fotos. Defina qual será a foto principal da vitrine.
       </p>
 
     </div>
@@ -2953,7 +1820,7 @@ a{
       class="escolher-foto"
       for="produtoFotosArquivos"
     >
-      ESCOLHER FOTOS
+      📷 ESCOLHER FOTOS DA GALERIA
     </label>
 
 
@@ -2975,11 +1842,11 @@ a{
     <div class="subtitulo">
 
       <h4>
-        Cores e estampas
+        🎨 Cores / estampas
       </h4>
 
       <p>
-        Adicione uma imagem para cada opção visual do produto.
+        Escolha COR ou ESTAMPA e adicione uma foto da peça em cada opção.
       </p>
 
     </div>
@@ -3047,44 +1914,33 @@ a{
 
   </div>
 
-</section>
 
+  <div class="bloco">
 
-<section
-  class="pagina"
-  id="pagina-cancelamentos"
->
+    <div class="cabecalho-lista">
 
-  <div class="page-head">
+      <h3>
+        📦 Produtos cadastrados
+      </h3>
 
-    <div class="titulo-pagina">
-
-      <h2>
-        Cancelamentos
-      </h2>
-
-      <p>
-        Pedidos cancelados e possibilidade de reativação.
-      </p>
+      <input
+        class="buscar"
+        id="busca"
+        type="search"
+        placeholder="Buscar produto..."
+        oninput="filtrarProdutos()"
+      >
 
     </div>
 
-  </div>
 
+    <div
+      class="lista-produtos"
+      id="listaProdutos"
+    >
 
-  <div class="section">
-
-    <div class="section-body">
-
-      <div
-        class="lista-pedidos"
-        id="listaCancelamentos"
-      >
-
-        <div class="sem-dados">
-          Nenhum pedido cancelado.
-        </div>
-
+      <div class="sem-dados">
+        Carregando produtos...
       </div>
 
     </div>
@@ -3094,21 +1950,203 @@ a{
 </section>
 
 
+<!-- CANCELAMENTOS -->
+
+<section
+  class="pagina"
+  id="pagina-cancelamentos"
+>
+
+  <div class="titulo-pagina">
+
+    <h2>
+      Cancelamentos
+    </h2>
+
+    <p>
+      Pedidos com status Cancelado aparecem automaticamente aqui.
+    </p>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <div
+      class="lista-pedidos"
+      id="listaCancelamentos"
+    >
+
+      <div class="sem-dados">
+        Nenhum pedido cancelado.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MAIS -->
+
 <section
   class="pagina"
   id="pagina-mais"
 >
 
-  <div class="page-head">
+  <div class="titulo-pagina">
 
-    <div class="titulo-pagina">
+    <h2>
+      Mais
+    </h2>
 
-      <h2>
-        Mais
-      </h2>
+    <p>
+      Outras áreas de gestão da SALI STORE.
+    </p>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>
+      🚚 Formas de entrega
+    </h3>
+
+
+    <div class="config-card">
+
+      <strong>
+        Retirada na loja
+      </strong>
 
       <p>
-        Loja online, operação e configurações.
+        Cliente retira o pedido diretamente na loja.
+      </p>
+
+      <div class="config-valor">
+        Grátis
+      </div>
+
+    </div>
+
+
+    <div class="config-card">
+
+      <strong>
+        Entrega na cidade
+      </strong>
+
+      <p>
+        Entrega local.
+      </p>
+
+      <div class="config-valor">
+        R$ 5,00
+      </div>
+
+    </div>
+
+
+    <div class="config-card">
+
+      <strong>
+        Bola até Novo Manacá
+      </strong>
+
+      <p>
+        Taxa cadastrada no checkout.
+      </p>
+
+      <div class="config-valor">
+        R$ 8,00
+      </div>
+
+    </div>
+
+
+    <div class="config-card">
+
+      <strong>
+        Caixa d’Água pra lá
+      </strong>
+
+      <p>
+        Taxa cadastrada no checkout.
+      </p>
+
+      <div class="config-valor">
+        R$ 10,00
+      </div>
+
+    </div>
+
+
+    <div class="config-card">
+
+      <strong>
+        Barcos / jatos
+      </strong>
+
+      <p>
+        Envio para embarcações e transporte fluvial.
+      </p>
+
+      <div class="config-valor">
+        R$ 5,00
+      </div>
+
+    </div>
+
+
+    <div class="alerta-box amarelo">
+      Nesta versão as taxas são exibidas no painel. Depois podemos criar uma tabela de configurações para alterar esses valores sem mexer no código.
+    </div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>
+      💳 Pagamentos
+    </h3>
+
+    <div class="config-card">
+
+      <strong>
+        Forma registrada nos pedidos
+      </strong>
+
+      <p>
+        O painel lê a coluna <b>forma_pagamento</b> da tabela Pedidos.
+      </p>
+
+    </div>
+
+
+    <div class="alerta-box rosa">
+      Quando o pagamento online for integrado, esta aba poderá mostrar pagos, pendentes, recusados e estornados.
+    </div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>
+      🎨 Aparência da loja
+    </h3>
+
+    <div class="config-card">
+
+      <strong>
+        Próxima etapa
+      </strong>
+
+      <p>
+        Banner, textos da página inicial, promoções, categorias em destaque e outras configurações visuais poderão ser editadas por aqui.
       </p>
 
     </div>
@@ -3116,202 +2154,17 @@ a{
   </div>
 
 
-  <div class="settings-list">
+  <div class="bloco">
 
+    <h3>
+      🌐 Loja como visitante
+    </h3>
 
     <button
-      class="settings-item"
+      class="botao-loja"
       onclick="abrirLojaVisitante()"
     >
-
-      <span class="settings-icon">
-        ◉
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Loja online
-        </strong>
-
-        <span>
-          Visualizar sua loja publicada
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
-    </button>
-
-
-    <button
-      class="settings-item"
-      onclick="alert('Em breve: editor de layout, banners e seções da loja.')"
-    >
-
-      <span class="settings-icon">
-        ▣
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Layout e aparência
-        </strong>
-
-        <span>
-          Banners, vitrine, categorias e página inicial
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
-    </button>
-
-
-    <button
-      class="settings-item"
-      onclick="alert('Em breve: gestão das formas e taxas de entrega.')"
-    >
-
-      <span class="settings-icon">
-        ↗
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Formas de entrega
-        </strong>
-
-        <span>
-          Retirada, entrega local e barcos/jatos
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
-    </button>
-
-
-    <button
-      class="settings-item"
-      onclick="alert('Em breve: gestão dos meios de pagamento.')"
-    >
-
-      <span class="settings-icon">
-        ▤
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Pagamentos
-        </strong>
-
-        <span>
-          Configurar formas de pagamento
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
-    </button>
-
-
-    <button
-      class="settings-item"
-      onclick="alert('Em breve: clientes e histórico de compras.')"
-    >
-
-      <span class="settings-icon">
-        ○
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Clientes
-        </strong>
-
-        <span>
-          Cadastro e histórico de pedidos
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
-    </button>
-
-
-    <button
-      class="settings-item"
-      onclick="alert('Em breve: cupons, promoções e campanhas.')"
-    >
-
-      <span class="settings-icon">
-        ％
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Marketing
-        </strong>
-
-        <span>
-          Cupons, promoções e campanhas
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
-    </button>
-
-
-    <button
-      class="settings-item"
-      onclick="alert('Em breve: dados gerais da SALI STORE.')"
-    >
-
-      <span class="settings-icon">
-        ⚙
-      </span>
-
-      <span class="settings-copy">
-
-        <strong>
-          Configurações
-        </strong>
-
-        <span>
-          Dados da loja e preferências
-        </span>
-
-      </span>
-
-      <span class="settings-arrow">
-        ›
-      </span>
-
+      ABRIR MINHA LOJA
     </button>
 
   </div>
@@ -3320,9 +2173,10 @@ a{
 
 
 </main>
+</section>
 
-</div>
 
+<!-- MODAL DO PEDIDO -->
 
 <div
   class="modal-pedido-overlay"
@@ -3350,7 +2204,6 @@ a{
 
 <script>
 
-
 /* =========================================
    CONFIGURAÇÃO
 ========================================= */
@@ -3358,8 +2211,10 @@ a{
 const SUPABASE_URL =
 "https://uubslcjoybeehinnwhtg.supabase.co";
 
+
 const SUPABASE_KEY =
 "sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
+
 
 const BUCKET_FOTOS =
 "produtos";
@@ -3367,73 +2222,48 @@ const BUCKET_FOTOS =
 
 const supabaseClient =
 window.supabase.createClient(
-
   SUPABASE_URL,
-
   SUPABASE_KEY
-
 );
 
 
 const supabasePublico =
 window.supabase.createClient(
-
   SUPABASE_URL,
-
   SUPABASE_KEY,
-
   {
-
     auth:{
-
       persistSession:false,
-
       autoRefreshToken:false,
-
       detectSessionInUrl:false
-
     }
-
   }
-
 );
 
 
-let produtos =
-[];
+let produtos = [];
 
-let pedidos =
-[];
+let pedidos = [];
 
 let filtroStatusPedidos =
 "Todos";
 
-let fotosFormulario =
-[];
+let fotosFormulario = [];
 
-let opcoesFormulario =
-[];
+let opcoesFormulario = [];
 
 
 const STATUS_PEDIDOS = [
-
   "Novo",
-
   "Confirmado",
-
   "Em separação",
-
   "Saiu para entrega",
-
   "Entregue",
-
   "Cancelado"
-
 ];
 
 
 const CORES_SALI = [
-
   "Preto",
   "Branco",
   "Off White",
@@ -3459,7 +2289,6 @@ const CORES_SALI = [
   "Cinza",
   "Prata",
   "Dourado"
-
 ];
 
 
@@ -3503,25 +2332,19 @@ const TAMANHOS = [
 async function entrar(){
 
   const email =
-  document
-  .getElementById(
+  document.getElementById(
     "email"
-  )
-  .value
-  .trim();
+  ).value.trim();
 
 
   const senha =
-  document
-  .getElementById(
+  document.getElementById(
     "senha"
-  )
-  .value;
+  ).value;
 
 
   const erro =
-  document
-  .getElementById(
+  document.getElementById(
     "erroLogin"
   );
 
@@ -3547,15 +2370,10 @@ async function entrar(){
     data,
     error
   } =
-  await supabaseClient
-  .auth
+  await supabaseClient.auth
   .signInWithPassword({
-
     email,
-
-    password:
-    senha
-
+    password:senha
   });
 
 
@@ -3589,8 +2407,7 @@ async function verificarSessao(){
   const {
     data
   } =
-  await supabaseClient
-  .auth
+  await supabaseClient.auth
   .getSession();
 
 
@@ -3611,30 +2428,21 @@ async function verificarSessao(){
 
 async function mostrarPainel(){
 
-  document
-  .getElementById(
+  document.getElementById(
     "loginTela"
-  )
-  .style
-  .display =
+  ).style.display =
   "none";
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "painel"
-  )
-  .style
-  .display =
+  ).style.display =
   "block";
 
 
   await Promise.all([
-
     carregarProdutos(),
-
     carregarPedidos()
-
   ]);
 
 
@@ -3645,21 +2453,15 @@ async function mostrarPainel(){
 
 function mostrarLogin(){
 
-  document
-  .getElementById(
+  document.getElementById(
     "loginTela"
-  )
-  .style
-  .display =
+  ).style.display =
   "flex";
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "painel"
-  )
-  .style
-  .display =
+  ).style.display =
   "none";
 
 }
@@ -3667,8 +2469,7 @@ function mostrarLogin(){
 
 async function sair(){
 
-  await supabaseClient
-  .auth
+  await supabaseClient.auth
   .signOut();
 
 
@@ -3683,7 +2484,7 @@ async function sair(){
 
 function abrirPagina(
   nome,
-  botao=null
+  botao = null
 ){
 
   document
@@ -3693,9 +2494,7 @@ function abrirPagina(
   .forEach(
     pagina => {
 
-      pagina
-      .classList
-      .remove(
+      pagina.classList.remove(
         "ativa"
       );
 
@@ -3704,8 +2503,7 @@ function abrirPagina(
 
 
   const alvo =
-  document
-  .getElementById(
+  document.getElementById(
     "pagina-" +
     nome
   );
@@ -3713,9 +2511,7 @@ function abrirPagina(
 
   if(alvo){
 
-    alvo
-    .classList
-    .add(
+    alvo.classList.add(
       "ativa"
     );
 
@@ -3729,9 +2525,7 @@ function abrirPagina(
   .forEach(
     item => {
 
-      item
-      .classList
-      .remove(
+      item.classList.remove(
         "ativo"
       );
 
@@ -3740,9 +2534,9 @@ function abrirPagina(
 
 
   const nav =
-  botao ||
-  document
-  .querySelector(
+  botao
+  ||
+  document.querySelector(
     '.nav-item[data-pagina="' +
     nome +
     '"]'
@@ -3751,9 +2545,7 @@ function abrirPagina(
 
   if(nav){
 
-    nav
-    .classList
-    .add(
+    nav.classList.add(
       "ativo"
     );
 
@@ -3781,11 +2573,8 @@ function abrirPagina(
 
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
 }
@@ -3810,17 +2599,12 @@ function moeda(
 ){
 
   return Number(
-    valor ||
-    0
-  )
-  .toLocaleString(
+    valor || 0
+  ).toLocaleString(
     "pt-BR",
     {
-
       style:"currency",
-
       currency:"BRL"
-
     }
   );
 
@@ -3832,30 +2616,24 @@ function escaparHtml(
 ){
 
   return String(
-    valor ??
-    ""
+    valor ?? ""
   )
-
   .replaceAll(
     "&",
     "&amp;"
   )
-
   .replaceAll(
     "<",
     "&lt;"
   )
-
   .replaceAll(
     ">",
     "&gt;"
   )
-
   .replaceAll(
     '"',
     "&quot;"
   )
-
   .replaceAll(
     "'",
     "&#039;"
@@ -3877,13 +2655,11 @@ function gerarIdentificador(){
 
 
   return (
-
     Date.now() +
     "-" +
     Math.random()
     .toString(36)
     .substring(2)
-
   );
 
 }
@@ -3941,7 +2717,9 @@ function dataHoraBR(
 
   if(!valor){
 
-    return "Data não informada";
+    return (
+      "Data não informada"
+    );
 
   }
 
@@ -3965,15 +2743,11 @@ function dataHoraBR(
   }
 
 
-  return data
-  .toLocaleString(
+  return data.toLocaleString(
     "pt-BR",
     {
-
       dateStyle:"short",
-
       timeStyle:"short"
-
     }
   );
 
@@ -4012,8 +2786,7 @@ function somenteDataLocal(
 
   const mes =
   String(
-    data.getMonth() +
-    1
+    data.getMonth() + 1
   )
   .padStart(
     2,
@@ -4031,10 +2804,14 @@ function somenteDataLocal(
   );
 
 
-  return `${ano}-${mes}-${dia}`;
+  return (
+    `${ano}-${mes}-${dia}`
+  );
 
 }
-
+  /* =========================================
+   PEDIDOS
+========================================= */
 
 function telefoneFormatado(
   valor
@@ -4042,8 +2819,7 @@ function telefoneFormatado(
 
   const digitos =
   String(
-    valor ||
-    ""
+    valor || ""
   )
   .replace(
     /\D/g,
@@ -4057,14 +2833,12 @@ function telefoneFormatado(
   ){
 
     return (
-
       "(" +
       digitos.slice(0,2) +
       ") " +
       digitos.slice(2,7) +
       "-" +
       digitos.slice(7)
-
     );
 
   }
@@ -4179,17 +2953,11 @@ function proximoStatus(
 
 
   const fluxo = [
-
     "Novo",
-
     "Confirmado",
-
     "Em separação",
-
     "Saiu para entrega",
-
     "Entregue"
-
   ];
 
 
@@ -4200,12 +2968,10 @@ function proximoStatus(
 
 
   if(
-    indice ===
-    -1
+    indice === -1
     ||
     indice ===
-    fluxo.length -
-    1
+    fluxo.length - 1
   ){
 
     return null;
@@ -4213,10 +2979,11 @@ function proximoStatus(
   }
 
 
-  return fluxo[
-    indice +
-    1
-  ];
+  return (
+    fluxo[
+      indice + 1
+    ]
+  );
 
 }
 
@@ -4237,8 +3004,7 @@ function lerProdutosPedido(
 
 
   if(
-    valor
-    &&
+    valor &&
     typeof valor ===
     "object"
   ){
@@ -4256,13 +3022,14 @@ function lerProdutosPedido(
 
   const texto =
   String(
-    valor ||
-    ""
+    valor || ""
   )
   .trim();
 
 
-  if(!texto){
+  if(
+    !texto
+  ){
 
     return [];
 
@@ -4287,15 +3054,13 @@ function lerProdutosPedido(
 
   }catch(e){
 
-    return [{
-
-      nome:texto,
-
-      quantidade:1,
-
-      preco:0
-
-    }];
+    return [
+      {
+        nome:texto,
+        quantidade:1,
+        preco:0
+      }
+    ];
 
   }
 
@@ -4307,13 +3072,11 @@ function nomeItemPedido(
 ){
 
   return (
-
     item.nome ||
     item.name ||
     item.produto ||
     item.titulo ||
     "Produto"
-
   );
 
 }
@@ -4323,14 +3086,16 @@ function qtdItemPedido(
   item
 ){
 
-  return Number(
-
-    item.quantidade ??
-    item.qtd ??
-    item.quantity ??
+  return (
+    Number(
+      item.quantidade ??
+      item.qtd ??
+      item.quantity ??
+      1
+    )
+    ||
     1
-
-  ) || 1;
+  );
 
 }
 
@@ -4339,14 +3104,16 @@ function precoItemPedido(
   item
 ){
 
-  return Number(
-
-    item.preco ??
-    item.price ??
-    item.valor ??
+  return (
+    Number(
+      item.preco ??
+      item.price ??
+      item.valor ??
+      0
+    )
+    ||
     0
-
-  ) || 0;
+  );
 
 }
 
@@ -4356,27 +3123,23 @@ function fotoItemPedido(
 ){
 
   return (
-
     item.foto ||
     item.foto_url ||
     item.imagem ||
     item.image ||
     ""
-
   );
 
 }
 
 
-/* =========================================
-   PEDIDOS
-========================================= */
-  async function carregarPedidos(){
+async function carregarPedidos(){
 
   const area =
   document.getElementById(
     "listaPedidos"
   );
+
 
   if(area){
 
@@ -4410,22 +3173,26 @@ function fotoItemPedido(
       error
     );
 
+
     pedidos = [];
 
 
     if(area){
 
-      area.innerHTML =
-      `
+      area.innerHTML = `
+
         <div class="sem-dados">
 
           Não foi possível carregar os pedidos.
 
           <br><br>
 
-          ${escaparHtml(error.message)}
+          ${escaparHtml(
+            error.message
+          )}
 
         </div>
+
       `;
 
     }
@@ -4469,9 +3236,7 @@ function filtrarPedidosStatus(
   .forEach(
     item => {
 
-      item
-      .classList
-      .remove(
+      item.classList.remove(
         "ativo"
       );
 
@@ -4481,9 +3246,7 @@ function filtrarPedidosStatus(
 
   if(botao){
 
-    botao
-    .classList
-    .add(
+    botao.classList.add(
       "ativo"
     );
 
@@ -4498,8 +3261,7 @@ function filtrarPedidosStatus(
 function renderizarPedidos(){
 
   const area =
-  document
-  .getElementById(
+  document.getElementById(
     "listaPedidos"
   );
 
@@ -4511,8 +3273,7 @@ function renderizarPedidos(){
 
   const busca =
   String(
-    document
-    .getElementById(
+    document.getElementById(
       "buscaPedidos"
     )?.value || ""
   )
@@ -4553,7 +3314,9 @@ function renderizarPedidos(){
       }
 
 
-      if(!busca){
+      if(
+        !busca
+      ){
 
         return true;
 
@@ -4561,15 +3324,10 @@ function renderizarPedidos(){
 
 
       const texto = [
-
         pedido.numero_pedido,
-
         pedido.nome_cliente,
-
         pedido.Telefone,
-
         pedido.telefone
-
       ]
       .join(" ")
       .toLowerCase();
@@ -4596,8 +3354,7 @@ function renderizarPedidos(){
 
 
   area.innerHTML =
-  lista
-  .map(
+  lista.map(
     criarHtmlPedido
   )
   .join("");
@@ -4630,112 +3387,75 @@ function criarHtmlPedido(
         <div>
 
           <div class="pedido-numero">
-
-            ${
-              escaparHtml(
-                pedido.numero_pedido ||
-                (
-                  "Pedido #" +
-                  pedido.id
-                )
-              )
-            }
-
+            ${escaparHtml(
+              pedido.numero_pedido ||
+              ("Pedido #" + pedido.id)
+            )}
           </div>
 
-
           <div class="pedido-data">
-
-            ${
-              escaparHtml(
-                dataHoraBR(
-                  pedido.created_at
-                )
+            ${escaparHtml(
+              dataHoraBR(
+                pedido.created_at
               )
-            }
-
+            )}
           </div>
 
         </div>
 
 
         <div class="pedido-total">
-
-          ${
-            moeda(
-              pedido.total
-            )
-          }
-
+          ${moeda(
+            pedido.total
+          )}
         </div>
 
       </div>
 
 
       <div class="pedido-cliente">
-
-        ${
-          escaparHtml(
-            pedido.nome_cliente ||
-            "Cliente não informado"
-          )
-        }
-
+        ${escaparHtml(
+          pedido.nome_cliente ||
+          "Cliente não informado"
+        )}
       </div>
 
 
       <div class="pedido-resumo">
 
         📱
-        ${
-          escaparHtml(
-            telefoneFormatado(
-              pedido.Telefone ??
-              pedido.telefone
-            )
+        ${escaparHtml(
+          telefoneFormatado(
+            pedido.Telefone ??
+            pedido.telefone
           )
-        }
+        )}
 
         <br>
 
         🚚
-        ${
-          escaparHtml(
-            pedido.tipo_entrega ||
-            "Entrega não informada"
-          )
-        }
+        ${escaparHtml(
+          pedido.tipo_entrega ||
+          "Entrega não informada"
+        )}
 
         <br>
 
         💳
-        ${
-          escaparHtml(
-            pedido.forma_pagamento ||
-            "Não informado"
-          )
-        }
+        ${escaparHtml(
+          pedido.forma_pagamento ||
+          "Não informado"
+        )}
 
       </div>
 
 
       <span
-        class="
-          status-pedido
-          ${
-            classeStatusPedido(
-              status
-            )
-          }
-        "
+        class="status-pedido ${classeStatusPedido(status)}"
       >
-
-        ${
-          escaparHtml(
-            status
-          )
-        }
-
+        ${escaparHtml(
+          status
+        )}
       </span>
 
 
@@ -4743,11 +3463,7 @@ function criarHtmlPedido(
 
         <button
           class="ver-pedido"
-          onclick="
-            abrirPedido(
-              ${Number(pedido.id)}
-            )
-          "
+          onclick="abrirPedido(${Number(pedido.id)})"
         >
           VER PEDIDO
         </button>
@@ -4755,26 +3471,19 @@ function criarHtmlPedido(
 
         ${
           prox
-          ? `
-
+          ?
+          `
             <button
               class="avancar-pedido"
-              onclick="
-                mudarStatusRapido(
-                  ${Number(pedido.id)},
-                  '${escaparHtml(prox)}'
-                )
-              "
+              onclick="mudarStatusRapido(${Number(pedido.id)},'${escaparHtml(prox)}')"
             >
-              ${
-                escaparHtml(
-                  prox.toUpperCase()
-                )
-              }
+              ${escaparHtml(
+                prox.toUpperCase()
+              )}
             </button>
-
           `
-          : ""
+          :
+          ""
         }
 
 
@@ -4784,22 +3493,17 @@ function criarHtmlPedido(
           &&
           status !==
           "Entregue"
-          ? `
-
+          ?
+          `
             <button
               class="cancelar-pedido"
-              onclick="
-                mudarStatusRapido(
-                  ${Number(pedido.id)},
-                  'Cancelado'
-                )
-              "
+              onclick="mudarStatusRapido(${Number(pedido.id)},'Cancelado')"
             >
               CANCELAR
             </button>
-
           `
-          : ""
+          :
+          ""
         }
 
       </div>
@@ -4814,8 +3518,7 @@ function criarHtmlPedido(
 function renderizarUltimosPedidos(){
 
   const area =
-  document
-  .getElementById(
+  document.getElementById(
     "ultimosPedidos"
   );
 
@@ -4845,8 +3548,7 @@ function renderizarUltimosPedidos(){
 
 
   area.innerHTML =
-  lista
-  .map(
+  lista.map(
     pedido => {
 
       const status =
@@ -4867,77 +3569,46 @@ function renderizarUltimosPedidos(){
             <div>
 
               <div class="pedido-numero">
-
-                ${
-                  escaparHtml(
-                    pedido.numero_pedido ||
-                    (
-                      "Pedido #" +
-                      pedido.id
-                    )
-                  )
-                }
-
+                ${escaparHtml(
+                  pedido.numero_pedido ||
+                  ("Pedido #" + pedido.id)
+                )}
               </div>
 
-
               <div class="pedido-data">
-
-                ${
-                  escaparHtml(
-                    dataHoraBR(
-                      pedido.created_at
-                    )
+                ${escaparHtml(
+                  dataHoraBR(
+                    pedido.created_at
                   )
-                }
-
+                )}
               </div>
 
             </div>
 
 
             <div class="pedido-total">
-
-              ${
-                moeda(
-                  pedido.total
-                )
-              }
-
+              ${moeda(
+                pedido.total
+              )}
             </div>
 
           </div>
 
 
           <div class="pedido-cliente">
-
-            ${
-              escaparHtml(
-                pedido.nome_cliente ||
-                "Cliente"
-              )
-            }
-
+            ${escaparHtml(
+              pedido.nome_cliente ||
+              "Cliente"
+            )}
           </div>
 
 
           <span
-            class="
-              status-pedido
-              ${
-                classeStatusPedido(
-                  status
-                )
-              }
-            "
+            class="status-pedido ${classeStatusPedido(status)}"
           >
-
-            ${
-              escaparHtml(
-                status
-              )
-            }
-
+            ${escaparHtml(
+              status
+            )}
           </span>
 
         </div>
@@ -4954,8 +3625,7 @@ function renderizarUltimosPedidos(){
 function renderizarCancelamentos(){
 
   const area =
-  document
-  .getElementById(
+  document.getElementById(
     "listaCancelamentos"
   );
 
@@ -4968,12 +3638,10 @@ function renderizarCancelamentos(){
   const lista =
   pedidos.filter(
     pedido =>
-
       normalizarStatus(
         pedido.status
       ) ===
       "Cancelado"
-
   );
 
 
@@ -4990,8 +3658,7 @@ function renderizarCancelamentos(){
 
 
   area.innerHTML =
-  lista
-  .map(
+  lista.map(
     pedido => `
 
       <div class="pedido-card">
@@ -5001,57 +3668,37 @@ function renderizarCancelamentos(){
           <div>
 
             <div class="pedido-numero">
-
-              ${
-                escaparHtml(
-                  pedido.numero_pedido ||
-                  (
-                    "Pedido #" +
-                    pedido.id
-                  )
-                )
-              }
-
+              ${escaparHtml(
+                pedido.numero_pedido ||
+                ("Pedido #" + pedido.id)
+              )}
             </div>
 
-
             <div class="pedido-data">
-
-              ${
-                escaparHtml(
-                  dataHoraBR(
-                    pedido.created_at
-                  )
+              ${escaparHtml(
+                dataHoraBR(
+                  pedido.created_at
                 )
-              }
-
+              )}
             </div>
 
           </div>
 
 
           <div class="pedido-total">
-
-            ${
-              moeda(
-                pedido.total
-              )
-            }
-
+            ${moeda(
+              pedido.total
+            )}
           </div>
 
         </div>
 
 
         <div class="pedido-cliente">
-
-          ${
-            escaparHtml(
-              pedido.nome_cliente ||
-              "Cliente"
-            )
-          }
-
+          ${escaparHtml(
+            pedido.nome_cliente ||
+            "Cliente"
+          )}
         </div>
 
 
@@ -5064,11 +3711,7 @@ function renderizarCancelamentos(){
 
           <button
             class="ver-pedido"
-            onclick="
-              abrirPedido(
-                ${Number(pedido.id)}
-              )
-            "
+            onclick="abrirPedido(${Number(pedido.id)})"
           >
             VER PEDIDO
           </button>
@@ -5076,12 +3719,7 @@ function renderizarCancelamentos(){
 
           <button
             class="avancar-pedido"
-            onclick="
-              mudarStatusRapido(
-                ${Number(pedido.id)},
-                'Novo'
-              )
-            "
+            onclick="mudarStatusRapido(${Number(pedido.id)},'Novo')"
           >
             REATIVAR
           </button>
@@ -5107,7 +3745,9 @@ function abrirPedido(
       Number(
         item.id
       ) ===
-      Number(id)
+      Number(
+        id
+      )
   );
 
 
@@ -5131,8 +3771,7 @@ function abrirPedido(
   const itensHtml =
   itens.length
   ?
-  itens
-  .map(
+  itens.map(
     item => {
 
       const foto =
@@ -5141,31 +3780,55 @@ function abrirPedido(
       );
 
 
+      const detalhes = [
+        item.cor
+        ?
+        "Cor: " +
+        item.cor
+        :
+        "",
+
+        item.estampa
+        ?
+        "Estampa: " +
+        item.estampa
+        :
+        "",
+
+        item.tamanho
+        ?
+        "Tamanho: " +
+        item.tamanho
+        :
+        ""
+      ]
+      .filter(Boolean)
+      .join(" • ");
+
+
       return `
 
         <div class="item-pedido">
 
           ${
             foto
-            ? `
-
+            ?
+            `
               <img
                 src="${escaparHtml(foto)}"
                 alt="Produto"
               >
-
             `
-            : `
-
+            :
+            `
               <div
                 style="
                   width:54px;
                   height:68px;
                   background:#eee;
-                  border-radius:8px
+                  border-radius:8px;
                 "
               ></div>
-
             `
           }
 
@@ -5173,25 +3836,28 @@ function abrirPedido(
           <div>
 
             <div class="nome">
-
-              ${
-                escaparHtml(
-                  nomeItemPedido(
-                    item
-                  )
+              ${escaparHtml(
+                nomeItemPedido(
+                  item
                 )
-              }
-
+              )}
             </div>
 
 
             <div class="qtd">
 
               Quantidade:
+              ${qtdItemPedido(item)}
+
               ${
-                qtdItemPedido(
-                  item
+                detalhes
+                ?
+                "<br>" +
+                escaparHtml(
+                  detalhes
                 )
+                :
+                ""
               }
 
             </div>
@@ -5201,12 +3867,10 @@ function abrirPedido(
 
           <div class="valor">
 
-            ${
-              moeda(
-                precoItemPedido(item) *
-                qtdItemPedido(item)
-              )
-            }
+            ${moeda(
+              precoItemPedido(item) *
+              qtdItemPedido(item)
+            )}
 
           </div>
 
@@ -5222,17 +3886,17 @@ function abrirPedido(
 
 
   const opcoesStatus =
-  STATUS_PEDIDOS
-  .map(
+  STATUS_PEDIDOS.map(
     item => `
 
       <option
         value="${item}"
         ${
-          item ===
-          status
-          ? "selected"
-          : ""
+          item === status
+          ?
+          "selected"
+          :
+          ""
         }
       >
         ${item}
@@ -5243,37 +3907,23 @@ function abrirPedido(
   .join("");
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "conteudoModalPedido"
-  )
-  .innerHTML =
-  `
+  ).innerHTML = `
 
     <h3>
-
-      ${
-        escaparHtml(
-          pedido.nome_cliente ||
-          "Cliente"
-        )
-      }
-
+      ${escaparHtml(
+        pedido.nome_cliente ||
+        "Cliente"
+      )}
     </h3>
 
 
     <div class="numero">
-
-      ${
-        escaparHtml(
-          pedido.numero_pedido ||
-          (
-            "Pedido #" +
-            pedido.id
-          )
-        )
-      }
-
+      ${escaparHtml(
+        pedido.numero_pedido ||
+        ("Pedido #" + pedido.id)
+      )}
     </div>
 
 
@@ -5283,14 +3933,12 @@ function abrirPedido(
         📱 Telefone
       </strong>
 
-      ${
-        escaparHtml(
-          telefoneFormatado(
-            pedido.Telefone ??
-            pedido.telefone
-          )
+      ${escaparHtml(
+        telefoneFormatado(
+          pedido.Telefone ??
+          pedido.telefone
         )
-      }
+      )}
 
     </div>
 
@@ -5301,12 +3949,10 @@ function abrirPedido(
         📍 Endereço
       </strong>
 
-      ${
-        escaparHtml(
-          pedido.endereco ||
-          "Não informado"
-        )
-      }
+      ${escaparHtml(
+        pedido.endereco ||
+        "Não informado"
+      )}
 
     </div>
 
@@ -5317,12 +3963,10 @@ function abrirPedido(
         🚚 Entrega
       </strong>
 
-      ${
-        escaparHtml(
-          pedido.tipo_entrega ||
-          "Não informada"
-        )
-      }
+      ${escaparHtml(
+        pedido.tipo_entrega ||
+        "Não informada"
+      )}
 
       ${
         Number(
@@ -5347,12 +3991,10 @@ function abrirPedido(
         💳 Pagamento
       </strong>
 
-      ${
-        escaparHtml(
-          pedido.forma_pagamento ||
-          "Não informado"
-        )
-      }
+      ${escaparHtml(
+        pedido.forma_pagamento ||
+        "Não informado"
+      )}
 
     </div>
 
@@ -5377,11 +4019,9 @@ function abrirPedido(
         </span>
 
         <strong>
-          ${
-            moeda(
-              pedido.subtotal
-            )
-          }
+          ${moeda(
+            pedido.subtotal
+          )}
         </strong>
 
       </div>
@@ -5394,11 +4034,9 @@ function abrirPedido(
         </span>
 
         <strong>
-          ${
-            moeda(
-              pedido.valor_entrega
-            )
-          }
+          ${moeda(
+            pedido.valor_entrega
+          )}
         </strong>
 
       </div>
@@ -5411,11 +4049,9 @@ function abrirPedido(
         </span>
 
         <span>
-          ${
-            moeda(
-              pedido.total
-            )
-          }
+          ${moeda(
+            pedido.total
+          )}
         </span>
 
       </div>
@@ -5441,11 +4077,7 @@ function abrirPedido(
 
     <button
       class="salvar-status"
-      onclick="
-        salvarStatusPedido(
-          ${Number(pedido.id)}
-        )
-      "
+      onclick="salvarStatusPedido(${Number(pedido.id)})"
     >
       SALVAR STATUS
     </button>
@@ -5453,20 +4085,15 @@ function abrirPedido(
   `;
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "modalPedidoOverlay"
   )
-  .classList
-  .add(
+  .classList.add(
     "ativo"
   );
 
 
-  document
-  .body
-  .style
-  .overflow =
+  document.body.style.overflow =
   "hidden";
 
 }
@@ -5474,20 +4101,15 @@ function abrirPedido(
 
 function fecharModalPedido(){
 
-  document
-  .getElementById(
+  document.getElementById(
     "modalPedidoOverlay"
   )
-  .classList
-  .remove(
+  .classList.remove(
     "ativo"
   );
 
 
-  document
-  .body
-  .style
-  .overflow =
+  document.body.style.overflow =
   "";
 
 }
@@ -5498,11 +4120,9 @@ async function salvarStatusPedido(
 ){
 
   const status =
-  document
-  .getElementById(
+  document.getElementById(
     "statusPedidoModal"
-  )
-  .value;
+  ).value;
 
 
   await atualizarStatusPedido(
@@ -5532,7 +4152,9 @@ async function mudarStatusRapido(
     );
 
 
-    if(!confirmar){
+    if(
+      !confirmar
+    ){
       return;
     }
 
@@ -5576,13 +4198,8 @@ async function atualizarStatusPedido(
 
 
     alert(
-
       "Não foi possível alterar o status do pedido.\n\n" +
-
-      error.message +
-
-      "\n\nSe aparecer erro de permissão/RLS, será necessário liberar UPDATE de Pedidos para o administrador."
-
+      error.message
     );
 
 
@@ -5597,7 +4214,9 @@ async function atualizarStatusPedido(
       Number(
         item.id
       ) ===
-      Number(id)
+      Number(
+        id
+      )
   );
 
 
@@ -5635,58 +4254,46 @@ function atualizarDashboard(){
   const pedidosHoje =
   pedidos.filter(
     pedido =>
-
       somenteDataLocal(
         pedido.created_at
       ) ===
       hoje
-
       &&
-
       normalizarStatus(
         pedido.status
       ) !==
       "Cancelado"
-
   );
 
 
   const vendasHoje =
   pedidosHoje.reduce(
-
     (
       soma,
       pedido
     ) =>
-
       soma +
       Number(
         pedido.total ||
         0
       ),
-
     0
-
   );
 
 
   const novos =
   pedidos.filter(
     pedido =>
-
       normalizarStatus(
         pedido.status
       ) ===
       "Novo"
-
-  )
-  .length;
+  ).length;
 
 
   const andamento =
   pedidos.filter(
     pedido =>
-
       [
         "Confirmado",
         "Em separação",
@@ -5697,80 +4304,74 @@ function atualizarDashboard(){
           pedido.status
         )
       )
-
-  )
-  .length;
+  ).length;
 
 
   const estoque =
   produtos.reduce(
-
     (
       soma,
       produto
     ) =>
-
       soma +
       Number(
         produto.estoque ||
         0
       ),
-
     0
-
   );
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "dashVendasHoje"
-  )
-  .textContent =
+  ).textContent =
   moeda(
     vendasHoje
   );
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "dashPedidosHoje"
-  )
-  .textContent =
+  ).textContent =
+  pedidosHoje.length +
+  (
+    pedidosHoje.length === 1
+    ?
+    " pedido hoje"
+    :
+    " pedidos hoje"
+  );
 
-  `${pedidosHoje.length} pedido${pedidosHoje.length === 1 ? "" : "s"} hoje`;
 
-
-  document
-  .getElementById(
+  document.getElementById(
     "dashNovos"
-  )
-  .textContent =
+  ).textContent =
   novos;
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "dashAndamento"
-  )
-  .textContent =
+  ).textContent =
   andamento;
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "dashEstoque"
-  )
-  .textContent =
+  ).textContent =
   estoque;
 
 
-  document
-  .getElementById(
+  document.getElementById(
     "dashProdutos"
-  )
-  .textContent =
-
-  `${produtos.length} produto${produtos.length === 1 ? "" : "s"} cadastrados`;
+  ).textContent =
+  produtos.length +
+  (
+    produtos.length === 1
+    ?
+    " produto cadastrado"
+    :
+    " produtos cadastrados"
+  );
 
 
   renderizarUltimosPedidos();
@@ -5784,7 +4385,7 @@ function atualizarDashboard(){
 
 async function enviarArquivoImagem(
   arquivo,
-  pasta="produtos"
+  pasta = "produtos"
 ){
 
   if(!arquivo){
@@ -5800,10 +4401,8 @@ async function enviarArquivoImagem(
 
 
   if(
-    !extensao
-    ||
-    extensao.length >
-    6
+    !extensao ||
+    extensao.length > 6
   ){
 
     extensao =
@@ -5813,7 +4412,6 @@ async function enviarArquivoImagem(
 
 
   const caminho =
-
   pasta +
   "/" +
   Date.now() +
@@ -5835,17 +4433,11 @@ async function enviarArquivoImagem(
     caminho,
     arquivo,
     {
-
-      cacheControl:
-      "3600",
-
-      upsert:
-      false,
-
+      cacheControl:"3600",
+      upsert:false,
       contentType:
       arquivo.type ||
       "image/jpeg"
-
     }
   );
 
@@ -5853,10 +4445,8 @@ async function enviarArquivoImagem(
   if(error){
 
     throw new Error(
-
       "Erro ao enviar foto: " +
       error.message
-
     );
 
   }
@@ -5887,8 +4477,7 @@ async function enviarArquivoImagem(
 function adicionarNovasFotos(){
 
   const input =
-  document
-  .getElementById(
+  document.getElementById(
     "produtoFotosArquivos"
   );
 
@@ -5914,22 +4503,15 @@ function adicionarNovasFotos(){
       }
 
 
-      fotosFormulario
-      .push({
-
+      fotosFormulario.push({
         id:null,
-
         foto_url:null,
-
         arquivo,
-
         preview:
         URL.createObjectURL(
           arquivo
         ),
-
         principal:false
-
       });
 
     }
@@ -5964,8 +4546,7 @@ function adicionarNovasFotos(){
 function renderizarFotosFormulario(){
 
   const area =
-  document
-  .getElementById(
+  document.getElementById(
     "galeriaFotos"
   );
 
@@ -5983,8 +4564,7 @@ function renderizarFotosFormulario(){
 
 
   area.innerHTML =
-  fotosFormulario
-  .map(
+  fotosFormulario.map(
     (
       foto,
       index
@@ -5999,14 +4579,13 @@ function renderizarFotosFormulario(){
       return `
 
         <div
-          class="
-            foto-card
-            ${
-              foto.principal
-              ? "principal"
-              : ""
-            }
-          "
+          class="foto-card ${
+            foto.principal
+            ?
+            "principal"
+            :
+            ""
+          }"
         >
 
           ${
@@ -6028,35 +4607,27 @@ function renderizarFotosFormulario(){
 
             ${
               !foto.principal
-              ? `
-
+              ?
+              `
                 <button
                   type="button"
                   class="definir-principal"
-                  onclick="
-                    definirFotoPrincipal(
-                      ${index}
-                    )
-                  "
+                  onclick="definirFotoPrincipal(${index})"
                 >
-                  DEFINIR PRINCIPAL
+                  ⭐ DEFINIR PRINCIPAL
                 </button>
-
               `
-              : ""
+              :
+              ""
             }
 
 
             <button
               type="button"
               class="excluir-foto"
-              onclick="
-                removerFotoFormulario(
-                  ${index}
-                )
-              "
+              onclick="removerFotoFormulario(${index})"
             >
-              REMOVER
+              🗑️ REMOVER
             </button>
 
           </div>
@@ -6077,18 +4648,15 @@ function definirFotoPrincipal(
 ){
 
   fotosFormulario =
-  fotosFormulario
-  .map(
+  fotosFormulario.map(
     (
       foto,
       index
     ) => ({
-
       ...foto,
-
       principal:
-      index === indice
-
+      index ===
+      indice
     })
   );
 
@@ -6108,8 +4676,7 @@ function removerFotoFormulario(
   ]?.principal;
 
 
-  fotosFormulario
-  .splice(
+  fotosFormulario.splice(
     indice,
     1
   );
@@ -6139,22 +4706,17 @@ function removerFotoFormulario(
 
 function criarMapaTamanhos(){
 
-  const mapa =
-  {};
+  const mapa = {};
 
 
-  TAMANHOS
-  .forEach(
+  TAMANHOS.forEach(
     item => {
 
       mapa[
         item.valor
       ] = {
-
         ativo:false,
-
         estoque:0
-
       };
 
     }
@@ -6169,20 +4731,15 @@ function criarMapaTamanhos(){
 function proximoNomeEstampa(){
 
   const total =
-  opcoesFormulario
-  .filter(
+  opcoesFormulario.filter(
     item =>
       item.tipo ===
       "estampa"
-  )
-  .length +
-  1;
+  ).length + 1;
 
 
   return (
-
     "Estampa " +
-
     String(
       total
     )
@@ -6190,7 +4747,6 @@ function proximoNomeEstampa(){
       2,
       "0"
     )
-
   );
 
 }
@@ -6224,8 +4780,7 @@ function novaOpcao(){
 
 function adicionarOpcao(){
 
-  opcoesFormulario
-  .push(
+  opcoesFormulario.push(
     novaOpcao()
   );
 
@@ -6250,8 +4805,7 @@ function removerOpcao(
   }
 
 
-  opcoesFormulario
-  .splice(
+  opcoesFormulario.splice(
     indice,
     1
   );
@@ -6344,7 +4898,9 @@ function atualizarOpcao(
   }
 
 
-  opcao[campo] =
+  opcao[
+    campo
+  ] =
   valor;
 
 
@@ -6397,23 +4953,21 @@ function alterarTamanho(
   }
 
 
-  opcao
-  .tamanhos[
+  opcao.tamanhos[
     tamanho
-  ]
-  .ativo =
+  ].ativo =
   Boolean(
     marcado
   );
 
 
-  if(!marcado){
+  if(
+    !marcado
+  ){
 
-    opcao
-    .tamanhos[
+    opcao.tamanhos[
       tamanho
-    ]
-    .estoque =
+    ].estoque =
     0;
 
   }
@@ -6441,11 +4995,9 @@ function alterarEstoqueTamanho(
   }
 
 
-  opcao
-  .tamanhos[
+  opcao.tamanhos[
     tamanho
-  ]
-  .estoque =
+  ].estoque =
   Math.max(
     0,
     Number(
@@ -6547,12 +5099,10 @@ function calcularEstoqueVariantes(){
   0;
 
 
-  opcoesFormulario
-  .forEach(
+  opcoesFormulario.forEach(
     opcao => {
 
-      Object
-      .values(
+      Object.values(
         opcao.tamanhos
       )
       .forEach(
@@ -6584,191 +5134,350 @@ function calcularEstoqueVariantes(){
 
 function atualizarEstoqueVariantes(){
 
-  document
-  .getElementById(
+  document.getElementById(
     "estoqueVariantes"
-  )
-  .textContent =
+  ).textContent =
   calcularEstoqueVariantes();
 
 }
   function renderizarOpcoes(){
-  const area = document.getElementById("opcoesArea");
 
-  if(!opcoesFormulario.length){
+  const area =
+  document.getElementById(
+    "opcoesArea"
+  );
+
+
+  if(
+    !opcoesFormulario.length
+  ){
+
     area.innerHTML = `
+
       <div class="foto-ajuda">
         Nenhuma cor ou estampa adicionada. Se o produto não tiver variações, use somente o estoque geral.
       </div>
+
     `;
+
+
     atualizarEstoqueVariantes();
+
     return;
+
   }
 
-  area.innerHTML = opcoesFormulario.map((opcao,index)=>{
-    const foto = opcao.preview || opcao.foto_url || "";
 
-    const opcoesCores = CORES_SALI.map(cor=>`
-      <option value="${cor}" ${opcao.cor === cor ? "selected" : ""}>${cor}</option>
-    `).join("");
+  area.innerHTML =
+  opcoesFormulario.map(
+    (
+      opcao,
+      index
+    ) => {
 
-    const linhasTamanho = TAMANHOS.map(tamanho=>{
-      const dados = opcao.tamanhos[tamanho.valor];
+      const foto =
+      opcao.preview ||
+      opcao.foto_url ||
+      "";
 
-      return `
-        <div class="tamanho-linha">
-          <label class="tamanho-check">
-            <input
-              type="checkbox"
-              ${dados.ativo ? "checked" : ""}
-              onchange="alterarTamanho(${index},'${tamanho.valor}',this.checked)"
-            >
-            ${tamanho.nome}
-          </label>
 
-          <input
-            type="number"
-            min="0"
-            class="estoque-tamanho"
-            value="${Number(dados.estoque || 0)}"
-            ${dados.ativo ? "" : "disabled"}
-            placeholder="Estoque"
-            onchange="alterarEstoqueTamanho(${index},'${tamanho.valor}',this.value)"
-          >
-        </div>
-      `;
-    }).join("");
+      const opcoesCores =
+      CORES_SALI.map(
+        cor => `
 
-    return `
-      <div class="opcao-card">
-        <div class="opcao-topo">
-          <strong>Opção ${index + 1}</strong>
-
-          <button
-            type="button"
-            class="remover-opcao"
-            onclick="removerOpcao(${index})"
-          >
-            REMOVER
-          </button>
-        </div>
-
-        <div class="tipo-opcao">
-          <button
-            type="button"
-            class="${opcao.tipo === "cor" ? "selecionado" : ""}"
-            onclick="alterarTipoOpcao(${index},'cor')"
-          >
-            🎨 COR
-          </button>
-
-          <button
-            type="button"
-            class="${opcao.tipo === "estampa" ? "selecionado" : ""}"
-            onclick="alterarTipoOpcao(${index},'estampa')"
-          >
-            🌸 ESTAMPA
-          </button>
-        </div>
-
-        ${
-          opcao.tipo === "cor"
-          ? `
-            <div class="campo">
-              <label>Cor</label>
-
-              <select onchange="atualizarOpcao(${index},'cor',this.value)">
-                ${opcoesCores}
-
-                <option
-                  value="Outra cor"
-                  ${opcao.cor === "Outra cor" ? "selected" : ""}
-                >
-                  ➕ Outra cor
-                </option>
-              </select>
-            </div>
-
+          <option
+            value="${cor}"
             ${
-              opcao.cor === "Outra cor"
-              ? `
-                <div class="campo">
-                  <label>Nome da cor</label>
-
-                  <input
-                    type="text"
-                    value="${escaparHtml(opcao.corPersonalizada)}"
-                    placeholder="Ex.: Azul petróleo"
-                    onchange="atualizarOpcao(${index},'corPersonalizada',this.value)"
-                  >
-                </div>
-              `
-              : ""
+              opcao.cor === cor
+              ?
+              "selected"
+              :
+              ""
             }
-          `
-          : `
-            <div class="campo">
-              <label>Nome da estampa</label>
+          >
+            ${cor}
+          </option>
+
+        `
+      )
+      .join("");
+
+
+      const linhasTamanho =
+      TAMANHOS.map(
+        tamanho => {
+
+          const dados =
+          opcao.tamanhos[
+            tamanho.valor
+          ];
+
+
+          return `
+
+            <div class="tamanho-linha">
+
+              <label class="tamanho-check">
+
+                <input
+                  type="checkbox"
+                  ${
+                    dados.ativo
+                    ?
+                    "checked"
+                    :
+                    ""
+                  }
+                  onchange="alterarTamanho(${index},'${tamanho.valor}',this.checked)"
+                >
+
+                ${tamanho.nome}
+
+              </label>
+
 
               <input
-                type="text"
-                value="${escaparHtml(opcao.estampa)}"
-                placeholder="Ex.: Estampa 01"
-                onchange="atualizarOpcao(${index},'estampa',this.value)"
+                type="number"
+                min="0"
+                class="estoque-tamanho"
+                value="${Number(dados.estoque || 0)}"
+                ${
+                  dados.ativo
+                  ?
+                  ""
+                  :
+                  "disabled"
+                }
+                placeholder="Estoque"
+                onchange="alterarEstoqueTamanho(${index},'${tamanho.valor}',this.value)"
               >
+
             </div>
-          `
+
+          `;
+
         }
+      )
+      .join("");
 
-        <div class="foto-opcao-area">
-          <label>
-            📸 Foto ${opcao.tipo === "cor" ? "desta cor" : "desta estampa"}
-          </label>
 
-          <input
-            type="file"
-            accept="image/*"
-            onchange="escolherFotoOpcao(${index},this)"
-          >
+      return `
 
-          <div class="foto-ajuda">
-            Esta foto será usada na miniatura que a cliente toca na loja.
+        <div class="opcao-card">
+
+          <div class="opcao-topo">
+
+            <strong>
+              Opção ${index + 1}
+            </strong>
+
+
+            <button
+              type="button"
+              class="remover-opcao"
+              onclick="removerOpcao(${index})"
+            >
+              REMOVER
+            </button>
+
           </div>
 
+
+          <div class="tipo-opcao">
+
+            <button
+              type="button"
+              class="${
+                opcao.tipo === "cor"
+                ?
+                "selecionado"
+                :
+                ""
+              }"
+              onclick="alterarTipoOpcao(${index},'cor')"
+            >
+              🎨 COR
+            </button>
+
+
+            <button
+              type="button"
+              class="${
+                opcao.tipo === "estampa"
+                ?
+                "selecionado"
+                :
+                ""
+              }"
+              onclick="alterarTipoOpcao(${index},'estampa')"
+            >
+              🌸 ESTAMPA
+            </button>
+
+          </div>
+
+
           ${
-            foto
-            ? `
-              <div class="preview-opcao">
-                <img
-                  src="${foto}"
-                  alt="Opção do produto"
-                >
-
-                <button
-                  type="button"
-                  class="remover-foto-opcao"
-                  onclick="removerFotoOpcao(${index})"
-                >
-                  REMOVER FOTO
-                </button>
-              </div>
+            opcao.tipo === "cor"
+            ?
             `
-            : ""
+
+              <div class="campo">
+
+                <label>
+                  Cor
+                </label>
+
+                <select
+                  onchange="atualizarOpcao(${index},'cor',this.value)"
+                >
+
+                  ${opcoesCores}
+
+                  <option
+                    value="Outra cor"
+                    ${
+                      opcao.cor ===
+                      "Outra cor"
+                      ?
+                      "selected"
+                      :
+                      ""
+                    }
+                  >
+                    ➕ Outra cor
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              ${
+                opcao.cor ===
+                "Outra cor"
+                ?
+                `
+
+                  <div class="campo">
+
+                    <label>
+                      Nome da cor
+                    </label>
+
+                    <input
+                      type="text"
+                      value="${escaparHtml(opcao.corPersonalizada)}"
+                      placeholder="Ex.: Azul petróleo"
+                      onchange="atualizarOpcao(${index},'corPersonalizada',this.value)"
+                    >
+
+                  </div>
+
+                `
+                :
+                ""
+              }
+
+            `
+            :
+            `
+
+              <div class="campo">
+
+                <label>
+                  Nome da estampa
+                </label>
+
+                <input
+                  type="text"
+                  value="${escaparHtml(opcao.estampa)}"
+                  placeholder="Ex.: Estampa 01"
+                  onchange="atualizarOpcao(${index},'estampa',this.value)"
+                >
+
+              </div>
+
+            `
           }
+
+
+          <div class="foto-opcao-area">
+
+            <label>
+              📸 Foto ${
+                opcao.tipo === "cor"
+                ?
+                "desta cor"
+                :
+                "desta estampa"
+              }
+            </label>
+
+
+            <input
+              type="file"
+              accept="image/*"
+              onchange="escolherFotoOpcao(${index},this)"
+            >
+
+
+            <div class="foto-ajuda">
+              Esta foto será usada na miniatura que a cliente toca na loja.
+            </div>
+
+
+            ${
+              foto
+              ?
+              `
+
+                <div class="preview-opcao">
+
+                  <img
+                    src="${foto}"
+                    alt="Opção do produto"
+                  >
+
+
+                  <button
+                    type="button"
+                    class="remover-foto-opcao"
+                    onclick="removerFotoOpcao(${index})"
+                  >
+                    REMOVER FOTO
+                  </button>
+
+                </div>
+
+              `
+              :
+              ""
+            }
+
+          </div>
+
+
+          <div class="tamanhos-titulo">
+            📏 Tamanhos disponíveis
+          </div>
+
+
+          <div class="tamanhos-grade">
+            ${linhasTamanho}
+          </div>
+
         </div>
 
-        <div class="tamanhos-titulo">
-          📏 Tamanhos disponíveis
-        </div>
+      `;
 
-        <div class="tamanhos-grade">
-          ${linhasTamanho}
-        </div>
-      </div>
-    `;
-  }).join("");
+    }
+  )
+  .join("");
+
 
   atualizarEstoqueVariantes();
+
 }
 
 
@@ -6777,175 +5486,296 @@ function atualizarEstoqueVariantes(){
 ========================================= */
 
 async function carregarProdutos(){
-  const lista = document.getElementById("listaProdutos");
+
+  const lista =
+  document.getElementById(
+    "listaProdutos"
+  );
+
 
   if(lista){
+
     lista.innerHTML =
-      '<div class="sem-dados">Carregando produtos...</div>';
+    '<div class="sem-dados">Carregando produtos...</div>';
+
   }
+
 
   const {
     data,
     error
-  } = await supabaseClient
-    .from("Produtos")
-    .select("*")
-    .order(
-      "created_at",
-      {
-        ascending:false
-      }
-    );
+  } =
+  await supabaseClient
+  .from(
+    "Produtos"
+  )
+  .select("*")
+  .order(
+    "created_at",
+    {
+      ascending:false
+    }
+  );
+
 
   if(error){
-    console.error(error);
+
+    console.error(
+      error
+    );
+
 
     if(lista){
+
       lista.innerHTML = `
+
         <div class="sem-dados">
+
           Erro ao carregar produtos.
+
           <br><br>
-          ${escaparHtml(error.message)}
+
+          ${escaparHtml(
+            error.message
+          )}
+
         </div>
+
       `;
+
     }
 
+
     produtos = [];
+
     atualizarDashboard();
+
     return;
+
   }
 
-  produtos = data || [];
+
+  produtos =
+  data || [];
+
 
   renderizarProdutos(
     produtos
   );
 
+
   atualizarDashboard();
+
 }
 
 
-function renderizarProdutos(lista){
-  const area = document.getElementById("listaProdutos");
+function renderizarProdutos(
+  lista
+){
+
+  const area =
+  document.getElementById(
+    "listaProdutos"
+  );
+
 
   if(!area){
     return;
   }
 
-  if(!lista.length){
+
+  if(
+    !lista.length
+  ){
+
     area.innerHTML =
-      '<div class="sem-dados">Nenhum produto encontrado.</div>';
+    '<div class="sem-dados">Nenhum produto encontrado.</div>';
 
     return;
+
   }
 
-  area.innerHTML = lista.map(produto=>{
-    const imagem =
+
+  area.innerHTML =
+  lista.map(
+    produto => {
+
+      const imagem =
       produto.foto_url
-      ? `
+      ?
+      `
         <img
           src="${produto.foto_url}"
           alt="Produto"
         >
       `
-      : `
-        <div class="sem-foto">
-          Sem foto
+      :
+      '<div class="sem-foto">Sem foto</div>';
+
+
+      return `
+
+        <div class="produto-card">
+
+          ${imagem}
+
+
+          <div class="produto-info">
+
+            <h4>
+              ${escaparHtml(
+                produto.nome ||
+                "Sem nome"
+              )}
+            </h4>
+
+
+            <div class="preco">
+              ${moeda(
+                produto.preco
+              )}
+            </div>
+
+
+            <div class="detalhes">
+
+              Categoria:
+              ${escaparHtml(
+                produto.categoria ||
+                "Não informada"
+              )}
+
+              <br>
+
+              Estoque:
+              ${Number(
+                produto.estoque ||
+                0
+              )}
+
+            </div>
+
+
+            <span
+              class="status-produto ${
+                produto.ativo
+                ?
+                "ativo"
+                :
+                "inativo"
+              }"
+            >
+
+              ${
+                produto.ativo
+                ?
+                "ATIVO"
+                :
+                "INATIVO"
+              }
+
+            </span>
+
+
+            <div class="acoes">
+
+              <button
+                class="editar"
+                onclick="editarProduto(${produto.id})"
+              >
+                EDITAR
+              </button>
+
+
+              <button
+                class="alternar"
+                onclick="alternarProduto(${produto.id},${produto.ativo})"
+              >
+
+                ${
+                  produto.ativo
+                  ?
+                  "DESATIVAR"
+                  :
+                  "ATIVAR"
+                }
+
+              </button>
+
+
+              <button
+                class="excluir"
+                onclick="excluirProduto(${produto.id})"
+              >
+                EXCLUIR
+              </button>
+
+            </div>
+
+          </div>
+
         </div>
+
       `;
 
-    return `
-      <div class="produto-card">
+    }
+  )
+  .join("");
 
-        ${imagem}
-
-        <div class="produto-info">
-
-          <h4>
-            ${escaparHtml(produto.nome || "Sem nome")}
-          </h4>
-
-          <div class="preco">
-            ${moeda(produto.preco)}
-          </div>
-
-          <div class="detalhes">
-            Categoria:
-            ${escaparHtml(produto.categoria || "Não informada")}
-            <br>
-            Estoque:
-            ${Number(produto.estoque || 0)}
-          </div>
-
-          <span
-            class="status-produto ${produto.ativo ? "ativo" : "inativo"}"
-          >
-            ${produto.ativo ? "ATIVO" : "INATIVO"}
-          </span>
-
-          <div class="acoes">
-
-            <button
-              class="editar"
-              onclick="editarProduto(${produto.id})"
-            >
-              EDITAR
-            </button>
-
-            <button
-              class="alternar"
-              onclick="alternarProduto(${produto.id},${produto.ativo})"
-            >
-              ${produto.ativo ? "DESATIVAR" : "ATIVAR"}
-            </button>
-
-            <button
-              class="excluir"
-              onclick="excluirProduto(${produto.id})"
-            >
-              EXCLUIR
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-    `;
-  }).join("");
 }
 
 
 function filtrarProdutos(){
-  const busca =
-    document
-    .getElementById("busca")
-    .value
-    .trim()
-    .toLowerCase();
 
-  if(!busca){
-    renderizarProdutos(produtos);
+  const busca =
+  document.getElementById(
+    "busca"
+  )
+  .value
+  .trim()
+  .toLowerCase();
+
+
+  if(
+    !busca
+  ){
+
+    renderizarProdutos(
+      produtos
+    );
+
     return;
+
   }
 
+
   const filtrados =
-    produtos.filter(
-      produto =>
-        String(produto.nome || "")
-        .toLowerCase()
-        .includes(busca)
+  produtos.filter(
+    produto =>
+      String(
+        produto.nome ||
+        ""
+      )
+      .toLowerCase()
+      .includes(
+        busca
+      )
+      ||
+      String(
+        produto.categoria ||
+        ""
+      )
+      .toLowerCase()
+      .includes(
+        busca
+      )
+  );
 
-        ||
-
-        String(produto.categoria || "")
-        .toLowerCase()
-        .includes(busca)
-    );
 
   renderizarProdutos(
     filtrados
   );
+
 }
 
 
@@ -6955,70 +5785,98 @@ function filtrarProdutos(){
 
 async function salvarFotosProduto(
   produtoId,
-  fotoAntiga=null
+  fotoAntiga = null
 ){
+
   const registros = [];
 
+
   for(
-    let i=0;
-    i<fotosFormulario.length;
+    let i = 0;
+    i < fotosFormulario.length;
     i++
   ){
+
     const foto =
-      fotosFormulario[i];
+    fotosFormulario[i];
+
 
     let url =
-      foto.foto_url ||
-      null;
+    foto.foto_url ||
+    null;
 
-    if(foto.arquivo){
+
+    if(
+      foto.arquivo
+    ){
+
       url =
-        await enviarArquivoImagem(
-          foto.arquivo,
-          "galeria"
-        );
+      await enviarArquivoImagem(
+        foto.arquivo,
+        "galeria"
+      );
+
     }
 
-    if(!url){
+
+    if(
+      !url
+    ){
+
       continue;
+
     }
+
 
     registros.push({
+
       produto_id:
-        Number(produtoId),
+      Number(
+        produtoId
+      ),
 
       foto_url:
-        url,
+      url,
 
       ordem:
-        i,
+      i,
 
       principal:
-        Boolean(
-          foto.principal
-        )
+      Boolean(
+        foto.principal
+      )
+
     });
+
   }
+
 
   if(
     !registros.length
     &&
     fotoAntiga
   ){
+
     registros.push({
+
       produto_id:
-        Number(produtoId),
+      Number(
+        produtoId
+      ),
 
       foto_url:
-        fotoAntiga,
+      fotoAntiga,
 
       ordem:
-        0,
+      0,
 
       principal:
-        true
+      true
+
     });
+
   }
+
 
   if(
     registros.length
@@ -7028,81 +5886,113 @@ async function salvarFotosProduto(
         foto.principal
     )
   ){
-    registros[0].principal =
-      true;
+
+    registros[0]
+    .principal =
+    true;
+
   }
 
+
   let encontrou =
-    false;
+  false;
+
 
   registros.forEach(
     foto => {
+
       if(
         foto.principal
         &&
         !encontrou
       ){
-        encontrou =
-          true;
 
-      }else if(
+        encontrou =
+        true;
+
+      }
+
+      else if(
         foto.principal
       ){
+
         foto.principal =
-          false;
+        false;
+
       }
+
     }
   );
+
 
   const {
     error:
     erroExcluir
   } =
   await supabaseClient
-  .from("Fotos_Produtos")
+  .from(
+    "Fotos_Produtos"
+  )
   .delete()
   .eq(
     "produto_id",
-    Number(produtoId)
+    Number(
+      produtoId
+    )
   );
 
-  if(erroExcluir){
+
+  if(
+    erroExcluir
+  ){
+
     throw new Error(
       "Erro ao atualizar fotos: " +
       erroExcluir.message
     );
+
   }
 
-  if(registros.length){
+
+  if(
+    registros.length
+  ){
+
     const {
       error
     } =
     await supabaseClient
-    .from("Fotos_Produtos")
-    .insert(registros);
+    .from(
+      "Fotos_Produtos"
+    )
+    .insert(
+      registros
+    );
+
 
     if(error){
+
       throw new Error(
         "Erro ao salvar fotos: " +
         error.message
       );
+
     }
+
   }
+
 
   return (
     registros.find(
       foto =>
         foto.principal
     )?.foto_url
-
     ||
-
     registros[0]?.foto_url
-
     ||
-
     null
   );
+
 }
 
 
@@ -7113,118 +6003,175 @@ async function salvarFotosProduto(
 async function salvarVariantesProduto(
   produtoId
 ){
+
   const registros = [];
 
-  for(
-    const opcao of
-    opcoesFormulario
-  ){
-    let fotoUrl =
-      opcao.foto_url ||
-      null;
 
-    if(opcao.arquivo){
+  for(
+    const opcao
+    of opcoesFormulario
+  ){
+
+    let fotoUrl =
+    opcao.foto_url ||
+    null;
+
+
+    if(
+      opcao.arquivo
+    ){
+
       fotoUrl =
-        await enviarArquivoImagem(
-          opcao.arquivo,
-          "variantes"
-        );
+      await enviarArquivoImagem(
+        opcao.arquivo,
+        "variantes"
+      );
+
     }
+
 
     const cor =
-      opcao.tipo === "cor"
-      ? obterNomeCor(opcao)
-      : null;
+    opcao.tipo === "cor"
+    ?
+    obterNomeCor(
+      opcao
+    )
+    :
+    null;
+
 
     const estampa =
-      opcao.tipo === "estampa"
-      ? String(opcao.estampa || "").trim()
-      : null;
+    opcao.tipo === "estampa"
+    ?
+    String(
+      opcao.estampa ||
+      ""
+    )
+    .trim()
+    :
+    null;
+
 
     for(
-      const tamanho of
-      TAMANHOS
+      const tamanho
+      of TAMANHOS
     ){
+
       const dados =
-        opcao.tamanhos[
-          tamanho.valor
-        ];
+      opcao.tamanhos[
+        tamanho.valor
+      ];
+
 
       if(
-        !dados
-        ||
+        !dados ||
         !dados.ativo
       ){
+
         continue;
+
       }
 
+
       registros.push({
+
         produto_id:
-          Number(produtoId),
+        Number(
+          produtoId
+        ),
 
         cor:
-          cor || null,
+        cor ||
+        null,
 
         estampa:
-          estampa || null,
+        estampa ||
+        null,
 
         tamanho:
-          tamanho.valor,
+        tamanho.valor,
 
         estoque:
-          Math.max(
-            0,
-            Number(
-              dados.estoque ||
-              0
-            )
-          ),
+        Math.max(
+          0,
+          Number(
+            dados.estoque ||
+            0
+          )
+        ),
 
         ativo:
-          true,
+        true,
 
         foto_url:
-          fotoUrl
+        fotoUrl
+
       });
+
     }
+
   }
+
 
   const {
     error:
     erroExcluir
   } =
   await supabaseClient
-  .from("Variantes")
+  .from(
+    "Variantes"
+  )
   .delete()
   .eq(
     "produto_id",
-    Number(produtoId)
+    Number(
+      produtoId
+    )
   );
 
-  if(erroExcluir){
+
+  if(
+    erroExcluir
+  ){
+
     throw new Error(
       "Erro ao atualizar variantes: " +
       erroExcluir.message
     );
+
   }
 
-  if(registros.length){
+
+  if(
+    registros.length
+  ){
+
     const {
       error
     } =
     await supabaseClient
-    .from("Variantes")
-    .insert(registros);
+    .from(
+      "Variantes"
+    )
+    .insert(
+      registros
+    );
+
 
     if(error){
+
       throw new Error(
         "Erro ao salvar variantes: " +
         error.message
       );
+
     }
+
   }
 
+
   return registros;
+
 }
 
 
@@ -7233,96 +6180,121 @@ async function salvarVariantesProduto(
 ========================================= */
 
 async function salvarProduto(){
+
   const id =
-    document
-    .getElementById("produtoId")
-    .value;
+  document.getElementById(
+    "produtoId"
+  ).value;
+
 
   const nome =
-    document
-    .getElementById("produtoNome")
-    .value
-    .trim();
+  document.getElementById(
+    "produtoNome"
+  ).value.trim();
+
 
   const preco =
-    Number(
-      document
-      .getElementById("produtoPreco")
-      .value
-    );
+  Number(
+    document.getElementById(
+      "produtoPreco"
+    ).value
+  );
+
 
   const estoqueGeral =
-    Math.max(
-      0,
-      Number(
-        document
-        .getElementById("produtoEstoque")
-        .value ||
-        0
-      )
-    );
+  Math.max(
+    0,
+    Number(
+      document.getElementById(
+        "produtoEstoque"
+      ).value ||
+      0
+    )
+  );
+
 
   const categoria =
-    document
-    .getElementById("produtoCategoria")
-    .value;
+  document.getElementById(
+    "produtoCategoria"
+  ).value;
+
 
   const descricao =
-    document
-    .getElementById("produtoDescricao")
-    .value
-    .trim();
+  document.getElementById(
+    "produtoDescricao"
+  ).value.trim();
+
 
   const ativo =
-    document
-    .getElementById("produtoAtivo")
-    .checked;
+  document.getElementById(
+    "produtoAtivo"
+  ).checked;
 
-  if(!nome){
+
+  if(
+    !nome
+  ){
+
     alert(
       "Digite o nome do produto."
     );
 
     return;
+
   }
 
+
   if(
-    !preco
-    ||
+    !preco ||
     preco <= 0
   ){
+
     alert(
       "Digite um preço válido."
     );
 
     return;
+
   }
 
-  if(!categoria){
+
+  if(
+    !categoria
+  ){
+
     alert(
       "Escolha uma categoria."
     );
 
     return;
+
   }
 
+
   for(
-    let i=0;
-    i<opcoesFormulario.length;
+    let i = 0;
+    i < opcoesFormulario.length;
     i++
   ){
+
     const opcao =
-      opcoesFormulario[i];
+    opcoesFormulario[i];
+
 
     const temTamanho =
-      Object
-      .values(opcao.tamanhos)
-      .some(
-        tamanho =>
-          tamanho.ativo
-      );
+    Object.values(
+      opcao.tamanhos
+    )
+    .some(
+      tamanho =>
+        tamanho.ativo
+    );
 
-    if(!temTamanho){
+
+    if(
+      !temTamanho
+    ){
+
       alert(
         "Na opção " +
         (i + 1) +
@@ -7330,13 +6302,18 @@ async function salvarProduto(){
       );
 
       return;
+
     }
+
 
     if(
       opcao.tipo === "cor"
       &&
-      !obterNomeCor(opcao)
+      !obterNomeCor(
+        opcao
+      )
     ){
+
       alert(
         "Informe a cor da opção " +
         (i + 1) +
@@ -7344,7 +6321,9 @@ async function salvarProduto(){
       );
 
       return;
+
     }
+
 
     if(
       opcao.tipo === "estampa"
@@ -7354,6 +6333,7 @@ async function salvarProduto(){
         ""
       ).trim()
     ){
+
       alert(
         "Informe o nome da estampa da opção " +
         (i + 1) +
@@ -7361,13 +6341,16 @@ async function salvarProduto(){
       );
 
       return;
+
     }
+
 
     if(
       !opcao.arquivo
       &&
       !opcao.foto_url
     ){
+
       alert(
         "Adicione uma foto para a opção " +
         (i + 1) +
@@ -7375,143 +6358,218 @@ async function salvarProduto(){
       );
 
       return;
+
     }
+
   }
 
+
   const estoqueVariantes =
-    calcularEstoqueVariantes();
+  calcularEstoqueVariantes();
+
 
   const estoqueFinal =
-    opcoesFormulario.length
-    ? estoqueVariantes
-    : estoqueGeral;
+  opcoesFormulario.length
+  ?
+  estoqueVariantes
+  :
+  estoqueGeral;
+
 
   const botao =
-    document
-    .getElementById("botaoSalvar");
+  document.getElementById(
+    "botaoSalvar"
+  );
+
 
   botao.disabled =
-    true;
+  true;
+
 
   botao.textContent =
-    "SALVANDO...";
+  "SALVANDO...";
+
 
   try{
+
     let produtoId =
+    id
+    ?
+    Number(
       id
-      ? Number(id)
-      : null;
+    )
+    :
+    null;
+
 
     let fotoAntiga =
-      null;
+    null;
+
 
     if(id){
+
       const anterior =
-        produtos.find(
-          produto =>
-            Number(produto.id) ===
-            Number(id)
-        );
+      produtos.find(
+        produto =>
+          Number(
+            produto.id
+          ) ===
+          Number(
+            id
+          )
+      );
+
 
       fotoAntiga =
-        anterior?.foto_url ||
-        null;
+      anterior?.foto_url ||
+      null;
+
     }
 
+
     const dadosProduto = {
+
       nome,
+
       preco,
+
       categoria,
+
       descricao,
+
       ativo,
+
       estoque:
-        estoqueFinal
+      estoqueFinal
+
     };
 
-    if(produtoId){
+
+    if(
+      produtoId
+    ){
+
       const {
         error
       } =
       await supabaseClient
-      .from("Produtos")
-      .update(dadosProduto)
+      .from(
+        "Produtos"
+      )
+      .update(
+        dadosProduto
+      )
       .eq(
         "id",
         produtoId
       );
 
+
       if(error){
+
         throw error;
+
       }
 
     }else{
+
       const {
         data,
         error
       } =
       await supabaseClient
-      .from("Produtos")
+      .from(
+        "Produtos"
+      )
       .insert([
         {
           ...dadosProduto,
           foto_url:null
         }
       ])
-      .select("id")
+      .select(
+        "id"
+      )
       .single();
 
+
       if(error){
+
         throw error;
+
       }
 
+
       produtoId =
-        data.id;
+      data.id;
+
     }
 
+
     const fotoPrincipal =
-      await salvarFotosProduto(
-        produtoId,
-        fotoAntiga
-      );
+    await salvarFotosProduto(
+      produtoId,
+      fotoAntiga
+    );
+
 
     await salvarVariantesProduto(
       produtoId
     );
+
 
     const {
       error:
       erroFinal
     } =
     await supabaseClient
-    .from("Produtos")
+    .from(
+      "Produtos"
+    )
     .update({
+
       foto_url:
-        fotoPrincipal,
+      fotoPrincipal,
 
       estoque:
-        estoqueFinal
+      estoqueFinal
+
     })
     .eq(
       "id",
       produtoId
     );
 
-    if(erroFinal){
+
+    if(
+      erroFinal
+    ){
+
       throw erroFinal;
+
     }
+
 
     alert(
       id
-      ? "Produto atualizado com sucesso! ✅"
-      : "Produto cadastrado com sucesso! ✅"
+      ?
+      "Produto atualizado com sucesso! ✅"
+      :
+      "Produto cadastrado com sucesso! ✅"
     );
 
+
     limparFormulario();
+
 
     await carregarProdutos();
 
   }catch(error){
-    console.error(error);
+
+    console.error(
+      error
+    );
+
 
     alert(
       "Erro: " +
@@ -7522,32 +6580,47 @@ async function salvarProduto(){
     );
 
   }finally{
+
     botao.disabled =
-      false;
+    false;
+
 
     botao.textContent =
-      document
-      .getElementById("produtoId")
-      .value
-      ? "SALVAR ALTERAÇÕES"
-      : "CADASTRAR PRODUTO";
+    document.getElementById(
+      "produtoId"
+    ).value
+    ?
+    "SALVAR ALTERAÇÕES"
+    :
+    "CADASTRAR PRODUTO";
+
   }
+
 }
 
 
 /* =========================================
    EDITAR PRODUTO
 ========================================= */
-  async function editarProduto(id){
 
-  abrirPagina("produtos");
+async function editarProduto(
+  id
+){
+
+  abrirPagina(
+    "produtos"
+  );
 
 
   const produto =
   produtos.find(
     item =>
-      Number(item.id) ===
-      Number(id)
+      Number(
+        item.id
+      ) ===
+      Number(
+        id
+      )
   );
 
 
@@ -7556,83 +6629,89 @@ async function salvarProduto(){
   }
 
 
-  document
-  .getElementById("produtoId")
-  .value =
+  document.getElementById(
+    "produtoId"
+  ).value =
   produto.id;
 
 
-  document
-  .getElementById("produtoNome")
-  .value =
+  document.getElementById(
+    "produtoNome"
+  ).value =
   produto.nome ||
   "";
 
 
-  document
-  .getElementById("produtoPreco")
-  .value =
+  document.getElementById(
+    "produtoPreco"
+  ).value =
   produto.preco ||
   "";
 
 
-  document
-  .getElementById("produtoEstoque")
-  .value =
+  document.getElementById(
+    "produtoEstoque"
+  ).value =
   produto.estoque ??
   0;
 
 
-  document
-  .getElementById("produtoCategoria")
-  .value =
+  document.getElementById(
+    "produtoCategoria"
+  ).value =
   produto.categoria ||
   "";
 
 
-  document
-  .getElementById("produtoDescricao")
-  .value =
+  document.getElementById(
+    "produtoDescricao"
+  ).value =
   produto.descricao ||
   "";
 
 
-  document
-  .getElementById("produtoAtivo")
-  .checked =
+  document.getElementById(
+    "produtoAtivo"
+  ).checked =
   produto.ativo !==
   false;
 
 
-  document
-  .getElementById("tituloFormulario")
-  .textContent =
+  document.getElementById(
+    "tituloFormulario"
+  ).textContent =
   "✏️ Editar produto";
 
 
-  document
-  .getElementById("botaoSalvar")
-  .textContent =
+  document.getElementById(
+    "botaoSalvar"
+  ).textContent =
   "SALVAR ALTERAÇÕES";
 
 
-  document
-  .getElementById("botaoCancelar")
-  .style
-  .display =
+  document.getElementById(
+    "botaoCancelar"
+  ).style.display =
   "block";
 
 
   const {
-    data:fotos,
-    error:erroFotos
+    data:
+    fotos,
+
+    error:
+    erroFotos
   } =
   await supabasePublico
-  .from("Fotos_Produtos")
+  .from(
+    "Fotos_Produtos"
+  )
   .select("*")
   .eq(
     "produto_id",
-    Number(id)
+    Number(
+      id
+    )
   )
   .order(
     "ordem",
@@ -7642,7 +6721,9 @@ async function salvarProduto(){
   );
 
 
-  if(erroFotos){
+  if(
+    erroFotos
+  ){
 
     console.error(
       "Erro fotos:",
@@ -7722,15 +6803,22 @@ async function salvarProduto(){
 
 
   const {
-    data:variantes,
-    error:erroVariantes
+    data:
+    variantes,
+
+    error:
+    erroVariantes
   } =
   await supabasePublico
-  .from("Variantes")
+  .from(
+    "Variantes"
+  )
   .select("*")
   .eq(
     "produto_id",
-    Number(id)
+    Number(
+      id
+    )
   )
   .order(
     "id",
@@ -7740,7 +6828,9 @@ async function salvarProduto(){
   );
 
 
-  if(erroVariantes){
+  if(
+    erroVariantes
+  ){
 
     console.error(
       "Erro variantes:",
@@ -7798,8 +6888,7 @@ async function salvarProduto(){
 
 
         if(
-          tipo ===
-          "cor"
+          tipo === "cor"
         ){
 
           if(
@@ -7902,11 +6991,8 @@ async function salvarProduto(){
 
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
 }
@@ -7925,84 +7011,79 @@ function cancelarEdicao(){
 
 function limparFormulario(){
 
-  document
-  .getElementById("produtoId")
-  .value =
+  document.getElementById(
+    "produtoId"
+  ).value =
   "";
 
 
-  document
-  .getElementById("produtoNome")
-  .value =
+  document.getElementById(
+    "produtoNome"
+  ).value =
   "";
 
 
-  document
-  .getElementById("produtoPreco")
-  .value =
+  document.getElementById(
+    "produtoPreco"
+  ).value =
   "";
 
 
-  document
-  .getElementById("produtoEstoque")
-  .value =
+  document.getElementById(
+    "produtoEstoque"
+  ).value =
   "0";
 
 
-  document
-  .getElementById("produtoCategoria")
-  .value =
+  document.getElementById(
+    "produtoCategoria"
+  ).value =
   "";
 
 
-  document
-  .getElementById("produtoDescricao")
-  .value =
+  document.getElementById(
+    "produtoDescricao"
+  ).value =
   "";
 
 
-  document
-  .getElementById("produtoFotosArquivos")
-  .value =
+  document.getElementById(
+    "produtoFotosArquivos"
+  ).value =
   "";
 
 
-  document
-  .getElementById("produtoAtivo")
-  .checked =
+  document.getElementById(
+    "produtoAtivo"
+  ).checked =
   true;
 
 
-  fotosFormulario =
-  [];
+  fotosFormulario = [];
 
-
-  opcoesFormulario =
-  [];
+  opcoesFormulario = [];
 
 
   renderizarFotosFormulario();
 
-
   renderizarOpcoes();
 
 
-  document
-  .getElementById("tituloFormulario")
-  .textContent =
+  document.getElementById(
+    "tituloFormulario"
+  ).textContent =
   "➕ Cadastrar produto";
 
 
-  document
-  .getElementById("botaoSalvar")
-  .textContent =
+  document.getElementById(
+    "botaoSalvar"
+  ).textContent =
   "CADASTRAR PRODUTO";
 
 
-  document
-  .getElementById("botaoCancelar")
-  .style
-  .display =
+  document.getElementById(
+    "botaoCancelar"
+  ).style.display =
   "none";
 
 }
@@ -8021,12 +7102,12 @@ async function alternarProduto(
     error
   } =
   await supabaseClient
-  .from("Produtos")
+  .from(
+    "Produtos"
+  )
   .update({
-
     ativo:
     !ativoAtual
-
   })
   .eq(
     "id",
@@ -8037,10 +7118,8 @@ async function alternarProduto(
   if(error){
 
     alert(
-
       "Erro ao alterar produto: " +
       error.message
-
     );
 
     return;
@@ -8060,26 +7139,32 @@ async function excluirProduto(
   const produto =
   produtos.find(
     item =>
-      Number(item.id) ===
-      Number(id)
+      Number(
+        item.id
+      ) ===
+      Number(
+        id
+      )
   );
 
 
   const confirmar =
   confirm(
-
     "Tem certeza que deseja excluir " +
     (
       produto?.nome ||
       "este produto"
     ) +
     "?"
-
   );
 
 
-  if(!confirmar){
+  if(
+    !confirmar
+  ){
+
     return;
+
   }
 
 
@@ -8090,15 +7175,21 @@ async function excluirProduto(
       erroVariantes
     } =
     await supabaseClient
-    .from("Variantes")
+    .from(
+      "Variantes"
+    )
     .delete()
     .eq(
       "produto_id",
-      Number(id)
+      Number(
+        id
+      )
     );
 
 
-    if(erroVariantes){
+    if(
+      erroVariantes
+    ){
 
       throw erroVariantes;
 
@@ -8110,15 +7201,21 @@ async function excluirProduto(
       erroFotos
     } =
     await supabaseClient
-    .from("Fotos_Produtos")
+    .from(
+      "Fotos_Produtos"
+    )
     .delete()
     .eq(
       "produto_id",
-      Number(id)
+      Number(
+        id
+      )
     );
 
 
-    if(erroFotos){
+    if(
+      erroFotos
+    ){
 
       throw erroFotos;
 
@@ -8129,11 +7226,15 @@ async function excluirProduto(
       error
     } =
     await supabaseClient
-    .from("Produtos")
+    .from(
+      "Produtos"
+    )
     .delete()
     .eq(
       "id",
-      Number(id)
+      Number(
+        id
+      )
     );
 
 
@@ -8162,10 +7263,8 @@ async function excluirProduto(
 
 
     alert(
-
       "Erro ao excluir: " +
       error.message
-
     );
 
   }
@@ -8177,8 +7276,7 @@ async function excluirProduto(
    MODAL - FECHAR AO TOCAR FORA
 ========================================= */
 
-document
-.getElementById(
+document.getElementById(
   "modalPedidoOverlay"
 )
 .addEventListener(
@@ -8209,5 +7307,4 @@ verificarSessao();
 </script>
 
 </body>
-
 </html>
