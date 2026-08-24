@@ -58,13 +58,16 @@ function adicionarEstilosSali(){
     return;
   }
 
+
   const style =
   document.createElement(
     "style"
   );
 
+
   style.id =
   "sali-estilos-produtos";
+
 
   style.textContent = `
 
@@ -82,31 +85,72 @@ function adicionarEstilosSali(){
     }
 
 
-    /* CORES / ESTAMPAS NA VITRINE */
+    /* =====================================
+       CORES / ESTAMPAS NA VITRINE
+    ===================================== */
 
     .sali-card-variantes{
       display:flex;
       align-items:center;
-      gap:6px;
-      min-height:24px;
-      margin:7px 0 9px;
+      gap:7px;
+      min-height:25px;
+      margin:7px 0 10px;
     }
+
 
     .sali-card-cor{
-      width:21px;
-      height:21px;
+      width:18px;
+      height:18px;
+      min-width:18px;
+      min-height:18px;
+      flex:0 0 18px;
+
       border-radius:50%;
-      border:1px solid #cfcfcf;
+
+      border:1px solid #c8c8c8;
+
       padding:0;
-      flex:0 0 21px;
+
       cursor:pointer;
-      box-shadow:0 0 0 2px #fff;
-      transition:.15s;
+
+      background:#eee;
+
+      box-shadow:
+        0 0 0 2px #fff;
+
+      transition:
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease;
+
+      position:relative;
     }
 
-    .sali-card-cor:active{
-      transform:scale(.92);
+
+    .sali-card-cor:hover{
+      transform:scale(1.08);
     }
+
+
+    .sali-card-cor:active{
+      transform:scale(.93);
+    }
+
+
+    /* OPÇÃO SELECIONADA */
+
+    .sali-card-cor.selecionada{
+      border:2px solid #111;
+
+      box-shadow:
+        0 0 0 2px #fff,
+        0 0 0 4px #e52d86;
+
+      transform:scale(1.03);
+    }
+
+
+    /* ESTAMPA */
 
     .sali-card-cor.estampa{
       background-size:cover;
@@ -114,30 +158,38 @@ function adicionarEstilosSali(){
       background-repeat:no-repeat;
     }
 
+
     .sali-card-mais{
-      font-size:11px;
+      font-size:10px;
       color:#555;
-      font-weight:700;
-      margin-left:1px;
+      font-weight:800;
+      margin-left:2px;
       white-space:nowrap;
     }
+
 
     @media(max-width:480px){
 
       .sali-card-variantes{
-        gap:5px;
+        gap:7px;
+        margin-top:7px;
+        margin-bottom:10px;
       }
 
       .sali-card-cor{
-        width:20px;
-        height:20px;
-        flex-basis:20px;
+        width:18px;
+        height:18px;
+        min-width:18px;
+        min-height:18px;
+        flex-basis:18px;
       }
 
     }
 
 
-    /* OVERLAY */
+    /* =====================================
+       OVERLAY
+    ===================================== */
 
     .sali-modal-overlay{
       position:fixed;
@@ -150,12 +202,15 @@ function adicionarEstilosSali(){
       padding:8px;
     }
 
+
     .sali-modal-overlay.ativo{
       display:flex;
     }
 
 
-    /* MODAL */
+    /* =====================================
+       MODAL
+    ===================================== */
 
     .sali-modal{
       position:relative;
@@ -169,6 +224,7 @@ function adicionarEstilosSali(){
       padding:12px;
       animation:saliSubir .2s ease;
     }
+
 
     @keyframes saliSubir{
 
@@ -192,14 +248,19 @@ function adicionarEstilosSali(){
       z-index:10;
       top:12px;
       right:12px;
+
       width:42px;
       height:42px;
+
       border:0;
       border-radius:50%;
+
       background:#000;
       color:#fff;
+
       font-size:26px;
       font-weight:900;
+
       display:flex;
       align-items:center;
       justify-content:center;
@@ -211,10 +272,14 @@ function adicionarEstilosSali(){
     .sali-modal-foto{
       width:100%;
       height:380px;
+
       object-fit:cover;
       object-position:center;
+
       border-radius:18px;
+
       background:#eee;
+
       display:block;
     }
 
@@ -225,11 +290,13 @@ function adicionarEstilosSali(){
       padding:12px 2px 2px;
     }
 
+
     .sali-modal-info h2{
       font-size:23px;
       line-height:1.15;
       margin:0 0 5px;
     }
+
 
     .sali-modal-preco{
       color:#e52d86;
@@ -244,6 +311,7 @@ function adicionarEstilosSali(){
     .sali-secao-opcao{
       margin-bottom:15px;
     }
+
 
     .sali-titulo-opcao{
       font-size:15px;
@@ -262,6 +330,7 @@ function adicionarEstilosSali(){
       -webkit-overflow-scrolling:touch;
     }
 
+
     .sali-visual-item{
       flex:0 0 76px;
       width:76px;
@@ -271,16 +340,22 @@ function adicionarEstilosSali(){
       cursor:pointer;
     }
 
+
     .sali-visual-foto{
       position:relative;
       width:76px;
       height:98px;
+
       padding:3px;
+
       border:2px solid #ddd;
       border-radius:13px;
+
       background:#fff;
+
       transition:.15s;
     }
+
 
     .sali-visual-foto img{
       width:100%;
@@ -291,17 +366,23 @@ function adicionarEstilosSali(){
       background:#eee;
     }
 
+
     .sali-visual-nome{
       display:block;
       width:100%;
       margin-top:6px;
+
       font-size:11px;
       line-height:1.15;
+
       text-align:center;
+
       color:#333;
       font-weight:800;
+
       word-break:break-word;
     }
+
 
     .sali-visual-item.selecionada
     .sali-visual-foto{
@@ -309,24 +390,34 @@ function adicionarEstilosSali(){
       transform:scale(1.03);
     }
 
+
     .sali-visual-item.selecionada
     .sali-visual-foto::after{
       content:"✓";
+
       position:absolute;
+
       right:-6px;
       top:-8px;
+
       width:23px;
       height:23px;
+
       border-radius:50%;
+
       display:flex;
       align-items:center;
       justify-content:center;
+
       background:#e52d86;
       color:#fff;
+
       font-size:13px;
       font-weight:900;
+
       border:2px solid #fff;
     }
+
 
     .sali-visual-item.selecionada
     .sali-visual-nome{
@@ -334,21 +425,29 @@ function adicionarEstilosSali(){
       font-weight:900;
     }
 
+
     .sali-visual-item.esgotada{
       opacity:.38;
       cursor:not-allowed;
     }
 
+
     .sali-sem-foto-visual{
       width:100%;
       height:100%;
+
       border-radius:9px;
+
       background:#f1f1f1;
+
       display:flex;
       align-items:center;
       justify-content:center;
+
       text-align:center;
+
       padding:5px;
+
       color:#777;
       font-size:10px;
     }
@@ -362,27 +461,36 @@ function adicionarEstilosSali(){
       gap:9px;
     }
 
+
     .sali-tamanho-botao{
       min-width:54px;
       min-height:45px;
+
       padding:10px 14px;
+
       border:2px solid #ddd;
       border-radius:11px;
+
       background:#fff;
       color:#111;
+
       font-weight:900;
+
       cursor:pointer;
     }
+
 
     .sali-tamanho-botao.unico{
       width:100%;
     }
+
 
     .sali-tamanho-botao.selecionado{
       border-color:#e52d86;
       background:#fff0f7;
       color:#bd1762;
     }
+
 
     .sali-tamanho-botao.esgotado{
       opacity:.35;
@@ -399,15 +507,18 @@ function adicionarEstilosSali(){
       color:#666;
     }
 
+
     .sali-status-modal.disponivel{
       color:#258238;
       font-weight:800;
     }
 
+
     .sali-status-modal.alerta{
       color:#b66a00;
       font-weight:800;
     }
+
 
     .sali-status-modal.esgotado{
       color:#c40000;
@@ -419,19 +530,25 @@ function adicionarEstilosSali(){
 
     .sali-modal-adicionar{
       width:100%;
+
       border:0;
       border-radius:13px;
+
       background:#000;
       color:#fff;
+
       padding:17px 12px;
+
       font-size:16px;
       font-weight:900;
     }
+
 
     .sali-modal-adicionar:disabled{
       opacity:.42;
       cursor:not-allowed;
     }
+
 
     body.sali-modal-aberto{
       overflow:hidden;
@@ -447,57 +564,69 @@ function adicionarEstilosSali(){
         padding:12px;
       }
 
+
       .sali-modal-foto{
         height:280px;
         object-fit:cover;
         object-position:center top;
       }
 
+
       .sali-modal-info{
         padding-top:8px;
       }
+
 
       .sali-modal-info h2{
         font-size:21px;
         margin-bottom:4px;
       }
 
+
       .sali-modal-preco{
         font-size:23px;
         margin-bottom:10px;
       }
 
+
       .sali-secao-opcao{
         margin-bottom:12px;
       }
 
+
       .sali-visuais{
         gap:9px;
       }
+
 
       .sali-visual-item{
         flex:0 0 68px;
         width:68px;
       }
 
+
       .sali-visual-foto{
         width:68px;
         height:88px;
       }
+
 
       .sali-visual-nome{
         font-size:10px;
         margin-top:5px;
       }
 
+
       .sali-tamanho-botao{
         min-height:42px;
         padding:9px 11px;
       }
 
+
       .sali-status-modal{
         margin:4px 0 10px;
       }
+
 
       .sali-modal-adicionar{
         padding:14px 10px;
@@ -506,6 +635,7 @@ function adicionarEstilosSali(){
     }
 
   `;
+
 
   document.head.appendChild(
     style
@@ -524,7 +654,8 @@ function moedaProduto(
 
   return Number(
     valor || 0
-  ).toLocaleString(
+  )
+  .toLocaleString(
     "pt-BR",
     {
       style:"currency",
@@ -541,7 +672,8 @@ function textoSeguro(
 
   return String(
     valor ?? ""
-  ).trim();
+  )
+  .trim();
 
 }
 
@@ -555,18 +687,23 @@ function tamanhoExibicao(
     valor
   );
 
+
   if(!tamanho){
     return "";
   }
 
+
   const normalizado =
   tamanho
   .toLowerCase()
-  .normalize("NFD")
+  .normalize(
+    "NFD"
+  )
   .replace(
     /[\u0300-\u036f]/g,
     ""
   );
+
 
   if(
     normalizado.includes(
@@ -583,6 +720,7 @@ function tamanhoExibicao(
     );
 
   }
+
 
   return tamanho;
 
@@ -632,18 +770,22 @@ function nomeVisual(
     variante.estampa
   );
 
+
   const cor =
   textoSeguro(
     variante.cor
   );
 
+
   if(estampa){
     return estampa;
   }
 
+
   if(cor){
     return cor;
   }
+
 
   return "";
 
@@ -959,9 +1101,11 @@ function criarAmostrasCard(
       const chave =
       estampa
       ?
-      "estampa|" + estampa
+      "estampa|" +
+      estampa
       :
-      "cor|" + cor;
+      "cor|" +
+      cor;
 
 
       if(
@@ -1003,7 +1147,7 @@ function criarAmostrasCard(
 
 
   const limite =
-  4;
+  5;
 
 
   opcoes
@@ -1079,6 +1223,26 @@ function criarAmostrasCard(
           event.preventDefault();
 
           event.stopPropagation();
+
+
+          area
+          .querySelectorAll(
+            ".sali-card-cor"
+          )
+          .forEach(
+            item => {
+
+              item.classList.remove(
+                "selecionada"
+              );
+
+            }
+          );
+
+
+          bolinha.classList.add(
+            "selecionada"
+          );
 
 
           if(
@@ -2423,8 +2587,6 @@ function criarCardProduto(
     nome
   );
 
-
-  /* BOLINHAS DE COR / ESTAMPA */
 
   if(
     amostras.children.length
