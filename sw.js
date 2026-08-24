@@ -1,11 +1,12 @@
-const CACHE_NAME = "sali-store-v2";
+const CACHE_NAME = "sali-store-v3";
 
 const ARQUIVOS = [
   "./",
   "./index.html",
   "./produtos.js",
   "./manifest.json",
-"./2FB4D351-BB4F-4790-8933-22B8592A6EEC.png"
+  "./sali-icon-180.png",
+  "./sali-icon-512.png"
 ];
 
 self.addEventListener("install", event => {
