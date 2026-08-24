@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
-<title>Painel SALI STORE</title>
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta
+  name="theme-color"
+  content="#000000"
+>
+
+<title>
+  Painel SALI STORE
+</title>
+
 
 <style>
 
@@ -14,1216 +28,2672 @@
   padding:0;
 }
 
+
 :root{
+
   --rosa:#e52d86;
+
   --rosa-escuro:#bd1762;
+
   --rosa-claro:#fff0f7;
+
   --preto:#000;
+
   --cinza:#f6f6f6;
+
   --borda:#e7e7e7;
+
   --verde:#1d7a35;
+
   --amarelo:#a86200;
+
   --vermelho:#bd0000;
+
 }
 
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
+
+  font-family:
+  Arial,
+  Helvetica,
+  sans-serif;
+
   background:#f5f5f5;
+
   color:#111;
+
   padding-bottom:82px;
+
 }
+
 
 button,
 input,
 textarea,
 select{
+
   font:inherit;
+
 }
+
 
 button{
+
   cursor:pointer;
+
 }
+
 
 a{
+
   color:inherit;
+
   text-decoration:none;
+
 }
+
 
 .esconder{
+
   display:none!important;
+
 }
 
 
-/* LOGIN */
+/* =========================================
+   LOGIN
+========================================= */
 
 .login-tela{
+
   min-height:100vh;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   padding:20px;
-  background:linear-gradient(
+
+  background:
+  linear-gradient(
     135deg,
     #ffd3e5,
     #ff88bb
   );
+
 }
+
 
 .login-box{
+
   width:100%;
+
   max-width:420px;
+
   background:#fff;
+
   padding:30px 22px;
+
   border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+  box-shadow:
+  0 10px 30px
+  rgba(0,0,0,.15);
+
 }
+
 
 .login-logo{
+
   text-align:center;
+
   margin-bottom:25px;
+
 }
+
 
 .login-logo h1{
+
   color:var(--rosa);
+
   font-size:34px;
+
 }
+
 
 .login-logo p{
+
   margin-top:8px;
+
   color:#666;
+
 }
+
 
 .erro-login{
+
   color:#c40000;
+
   font-size:14px;
+
   margin-top:14px;
+
   text-align:center;
+
 }
+
 
 .botao-login{
+
   width:100%;
+
   border:0;
+
   background:#000;
+
   color:#fff;
+
   padding:15px;
+
   border-radius:12px;
+
   font-weight:900;
+
   margin-top:8px;
+
 }
 
 
-/* CAMPOS */
+/* =========================================
+   CAMPOS
+========================================= */
 
 .campo{
+
   margin-bottom:15px;
+
 }
 
+
 .campo label{
+
   display:block;
+
   font-size:14px;
+
   font-weight:800;
+
   margin-bottom:7px;
+
 }
+
 
 .campo input,
 .campo textarea,
 .campo select{
+
   width:100%;
+
   border:1px solid #ccc;
+
   border-radius:10px;
+
   padding:13px;
+
   background:#fff;
+
   outline:none;
+
 }
 
+
 .campo textarea{
+
   min-height:100px;
+
   resize:vertical;
+
 }
+
 
 .campo input:focus,
 .campo textarea:focus,
 .campo select:focus{
+
   border-color:var(--rosa);
+
 }
+
 
 .duplo{
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+  1fr 1fr;
+
   gap:12px;
+
 }
+
 
 .foto-ajuda{
+
   color:#777;
+
   font-size:12px;
+
   margin-top:8px;
+
   line-height:1.45;
+
 }
 
 
-/* APP */
+/* =========================================
+   APP
+========================================= */
 
 .painel{
+
   display:none;
+
 }
+
 
 .topo{
+
   position:sticky;
+
   top:0;
+
   z-index:500;
+
   background:#000;
+
   color:#fff;
+
   padding:12px 15px;
-  padding-top:max(12px,env(safe-area-inset-top));
+
+  padding-top:
+  max(
+    12px,
+    env(safe-area-inset-top)
+  );
+
 }
+
 
 .topo-conteudo{
+
   max-width:1180px;
+
   margin:auto;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:12px;
+
 }
+
 
 .marca-admin{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
 }
+
 
 .marca-icone{
+
   width:38px;
+
   height:38px;
+
   border-radius:11px;
+
   background:var(--rosa);
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   font-weight:900;
+
 }
+
 
 .marca-admin h1{
+
   font-size:18px;
+
 }
+
 
 .marca-admin small{
+
   display:block;
+
   color:#aaa;
+
   font-size:11px;
+
   margin-top:2px;
+
 }
+
 
 .sair{
+
   background:#2a2a2a;
+
   color:#fff;
+
   border:0;
+
   padding:9px 12px;
+
   border-radius:9px;
+
   font-weight:800;
+
 }
+
 
 .conteudo{
+
   max-width:1180px;
+
   margin:auto;
+
   padding:18px 15px 42px;
+
 }
+
 
 .pagina{
+
   display:none;
+
 }
+
 
 .pagina.ativa{
+
   display:block;
+
 }
+
 
 .titulo-pagina{
+
   margin-bottom:18px;
+
 }
+
 
 .titulo-pagina h2{
+
   font-size:25px;
+
   margin-bottom:5px;
+
 }
+
 
 .titulo-pagina p{
+
   color:#666;
+
   line-height:1.45;
+
 }
 
 
-/* NAV */
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
 
 .nav-admin{
+
   position:fixed;
+
   left:0;
+
   right:0;
+
   bottom:0;
+
   z-index:1000;
+
   background:#fff;
-  border-top:1px solid #ddd;
-  padding:6px 6px max(7px,env(safe-area-inset-bottom));
+
+  border-top:
+  1px solid #ddd;
+
+  padding:
+  6px 6px
+  max(
+    7px,
+    env(safe-area-inset-bottom)
+  );
+
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+
+  grid-template-columns:
+  repeat(5,1fr);
+
   gap:2px;
+
 }
+
 
 .nav-item{
+
   border:0;
+
   background:transparent;
+
   padding:7px 2px;
+
   border-radius:10px;
+
   font-size:10px;
+
   font-weight:800;
+
   color:#777;
+
   display:flex;
+
   flex-direction:column;
+
   align-items:center;
+
   gap:3px;
+
 }
+
 
 .nav-item .icone{
+
   font-size:20px;
+
   line-height:1;
+
 }
+
 
 .nav-item.ativo{
+
   color:var(--rosa);
+
   background:var(--rosa-claro);
+
 }
 
 
-/* BLOCOS */
+/* =========================================
+   BLOCOS
+========================================= */
 
 .bloco{
+
   background:#fff;
+
   border-radius:16px;
+
   padding:17px;
+
   margin-bottom:16px;
-  box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+  box-shadow:
+  0 3px 12px
+  rgba(0,0,0,.05);
+
 }
+
 
 .bloco h3{
+
   margin-bottom:15px;
+
 }
+
 
 .subtitulo{
+
   margin:25px 0 12px;
+
   padding-top:20px;
-  border-top:1px solid #eee;
+
+  border-top:
+  1px solid #eee;
+
 }
+
 
 .subtitulo h4{
+
   font-size:18px;
+
   margin-bottom:5px;
+
 }
+
 
 .subtitulo p{
+
   color:#777;
+
   font-size:13px;
+
   line-height:1.5;
+
 }
 
 
-/* DASHBOARD */
+/* =========================================
+   DASHBOARD
+========================================= */
 
 .dashboard-grade{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:11px;
+
   margin-bottom:16px;
+
 }
+
 
 .dash-card{
+
   background:#fff;
+
   border-radius:15px;
+
   padding:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+  box-shadow:
+  0 3px 12px
+  rgba(0,0,0,.05);
+
   min-height:104px;
+
 }
+
 
 .dash-card small{
+
   color:#777;
+
   font-weight:700;
+
 }
+
 
 .dash-card strong{
+
   display:block;
+
   font-size:25px;
+
   margin-top:9px;
+
 }
+
 
 .dash-card .mini{
+
   display:block;
+
   color:#777;
+
   font-size:11px;
+
   margin-top:5px;
+
 }
 
+
 .dash-card.destaque{
+
   background:#000;
+
   color:#fff;
+
 }
+
 
 .dash-card.destaque small,
 .dash-card.destaque .mini{
+
   color:#bbb;
+
 }
+
 
 .atalhos{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:10px;
+
 }
+
 
 .atalho{
+
   border:1px solid #eee;
+
   background:#fff;
+
   border-radius:13px;
+
   padding:15px;
+
   text-align:left;
+
   font-weight:900;
+
 }
+
 
 .atalho span{
+
   display:block;
+
   font-size:24px;
+
   margin-bottom:8px;
+
 }
+
 
 .alerta-box{
+
   padding:13px;
+
   border-radius:12px;
+
   margin-top:10px;
+
   font-size:13px;
+
   line-height:1.5;
+
 }
+
 
 .alerta-box.rosa{
+
   background:var(--rosa-claro);
+
   color:#8f1249;
+
 }
+
 
 .alerta-box.amarelo{
+
   background:#fff7df;
+
   color:#795000;
+
 }
 
 
-/* PEDIDOS */
+.alerta-box.verde{
+
+  background:#e8f8ed;
+
+  color:#17662c;
+
+}
+
+
+/* =========================================
+   PEDIDOS
+========================================= */
 
 .filtros-scroll{
+
   display:flex;
+
   gap:8px;
+
   overflow-x:auto;
+
   padding:2px 1px 10px;
+
   margin-bottom:8px;
+
   -webkit-overflow-scrolling:touch;
+
 }
+
 
 .filtro-pedido{
+
   flex:0 0 auto;
+
   border:1px solid #ddd;
+
   background:#fff;
+
   border-radius:999px;
+
   padding:9px 12px;
+
   font-size:12px;
+
   font-weight:900;
+
 }
+
 
 .filtro-pedido.ativo{
+
   background:#000;
+
   color:#fff;
+
   border-color:#000;
+
 }
+
 
 .lista-pedidos{
+
   display:grid;
+
   gap:12px;
+
 }
+
 
 .pedido-card{
+
   background:#fff;
+
   border-radius:15px;
+
   padding:15px;
+
   border:1px solid #eee;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
+
+  box-shadow:
+  0 2px 8px
+  rgba(0,0,0,.04);
+
 }
+
 
 .pedido-topo{
+
   display:flex;
+
   justify-content:space-between;
+
   gap:10px;
+
   align-items:flex-start;
+
 }
+
 
 .pedido-numero{
+
   font-weight:900;
+
   font-size:16px;
+
 }
+
 
 .pedido-data{
+
   font-size:11px;
+
   color:#888;
+
   margin-top:4px;
+
 }
+
 
 .pedido-total{
+
   font-weight:900;
+
   color:var(--rosa);
+
   font-size:18px;
+
 }
+
 
 .pedido-cliente{
+
   margin-top:12px;
+
   font-weight:800;
+
 }
+
 
 .pedido-resumo{
+
   font-size:12px;
+
   color:#666;
+
   line-height:1.55;
+
   margin-top:7px;
+
 }
+
 
 .status-pedido{
+
   display:inline-block;
+
   margin-top:10px;
+
   padding:6px 10px;
+
   border-radius:999px;
+
   font-size:11px;
+
   font-weight:900;
+
   background:#f1f1f1;
+
   color:#555;
+
 }
+
 
 .status-pedido.novo{
+
   background:#fff1f7;
+
   color:#b31860;
+
 }
+
 
 .status-pedido.confirmado{
+
   background:#e8f2ff;
+
   color:#1d5b9e;
+
 }
+
 
 .status-pedido.separacao{
+
   background:#fff6df;
+
   color:#8b5b00;
+
 }
+
 
 .status-pedido.entrega{
+
   background:#eee9ff;
+
   color:#5d3aa8;
+
 }
+
 
 .status-pedido.entregue{
+
   background:#e6f7ea;
+
   color:#1c7433;
+
 }
+
 
 .status-pedido.cancelado{
+
   background:#ffe9e9;
+
   color:#ad0000;
+
 }
+
 
 .pedido-acoes{
+
   display:flex;
+
   gap:8px;
+
   flex-wrap:wrap;
+
   margin-top:12px;
+
 }
+
 
 .pedido-acoes button{
+
   border:0;
+
   border-radius:9px;
+
   padding:9px 11px;
+
   font-size:12px;
+
   font-weight:900;
+
 }
+
 
 .ver-pedido{
+
   background:#000;
+
   color:#fff;
+
 }
+
 
 .avancar-pedido{
+
   background:var(--rosa-claro);
+
   color:var(--rosa-escuro);
+
 }
+
 
 .cancelar-pedido{
+
   background:#ffeaea;
+
   color:#b00000;
+
 }
+
 
 .sem-dados{
+
   text-align:center;
+
   padding:32px 15px;
+
   color:#777;
+
 }
 
 
-/* MODAL PEDIDO */
+/* =========================================
+   MODAL PEDIDO
+========================================= */
 
 .modal-pedido-overlay{
+
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.68);
+
+  background:
+  rgba(0,0,0,.68);
+
   z-index:3000;
+
   display:none;
+
   align-items:flex-end;
+
   justify-content:center;
+
   padding:8px;
+
 }
+
 
 .modal-pedido-overlay.ativo{
+
   display:flex;
+
 }
+
 
 .modal-pedido{
+
   width:100%;
+
   max-width:600px;
+
   background:#fff;
-  border-radius:22px 22px 16px 16px;
+
+  border-radius:
+  22px 22px 16px 16px;
+
   max-height:92vh;
+
   overflow-y:auto;
+
   padding:18px;
+
   position:relative;
+
 }
+
 
 .modal-fechar{
+
   position:absolute;
+
   right:14px;
+
   top:14px;
+
   width:38px;
+
   height:38px;
+
   border-radius:50%;
+
   border:0;
+
   background:#000;
+
   color:#fff;
+
   font-size:22px;
+
   font-weight:900;
+
 }
+
 
 .modal-pedido h3{
+
   padding-right:48px;
+
   margin-bottom:4px;
+
 }
+
 
 .modal-pedido .numero{
+
   color:var(--rosa);
+
   font-weight:900;
+
   margin-bottom:17px;
+
 }
+
 
 .detalhe-box{
+
   background:#f7f7f7;
+
   border-radius:12px;
+
   padding:12px;
+
   margin-bottom:10px;
+
 }
+
 
 .detalhe-box strong{
+
   display:block;
+
   margin-bottom:5px;
+
 }
+
 
 .item-pedido{
+
   display:grid;
-  grid-template-columns:54px 1fr auto;
+
+  grid-template-columns:
+  54px 1fr auto;
+
   gap:10px;
+
   align-items:center;
+
   padding:10px 0;
-  border-bottom:1px solid #eee;
+
+  border-bottom:
+  1px solid #eee;
+
 }
+
 
 .item-pedido:last-child{
+
   border-bottom:0;
+
 }
+
 
 .item-pedido img{
+
   width:54px;
+
   height:68px;
+
   object-fit:cover;
+
   border-radius:8px;
+
   background:#eee;
+
 }
+
 
 .item-pedido .nome{
+
   font-size:13px;
+
   font-weight:800;
+
   line-height:1.3;
+
 }
+
 
 .item-pedido .qtd{
+
   font-size:11px;
+
   color:#777;
+
   margin-top:4px;
+
 }
+
 
 .item-pedido .valor{
+
   font-size:13px;
+
   font-weight:900;
+
 }
+
 
 .linha-total{
+
   display:flex;
+
   justify-content:space-between;
+
   gap:10px;
+
   padding:6px 0;
+
   font-size:14px;
+
 }
+
 
 .linha-total.final{
+
   font-size:18px;
+
   font-weight:900;
-  border-top:1px solid #ddd;
+
+  border-top:
+  1px solid #ddd;
+
   margin-top:5px;
+
   padding-top:11px;
+
 }
+
 
 .status-select{
+
   width:100%;
+
   padding:12px;
+
   border:1px solid #ccc;
+
   border-radius:10px;
+
   background:#fff;
+
 }
+
 
 .salvar-status{
+
   width:100%;
+
   margin-top:10px;
+
   border:0;
+
   background:#000;
+
   color:#fff;
+
   padding:14px;
+
   border-radius:11px;
+
   font-weight:900;
+
 }
 
 
-/* PRODUTOS */
+/* =========================================
+   PRODUTOS
+========================================= */
 
 .escolher-foto{
+
   display:block;
+
   width:100%;
+
   background:#111;
+
   color:#fff;
+
   padding:14px;
+
   text-align:center;
+
   border-radius:11px;
+
   font-weight:900;
+
   cursor:pointer;
+
 }
+
 
 #produtoFotosArquivos{
+
   display:none;
+
 }
+
 
 .galeria-edicao{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:12px;
+
   margin-top:15px;
+
 }
+
 
 .foto-card{
+
   border:1px solid #ddd;
+
   border-radius:12px;
+
   padding:8px;
+
   background:#fff;
+
   position:relative;
+
 }
+
 
 .foto-card.principal{
+
   border:2px solid var(--rosa);
+
 }
+
 
 .foto-card img{
+
   width:100%;
+
   aspect-ratio:3/4;
+
   object-fit:cover;
+
   border-radius:9px;
+
   display:block;
+
   background:#eee;
+
 }
+
 
 .badge-principal{
+
   position:absolute;
+
   top:14px;
+
   left:14px;
+
   background:var(--rosa);
+
   color:#fff;
+
   padding:5px 8px;
+
   border-radius:20px;
+
   font-size:10px;
+
   font-weight:900;
+
 }
+
 
 .foto-acoes{
+
   display:grid;
+
   gap:6px;
+
   margin-top:8px;
+
 }
+
 
 .foto-acoes button{
+
   border:0;
+
   border-radius:8px;
+
   padding:8px;
+
   font-size:11px;
+
   font-weight:800;
+
 }
+
 
 .definir-principal{
+
   background:var(--rosa-claro);
+
   color:var(--rosa-escuro);
+
 }
+
 
 .excluir-foto{
+
   background:#ffe8e8;
+
   color:#b80000;
+
 }
+
 
 .opcoes-area{
+
   display:grid;
+
   gap:15px;
+
 }
+
 
 .opcao-card{
+
   border:1px solid #ddd;
+
   border-radius:16px;
+
   padding:15px;
+
   background:#fafafa;
+
 }
+
 
 .opcao-topo{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:10px;
+
   margin-bottom:14px;
+
 }
+
 
 .remover-opcao{
+
   border:0;
+
   background:#ffe5e5;
+
   color:#bd0000;
+
   padding:8px 10px;
+
   border-radius:8px;
+
   font-weight:800;
+
 }
+
 
 .tipo-opcao{
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+  1fr 1fr;
+
   gap:8px;
+
   margin-bottom:15px;
+
 }
+
 
 .tipo-opcao button{
+
   padding:12px;
+
   border:2px solid #ddd;
+
   border-radius:10px;
+
   background:#fff;
+
   font-weight:900;
+
 }
+
 
 .tipo-opcao button.selecionado{
+
   border-color:var(--rosa);
+
   background:var(--rosa-claro);
+
   color:var(--rosa-escuro);
+
 }
+
 
 .opcao-grid{
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+  1fr 1fr;
+
   gap:10px;
+
 }
+
 
 .foto-opcao-area{
+
   margin:10px 0 15px;
+
   background:#fff;
+
   border:1px solid #eee;
+
   border-radius:12px;
+
   padding:12px;
+
 }
+
 
 .foto-opcao-area label{
+
   display:block;
+
   font-size:14px;
+
   font-weight:900;
+
   margin-bottom:8px;
+
 }
+
 
 .preview-opcao{
+
   display:flex;
+
   gap:12px;
+
   align-items:flex-start;
+
   margin-top:10px;
+
 }
+
 
 .preview-opcao img{
+
   width:95px;
+
   height:125px;
+
   object-fit:cover;
+
   border-radius:10px;
+
   background:#eee;
+
 }
+
 
 .remover-foto-opcao{
+
   border:0;
+
   background:#ffe8e8;
+
   color:#b80000;
+
   padding:9px 11px;
+
   border-radius:8px;
+
   font-weight:800;
+
 }
+
 
 .tamanhos-titulo{
+
   font-size:14px;
+
   font-weight:900;
+
   margin:10px 0;
+
 }
+
 
 .tamanhos-grade{
+
   display:grid;
+
   gap:8px;
+
 }
+
 
 .tamanho-linha{
+
   display:grid;
-  grid-template-columns:1fr 110px;
+
+  grid-template-columns:
+  1fr 110px;
+
   gap:10px;
+
   align-items:center;
+
   padding:10px;
+
   background:#fff;
+
   border:1px solid #eee;
+
   border-radius:10px;
+
 }
+
 
 .tamanho-check{
+
   display:flex;
+
   align-items:center;
+
   gap:9px;
+
   font-weight:800;
+
 }
+
 
 .tamanho-check input{
+
   width:20px;
+
   height:20px;
+
 }
+
 
 .estoque-tamanho{
+
   width:100%;
+
   border:1px solid #ccc;
+
   border-radius:8px;
+
   padding:9px;
+
 }
+
 
 .estoque-tamanho:disabled{
+
   background:#eee;
+
   opacity:.55;
+
 }
+
 
 .adicionar-opcao{
+
   width:100%;
-  border:1px dashed var(--rosa);
+
+  border:
+  1px dashed var(--rosa);
+
   background:var(--rosa-claro);
+
   color:var(--rosa-escuro);
+
   padding:14px;
+
   border-radius:11px;
+
   font-weight:900;
+
   margin-top:14px;
+
 }
+
 
 .estoque-calculado{
+
   background:#f4f4f4;
+
   padding:12px;
+
   border-radius:10px;
+
   margin-top:14px;
+
   font-size:14px;
+
 }
+
 
 .estoque-calculado strong{
+
   color:var(--rosa);
+
 }
+
 
 .ativo-area{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
   margin:15px 0 20px;
+
   font-weight:700;
+
 }
+
 
 .ativo-area input{
+
   width:20px;
+
   height:20px;
+
 }
+
 
 .botoes-form{
+
   display:flex;
+
   gap:10px;
+
 }
+
 
 .salvar{
+
   flex:1;
+
   border:0;
+
   background:var(--rosa);
+
   color:#fff;
+
   padding:14px;
+
   border-radius:11px;
+
   font-weight:900;
+
 }
+
 
 .salvar:disabled{
+
   opacity:.6;
+
 }
+
 
 .cancelar{
+
   display:none;
+
   border:1px solid #ccc;
+
   background:#fff;
+
   padding:14px;
+
   border-radius:11px;
+
   font-weight:800;
+
 }
+
 
 .cabecalho-lista{
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:10px;
+
   margin-bottom:15px;
+
 }
+
 
 .buscar{
+
   width:100%;
+
   max-width:330px;
+
   padding:11px;
+
   border:1px solid #ccc;
+
   border-radius:10px;
+
 }
+
 
 .lista-produtos{
+
   display:grid;
+
   gap:12px;
+
 }
+
 
 .produto-card{
+
   display:grid;
-  grid-template-columns:90px 1fr;
+
+  grid-template-columns:
+  90px 1fr;
+
   gap:14px;
+
   border:1px solid #eee;
+
   padding:12px;
+
   border-radius:14px;
+
   background:#fff;
+
 }
+
 
 .produto-card img{
+
   width:90px;
+
   height:120px;
+
   object-fit:cover;
+
   border-radius:10px;
+
   background:#eee;
+
 }
+
 
 .sem-foto{
+
   width:90px;
+
   height:120px;
+
   background:#eee;
+
   border-radius:10px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   color:#999;
+
   font-size:12px;
+
   text-align:center;
+
 }
+
 
 .produto-info h4{
+
   margin-bottom:6px;
+
   font-size:18px;
+
 }
+
 
 .produto-info .preco{
+
   color:var(--rosa);
+
   font-size:18px;
+
   font-weight:900;
+
   margin-bottom:6px;
+
 }
+
 
 .detalhes{
+
   color:#666;
+
   font-size:13px;
+
   line-height:1.6;
+
 }
+
 
 .status-produto{
+
   display:inline-block;
+
   margin-top:7px;
+
   padding:5px 9px;
+
   border-radius:20px;
+
   font-size:12px;
+
   font-weight:800;
+
 }
+
 
 .status-produto.ativo{
+
   background:#e4f8e8;
+
   color:#167329;
+
 }
+
 
 .status-produto.inativo{
+
   background:#f3f3f3;
+
   color:#777;
+
 }
+
 
 .acoes{
+
   display:flex;
+
   gap:8px;
+
   margin-top:12px;
+
   flex-wrap:wrap;
+
 }
+
 
 .acoes button{
+
   border:0;
+
   padding:9px 13px;
+
   border-radius:8px;
+
   font-weight:800;
+
 }
+
 
 .editar{
+
   background:#000;
+
   color:#fff;
+
 }
+
 
 .alternar{
+
   background:#fff1f7;
+
   color:#be1763;
+
 }
+
 
 .excluir{
+
   background:#ffe6e6;
+
   color:#c80000;
+
 }
 
 
-/* OUTRAS ABAS */
+/* =========================================
+   MAIS
+========================================= */
 
 .config-card{
+
   border:1px solid #eee;
+
   border-radius:14px;
+
   padding:14px;
+
   margin-bottom:10px;
+
   background:#fff;
+
 }
+
 
 .config-card strong{
+
   display:block;
+
   margin-bottom:5px;
+
 }
+
 
 .config-card p{
+
   color:#666;
+
   font-size:13px;
+
   line-height:1.5;
+
 }
+
 
 .config-valor{
+
   font-weight:900;
+
   color:var(--rosa);
+
   margin-top:6px;
+
 }
+
 
 .botao-loja{
+
   display:block;
+
   width:100%;
+
   text-align:center;
+
   border:0;
+
   background:#000;
+
   color:#fff;
+
   padding:15px;
+
   border-radius:12px;
+
   font-weight:900;
+
 }
 
 
-/* RESPONSIVO */
+/* =========================================
+   LAYOUT E APARÊNCIA
+========================================= */
 
-@media(min-width:820px){
+.layout-card{
+
+  border:1px solid #eee;
+
+  border-radius:16px;
+
+  background:#fff;
+
+  padding:15px;
+
+  margin-bottom:14px;
+
+}
+
+
+.layout-card h4{
+
+  font-size:17px;
+
+  margin-bottom:5px;
+
+}
+
+
+.layout-card p{
+
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.5;
+
+  margin-bottom:15px;
+
+}
+
+
+.layout-toggle{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  padding:14px 0;
+
+  border-bottom:
+  1px solid #eee;
+
+}
+
+
+.layout-toggle:last-child{
+
+  border-bottom:0;
+
+}
+
+
+.layout-toggle-texto strong{
+
+  display:block;
+
+  font-size:14px;
+
+  margin-bottom:3px;
+
+}
+
+
+.layout-toggle-texto small{
+
+  color:#777;
+
+  line-height:1.4;
+
+}
+
+
+.switch{
+
+  position:relative;
+
+  display:inline-block;
+
+  width:52px;
+
+  min-width:52px;
+
+  height:30px;
+
+}
+
+
+.switch input{
+
+  opacity:0;
+
+  width:0;
+
+  height:0;
+
+}
+
+
+.slider{
+
+  position:absolute;
+
+  cursor:pointer;
+
+  inset:0;
+
+  background:#ccc;
+
+  transition:.2s;
+
+  border-radius:30px;
+
+}
+
+
+.slider:before{
+
+  position:absolute;
+
+  content:"";
+
+  height:24px;
+
+  width:24px;
+
+  left:3px;
+
+  bottom:3px;
+
+  background:#fff;
+
+  transition:.2s;
+
+  border-radius:50%;
+
+  box-shadow:
+  0 2px 5px
+  rgba(0,0,0,.2);
+
+}
+
+
+.switch input:checked + .slider{
+
+  background:var(--rosa);
+
+}
+
+
+.switch input:checked + .slider:before{
+
+  transform:
+  translateX(22px);
+
+}
+
+
+.grade-cores{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:10px;
+
+}
+
+
+.cor-config{
+
+  border:
+  1px solid #ddd;
+
+  border-radius:12px;
+
+  padding:10px;
+
+  background:#fafafa;
+
+}
+
+
+.cor-config label{
+
+  display:block;
+
+  font-size:11px;
+
+  color:#666;
+
+  font-weight:800;
+
+  margin-bottom:7px;
+
+}
+
+
+.cor-config input[type="color"]{
+
+  width:100%;
+
+  height:45px;
+
+  border:0;
+
+  padding:0;
+
+  background:transparent;
+
+}
+
+
+.preview-banner{
+
+  width:100%;
+
+  min-height:130px;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #f0a5c3,
+    #4a3943
+  );
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  color:#fff;
+
+  font-weight:900;
+
+  text-align:center;
+
+  margin-top:10px;
+
+  position:relative;
+
+}
+
+
+.preview-banner img{
+
+  width:100%;
+
+  height:190px;
+
+  object-fit:cover;
+
+  display:block;
+
+}
+
+
+.preview-banner-vazio{
+
+  padding:30px 15px;
+
+}
+
+
+#layoutBannerArquivo{
+
+  display:none;
+
+}
+
+
+.botao-banner{
+
+  display:block;
+
+  width:100%;
+
+  border:
+  1px dashed var(--rosa);
+
+  background:var(--rosa-claro);
+
+  color:var(--rosa-escuro);
+
+  text-align:center;
+
+  padding:13px;
+
+  border-radius:11px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+}
+
+
+.remover-banner{
+
+  width:100%;
+
+  margin-top:8px;
+
+  border:0;
+
+  background:#ffe7e7;
+
+  color:#b00000;
+
+  padding:11px;
+
+  border-radius:10px;
+
+  font-weight:900;
+
+}
+
+
+.salvar-layout{
+
+  width:100%;
+
+  border:0;
+
+  background:#000;
+
+  color:#fff;
+
+  padding:16px;
+
+  border-radius:12px;
+
+  font-weight:900;
+
+  font-size:15px;
+
+  margin-top:8px;
+
+}
+
+
+.salvar-layout:disabled{
+
+  opacity:.55;
+
+}
+
+
+.status-layout{
+
+  text-align:center;
+
+  min-height:20px;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  margin-top:10px;
+
+}
+
+
+.status-layout.sucesso{
+
+  color:#1c7433;
+
+}
+
+
+.status-layout.erro{
+
+  color:#b00000;
+
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media(
+  min-width:820px
+){
 
   body{
+
     padding-bottom:0;
+
   }
+
 
   .nav-admin{
+
     top:70px;
+
     bottom:auto;
+
     left:20px;
+
     right:auto;
+
     width:190px;
+
     display:flex;
+
     flex-direction:column;
+
     border:0;
+
     border-radius:16px;
+
     padding:8px;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
+
+    box-shadow:
+    0 3px 15px
+    rgba(0,0,0,.08);
+
   }
+
 
   .nav-item{
+
     flex-direction:row;
+
     justify-content:flex-start;
+
     gap:10px;
+
     padding:11px;
+
     font-size:13px;
+
   }
+
 
   .nav-item .icone{
+
     font-size:19px;
+
   }
+
 
   .conteudo{
+
     padding-left:225px;
+
   }
+
 
   .dashboard-grade{
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
   }
 
+
   .atalhos{
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
   }
 
 }
 
-@media(max-width:650px){
+
+@media(
+  max-width:650px
+){
 
   .duplo,
   .opcao-grid{
+
     grid-template-columns:1fr;
+
   }
+
 
   .tamanho-linha{
-    grid-template-columns:1fr 95px;
+
+    grid-template-columns:
+    1fr 95px;
+
   }
+
 
   .cabecalho-lista{
+
     flex-direction:column;
+
     align-items:stretch;
+
   }
 
+
   .buscar{
+
     max-width:none;
+
+  }
+
+
+  .grade-cores{
+
+    grid-template-columns:1fr;
+
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================================
+     LOGIN
+========================================= -->
 
 <section
   class="login-tela"
@@ -1282,6 +2752,7 @@ a{
       ENTRAR NO PAINEL
     </button>
 
+
     <div
       class="erro-login"
       id="erroLogin"
@@ -1291,6 +2762,10 @@ a{
 
 </section>
 
+
+<!-- =========================================
+     PAINEL
+========================================= -->
 
 <section
   class="painel"
@@ -1307,6 +2782,7 @@ a{
       <div class="marca-icone">
         S
       </div>
+
 
       <div>
 
@@ -1335,6 +2811,10 @@ a{
 </header>
 
 
+<!-- =========================================
+     MENU
+========================================= -->
+
 <nav class="nav-admin">
 
   <button
@@ -1342,8 +2822,15 @@ a{
     data-pagina="inicio"
     onclick="abrirPagina('inicio',this)"
   >
-    <span class="icone">🏠</span>
-    <span>Início</span>
+
+    <span class="icone">
+      🏠
+    </span>
+
+    <span>
+      Início
+    </span>
+
   </button>
 
 
@@ -1352,8 +2839,15 @@ a{
     data-pagina="pedidos"
     onclick="abrirPagina('pedidos',this)"
   >
-    <span class="icone">🧾</span>
-    <span>Pedidos</span>
+
+    <span class="icone">
+      🧾
+    </span>
+
+    <span>
+      Pedidos
+    </span>
+
   </button>
 
 
@@ -1362,8 +2856,15 @@ a{
     data-pagina="produtos"
     onclick="abrirPagina('produtos',this)"
   >
-    <span class="icone">👗</span>
-    <span>Produtos</span>
+
+    <span class="icone">
+      👗
+    </span>
+
+    <span>
+      Produtos
+    </span>
+
   </button>
 
 
@@ -1372,8 +2873,15 @@ a{
     data-pagina="cancelamentos"
     onclick="abrirPagina('cancelamentos',this)"
   >
-    <span class="icone">❌</span>
-    <span>Cancelados</span>
+
+    <span class="icone">
+      ❌
+    </span>
+
+    <span>
+      Cancelados
+    </span>
+
   </button>
 
 
@@ -1382,8 +2890,15 @@ a{
     data-pagina="mais"
     onclick="abrirPagina('mais',this)"
   >
-    <span class="icone">☰</span>
-    <span>Mais</span>
+
+    <span class="icone">
+      ☰
+    </span>
+
+    <span>
+      Mais
+    </span>
+
   </button>
 
 </nav>
@@ -1392,7 +2907,9 @@ a{
 <main class="conteudo">
 
 
-<!-- INÍCIO -->
+<!-- =========================================
+     INÍCIO
+========================================= -->
 
 <section
   class="pagina ativa"
@@ -1496,14 +3013,20 @@ a{
       ⚡ Atalhos
     </h3>
 
+
     <div class="atalhos">
 
       <button
         class="atalho"
         onclick="abrirPagina('pedidos')"
       >
-        <span>🧾</span>
+
+        <span>
+          🧾
+        </span>
+
         Ver pedidos
+
       </button>
 
 
@@ -1511,8 +3034,13 @@ a{
         class="atalho"
         onclick="abrirPagina('produtos')"
       >
-        <span>➕</span>
+
+        <span>
+          ➕
+        </span>
+
         Cadastrar produto
+
       </button>
 
 
@@ -1520,8 +3048,13 @@ a{
         class="atalho"
         onclick="abrirPagina('cancelamentos')"
       >
-        <span>❌</span>
+
+        <span>
+          ❌
+        </span>
+
         Cancelamentos
+
       </button>
 
 
@@ -1529,8 +3062,13 @@ a{
         class="atalho"
         onclick="abrirLojaVisitante()"
       >
-        <span>🌐</span>
+
+        <span>
+          🌐
+        </span>
+
         Ver minha loja
+
       </button>
 
     </div>
@@ -1549,7 +3087,9 @@ a{
   </div>
 
 </section>
-<!-- PEDIDOS -->
+<!-- =========================================
+     PEDIDOS
+========================================= -->
 
 <section
   class="pagina"
@@ -1581,12 +3121,14 @@ a{
       Todos
     </button>
 
+
     <button
       class="filtro-pedido"
       onclick="filtrarPedidosStatus('Novo',this)"
     >
       Novos
     </button>
+
 
     <button
       class="filtro-pedido"
@@ -1595,6 +3137,7 @@ a{
       Confirmados
     </button>
 
+
     <button
       class="filtro-pedido"
       onclick="filtrarPedidosStatus('Em separação',this)"
@@ -1602,12 +3145,14 @@ a{
       Em separação
     </button>
 
+
     <button
       class="filtro-pedido"
       onclick="filtrarPedidosStatus('Saiu para entrega',this)"
     >
       Em entrega
     </button>
+
 
     <button
       class="filtro-pedido"
@@ -1652,7 +3197,9 @@ a{
 </section>
 
 
-<!-- PRODUTOS -->
+<!-- =========================================
+     PRODUTOS
+========================================= -->
 
 <section
   class="pagina"
@@ -1677,6 +3224,7 @@ a{
     <h3 id="tituloFormulario">
       ➕ Cadastrar produto
     </h3>
+
 
     <input
       type="hidden"
@@ -1923,6 +3471,7 @@ a{
         📦 Produtos cadastrados
       </h3>
 
+
       <input
         class="buscar"
         id="busca"
@@ -1950,7 +3499,9 @@ a{
 </section>
 
 
-<!-- CANCELAMENTOS -->
+<!-- =========================================
+     CANCELAMENTOS
+========================================= -->
 
 <section
   class="pagina"
@@ -1988,7 +3539,9 @@ a{
 </section>
 
 
-<!-- MAIS -->
+<!-- =========================================
+     MAIS
+========================================= -->
 
 <section
   class="pagina"
@@ -2002,11 +3555,375 @@ a{
     </h2>
 
     <p>
-      Outras áreas de gestão da SALI STORE.
+      Configurações e ferramentas da SALI STORE.
     </p>
 
   </div>
 
+
+  <!-- LAYOUT E APARÊNCIA -->
+
+  <div class="bloco">
+
+    <h3>
+      🎨 Layout e aparência
+    </h3>
+
+
+    <div class="alerta-box rosa">
+      As alterações feitas aqui ficarão salvas no Supabase e serão usadas para personalizar a loja.
+    </div>
+
+
+    <div class="layout-card">
+
+      <h4>
+        🏪 Identidade da loja
+      </h4>
+
+      <p>
+        Edite o nome e o texto que aparecem no cabeçalho da loja.
+      </p>
+
+
+      <div class="campo">
+
+        <label>
+          Nome da loja
+        </label>
+
+        <input
+          type="text"
+          id="layoutNomeLoja"
+          placeholder="SALI STORE"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Subtítulo
+        </label>
+
+        <input
+          type="text"
+          id="layoutSubtituloLoja"
+          placeholder="Moda feminina • Manacapuru"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Instagram
+        </label>
+
+        <input
+          type="text"
+          id="layoutInstagram"
+          placeholder="@salimanacapuru"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="layout-card">
+
+      <h4>
+        📢 Barra superior
+      </h4>
+
+      <p>
+        Texto exibido na faixa preta no topo da loja.
+      </p>
+
+
+      <div class="campo">
+
+        <label>
+          Texto da barra
+        </label>
+
+        <textarea
+          id="layoutTextoTopo"
+          placeholder="NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS"
+        ></textarea>
+
+      </div>
+
+
+      <div class="layout-toggle">
+
+        <div class="layout-toggle-texto">
+
+          <strong>
+            Mostrar barra superior
+          </strong>
+
+          <small>
+            Desative para esconder a faixa preta.
+          </small>
+
+        </div>
+
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="layoutMostrarBarraTopo"
+            checked
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <div class="layout-card">
+
+      <h4>
+        ✨ Banner principal
+      </h4>
+
+      <p>
+        Personalize a chamada principal da página inicial.
+      </p>
+
+
+      <div class="campo">
+
+        <label>
+          Título principal
+        </label>
+
+        <input
+          type="text"
+          id="layoutHeroTitulo"
+          placeholder="Seu look começa aqui."
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Texto abaixo do título
+        </label>
+
+        <textarea
+          id="layoutHeroSubtitulo"
+          placeholder="Novidades, tendências e peças selecionadas para você."
+        ></textarea>
+
+      </div>
+
+
+      <label
+        class="botao-banner"
+        for="layoutBannerArquivo"
+      >
+        🖼️ ESCOLHER IMAGEM DO BANNER
+      </label>
+
+
+      <input
+        type="file"
+        id="layoutBannerArquivo"
+        accept="image/*"
+        onchange="selecionarBannerLayout()"
+      >
+
+
+      <div
+        class="preview-banner"
+        id="layoutPreviewBanner"
+      >
+
+        <div class="preview-banner-vazio">
+          Nenhuma imagem personalizada
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="remover-banner"
+        id="botaoRemoverBanner"
+        onclick="removerBannerLayout()"
+        style="display:none"
+      >
+        🗑️ REMOVER BANNER
+      </button>
+
+    </div>
+
+
+    <div class="layout-card">
+
+      <h4>
+        🎨 Cores da loja
+      </h4>
+
+      <p>
+        Escolha as cores principais da identidade visual.
+      </p>
+
+
+      <div class="grade-cores">
+
+        <div class="cor-config">
+
+          <label>
+            Cor principal
+          </label>
+
+          <input
+            type="color"
+            id="layoutCorPrincipal"
+            value="#d92f82"
+          >
+
+        </div>
+
+
+        <div class="cor-config">
+
+          <label>
+            Cor secundária
+          </label>
+
+          <input
+            type="color"
+            id="layoutCorSecundaria"
+            value="#111111"
+          >
+
+        </div>
+
+
+        <div class="cor-config">
+
+          <label>
+            Cor de fundo
+          </label>
+
+          <input
+            type="color"
+            id="layoutCorFundo"
+            value="#ffffff"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="layout-card">
+
+      <h4>
+        👁️ Seções da página inicial
+      </h4>
+
+      <p>
+        Escolha o que deve aparecer para as clientes.
+      </p>
+
+
+      <div class="layout-toggle">
+
+        <div class="layout-toggle-texto">
+
+          <strong>
+            Benefícios
+          </strong>
+
+          <small>
+            Mostra os diferenciais e informações da loja.
+          </small>
+
+        </div>
+
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="layoutMostrarBeneficios"
+            checked
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+
+      <div class="layout-toggle">
+
+        <div class="layout-toggle-texto">
+
+          <strong>
+            Categorias
+          </strong>
+
+          <small>
+            Mostra os cards de categorias da página inicial.
+          </small>
+
+        </div>
+
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="layoutMostrarCategorias"
+            checked
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="salvar-layout"
+      id="botaoSalvarLayout"
+      onclick="salvarConfiguracoesLoja()"
+    >
+      💾 SALVAR LAYOUT E APARÊNCIA
+    </button>
+
+
+    <div
+      class="status-layout"
+      id="statusLayout"
+    ></div>
+
+  </div>
+
+
+  <!-- ENTREGA -->
 
   <div class="bloco">
 
@@ -2101,11 +4018,13 @@ a{
 
 
     <div class="alerta-box amarelo">
-      Nesta versão as taxas são exibidas no painel. Depois podemos criar uma tabela de configurações para alterar esses valores sem mexer no código.
+      No próximo passo também poderemos transformar estas taxas em configurações editáveis.
     </div>
 
   </div>
 
+
+  <!-- PAGAMENTOS -->
 
   <div class="bloco">
 
@@ -2113,52 +4032,35 @@ a{
       💳 Pagamentos
     </h3>
 
+
     <div class="config-card">
 
       <strong>
-        Forma registrada nos pedidos
+        Formas de pagamento
       </strong>
 
       <p>
-        O painel lê a coluna <b>forma_pagamento</b> da tabela Pedidos.
+        O painel registra a forma de pagamento escolhida em cada pedido.
       </p>
 
     </div>
 
 
     <div class="alerta-box rosa">
-      Quando o pagamento online for integrado, esta aba poderá mostrar pagos, pendentes, recusados e estornados.
+      Depois poderemos adicionar configurações de Pix, cartão e pagamento no ato da entrega diretamente pelo painel.
     </div>
 
   </div>
 
 
-  <div class="bloco">
-
-    <h3>
-      🎨 Aparência da loja
-    </h3>
-
-    <div class="config-card">
-
-      <strong>
-        Próxima etapa
-      </strong>
-
-      <p>
-        Banner, textos da página inicial, promoções, categorias em destaque e outras configurações visuais poderão ser editadas por aqui.
-      </p>
-
-    </div>
-
-  </div>
-
+  <!-- LOJA -->
 
   <div class="bloco">
 
     <h3>
       🌐 Loja como visitante
     </h3>
+
 
     <button
       class="botao-loja"
@@ -2173,10 +4075,13 @@ a{
 
 
 </main>
+
 </section>
 
 
-<!-- MODAL DO PEDIDO -->
+<!-- =========================================
+     MODAL DO PEDIDO
+========================================= -->
 
 <div
   class="modal-pedido-overlay"
@@ -2192,6 +4097,7 @@ a{
       ×
     </button>
 
+
     <div id="conteudoModalPedido"></div>
 
   </div>
@@ -2199,7 +4105,13 @@ a{
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- =========================================
+     SUPABASE
+========================================= -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
 
 <script>
@@ -2253,54 +4165,97 @@ let fotosFormulario = [];
 let opcoesFormulario = [];
 
 
+/* NOVO - LAYOUT */
+
+let configuracoesLoja =
+null;
+
+
+let bannerLayoutArquivo =
+null;
+
+
+let bannerLayoutPreview =
+null;
+
+
+let removerBannerAtual =
+false;
+
+
 const STATUS_PEDIDOS = [
+
   "Novo",
+
   "Confirmado",
+
   "Em separação",
+
   "Saiu para entrega",
+
   "Entregue",
+
   "Cancelado"
+
 ];
 
 
 const CORES_SALI = [
+
   "Preto",
+
   "Branco",
+
   "Off White",
+
   "Bege",
+
   "Nude",
+
   "Marrom",
+
   "Caramelo",
+
   "Rosa",
+
   "Pink",
+
   "Rosa bebê",
+
   "Vermelho",
+
   "Vinho",
+
   "Azul",
+
   "Azul bebê",
+
   "Azul marinho",
+
   "Verde",
+
   "Verde militar",
+
   "Verde bandeira",
+
   "Amarelo",
+
   "Laranja",
+
   "Roxo",
+
   "Lilás",
+
   "Cinza",
+
   "Prata",
+
   "Dourado"
+
 ];
 
 
 const TAMANHOS = [
-
-  {
-    valor:
-    "Tamanho Único (veste 36 ao 42)",
-
-    nome:
-    "Tamanho único (veste 36 ao 42 ✅)"
-  },
 
   {
     valor:"P",
@@ -2320,12 +4275,50 @@ const TAMANHOS = [
   {
     valor:"GG",
     nome:"GG"
+  },
+
+  {
+    valor:"36",
+    nome:"36"
+  },
+
+  {
+    valor:"38",
+    nome:"38"
+  },
+
+  {
+    valor:"40",
+    nome:"40"
+  },
+
+  {
+    valor:"42",
+    nome:"42"
+  },
+
+  {
+    valor:"44",
+    nome:"44"
+  },
+
+  {
+    valor:"46",
+    nome:"46"
+  },
+
+  {
+    valor:"48",
+    nome:"48"
+  },
+
+  {
+    valor:"Tamanho único",
+    nome:"Tamanho único • veste 36 ao 42"
   }
 
 ];
-
-
-/* =========================================
+  /* =========================================
    LOGIN
 ========================================= */
 
@@ -2379,12 +4372,12 @@ async function entrar(){
 
   if(error){
 
+    erro.textContent =
+    "Não foi possível entrar. Verifique o e-mail e a senha.";
+
     console.error(
       error
     );
-
-    erro.textContent =
-    "E-mail ou senha incorretos.";
 
     return;
 
@@ -2442,11 +4435,9 @@ async function mostrarPainel(){
 
   await Promise.all([
     carregarProdutos(),
-    carregarPedidos()
+    carregarPedidos(),
+    carregarConfiguracoesLoja()
   ]);
-
-
-  atualizarDashboard();
 
 }
 
@@ -2483,7 +4474,7 @@ async function sair(){
 ========================================= */
 
 function abrirPagina(
-  nome,
+  pagina,
   botao = null
 ){
 
@@ -2492,9 +4483,9 @@ function abrirPagina(
     ".pagina"
   )
   .forEach(
-    pagina => {
+    item => {
 
-      pagina.classList.remove(
+      item.classList.remove(
         "ativa"
       );
 
@@ -2502,16 +4493,16 @@ function abrirPagina(
   );
 
 
-  const alvo =
+  const destino =
   document.getElementById(
     "pagina-" +
-    nome
+    pagina
   );
 
 
-  if(alvo){
+  if(destino){
 
-    alvo.classList.add(
+    destino.classList.add(
       "ativa"
     );
 
@@ -2533,41 +4524,27 @@ function abrirPagina(
   );
 
 
-  const nav =
-  botao
-  ||
-  document.querySelector(
-    '.nav-item[data-pagina="' +
-    nome +
-    '"]'
-  );
+  if(botao){
 
-
-  if(nav){
-
-    nav.classList.add(
+    botao.classList.add(
       "ativo"
     );
 
-  }
+  }else{
+
+    const itemMenu =
+    document.querySelector(
+      `.nav-item[data-pagina="${pagina}"]`
+    );
 
 
-  if(
-    nome ===
-    "pedidos"
-  ){
+    if(itemMenu){
 
-    renderizarPedidos();
+      itemMenu.classList.add(
+        "ativo"
+      );
 
-  }
-
-
-  if(
-    nome ===
-    "cancelamentos"
-  ){
-
-    renderizarCancelamentos();
+    }
 
   }
 
@@ -2583,7 +4560,7 @@ function abrirPagina(
 function abrirLojaVisitante(){
 
   window.open(
-    "index.html",
+    "https://salistoreoficial-svg.github.io/Sali-Store/",
     "_blank"
   );
 
@@ -2600,7 +4577,8 @@ function moeda(
 
   return Number(
     valor || 0
-  ).toLocaleString(
+  )
+  .toLocaleString(
     "pt-BR",
     {
       style:"currency",
@@ -2618,24 +4596,24 @@ function escaparHtml(
   return String(
     valor ?? ""
   )
-  .replaceAll(
-    "&",
+  .replace(
+    /&/g,
     "&amp;"
   )
-  .replaceAll(
-    "<",
+  .replace(
+    /</g,
     "&lt;"
   )
-  .replaceAll(
-    ">",
+  .replace(
+    />/g,
     "&gt;"
   )
-  .replaceAll(
-    '"',
+  .replace(
+    /"/g,
     "&quot;"
   )
-  .replaceAll(
-    "'",
+  .replace(
+    /'/g,
     "&#039;"
   );
 
@@ -2644,22 +4622,13 @@ function escaparHtml(
 
 function gerarIdentificador(){
 
-  if(
-    typeof crypto.randomUUID ===
-    "function"
-  ){
-
-    return crypto.randomUUID();
-
-  }
-
-
   return (
-    Date.now() +
-    "-" +
     Math.random()
     .toString(36)
-    .substring(2)
+    .slice(2)
+    +
+    Date.now()
+    .toString(36)
   );
 
 }
@@ -2669,20 +4638,24 @@ function validarArquivoImagem(
   arquivo
 ){
 
-  if(!arquivo){
+  if(
+    !arquivo
+  ){
     return false;
   }
 
 
   if(
-    !arquivo.type
+    !String(
+      arquivo.type || ""
+    )
     .startsWith(
       "image/"
     )
   ){
 
     alert(
-      "Escolha somente arquivos de imagem."
+      "Selecione um arquivo de imagem."
     );
 
     return false;
@@ -2692,13 +4665,11 @@ function validarArquivoImagem(
 
   if(
     arquivo.size >
-    10 *
-    1024 *
-    1024
+    10 * 1024 * 1024
   ){
 
     alert(
-      "Cada imagem deve ter no máximo 10 MB."
+      "A imagem deve ter no máximo 10 MB."
     );
 
     return false;
@@ -2716,40 +4687,30 @@ function dataHoraBR(
 ){
 
   if(!valor){
-
-    return (
-      "Data não informada"
-    );
-
+    return "";
   }
 
 
-  const data =
-  new Date(
-    valor
-  );
+  try{
 
-
-  if(
-    Number.isNaN(
-      data.getTime()
+    return new Date(
+      valor
     )
-  ){
+    .toLocaleString(
+      "pt-BR",
+      {
+        dateStyle:"short",
+        timeStyle:"short"
+      }
+    );
+
+  }catch(e){
 
     return String(
       valor
     );
 
   }
-
-
-  return data.toLocaleString(
-    "pt-BR",
-    {
-      dateStyle:"short",
-      timeStyle:"short"
-    }
-  );
 
 }
 
@@ -2764,6 +4725,10 @@ function somenteDataLocal(
 
 
   const data =
+  valor instanceof Date
+  ?
+  valor
+  :
   new Date(
     valor
   );
@@ -2774,9 +4739,7 @@ function somenteDataLocal(
       data.getTime()
     )
   ){
-
     return "";
-
   }
 
 
@@ -2809,9 +4772,7 @@ function somenteDataLocal(
   );
 
 }
-  /* =========================================
-   PEDIDOS
-========================================= */
+
 
 function telefoneFormatado(
   valor
@@ -2828,8 +4789,7 @@ function telefoneFormatado(
 
 
   if(
-    digitos.length ===
-    11
+    digitos.length === 11
   ){
 
     return (
@@ -2860,8 +4820,7 @@ function normalizarStatus(
   String(
     status ||
     "Novo"
-  )
-  .trim();
+  ).trim();
 
 
   return (
@@ -2884,16 +4843,14 @@ function classeStatusPedido(
 
 
   if(
-    s ===
-    "novo"
+    s === "novo"
   ){
     return "novo";
   }
 
 
   if(
-    s ===
-    "confirmado"
+    s === "confirmado"
   ){
     return "confirmado";
   }
@@ -2922,16 +4879,14 @@ function classeStatusPedido(
 
 
   if(
-    s ===
-    "entregue"
+    s === "entregue"
   ){
     return "entregue";
   }
 
 
   if(
-    s ===
-    "cancelado"
+    s === "cancelado"
   ){
     return "cancelado";
   }
@@ -2979,11 +4934,9 @@ function proximoStatus(
   }
 
 
-  return (
-    fluxo[
-      indice + 1
-    ]
-  );
+  return fluxo[
+    indice + 1
+  ];
 
 }
 
@@ -3023,16 +4976,11 @@ function lerProdutosPedido(
   const texto =
   String(
     valor || ""
-  )
-  .trim();
+  ).trim();
 
 
-  if(
-    !texto
-  ){
-
+  if(!texto){
     return [];
-
   }
 
 
@@ -3054,13 +5002,11 @@ function lerProdutosPedido(
 
   }catch(e){
 
-    return [
-      {
-        nome:texto,
-        quantidade:1,
-        preco:0
-      }
-    ];
+    return [{
+      nome:texto,
+      quantidade:1,
+      preco:0
+    }];
 
   }
 
@@ -3132,6 +5078,678 @@ function fotoItemPedido(
 
 }
 
+
+/* =========================================
+   CONFIGURAÇÕES DA LOJA
+========================================= */
+
+async function carregarConfiguracoesLoja(){
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+  .from(
+    "Configuracoes_Loja"
+  )
+  .select("*")
+  .eq(
+    "id",
+    1
+  )
+  .maybeSingle();
+
+
+  if(error){
+
+    console.error(
+      "Erro ao carregar configurações:",
+      error
+    );
+
+    mostrarStatusLayout(
+      "Não foi possível carregar as configurações.",
+      "erro"
+    );
+
+    return;
+
+  }
+
+
+  configuracoesLoja =
+  data || {
+    id:1,
+    nome_loja:"SALI STORE",
+    subtitulo_loja:"Moda feminina • Manacapuru",
+    texto_topo:"NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS",
+    hero_titulo:"Seu look começa aqui.",
+    hero_subtitulo:"Novidades, tendências e peças selecionadas para você.",
+    cor_principal:"#d92f82",
+    cor_secundaria:"#111111",
+    cor_fundo:"#ffffff",
+    banner_url:null,
+    mostrar_barra_topo:true,
+    mostrar_beneficios:true,
+    mostrar_categorias:true,
+    instagram:"@salimanacapuru"
+  };
+
+
+  preencherFormularioLayout();
+
+}
+
+
+function preencherFormularioLayout(){
+
+  if(
+    !configuracoesLoja
+  ){
+    return;
+  }
+
+
+  document.getElementById(
+    "layoutNomeLoja"
+  ).value =
+  configuracoesLoja.nome_loja ||
+  "SALI STORE";
+
+
+  document.getElementById(
+    "layoutSubtituloLoja"
+  ).value =
+  configuracoesLoja.subtitulo_loja ||
+  "";
+
+
+  document.getElementById(
+    "layoutInstagram"
+  ).value =
+  configuracoesLoja.instagram ||
+  "";
+
+
+  document.getElementById(
+    "layoutTextoTopo"
+  ).value =
+  configuracoesLoja.texto_topo ||
+  "";
+
+
+  document.getElementById(
+    "layoutHeroTitulo"
+  ).value =
+  configuracoesLoja.hero_titulo ||
+  "";
+
+
+  document.getElementById(
+    "layoutHeroSubtitulo"
+  ).value =
+  configuracoesLoja.hero_subtitulo ||
+  "";
+
+
+  document.getElementById(
+    "layoutCorPrincipal"
+  ).value =
+  configuracoesLoja.cor_principal ||
+  "#d92f82";
+
+
+  document.getElementById(
+    "layoutCorSecundaria"
+  ).value =
+  configuracoesLoja.cor_secundaria ||
+  "#111111";
+
+
+  document.getElementById(
+    "layoutCorFundo"
+  ).value =
+  configuracoesLoja.cor_fundo ||
+  "#ffffff";
+
+
+  document.getElementById(
+    "layoutMostrarBarraTopo"
+  ).checked =
+  configuracoesLoja.mostrar_barra_topo !==
+  false;
+
+
+  document.getElementById(
+    "layoutMostrarBeneficios"
+  ).checked =
+  configuracoesLoja.mostrar_beneficios !==
+  false;
+
+
+  document.getElementById(
+    "layoutMostrarCategorias"
+  ).checked =
+  configuracoesLoja.mostrar_categorias !==
+  false;
+
+
+  bannerLayoutArquivo =
+  null;
+
+
+  bannerLayoutPreview =
+  configuracoesLoja.banner_url ||
+  null;
+
+
+  removerBannerAtual =
+  false;
+
+
+  renderizarPreviewBanner();
+
+}
+
+
+function mostrarStatusLayout(
+  mensagem,
+  tipo = ""
+){
+
+  const area =
+  document.getElementById(
+    "statusLayout"
+  );
+
+
+  if(!area){
+    return;
+  }
+
+
+  area.textContent =
+  mensagem;
+
+
+  area.className =
+  "status-layout" +
+  (
+    tipo
+    ?
+    " " + tipo
+    :
+    ""
+  );
+
+}
+
+
+function selecionarBannerLayout(){
+
+  const input =
+  document.getElementById(
+    "layoutBannerArquivo"
+  );
+
+
+  const arquivo =
+  input.files?.[0];
+
+
+  if(!arquivo){
+    return;
+  }
+
+
+  if(
+    !validarArquivoImagem(
+      arquivo
+    )
+  ){
+
+    input.value =
+    "";
+
+    return;
+
+  }
+
+
+  bannerLayoutArquivo =
+  arquivo;
+
+
+  bannerLayoutPreview =
+  URL.createObjectURL(
+    arquivo
+  );
+
+
+  removerBannerAtual =
+  false;
+
+
+  renderizarPreviewBanner();
+
+}
+
+
+function removerBannerLayout(){
+
+  bannerLayoutArquivo =
+  null;
+
+
+  bannerLayoutPreview =
+  null;
+
+
+  removerBannerAtual =
+  true;
+
+
+  const input =
+  document.getElementById(
+    "layoutBannerArquivo"
+  );
+
+
+  if(input){
+
+    input.value =
+    "";
+
+  }
+
+
+  renderizarPreviewBanner();
+
+}
+
+
+function renderizarPreviewBanner(){
+
+  const area =
+  document.getElementById(
+    "layoutPreviewBanner"
+  );
+
+
+  const botaoRemover =
+  document.getElementById(
+    "botaoRemoverBanner"
+  );
+
+
+  if(
+    !area ||
+    !botaoRemover
+  ){
+    return;
+  }
+
+
+  if(
+    bannerLayoutPreview
+  ){
+
+    area.innerHTML = `
+
+      <img
+        src="${escaparHtml(bannerLayoutPreview)}"
+        alt="Banner da loja"
+      >
+
+    `;
+
+
+    botaoRemover.style.display =
+    "block";
+
+  }else{
+
+    area.innerHTML = `
+
+      <div class="preview-banner-vazio">
+        Nenhuma imagem personalizada
+      </div>
+
+    `;
+
+
+    botaoRemover.style.display =
+    "none";
+
+  }
+
+}
+
+
+async function enviarBannerLayout(){
+
+  if(
+    !bannerLayoutArquivo
+  ){
+
+    if(
+      removerBannerAtual
+    ){
+      return null;
+    }
+
+
+    return (
+      configuracoesLoja?.banner_url ||
+      null
+    );
+
+  }
+
+
+  const extensaoOriginal =
+  String(
+    bannerLayoutArquivo.name ||
+    ""
+  )
+  .split(".")
+  .pop()
+  .toLowerCase();
+
+
+  const extensao =
+  extensaoOriginal &&
+  extensaoOriginal.length <= 6
+  ?
+  extensaoOriginal
+  :
+  "jpg";
+
+
+  const caminho =
+  "layout/banner-" +
+  Date.now() +
+  "-" +
+  gerarIdentificador() +
+  "." +
+  extensao;
+
+
+  const {
+    error
+  } =
+  await supabaseClient
+  .storage
+  .from(
+    BUCKET_FOTOS
+  )
+  .upload(
+    caminho,
+    bannerLayoutArquivo,
+    {
+      cacheControl:"3600",
+      upsert:false,
+      contentType:
+      bannerLayoutArquivo.type ||
+      "image/jpeg"
+    }
+  );
+
+
+  if(error){
+
+    throw new Error(
+      "Erro ao enviar o banner: " +
+      error.message
+    );
+
+  }
+
+
+  const {
+    data
+  } =
+  supabaseClient
+  .storage
+  .from(
+    BUCKET_FOTOS
+  )
+  .getPublicUrl(
+    caminho
+  );
+
+
+  return (
+    data.publicUrl ||
+    null
+  );
+
+}
+
+
+async function salvarConfiguracoesLoja(){
+
+  const botao =
+  document.getElementById(
+    "botaoSalvarLayout"
+  );
+
+
+  mostrarStatusLayout(
+    ""
+  );
+
+
+  botao.disabled =
+  true;
+
+
+  botao.textContent =
+  "SALVANDO...";
+
+
+  try{
+
+    const nomeLoja =
+    document.getElementById(
+      "layoutNomeLoja"
+    ).value.trim();
+
+
+    const subtitulo =
+    document.getElementById(
+      "layoutSubtituloLoja"
+    ).value.trim();
+
+
+    const instagram =
+    document.getElementById(
+      "layoutInstagram"
+    ).value.trim();
+
+
+    const textoTopo =
+    document.getElementById(
+      "layoutTextoTopo"
+    ).value.trim();
+
+
+    const heroTitulo =
+    document.getElementById(
+      "layoutHeroTitulo"
+    ).value.trim();
+
+
+    const heroSubtitulo =
+    document.getElementById(
+      "layoutHeroSubtitulo"
+    ).value.trim();
+
+
+    if(
+      !nomeLoja
+    ){
+
+      throw new Error(
+        "Digite o nome da loja."
+      );
+
+    }
+
+
+    const bannerUrl =
+    await enviarBannerLayout();
+
+
+    const dados = {
+
+      id:1,
+
+      nome_loja:
+      nomeLoja,
+
+      subtitulo_loja:
+      subtitulo,
+
+      texto_topo:
+      textoTopo,
+
+      hero_titulo:
+      heroTitulo,
+
+      hero_subtitulo:
+      heroSubtitulo,
+
+      cor_principal:
+      document.getElementById(
+        "layoutCorPrincipal"
+      ).value,
+
+      cor_secundaria:
+      document.getElementById(
+        "layoutCorSecundaria"
+      ).value,
+
+      cor_fundo:
+      document.getElementById(
+        "layoutCorFundo"
+      ).value,
+
+      banner_url:
+      bannerUrl,
+
+      mostrar_barra_topo:
+      document.getElementById(
+        "layoutMostrarBarraTopo"
+      ).checked,
+
+      mostrar_beneficios:
+      document.getElementById(
+        "layoutMostrarBeneficios"
+      ).checked,
+
+      mostrar_categorias:
+      document.getElementById(
+        "layoutMostrarCategorias"
+      ).checked,
+
+      instagram:
+      instagram,
+
+      updated_at:
+      new Date().toISOString()
+
+    };
+
+
+    const {
+      data,
+      error
+    } =
+    await supabaseClient
+    .from(
+      "Configuracoes_Loja"
+    )
+    .upsert(
+      dados,
+      {
+        onConflict:"id"
+      }
+    )
+    .select("*")
+    .single();
+
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    configuracoesLoja =
+    data;
+
+
+    bannerLayoutArquivo =
+    null;
+
+
+    bannerLayoutPreview =
+    data.banner_url ||
+    null;
+
+
+    removerBannerAtual =
+    false;
+
+
+    document.getElementById(
+      "layoutBannerArquivo"
+    ).value =
+    "";
+
+
+    renderizarPreviewBanner();
+
+
+    mostrarStatusLayout(
+      "Layout salvo com sucesso! ✅",
+      "sucesso"
+    );
+
+  }catch(error){
+
+    console.error(
+      "Erro ao salvar layout:",
+      error
+    );
+
+
+    mostrarStatusLayout(
+      error.message ||
+      "Não foi possível salvar.",
+      "erro"
+    );
+
+  }finally{
+
+    botao.disabled =
+    false;
+
+
+    botao.textContent =
+    "💾 SALVAR LAYOUT E APARÊNCIA";
+
+  }
+
+}
+
+
+/* =========================================
+   PEDIDOS
+========================================= */
 
 async function carregarPedidos(){
 
@@ -3281,7 +5899,7 @@ function renderizarPedidos(){
   .toLowerCase();
 
 
-  let lista =
+  const lista =
   pedidos.filter(
     pedido => {
 
@@ -3488,11 +6106,9 @@ function criarHtmlPedido(
 
 
         ${
-          status !==
-          "Cancelado"
+          status !== "Cancelado"
           &&
-          status !==
-          "Entregue"
+          status !== "Entregue"
           ?
           `
             <button
@@ -3843,7 +6459,6 @@ function abrirPedido(
               )}
             </div>
 
-
             <div class="qtd">
 
               Quantidade:
@@ -3866,12 +6481,10 @@ function abrirPedido(
 
 
           <div class="valor">
-
             ${moeda(
               precoItemPedido(item) *
               qtdItemPedido(item)
             )}
-
           </div>
 
         </div>
@@ -4186,7 +6799,9 @@ async function atualizarStatusPedido(
   })
   .eq(
     "id",
-    Number(id)
+    Number(
+      id
+    )
   );
 
 
@@ -4380,7 +6995,7 @@ function atualizarDashboard(){
 
 
 /* =========================================
-   UPLOAD
+   UPLOAD DE IMAGENS
 ========================================= */
 
 async function enviarArquivoImagem(
@@ -4465,12 +7080,12 @@ async function enviarArquivoImagem(
   );
 
 
-  return data.publicUrl;
+  return (
+    data.publicUrl
+  );
 
 }
-
-
-/* =========================================
+  /* =========================================
    FOTOS DO PRODUTO
 ========================================= */
 
@@ -4484,8 +7099,7 @@ function adicionarNovasFotos(){
 
   const arquivos =
   Array.from(
-    input.files ||
-    []
+    input.files || []
   );
 
 
@@ -4497,21 +7111,25 @@ function adicionarNovasFotos(){
           arquivo
         )
       ){
-
         return;
-
       }
 
 
       fotosFormulario.push({
+
         id:null,
+
         foto_url:null,
+
         arquivo,
+
         preview:
         URL.createObjectURL(
           arquivo
         ),
+
         principal:false
+
       });
 
     }
@@ -4522,8 +7140,7 @@ function adicionarNovasFotos(){
     fotosFormulario.length
     &&
     !fotosFormulario.some(
-      foto =>
-        foto.principal
+      foto => foto.principal
     )
   ){
 
@@ -4653,10 +7270,12 @@ function definirFotoPrincipal(
       foto,
       index
     ) => ({
+
       ...foto,
+
       principal:
-      index ===
-      indice
+      index === indice
+
     })
   );
 
@@ -4715,8 +7334,11 @@ function criarMapaTamanhos(){
       mapa[
         item.valor
       ] = {
+
         ativo:false,
+
         estoque:0
+
       };
 
     }
@@ -4799,9 +7421,7 @@ function removerOpcao(
       "Remover esta opção?"
     )
   ){
-
     return;
-
   }
 
 
@@ -4921,8 +7541,7 @@ function obterNomeCor(
     return String(
       opcao.corPersonalizada ||
       ""
-    )
-    .trim();
+    ).trim();
 
   }
 
@@ -4930,8 +7549,7 @@ function obterNomeCor(
   return String(
     opcao.cor ||
     ""
-  )
-  .trim();
+  ).trim();
 
 }
 
@@ -5001,8 +7619,7 @@ function alterarEstoqueTamanho(
   Math.max(
     0,
     Number(
-      valor ||
-      0
+      valor || 0
     )
   );
 
@@ -5140,7 +7757,9 @@ function atualizarEstoqueVariantes(){
   calcularEstoqueVariantes();
 
 }
-  function renderizarOpcoes(){
+
+
+function renderizarOpcoes(){
 
   const area =
   document.getElementById(
@@ -5328,11 +7947,13 @@ function atualizarEstoqueVariantes(){
                   Cor
                 </label>
 
+
                 <select
                   onchange="atualizarOpcao(${index},'cor',this.value)"
                 >
 
                   ${opcoesCores}
+
 
                   <option
                     value="Outra cor"
@@ -5365,6 +7986,7 @@ function atualizarEstoqueVariantes(){
                       Nome da cor
                     </label>
 
+
                     <input
                       type="text"
                       value="${escaparHtml(opcao.corPersonalizada)}"
@@ -5388,6 +8010,7 @@ function atualizarEstoqueVariantes(){
                 <label>
                   Nome da estampa
                 </label>
+
 
                 <input
                   type="text"
@@ -5482,7 +8105,7 @@ function atualizarEstoqueVariantes(){
 
 
 /* =========================================
-   PRODUTOS - CARREGAR/LISTA
+   PRODUTOS - CARREGAR / LISTA
 ========================================= */
 
 async function carregarProdutos(){
@@ -5547,6 +8170,7 @@ async function carregarProdutos(){
 
 
     produtos = [];
+
 
     atualizarDashboard();
 
@@ -5753,8 +8377,7 @@ function filtrarProdutos(){
   produtos.filter(
     produto =>
       String(
-        produto.nome ||
-        ""
+        produto.nome || ""
       )
       .toLowerCase()
       .includes(
@@ -5762,8 +8385,7 @@ function filtrarProdutos(){
       )
       ||
       String(
-        produto.categoria ||
-        ""
+        produto.categoria || ""
       )
       .toLowerCase()
       .includes(
@@ -5819,12 +8441,8 @@ async function salvarFotosProduto(
     }
 
 
-    if(
-      !url
-    ){
-
+    if(!url){
       continue;
-
     }
 
 
@@ -5867,11 +8485,9 @@ async function salvarFotosProduto(
       foto_url:
       fotoAntiga,
 
-      ordem:
-      0,
+      ordem:0,
 
-      principal:
-      true
+      principal:true
 
     });
 
@@ -5882,8 +8498,7 @@ async function salvarFotosProduto(
     registros.length
     &&
     !registros.some(
-      foto =>
-        foto.principal
+      foto => foto.principal
     )
   ){
 
@@ -5910,9 +8525,7 @@ async function salvarFotosProduto(
         encontrou =
         true;
 
-      }
-
-      else if(
+      }else if(
         foto.principal
       ){
 
@@ -5984,8 +8597,7 @@ async function salvarFotosProduto(
 
   return (
     registros.find(
-      foto =>
-        foto.principal
+      foto => foto.principal
     )?.foto_url
     ||
     registros[0]?.foto_url
@@ -6031,7 +8643,8 @@ async function salvarVariantesProduto(
 
 
     const cor =
-    opcao.tipo === "cor"
+    opcao.tipo ===
+    "cor"
     ?
     obterNomeCor(
       opcao
@@ -6041,13 +8654,13 @@ async function salvarVariantesProduto(
 
 
     const estampa =
-    opcao.tipo === "estampa"
+    opcao.tipo ===
+    "estampa"
     ?
     String(
       opcao.estampa ||
       ""
-    )
-    .trim()
+    ).trim()
     :
     null;
 
@@ -6067,9 +8680,7 @@ async function salvarVariantesProduto(
         !dados ||
         !dados.ativo
       ){
-
         continue;
-
       }
 
 
@@ -6081,12 +8692,10 @@ async function salvarVariantesProduto(
         ),
 
         cor:
-        cor ||
-        null,
+        cor || null,
 
         estampa:
-        estampa ||
-        null,
+        estampa || null,
 
         tamanho:
         tamanho.valor,
@@ -6100,8 +8709,7 @@ async function salvarVariantesProduto(
           )
         ),
 
-        ativo:
-        true,
+        ativo:true,
 
         foto_url:
         fotoUrl
@@ -6307,7 +8915,8 @@ async function salvarProduto(){
 
 
     if(
-      opcao.tipo === "cor"
+      opcao.tipo ===
+      "cor"
       &&
       !obterNomeCor(
         opcao
@@ -6326,7 +8935,8 @@ async function salvarProduto(){
 
 
     if(
-      opcao.tipo === "estampa"
+      opcao.tipo ===
+      "estampa"
       &&
       !String(
         opcao.estampa ||
@@ -6466,9 +9076,7 @@ async function salvarProduto(){
 
 
       if(error){
-
         throw error;
-
       }
 
     }else{
@@ -6494,9 +9102,7 @@ async function salvarProduto(){
 
 
       if(error){
-
         throw error;
-
       }
 
 
@@ -6544,9 +9150,7 @@ async function salvarProduto(){
     if(
       erroFinal
     ){
-
       throw erroFinal;
-
     }
 
 
@@ -6744,11 +9348,9 @@ async function editarProduto(
       foto_url:
       foto.foto_url,
 
-      arquivo:
-      null,
+      arquivo:null,
 
-      preview:
-      null,
+      preview:null,
 
       principal:
       Boolean(
@@ -6787,8 +9389,7 @@ async function editarProduto(
     fotosFormulario.length
     &&
     !fotosFormulario.some(
-      foto =>
-        foto.principal
+      foto => foto.principal
     )
   ){
 
@@ -6888,7 +9489,8 @@ async function editarProduto(
 
 
         if(
-          tipo === "cor"
+          tipo ===
+          "cor"
         ){
 
           if(
@@ -7090,7 +9692,7 @@ function limparFormulario(){
 
 
 /* =========================================
-   ATIVAR / EXCLUIR
+   ATIVAR / DESATIVAR / EXCLUIR
 ========================================= */
 
 async function alternarProduto(
@@ -7162,9 +9764,7 @@ async function excluirProduto(
   if(
     !confirmar
   ){
-
     return;
-
   }
 
 
@@ -7190,9 +9790,7 @@ async function excluirProduto(
     if(
       erroVariantes
     ){
-
       throw erroVariantes;
-
     }
 
 
@@ -7216,9 +9814,7 @@ async function excluirProduto(
     if(
       erroFotos
     ){
-
       throw erroFotos;
-
     }
 
 
@@ -7239,9 +9835,7 @@ async function excluirProduto(
 
 
     if(error){
-
       throw error;
-
     }
 
 
@@ -7307,4 +9901,5 @@ verificarSessao();
 </script>
 
 </body>
+
 </html>
