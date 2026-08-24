@@ -1,179 +1,436 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
 <title>SALI STORE | Moda Feminina</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+:root{
+  --pink:#d92f82;
+  --pink-dark:#a91c5f;
+  --pink-soft:#fff3f8;
+  --black:#111;
+  --text:#1b1b1e;
+  --muted:#727278;
+  --line:#e9e9ec;
+  --bg:#f7f7f8;
+  --white:#fff;
 }
 
 html{
-  scroll-behavior:smooth;
+  scroll-behavior:smooth
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;
   background:#fff;
-  color:#111;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased
 }
 
 button,
 input,
 select,
 textarea{
-  font:inherit;
+  font:inherit
 }
 
-/* TOPO */
+button{
+  cursor:pointer
+}
+
+a{
+  text-decoration:none;
+  color:inherit
+}
+
+
+/* FAIXA SUPERIOR */
 
 .topo{
-  background:#000;
+  background:#111;
   color:#fff;
   text-align:center;
-  padding:10px;
-  font-size:14px;
+  padding:9px 15px;
+  font-size:11px;
+  font-weight:650;
+  letter-spacing:.02em
 }
+
 
 /* CABEÇALHO */
 
 header{
-  background:#fff;
-  border-bottom:1px solid #eee;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:20
 }
 
 .cabecalho{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
-  padding:16px;
+  padding:11px 16px
 }
 
 .logo-area{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:15px;
+  gap:14px
+}
+
+.logo-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px
 }
 
 .logo{
-  width:120px;
-  height:120px;
+  width:56px;
+  height:56px;
   object-fit:cover;
-  border-radius:18px;
+  border-radius:14px;
+  background:#111
+}
+
+.brand-copy strong{
+  display:block;
+  font-size:17px;
+  letter-spacing:.01em
+}
+
+.brand-copy span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:2px
 }
 
 .carrinho-botao{
-  border:0;
-  background:#000;
+  border:1px solid #111;
+  background:#111;
   color:#fff;
-  padding:13px 17px;
-  border-radius:30px;
+  padding:10px 13px;
+  border-radius:9px;
   font-weight:800;
-  cursor:pointer;
-  white-space:nowrap;
+  white-space:nowrap
 }
 
 .contador{
-  background:#ed2d8f;
-  min-width:24px;
-  height:24px;
-  padding:0 6px;
+  background:var(--pink);
+  min-width:21px;
+  height:21px;
+  padding:0 5px;
   border-radius:50%;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   margin-left:5px;
+  font-size:10px
 }
+
 
 /* MENU */
 
 nav{
   display:flex;
-  gap:25px;
+  gap:22px;
   overflow-x:auto;
   white-space:nowrap;
-  padding-top:17px;
+  padding-top:12px;
+  padding-bottom:2px
 }
 
 nav::-webkit-scrollbar{
-  display:none;
+  display:none
 }
 
 nav a{
-  color:#111;
-  text-decoration:none;
-  font-weight:800;
+  font-size:12px;
+  font-weight:750;
+  color:#444
 }
 
-/* BANNER */
+
+/* HERO */
 
 .hero{
-  min-height:350px;
-  background:linear-gradient(135deg,#ffd1e2,#ff8dbb);
+  min-height:520px;
   display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:40px 20px;
+  align-items:flex-end;
+  padding:34px 18px 42px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.04),
+      rgba(0,0,0,.52)
+    ),
+    linear-gradient(
+      135deg,
+      #f2d4e3,
+      #d891b6 45%,
+      #1b1b1d 115%
+    );
+  position:relative;
+  overflow:hidden
+}
+
+.hero:before{
+  content:"SALI";
+  position:absolute;
+  right:-18px;
+  top:30px;
+  font-size:120px;
+  font-weight:900;
+  letter-spacing:-.08em;
+  color:rgba(255,255,255,.16);
+  transform:rotate(-90deg)
+}
+
+.hero-conteudo{
+  max-width:1200px;
+  width:100%;
+  margin:auto;
+  position:relative;
+  z-index:1
+}
+
+.hero-copy{
+  max-width:550px;
+  color:#fff
+}
+
+.hero-eyebrow{
+  display:inline-block;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.35);
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:15px
 }
 
 .hero h1{
-  font-size:40px;
-  margin-bottom:15px;
+  font-size:48px;
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin-bottom:16px
 }
 
 .hero p{
-  font-size:18px;
-  margin-bottom:25px;
-  line-height:1.4;
+  font-size:15px;
+  line-height:1.55;
+  color:rgba(255,255,255,.9);
+  max-width:450px;
+  margin-bottom:22px
+}
+
+.hero-actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap
+}
+
+.botao-principal,
+.botao-secundario{
+  border:0;
+  padding:12px 16px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:850
 }
 
 .botao-principal{
-  border:0;
-  background:#000;
-  color:#fff;
-  padding:15px 28px;
-  border-radius:30px;
-  font-weight:900;
-  cursor:pointer;
+  background:#fff;
+  color:#111
 }
+
+.botao-secundario{
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.55)
+}
+
+
+/* BENEFÍCIOS */
+
+.beneficios{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  border-bottom:1px solid var(--line)
+}
+
+.beneficio{
+  padding:17px 14px;
+  border-right:1px solid var(--line)
+}
+
+.beneficio:nth-child(2n){
+  border-right:0
+}
+
+.beneficio:nth-child(-n+2){
+  border-bottom:1px solid var(--line)
+}
+
+.beneficio strong{
+  display:block;
+  font-size:11px
+}
+
+.beneficio span{
+  display:block;
+  color:var(--muted);
+  font-size:9.5px;
+  margin-top:3px;
+  line-height:1.4
+}
+
+
+/* CATEGORIAS */
+
+.categorias{
+  max-width:1200px;
+  margin:auto;
+  padding:42px 16px 20px
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:12px;
+  margin-bottom:18px
+}
+
+.section-head h2{
+  font-size:28px;
+  letter-spacing:-.035em
+}
+
+.section-head p{
+  font-size:11px;
+  color:var(--muted);
+  max-width:360px;
+  line-height:1.5
+}
+
+.categorias-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px
+}
+
+.cat{
+  min-height:185px;
+  border-radius:13px;
+  padding:16px;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    145deg,
+    #f5d5e4,
+    #d57aa6
+  )
+}
+
+.cat:nth-child(2){
+  background:linear-gradient(
+    145deg,
+    #eee,
+    #c9c9cd
+  )
+}
+
+.cat:nth-child(3){
+  background:linear-gradient(
+    145deg,
+    #f8e7ef,
+    #bd6e97
+  )
+}
+
+.cat:nth-child(4){
+  background:linear-gradient(
+    145deg,
+    #ddd,
+    #999
+  )
+}
+
+.cat:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    transparent 45%,
+    rgba(0,0,0,.48)
+  )
+}
+
+.cat span{
+  position:relative;
+  color:#fff;
+  font-size:15px;
+  font-weight:850
+}
+
+.cat small{
+  display:block;
+  font-size:9px;
+  font-weight:650;
+  margin-top:4px;
+  color:rgba(255,255,255,.8)
+}
+
 
 /* PRODUTOS */
 
 .produtos{
-  max-width:1050px;
+  max-width:1200px;
   margin:auto;
-  padding:42px 17px;
+  padding:42px 16px
 }
 
 .produtos h2{
-  text-align:center;
-  font-size:31px;
-  margin-bottom:30px;
+  text-align:left;
+  font-size:30px;
+  letter-spacing:-.04em;
+  margin-bottom:6px
+}
+
+.produtos-sub{
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:22px
 }
 
 .grade{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:16px;
+  gap:12px
 }
 
 .produto{
   background:#fff;
-  border:1px solid #eee;
-  border-radius:17px;
+  border:0;
+  border-radius:0;
   overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
+  box-shadow:none
 }
 
 .produto img{
@@ -181,48 +438,118 @@ nav a{
   aspect-ratio:3/4;
   object-fit:cover;
   display:block;
+  background:#f2f2f3
 }
 
 .info{
-  padding:14px;
+  padding:10px 2px 14px
 }
 
 .info h3{
-  font-size:17px;
-  margin-bottom:8px;
+  font-size:13px;
+  margin-bottom:6px;
+  font-weight:700;
+  line-height:1.3
 }
 
 .preco{
-  color:#e52d86;
-  font-size:21px;
-  font-weight:900;
-  margin-bottom:13px;
+  color:#111;
+  font-size:16px;
+  font-weight:850;
+  margin-bottom:10px
 }
 
 .adicionar{
   width:100%;
-  border:0;
-  background:#000;
+  border:1px solid #111;
+  background:#111;
   color:#fff;
-  padding:13px 8px;
-  border-radius:11px;
-  font-weight:900;
-  cursor:pointer;
+  padding:10px 8px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:850
 }
 
-.adicionar:active{
-  transform:scale(.98);
+
+/* EDITORIAL */
+
+.editorial{
+  margin:18px 0 0;
+  background:#111;
+  color:#fff;
+  padding:48px 18px
 }
 
-/* VANTAGENS */
-
-.vantagens{
-  background:#fafafa;
-  text-align:center;
-  padding:32px 20px;
-  line-height:2.1;
-  font-weight:700;
+.editorial-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  gap:20px
 }
+
+.editorial h2{
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-.045em
+}
+
+.editorial p{
+  color:#c8c8cc;
+  font-size:12px;
+  line-height:1.65;
+  max-width:520px
+}
+
+.editorial .line{
+  width:48px;
+  height:3px;
+  background:var(--pink);
+  margin-bottom:14px
+}
+
+
+/* CTA */
+
+.cta{
+  max-width:1200px;
+  margin:auto;
+  padding:42px 16px
+}
+
+.cta-card{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:24px;
+  background:linear-gradient(
+    135deg,
+    #fff,
+    #fff7fb
+  )
+}
+
+.cta-card h3{
+  font-size:22px;
+  letter-spacing:-.03em;
+  margin-bottom:8px
+}
+
+.cta-card p{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.55;
+  margin-bottom:14px
+}
+
+.cta-card button{
+  border:0;
+  background:var(--pink);
+  color:#fff;
+  padding:10px 13px;
+  border-radius:8px;
+  font-weight:800;
+  font-size:10px
+}
+
 
 /* OVERLAY */
 
@@ -231,12 +558,13 @@ nav a{
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.55);
-  z-index:50;
+  z-index:50
 }
 
 .overlay.ativo{
-  display:block;
+  display:block
 }
+
 
 /* CARRINHO */
 
@@ -250,150 +578,144 @@ nav a{
   z-index:60;
   transition:.3s;
   display:flex;
-  flex-direction:column;
+  flex-direction:column
 }
 
 .carrinho.aberto{
-  right:0;
+  right:0
 }
 
 .carrinho-topo{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px;
-  border-bottom:1px solid #eee;
+  padding:18px;
+  border-bottom:1px solid var(--line)
+}
+
+.carrinho-topo h2{
+  font-size:18px
 }
 
 .fechar{
-  width:40px;
-  height:40px;
-  border:0;
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
   border-radius:50%;
-  background:#f1f1f1;
-  font-size:22px;
-  cursor:pointer;
+  background:#f5f5f6;
+  font-size:20px
 }
 
 .itens{
   flex:1;
   overflow-y:auto;
-  padding:15px;
+  padding:14px
 }
 
 .vazio{
   text-align:center;
   color:#777;
-  padding:55px 20px;
+  padding:55px 20px
 }
 
 .item-carrinho{
   display:flex;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid #eee;
+  gap:11px;
+  padding:13px 0;
+  border-bottom:1px solid var(--line)
 }
 
 .item-carrinho img{
-  width:80px;
-  height:105px;
+  width:76px;
+  height:100px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:8px
 }
 
 .item-dados{
-  flex:1;
+  flex:1
 }
 
 .item-dados h4{
-  margin-bottom:6px;
+  margin-bottom:5px;
+  font-size:13px
 }
 
 .item-dados strong{
-  color:#e52d86;
+  color:var(--pink);
+  font-size:13px
 }
-
-/* QUANTIDADE CORRIGIDA */
 
 .quantidade{
   display:flex;
   align-items:center;
-  gap:8px;
-  margin-top:11px;
-  flex-wrap:wrap;
+  gap:7px;
+  margin-top:9px;
+  flex-wrap:wrap
 }
 
 .quantidade button{
-  width:34px;
-  height:34px;
+  width:31px;
+  height:31px;
   border:1px solid #ddd;
   background:#fff;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:20px;
+  border-radius:7px;
+  font-size:18px;
   font-weight:700;
-  color:#111;
   display:flex;
   align-items:center;
-  justify-content:center;
-  line-height:1;
+  justify-content:center
 }
 
 .quantidade span{
-  min-width:34px;
-  height:34px;
+  min-width:31px;
+  height:31px;
   display:flex;
   align-items:center;
   justify-content:center;
   border:1px solid #ddd;
-  border-radius:8px;
+  border-radius:7px;
   font-weight:700;
+  font-size:11px
 }
-
-/* REMOVER CORRIGIDO */
 
 .remover{
   display:block;
   width:max-content;
   height:auto;
-  padding:7px 10px;
-  margin-top:10px;
+  padding:6px 9px;
+  margin-top:8px;
   border:0;
   background:#fff0f0;
-  color:#d00000;
-  font-size:13px;
-  font-weight:700;
-  border-radius:7px;
-  cursor:pointer;
-}
-
-.remover:active{
-  transform:scale(.97);
+  color:#c90000;
+  font-size:10px;
+  font-weight:750;
+  border-radius:6px
 }
 
 .carrinho-rodape{
-  border-top:1px solid #eee;
-  padding:18px;
+  border-top:1px solid var(--line);
+  padding:16px
 }
 
 .total-linha{
   display:flex;
   justify-content:space-between;
-  font-size:20px;
-  font-weight:900;
-  margin-bottom:15px;
+  font-size:17px;
+  font-weight:850;
+  margin-bottom:13px
 }
 
 .finalizar{
   width:100%;
   border:0;
-  background:#e82d8c;
+  background:var(--pink);
   color:#fff;
-  padding:16px;
-  border-radius:12px;
-  font-weight:900;
-  cursor:pointer;
+  padding:14px;
+  border-radius:9px;
+  font-weight:850
 }
+
 
 /* CHECKOUT */
 
@@ -401,147 +723,146 @@ nav a{
   display:none;
   position:fixed;
   inset:0;
-  background:#f7f7f7;
+  background:var(--bg);
   z-index:80;
-  overflow-y:auto;
+  overflow-y:auto
 }
 
 .checkout.ativo{
-  display:block;
+  display:block
 }
 
 .checkout-conteudo{
   max-width:620px;
   margin:auto;
-  padding:22px 17px 60px;
+  padding:20px 15px 60px
 }
 
 .checkout-topo{
   display:flex;
   align-items:center;
-  gap:14px;
-  margin-bottom:23px;
+  gap:12px;
+  margin-bottom:20px
 }
 
 .checkout-topo h2{
-  font-size:28px;
+  font-size:24px;
+  letter-spacing:-.03em
 }
 
 .voltar{
-  width:42px;
-  height:42px;
-  border:0;
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
   background:#fff;
   border-radius:50%;
-  font-size:21px;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  font-size:18px
 }
 
 .bloco{
   background:#fff;
-  border:1px solid #eee;
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:17px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:16px;
+  margin-bottom:14px
 }
 
 .bloco h3{
-  margin-bottom:16px;
+  font-size:14px;
+  margin-bottom:14px
 }
 
 .campo{
-  margin-bottom:14px;
+  margin-bottom:12px
 }
 
 .campo:last-child{
-  margin-bottom:0;
+  margin-bottom:0
 }
 
 .campo label{
   display:block;
-  font-size:14px;
+  font-size:11px;
   font-weight:800;
-  margin-bottom:7px;
+  margin-bottom:6px
 }
 
 .campo input,
 .campo select,
 .campo textarea{
   width:100%;
-  border:1px solid #ccc;
-  border-radius:10px;
-  padding:13px;
+  border:1px solid #d4d4d8;
+  border-radius:8px;
+  padding:11px;
   outline:none;
-  background:#fff;
+  background:#fff
 }
 
 .campo textarea{
   resize:vertical;
-  min-height:80px;
+  min-height:75px
 }
 
 .duplo{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:9px
 }
 
 .frete-info{
-  background:#fff1f7;
-  border-radius:10px;
-  padding:13px;
-  margin-top:12px;
+  background:var(--pink-soft);
+  border-radius:8px;
+  padding:11px;
+  margin-top:10px;
   line-height:1.5;
-  font-size:14px;
+  font-size:11px
 }
-
-/* RESUMO */
 
 .resumo-item{
   display:flex;
   justify-content:space-between;
-  gap:15px;
-  padding:9px 0;
-  border-bottom:1px solid #eee;
+  gap:12px;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  font-size:11px
 }
 
 .resumo-linha{
   display:flex;
   justify-content:space-between;
-  padding:10px 0;
+  padding:8px 0;
+  font-size:11px
 }
 
 .resumo-total{
   display:flex;
   justify-content:space-between;
-  border-top:2px solid #111;
-  margin-top:8px;
-  padding-top:14px;
-  font-size:21px;
-  font-weight:900;
+  border-top:1px solid #111;
+  margin-top:6px;
+  padding-top:12px;
+  font-size:17px;
+  font-weight:850
 }
 
-/* PAGAMENTO */
-
 .pagamento-aviso{
-  background:#fff1f7;
-  padding:14px;
-  border-radius:10px;
-  font-size:14px;
-  line-height:1.5;
+  background:var(--pink-soft);
+  padding:12px;
+  border-radius:8px;
+  font-size:11px;
+  line-height:1.55
 }
 
 .confirmar-pedido{
   width:100%;
   border:0;
-  background:#000;
+  background:#111;
   color:#fff;
-  padding:17px;
-  border-radius:13px;
-  font-size:17px;
-  font-weight:900;
-  cursor:pointer;
+  padding:14px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:850
 }
+
 
 /* SUCESSO */
 
@@ -554,85 +875,138 @@ nav a{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:25px;
+  padding:25px
 }
 
 .sucesso.ativo{
-  display:flex;
+  display:flex
 }
 
 .sucesso-box{
-  max-width:430px;
+  max-width:430px
 }
 
 .check{
-  width:85px;
-  height:85px;
-  margin:0 auto 22px;
+  width:76px;
+  height:76px;
+  margin:0 auto 20px;
   border-radius:50%;
-  background:#e82d8c;
+  background:var(--pink);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:46px;
+  font-size:38px
 }
 
 .sucesso h2{
-  font-size:30px;
-  margin-bottom:15px;
+  font-size:27px;
+  margin-bottom:12px
 }
 
 .sucesso p{
   line-height:1.5;
+  font-size:12px
 }
 
 .numero-pedido{
-  color:#e82d8c;
-  font-size:20px;
-  font-weight:900;
-  margin:18px 0;
+  color:var(--pink);
+  font-size:18px;
+  font-weight:850;
+  margin:16px 0
 }
 
 .sucesso button{
-  margin-top:22px;
+  margin-top:20px;
   border:0;
-  background:#000;
+  background:#111;
   color:#fff;
-  padding:15px 27px;
-  border-radius:30px;
-  font-weight:900;
+  padding:12px 20px;
+  border-radius:8px;
+  font-weight:850
 }
+
 
 /* RODAPÉ */
 
 footer{
-  background:#000;
+  background:#111;
   color:#fff;
-  text-align:center;
-  padding:32px 20px;
+  padding:36px 18px
+}
+
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  gap:18px
 }
 
 footer h3{
-  color:#ed2d8f;
-  margin-bottom:8px;
+  color:var(--pink);
+  font-size:18px
 }
+
+footer p{
+  color:#c9c9cd;
+  font-size:10px;
+  line-height:1.6
+}
+
+.footer-mini{
+  border-top:1px solid #2b2b2e;
+  padding-top:15px;
+  color:#8e8e94;
+  font-size:9px
+}
+
 
 /* RESPONSIVO */
 
 @media(min-width:700px){
 
-  .grade{
-    grid-template-columns:repeat(4,1fr);
+  .logo{
+    width:62px;
+    height:62px
   }
 
-  .logo{
-    width:135px;
-    height:135px;
+  .hero{
+    min-height:620px
   }
 
   .hero h1{
-    font-size:50px;
+    font-size:72px
+  }
+
+  .beneficios{
+    grid-template-columns:repeat(4,1fr)
+  }
+
+  .beneficio{
+    border-bottom:0!important;
+    border-right:1px solid var(--line)!important
+  }
+
+  .beneficio:last-child{
+    border-right:0!important
+  }
+
+  .categorias-grid{
+    grid-template-columns:repeat(4,1fr)
+  }
+
+  .cat{
+    min-height:260px
+  }
+
+  .grade{
+    grid-template-columns:repeat(4,1fr);
+    gap:18px
+  }
+
+  .editorial-inner{
+    grid-template-columns:1fr 1fr;
+    align-items:center
   }
 
 }
@@ -643,1265 +1017,1801 @@ footer h3{
 <body>
 
 <div class="topo">
-🛍️ Moda feminina • Novidades toda semana
+  NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS
 </div>
 
 <header>
 
-<div class="cabecalho">
+  <div class="cabecalho">
 
-<div class="logo-area">
+    <div class="logo-area">
 
-<img
-class="logo"
-src="815BCB89-C59E-479D-83FF-454243870EB3.png"
-alt="SALI STORE"
->
+      <div class="logo-wrap">
 
-<button
-class="carrinho-botao"
-onclick="abrirCarrinho()">
-🛒 Carrinho
-<span class="contador" id="contador">0</span>
-</button>
+        <img
+          class="logo"
+          src="815BCB89-C59E-479D-83FF-454243870EB3.png"
+          alt="SALI STORE"
+        >
 
-</div>
+        <div class="brand-copy">
 
-<nav>
-<a href="#inicio">Início</a>
-<a href="#novidades">Novidades</a>
-<a href="#vestidos">Vestidos</a>
-<a href="#conjuntos">Conjuntos</a>
-<a href="#blusas">Blusas</a>
-<a href="#calcas">Calças</a>
-</nav>
+          <strong>
+            SALI STORE
+          </strong>
 
-</div>
+          <span>
+            Moda feminina • Manacapuru
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="carrinho-botao"
+        onclick="abrirCarrinho()"
+      >
+        Sacola
+        <span class="contador" id="contador">
+          0
+        </span>
+      </button>
+
+    </div>
+
+
+    <nav>
+
+      <a href="#inicio">
+        Início
+      </a>
+
+      <a href="#novidades">
+        Novidades
+      </a>
+
+      <a href="#categorias">
+        Categorias
+      </a>
+
+      <a href="#novidades">
+        Vestidos
+      </a>
+
+      <a href="#novidades">
+        Conjuntos
+      </a>
+
+      <a href="#novidades">
+        Blusas
+      </a>
+
+      <a href="#novidades">
+        Calças
+      </a>
+
+    </nav>
+
+  </div>
 
 </header>
 
-<section class="hero" id="inicio">
 
-<div>
+<section
+  class="hero"
+  id="inicio"
+>
 
-<h1>
-Vista-se de SALI ✨
-</h1>
+  <div class="hero-conteudo">
 
-<p>
-Moda feminina para você se sentir ainda mais linda.
-</p>
+    <div class="hero-copy">
 
-<button
-class="botao-principal"
-onclick="document.getElementById('novidades').scrollIntoView()">
-VER NOVIDADES
-</button>
+      <span class="hero-eyebrow">
+        NOVA COLEÇÃO • SALI STORE
+      </span>
 
-</div>
+      <h1>
+        Seu look começa aqui.
+      </h1>
+
+      <p>
+        Moda feminina com personalidade, peças que valorizam você e novidades que chegam toda semana.
+      </p>
+
+      <div class="hero-actions">
+
+        <button
+          class="botao-principal"
+          onclick="document.getElementById('novidades').scrollIntoView()"
+        >
+          COMPRAR AGORA
+        </button>
+
+
+        <button
+          class="botao-secundario"
+          onclick="document.getElementById('categorias').scrollIntoView()"
+        >
+          VER CATEGORIAS
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
-<section class="produtos" id="novidades">
 
-<h2>✨ Novidades</h2>
+<section class="beneficios">
 
-<div class="grade" id="listaProdutos"></div>
+  <div class="beneficio">
+
+    <strong>
+      Entrega local
+    </strong>
+
+    <span>
+      Receba seu pedido com praticidade.
+    </span>
+
+  </div>
+
+
+  <div class="beneficio">
+
+    <strong>
+      Retirada na loja
+    </strong>
+
+    <span>
+      Escolha retirar sem taxa.
+    </span>
+
+  </div>
+
+
+  <div class="beneficio">
+
+    <strong>
+      Novidades semanais
+    </strong>
+
+    <span>
+      Novos modelos chegando sempre.
+    </span>
+
+  </div>
+
+
+  <div class="beneficio">
+
+    <strong>
+      Compra segura
+    </strong>
+
+    <span>
+      Seu pedido registrado e acompanhado.
+    </span>
+
+  </div>
 
 </section>
 
-<section class="vantagens">
 
-<p>🚚 Entrega disponível</p>
-<p>🛍️ Retirada na loja</p>
-<p>💖 Novidades toda semana</p>
-<p>🔒 Compra segura</p>
+<section
+  class="categorias"
+  id="categorias"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <h2>
+        Compre por categoria
+      </h2>
+
+    </div>
+
+    <p>
+      Encontre rapidamente o estilo que combina com você.
+    </p>
+
+  </div>
+
+
+  <div class="categorias-grid">
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Vestidos
+
+        <small>
+          Do casual ao marcante
+        </small>
+      </span>
+
+    </a>
+
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Conjuntos
+
+        <small>
+          Looks prontos para vestir
+        </small>
+      </span>
+
+    </a>
+
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Blusas
+
+        <small>
+          Essenciais com personalidade
+        </small>
+      </span>
+
+    </a>
+
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Calças
+
+        <small>
+          Modelagens que valorizam
+        </small>
+      </span>
+
+    </a>
+
+  </div>
 
 </section>
+
+
+<section
+  class="produtos"
+  id="novidades"
+>
+
+  <h2>
+    Novidades
+  </h2>
+
+  <p class="produtos-sub">
+    Os últimos lançamentos da SALI.
+  </p>
+
+  <div
+    class="grade"
+    id="listaProdutos"
+  ></div>
+
+</section>
+
+
+<section class="editorial">
+
+  <div class="editorial-inner">
+
+    <div>
+
+      <div class="line"></div>
+
+      <h2>
+        Moda que representa.
+        <br>
+        Estilo que encanta.
+      </h2>
+
+    </div>
+
+    <p>
+      A SALI nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="cta">
+
+  <div class="cta-card">
+
+    <h3>
+      Encontrou a sua favorita?
+    </h3>
+
+    <p>
+      Adicione à sacola, escolha como deseja receber e finalize o pedido pelo próprio site.
+    </p>
+
+    <button
+      onclick="document.getElementById('novidades').scrollIntoView()"
+    >
+      VER PRODUTOS
+    </button>
+
+  </div>
+
+</section>
+
 
 <footer>
 
-<h3>SALI STORE</h3>
+  <div class="footer-inner">
 
-<p>
-Moda feminina feita para você 💕
-</p>
+    <div>
+
+      <h3>
+        SALI STORE
+      </h3>
+
+      <p>
+        Moda feminina com identidade, novidades e praticidade para comprar online.
+      </p>
+
+    </div>
+
+    <div class="footer-mini">
+      SALI STORE • Manacapuru, Amazonas
+    </div>
+
+  </div>
 
 </footer>
 
-<!-- OVERLAY -->
 
 <div
-class="overlay"
-id="overlay"
-onclick="fecharCarrinho()">
-</div>
+  class="overlay"
+  id="overlay"
+  onclick="fecharCarrinho()"
+></div>
 
-<!-- CARRINHO -->
 
-<aside class="carrinho" id="carrinho">
+<aside
+  class="carrinho"
+  id="carrinho"
+>
 
-<div class="carrinho-topo">
+  <div class="carrinho-topo">
 
-<h2>🛒 Seu carrinho</h2>
+    <h2>
+      Sua sacola
+    </h2>
 
-<button
-class="fechar"
-onclick="fecharCarrinho()">
-×
-</button>
+    <button
+      class="fechar"
+      onclick="fecharCarrinho()"
+    >
+      ×
+    </button>
 
-</div>
+  </div>
 
-<div
-class="itens"
-id="itensCarrinho">
-</div>
 
-<div class="carrinho-rodape">
+  <div
+    class="itens"
+    id="itensCarrinho"
+  ></div>
+    <div class="carrinho-rodape">
 
-<div class="total-linha">
+    <div class="total-linha">
 
-<span>Produtos</span>
+      <span>
+        Produtos
+      </span>
 
-<span id="totalCarrinho">
-R$ 0,00
-</span>
+      <span id="totalCarrinho">
+        R$ 0,00
+      </span>
 
-</div>
+    </div>
 
-<button
-class="finalizar"
-onclick="abrirCheckout()">
-FINALIZAR PEDIDO
-</button>
 
-</div>
+    <button
+      class="finalizar"
+      onclick="abrirCheckout()"
+    >
+      FINALIZAR PEDIDO
+    </button>
+
+  </div>
 
 </aside>
 
-<!-- CHECKOUT -->
 
-<section class="checkout" id="checkout">
-
-<div class="checkout-conteudo">
-
-<div class="checkout-topo">
-
-<button
-class="voltar"
-onclick="fecharCheckout()">
-←
-</button>
-
-<h2>
-Finalizar pedido
-</h2>
-
-</div>
-
-<div class="bloco">
-
-<h3>👤 Seus dados</h3>
-
-<div class="campo">
-
-<label>
-Nome completo
-</label>
-
-<input
-id="nome"
-type="text"
-placeholder="Digite seu nome"
+<section
+  class="checkout"
+  id="checkout"
 >
 
-</div>
+  <div class="checkout-conteudo">
 
-<div class="campo">
+    <div class="checkout-topo">
 
-<label>
-WhatsApp
-</label>
+      <button
+        class="voltar"
+        onclick="fecharCheckout()"
+      >
+        ←
+      </button>
 
-<input
-id="telefone"
-type="tel"
-placeholder="(92) 99999-9999"
->
+      <h2>
+        Finalizar pedido
+      </h2>
 
-</div>
+    </div>
 
-</div>
 
-<div class="bloco">
+    <div class="bloco">
 
-<h3>
-🚚 Entrega ou retirada
-</h3>
+      <h3>
+        Seus dados
+      </h3>
 
-<div class="campo">
 
-<label>
-Como deseja receber?
-</label>
+      <div class="campo">
 
-<select
-id="entrega"
-onchange="alterarEntrega()">
+        <label>
+          Nome completo
+        </label>
 
-<option value="">
-Selecione
-</option>
+        <input
+          id="nome"
+          type="text"
+          placeholder="Digite seu nome"
+        >
 
-<option value="retirada">
-🛍️ Retirada na loja — Grátis
-</option>
+      </div>
 
-<option value="cidade">
-🛵 Entrega dentro da cidade — R$ 5,00
-</option>
 
-<option value="bola">
-🛵 Bola até o Novo Manacá — R$ 8,00
-</option>
+      <div class="campo">
 
-<option value="caixa">
-🛵 Caixa d’Água pra lá — R$ 10,00
-</option>
+        <label>
+          WhatsApp
+        </label>
 
-<option value="barcos">
-🚤 Entrega em barcos e jatos — R$ 5,00
-</option>
+        <input
+          id="telefone"
+          type="tel"
+          placeholder="(92) 99999-9999"
+        >
 
-</select>
+      </div>
 
-</div>
+    </div>
 
-<div
-class="frete-info"
-id="freteInfo"
-style="display:none;">
-</div>
 
-<div
-id="enderecoArea"
-style="display:none; margin-top:15px;">
+    <div class="bloco">
 
-<div class="campo">
+      <h3>
+        Entrega ou retirada
+      </h3>
 
-<label>
-Rua / Avenida
-</label>
 
-<input
-id="endereco"
-type="text"
-placeholder="Digite o endereço"
->
+      <div class="campo">
 
-</div>
+        <label>
+          Como deseja receber?
+        </label>
 
-<div class="duplo">
+        <select
+          id="entrega"
+          onchange="alterarEntrega()"
+        >
 
-<div class="campo">
+          <option value="">
+            Selecione
+          </option>
 
-<label>Número</label>
+          <option value="retirada">
+            Retirada na loja — Grátis
+          </option>
 
-<input
-id="numero"
-type="text"
-placeholder="Nº"
->
+          <option value="cidade">
+            Entrega dentro da cidade — R$ 5,00
+          </option>
 
-</div>
+          <option value="bola">
+            Bola até o Novo Manacá — R$ 8,00
+          </option>
 
-<div class="campo">
+          <option value="caixa">
+            Caixa d’Água pra lá — R$ 10,00
+          </option>
 
-<label>Bairro</label>
+          <option value="barcos">
+            Entrega em barcos e jatos — R$ 5,00
+          </option>
 
-<input
-id="bairro"
-type="text"
-placeholder="Bairro"
->
+        </select>
 
-</div>
+      </div>
 
-</div>
 
-<div class="campo">
+      <div
+        class="frete-info"
+        id="freteInfo"
+        style="display:none;"
+      ></div>
 
-<label>
-Complemento / referência
-</label>
 
-<textarea
-id="complemento"
-placeholder="Ex.: próximo ao mercado, casa rosa..."></textarea>
+      <div
+        id="enderecoArea"
+        style="display:none; margin-top:15px;"
+      >
 
-</div>
+        <div class="campo">
 
-</div>
+          <label>
+            Rua / Avenida
+          </label>
 
-<div
-id="barcoArea"
-style="display:none; margin-top:15px;">
+          <input
+            id="endereco"
+            type="text"
+            placeholder="Digite o endereço"
+          >
 
-<div class="campo">
+        </div>
 
-<label>
-Nome do barco, jato ou destino
-</label>
 
-<input
-id="barcoDestino"
-type="text"
-placeholder="Informe onde será entregue"
->
+        <div class="duplo">
 
-</div>
+          <div class="campo">
 
-<div class="campo">
+            <label>
+              Número
+            </label>
 
-<label>
-Observação
-</label>
+            <input
+              id="numero"
+              type="text"
+              placeholder="Nº"
+            >
 
-<textarea
-id="barcoObservacao"
-placeholder="Nome do passageiro, horário, identificação etc."></textarea>
+          </div>
 
-</div>
 
-</div>
+          <div class="campo">
 
-</div>
+            <label>
+              Bairro
+            </label>
 
-<div class="bloco">
+            <input
+              id="bairro"
+              type="text"
+              placeholder="Bairro"
+            >
 
-<h3>
-🛍️ Resumo do pedido
-</h3>
+          </div>
 
-<div id="resumoCheckout"></div>
+        </div>
 
-<div class="resumo-linha">
 
-<span>Subtotal</span>
+        <div class="campo">
 
-<strong id="subtotalCheckout">
-R$ 0,00
-</strong>
+          <label>
+            Complemento / referência
+          </label>
 
-</div>
+          <textarea
+            id="complemento"
+            placeholder="Ex.: próximo ao mercado, casa rosa..."
+          ></textarea>
 
-<div class="resumo-linha">
+        </div>
 
-<span>Entrega</span>
+      </div>
 
-<strong id="freteCheckout">
-R$ 0,00
-</strong>
 
-</div>
+      <div
+        id="barcoArea"
+        style="display:none; margin-top:15px;"
+      >
 
-<div class="resumo-total">
+        <div class="campo">
 
-<span>TOTAL</span>
+          <label>
+            Nome do barco, jato ou destino
+          </label>
 
-<span id="totalCheckout">
-R$ 0,00
-</span>
+          <input
+            id="barcoDestino"
+            type="text"
+            placeholder="Informe onde será entregue"
+          >
 
-</div>
+        </div>
 
-</div>
 
-<div class="bloco">
+        <div class="campo">
 
-<h3>💳 Pagamento</h3>
+          <label>
+            Observação
+          </label>
 
-<div class="pagamento-aviso">
+          <textarea
+            id="barcoObservacao"
+            placeholder="Nome do passageiro, horário, identificação etc."
+          ></textarea>
 
-O pagamento por Pix e cartão será ativado na próxima etapa.
+        </div>
 
-<br><br>
+      </div>
 
-O valor da entrega já está sendo calculado automaticamente no total do pedido.
+    </div>
 
-</div>
 
-</div>
+    <div class="bloco">
 
-<button
-class="confirmar-pedido"
-onclick="confirmarPedido()">
-CONFIRMAR PEDIDO
-</button>
+      <h3>
+        Resumo do pedido
+      </h3>
 
-</div>
+      <div id="resumoCheckout"></div>
+
+
+      <div class="resumo-linha">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong id="subtotalCheckout">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+
+      <div class="resumo-linha">
+
+        <span>
+          Entrega
+        </span>
+
+        <strong id="freteCheckout">
+          R$ 0,00
+        </strong>
+
+      </div>
+
+
+      <div class="resumo-total">
+
+        <span>
+          TOTAL
+        </span>
+
+        <span id="totalCheckout">
+          R$ 0,00
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="bloco">
+
+      <h3>
+        Pagamento
+      </h3>
+
+      <div class="pagamento-aviso">
+
+        O pagamento por Pix e cartão será ativado na próxima etapa.
+
+        <br><br>
+
+        O valor da entrega já está sendo calculado automaticamente no total do pedido.
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="confirmar-pedido"
+      onclick="confirmarPedido()"
+    >
+      CONFIRMAR PEDIDO
+    </button>
+
+  </div>
 
 </section>
 
-<!-- SUCESSO -->
 
-<section class="sucesso" id="sucesso">
+<section
+  class="sucesso"
+  id="sucesso"
+>
 
-<div class="sucesso-box">
+  <div class="sucesso-box">
 
-<div class="check">
-✓
-</div>
+    <div class="check">
+      ✓
+    </div>
 
-<h2>
-Pedido confirmado!
-</h2>
+    <h2>
+      Pedido confirmado!
+    </h2>
 
-<p>
-Obrigada por comprar na SALI STORE 💕
-</p>
+    <p>
+      Obrigada por comprar na SALI STORE 💕
+    </p>
 
-<div
-class="numero-pedido"
-id="numeroPedido">
-</div>
+    <div
+      class="numero-pedido"
+      id="numeroPedido"
+    ></div>
 
-<p id="resumoSucesso"></p>
+    <p id="resumoSucesso"></p>
 
-<button onclick="voltarLoja()">
-VOLTAR PARA A LOJA
-</button>
 
-</div>
+    <button
+      onclick="voltarLoja()"
+    >
+      VOLTAR PARA A LOJA
+    </button>
+
+  </div>
 
 </section>
+
 
 <script>
 
-/* CARRINHO */
-
 let carrinho =
 JSON.parse(
-localStorage.getItem("saliCarrinho")
+  localStorage.getItem("saliCarrinho")
 ) || [];
 
 let valorFrete = 0;
 
 let tipoEntrega = "";
 
-/* SALVAR */
 
 function salvarCarrinho(){
 
-localStorage.setItem(
-"saliCarrinho",
-JSON.stringify(carrinho)
-);
+  localStorage.setItem(
+    "saliCarrinho",
+    JSON.stringify(carrinho)
+  );
 
-atualizarCarrinho();
+  atualizarCarrinho();
 
 }
 
-/* MOEDA */
 
 function moeda(valor){
 
-return valor.toLocaleString(
-"pt-BR",
-{
-style:"currency",
-currency:"BRL"
-}
-);
+  return Number(
+    valor || 0
+  ).toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
 
 }
 
-/* SUBTOTAL */
 
 function calcularSubtotal(){
 
-return carrinho.reduce(
-(soma,item) =>
-soma +
-item.preco *
-item.quantidade,
-0
-);
+  return carrinho.reduce(
+    (soma,item) =>
+      soma +
+      item.preco *
+      item.quantidade,
+    0
+  );
 
 }
 
-/* ADICIONAR */
 
 function adicionarProduto(
-id,
-nome,
-preco,
-foto
+  id,
+  nome,
+  preco,
+  foto
 ){
 
-const existente =
-carrinho.find(
-item => item.id === id
-);
+  const existente =
+  carrinho.find(
+    item =>
+      item.id === id
+  );
 
-if(existente){
+  if(existente){
 
-existente.quantidade++;
+    existente.quantidade++;
 
-}else{
+  }else{
 
-carrinho.push({
-id:id,
-nome:nome,
-preco:preco,
-foto:foto,
-quantidade:1
-});
+    carrinho.push({
+      id,
+      nome,
+      preco,
+      foto,
+      quantidade:1
+    });
+
+  }
+
+  salvarCarrinho();
+
+  abrirCarrinho();
 
 }
 
-salvarCarrinho();
-
-abrirCarrinho();
-
-}
-
-/* AUMENTAR */
 
 function aumentar(id){
 
-const item =
-carrinho.find(
-item => item.id === id
-);
+  const item =
+  carrinho.find(
+    item =>
+      item.id === id
+  );
 
-if(item){
-item.quantidade++;
+  if(item){
+
+    item.quantidade++;
+
+  }
+
+  salvarCarrinho();
+
 }
 
-salvarCarrinho();
-
-}
-
-/* DIMINUIR */
 
 function diminuir(id){
 
-const item =
-carrinho.find(
-item => item.id === id
-);
+  const item =
+  carrinho.find(
+    item =>
+      item.id === id
+  );
 
-if(!item){
-return;
+  if(!item){
+
+    return;
+
+  }
+
+  item.quantidade--;
+
+  if(
+    item.quantidade <= 0
+  ){
+
+    carrinho =
+    carrinho.filter(
+      item =>
+        item.id !== id
+    );
+
+  }
+
+  salvarCarrinho();
+
 }
 
-item.quantidade--;
-
-if(item.quantidade <= 0){
-
-carrinho =
-carrinho.filter(
-item => item.id !== id
-);
-
-}
-
-salvarCarrinho();
-
-}
-
-/* REMOVER */
 
 function remover(id){
 
-carrinho =
-carrinho.filter(
-item => item.id !== id
-);
+  carrinho =
+  carrinho.filter(
+    item =>
+      item.id !== id
+  );
 
-salvarCarrinho();
+  salvarCarrinho();
 
 }
 
-/* ATUALIZAR CARRINHO */
 
 function atualizarCarrinho(){
 
-const area =
-document.getElementById(
-"itensCarrinho"
-);
+  const area =
+  document.getElementById(
+    "itensCarrinho"
+  );
 
-const contador =
-document.getElementById(
-"contador"
-);
+  const contador =
+  document.getElementById(
+    "contador"
+  );
 
-const quantidadeTotal =
-carrinho.reduce(
-(soma,item) =>
-soma + item.quantidade,
-0
-);
+  const quantidadeTotal =
+  carrinho.reduce(
+    (soma,item) =>
+      soma +
+      item.quantidade,
+    0
+  );
 
-contador.textContent =
-quantidadeTotal;
+  contador.textContent =
+  quantidadeTotal;
 
-if(carrinho.length === 0){
 
-area.innerHTML =
-'<div class="vazio">Seu carrinho está vazio 🛍️</div>';
+  if(
+    carrinho.length === 0
+  ){
 
-document.getElementById(
-"totalCarrinho"
-).textContent =
-moeda(0);
+    area.innerHTML =
+    '<div class="vazio">Sua sacola está vazia.</div>';
 
-return;
+    document.getElementById(
+      "totalCarrinho"
+    ).textContent =
+    moeda(0);
+
+    return;
+
+  }
+
+
+  area.innerHTML =
+  carrinho.map(
+    item => `
+
+      <div class="item-carrinho">
+
+        <img
+          src="${item.foto}"
+          alt="${item.nome}"
+        >
+
+        <div class="item-dados">
+
+          <h4>
+            ${item.nome}
+          </h4>
+
+          ${
+            item.tamanho
+            ?
+            '<small>Tamanho: ' +
+            item.tamanho +
+            '</small><br>'
+            :
+            ''
+          }
+
+          ${
+            item.estampa
+            ?
+            '<small>Estampa: ' +
+            item.estampa +
+            '</small><br>'
+            :
+            ''
+          }
+
+          <strong>
+            ${moeda(item.preco)}
+          </strong>
+
+
+          <div class="quantidade">
+
+            <button
+              type="button"
+              onclick='diminuir(${JSON.stringify(item.id)})'
+            >
+              −
+            </button>
+
+            <span>
+              ${item.quantidade}
+            </span>
+
+            <button
+              type="button"
+              onclick='aumentar(${JSON.stringify(item.id)})'
+            >
+              +
+            </button>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="remover"
+            onclick='remover(${JSON.stringify(item.id)})'
+          >
+            Remover
+          </button>
+
+        </div>
+
+      </div>
+
+    `
+  ).join("");
+
+
+  document.getElementById(
+    "totalCarrinho"
+  ).textContent =
+  moeda(
+    calcularSubtotal()
+  );
 
 }
 
-area.innerHTML =
-carrinho.map(
-item => `
-
-<div class="item-carrinho">
-
-<img
-src="${item.foto}"
-alt="${item.nome}"
->
-
-<div class="item-dados">
-
-<h4>
-${item.nome}
-</h4>
-
-${item.tamanho ? '<small>Tamanho: ' + item.tamanho + '</small><br>' : ''}
-
-${item.estampa ? '<small>Estampa: ' + item.estampa + '</small><br>' : ''}
-
-<strong>
-${moeda(item.preco)}
-</strong>
-
-<div class="quantidade">
-
-<button
-type="button"
-onclick='diminuir(${JSON.stringify(item.id)})'>
-−
-</button>
-
-<span>
-${item.quantidade}
-</span>
-
-<button
-type="button"
-onclick='aumentar(${JSON.stringify(item.id)})'>
-+
-</button>
-
-</div>
-
-<button
-type="button"
-class="remover"
-onclick='remover(${JSON.stringify(item.id)})'>
-🗑️ Remover
-</button>
-
-</div>
-
-</div>
-
-`
-).join("");
-
-document.getElementById(
-"totalCarrinho"
-).textContent =
-moeda(
-calcularSubtotal()
-);
-
-}
-
-/* ABRIR CARRINHO */
 
 function abrirCarrinho(){
 
-document.getElementById(
-"carrinho"
-).classList.add(
-"aberto"
-);
+  document.getElementById(
+    "carrinho"
+  ).classList.add(
+    "aberto"
+  );
 
-document.getElementById(
-"overlay"
-).classList.add(
-"ativo"
-);
+  document.getElementById(
+    "overlay"
+  ).classList.add(
+    "ativo"
+  );
 
 }
 
-/* FECHAR CARRINHO */
 
 function fecharCarrinho(){
 
-document.getElementById(
-"carrinho"
-).classList.remove(
-"aberto"
-);
+  document.getElementById(
+    "carrinho"
+  ).classList.remove(
+    "aberto"
+  );
 
-document.getElementById(
-"overlay"
-).classList.remove(
-"ativo"
-);
+  document.getElementById(
+    "overlay"
+  ).classList.remove(
+    "ativo"
+  );
 
 }
 
-/* CHECKOUT */
 
 function abrirCheckout(){
 
-if(carrinho.length === 0){
+  if(
+    carrinho.length === 0
+  ){
 
-alert(
-"Seu carrinho está vazio."
-);
+    alert(
+      "Sua sacola está vazia."
+    );
 
-return;
+    return;
+
+  }
+
+  fecharCarrinho();
+
+  document.getElementById(
+    "checkout"
+  ).classList.add(
+    "ativo"
+  );
+
+  atualizarCheckout();
 
 }
 
-fecharCarrinho();
-
-document.getElementById(
-"checkout"
-).classList.add(
-"ativo"
-);
-
-atualizarCheckout();
-
-}
 
 function fecharCheckout(){
 
-document.getElementById(
-"checkout"
-).classList.remove(
-"ativo"
-);
+  document.getElementById(
+    "checkout"
+  ).classList.remove(
+    "ativo"
+  );
+
+}
+  function alterarEntrega(){
+
+  const entrega =
+  document.getElementById(
+    "entrega"
+  ).value;
+
+  tipoEntrega =
+  entrega;
+
+
+  const enderecoArea =
+  document.getElementById(
+    "enderecoArea"
+  );
+
+  const barcoArea =
+  document.getElementById(
+    "barcoArea"
+  );
+
+  const freteInfo =
+  document.getElementById(
+    "freteInfo"
+  );
+
+
+  enderecoArea.style.display =
+  "none";
+
+  barcoArea.style.display =
+  "none";
+
+  freteInfo.style.display =
+  "block";
+
+
+  if(
+    entrega === ""
+  ){
+
+    valorFrete = 0;
+
+    freteInfo.style.display =
+    "none";
+
+  }
+
+
+  else if(
+    entrega === "retirada"
+  ){
+
+    valorFrete = 0;
+
+    freteInfo.innerHTML =
+    "<strong>Retirada na loja</strong><br>Taxa: Grátis";
+
+  }
+
+
+  else if(
+    entrega === "cidade"
+  ){
+
+    valorFrete = 5;
+
+    enderecoArea.style.display =
+    "block";
+
+    freteInfo.innerHTML =
+    "<strong>Entrega dentro da cidade</strong><br>Taxa: R$ 5,00";
+
+  }
+
+
+  else if(
+    entrega === "bola"
+  ){
+
+    valorFrete = 8;
+
+    enderecoArea.style.display =
+    "block";
+
+    freteInfo.innerHTML =
+    "<strong>Bola até o Novo Manacá</strong><br>Taxa: R$ 8,00";
+
+  }
+
+
+  else if(
+    entrega === "caixa"
+  ){
+
+    valorFrete = 10;
+
+    enderecoArea.style.display =
+    "block";
+
+    freteInfo.innerHTML =
+    "<strong>Caixa d’Água pra lá</strong><br>Taxa: R$ 10,00";
+
+  }
+
+
+  else if(
+    entrega === "barcos"
+  ){
+
+    valorFrete = 5;
+
+    barcoArea.style.display =
+    "block";
+
+    freteInfo.innerHTML =
+    "<strong>Entrega em barcos e jatos</strong><br>Taxa: R$ 5,00";
+
+  }
+
+
+  atualizarCheckout();
 
 }
 
-/* ENTREGA */
 
-function alterarEntrega(){
-
-const entrega =
-document.getElementById(
-"entrega"
-).value;
-
-tipoEntrega =
-entrega;
-
-const enderecoArea =
-document.getElementById(
-"enderecoArea"
-);
-
-const barcoArea =
-document.getElementById(
-"barcoArea"
-);
-
-const freteInfo =
-document.getElementById(
-"freteInfo"
-);
-
-enderecoArea.style.display =
-"none";
-
-barcoArea.style.display =
-"none";
-
-freteInfo.style.display =
-"block";
-
-if(entrega === ""){
-
-valorFrete = 0;
-
-freteInfo.style.display =
-"none";
-
-}
-
-else if(entrega === "retirada"){
-
-valorFrete = 0;
-
-freteInfo.innerHTML =
-"🛍️ <strong>Retirada na loja</strong><br>Taxa: Grátis";
-
-}
-
-else if(entrega === "cidade"){
-
-valorFrete = 5;
-
-enderecoArea.style.display =
-"block";
-
-freteInfo.innerHTML =
-"🛵 <strong>Entrega dentro da cidade</strong><br>Taxa: R$ 5,00";
-
-}
-
-else if(entrega === "bola"){
-
-valorFrete = 8;
-
-enderecoArea.style.display =
-"block";
-
-freteInfo.innerHTML =
-"🛵 <strong>Bola até o Novo Manacá</strong><br>Taxa: R$ 8,00";
-
-}
-
-else if(entrega === "caixa"){
-
-valorFrete = 10;
-
-enderecoArea.style.display =
-"block";
-
-freteInfo.innerHTML =
-"🛵 <strong>Caixa d’Água pra lá</strong><br>Taxa: R$ 10,00";
-
-}
-
-else if(entrega === "barcos"){
-
-valorFrete = 5;
-
-barcoArea.style.display =
-"block";
-
-freteInfo.innerHTML =
-"🚤 <strong>Entrega em barcos e jatos</strong><br>Taxa: R$ 5,00";
-
-}
-
-atualizarCheckout();
-
-}
-
-/* RESUMO CHECKOUT */
 
 function atualizarCheckout(){
 
-const resumo =
-document.getElementById(
-"resumoCheckout"
-);
+  const resumo =
+  document.getElementById(
+    "resumoCheckout"
+  );
 
-resumo.innerHTML =
-carrinho.map(
-item => `
 
-<div class="resumo-item">
+  resumo.innerHTML =
+  carrinho.map(
+    item => `
 
-<span>
-${item.quantidade}x
-${item.nome}
-</span>
+      <div class="resumo-item">
 
-<strong>
-${moeda(
-item.preco *
-item.quantidade
-)}
-</strong>
+        <span>
+          ${item.quantidade}x
+          ${item.nome}
+        </span>
 
-</div>
+        <strong>
+          ${moeda(
+            item.preco *
+            item.quantidade
+          )}
+        </strong>
 
-`
-).join("");
+      </div>
 
-const subtotal =
-calcularSubtotal();
+    `
+  ).join("");
 
-const total =
-subtotal +
-valorFrete;
 
-document.getElementById(
-"subtotalCheckout"
-).textContent =
-moeda(subtotal);
+  const subtotal =
+  calcularSubtotal();
 
-document.getElementById(
-"freteCheckout"
-).textContent =
-valorFrete === 0
-? "Grátis"
-: moeda(valorFrete);
+  const total =
+  subtotal +
+  valorFrete;
 
-document.getElementById(
-"totalCheckout"
-).textContent =
-moeda(total);
+
+  document.getElementById(
+    "subtotalCheckout"
+  ).textContent =
+  moeda(
+    subtotal
+  );
+
+
+  document.getElementById(
+    "freteCheckout"
+  ).textContent =
+  valorFrete === 0
+  ?
+  "Grátis"
+  :
+  moeda(
+    valorFrete
+  );
+
+
+  document.getElementById(
+    "totalCheckout"
+  ).textContent =
+  moeda(
+    total
+  );
 
 }
 
-/* CONFIRMAR PEDIDO */
+
 
 async function confirmarPedido(){
 
-const nome =
-document.getElementById(
-"nome"
-).value.trim();
+  const nome =
+  document.getElementById(
+    "nome"
+  ).value.trim();
 
-const telefone =
-document.getElementById(
-"telefone"
-).value.trim();
 
-const entrega =
-document.getElementById(
-"entrega"
-).value;
+  const telefone =
+  document.getElementById(
+    "telefone"
+  ).value.trim();
 
-if(!nome){
 
-alert(
-"Digite seu nome."
-);
+  const entrega =
+  document.getElementById(
+    "entrega"
+  ).value;
 
-return;
+
+  if(
+    !nome
+  ){
+
+    alert(
+      "Digite seu nome."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !telefone
+  ){
+
+    alert(
+      "Digite seu WhatsApp."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !entrega
+  ){
+
+    alert(
+      "Escolha uma opção de entrega ou retirada."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    entrega === "cidade" ||
+    entrega === "bola" ||
+    entrega === "caixa"
+  ){
+
+    const endereco =
+    document.getElementById(
+      "endereco"
+    ).value.trim();
+
+
+    const numero =
+    document.getElementById(
+      "numero"
+    ).value.trim();
+
+
+    const bairro =
+    document.getElementById(
+      "bairro"
+    ).value.trim();
+
+
+    if(
+      !endereco ||
+      !numero ||
+      !bairro
+    ){
+
+      alert(
+        "Preencha o endereço completo para entrega."
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  if(
+    entrega === "barcos"
+  ){
+
+    const destino =
+    document.getElementById(
+      "barcoDestino"
+    ).value.trim();
+
+
+    if(
+      !destino
+    ){
+
+      alert(
+        "Informe o barco, jato ou destino da entrega."
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  const subtotal =
+  calcularSubtotal();
+
+
+  const total =
+  subtotal +
+  valorFrete;
+
+
+  const numeroPedido =
+  "SALI-" +
+  Date.now()
+  .toString()
+  .slice(-6);
+
+
+  document.getElementById(
+    "numeroPedido"
+  ).textContent =
+  "Pedido #" +
+  numeroPedido;
+
+
+  document.getElementById(
+    "resumoSucesso"
+  ).innerHTML =
+  "Total do pedido: <strong>" +
+  moeda(total) +
+  "</strong>";
+
+
+  if(
+    !window.supabaseClient
+  ){
+
+    alert(
+      "Aguarde alguns segundos e tente confirmar o pedido novamente."
+    );
+
+    return;
+
+  }
+
+
+  let enderecoPedido =
+  "Retirada na loja";
+
+
+  if(
+    entrega === "cidade" ||
+    entrega === "bola" ||
+    entrega === "caixa"
+  ){
+
+    const ruaPedido =
+    document.getElementById(
+      "endereco"
+    )?.value.trim() || "";
+
+
+    const numeroPedidoEndereco =
+    document.getElementById(
+      "numero"
+    )?.value.trim() || "";
+
+
+    const bairroPedido =
+    document.getElementById(
+      "bairro"
+    )?.value.trim() || "";
+
+
+    const complementoPedido =
+    document.getElementById(
+      "complemento"
+    )?.value.trim() || "";
+
+
+    enderecoPedido =
+    ruaPedido +
+    ", nº " +
+    numeroPedidoEndereco +
+    ", " +
+    bairroPedido +
+    (
+      complementoPedido
+      ?
+      " — " +
+      complementoPedido
+      :
+      ""
+    );
+
+  }
+
+
+  if(
+    entrega === "barcos"
+  ){
+
+    const destino =
+    document.getElementById(
+      "barcoDestino"
+    )?.value.trim() ||
+    "Barco/Jato";
+
+
+    const observacao =
+    document.getElementById(
+      "barcoObservacao"
+    )?.value.trim() ||
+    "";
+
+
+    enderecoPedido =
+    destino +
+    (
+      observacao
+      ?
+      " — " +
+      observacao
+      :
+      ""
+    );
+
+  }
+
+
+  const pagamentoSelecionado =
+  document.querySelector(
+    'input[name="pagamento"]:checked'
+  )?.value
+  ||
+  document.getElementById(
+    "pagamento"
+  )?.value
+  ||
+  "Não informado";
+
+
+  const {
+    error:erroPedido
+  } =
+  await window.supabaseClient
+  .from(
+    "Pedidos"
+  )
+  .insert([
+    {
+      numero_pedido:
+      numeroPedido,
+
+      nome_cliente:
+      nome,
+
+      Telefone:
+      telefone,
+
+      endereco:
+      enderecoPedido,
+
+      tipo_entrega:
+      entrega,
+
+      valor_entrega:
+      valorFrete,
+
+      produtos:
+      JSON.stringify(
+        carrinho
+      ),
+
+      subtotal:
+      subtotal,
+
+      total:
+      total,
+
+      forma_pagamento:
+      pagamentoSelecionado,
+
+      status:
+      "Novo"
+    }
+  ]);
+
+
+  if(
+    erroPedido
+  ){
+
+    console.error(
+      "Erro ao salvar pedido:",
+      erroPedido
+    );
+
+
+    alert(
+      "ERRO SUPABASE: " +
+      (
+        erroPedido?.message
+        ||
+        JSON.stringify(
+          erroPedido
+        )
+      )
+    );
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "checkout"
+  ).classList.remove(
+    "ativo"
+  );
+
+
+  document.getElementById(
+    "sucesso"
+  ).classList.add(
+    "ativo"
+  );
+
+
+  carrinho = [];
+
+
+  valorFrete = 0;
+
+
+  tipoEntrega = "";
+
+
+  salvarCarrinho();
 
 }
 
-if(!telefone){
 
-alert(
-"Digite seu WhatsApp."
-);
-
-return;
-
-}
-
-if(!entrega){
-
-alert(
-"Escolha uma opção de entrega ou retirada."
-);
-
-return;
-
-}
-
-if(
-entrega === "cidade" ||
-entrega === "bola" ||
-entrega === "caixa"
-){
-
-const endereco =
-document.getElementById(
-"endereco"
-).value.trim();
-
-const numero =
-document.getElementById(
-"numero"
-).value.trim();
-
-const bairro =
-document.getElementById(
-"bairro"
-).value.trim();
-
-if(
-!endereco ||
-!numero ||
-!bairro
-){
-
-alert(
-"Preencha o endereço completo para entrega."
-);
-
-return;
-
-}
-
-}
-
-if(entrega === "barcos"){
-
-const destino =
-document.getElementById(
-"barcoDestino"
-).value.trim();
-
-if(!destino){
-
-alert(
-"Informe o barco, jato ou destino da entrega."
-);
-
-return;
-
-}
-
-}
-
-const subtotal =
-calcularSubtotal();
-
-const total =
-subtotal +
-valorFrete;
-
-const numeroPedido =
-"SALI-" +
-Date.now()
-.toString()
-.slice(-6);
-
-document.getElementById(
-"numeroPedido"
-).textContent =
-"Pedido #" +
-numeroPedido;
-
-document.getElementById(
-"resumoSucesso"
-).innerHTML =
-"Total do pedido: <strong>" +
-moeda(total) +
-"</strong>";
-
-if (!window.supabaseClient) {
-
-alert(
-"Aguarde alguns segundos e tente confirmar o pedido novamente."
-);
-
-return;
-
-}
-
-let enderecoPedido =
-"Retirada na loja";
-
-if (
-entrega === "cidade" ||
-entrega === "bola" ||
-entrega === "caixa"
-) {
-
-const ruaPedido =
-document.getElementById(
-"endereco"
-)?.value.trim() || "";
-
-const numeroPedidoEndereco =
-document.getElementById(
-"numero"
-)?.value.trim() || "";
-
-const bairroPedido =
-document.getElementById(
-"bairro"
-)?.value.trim() || "";
-
-enderecoPedido =
-ruaPedido +
-", nº " +
-numeroPedidoEndereco +
-", " +
-bairroPedido;
-
-}
-
-if (entrega === "barcos") {
-
-enderecoPedido =
-document.getElementById(
-"barcoDestino"
-)?.value.trim() ||
-"Barco/Jato";
-
-}
-
-const pagamentoSelecionado =
-document.querySelector(
-'input[name="pagamento"]:checked'
-)?.value ||
-document.getElementById(
-"pagamento"
-)?.value ||
-"Não informado";
-
-const { error: erroPedido } =
-await window.supabaseClient
-.from("Pedidos")
-.insert([
-{
-numero_pedido: numeroPedido,
-nome_cliente: nome,
-Telefone: telefone,
-endereço: enderecoPedido,
-tipo_entrega: entrega,
-valor_entrega: valorFrete,
-produtos: JSON.stringify(carrinho),
-subtotal: subtotal,
-total: total,
-forma_pagamento: pagamentoSelecionado,
-status: "Novo"
-}
-]);
-
-if (erroPedido) {
-
-console.error(
-"Erro ao salvar pedido:",
-erroPedido
-);
-
-alert(
-"ERRO SUPABASE: " +
-(
-erroPedido?.message ||
-JSON.stringify(erroPedido)
-)
-);
-
-return;
-
-}
-
-document.getElementById(
-"checkout"
-).classList.remove(
-"ativo"
-);
-
-document.getElementById(
-"sucesso"
-).classList.add(
-"ativo"
-);
-
-carrinho = [];
-
-valorFrete = 0;
-
-tipoEntrega = "";
-
-salvarCarrinho();
-
-}
-
-/* VOLTAR */
 
 function voltarLoja(){
 
-document.getElementById(
-"sucesso"
-).classList.remove(
-"ativo"
-);
+  document.getElementById(
+    "sucesso"
+  ).classList.remove(
+    "ativo"
+  );
 
-document.getElementById(
-"nome"
-).value = "";
 
-document.getElementById(
-"telefone"
-).value = "";
+  document.getElementById(
+    "nome"
+  ).value =
+  "";
 
-document.getElementById(
-"entrega"
-).value = "";
 
-document.getElementById(
-"enderecoArea"
-).style.display =
-"none";
+  document.getElementById(
+    "telefone"
+  ).value =
+  "";
 
-document.getElementById(
-"barcoArea"
-).style.display =
-"none";
 
-document.getElementById(
-"freteInfo"
-).style.display =
-"none";
+  document.getElementById(
+    "entrega"
+  ).value =
+  "";
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+
+  document.getElementById(
+    "enderecoArea"
+  ).style.display =
+  "none";
+
+
+  document.getElementById(
+    "barcoArea"
+  ).style.display =
+  "none";
+
+
+  document.getElementById(
+    "freteInfo"
+  ).style.display =
+  "none";
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
+
 
 /* INICIAR */
 
 atualizarCarrinho();
+
 
 /* SUPABASE */
 
 const SUPABASE_URL =
 "https://uubslcjoybeehinnwhtg.supabase.co";
 
+
 const SUPABASE_KEY =
 "sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
 
+
 const supabaseScript =
 document.createElement(
-"script"
+  "script"
 );
+
 
 supabaseScript.src =
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
 
+
 supabaseScript.onload =
 () => {
 
-window.supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+  window.supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 };
 
+
 document.head.appendChild(
-supabaseScript
+  supabaseScript
 );
 
 </script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="produtos.js?v=13"></script>
+<script
+  src="produtos.js?v=13"
+></script>
+
 </body>
 </html>
