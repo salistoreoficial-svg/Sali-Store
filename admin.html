@@ -12,11 +12,11 @@
 
 <meta
   name="theme-color"
-  content="#000000"
+  content="#ffffff"
 >
 
-<title>
-  Painel SALI STORE
+<title id="tituloPagina">
+  SALI STORE | Moda Feminina
 </title>
 
 
@@ -28,2884 +28,1030 @@
   padding:0;
 }
 
-
 :root{
-
-  --rosa:#e52d86;
-
-  --rosa-escuro:#bd1762;
-
-  --rosa-claro:#fff0f7;
-
-  --preto:#000;
-
-  --cinza:#f6f6f6;
-
-  --borda:#e7e7e7;
-
-  --verde:#1d7a35;
-
-  --amarelo:#a86200;
-
-  --vermelho:#bd0000;
-
+  --pink:#d92f82;
+  --pink-dark:#a91c5f;
+  --pink-soft:#fff3f8;
+  --black:#111111;
+  --text:#1b1b1e;
+  --muted:#727278;
+  --line:#e9e9ec;
+  --bg:#f7f7f8;
+  --white:#ffffff;
 }
 
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-
   font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "SF Pro Display",
+  "Segoe UI",
   Arial,
-  Helvetica,
   sans-serif;
 
-  background:#f5f5f5;
-
-  color:#111;
-
-  padding-bottom:82px;
-
+  background:var(--white);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
 }
-
 
 button,
 input,
-textarea,
-select{
+select,
+textarea{
   font:inherit;
 }
-
 
 button{
   cursor:pointer;
 }
 
-
 a{
-  color:inherit;
   text-decoration:none;
+  color:inherit;
 }
 
 
-.esconder{
-  display:none!important;
+/* TOPO */
+
+.topo{
+  background:var(--black);
+  color:#fff;
+  text-align:center;
+  padding:9px 15px;
+  font-size:11px;
+  font-weight:650;
+  letter-spacing:.02em;
 }
 
 
-/* =========================================
-   LOGIN
-========================================= */
+/* CABEÇALHO */
 
-.login-tela{
+header{
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
 
-  min-height:100vh;
+.cabecalho{
+  max-width:1200px;
+  margin:auto;
+  padding:11px 16px;
+}
 
+.logo-area{
   display:flex;
-
+  justify-content:space-between;
   align-items:center;
+  gap:14px;
+}
 
+.logo-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:56px;
+  height:56px;
+  object-fit:cover;
+  border-radius:14px;
+  background:#111;
+}
+
+.brand-copy strong{
+  display:block;
+  font-size:17px;
+  letter-spacing:.01em;
+}
+
+.brand-copy span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:2px;
+}
+
+.carrinho-botao{
+  border:1px solid var(--black);
+  background:var(--black);
+  color:#fff;
+  padding:10px 13px;
+  border-radius:9px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.contador{
+  background:var(--pink);
+  min-width:21px;
+  height:21px;
+  padding:0 5px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
   justify-content:center;
+  margin-left:5px;
+  font-size:10px;
+}
 
-  padding:20px;
+nav{
+  display:flex;
+  gap:22px;
+  overflow-x:auto;
+  white-space:nowrap;
+  padding-top:12px;
+  padding-bottom:2px;
+}
+
+nav::-webkit-scrollbar{
+  display:none;
+}
+
+nav a{
+  font-size:12px;
+  font-weight:750;
+  color:#444;
+}
+
+
+/* HERO */
+
+.hero{
+  min-height:520px;
+  display:flex;
+  align-items:flex-end;
+  padding:34px 18px 42px;
 
   background:
   linear-gradient(
+    180deg,
+    rgba(0,0,0,.04),
+    rgba(0,0,0,.52)
+  ),
+  linear-gradient(
     135deg,
-    #ffd3e5,
-    #ff88bb
+    #f2d4e3,
+    #d891b6 45%,
+    #1b1b1d 115%
   );
 
+  position:relative;
+  overflow:hidden;
+  background-position:center;
+  background-size:cover;
 }
 
-
-.login-box{
-
-  width:100%;
-
-  max-width:420px;
-
-  background:#fff;
-
-  padding:30px 22px;
-
-  border-radius:20px;
-
-  box-shadow:
-  0 10px 30px
-  rgba(0,0,0,.15);
-
-}
-
-
-.login-logo{
-
-  text-align:center;
-
-  margin-bottom:25px;
-
-}
-
-
-.login-logo h1{
-
-  color:var(--rosa);
-
-  font-size:34px;
-
-}
-
-
-.login-logo p{
-
-  margin-top:8px;
-
-  color:#666;
-
-}
-
-
-.erro-login{
-
-  color:#c40000;
-
-  font-size:14px;
-
-  margin-top:14px;
-
-  text-align:center;
-
-}
-
-
-.botao-login{
-
-  width:100%;
-
-  border:0;
-
-  background:#000;
-
-  color:#fff;
-
-  padding:15px;
-
-  border-radius:12px;
-
+.hero:before{
+  content:"SALI";
+  position:absolute;
+  right:-18px;
+  top:30px;
+  font-size:120px;
   font-weight:900;
-
-  margin-top:8px;
-
+  letter-spacing:-.08em;
+  color:rgba(255,255,255,.16);
+  transform:rotate(-90deg);
 }
 
-
-/* =========================================
-   CAMPOS
-========================================= */
-
-.campo{
-
-  margin-bottom:15px;
-
-}
-
-
-.campo label{
-
-  display:block;
-
-  font-size:14px;
-
-  font-weight:800;
-
-  margin-bottom:7px;
-
-}
-
-
-.campo input,
-.campo textarea,
-.campo select{
-
-  width:100%;
-
-  border:
-  1px solid #ccc;
-
-  border-radius:10px;
-
-  padding:13px;
-
-  background:#fff;
-
-  outline:none;
-
-}
-
-
-.campo textarea{
-
-  min-height:100px;
-
-  resize:vertical;
-
-}
-
-
-.campo input:focus,
-.campo textarea:focus,
-.campo select:focus{
-
-  border-color:
-  var(--rosa);
-
-}
-
-
-.duplo{
-
-  display:grid;
-
-  grid-template-columns:
-  1fr 1fr;
-
-  gap:12px;
-
-}
-
-
-.foto-ajuda{
-
-  color:#777;
-
-  font-size:12px;
-
-  margin-top:8px;
-
-  line-height:1.45;
-
-}
-
-
-/* =========================================
-   APP
-========================================= */
-
-.painel{
+.hero.com-banner:before{
   display:none;
 }
 
-
-.topo{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:500;
-
-  background:#000;
-
-  color:#fff;
-
-  padding:12px 15px;
-
-  padding-top:
-  max(
-    12px,
-    env(safe-area-inset-top)
-  );
-
-}
-
-
-.topo-conteudo{
-
-  max-width:1180px;
-
+.hero-conteudo{
+  max-width:1200px;
+  width:100%;
   margin:auto;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:12px;
-
+  position:relative;
+  z-index:1;
 }
 
-
-.marca-admin{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-}
-
-
-.marca-icone{
-
-  width:38px;
-
-  height:38px;
-
-  border-radius:11px;
-
-  background:
-  var(--rosa);
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-weight:900;
-
-}
-
-
-.marca-admin h1{
-
-  font-size:18px;
-
-}
-
-
-.marca-admin small{
-
-  display:block;
-
-  color:#aaa;
-
-  font-size:11px;
-
-  margin-top:2px;
-
-}
-
-
-.sair{
-
-  background:#2a2a2a;
-
+.hero-copy{
+  max-width:550px;
   color:#fff;
-
-  border:0;
-
-  padding:9px 12px;
-
-  border-radius:9px;
-
-  font-weight:800;
-
 }
 
-
-.conteudo{
-
-  max-width:1180px;
-
-  margin:auto;
-
-  padding:18px 15px 42px;
-
-}
-
-
-.pagina{
-  display:none;
-}
-
-
-.pagina.ativa{
-  display:block;
-}
-
-
-.titulo-pagina{
-
-  margin-bottom:18px;
-
-}
-
-
-.titulo-pagina h2{
-
-  font-size:25px;
-
-  margin-bottom:5px;
-
-}
-
-
-.titulo-pagina p{
-
-  color:#666;
-
-  line-height:1.45;
-
-}
-
-
-/* =========================================
-   NAVEGAÇÃO
-========================================= */
-
-.nav-admin{
-
-  position:fixed;
-
-  left:0;
-
-  right:0;
-
-  bottom:0;
-
-  z-index:1000;
-
-  background:#fff;
-
-  border-top:
-  1px solid #ddd;
-
-  padding:
-  6px 6px
-  max(
-    7px,
-    env(safe-area-inset-bottom)
-  );
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(5,1fr);
-
-  gap:2px;
-
-}
-
-
-.nav-item{
-
-  border:0;
-
-  background:transparent;
-
-  padding:7px 2px;
-
-  border-radius:10px;
-
+.hero-eyebrow{
+  display:inline-block;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.35);
+  padding:7px 10px;
+  border-radius:999px;
   font-size:10px;
-
   font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:15px;
+}
 
-  color:#777;
+.hero h1{
+  font-size:48px;
+  line-height:.98;
+  letter-spacing:-.055em;
+  margin-bottom:16px;
+}
 
+.hero p{
+  font-size:15px;
+  line-height:1.55;
+  color:rgba(255,255,255,.9);
+  max-width:450px;
+  margin-bottom:22px;
+}
+
+.hero-actions{
   display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+}
 
-  flex-direction:column;
+.botao-principal,
+.botao-secundario{
+  border:0;
+  padding:12px 16px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:850;
+}
 
-  align-items:center;
+.botao-principal{
+  background:#fff;
+  color:#111;
+}
 
-  gap:3px;
-
+.botao-secundario{
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.55);
 }
 
 
-.nav-item .icone{
+/* BENEFÍCIOS */
 
-  font-size:20px;
+.beneficios{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  border-bottom:1px solid var(--line);
+}
 
+.beneficio{
+  padding:17px 14px;
+  border-right:1px solid var(--line);
+}
+
+.beneficio:nth-child(2n){
+  border-right:0;
+}
+
+.beneficio:nth-child(-n+2){
+  border-bottom:1px solid var(--line);
+}
+
+.beneficio strong{
+  display:block;
+  font-size:11px;
+}
+
+.beneficio span{
+  display:block;
+  color:var(--muted);
+  font-size:9.5px;
+  margin-top:3px;
+  line-height:1.4;
+}
+
+
+/* CATEGORIAS */
+
+.categorias{
+  max-width:1200px;
+  margin:auto;
+  padding:42px 16px 20px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.section-head h2{
+  font-size:28px;
+  letter-spacing:-.035em;
+}
+
+.section-head p{
+  font-size:11px;
+  color:var(--muted);
+  max-width:360px;
+  line-height:1.5;
+}
+
+.categorias-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.cat{
+  min-height:185px;
+  border-radius:13px;
+  padding:16px;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#f5d5e4,#d57aa6);
+}
+
+.cat:nth-child(2){
+  background:linear-gradient(145deg,#eee,#c9c9cd);
+}
+
+.cat:nth-child(3){
+  background:linear-gradient(145deg,#f8e7ef,#bd6e97);
+}
+
+.cat:nth-child(4){
+  background:linear-gradient(145deg,#ddd,#999);
+}
+
+.cat:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.48));
+}
+
+.cat span{
+  position:relative;
+  color:#fff;
+  font-size:15px;
+  font-weight:850;
+}
+
+.cat small{
+  display:block;
+  font-size:9px;
+  font-weight:650;
+  margin-top:4px;
+  color:rgba(255,255,255,.8);
+}
+
+
+/* PRODUTOS */
+
+.produtos{
+  max-width:1200px;
+  margin:auto;
+  padding:42px 16px;
+}
+
+.produtos h2{
+  text-align:left;
+  font-size:30px;
+  letter-spacing:-.04em;
+  margin-bottom:6px;
+}
+
+.produtos-sub{
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:22px;
+}
+
+.grade{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.produto{
+  background:#fff;
+  border:0;
+  border-radius:0;
+  overflow:hidden;
+  box-shadow:none;
+}
+
+.produto > img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
+  background:#f2f2f3;
+}
+
+.info{
+  padding:10px 2px 14px;
+}
+
+.info h3{
+  font-size:13px;
+  margin-bottom:6px;
+  font-weight:700;
+  line-height:1.3;
+}
+
+.preco{
+  color:#111;
+  font-size:16px;
+  font-weight:850;
+  margin-bottom:10px;
+}
+
+.adicionar{
+  width:100%;
+  border:1px solid var(--black);
+  background:var(--black);
+  color:#fff;
+  padding:10px 8px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:850;
+}
+
+
+/* EDITORIAL */
+
+.editorial{
+  margin:18px 0 0;
+  background:var(--black);
+  color:#fff;
+  padding:48px 18px;
+}
+
+.editorial-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  gap:20px;
+}
+
+.editorial h2{
+  font-size:34px;
   line-height:1;
+  letter-spacing:-.045em;
+}
 
+.editorial p{
+  color:#c8c8cc;
+  font-size:12px;
+  line-height:1.65;
+  max-width:520px;
+}
+
+.editorial .line{
+  width:48px;
+  height:3px;
+  background:var(--pink);
+  margin-bottom:14px;
 }
 
 
-.nav-item.ativo{
+/* CTA */
 
-  color:var(--rosa);
+.cta{
+  max-width:1200px;
+  margin:auto;
+  padding:42px 16px;
+}
 
-  background:
-  var(--rosa-claro);
+.cta-card{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:24px;
+  background:linear-gradient(135deg,#fff,#fff7fb);
+}
 
+.cta-card h3{
+  font-size:22px;
+  letter-spacing:-.03em;
+  margin-bottom:8px;
+}
+
+.cta-card p{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.55;
+  margin-bottom:14px;
+}
+
+.cta-card button{
+  border:0;
+  background:var(--pink);
+  color:#fff;
+  padding:10px 13px;
+  border-radius:8px;
+  font-weight:800;
+  font-size:10px;
 }
 
 
-/* =========================================
-   BLOCOS
-========================================= */
+/* CARRINHO */
+
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:50;
+}
+
+.overlay.ativo{
+  display:block;
+}
+
+.carrinho{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:min(93%,430px);
+  height:100%;
+  background:#fff;
+  z-index:60;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
+
+.carrinho.aberto{
+  right:0;
+}
+
+.carrinho-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px;
+  border-bottom:1px solid var(--line);
+}
+
+.carrinho-topo h2{
+  font-size:18px;
+}
+
+.fechar{
+  width:36px;
+  height:36px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:#f5f5f6;
+  font-size:20px;
+}
+
+.itens{
+  flex:1;
+  overflow-y:auto;
+  padding:14px;
+}
+
+.vazio{
+  text-align:center;
+  color:#777;
+  padding:55px 20px;
+}
+
+.item-carrinho{
+  display:flex;
+  gap:11px;
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.item-carrinho img{
+  width:76px;
+  height:100px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.item-dados{
+  flex:1;
+}
+
+.item-dados h4{
+  margin-bottom:5px;
+  font-size:13px;
+}
+
+.item-dados strong{
+  color:var(--pink);
+  font-size:13px;
+}
+
+.item-detalhe{
+  display:block;
+  color:#777;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.quantidade{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-top:9px;
+  flex-wrap:wrap;
+}
+
+.quantidade button{
+  width:31px;
+  height:31px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:7px;
+  font-size:18px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.quantidade span{
+  min-width:31px;
+  height:31px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ddd;
+  border-radius:7px;
+  font-weight:700;
+  font-size:11px;
+}
+
+.remover{
+  display:block;
+  width:max-content;
+  height:auto;
+  padding:6px 9px;
+  margin-top:8px;
+  border:0;
+  background:#fff0f0;
+  color:#c90000;
+  font-size:10px;
+  font-weight:750;
+  border-radius:6px;
+}
+
+.carrinho-rodape{
+  border-top:1px solid var(--line);
+  padding:16px;
+}
+
+.total-linha{
+  display:flex;
+  justify-content:space-between;
+  font-size:17px;
+  font-weight:850;
+  margin-bottom:13px;
+}
+
+.finalizar{
+  width:100%;
+  border:0;
+  background:var(--pink);
+  color:#fff;
+  padding:14px;
+  border-radius:9px;
+  font-weight:850;
+}
+
+
+/* CHECKOUT */
+
+.checkout{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:var(--bg);
+  z-index:80;
+  overflow-y:auto;
+}
+
+.checkout.ativo{
+  display:block;
+}
+
+.checkout-conteudo{
+  max-width:620px;
+  margin:auto;
+  padding:20px 15px 60px;
+}
+
+.checkout-topo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.checkout-topo h2{
+  font-size:24px;
+  letter-spacing:-.03em;
+}
+
+.voltar{
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:50%;
+  font-size:18px;
+}
 
 .bloco{
-
   background:#fff;
-
-  border-radius:16px;
-
-  padding:17px;
-
-  margin-bottom:16px;
-
-  box-shadow:
-  0 3px 12px
-  rgba(0,0,0,.05);
-
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:16px;
+  margin-bottom:14px;
 }
-
 
 .bloco h3{
-
-  margin-bottom:15px;
-
-}
-
-
-.subtitulo{
-
-  margin:
-  25px 0 12px;
-
-  padding-top:20px;
-
-  border-top:
-  1px solid #eee;
-
-}
-
-
-.subtitulo h4{
-
-  font-size:18px;
-
-  margin-bottom:5px;
-
-}
-
-
-.subtitulo p{
-
-  color:#777;
-
-  font-size:13px;
-
-  line-height:1.5;
-
-}
-
-
-/* =========================================
-   DASHBOARD
-========================================= */
-
-.dashboard-grade{
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(2,1fr);
-
-  gap:11px;
-
-  margin-bottom:16px;
-
-}
-
-
-.dash-card{
-
-  background:#fff;
-
-  border-radius:15px;
-
-  padding:15px;
-
-  box-shadow:
-  0 3px 12px
-  rgba(0,0,0,.05);
-
-  min-height:104px;
-
-}
-
-
-.dash-card small{
-
-  color:#777;
-
-  font-weight:700;
-
-}
-
-
-.dash-card strong{
-
-  display:block;
-
-  font-size:25px;
-
-  margin-top:9px;
-
-}
-
-
-.dash-card .mini{
-
-  display:block;
-
-  color:#777;
-
-  font-size:11px;
-
-  margin-top:5px;
-
-}
-
-
-.dash-card.destaque{
-
-  background:#000;
-
-  color:#fff;
-
-}
-
-
-.dash-card.destaque small,
-.dash-card.destaque .mini{
-
-  color:#bbb;
-
-}
-
-
-.atalhos{
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(2,1fr);
-
-  gap:10px;
-
-}
-
-
-.atalho{
-
-  border:
-  1px solid #eee;
-
-  background:#fff;
-
-  border-radius:13px;
-
-  padding:15px;
-
-  text-align:left;
-
-  font-weight:900;
-
-}
-
-
-.atalho span{
-
-  display:block;
-
-  font-size:24px;
-
-  margin-bottom:8px;
-
-}
-
-
-.alerta-box{
-
-  padding:13px;
-
-  border-radius:12px;
-
-  margin-top:10px;
-
-  font-size:13px;
-
-  line-height:1.5;
-
-}
-
-
-.alerta-box.rosa{
-
-  background:
-  var(--rosa-claro);
-
-  color:#8f1249;
-
-}
-
-
-.alerta-box.amarelo{
-
-  background:#fff7df;
-
-  color:#795000;
-
-}
-
-
-.alerta-box.verde{
-
-  background:#e8f7eb;
-
-  color:#17682b;
-
-}
-
-
-/* =========================================
-   PEDIDOS
-========================================= */
-
-.filtros-scroll{
-
-  display:flex;
-
-  gap:8px;
-
-  overflow-x:auto;
-
-  padding:
-  2px 1px 10px;
-
-  margin-bottom:8px;
-
-  -webkit-overflow-scrolling:
-  touch;
-
-}
-
-
-.filtro-pedido{
-
-  flex:0 0 auto;
-
-  border:
-  1px solid #ddd;
-
-  background:#fff;
-
-  border-radius:999px;
-
-  padding:9px 12px;
-
-  font-size:12px;
-
-  font-weight:900;
-
-}
-
-
-.filtro-pedido.ativo{
-
-  background:#000;
-
-  color:#fff;
-
-  border-color:#000;
-
-}
-
-
-.lista-pedidos{
-
-  display:grid;
-
-  gap:12px;
-
-}
-
-
-.pedido-card{
-
-  background:#fff;
-
-  border-radius:15px;
-
-  padding:15px;
-
-  border:
-  1px solid #eee;
-
-  box-shadow:
-  0 2px 8px
-  rgba(0,0,0,.04);
-
-}
-
-
-.pedido-topo{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:10px;
-
-  align-items:flex-start;
-
-}
-
-
-.pedido-numero{
-
-  font-weight:900;
-
-  font-size:16px;
-
-}
-
-
-.pedido-data{
-
-  font-size:11px;
-
-  color:#888;
-
-  margin-top:4px;
-
-}
-
-
-.pedido-total{
-
-  font-weight:900;
-
-  color:var(--rosa);
-
-  font-size:18px;
-
-}
-
-
-.pedido-cliente{
-
-  margin-top:12px;
-
-  font-weight:800;
-
-}
-
-
-.pedido-resumo{
-
-  font-size:12px;
-
-  color:#666;
-
-  line-height:1.55;
-
-  margin-top:7px;
-
-}
-
-
-.status-pedido{
-
-  display:inline-block;
-
-  margin-top:10px;
-
-  padding:6px 10px;
-
-  border-radius:999px;
-
-  font-size:11px;
-
-  font-weight:900;
-
-  background:#f1f1f1;
-
-  color:#555;
-
-}
-
-
-.status-pedido.novo{
-
-  background:#fff1f7;
-
-  color:#b31860;
-
-}
-
-
-.status-pedido.confirmado{
-
-  background:#e8f2ff;
-
-  color:#1d5b9e;
-
-}
-
-
-.status-pedido.separacao{
-
-  background:#fff6df;
-
-  color:#8b5b00;
-
-}
-
-
-.status-pedido.entrega{
-
-  background:#eee9ff;
-
-  color:#5d3aa8;
-
-}
-
-
-.status-pedido.entregue{
-
-  background:#e6f7ea;
-
-  color:#1c7433;
-
-}
-
-
-.status-pedido.cancelado{
-
-  background:#ffe9e9;
-
-  color:#ad0000;
-
-}
-
-
-.pedido-acoes{
-
-  display:flex;
-
-  gap:8px;
-
-  flex-wrap:wrap;
-
-  margin-top:12px;
-
-}
-
-
-.pedido-acoes button{
-
-  border:0;
-
-  border-radius:9px;
-
-  padding:9px 11px;
-
-  font-size:12px;
-
-  font-weight:900;
-
-}
-
-
-.ver-pedido{
-
-  background:#000;
-
-  color:#fff;
-
-}
-
-
-.avancar-pedido{
-
-  background:
-  var(--rosa-claro);
-
-  color:
-  var(--rosa-escuro);
-
-}
-
-
-.cancelar-pedido{
-
-  background:#ffeaea;
-
-  color:#b00000;
-
-}
-
-
-.sem-dados{
-
-  text-align:center;
-
-  padding:32px 15px;
-
-  color:#777;
-
-}
-
-
-/* =========================================
-   MODAL PEDIDO
-========================================= */
-
-.modal-pedido-overlay{
-
-  position:fixed;
-
-  inset:0;
-
-  background:
-  rgba(0,0,0,.68);
-
-  z-index:3000;
-
-  display:none;
-
-  align-items:flex-end;
-
-  justify-content:center;
-
-  padding:8px;
-
-}
-
-
-.modal-pedido-overlay.ativo{
-  display:flex;
-}
-
-
-.modal-pedido{
-
-  width:100%;
-
-  max-width:600px;
-
-  background:#fff;
-
-  border-radius:
-  22px 22px 16px 16px;
-
-  max-height:92vh;
-
-  overflow-y:auto;
-
-  padding:18px;
-
-  position:relative;
-
-}
-
-
-.modal-fechar{
-
-  position:absolute;
-
-  right:14px;
-
-  top:14px;
-
-  width:38px;
-
-  height:38px;
-
-  border-radius:50%;
-
-  border:0;
-
-  background:#000;
-
-  color:#fff;
-
-  font-size:22px;
-
-  font-weight:900;
-
-}
-
-
-.modal-pedido h3{
-
-  padding-right:48px;
-
-  margin-bottom:4px;
-
-}
-
-
-.modal-pedido .numero{
-
-  color:var(--rosa);
-
-  font-weight:900;
-
-  margin-bottom:17px;
-
-}
-
-
-.detalhe-box{
-
-  background:#f7f7f7;
-
-  border-radius:12px;
-
-  padding:12px;
-
-  margin-bottom:10px;
-
-}
-
-
-.detalhe-box strong{
-
-  display:block;
-
-  margin-bottom:5px;
-
-}
-
-
-.item-pedido{
-
-  display:grid;
-
-  grid-template-columns:
-  54px 1fr auto;
-
-  gap:10px;
-
-  align-items:center;
-
-  padding:10px 0;
-
-  border-bottom:
-  1px solid #eee;
-
-}
-
-
-.item-pedido:last-child{
-  border-bottom:0;
-}
-
-
-.item-pedido img{
-
-  width:54px;
-
-  height:68px;
-
-  object-fit:cover;
-
-  border-radius:8px;
-
-  background:#eee;
-
-}
-
-
-.item-pedido .nome{
-
-  font-size:13px;
-
-  font-weight:800;
-
-  line-height:1.3;
-
-}
-
-
-.item-pedido .qtd{
-
-  font-size:11px;
-
-  color:#777;
-
-  margin-top:4px;
-
-}
-
-
-.item-pedido .valor{
-
-  font-size:13px;
-
-  font-weight:900;
-
-}
-
-
-.linha-total{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:10px;
-
-  padding:6px 0;
-
   font-size:14px;
-
-}
-
-
-.linha-total.final{
-
-  font-size:18px;
-
-  font-weight:900;
-
-  border-top:
-  1px solid #ddd;
-
-  margin-top:5px;
-
-  padding-top:11px;
-
-}
-
-
-.status-select{
-
-  width:100%;
-
-  padding:12px;
-
-  border:
-  1px solid #ccc;
-
-  border-radius:10px;
-
-  background:#fff;
-
-}
-
-
-.salvar-status{
-
-  width:100%;
-
-  margin-top:10px;
-
-  border:0;
-
-  background:#000;
-
-  color:#fff;
-
-  padding:14px;
-
-  border-radius:11px;
-
-  font-weight:900;
-
-}
-
-
-/* =========================================
-   PRODUTOS
-========================================= */
-
-.escolher-foto{
-
-  display:block;
-
-  width:100%;
-
-  background:#111;
-
-  color:#fff;
-
-  padding:14px;
-
-  text-align:center;
-
-  border-radius:11px;
-
-  font-weight:900;
-
-  cursor:pointer;
-
-}
-
-
-#produtoFotosArquivos{
-  display:none;
-}
-
-
-.galeria-edicao{
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(2,1fr);
-
-  gap:12px;
-
-  margin-top:15px;
-
-}
-
-
-.foto-card{
-
-  border:
-  1px solid #ddd;
-
-  border-radius:12px;
-
-  padding:8px;
-
-  background:#fff;
-
-  position:relative;
-
-}
-
-
-.foto-card.principal{
-
-  border:
-  2px solid
-  var(--rosa);
-
-}
-
-
-.foto-card img{
-
-  width:100%;
-
-  aspect-ratio:3/4;
-
-  object-fit:cover;
-
-  border-radius:9px;
-
-  display:block;
-
-  background:#eee;
-
-}
-
-
-.badge-principal{
-
-  position:absolute;
-
-  top:14px;
-
-  left:14px;
-
-  background:
-  var(--rosa);
-
-  color:#fff;
-
-  padding:5px 8px;
-
-  border-radius:20px;
-
-  font-size:10px;
-
-  font-weight:900;
-
-}
-
-
-.foto-acoes{
-
-  display:grid;
-
-  gap:6px;
-
-  margin-top:8px;
-
-}
-
-
-.foto-acoes button{
-
-  border:0;
-
-  border-radius:8px;
-
-  padding:8px;
-
-  font-size:11px;
-
-  font-weight:800;
-
-}
-
-
-.definir-principal{
-
-  background:
-  var(--rosa-claro);
-
-  color:
-  var(--rosa-escuro);
-
-}
-
-
-.excluir-foto{
-
-  background:#ffe8e8;
-
-  color:#b80000;
-
-}
-
-
-.opcoes-area{
-
-  display:grid;
-
-  gap:15px;
-
-}
-
-
-.opcao-card{
-
-  border:
-  1px solid #ddd;
-
-  border-radius:16px;
-
-  padding:15px;
-
-  background:#fafafa;
-
-}
-
-
-.opcao-topo{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:10px;
-
   margin-bottom:14px;
-
-}
-
-
-.remover-opcao{
-
-  border:0;
-
-  background:#ffe5e5;
-
-  color:#bd0000;
-
-  padding:8px 10px;
-
-  border-radius:8px;
-
-  font-weight:800;
-
-}
-
-
-.tipo-opcao{
-
-  display:grid;
-
-  grid-template-columns:
-  1fr 1fr;
-
-  gap:8px;
-
-  margin-bottom:15px;
-
-}
-
-
-.tipo-opcao button{
-
-  padding:12px;
-
-  border:
-  2px solid #ddd;
-
-  border-radius:10px;
-
-  background:#fff;
-
-  font-weight:900;
-
-}
-
-
-.tipo-opcao button.selecionado{
-
-  border-color:
-  var(--rosa);
-
-  background:
-  var(--rosa-claro);
-
-  color:
-  var(--rosa-escuro);
-
-}
-
-
-.opcao-grid{
-
-  display:grid;
-
-  grid-template-columns:
-  1fr 1fr;
-
-  gap:10px;
-
-}
-
-
-.foto-opcao-area{
-
-  margin:
-  10px 0 15px;
-
-  background:#fff;
-
-  border:
-  1px solid #eee;
-
-  border-radius:12px;
-
-  padding:12px;
-
-}
-
-
-.foto-opcao-area label{
-
-  display:block;
-
-  font-size:14px;
-
-  font-weight:900;
-
-  margin-bottom:8px;
-
-}
-
-
-.preview-opcao{
-
-  display:flex;
-
-  gap:12px;
-
-  align-items:flex-start;
-
-  margin-top:10px;
-
-}
-
-
-.preview-opcao img{
-
-  width:95px;
-
-  height:125px;
-
-  object-fit:cover;
-
-  border-radius:10px;
-
-  background:#eee;
-
-}
-
-
-.remover-foto-opcao{
-
-  border:0;
-
-  background:#ffe8e8;
-
-  color:#b80000;
-
-  padding:9px 11px;
-
-  border-radius:8px;
-
-  font-weight:800;
-
-}
-
-
-.tamanhos-titulo{
-
-  font-size:14px;
-
-  font-weight:900;
-
-  margin:
-  10px 0;
-
-}
-
-
-.tamanhos-grade{
-
-  display:grid;
-
-  gap:8px;
-
-}
-
-
-.tamanho-linha{
-
-  display:grid;
-
-  grid-template-columns:
-  1fr 110px;
-
-  gap:10px;
-
-  align-items:center;
-
-  padding:10px;
-
-  background:#fff;
-
-  border:
-  1px solid #eee;
-
-  border-radius:10px;
-
-}
-
-
-.tamanho-check{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
-
-  font-weight:800;
-
-}
-
-
-.tamanho-check input{
-
-  width:20px;
-
-  height:20px;
-
-}
-
-
-.estoque-tamanho{
-
-  width:100%;
-
-  border:
-  1px solid #ccc;
-
-  border-radius:8px;
-
-  padding:9px;
-
-}
-
-
-.estoque-tamanho:disabled{
-
-  background:#eee;
-
-  opacity:.55;
-
-}
-
-
-.adicionar-opcao{
-
-  width:100%;
-
-  border:
-  1px dashed
-  var(--rosa);
-
-  background:
-  var(--rosa-claro);
-
-  color:
-  var(--rosa-escuro);
-
-  padding:14px;
-
-  border-radius:11px;
-
-  font-weight:900;
-
-  margin-top:14px;
-
-}
-
-
-.estoque-calculado{
-
-  background:#f4f4f4;
-
-  padding:12px;
-
-  border-radius:10px;
-
-  margin-top:14px;
-
-  font-size:14px;
-
-}
-
-
-.estoque-calculado strong{
-
-  color:var(--rosa);
-
-}
-
-
-.ativo-area{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  margin:
-  15px 0 20px;
-
-  font-weight:700;
-
-}
-
-
-.ativo-area input{
-
-  width:20px;
-
-  height:20px;
-
-}
-
-
-.botoes-form{
-
-  display:flex;
-
-  gap:10px;
-
-}
-
-
-.salvar{
-
-  flex:1;
-
-  border:0;
-
-  background:
-  var(--rosa);
-
-  color:#fff;
-
-  padding:14px;
-
-  border-radius:11px;
-
-  font-weight:900;
-
-}
-
-
-.salvar:disabled{
-  opacity:.6;
-}
-
-
-.cancelar{
-
-  display:none;
-
-  border:
-  1px solid #ccc;
-
-  background:#fff;
-
-  padding:14px;
-
-  border-radius:11px;
-
-  font-weight:800;
-
-}
-
-
-.cabecalho-lista{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:10px;
-
-  margin-bottom:15px;
-
-}
-
-
-.buscar{
-
-  width:100%;
-
-  max-width:330px;
-
-  padding:11px;
-
-  border:
-  1px solid #ccc;
-
-  border-radius:10px;
-
-}
-
-
-.lista-produtos{
-
-  display:grid;
-
-  gap:12px;
-
-}
-
-
-.produto-card{
-
-  display:grid;
-
-  grid-template-columns:
-  90px 1fr;
-
-  gap:14px;
-
-  border:
-  1px solid #eee;
-
-  padding:12px;
-
-  border-radius:14px;
-
-  background:#fff;
-
-}
-
-
-.produto-card img{
-
-  width:90px;
-
-  height:120px;
-
-  object-fit:cover;
-
-  border-radius:10px;
-
-  background:#eee;
-
-}
-
-
-.sem-foto{
-
-  width:90px;
-
-  height:120px;
-
-  background:#eee;
-
-  border-radius:10px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  color:#999;
-
-  font-size:12px;
-
-  text-align:center;
-
-}
-
-
-.produto-info h4{
-
-  margin-bottom:6px;
-
-  font-size:18px;
-
-}
-
-
-.produto-info .preco{
-
-  color:
-  var(--rosa);
-
-  font-size:18px;
-
-  font-weight:900;
-
-  margin-bottom:6px;
-
-}
-
-
-.detalhes{
-
-  color:#666;
-
-  font-size:13px;
-
-  line-height:1.6;
-
-}
-
-
-.status-produto{
-
-  display:inline-block;
-
-  margin-top:7px;
-
-  padding:5px 9px;
-
-  border-radius:20px;
-
-  font-size:12px;
-
-  font-weight:800;
-
-}
-
-
-.status-produto.ativo{
-
-  background:#e4f8e8;
-
-  color:#167329;
-
-}
-
-
-.status-produto.inativo{
-
-  background:#f3f3f3;
-
-  color:#777;
-
-}
-
-
-.acoes{
-
-  display:flex;
-
-  gap:8px;
-
-  margin-top:12px;
-
-  flex-wrap:wrap;
-
-}
-
-
-.acoes button{
-
-  border:0;
-
-  padding:9px 13px;
-
-  border-radius:8px;
-
-  font-weight:800;
-
-}
-
-
-.editar{
-
-  background:#000;
-
-  color:#fff;
-
-}
-
-
-.alternar{
-
-  background:#fff1f7;
-
-  color:#be1763;
-
-}
-
-
-.excluir{
-
-  background:#ffe6e6;
-
-  color:#c80000;
-
-}
-
-
-/* =========================================
-   CONFIGURAÇÕES / MAIS
-========================================= */
-
-.config-card{
-
-  border:
-  1px solid #eee;
-
-  border-radius:14px;
-
-  padding:14px;
-
-  margin-bottom:10px;
-
-  background:#fff;
-
-}
-
-
-.config-card strong{
-
-  display:block;
-
-  margin-bottom:5px;
-
-}
-
-
-.config-card p{
-
-  color:#666;
-
-  font-size:13px;
-
-  line-height:1.5;
-
-}
-
-
-.config-valor{
-
-  font-weight:900;
-
-  color:
-  var(--rosa);
-
-  margin-top:6px;
-
-}
-
-
-.botao-loja{
-
-  display:block;
-
-  width:100%;
-
-  text-align:center;
-
-  border:0;
-
-  background:#000;
-
-  color:#fff;
-
-  padding:15px;
-
-  border-radius:12px;
-
-  font-weight:900;
-
-}
-
-
-/* =========================================
-   LAYOUT E APARÊNCIA
-========================================= */
-
-.layout-card{
-
-  border:
-  1px solid #eee;
-
-  border-radius:15px;
-
-  padding:15px;
-
-  margin-bottom:14px;
-
-  background:#fff;
-
-}
-
-
-.layout-card h4{
-
-  font-size:16px;
-
-  margin-bottom:5px;
-
-}
-
-
-.layout-card > p{
-
-  color:#777;
-
-  font-size:12px;
-
-  line-height:1.5;
-
-  margin-bottom:15px;
-
-}
-
-
-.layout-toggle{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:15px;
-
-  padding:13px 0;
-
-  border-bottom:
-  1px solid #eee;
-
-}
-
-
-.layout-toggle:last-child{
-
-  border-bottom:0;
-
-}
-
-
-.layout-toggle-texto{
-
-  flex:1;
-
-}
-
-
-.layout-toggle-texto strong{
-
-  display:block;
-
-  font-size:14px;
-
-  margin-bottom:3px;
-
-}
-
-
-.layout-toggle-texto small{
-
-  color:#777;
-
-  line-height:1.4;
-
-}
-
-
-.switch{
-
-  position:relative;
-
-  display:inline-block;
-
-  width:52px;
-
-  height:30px;
-
-  flex:0 0 auto;
-
-}
-
-
-.switch input{
-
-  opacity:0;
-
-  width:0;
-
-  height:0;
-
-}
-
-
-.slider{
-
-  position:absolute;
-
-  cursor:pointer;
-
-  inset:0;
-
-  background:#ccc;
-
-  transition:.2s;
-
-  border-radius:30px;
-
-}
-
-
-.slider:before{
-
-  position:absolute;
-
-  content:"";
-
-  width:24px;
-
-  height:24px;
-
-  left:3px;
-
-  bottom:3px;
-
-  background:#fff;
-
-  transition:.2s;
-
-  border-radius:50%;
-
-  box-shadow:
-  0 1px 4px
-  rgba(0,0,0,.2);
-
-}
-
-
-.switch input:checked + .slider{
-
-  background:
-  var(--rosa);
-
-}
-
-
-.switch input:checked + .slider:before{
-
-  transform:
-  translateX(22px);
-
-}
-
-
-.grade-cores{
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(3,1fr);
-
-  gap:10px;
-
-}
-
-
-.cor-config{
-
-  border:
-  1px solid #eee;
-
-  border-radius:12px;
-
-  padding:10px;
-
-  background:#fafafa;
-
-}
-
-
-.cor-config label{
-
-  display:block;
-
-  font-size:11px;
-
-  font-weight:900;
-
-  margin-bottom:8px;
-
-}
-
-
-.cor-config input[type="color"]{
-
-  width:100%;
-
-  height:45px;
-
-  border:0;
-
-  background:transparent;
-
-}
-
-
-.preview-banner{
-
-  margin-top:12px;
-
-  border:
-  1px dashed #ccc;
-
-  border-radius:13px;
-
-  overflow:hidden;
-
-  background:#f7f7f7;
-
-  min-height:120px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-}
-
-
-.preview-banner img{
-
-  width:100%;
-
-  max-height:280px;
-
-  object-fit:cover;
-
-  display:block;
-
-}
-
-
-.preview-banner-vazio{
-
-  color:#999;
-
-  font-size:12px;
-
-  padding:30px;
-
-  text-align:center;
-
-}
-
-
-#layoutBannerArquivo{
-  display:none;
-}
-
-
-.botao-banner{
-
-  display:block;
-
-  width:100%;
-
-  background:#000;
-
-  color:#fff;
-
-  text-align:center;
-
-  padding:13px;
-
-  border-radius:10px;
-
-  font-size:12px;
-
-  font-weight:900;
-
-  cursor:pointer;
-
-}
-
-
-.remover-banner{
-
-  width:100%;
-
-  margin-top:9px;
-
-  border:0;
-
-  background:#ffe8e8;
-
-  color:#b60000;
-
-  padding:11px;
-
-  border-radius:10px;
-
-  font-weight:900;
-
-}
-
-
-.salvar-layout{
-
-  width:100%;
-
-  border:0;
-
-  background:
-  var(--rosa);
-
-  color:#fff;
-
-  padding:15px;
-
-  border-radius:12px;
-
-  font-weight:900;
-
-}
-
-
-.salvar-layout:disabled{
-  opacity:.55;
-}
-
-
-.status-layout{
-
-  margin-top:10px;
-
-  font-size:13px;
-
-  font-weight:800;
-
-  line-height:1.4;
-
-}
-
-
-.status-layout.sucesso{
-
-  color:#197330;
-
-}
-
-
-.status-layout.erro{
-
-  color:#ba0000;
-
 }
-
-
-/* =========================================
-   NOVO - ENTREGA E PAGAMENTO
-========================================= */
-
-.entrega-config-card{
-
-  border:
-  1px solid #e8e8e8;
-
-  border-radius:15px;
-
-  padding:15px;
 
+.campo{
   margin-bottom:12px;
-
-  background:#fff;
-
 }
 
-
-.entrega-config-topo{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:flex-start;
-
-  gap:12px;
-
-  margin-bottom:13px;
-
+.campo:last-child{
+  margin-bottom:0;
 }
 
-
-.entrega-config-topo strong{
-
+.campo label{
   display:block;
-
-  font-size:15px;
-
-  margin-bottom:4px;
-
-}
-
-
-.entrega-config-topo p{
-
-  color:#777;
-
-  font-size:12px;
-
-  line-height:1.4;
-
-}
-
-
-.taxa-area{
-
-  background:#f8f8f8;
-
-  border-radius:11px;
-
-  padding:12px;
-
-}
-
-
-.taxa-area label{
-
-  display:block;
-
-  font-size:12px;
-
-  font-weight:900;
-
-  margin-bottom:7px;
-
-}
-
-
-.taxa-input-wrap{
-
-  display:flex;
-
-  align-items:center;
-
-  border:
-  1px solid #ccc;
-
-  border-radius:10px;
-
-  background:#fff;
-
-  overflow:hidden;
-
-}
-
-
-.taxa-input-wrap span{
-
-  padding-left:12px;
-
-  font-size:14px;
-
-  font-weight:900;
-
-  color:#555;
-
-}
-
-
-.taxa-input-wrap input{
-
-  flex:1;
-
-  border:0;
-
-  padding:12px 10px;
-
-  outline:none;
-
-  min-width:0;
-
-  background:#fff;
-
-}
-
-
-.pagamento-config-card{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  gap:14px;
-
-  border:
-  1px solid #eee;
-
-  border-radius:14px;
-
-  padding:14px;
-
-  background:#fff;
-
-  margin-bottom:10px;
-
-}
-
-
-.pagamento-config-card strong{
-
-  display:block;
-
-  margin-bottom:4px;
-
-}
-
-
-.pagamento-config-card p{
-
-  color:#777;
-
-  font-size:12px;
-
-  line-height:1.4;
-
-}
-
-
-.salvar-entregas{
-
-  width:100%;
-
-  border:0;
-
-  background:#000;
-
-  color:#fff;
-
-  padding:15px;
-
-  border-radius:12px;
-
-  font-weight:900;
-
-  margin-top:6px;
-
-}
-
-
-.salvar-entregas:disabled{
-  opacity:.55;
-}
-
-
-.status-entregas{
-
-  margin-top:10px;
-
-  font-size:13px;
-
+  font-size:11px;
   font-weight:800;
+  margin-bottom:6px;
+}
 
+.campo input,
+.campo select,
+.campo textarea{
+  width:100%;
+  border:1px solid #d4d4d8;
+  border-radius:8px;
+  padding:11px;
+  outline:none;
+  background:#fff;
+}
+
+.campo textarea{
+  resize:vertical;
+  min-height:75px;
+}
+
+.duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.frete-info{
+  background:var(--pink-soft);
+  border-radius:8px;
+  padding:11px;
+  margin-top:10px;
+  line-height:1.5;
+  font-size:11px;
+}
+
+.resumo-item{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  font-size:11px;
+}
+
+.resumo-linha{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:11px;
+}
+
+.resumo-total{
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid #111;
+  margin-top:6px;
+  padding-top:12px;
+  font-size:17px;
+  font-weight:850;
 }
 
 
-.status-entregas.sucesso{
+/* PAGAMENTO */
 
-  color:#197330;
+.pagamento-opcoes{
+  display:grid;
+  gap:9px;
+}
 
+.pagamento-opcao{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:13px;
+  cursor:pointer;
+}
+
+.pagamento-opcao input{
+  width:20px;
+  height:20px;
+  accent-color:var(--pink);
+}
+
+.pagamento-opcao strong{
+  font-size:13px;
+}
+
+.pagamento-opcao small{
+  display:block;
+  color:#777;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.sem-pagamento{
+  background:#fff6dd;
+  color:#765100;
+  padding:12px;
+  border-radius:9px;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.confirmar-pedido{
+  width:100%;
+  border:0;
+  background:var(--black);
+  color:#fff;
+  padding:14px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:850;
 }
 
 
-.status-entregas.erro{
+/* SUCESSO */
 
-  color:#ba0000;
+.sucesso{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+}
 
+.sucesso.ativo{
+  display:flex;
+}
+
+.sucesso-box{
+  max-width:430px;
+}
+
+.check{
+  width:76px;
+  height:76px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  background:var(--pink);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+}
+
+.sucesso h2{
+  font-size:27px;
+  margin-bottom:12px;
+}
+
+.sucesso p{
+  line-height:1.5;
+  font-size:12px;
+}
+
+.numero-pedido{
+  color:var(--pink);
+  font-size:18px;
+  font-weight:850;
+  margin:16px 0;
+}
+
+.sucesso button{
+  margin-top:20px;
+  border:0;
+  background:var(--black);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:8px;
+  font-weight:850;
 }
 
 
-/* =========================================
-   RESPONSIVO
-========================================= */
+/* RODAPÉ */
 
-@media(
-  min-width:820px
-){
+footer{
+  background:var(--black);
+  color:#fff;
+  padding:36px 18px;
+}
 
-  body{
-    padding-bottom:0;
-  }
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  gap:18px;
+}
 
+footer h3{
+  color:var(--pink);
+  font-size:18px;
+}
 
-  .nav-admin{
+footer p{
+  color:#c9c9cd;
+  font-size:10px;
+  line-height:1.6;
+}
 
-    top:70px;
-
-    bottom:auto;
-
-    left:20px;
-
-    right:auto;
-
-    width:190px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    border:0;
-
-    border-radius:16px;
-
-    padding:8px;
-
-    box-shadow:
-    0 3px 15px
-    rgba(0,0,0,.08);
-
-  }
-
-
-  .nav-item{
-
-    flex-direction:row;
-
-    justify-content:flex-start;
-
-    gap:10px;
-
-    padding:11px;
-
-    font-size:13px;
-
-  }
-
-
-  .nav-item .icone{
-
-    font-size:19px;
-
-  }
-
-
-  .conteudo{
-
-    padding-left:225px;
-
-  }
-
-
-  .dashboard-grade{
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-  }
-
-
-  .atalhos{
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-  }
-
+.footer-mini{
+  border-top:1px solid #2b2b2e;
+  padding-top:15px;
+  color:#8e8e94;
+  font-size:9px;
 }
 
 
-@media(
-  max-width:650px
-){
+@media(min-width:700px){
 
-  .duplo,
-  .opcao-grid{
-
-    grid-template-columns:1fr;
-
+  .logo{
+    width:62px;
+    height:62px;
   }
 
-
-  .tamanho-linha{
-
-    grid-template-columns:
-    1fr 95px;
-
+  .hero{
+    min-height:620px;
   }
 
-
-  .cabecalho-lista{
-
-    flex-direction:column;
-
-    align-items:stretch;
-
+  .hero h1{
+    font-size:72px;
   }
 
-
-  .buscar{
-    max-width:none;
+  .beneficios{
+    grid-template-columns:repeat(4,1fr);
   }
 
+  .beneficio{
+    border-bottom:0!important;
+    border-right:1px solid var(--line)!important;
+  }
 
-  .grade-cores{
+  .beneficio:last-child{
+    border-right:0!important;
+  }
 
-    grid-template-columns:1fr;
+  .categorias-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
 
+  .cat{
+    min-height:260px;
+  }
+
+  .grade{
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+
+  .editorial-inner{
+    grid-template-columns:1fr 1fr;
+    align-items:center;
   }
 
 }
@@ -2918,912 +1064,505 @@ a{
 <body>
 
 
-<!-- =========================================
-     LOGIN
-========================================= -->
-
-<section
-  class="login-tela"
-  id="loginTela"
+<div
+  class="topo"
+  id="barraTopoLoja"
 >
-
-  <div class="login-box">
-
-    <div class="login-logo">
-
-      <h1>
-        SALI STORE
-      </h1>
-
-      <p>
-        Painel administrativo
-      </p>
-
-    </div>
+  NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS
+</div>
 
 
-    <div class="campo">
+<header>
 
-      <label>
-        E-mail
-      </label>
+  <div class="cabecalho">
 
-      <input
-        type="email"
-        id="email"
-        placeholder="Digite seu e-mail"
-      >
+    <div class="logo-area">
 
-    </div>
+      <div class="logo-wrap">
 
+        <img
+          class="logo"
+          src="815BCB89-C59E-479D-83FF-454243870EB3.png"
+          alt="SALI STORE"
+        >
 
-    <div class="campo">
+        <div class="brand-copy">
 
-      <label>
-        Senha
-      </label>
+          <strong id="nomeLojaCabecalho">
+            SALI STORE
+          </strong>
 
-      <input
-        type="password"
-        id="senha"
-        placeholder="Digite sua senha"
-      >
+          <span id="subtituloLojaCabecalho">
+            Moda feminina • Manacapuru
+          </span>
 
-    </div>
+        </div>
 
-
-    <button
-      class="botao-login"
-      onclick="entrar()"
-    >
-      ENTRAR NO PAINEL
-    </button>
-
-
-    <div
-      class="erro-login"
-      id="erroLogin"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================
-     PAINEL
-========================================= -->
-
-<section
-  class="painel"
-  id="painel"
->
-
-
-<header class="topo">
-
-  <div class="topo-conteudo">
-
-    <div class="marca-admin">
-
-      <div class="marca-icone">
-        S
       </div>
 
 
-      <div>
+      <button
+        class="carrinho-botao"
+        onclick="abrirCarrinho()"
+      >
 
-        <h1>
-          SALI STORE
-        </h1>
+        Sacola
 
-        <small>
-          Painel de controle
-        </small>
+        <span
+          class="contador"
+          id="contador"
+        >
+          0
+        </span>
 
-      </div>
+      </button>
 
     </div>
 
 
-    <button
-      class="sair"
-      onclick="sair()"
-    >
-      SAIR
-    </button>
+    <nav>
+
+      <a href="#inicio">
+        Início
+      </a>
+
+      <a href="#novidades">
+        Novidades
+      </a>
+
+      <a
+        href="#categorias"
+        id="linkCategorias"
+      >
+        Categorias
+      </a>
+
+      <a href="#novidades">
+        Vestidos
+      </a>
+
+      <a href="#novidades">
+        Conjuntos
+      </a>
+
+      <a href="#novidades">
+        Blusas
+      </a>
+
+      <a href="#novidades">
+        Calças
+      </a>
+
+    </nav>
 
   </div>
 
 </header>
 
 
-<!-- =========================================
-     MENU
-========================================= -->
-
-<nav class="nav-admin">
-
-  <button
-    class="nav-item ativo"
-    data-pagina="inicio"
-    onclick="abrirPagina('inicio',this)"
-  >
-
-    <span class="icone">
-      🏠
-    </span>
-
-    <span>
-      Início
-    </span>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-pagina="pedidos"
-    onclick="abrirPagina('pedidos',this)"
-  >
-
-    <span class="icone">
-      🧾
-    </span>
-
-    <span>
-      Pedidos
-    </span>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-pagina="produtos"
-    onclick="abrirPagina('produtos',this)"
-  >
-
-    <span class="icone">
-      👗
-    </span>
-
-    <span>
-      Produtos
-    </span>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-pagina="cancelamentos"
-    onclick="abrirPagina('cancelamentos',this)"
-  >
-
-    <span class="icone">
-      ❌
-    </span>
-
-    <span>
-      Cancelados
-    </span>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    data-pagina="mais"
-    onclick="abrirPagina('mais',this)"
-  >
-
-    <span class="icone">
-      ☰
-    </span>
-
-    <span>
-      Mais
-    </span>
-
-  </button>
-
-</nav>
-
-
-<main class="conteudo">
-
-
-<!-- =========================================
-     INÍCIO
-========================================= -->
-
 <section
-  class="pagina ativa"
-  id="pagina-inicio"
+  class="hero"
+  id="inicio"
 >
 
-  <div class="titulo-pagina">
+  <div class="hero-conteudo">
 
-    <h2>
-      Visão geral
-    </h2>
+    <div class="hero-copy">
 
-    <p>
-      Acompanhe os pedidos, vendas e estoque da SALI.
-    </p>
-
-  </div>
-
-
-  <div class="dashboard-grade">
-
-    <div class="dash-card destaque">
-
-      <small>
-        Vendas de hoje
-      </small>
-
-      <strong id="dashVendasHoje">
-        R$ 0,00
-      </strong>
-
-      <span
-        class="mini"
-        id="dashPedidosHoje"
-      >
-        0 pedidos hoje
+      <span class="hero-eyebrow">
+        NOVA COLEÇÃO • SALI STORE
       </span>
 
-    </div>
+      <h1 id="heroTituloLoja">
+        Seu look começa aqui.
+      </h1>
+
+      <p id="heroSubtituloLoja">
+        Novidades, tendências e peças selecionadas para você.
+      </p>
 
 
-    <div class="dash-card">
+      <div class="hero-actions">
 
-      <small>
-        Pedidos novos
-      </small>
+        <button
+          class="botao-principal"
+          onclick="document.getElementById('novidades').scrollIntoView()"
+        >
+          COMPRAR AGORA
+        </button>
 
-      <strong id="dashNovos">
-        0
-      </strong>
+        <button
+          class="botao-secundario"
+          id="botaoVerCategorias"
+          onclick="document.getElementById('categorias').scrollIntoView()"
+        >
+          VER CATEGORIAS
+        </button>
 
-      <span class="mini">
-        Aguardando atendimento
-      </span>
-
-    </div>
-
-
-    <div class="dash-card">
-
-      <small>
-        Em andamento
-      </small>
-
-      <strong id="dashAndamento">
-        0
-      </strong>
-
-      <span class="mini">
-        Confirmados / separação / entrega
-      </span>
+      </div>
 
     </div>
-
-
-    <div class="dash-card">
-
-      <small>
-        Estoque total
-      </small>
-
-      <strong id="dashEstoque">
-        0
-      </strong>
-
-      <span
-        class="mini"
-        id="dashProdutos"
-      >
-        0 produtos cadastrados
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <h3>
-      ⚡ Atalhos
-    </h3>
-
-
-    <div class="atalhos">
-
-      <button
-        class="atalho"
-        onclick="abrirPagina('pedidos')"
-      >
-
-        <span>
-          🧾
-        </span>
-
-        Ver pedidos
-
-      </button>
-
-
-      <button
-        class="atalho"
-        onclick="abrirPagina('produtos')"
-      >
-
-        <span>
-          ➕
-        </span>
-
-        Cadastrar produto
-
-      </button>
-
-
-      <button
-        class="atalho"
-        onclick="abrirPagina('cancelamentos')"
-      >
-
-        <span>
-          ❌
-        </span>
-
-        Cancelamentos
-
-      </button>
-
-
-      <button
-        class="atalho"
-        onclick="abrirLojaVisitante()"
-      >
-
-        <span>
-          🌐
-        </span>
-
-        Ver minha loja
-
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <h3>
-      🆕 Últimos pedidos
-    </h3>
-
-
-    <div id="ultimosPedidos"></div>
 
   </div>
 
 </section>
-<!-- =========================================
-     PEDIDOS
-========================================= -->
+
 
 <section
-  class="pagina"
-  id="pagina-pedidos"
+  class="beneficios"
+  id="secaoBeneficios"
 >
 
-  <div class="titulo-pagina">
+  <div class="beneficio">
 
-    <h2>
-      Pedidos
-    </h2>
+    <strong>
+      Entrega local
+    </strong>
+
+    <span>
+      Receba seu pedido com praticidade.
+    </span>
+
+  </div>
+
+
+  <div class="beneficio">
+
+    <strong>
+      Retirada na loja
+    </strong>
+
+    <span>
+      Escolha retirar diretamente na SALI.
+    </span>
+
+  </div>
+
+
+  <div class="beneficio">
+
+    <strong>
+      Novidades semanais
+    </strong>
+
+    <span>
+      Novos modelos chegando sempre.
+    </span>
+
+  </div>
+
+
+  <div class="beneficio">
+
+    <strong>
+      Compra segura
+    </strong>
+
+    <span>
+      Seu pedido registrado e acompanhado.
+    </span>
+
+  </div>
+
+</section>
+
+
+<section
+  class="categorias"
+  id="categorias"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <h2>
+        Compre por categoria
+      </h2>
+
+    </div>
 
     <p>
-      Gerencie o atendimento desde o pedido novo até a entrega.
+      Encontre rapidamente o estilo que combina com você.
     </p>
+
+  </div>
+
+
+  <div class="categorias-grid">
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Vestidos
+        <small>
+          Do casual ao marcante
+        </small>
+      </span>
+
+    </a>
+
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Conjuntos
+        <small>
+          Looks prontos para vestir
+        </small>
+      </span>
+
+    </a>
+
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Blusas
+        <small>
+          Essenciais com personalidade
+        </small>
+      </span>
+
+    </a>
+
+
+    <a
+      class="cat"
+      href="#novidades"
+    >
+
+      <span>
+        Calças
+        <small>
+          Modelagens que valorizam
+        </small>
+      </span>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<section
+  class="produtos"
+  id="novidades"
+>
+
+  <h2>
+    Novidades
+  </h2>
+
+  <p class="produtos-sub">
+    Os últimos lançamentos da SALI.
+  </p>
+
+  <div
+    class="grade"
+    id="listaProdutos"
+  ></div>
+
+</section>
+<section class="editorial">
+
+  <div class="editorial-inner">
+
+    <div>
+
+      <div class="line"></div>
+
+      <h2>
+        Moda que representa.<br>
+        Estilo que encanta.
+      </h2>
+
+    </div>
+
+
+    <p>
+      A SALI nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="cta">
+
+  <div class="cta-card">
+
+    <h3>
+      Encontrou a sua favorita?
+    </h3>
+
+    <p>
+      Adicione à sacola, escolha como deseja receber e finalize seu pedido pelo próprio site.
+    </p>
+
+    <button
+      onclick="document.getElementById('novidades').scrollIntoView()"
+    >
+      VER PRODUTOS
+    </button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div>
+
+      <h3 id="nomeLojaRodape">
+        SALI STORE
+      </h3>
+
+      <p>
+        Moda feminina com identidade, novidades e praticidade para comprar online.
+      </p>
+
+    </div>
+
+
+    <div
+      class="footer-mini"
+      id="rodapeLocal"
+    >
+      SALI STORE • Manacapuru, Amazonas
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================
+     CARRINHO
+========================================= -->
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="fecharCarrinho()"
+></div>
+
+
+<aside
+  class="carrinho"
+  id="carrinho"
+>
+
+  <div class="carrinho-topo">
+
+    <h2>
+      Sua sacola
+    </h2>
+
+    <button
+      class="fechar"
+      onclick="fecharCarrinho()"
+    >
+      ×
+    </button>
 
   </div>
 
 
   <div
-    class="filtros-scroll"
-    id="filtrosPedidos"
-  >
-
-    <button
-      class="filtro-pedido ativo"
-      onclick="filtrarPedidosStatus('Todos',this)"
-    >
-      Todos
-    </button>
+    class="itens"
+    id="itensCarrinho"
+  ></div>
 
 
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Novo',this)"
-    >
-      Novos
-    </button>
+  <div class="carrinho-rodape">
 
+    <div class="total-linha">
 
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Confirmado',this)"
-    >
-      Confirmados
-    </button>
+      <span>
+        Produtos
+      </span>
 
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Em separação',this)"
-    >
-      Em separação
-    </button>
-
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Saiu para entrega',this)"
-    >
-      Em entrega
-    </button>
-
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Entregue',this)"
-    >
-      Entregues
-    </button>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <div
-      class="campo"
-      style="margin-bottom:12px"
-    >
-
-      <input
-        type="search"
-        id="buscaPedidos"
-        placeholder="Buscar número, cliente ou telefone..."
-        oninput="renderizarPedidos()"
-      >
+      <span id="totalCarrinho">
+        R$ 0,00
+      </span>
 
     </div>
 
 
-    <div
-      class="lista-pedidos"
-      id="listaPedidos"
+    <button
+      class="finalizar"
+      onclick="abrirCheckout()"
     >
-
-      <div class="sem-dados">
-        Carregando pedidos...
-      </div>
-
-    </div>
+      FINALIZAR PEDIDO
+    </button>
 
   </div>
 
-</section>
+</aside>
 
 
 <!-- =========================================
-     PRODUTOS
+     CHECKOUT
 ========================================= -->
 
 <section
-  class="pagina"
-  id="pagina-produtos"
+  class="checkout"
+  id="checkout"
 >
 
-  <div class="titulo-pagina">
+  <div class="checkout-conteudo">
 
-    <h2>
-      Produtos
-    </h2>
 
-    <p>
-      Cadastre fotos, cores, estampas, tamanhos e estoque.
-    </p>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <h3 id="tituloFormulario">
-      ➕ Cadastrar produto
-    </h3>
-
-
-    <input
-      type="hidden"
-      id="produtoId"
-    >
-
-
-    <div class="campo">
-
-      <label>
-        Nome do produto
-      </label>
-
-      <input
-        type="text"
-        id="produtoNome"
-        placeholder="Ex.: Vestido longo Camile"
-      >
-
-    </div>
-
-
-    <div class="duplo">
-
-      <div class="campo">
-
-        <label>
-          Preço
-        </label>
-
-        <input
-          type="number"
-          id="produtoPreco"
-          step="0.01"
-          min="0"
-          placeholder="54.99"
-        >
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>
-          Estoque geral
-        </label>
-
-        <input
-          type="number"
-          id="produtoEstoque"
-          min="0"
-          value="0"
-        >
-
-      </div>
-
-    </div>
-
-
-    <div class="foto-ajuda">
-      Se o produto possuir cores ou estampas, o estoque será calculado pelas variantes.
-    </div>
-
-
-    <br>
-
-
-    <div class="campo">
-
-      <label>
-        Categoria
-      </label>
-
-      <select id="produtoCategoria">
-
-        <option value="">
-          Selecione
-        </option>
-
-        <option value="Novidades">
-          Novidades
-        </option>
-
-        <option value="Vestidos">
-          Vestidos
-        </option>
-
-        <option value="Conjuntos">
-          Conjuntos
-        </option>
-
-        <option value="Blusas">
-          Blusas
-        </option>
-
-        <option value="Calças">
-          Calças
-        </option>
-
-        <option value="Body">
-          Body
-        </option>
-
-        <option value="Plus Size">
-          Plus Size
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div class="campo">
-
-      <label>
-        Descrição
-      </label>
-
-      <textarea
-        id="produtoDescricao"
-        placeholder="Descreva o produto..."
-      ></textarea>
-
-    </div>
-
-
-    <div class="subtitulo">
-
-      <h4>
-        📸 Fotos do produto
-      </h4>
-
-      <p>
-        Você pode selecionar várias fotos. Defina qual será a foto principal da vitrine.
-      </p>
-
-    </div>
-
-
-    <label
-      class="escolher-foto"
-      for="produtoFotosArquivos"
-    >
-      📷 ESCOLHER FOTOS DA GALERIA
-    </label>
-
-
-    <input
-      type="file"
-      id="produtoFotosArquivos"
-      accept="image/*"
-      multiple
-      onchange="adicionarNovasFotos()"
-    >
-
-
-    <div
-      id="galeriaFotos"
-      class="galeria-edicao"
-    ></div>
-
-
-    <div class="subtitulo">
-
-      <h4>
-        🎨 Cores / estampas
-      </h4>
-
-      <p>
-        Escolha COR ou ESTAMPA e adicione uma foto da peça em cada opção.
-      </p>
-
-    </div>
-
-
-    <div
-      id="opcoesArea"
-      class="opcoes-area"
-    ></div>
-
-
-    <button
-      type="button"
-      class="adicionar-opcao"
-      onclick="adicionarOpcao()"
-    >
-      + ADICIONAR COR / ESTAMPA
-    </button>
-
-
-    <div class="estoque-calculado">
-
-      Estoque total das variantes:
-
-      <strong id="estoqueVariantes">
-        0
-      </strong>
-
-    </div>
-
-
-    <label class="ativo-area">
-
-      <input
-        type="checkbox"
-        id="produtoAtivo"
-        checked
-      >
-
-      Produto ativo no site
-
-    </label>
-
-
-    <div class="botoes-form">
+    <div class="checkout-topo">
 
       <button
-        class="salvar"
-        id="botaoSalvar"
-        onclick="salvarProduto()"
+        class="voltar"
+        onclick="fecharCheckout()"
       >
-        CADASTRAR PRODUTO
+        ←
       </button>
 
-
-      <button
-        class="cancelar"
-        id="botaoCancelar"
-        onclick="cancelarEdicao()"
-      >
-        CANCELAR
-      </button>
+      <h2>
+        Finalizar pedido
+      </h2>
 
     </div>
 
-  </div>
 
+    <!-- DADOS -->
 
-  <div class="bloco">
-
-    <div class="cabecalho-lista">
+    <div class="bloco">
 
       <h3>
-        📦 Produtos cadastrados
+        Seus dados
       </h3>
 
 
-      <input
-        class="buscar"
-        id="busca"
-        type="search"
-        placeholder="Buscar produto..."
-        oninput="filtrarProdutos()"
-      >
-
-    </div>
-
-
-    <div
-      class="lista-produtos"
-      id="listaProdutos"
-    >
-
-      <div class="sem-dados">
-        Carregando produtos...
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================
-     CANCELAMENTOS
-========================================= -->
-
-<section
-  class="pagina"
-  id="pagina-cancelamentos"
->
-
-  <div class="titulo-pagina">
-
-    <h2>
-      Cancelamentos
-    </h2>
-
-    <p>
-      Pedidos com status Cancelado aparecem automaticamente aqui.
-    </p>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <div
-      class="lista-pedidos"
-      id="listaCancelamentos"
-    >
-
-      <div class="sem-dados">
-        Nenhum pedido cancelado.
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================
-     MAIS
-========================================= -->
-
-<section
-  class="pagina"
-  id="pagina-mais"
->
-
-  <div class="titulo-pagina">
-
-    <h2>
-      Mais
-    </h2>
-
-    <p>
-      Configurações e ferramentas da SALI STORE.
-    </p>
-
-  </div>
-
-
-  <!-- LAYOUT -->
-
-  <div class="bloco">
-
-    <h3>
-      🎨 Layout e aparência
-    </h3>
-
-
-    <div class="alerta-box rosa">
-      Altere textos, cores, banner e seções da página inicial.
-    </div>
-
-
-    <div class="layout-card">
-
-      <h4>
-        🏪 Identidade da loja
-      </h4>
-
-      <p>
-        Edite o nome e o texto que aparecem no cabeçalho da loja.
-      </p>
-
-
       <div class="campo">
 
         <label>
-          Nome da loja
+          Nome completo
         </label>
 
         <input
+          id="nome"
           type="text"
-          id="layoutNomeLoja"
-          placeholder="SALI STORE"
+          placeholder="Digite seu nome"
         >
 
       </div>
@@ -3832,28 +1571,13 @@ a{
       <div class="campo">
 
         <label>
-          Subtítulo
+          WhatsApp
         </label>
 
         <input
-          type="text"
-          id="layoutSubtituloLoja"
-          placeholder="Moda feminina • Manacapuru"
-        >
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>
-          Instagram
-        </label>
-
-        <input
-          type="text"
-          id="layoutInstagram"
-          placeholder="@salimanacapuru"
+          id="telefone"
+          type="tel"
+          placeholder="(92) 99999-9999"
         >
 
       </div>
@@ -3861,194 +1585,143 @@ a{
     </div>
 
 
-    <div class="layout-card">
+    <!-- ENTREGA -->
 
-      <h4>
-        📢 Barra superior
-      </h4>
+    <div class="bloco">
 
-      <p>
-        Texto exibido na faixa do topo da loja.
-      </p>
+      <h3>
+        Entrega ou retirada
+      </h3>
 
 
       <div class="campo">
 
         <label>
-          Texto da barra
+          Como deseja receber?
         </label>
 
-        <textarea
-          id="layoutTextoTopo"
-          placeholder="NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS"
-        ></textarea>
 
-      </div>
-
-
-      <div class="layout-toggle">
-
-        <div class="layout-toggle-texto">
-
-          <strong>
-            Mostrar barra superior
-          </strong>
-
-          <small>
-            Desative para esconder a faixa.
-          </small>
-
-        </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="layoutMostrarBarraTopo"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
-
-      </div>
-
-    </div>
-
-
-    <div class="layout-card">
-
-      <h4>
-        ✨ Banner principal
-      </h4>
-
-      <p>
-        Personalize a chamada principal da página inicial.
-      </p>
-
-
-      <div class="campo">
-
-        <label>
-          Título principal
-        </label>
-
-        <input
-          type="text"
-          id="layoutHeroTitulo"
-          placeholder="Seu look começa aqui."
+        <select
+          id="entrega"
+          onchange="alterarEntrega()"
         >
 
-      </div>
+          <option value="">
+            Selecione
+          </option>
 
-
-      <div class="campo">
-
-        <label>
-          Texto abaixo do título
-        </label>
-
-        <textarea
-          id="layoutHeroSubtitulo"
-          placeholder="Novidades, tendências e peças selecionadas para você."
-        ></textarea>
+        </select>
 
       </div>
-
-
-      <label
-        class="botao-banner"
-        for="layoutBannerArquivo"
-      >
-        🖼️ ESCOLHER IMAGEM DO BANNER
-      </label>
-
-
-      <input
-        type="file"
-        id="layoutBannerArquivo"
-        accept="image/*"
-        onchange="selecionarBannerLayout()"
-      >
 
 
       <div
-        class="preview-banner"
-        id="layoutPreviewBanner"
-      >
-
-        <div class="preview-banner-vazio">
-          Nenhuma imagem personalizada
-        </div>
-
-      </div>
-
-
-      <button
-        type="button"
-        class="remover-banner"
-        id="botaoRemoverBanner"
-        onclick="removerBannerLayout()"
+        class="frete-info"
+        id="freteInfo"
         style="display:none"
+      ></div>
+
+
+      <div
+        id="enderecoArea"
+        style="display:none;margin-top:15px"
       >
-        🗑️ REMOVER BANNER
-      </button>
 
-    </div>
-
-
-    <div class="layout-card">
-
-      <h4>
-        🎨 Cores da loja
-      </h4>
-
-
-      <div class="grade-cores">
-
-        <div class="cor-config">
+        <div class="campo">
 
           <label>
-            Cor principal
+            Rua / Avenida
           </label>
 
           <input
-            type="color"
-            id="layoutCorPrincipal"
-            value="#d92f82"
+            id="endereco"
+            type="text"
+            placeholder="Digite o endereço"
           >
 
         </div>
 
 
-        <div class="cor-config">
+        <div class="duplo">
+
+          <div class="campo">
+
+            <label>
+              Número
+            </label>
+
+            <input
+              id="numero"
+              type="text"
+              placeholder="Nº"
+            >
+
+          </div>
+
+
+          <div class="campo">
+
+            <label>
+              Bairro
+            </label>
+
+            <input
+              id="bairro"
+              type="text"
+              placeholder="Bairro"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="campo">
 
           <label>
-            Cor secundária
+            Complemento / referência
+          </label>
+
+          <textarea
+            id="complemento"
+            placeholder="Ex.: próximo ao mercado, casa rosa..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="barcoArea"
+        style="display:none;margin-top:15px"
+      >
+
+        <div class="campo">
+
+          <label>
+            Nome do barco, jato ou destino
           </label>
 
           <input
-            type="color"
-            id="layoutCorSecundaria"
-            value="#111111"
+            id="barcoDestino"
+            type="text"
+            placeholder="Informe onde será entregue"
           >
 
         </div>
 
 
-        <div class="cor-config">
+        <div class="campo">
 
           <label>
-            Cor de fundo
+            Observação
           </label>
 
-          <input
-            type="color"
-            id="layoutCorFundo"
-            value="#ffffff"
-          >
+          <textarea
+            id="barcoObservacao"
+            placeholder="Nome do passageiro, horário, identificação etc."
+          ></textarea>
 
         </div>
 
@@ -4057,69 +1730,76 @@ a{
     </div>
 
 
-    <div class="layout-card">
+    <!-- RESUMO -->
 
-      <h4>
-        👁️ Seções da página inicial
-      </h4>
+    <div class="bloco">
 
-
-      <div class="layout-toggle">
-
-        <div class="layout-toggle-texto">
-
-          <strong>
-            Benefícios
-          </strong>
-
-          <small>
-            Mostra os diferenciais da loja.
-          </small>
-
-        </div>
+      <h3>
+        Resumo do pedido
+      </h3>
 
 
-        <label class="switch">
+      <div id="resumoCheckout"></div>
 
-          <input
-            type="checkbox"
-            id="layoutMostrarBeneficios"
-            checked
-          >
 
-          <span class="slider"></span>
+      <div class="resumo-linha">
 
-        </label>
+        <span>
+          Subtotal
+        </span>
+
+        <strong id="subtotalCheckout">
+          R$ 0,00
+        </strong>
 
       </div>
 
 
-      <div class="layout-toggle">
+      <div class="resumo-linha">
 
-        <div class="layout-toggle-texto">
+        <span>
+          Entrega
+        </span>
 
-          <strong>
-            Categorias
-          </strong>
+        <strong id="freteCheckout">
+          R$ 0,00
+        </strong>
 
-          <small>
-            Mostra os cards de categorias.
-          </small>
+      </div>
 
+
+      <div class="resumo-total">
+
+        <span>
+          TOTAL
+        </span>
+
+        <span id="totalCheckout">
+          R$ 0,00
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- PAGAMENTO -->
+
+    <div class="bloco">
+
+      <h3>
+        Forma de pagamento
+      </h3>
+
+
+      <div
+        class="pagamento-opcoes"
+        id="pagamentoOpcoes"
+      >
+
+        <div class="sem-pagamento">
+          Carregando formas de pagamento...
         </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="layoutMostrarCategorias"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
 
       </div>
 
@@ -4127,1014 +1807,222 @@ a{
 
 
     <button
-      class="salvar-layout"
-      id="botaoSalvarLayout"
-      onclick="salvarConfiguracoesLoja()"
+      class="confirmar-pedido"
+      onclick="confirmarPedido()"
     >
-      💾 SALVAR LAYOUT E APARÊNCIA
-    </button>
-
-
-    <div
-      class="status-layout"
-      id="statusLayout"
-    ></div>
-
-  </div>
-
-
-  <!-- =========================================
-       ENTREGAS EDITÁVEIS
-  ========================================= -->
-
-  <div class="bloco">
-
-    <h3>
-      🚚 Entregas
-    </h3>
-
-
-    <div class="alerta-box verde">
-      Ative ou desative cada opção e altere o valor da taxa quando quiser.
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-
-          <strong>
-            Retirada na loja
-          </strong>
-
-          <p>
-            Cliente retira diretamente na loja.
-          </p>
-
-        </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="mostrarRetirada"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
-
-      </div>
-
-
-      <div class="taxa-area">
-
-        <label>
-          Taxa
-        </label>
-
-
-        <div class="taxa-input-wrap">
-
-          <span>
-            R$
-          </span>
-
-          <input
-            type="number"
-            id="taxaRetirada"
-            min="0"
-            step="0.01"
-            value="0"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-
-          <strong>
-            Entrega dentro da cidade
-          </strong>
-
-          <p>
-            Entrega local padrão.
-          </p>
-
-        </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="mostrarCidade"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
-
-      </div>
-
-
-      <div class="taxa-area">
-
-        <label>
-          Taxa
-        </label>
-
-
-        <div class="taxa-input-wrap">
-
-          <span>
-            R$
-          </span>
-
-          <input
-            type="number"
-            id="taxaCidade"
-            min="0"
-            step="0.01"
-            value="5"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-
-          <strong>
-            Bola até Novo Manacá
-          </strong>
-
-          <p>
-            Faixa de entrega cadastrada.
-          </p>
-
-        </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="mostrarBola"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
-
-      </div>
-
-
-      <div class="taxa-area">
-
-        <label>
-          Taxa
-        </label>
-
-
-        <div class="taxa-input-wrap">
-
-          <span>
-            R$
-          </span>
-
-          <input
-            type="number"
-            id="taxaBola"
-            min="0"
-            step="0.01"
-            value="8"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-
-          <strong>
-            Caixa d’Água pra lá
-          </strong>
-
-          <p>
-            Faixa de entrega cadastrada.
-          </p>
-
-        </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="mostrarCaixa"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
-
-      </div>
-
-
-      <div class="taxa-area">
-
-        <label>
-          Taxa
-        </label>
-
-
-        <div class="taxa-input-wrap">
-
-          <span>
-            R$
-          </span>
-
-          <input
-            type="number"
-            id="taxaCaixa"
-            min="0"
-            step="0.01"
-            value="10"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-
-          <strong>
-            Barcos / jatos
-          </strong>
-
-          <p>
-            Entrega em embarcações e transporte fluvial.
-          </p>
-
-        </div>
-
-
-        <label class="switch">
-
-          <input
-            type="checkbox"
-            id="mostrarBarcos"
-            checked
-          >
-
-          <span class="slider"></span>
-
-        </label>
-
-      </div>
-
-
-      <div class="taxa-area">
-
-        <label>
-          Taxa
-        </label>
-
-
-        <div class="taxa-input-wrap">
-
-          <span>
-            R$
-          </span>
-
-          <input
-            type="number"
-            id="taxaBarcos"
-            min="0"
-            step="0.01"
-            value="5"
-          >
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="subtitulo">
-
-      <h4>
-        💳 Formas de pagamento
-      </h4>
-
-      <p>
-        Desative uma opção para ela deixar de aparecer no checkout.
-      </p>
-
-    </div>
-
-
-    <div class="pagamento-config-card">
-
-      <div>
-
-        <strong>
-          Pix
-        </strong>
-
-        <p>
-          Pagamento via Pix.
-        </p>
-
-      </div>
-
-
-      <label class="switch">
-
-        <input
-          type="checkbox"
-          id="pagamentoPix"
-          checked
-        >
-
-        <span class="slider"></span>
-
-      </label>
-
-    </div>
-
-
-    <div class="pagamento-config-card">
-
-      <div>
-
-        <strong>
-          Cartão
-        </strong>
-
-        <p>
-          Pagamento com cartão.
-        </p>
-
-      </div>
-
-
-      <label class="switch">
-
-        <input
-          type="checkbox"
-          id="pagamentoCartao"
-          checked
-        >
-
-        <span class="slider"></span>
-
-      </label>
-
-    </div>
-
-
-    <div class="pagamento-config-card">
-
-      <div>
-
-        <strong>
-          Dinheiro
-        </strong>
-
-        <p>
-          Pagamento em dinheiro.
-        </p>
-
-      </div>
-
-
-      <label class="switch">
-
-        <input
-          type="checkbox"
-          id="pagamentoDinheiro"
-          checked
-        >
-
-        <span class="slider"></span>
-
-      </label>
-
-    </div>
-
-
-    <div class="pagamento-config-card">
-
-      <div>
-
-        <strong>
-          Pagamento no ato da entrega
-        </strong>
-
-        <p>
-          Cliente paga quando o pedido for entregue.
-        </p>
-
-      </div>
-
-
-      <label class="switch">
-
-        <input
-          type="checkbox"
-          id="pagamentoEntrega"
-          checked
-        >
-
-        <span class="slider"></span>
-
-      </label>
-
-    </div>
-
-
-    <button
-      class="salvar-entregas"
-      id="botaoSalvarEntregas"
-      onclick="salvarEntregasPagamentos()"
-    >
-      💾 SALVAR ENTREGA E PAGAMENTOS
-    </button>
-
-
-    <div
-      class="status-entregas"
-      id="statusEntregas"
-    ></div>
-
-  </div>
-
-
-  <!-- LOJA -->
-
-  <div class="bloco">
-
-    <h3>
-      🌐 Loja como visitante
-    </h3>
-
-
-    <button
-      class="botao-loja"
-      onclick="abrirLojaVisitante()"
-    >
-      ABRIR MINHA LOJA
+      CONFIRMAR PEDIDO
     </button>
 
   </div>
-
-</section>
-
-
-</main>
 
 </section>
 
 
 <!-- =========================================
-     MODAL DO PEDIDO
+     SUCESSO
 ========================================= -->
 
-<div
-  class="modal-pedido-overlay"
-  id="modalPedidoOverlay"
+<section
+  class="sucesso"
+  id="sucesso"
 >
 
-  <div class="modal-pedido">
+  <div class="sucesso-box">
+
+    <div class="check">
+      ✓
+    </div>
+
+    <h2>
+      Pedido confirmado!
+    </h2>
+
+    <p>
+      Obrigada por comprar na SALI STORE 💕
+    </p>
+
+
+    <div
+      class="numero-pedido"
+      id="numeroPedido"
+    ></div>
+
+
+    <p id="resumoSucesso"></p>
+
 
     <button
-      class="modal-fechar"
-      onclick="fecharModalPedido()"
+      onclick="voltarLoja()"
     >
-      ×
+      VOLTAR PARA A LOJA
     </button>
-
-
-    <div id="conteudoModalPedido"></div>
 
   </div>
 
-</div>
+</section>
 
 
 <!-- =========================================
-     SUPABASE
+     JAVASCRIPT PRINCIPAL
 ========================================= -->
-
-<script
-  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
-
 
 <script>
 
 /* =========================================
-   CONFIGURAÇÃO
+   ESTADO DA LOJA
 ========================================= */
 
-const SUPABASE_URL =
-"https://uubslcjoybeehinnwhtg.supabase.co";
+let carrinho =
+JSON.parse(
+  localStorage.getItem(
+    "saliCarrinho"
+  )
+) || [];
 
 
-const SUPABASE_KEY =
-"sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
+let valorFrete =
+0;
 
 
-const BUCKET_FOTOS =
-"produtos";
+let tipoEntrega =
+"";
 
 
-const supabaseClient =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+let configuracoesLoja = {
 
+  taxa_retirada:0,
 
-const supabasePublico =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY,
-  {
-    auth:{
-      persistSession:false,
-      autoRefreshToken:false,
-      detectSessionInUrl:false
-    }
-  }
-);
+  taxa_cidade:5,
 
+  taxa_bola:8,
 
-let produtos = [];
+  taxa_caixa:10,
 
-let pedidos = [];
+  taxa_barcos:5,
 
-let filtroStatusPedidos =
-"Todos";
+  mostrar_retirada:true,
 
-let fotosFormulario = [];
+  mostrar_cidade:true,
 
-let opcoesFormulario = [];
+  mostrar_bola:true,
 
+  mostrar_caixa:true,
 
-let configuracoesLoja =
-null;
+  mostrar_barcos:true,
 
+  pagamento_pix:true,
 
-let bannerLayoutArquivo =
-null;
+  pagamento_cartao:true,
 
+  pagamento_dinheiro:true,
 
-let bannerLayoutPreview =
-null;
+  pagamento_entrega:true
 
-
-let removerBannerAtual =
-false;
-
-
-const STATUS_PEDIDOS = [
-
-  "Novo",
-
-  "Confirmado",
-
-  "Em separação",
-
-  "Saiu para entrega",
-
-  "Entregue",
-
-  "Cancelado"
-
-];
-
-
-const CORES_SALI = [
-
-  "Preto",
-
-  "Branco",
-
-  "Off White",
-
-  "Bege",
-
-  "Nude",
-
-  "Marrom",
-
-  "Caramelo",
-
-  "Rosa",
-
-  "Pink",
-
-  "Rosa bebê",
-
-  "Vermelho",
-
-  "Vinho",
-
-  "Azul",
-
-  "Azul bebê",
-
-  "Azul marinho",
-
-  "Verde",
-
-  "Verde militar",
-
-  "Verde bandeira",
-
-  "Amarelo",
-
-  "Laranja",
-
-  "Roxo",
-
-  "Lilás",
-
-  "Cinza",
-
-  "Prata",
-
-  "Dourado"
-
-];
-
-
-const TAMANHOS = [
-
-  {
-    valor:"P",
-    nome:"P"
-  },
-
-  {
-    valor:"M",
-    nome:"M"
-  },
-
-  {
-    valor:"G",
-    nome:"G"
-  },
-
-  {
-    valor:"GG",
-    nome:"GG"
-  },
-
-  {
-    valor:"36",
-    nome:"36"
-  },
-
-  {
-    valor:"38",
-    nome:"38"
-  },
-
-  {
-    valor:"40",
-    nome:"40"
-  },
-
-  {
-    valor:"42",
-    nome:"42"
-  },
-
-  {
-    valor:"44",
-    nome:"44"
-  },
-
-  {
-    valor:"46",
-    nome:"46"
-  },
-
-  {
-    valor:"48",
-    nome:"48"
-  },
-
-  {
-    valor:"Tamanho único",
-    nome:"Tamanho único • veste 36 ao 42"
-  }
-
-];
-  /* =========================================
-   LOGIN
-========================================= */
-
-async function entrar(){
-
-  const email =
-  document.getElementById(
-    "email"
-  ).value.trim();
-
-
-  const senha =
-  document.getElementById(
-    "senha"
-  ).value;
-
-
-  const erro =
-  document.getElementById(
-    "erroLogin"
-  );
-
-
-  erro.textContent =
-  "";
-
-
-  if(
-    !email ||
-    !senha
-  ){
-
-    erro.textContent =
-    "Digite o e-mail e a senha.";
-
-    return;
-
-  }
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient.auth
-  .signInWithPassword({
-    email,
-    password:senha
-  });
-
-
-  if(error){
-
-    erro.textContent =
-    "Não foi possível entrar. Verifique o e-mail e a senha.";
-
-    console.error(
-      error
-    );
-
-    return;
-
-  }
-
-
-  if(
-    data.session
-  ){
-
-    mostrarPainel();
-
-  }
-
-}
-
-
-async function verificarSessao(){
-
-  const {
-    data
-  } =
-  await supabaseClient.auth
-  .getSession();
-
-
-  if(
-    data.session
-  ){
-
-    mostrarPainel();
-
-  }else{
-
-    mostrarLogin();
-
-  }
-
-}
-
-
-async function mostrarPainel(){
-
-  document.getElementById(
-    "loginTela"
-  ).style.display =
-  "none";
-
-
-  document.getElementById(
-    "painel"
-  ).style.display =
-  "block";
-
-
-  await Promise.all([
-
-    carregarProdutos(),
-
-    carregarPedidos(),
-
-    carregarConfiguracoesLoja()
-
-  ]);
-
-}
-
-
-function mostrarLogin(){
-
-  document.getElementById(
-    "loginTela"
-  ).style.display =
-  "flex";
-
-
-  document.getElementById(
-    "painel"
-  ).style.display =
-  "none";
-
-}
-
-
-async function sair(){
-
-  await supabaseClient.auth
-  .signOut();
-
-
-  mostrarLogin();
-
-}
+};
 
 
 /* =========================================
-   NAVEGAÇÃO
+   CORREÇÃO DE CARRINHOS ANTIGOS
 ========================================= */
 
-function abrirPagina(
-  pagina,
-  botao = null
-){
+carrinho =
+carrinho.map(
+  (
+    item,
+    index
+  ) => {
 
-  document
-  .querySelectorAll(
-    ".pagina"
-  )
-  .forEach(
-    item => {
+    if(
+      !item.chaveItem
+    ){
 
-      item.classList.remove(
-        "ativa"
+      item.chaveItem = [
+
+        String(
+          item.id ??
+          index
+        ),
+
+        String(
+          item.tamanho ||
+          ""
+        ),
+
+        String(
+          item.estampa ||
+          ""
+        ),
+
+        String(
+          item.cor ||
+          ""
+        )
+
+      ]
+      .join(
+        "|||"
       );
 
     }
-  );
 
 
-  const destino =
-  document.getElementById(
-    "pagina-" +
-    pagina
-  );
-
-
-  if(destino){
-
-    destino.classList.add(
-      "ativa"
+    item.quantidade =
+    Math.max(
+      1,
+      Number(
+        item.quantidade ||
+        1
+      )
     );
+
+
+    item.preco =
+    Number(
+      item.preco ||
+      0
+    );
+
+
+    return item;
 
   }
+);
 
 
-  document
-  .querySelectorAll(
-    ".nav-item"
+localStorage.setItem(
+  "saliCarrinho",
+  JSON.stringify(
+    carrinho
   )
-  .forEach(
-    item => {
-
-      item.classList.remove(
-        "ativo"
-      );
-
-    }
-  );
-
-
-  if(botao){
-
-    botao.classList.add(
-      "ativo"
-    );
-
-  }else{
-
-    const itemMenu =
-    document.querySelector(
-      `.nav-item[data-pagina="${pagina}"]`
-    );
-
-
-    if(itemMenu){
-
-      itemMenu.classList.add(
-        "ativo"
-      );
-
-    }
-
-  }
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-function abrirLojaVisitante(){
-
-  window.open(
-    "https://salistoreoficial-svg.github.io/Sali-Store/",
-    "_blank"
-  );
-
-}
+);
 
 
 /* =========================================
    UTILIDADES
 ========================================= */
 
+function salvarCarrinho(){
+
+  localStorage.setItem(
+    "saliCarrinho",
+    JSON.stringify(
+      carrinho
+    )
+  );
+
+
+  atualizarCarrinho();
+
+}
+
+
 function moeda(
   valor
 ){
 
   return Number(
-    valor || 0
+    valor ||
+    0
   )
   .toLocaleString(
     "pt-BR",
@@ -5147,12 +2035,36 @@ function moeda(
 }
 
 
+function calcularSubtotal(){
+
+  return carrinho.reduce(
+    (
+      soma,
+      item
+    ) =>
+      soma +
+      Number(
+        item.preco ||
+        0
+      )
+      *
+      Number(
+        item.quantidade ||
+        0
+      ),
+    0
+  );
+
+}
+
+
 function escaparHtml(
   valor
 ){
 
   return String(
-    valor ?? ""
+    valor ??
+    ""
   )
   .replace(
     /&/g,
@@ -5178,2304 +2090,350 @@ function escaparHtml(
 }
 
 
-function gerarIdentificador(){
-
-  return (
-    Math.random()
-    .toString(36)
-    .slice(2)
-    +
-    Date.now()
-    .toString(36)
-  );
-
-}
-
-
-function validarArquivoImagem(
-  arquivo
-){
-
-  if(
-    !arquivo
-  ){
-    return false;
-  }
-
-
-  if(
-    !String(
-      arquivo.type || ""
-    )
-    .startsWith(
-      "image/"
-    )
-  ){
-
-    alert(
-      "Selecione um arquivo de imagem."
-    );
-
-    return false;
-
-  }
-
-
-  if(
-    arquivo.size >
-    10 * 1024 * 1024
-  ){
-
-    alert(
-      "A imagem deve ter no máximo 10 MB."
-    );
-
-    return false;
-
-  }
-
-
-  return true;
-
-}
-
-
-function dataHoraBR(
-  valor
-){
-
-  if(!valor){
-    return "";
-  }
-
-
-  try{
-
-    return new Date(
-      valor
-    )
-    .toLocaleString(
-      "pt-BR",
-      {
-        dateStyle:"short",
-        timeStyle:"short"
-      }
-    );
-
-  }catch(e){
-
-    return String(
-      valor
-    );
-
-  }
-
-}
-
-
-function somenteDataLocal(
-  valor
-){
-
-  if(!valor){
-    return "";
-  }
-
-
-  const data =
-  valor instanceof Date
-  ?
-  valor
-  :
-  new Date(
-    valor
-  );
-
-
-  if(
-    Number.isNaN(
-      data.getTime()
-    )
-  ){
-
-    return "";
-
-  }
-
-
-  const ano =
-  data.getFullYear();
-
-
-  const mes =
-  String(
-    data.getMonth() + 1
-  )
-  .padStart(
-    2,
-    "0"
-  );
-
-
-  const dia =
-  String(
-    data.getDate()
-  )
-  .padStart(
-    2,
-    "0"
-  );
-
-
-  return (
-    `${ano}-${mes}-${dia}`
-  );
-
-}
-
-
-function telefoneFormatado(
-  valor
-){
-
-  const digitos =
-  String(
-    valor || ""
-  )
-  .replace(
-    /\D/g,
-    ""
-  );
-
-
-  if(
-    digitos.length === 11
-  ){
-
-    return (
-      "(" +
-      digitos.slice(0,2) +
-      ") " +
-      digitos.slice(2,7) +
-      "-" +
-      digitos.slice(7)
-    );
-
-  }
-
-
-  return (
-    valor ||
-    "Não informado"
-  );
-
-}
-
-
-function normalizarStatus(
-  status
-){
-
-  const s =
-  String(
-    status ||
-    "Novo"
-  ).trim();
-
-
-  return (
-    s ||
-    "Novo"
-  );
-
-}
-
-
-function classeStatusPedido(
-  status
-){
-
-  const s =
-  normalizarStatus(
-    status
-  )
-  .toLowerCase();
-
-
-  if(
-    s === "novo"
-  ){
-    return "novo";
-  }
-
-
-  if(
-    s === "confirmado"
-  ){
-    return "confirmado";
-  }
-
-
-  if(
-    s.includes(
-      "separa"
-    )
-  ){
-    return "separacao";
-  }
-
-
-  if(
-    s.includes(
-      "entrega"
-    )
-    &&
-    !s.includes(
-      "entregue"
-    )
-  ){
-    return "entrega";
-  }
-
-
-  if(
-    s === "entregue"
-  ){
-    return "entregue";
-  }
-
-
-  if(
-    s === "cancelado"
-  ){
-    return "cancelado";
-  }
-
-
-  return "";
-
-}
-
-
-function proximoStatus(
-  statusAtual
-){
-
-  const status =
-  normalizarStatus(
-    statusAtual
-  );
-
-
-  const fluxo = [
-
-    "Novo",
-
-    "Confirmado",
-
-    "Em separação",
-
-    "Saiu para entrega",
-
-    "Entregue"
-
-  ];
-
-
-  const indice =
-  fluxo.indexOf(
-    status
-  );
-
-
-  if(
-    indice === -1
-    ||
-    indice ===
-    fluxo.length - 1
-  ){
-
-    return null;
-
-  }
-
-
-  return fluxo[
-    indice + 1
-  ];
-
-}
-
-
-function lerProdutosPedido(
-  valor
-){
-
-  if(
-    Array.isArray(
-      valor
-    )
-  ){
-
-    return valor;
-
-  }
-
-
-  if(
-    valor &&
-    typeof valor ===
-    "object"
-  ){
-
-    return Array.isArray(
-      valor.items
-    )
-    ?
-    valor.items
-    :
-    [valor];
-
-  }
-
-
-  const texto =
-  String(
-    valor || ""
-  ).trim();
-
-
-  if(!texto){
-    return [];
-  }
-
-
-  try{
-
-    const dados =
-    JSON.parse(
-      texto
-    );
-
-
-    return Array.isArray(
-      dados
-    )
-    ?
-    dados
-    :
-    [dados];
-
-  }catch(e){
-
-    return [{
-
-      nome:texto,
-
-      quantidade:1,
-
-      preco:0
-
-    }];
-
-  }
-
-}
-
-
-function nomeItemPedido(
-  item
-){
-
-  return (
-    item.nome ||
-    item.name ||
-    item.produto ||
-    item.titulo ||
-    "Produto"
-  );
-
-}
-
-
-function qtdItemPedido(
-  item
-){
-
-  return (
-    Number(
-      item.quantidade ??
-      item.qtd ??
-      item.quantity ??
-      1
-    )
-    ||
-    1
-  );
-
-}
-
-
-function precoItemPedido(
-  item
-){
-
-  return (
-    Number(
-      item.preco ??
-      item.price ??
-      item.valor ??
-      0
-    )
-    ||
-    0
-  );
-
-}
-
-
-function fotoItemPedido(
-  item
-){
-
-  return (
-    item.foto ||
-    item.foto_url ||
-    item.imagem ||
-    item.image ||
-    ""
-  );
-
-}
-
-
 /* =========================================
-   CONFIGURAÇÕES DA LOJA
+   CARRINHO
 ========================================= */
 
-async function carregarConfiguracoesLoja(){
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-  .from(
-    "Configuracoes_Loja"
-  )
-  .select("*")
-  .eq(
-    "id",
-    1
-  )
-  .maybeSingle();
-
-
-  if(error){
-
-    console.error(
-      "Erro ao carregar configurações:",
-      error
-    );
-
-    mostrarStatusLayout(
-      "Não foi possível carregar as configurações.",
-      "erro"
-    );
-
-    return;
-
-  }
-
-
-  configuracoesLoja =
-  data || {
-
-    id:1,
-
-    nome_loja:
-    "SALI STORE",
-
-    subtitulo_loja:
-    "Moda feminina • Manacapuru",
-
-    texto_topo:
-    "NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS",
-
-    hero_titulo:
-    "Seu look começa aqui.",
-
-    hero_subtitulo:
-    "Novidades, tendências e peças selecionadas para você.",
-
-    cor_principal:
-    "#d92f82",
-
-    cor_secundaria:
-    "#111111",
-
-    cor_fundo:
-    "#ffffff",
-
-    banner_url:null,
-
-    mostrar_barra_topo:true,
-
-    mostrar_beneficios:true,
-
-    mostrar_categorias:true,
-
-    instagram:
-    "@salimanacapuru",
-
-    taxa_retirada:0,
-
-    taxa_cidade:5,
-
-    taxa_bola:8,
-
-    taxa_caixa:10,
-
-    taxa_barcos:5,
-
-    mostrar_retirada:true,
-
-    mostrar_cidade:true,
-
-    mostrar_bola:true,
-
-    mostrar_caixa:true,
-
-    mostrar_barcos:true,
-
-    pagamento_pix:true,
-
-    pagamento_cartao:true,
-
-    pagamento_dinheiro:true,
-
-    pagamento_entrega:true
-
-  };
-
-
-  preencherFormularioLayout();
-
-  preencherEntregasPagamentos();
-
-}
-
-
-/* =========================================
-   PREENCHER LAYOUT
-========================================= */
-
-function preencherFormularioLayout(){
-
-  if(
-    !configuracoesLoja
-  ){
-    return;
-  }
-
-
-  document.getElementById(
-    "layoutNomeLoja"
-  ).value =
-  configuracoesLoja.nome_loja ||
-  "SALI STORE";
-
-
-  document.getElementById(
-    "layoutSubtituloLoja"
-  ).value =
-  configuracoesLoja.subtitulo_loja ||
-  "";
-
-
-  document.getElementById(
-    "layoutInstagram"
-  ).value =
-  configuracoesLoja.instagram ||
-  "";
-
-
-  document.getElementById(
-    "layoutTextoTopo"
-  ).value =
-  configuracoesLoja.texto_topo ||
-  "";
-
-
-  document.getElementById(
-    "layoutHeroTitulo"
-  ).value =
-  configuracoesLoja.hero_titulo ||
-  "";
-
-
-  document.getElementById(
-    "layoutHeroSubtitulo"
-  ).value =
-  configuracoesLoja.hero_subtitulo ||
-  "";
-
-
-  document.getElementById(
-    "layoutCorPrincipal"
-  ).value =
-  configuracoesLoja.cor_principal ||
-  "#d92f82";
-
-
-  document.getElementById(
-    "layoutCorSecundaria"
-  ).value =
-  configuracoesLoja.cor_secundaria ||
-  "#111111";
-
-
-  document.getElementById(
-    "layoutCorFundo"
-  ).value =
-  configuracoesLoja.cor_fundo ||
-  "#ffffff";
-
-
-  document.getElementById(
-    "layoutMostrarBarraTopo"
-  ).checked =
-  configuracoesLoja.mostrar_barra_topo !==
-  false;
-
-
-  document.getElementById(
-    "layoutMostrarBeneficios"
-  ).checked =
-  configuracoesLoja.mostrar_beneficios !==
-  false;
-
-
-  document.getElementById(
-    "layoutMostrarCategorias"
-  ).checked =
-  configuracoesLoja.mostrar_categorias !==
-  false;
-
-
-  bannerLayoutArquivo =
-  null;
-
-
-  bannerLayoutPreview =
-  configuracoesLoja.banner_url ||
-  null;
-
-
-  removerBannerAtual =
-  false;
-
-
-  renderizarPreviewBanner();
-
-}
-
-
-/* =========================================
-   PREENCHER ENTREGA E PAGAMENTO
-========================================= */
-
-function preencherEntregasPagamentos(){
-
-  if(
-    !configuracoesLoja
-  ){
-    return;
-  }
-
-
-  document.getElementById(
-    "taxaRetirada"
-  ).value =
-  Number(
-    configuracoesLoja.taxa_retirada ??
-    0
-  );
-
-
-  document.getElementById(
-    "taxaCidade"
-  ).value =
-  Number(
-    configuracoesLoja.taxa_cidade ??
-    5
-  );
-
-
-  document.getElementById(
-    "taxaBola"
-  ).value =
-  Number(
-    configuracoesLoja.taxa_bola ??
-    8
-  );
-
-
-  document.getElementById(
-    "taxaCaixa"
-  ).value =
-  Number(
-    configuracoesLoja.taxa_caixa ??
-    10
-  );
-
-
-  document.getElementById(
-    "taxaBarcos"
-  ).value =
-  Number(
-    configuracoesLoja.taxa_barcos ??
-    5
-  );
-
-
-  document.getElementById(
-    "mostrarRetirada"
-  ).checked =
-  configuracoesLoja.mostrar_retirada !==
-  false;
-
-
-  document.getElementById(
-    "mostrarCidade"
-  ).checked =
-  configuracoesLoja.mostrar_cidade !==
-  false;
-
-
-  document.getElementById(
-    "mostrarBola"
-  ).checked =
-  configuracoesLoja.mostrar_bola !==
-  false;
-
-
-  document.getElementById(
-    "mostrarCaixa"
-  ).checked =
-  configuracoesLoja.mostrar_caixa !==
-  false;
-
-
-  document.getElementById(
-    "mostrarBarcos"
-  ).checked =
-  configuracoesLoja.mostrar_barcos !==
-  false;
-
-
-  document.getElementById(
-    "pagamentoPix"
-  ).checked =
-  configuracoesLoja.pagamento_pix !==
-  false;
-
-
-  document.getElementById(
-    "pagamentoCartao"
-  ).checked =
-  configuracoesLoja.pagamento_cartao !==
-  false;
-
-
-  document.getElementById(
-    "pagamentoDinheiro"
-  ).checked =
-  configuracoesLoja.pagamento_dinheiro !==
-  false;
-
-
-  document.getElementById(
-    "pagamentoEntrega"
-  ).checked =
-  configuracoesLoja.pagamento_entrega !==
-  false;
-
-}
-
-
-/* =========================================
-   STATUS LAYOUT
-========================================= */
-
-function mostrarStatusLayout(
-  mensagem,
-  tipo = ""
+function adicionarProduto(
+  id,
+  nome,
+  preco,
+  foto,
+  tamanho = "",
+  estampa = "",
+  cor = ""
 ){
 
-  const area =
-  document.getElementById(
-    "statusLayout"
-  );
+  const chaveItem = [
 
+    String(
+      id ??
+      ""
+    ),
 
-  if(!area){
-    return;
-  }
+    String(
+      tamanho ||
+      ""
+    ),
 
+    String(
+      estampa ||
+      ""
+    ),
 
-  area.textContent =
-  mensagem;
-
-
-  area.className =
-  "status-layout" +
-  (
-    tipo
-    ?
-    " " + tipo
-    :
-    ""
-  );
-
-}
-
-
-/* =========================================
-   STATUS ENTREGA
-========================================= */
-
-function mostrarStatusEntregas(
-  mensagem,
-  tipo = ""
-){
-
-  const area =
-  document.getElementById(
-    "statusEntregas"
-  );
-
-
-  if(!area){
-    return;
-  }
-
-
-  area.textContent =
-  mensagem;
-
-
-  area.className =
-  "status-entregas" +
-  (
-    tipo
-    ?
-    " " + tipo
-    :
-    ""
-  );
-
-}
-
-
-/* =========================================
-   BANNER
-========================================= */
-
-function selecionarBannerLayout(){
-
-  const input =
-  document.getElementById(
-    "layoutBannerArquivo"
-  );
-
-
-  const arquivo =
-  input.files?.[0];
-
-
-  if(!arquivo){
-    return;
-  }
-
-
-  if(
-    !validarArquivoImagem(
-      arquivo
+    String(
+      cor ||
+      ""
     )
-  ){
 
-    input.value =
-    "";
-
-    return;
-
-  }
-
-
-  bannerLayoutArquivo =
-  arquivo;
-
-
-  bannerLayoutPreview =
-  URL.createObjectURL(
-    arquivo
+  ]
+  .join(
+    "|||"
   );
 
 
-  removerBannerAtual =
-  false;
-
-
-  renderizarPreviewBanner();
-
-}
-
-
-function removerBannerLayout(){
-
-  bannerLayoutArquivo =
-  null;
-
-
-  bannerLayoutPreview =
-  null;
-
-
-  removerBannerAtual =
-  true;
-
-
-  const input =
-  document.getElementById(
-    "layoutBannerArquivo"
-  );
-
-
-  if(input){
-
-    input.value =
-    "";
-
-  }
-
-
-  renderizarPreviewBanner();
-
-}
-
-
-function renderizarPreviewBanner(){
-
-  const area =
-  document.getElementById(
-    "layoutPreviewBanner"
-  );
-
-
-  const botaoRemover =
-  document.getElementById(
-    "botaoRemoverBanner"
+  const existente =
+  carrinho.find(
+    item =>
+      item.chaveItem ===
+      chaveItem
   );
 
 
   if(
-    !area ||
-    !botaoRemover
-  ){
-    return;
-  }
-
-
-  if(
-    bannerLayoutPreview
+    existente
   ){
 
-    area.innerHTML = `
-
-      <img
-        src="${escaparHtml(bannerLayoutPreview)}"
-        alt="Banner da loja"
-      >
-
-    `;
-
-
-    botaoRemover.style.display =
-    "block";
+    existente.quantidade++;
 
   }else{
 
-    area.innerHTML = `
+    carrinho.push({
 
-      <div class="preview-banner-vazio">
-        Nenhuma imagem personalizada
-      </div>
+      id,
 
-    `;
+      chaveItem,
 
+      nome,
 
-    botaoRemover.style.display =
-    "none";
-
-  }
-
-}
-
-
-async function enviarBannerLayout(){
-
-  if(
-    !bannerLayoutArquivo
-  ){
-
-    if(
-      removerBannerAtual
-    ){
-
-      return null;
-
-    }
-
-
-    return (
-      configuracoesLoja?.banner_url ||
-      null
-    );
-
-  }
-
-
-  const extensaoOriginal =
-  String(
-    bannerLayoutArquivo.name ||
-    ""
-  )
-  .split(".")
-  .pop()
-  .toLowerCase();
-
-
-  const extensao =
-  extensaoOriginal &&
-  extensaoOriginal.length <= 6
-  ?
-  extensaoOriginal
-  :
-  "jpg";
-
-
-  const caminho =
-  "layout/banner-" +
-  Date.now() +
-  "-" +
-  gerarIdentificador() +
-  "." +
-  extensao;
-
-
-  const {
-    error
-  } =
-  await supabaseClient
-  .storage
-  .from(
-    BUCKET_FOTOS
-  )
-  .upload(
-    caminho,
-    bannerLayoutArquivo,
-    {
-      cacheControl:"3600",
-      upsert:false,
-      contentType:
-      bannerLayoutArquivo.type ||
-      "image/jpeg"
-    }
-  );
-
-
-  if(error){
-
-    throw new Error(
-      "Erro ao enviar o banner: " +
-      error.message
-    );
-
-  }
-
-
-  const {
-    data
-  } =
-  supabaseClient
-  .storage
-  .from(
-    BUCKET_FOTOS
-  )
-  .getPublicUrl(
-    caminho
-  );
-
-
-  return (
-    data.publicUrl ||
-    null
-  );
-
-}
-
-
-/* =========================================
-   SALVAR LAYOUT
-========================================= */
-
-async function salvarConfiguracoesLoja(){
-
-  const botao =
-  document.getElementById(
-    "botaoSalvarLayout"
-  );
-
-
-  mostrarStatusLayout(
-    ""
-  );
-
-
-  botao.disabled =
-  true;
-
-
-  botao.textContent =
-  "SALVANDO...";
-
-
-  try{
-
-    const nomeLoja =
-    document.getElementById(
-      "layoutNomeLoja"
-    ).value.trim();
-
-
-    if(
-      !nomeLoja
-    ){
-
-      throw new Error(
-        "Digite o nome da loja."
-      );
-
-    }
-
-
-    const bannerUrl =
-    await enviarBannerLayout();
-
-
-    const dados = {
-
-      id:1,
-
-      nome_loja:
-      nomeLoja,
-
-      subtitulo_loja:
-      document.getElementById(
-        "layoutSubtituloLoja"
-      ).value.trim(),
-
-      texto_topo:
-      document.getElementById(
-        "layoutTextoTopo"
-      ).value.trim(),
-
-      hero_titulo:
-      document.getElementById(
-        "layoutHeroTitulo"
-      ).value.trim(),
-
-      hero_subtitulo:
-      document.getElementById(
-        "layoutHeroSubtitulo"
-      ).value.trim(),
-
-      cor_principal:
-      document.getElementById(
-        "layoutCorPrincipal"
-      ).value,
-
-      cor_secundaria:
-      document.getElementById(
-        "layoutCorSecundaria"
-      ).value,
-
-      cor_fundo:
-      document.getElementById(
-        "layoutCorFundo"
-      ).value,
-
-      banner_url:
-      bannerUrl,
-
-      mostrar_barra_topo:
-      document.getElementById(
-        "layoutMostrarBarraTopo"
-      ).checked,
-
-      mostrar_beneficios:
-      document.getElementById(
-        "layoutMostrarBeneficios"
-      ).checked,
-
-      mostrar_categorias:
-      document.getElementById(
-        "layoutMostrarCategorias"
-      ).checked,
-
-      instagram:
-      document.getElementById(
-        "layoutInstagram"
-      ).value.trim(),
-
-      updated_at:
-      new Date().toISOString()
-
-    };
-
-
-    const {
-      data,
-      error
-    } =
-    await supabaseClient
-    .from(
-      "Configuracoes_Loja"
-    )
-    .upsert(
-      dados,
-      {
-        onConflict:"id"
-      }
-    )
-    .select("*")
-    .single();
-
-
-    if(error){
-
-      throw error;
-
-    }
-
-
-    configuracoesLoja = {
-
-      ...configuracoesLoja,
-
-      ...data
-
-    };
-
-
-    bannerLayoutArquivo =
-    null;
-
-
-    bannerLayoutPreview =
-    configuracoesLoja.banner_url ||
-    null;
-
-
-    removerBannerAtual =
-    false;
-
-
-    document.getElementById(
-      "layoutBannerArquivo"
-    ).value =
-    "";
-
-
-    renderizarPreviewBanner();
-
-
-    mostrarStatusLayout(
-      "Layout salvo com sucesso! ✅",
-      "sucesso"
-    );
-
-  }catch(error){
-
-    console.error(
-      "Erro ao salvar layout:",
-      error
-    );
-
-
-    mostrarStatusLayout(
-      error.message ||
-      "Não foi possível salvar.",
-      "erro"
-    );
-
-  }finally{
-
-    botao.disabled =
-    false;
-
-
-    botao.textContent =
-    "💾 SALVAR LAYOUT E APARÊNCIA";
-
-  }
-
-}
-
-
-/* =========================================
-   SALVAR ENTREGA E PAGAMENTOS
-========================================= */
-
-async function salvarEntregasPagamentos(){
-
-  const botao =
-  document.getElementById(
-    "botaoSalvarEntregas"
-  );
-
-
-  mostrarStatusEntregas(
-    ""
-  );
-
-
-  botao.disabled =
-  true;
-
-
-  botao.textContent =
-  "SALVANDO...";
-
-
-  try{
-
-    const dados = {
-
-      id:1,
-
-      taxa_retirada:
-      Math.max(
-        0,
-        Number(
-          document.getElementById(
-            "taxaRetirada"
-          ).value ||
-          0
-        )
-      ),
-
-      taxa_cidade:
-      Math.max(
-        0,
-        Number(
-          document.getElementById(
-            "taxaCidade"
-          ).value ||
-          0
-        )
-      ),
-
-      taxa_bola:
-      Math.max(
-        0,
-        Number(
-          document.getElementById(
-            "taxaBola"
-          ).value ||
-          0
-        )
-      ),
-
-      taxa_caixa:
-      Math.max(
-        0,
-        Number(
-          document.getElementById(
-            "taxaCaixa"
-          ).value ||
-          0
-        )
-      ),
-
-      taxa_barcos:
-      Math.max(
-        0,
-        Number(
-          document.getElementById(
-            "taxaBarcos"
-          ).value ||
-          0
-        )
-      ),
-
-      mostrar_retirada:
-      document.getElementById(
-        "mostrarRetirada"
-      ).checked,
-
-      mostrar_cidade:
-      document.getElementById(
-        "mostrarCidade"
-      ).checked,
-
-      mostrar_bola:
-      document.getElementById(
-        "mostrarBola"
-      ).checked,
-
-      mostrar_caixa:
-      document.getElementById(
-        "mostrarCaixa"
-      ).checked,
-
-      mostrar_barcos:
-      document.getElementById(
-        "mostrarBarcos"
-      ).checked,
-
-      pagamento_pix:
-      document.getElementById(
-        "pagamentoPix"
-      ).checked,
-
-      pagamento_cartao:
-      document.getElementById(
-        "pagamentoCartao"
-      ).checked,
-
-      pagamento_dinheiro:
-      document.getElementById(
-        "pagamentoDinheiro"
-      ).checked,
-
-      pagamento_entrega:
-      document.getElementById(
-        "pagamentoEntrega"
-      ).checked,
-
-      updated_at:
-      new Date().toISOString()
-
-    };
-
-
-    const {
-      data,
-      error
-    } =
-    await supabaseClient
-    .from(
-      "Configuracoes_Loja"
-    )
-    .upsert(
-      dados,
-      {
-        onConflict:"id"
-      }
-    )
-    .select("*")
-    .single();
-
-
-    if(error){
-
-      throw error;
-
-    }
-
-
-    configuracoesLoja = {
-
-      ...configuracoesLoja,
-
-      ...data
-
-    };
-
-
-    preencherEntregasPagamentos();
-
-
-    mostrarStatusEntregas(
-      "Entrega e pagamentos salvos com sucesso! ✅",
-      "sucesso"
-    );
-
-  }catch(error){
-
-    console.error(
-      "Erro ao salvar entregas:",
-      error
-    );
-
-
-    mostrarStatusEntregas(
-      error.message ||
-      "Não foi possível salvar.",
-      "erro"
-    );
-
-  }finally{
-
-    botao.disabled =
-    false;
-
-
-    botao.textContent =
-    "💾 SALVAR ENTREGA E PAGAMENTOS";
-
-  }
-
-}
-
-
-/* =========================================
-   PEDIDOS
-========================================= */
-
-async function carregarPedidos(){
-
-  const area =
-  document.getElementById(
-    "listaPedidos"
-  );
-
-
-  if(area){
-
-    area.innerHTML =
-    '<div class="sem-dados">Carregando pedidos...</div>';
-
-  }
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-  .from(
-    "Pedidos"
-  )
-  .select("*")
-  .order(
-    "created_at",
-    {
-      ascending:false
-    }
-  );
-
-
-  if(error){
-
-    console.error(
-      "Erro ao carregar pedidos:",
-      error
-    );
-
-
-    pedidos =
-    [];
-
-
-    if(area){
-
-      area.innerHTML = `
-
-        <div class="sem-dados">
-          Não foi possível carregar os pedidos.
-          <br><br>
-          ${escaparHtml(error.message)}
-        </div>
-
-      `;
-
-    }
-
-
-    atualizarDashboard();
-
-    return;
-
-  }
-
-
-  pedidos =
-  data || [];
-
-
-  renderizarPedidos();
-
-  renderizarCancelamentos();
-
-  renderizarUltimosPedidos();
-
-  atualizarDashboard();
-
-}
-
-
-function filtrarPedidosStatus(
-  status,
-  botao
-){
-
-  filtroStatusPedidos =
-  status;
-
-
-  document
-  .querySelectorAll(
-    ".filtro-pedido"
-  )
-  .forEach(
-    item => {
-
-      item.classList.remove(
-        "ativo"
-      );
-
-    }
-  );
-
-
-  if(botao){
-
-    botao.classList.add(
-      "ativo"
-    );
-
-  }
-
-
-  renderizarPedidos();
-
-}
-
-
-function renderizarPedidos(){
-
-  const area =
-  document.getElementById(
-    "listaPedidos"
-  );
-
-
-  if(!area){
-    return;
-  }
-
-
-  const busca =
-  String(
-    document.getElementById(
-      "buscaPedidos"
-    )?.value ||
-    ""
-  )
-  .trim()
-  .toLowerCase();
-
-
-  const lista =
-  pedidos.filter(
-    pedido => {
-
-      const status =
-      normalizarStatus(
-        pedido.status
-      );
-
-
-      if(
-        status ===
-        "Cancelado"
-      ){
-
-        return false;
-
-      }
-
-
-      if(
-        filtroStatusPedidos !==
-        "Todos"
-        &&
-        status !==
-        filtroStatusPedidos
-      ){
-
-        return false;
-
-      }
-
-
-      if(
-        !busca
-      ){
-
-        return true;
-
-      }
-
-
-      const texto = [
-
-        pedido.numero_pedido,
-
-        pedido.nome_cliente,
-
-        pedido.Telefone,
-
-        pedido.telefone
-
-      ]
-      .join(" ")
-      .toLowerCase();
-
-
-      return texto.includes(
-        busca
-      );
-
-    }
-  );
-
-
-  if(
-    !lista.length
-  ){
-
-    area.innerHTML =
-    '<div class="sem-dados">Nenhum pedido encontrado.</div>';
-
-    return;
-
-  }
-
-
-  area.innerHTML =
-  lista.map(
-    criarHtmlPedido
-  )
-  .join("");
-
-}
-
-
-function criarHtmlPedido(
-  pedido
-){
-
-  const status =
-  normalizarStatus(
-    pedido.status
-  );
-
-
-  const prox =
-  proximoStatus(
-    status
-  );
-
-
-  return `
-
-    <div class="pedido-card">
-
-      <div class="pedido-topo">
-
-        <div>
-
-          <div class="pedido-numero">
-            ${escaparHtml(
-              pedido.numero_pedido ||
-              ("Pedido #" + pedido.id)
-            )}
-          </div>
-
-          <div class="pedido-data">
-            ${escaparHtml(
-              dataHoraBR(
-                pedido.created_at
-              )
-            )}
-          </div>
-
-        </div>
-
-
-        <div class="pedido-total">
-          ${moeda(
-            pedido.total
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="pedido-cliente">
-        ${escaparHtml(
-          pedido.nome_cliente ||
-          "Cliente não informado"
-        )}
-      </div>
-
-
-      <div class="pedido-resumo">
-
-        📱
-        ${escaparHtml(
-          telefoneFormatado(
-            pedido.Telefone ??
-            pedido.telefone
-          )
-        )}
-
-        <br>
-
-        🚚
-        ${escaparHtml(
-          pedido.tipo_entrega ||
-          "Entrega não informada"
-        )}
-
-        <br>
-
-        💳
-        ${escaparHtml(
-          pedido.forma_pagamento ||
-          "Não informado"
-        )}
-
-      </div>
-
-
-      <span
-        class="status-pedido ${classeStatusPedido(status)}"
-      >
-        ${escaparHtml(status)}
-      </span>
-
-
-      <div class="pedido-acoes">
-
-        <button
-          class="ver-pedido"
-          onclick="abrirPedido(${Number(pedido.id)})"
-        >
-          VER PEDIDO
-        </button>
-
-
-        ${
-          prox
-          ?
-          `
-            <button
-              class="avancar-pedido"
-              onclick="mudarStatusRapido(${Number(pedido.id)},'${escaparHtml(prox)}')"
-            >
-              ${escaparHtml(
-                prox.toUpperCase()
-              )}
-            </button>
-          `
-          :
-          ""
-        }
-
-
-        ${
-          status !== "Cancelado"
-          &&
-          status !== "Entregue"
-          ?
-          `
-            <button
-              class="cancelar-pedido"
-              onclick="mudarStatusRapido(${Number(pedido.id)},'Cancelado')"
-            >
-              CANCELAR
-            </button>
-          `
-          :
-          ""
-        }
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-function renderizarUltimosPedidos(){
-
-  const area =
-  document.getElementById(
-    "ultimosPedidos"
-  );
-
-
-  if(!area){
-    return;
-  }
-
-
-  const lista =
-  pedidos.slice(
-    0,
-    3
-  );
-
-
-  if(
-    !lista.length
-  ){
-
-    area.innerHTML =
-    '<div class="sem-dados">Nenhum pedido recebido ainda.</div>';
-
-    return;
-
-  }
-
-
-  area.innerHTML =
-  lista.map(
-    pedido => {
-
-      const status =
-      normalizarStatus(
-        pedido.status
-      );
-
-
-      return `
-
-        <div
-          class="pedido-card"
-          style="margin-bottom:10px"
-        >
-
-          <div class="pedido-topo">
-
-            <div>
-
-              <div class="pedido-numero">
-                ${escaparHtml(
-                  pedido.numero_pedido ||
-                  ("Pedido #" + pedido.id)
-                )}
-              </div>
-
-              <div class="pedido-data">
-                ${escaparHtml(
-                  dataHoraBR(
-                    pedido.created_at
-                  )
-                )}
-              </div>
-
-            </div>
-
-
-            <div class="pedido-total">
-              ${moeda(
-                pedido.total
-              )}
-            </div>
-
-          </div>
-
-
-          <div class="pedido-cliente">
-            ${escaparHtml(
-              pedido.nome_cliente ||
-              "Cliente"
-            )}
-          </div>
-
-
-          <span
-            class="status-pedido ${classeStatusPedido(status)}"
-          >
-            ${escaparHtml(status)}
-          </span>
-
-        </div>
-
-      `;
-
-    }
-  )
-  .join("");
-
-}
-
-
-function renderizarCancelamentos(){
-
-  const area =
-  document.getElementById(
-    "listaCancelamentos"
-  );
-
-
-  if(!area){
-    return;
-  }
-
-
-  const lista =
-  pedidos.filter(
-    pedido =>
-      normalizarStatus(
-        pedido.status
-      ) ===
-      "Cancelado"
-  );
-
-
-  if(
-    !lista.length
-  ){
-
-    area.innerHTML =
-    '<div class="sem-dados">Nenhum pedido cancelado. ✅</div>';
-
-    return;
-
-  }
-
-
-  area.innerHTML =
-  lista.map(
-    pedido => `
-
-      <div class="pedido-card">
-
-        <div class="pedido-topo">
-
-          <div>
-
-            <div class="pedido-numero">
-              ${escaparHtml(
-                pedido.numero_pedido ||
-                ("Pedido #" + pedido.id)
-              )}
-            </div>
-
-            <div class="pedido-data">
-              ${escaparHtml(
-                dataHoraBR(
-                  pedido.created_at
-                )
-              )}
-            </div>
-
-          </div>
-
-
-          <div class="pedido-total">
-            ${moeda(
-              pedido.total
-            )}
-          </div>
-
-        </div>
-
-
-        <div class="pedido-cliente">
-          ${escaparHtml(
-            pedido.nome_cliente ||
-            "Cliente"
-          )}
-        </div>
-
-
-        <span class="status-pedido cancelado">
-          Cancelado
-        </span>
-
-
-        <div class="pedido-acoes">
-
-          <button
-            class="ver-pedido"
-            onclick="abrirPedido(${Number(pedido.id)})"
-          >
-            VER PEDIDO
-          </button>
-
-
-          <button
-            class="avancar-pedido"
-            onclick="mudarStatusRapido(${Number(pedido.id)},'Novo')"
-          >
-            REATIVAR
-          </button>
-
-        </div>
-
-      </div>
-
-    `
-  )
-  .join("");
-
-}
-
-
-function abrirPedido(
-  id
-){
-
-  const pedido =
-  pedidos.find(
-    item =>
+      preco:
       Number(
-        item.id
-      ) ===
-      Number(
-        id
-      )
+        preco ||
+        0
+      ),
+
+      foto:
+      foto ||
+      "",
+
+      tamanho:
+      tamanho ||
+      "",
+
+      estampa:
+      estampa ||
+      "",
+
+      cor:
+      cor ||
+      "",
+
+      quantidade:1
+
+    });
+
+  }
+
+
+  salvarCarrinho();
+
+  abrirCarrinho();
+
+}
+
+
+function aumentar(
+  chaveItem
+){
+
+  const item =
+  carrinho.find(
+    produto =>
+      produto.chaveItem ===
+      chaveItem
   );
 
 
-  if(!pedido){
+  if(
+    item
+  ){
+
+    item.quantidade++;
+
+  }
+
+
+  salvarCarrinho();
+
+}
+
+
+function diminuir(
+  chaveItem
+){
+
+  const item =
+  carrinho.find(
+    produto =>
+      produto.chaveItem ===
+      chaveItem
+  );
+
+
+  if(
+    !item
+  ){
     return;
   }
 
 
-  const itens =
-  lerProdutosPedido(
-    pedido.produtos
+  item.quantidade--;
+
+
+  if(
+    item.quantidade <=
+    0
+  ){
+
+    carrinho =
+    carrinho.filter(
+      produto =>
+        produto.chaveItem !==
+        chaveItem
+    );
+
+  }
+
+
+  salvarCarrinho();
+
+}
+
+
+function remover(
+  chaveItem
+){
+
+  carrinho =
+  carrinho.filter(
+    produto =>
+      produto.chaveItem !==
+      chaveItem
   );
 
 
-  const status =
-  normalizarStatus(
-    pedido.status
+  salvarCarrinho();
+
+}
+
+
+function atualizarCarrinho(){
+
+  const area =
+  document.getElementById(
+    "itensCarrinho"
   );
 
 
-  const itensHtml =
-  itens.length
-  ?
-  itens.map(
+  const contador =
+  document.getElementById(
+    "contador"
+  );
+
+
+  const quantidadeTotal =
+  carrinho.reduce(
+    (
+      soma,
+      item
+    ) =>
+      soma +
+      Number(
+        item.quantidade ||
+        0
+      ),
+    0
+  );
+
+
+  contador.textContent =
+  quantidadeTotal;
+
+
+  if(
+    carrinho.length ===
+    0
+  ){
+
+    area.innerHTML =
+    '<div class="vazio">Sua sacola está vazia.</div>';
+
+
+    document.getElementById(
+      "totalCarrinho"
+    ).textContent =
+    moeda(
+      0
+    );
+
+
+    return;
+
+  }
+
+
+  area.innerHTML =
+  carrinho.map(
     item => {
-
-      const foto =
-      fotoItemPedido(
-        item
-      );
-
 
       const detalhes = [
 
         item.cor
         ?
         "Cor: " +
-        item.cor
+        escaparHtml(
+          item.cor
+        )
         :
         "",
 
         item.estampa
         ?
         "Estampa: " +
-        item.estampa
+        escaparHtml(
+          item.estampa
+        )
         :
         "",
 
         item.tamanho
         ?
         "Tamanho: " +
-        item.tamanho
+        escaparHtml(
+          item.tamanho
+        )
         :
         ""
 
       ]
-      .filter(Boolean)
-      .join(" • ");
+      .filter(
+        Boolean
+      )
+      .map(
+        texto =>
+          `<small class="item-detalhe">${texto}</small>`
+      )
+      .join("");
 
 
       return `
 
-        <div class="item-pedido">
+        <div class="item-carrinho">
 
-          ${
-            foto
-            ?
-            `
-              <img
-                src="${escaparHtml(foto)}"
-                alt="Produto"
+          <img
+            src="${escaparHtml(item.foto)}"
+            alt="${escaparHtml(item.nome)}"
+          >
+
+
+          <div class="item-dados">
+
+            <h4>
+              ${escaparHtml(item.nome)}
+            </h4>
+
+
+            ${detalhes}
+
+
+            <strong>
+              ${moeda(item.preco)}
+            </strong>
+
+
+            <div class="quantidade">
+
+              <button
+                type="button"
+                onclick='diminuir(${JSON.stringify(item.chaveItem)})'
               >
-            `
-            :
-            `
-              <div
-                style="
-                  width:54px;
-                  height:68px;
-                  background:#eee;
-                  border-radius:8px;
-                "
-              ></div>
-            `
-          }
+                −
+              </button>
 
 
-          <div>
+              <span>
+                ${item.quantidade}
+              </span>
 
-            <div class="nome">
-              ${escaparHtml(
-                nomeItemPedido(item)
-              )}
-            </div>
 
-            <div class="qtd">
-
-              Quantidade:
-              ${qtdItemPedido(item)}
-
-              ${
-                detalhes
-                ?
-                "<br>" +
-                escaparHtml(
-                  detalhes
-                )
-                :
-                ""
-              }
+              <button
+                type="button"
+                onclick='aumentar(${JSON.stringify(item.chaveItem)})'
+              >
+                +
+              </button>
 
             </div>
 
-          </div>
 
+            <button
+              type="button"
+              class="remover"
+              onclick='remover(${JSON.stringify(item.chaveItem)})'
+            >
+              Remover
+            </button>
 
-          <div class="valor">
-            ${moeda(
-              precoItemPedido(item) *
-              qtdItemPedido(item)
-            )}
           </div>
 
         </div>
@@ -7484,2351 +2442,852 @@ function abrirPedido(
 
     }
   )
-  .join("")
-  :
-  '<div class="sem-dados">Itens não identificados.</div>';
-
-
-  const opcoesStatus =
-  STATUS_PEDIDOS.map(
-    item => `
-
-      <option
-        value="${item}"
-        ${
-          item === status
-          ?
-          "selected"
-          :
-          ""
-        }
-      >
-        ${item}
-      </option>
-
-    `
-  )
   .join("");
 
 
   document.getElementById(
-    "conteudoModalPedido"
-  ).innerHTML = `
+    "totalCarrinho"
+  ).textContent =
+  moeda(
+    calcularSubtotal()
+  );
 
-    <h3>
-      ${escaparHtml(
-        pedido.nome_cliente ||
-        "Cliente"
-      )}
-    </h3>
+}
 
 
-    <div class="numero">
-      ${escaparHtml(
-        pedido.numero_pedido ||
-        ("Pedido #" + pedido.id)
-      )}
-    </div>
+function abrirCarrinho(){
 
-
-    <div class="detalhe-box">
-
-      <strong>
-        📱 Telefone
-      </strong>
-
-      ${escaparHtml(
-        telefoneFormatado(
-          pedido.Telefone ??
-          pedido.telefone
-        )
-      )}
-
-    </div>
-
-
-    <div class="detalhe-box">
-
-      <strong>
-        📍 Endereço
-      </strong>
-
-      ${escaparHtml(
-        pedido.endereco ||
-        "Não informado"
-      )}
-
-    </div>
-
-
-    <div class="detalhe-box">
-
-      <strong>
-        🚚 Entrega
-      </strong>
-
-      ${escaparHtml(
-        pedido.tipo_entrega ||
-        "Não informada"
-      )}
-
-      ${
-        Number(
-          pedido.valor_entrega ||
-          0
-        )
-        ?
-        " • " +
-        moeda(
-          pedido.valor_entrega
-        )
-        :
-        ""
-      }
-
-    </div>
-
-
-    <div class="detalhe-box">
-
-      <strong>
-        💳 Pagamento
-      </strong>
-
-      ${escaparHtml(
-        pedido.forma_pagamento ||
-        "Não informado"
-      )}
-
-    </div>
-
-
-    <div class="detalhe-box">
-
-      <strong>
-        🛍️ Produtos
-      </strong>
-
-      ${itensHtml}
-
-    </div>
-
-
-    <div class="detalhe-box">
-
-      <div class="linha-total">
-
-        <span>
-          Subtotal
-        </span>
-
-        <strong>
-          ${moeda(
-            pedido.subtotal
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="linha-total">
-
-        <span>
-          Entrega
-        </span>
-
-        <strong>
-          ${moeda(
-            pedido.valor_entrega
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="linha-total final">
-
-        <span>
-          Total
-        </span>
-
-        <span>
-          ${moeda(
-            pedido.total
-          )}
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="campo">
-
-      <label>
-        Status do pedido
-      </label>
-
-      <select
-        id="statusPedidoModal"
-        class="status-select"
-      >
-        ${opcoesStatus}
-      </select>
-
-    </div>
-
-
-    <button
-      class="salvar-status"
-      onclick="salvarStatusPedido(${Number(pedido.id)})"
-    >
-      SALVAR STATUS
-    </button>
-
-  `;
+  document.getElementById(
+    "carrinho"
+  )
+  .classList.add(
+    "aberto"
+  );
 
 
   document.getElementById(
-    "modalPedidoOverlay"
+    "overlay"
+  )
+  .classList.add(
+    "ativo"
+  );
+
+}
+
+
+function fecharCarrinho(){
+
+  document.getElementById(
+    "carrinho"
+  )
+  .classList.remove(
+    "aberto"
+  );
+
+
+  document.getElementById(
+    "overlay"
+  )
+  .classList.remove(
+    "ativo"
+  );
+
+}
+
+
+function abrirCheckout(){
+
+  if(
+    carrinho.length ===
+    0
+  ){
+
+    alert(
+      "Sua sacola está vazia."
+    );
+
+    return;
+
+  }
+
+
+  fecharCarrinho();
+
+
+  document.getElementById(
+    "checkout"
   )
   .classList.add(
     "ativo"
   );
 
 
-  document.body.style.overflow =
-  "hidden";
+  montarOpcoesEntrega();
+
+  montarOpcoesPagamento();
+
+  atualizarCheckout();
 
 }
 
 
-function fecharModalPedido(){
+function fecharCheckout(){
 
   document.getElementById(
-    "modalPedidoOverlay"
+    "checkout"
   )
   .classList.remove(
     "ativo"
   );
 
-
-  document.body.style.overflow =
-  "";
-
 }
 
 
-async function salvarStatusPedido(
-  id
-){
+/* =========================================
+   ENTREGA DINÂMICA
+========================================= */
 
-  const status =
+function montarOpcoesEntrega(){
+
+  const select =
   document.getElementById(
-    "statusPedidoModal"
-  ).value;
-
-
-  await atualizarStatusPedido(
-    id,
-    status
+    "entrega"
   );
 
 
-  fecharModalPedido();
+  const atual =
+  select.value;
 
-}
 
+  let html = `
 
-async function mudarStatusRapido(
-  id,
-  status
-){
+    <option value="">
+      Selecione
+    </option>
+
+  `;
+
 
   if(
-    status ===
-    "Cancelado"
+    configuracoesLoja.mostrar_retirada !==
+    false
   ){
 
-    const confirmar =
-    confirm(
-      "Tem certeza que deseja cancelar este pedido?"
-    );
-
-
-    if(
-      !confirmar
-    ){
-      return;
-    }
-
-  }
-
-
-  await atualizarStatusPedido(
-    id,
-    status
-  );
-
-}
-
-
-async function atualizarStatusPedido(
-  id,
-  status
-){
-
-  const {
-    error
-  } =
-  await supabaseClient
-  .from(
-    "Pedidos"
-  )
-  .update({
-    status
-  })
-  .eq(
-    "id",
+    const taxa =
     Number(
-      id
-    )
-  );
-
-
-  if(error){
-
-    console.error(
-      error
+      configuracoesLoja.taxa_retirada ??
+      0
     );
 
 
-    alert(
-      "Não foi possível alterar o status do pedido.\n\n" +
-      error.message
-    );
+    html += `
 
+      <option value="retirada">
+        Retirada na loja — ${
+          taxa === 0
+          ?
+          "Grátis"
+          :
+          moeda(taxa)
+        }
+      </option>
 
-    return;
-
-  }
-
-
-  const pedido =
-  pedidos.find(
-    item =>
-      Number(
-        item.id
-      ) ===
-      Number(
-        id
-      )
-  );
-
-
-  if(pedido){
-
-    pedido.status =
-    status;
+    `;
 
   }
-
-
-  renderizarPedidos();
-
-  renderizarCancelamentos();
-
-  renderizarUltimosPedidos();
-
-  atualizarDashboard();
-
-}
-
-
-/* =========================================
-   DASHBOARD
-========================================= */
-
-function atualizarDashboard(){
-
-  const hoje =
-  somenteDataLocal(
-    new Date()
-  );
-
-
-  const pedidosHoje =
-  pedidos.filter(
-    pedido =>
-      somenteDataLocal(
-        pedido.created_at
-      ) ===
-      hoje
-      &&
-      normalizarStatus(
-        pedido.status
-      ) !==
-      "Cancelado"
-  );
-
-
-  const vendasHoje =
-  pedidosHoje.reduce(
-    (
-      soma,
-      pedido
-    ) =>
-      soma +
-      Number(
-        pedido.total ||
-        0
-      ),
-    0
-  );
-
-
-  const novos =
-  pedidos.filter(
-    pedido =>
-      normalizarStatus(
-        pedido.status
-      ) ===
-      "Novo"
-  ).length;
-
-
-  const andamento =
-  pedidos.filter(
-    pedido =>
-      [
-
-        "Confirmado",
-
-        "Em separação",
-
-        "Saiu para entrega"
-
-      ]
-      .includes(
-        normalizarStatus(
-          pedido.status
-        )
-      )
-  ).length;
-
-
-  const estoque =
-  produtos.reduce(
-    (
-      soma,
-      produto
-    ) =>
-      soma +
-      Number(
-        produto.estoque ||
-        0
-      ),
-    0
-  );
-
-
-  document.getElementById(
-    "dashVendasHoje"
-  ).textContent =
-  moeda(
-    vendasHoje
-  );
-
-
-  document.getElementById(
-    "dashPedidosHoje"
-  ).textContent =
-  pedidosHoje.length +
-  (
-    pedidosHoje.length === 1
-    ?
-    " pedido hoje"
-    :
-    " pedidos hoje"
-  );
-
-
-  document.getElementById(
-    "dashNovos"
-  ).textContent =
-  novos;
-
-
-  document.getElementById(
-    "dashAndamento"
-  ).textContent =
-  andamento;
-
-
-  document.getElementById(
-    "dashEstoque"
-  ).textContent =
-  estoque;
-
-
-  document.getElementById(
-    "dashProdutos"
-  ).textContent =
-  produtos.length +
-  (
-    produtos.length === 1
-    ?
-    " produto cadastrado"
-    :
-    " produtos cadastrados"
-  );
-
-
-  renderizarUltimosPedidos();
-
-}
-
-
-/* =========================================
-   UPLOAD DE IMAGENS
-========================================= */
-
-async function enviarArquivoImagem(
-  arquivo,
-  pasta = "produtos"
-){
-
-  if(!arquivo){
-    return null;
-  }
-
-
-  let extensao =
-  arquivo.name
-  .split(".")
-  .pop()
-  .toLowerCase();
 
 
   if(
-    !extensao ||
-    extensao.length > 6
+    configuracoesLoja.mostrar_cidade !==
+    false
   ){
 
-    extensao =
-    "jpg";
+    html += `
+
+      <option value="cidade">
+        Entrega dentro da cidade — ${moeda(
+          configuracoesLoja.taxa_cidade ??
+          5
+        )}
+      </option>
+
+    `;
 
   }
 
 
-  const caminho =
-  pasta +
-  "/" +
-  Date.now() +
-  "-" +
-  gerarIdentificador() +
-  "." +
-  extensao;
+  if(
+    configuracoesLoja.mostrar_bola !==
+    false
+  ){
 
+    html += `
 
-  const {
-    error
-  } =
-  await supabaseClient
-  .storage
-  .from(
-    BUCKET_FOTOS
-  )
-  .upload(
-    caminho,
-    arquivo,
-    {
-      cacheControl:"3600",
-      upsert:false,
-      contentType:
-      arquivo.type ||
-      "image/jpeg"
-    }
-  );
+      <option value="bola">
+        Bola até o Novo Manacá — ${moeda(
+          configuracoesLoja.taxa_bola ??
+          8
+        )}
+      </option>
 
-
-  if(error){
-
-    throw new Error(
-      "Erro ao enviar foto: " +
-      error.message
-    );
+    `;
 
   }
 
 
-  const {
-    data
-  } =
-  supabaseClient
-  .storage
-  .from(
-    BUCKET_FOTOS
-  )
-  .getPublicUrl(
-    caminho
-  );
+  if(
+    configuracoesLoja.mostrar_caixa !==
+    false
+  ){
+
+    html += `
+
+      <option value="caixa">
+        Caixa d’Água pra lá — ${moeda(
+          configuracoesLoja.taxa_caixa ??
+          10
+        )}
+      </option>
+
+    `;
+
+  }
 
 
-  return data.publicUrl;
+  if(
+    configuracoesLoja.mostrar_barcos !==
+    false
+  ){
 
-}
-  /* =========================================
-   FOTOS DO PRODUTO
-========================================= */
+    html += `
 
-function adicionarNovasFotos(){
+      <option value="barcos">
+        Entrega em barcos e jatos — ${moeda(
+          configuracoesLoja.taxa_barcos ??
+          5
+        )}
+      </option>
 
-  const input =
-  document.getElementById(
-    "produtoFotosArquivos"
-  );
+    `;
+
+  }
 
 
-  const arquivos =
+  select.innerHTML =
+  html;
+
+
+  const aindaExiste =
   Array.from(
-    input.files || []
-  );
-
-
-  arquivos.forEach(
-    arquivo => {
-
-      if(
-        !validarArquivoImagem(
-          arquivo
-        )
-      ){
-        return;
-      }
-
-
-      fotosFormulario.push({
-
-        id:null,
-
-        foto_url:null,
-
-        arquivo,
-
-        preview:
-        URL.createObjectURL(
-          arquivo
-        ),
-
-        principal:false
-
-      });
-
-    }
-  );
-
-
-  if(
-    fotosFormulario.length
-    &&
-    !fotosFormulario.some(
-      foto => foto.principal
-    )
-  ){
-
-    fotosFormulario[0]
-    .principal =
-    true;
-
-  }
-
-
-  input.value =
-  "";
-
-
-  renderizarFotosFormulario();
-
-}
-
-
-function renderizarFotosFormulario(){
-
-  const area =
-  document.getElementById(
-    "galeriaFotos"
-  );
-
-
-  if(
-    !fotosFormulario.length
-  ){
-
-    area.innerHTML =
-    "";
-
-    return;
-
-  }
-
-
-  area.innerHTML =
-  fotosFormulario.map(
-    (
-      foto,
-      index
-    ) => {
-
-      const url =
-      foto.preview ||
-      foto.foto_url ||
-      "";
-
-
-      return `
-
-        <div
-          class="foto-card ${
-            foto.principal
-            ?
-            "principal"
-            :
-            ""
-          }"
-        >
-
-          ${
-            foto.principal
-            ?
-            '<span class="badge-principal">PRINCIPAL</span>'
-            :
-            ""
-          }
-
-
-          <img
-            src="${url}"
-            alt="Foto do produto"
-          >
-
-
-          <div class="foto-acoes">
-
-            ${
-              !foto.principal
-              ?
-              `
-                <button
-                  type="button"
-                  class="definir-principal"
-                  onclick="definirFotoPrincipal(${index})"
-                >
-                  ⭐ DEFINIR PRINCIPAL
-                </button>
-              `
-              :
-              ""
-            }
-
-
-            <button
-              type="button"
-              class="excluir-foto"
-              onclick="removerFotoFormulario(${index})"
-            >
-              🗑️ REMOVER
-            </button>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }
+    select.options
   )
-  .join("");
-
-}
-
-
-function definirFotoPrincipal(
-  indice
-){
-
-  fotosFormulario =
-  fotosFormulario.map(
-    (
-      foto,
-      index
-    ) => ({
-
-      ...foto,
-
-      principal:
-      index === indice
-
-    })
-  );
-
-
-  renderizarFotosFormulario();
-
-}
-
-
-function removerFotoFormulario(
-  indice
-){
-
-  const eraPrincipal =
-  fotosFormulario[
-    indice
-  ]?.principal;
-
-
-  fotosFormulario.splice(
-    indice,
-    1
+  .some(
+    opcao =>
+      opcao.value ===
+      atual
   );
 
 
   if(
-    eraPrincipal
-    &&
-    fotosFormulario.length
+    aindaExiste
   ){
 
-    fotosFormulario[0]
-    .principal =
-    true;
-
-  }
-
-
-  renderizarFotosFormulario();
-
-}
-
-
-/* =========================================
-   OPÇÕES / VARIANTES
-========================================= */
-
-function criarMapaTamanhos(){
-
-  const mapa = {};
-
-
-  TAMANHOS.forEach(
-    item => {
-
-      mapa[
-        item.valor
-      ] = {
-
-        ativo:false,
-
-        estoque:0
-
-      };
-
-    }
-  );
-
-
-  return mapa;
-
-}
-
-
-function proximoNomeEstampa(){
-
-  const total =
-  opcoesFormulario.filter(
-    item =>
-      item.tipo ===
-      "estampa"
-  ).length + 1;
-
-
-  return (
-    "Estampa " +
-    String(
-      total
-    )
-    .padStart(
-      2,
-      "0"
-    )
-  );
-
-}
-
-
-function novaOpcao(){
-
-  return {
-
-    tipo:"cor",
-
-    cor:"Preto",
-
-    corPersonalizada:"",
-
-    estampa:"",
-
-    foto_url:null,
-
-    arquivo:null,
-
-    preview:null,
-
-    tamanhos:
-    criarMapaTamanhos()
-
-  };
-
-}
-
-
-function adicionarOpcao(){
-
-  opcoesFormulario.push(
-    novaOpcao()
-  );
-
-
-  renderizarOpcoes();
-
-}
-
-
-function removerOpcao(
-  indice
-){
-
-  if(
-    !confirm(
-      "Remover esta opção?"
-    )
-  ){
-    return;
-  }
-
-
-  opcoesFormulario.splice(
-    indice,
-    1
-  );
-
-
-  renderizarOpcoes();
-
-}
-
-
-function alterarTipoOpcao(
-  indice,
-  tipo
-){
-
-  const opcao =
-  opcoesFormulario[
-    indice
-  ];
-
-
-  if(!opcao){
-    return;
-  }
-
-
-  opcao.tipo =
-  tipo;
-
-
-  if(
-    tipo ===
-    "cor"
-  ){
-
-    opcao.estampa =
-    "";
-
-
-    if(
-      !opcao.cor
-    ){
-
-      opcao.cor =
-      "Preto";
-
-    }
+    select.value =
+    atual;
 
   }else{
 
-    opcao.cor =
+    select.value =
     "";
 
-
-    opcao.corPersonalizada =
-    "";
-
-
-    if(
-      !opcao.estampa
-    ){
-
-      opcao.estampa =
-      proximoNomeEstampa();
-
-    }
-
-  }
-
-
-  renderizarOpcoes();
-
-}
-
-
-function atualizarOpcao(
-  indice,
-  campo,
-  valor
-){
-
-  const opcao =
-  opcoesFormulario[
-    indice
-  ];
-
-
-  if(!opcao){
-    return;
-  }
-
-
-  opcao[
-    campo
-  ] =
-  valor;
-
-
-  renderizarOpcoes();
-
-}
-
-
-function obterNomeCor(
-  opcao
-){
-
-  if(
-    opcao.cor ===
-    "Outra cor"
-  ){
-
-    return String(
-      opcao.corPersonalizada ||
-      ""
-    ).trim();
-
-  }
-
-
-  return String(
-    opcao.cor ||
-    ""
-  ).trim();
-
-}
-
-
-function alterarTamanho(
-  indiceOpcao,
-  tamanho,
-  marcado
-){
-
-  const opcao =
-  opcoesFormulario[
-    indiceOpcao
-  ];
-
-
-  if(!opcao){
-    return;
-  }
-
-
-  opcao.tamanhos[
-    tamanho
-  ].ativo =
-  Boolean(
-    marcado
-  );
-
-
-  if(
-    !marcado
-  ){
-
-    opcao.tamanhos[
-      tamanho
-    ].estoque =
+    valorFrete =
     0;
 
-  }
-
-
-  renderizarOpcoes();
-
-}
-
-
-function alterarEstoqueTamanho(
-  indiceOpcao,
-  tamanho,
-  valor
-){
-
-  const opcao =
-  opcoesFormulario[
-    indiceOpcao
-  ];
-
-
-  if(!opcao){
-    return;
-  }
-
-
-  opcao.tamanhos[
-    tamanho
-  ].estoque =
-  Math.max(
-    0,
-    Number(
-      valor || 0
-    )
-  );
-
-
-  atualizarEstoqueVariantes();
-
-}
-
-
-function escolherFotoOpcao(
-  indice,
-  input
-){
-
-  const arquivo =
-  input.files?.[0];
-
-
-  if(!arquivo){
-    return;
-  }
-
-
-  if(
-    !validarArquivoImagem(
-      arquivo
-    )
-  ){
-
-    input.value =
+    tipoEntrega =
     "";
 
-    return;
-
   }
 
-
-  const opcao =
-  opcoesFormulario[
-    indice
-  ];
-
-
-  opcao.arquivo =
-  arquivo;
-
-
-  opcao.preview =
-  URL.createObjectURL(
-    arquivo
-  );
-
-
-  renderizarOpcoes();
-
 }
 
 
-function removerFotoOpcao(
-  indice
-){
+/* =========================================
+   PAGAMENTO DINÂMICO
+========================================= */
 
-  const opcao =
-  opcoesFormulario[
-    indice
-  ];
-
-
-  if(!opcao){
-    return;
-  }
-
-
-  opcao.arquivo =
-  null;
-
-
-  opcao.preview =
-  null;
-
-
-  opcao.foto_url =
-  null;
-
-
-  renderizarOpcoes();
-
-}
-
-
-function calcularEstoqueVariantes(){
-
-  let total =
-  0;
-
-
-  opcoesFormulario.forEach(
-    opcao => {
-
-      Object.values(
-        opcao.tamanhos
-      )
-      .forEach(
-        tamanho => {
-
-          if(
-            tamanho.ativo
-          ){
-
-            total +=
-            Number(
-              tamanho.estoque ||
-              0
-            );
-
-          }
-
-        }
-      );
-
-    }
-  );
-
-
-  return total;
-
-}
-
-
-function atualizarEstoqueVariantes(){
-
-  document.getElementById(
-    "estoqueVariantes"
-  ).textContent =
-  calcularEstoqueVariantes();
-
-}
-
-
-function renderizarOpcoes(){
+function montarOpcoesPagamento(){
 
   const area =
   document.getElementById(
-    "opcoesArea"
+    "pagamentoOpcoes"
   );
 
 
+  const selecionado =
+  document.querySelector(
+    'input[name="pagamento"]:checked'
+  )?.value ||
+  "";
+
+
+  const opcoes = [];
+
+
   if(
-    !opcoesFormulario.length
+    configuracoesLoja.pagamento_pix !==
+    false
+  ){
+
+    opcoes.push({
+
+      valor:"Pix",
+
+      titulo:"Pix",
+
+      descricao:
+      "Pagamento via Pix."
+
+    });
+
+  }
+
+
+  if(
+    configuracoesLoja.pagamento_cartao !==
+    false
+  ){
+
+    opcoes.push({
+
+      valor:"Cartão",
+
+      titulo:"Cartão",
+
+      descricao:
+      "Pagamento com cartão."
+
+    });
+
+  }
+
+
+  if(
+    configuracoesLoja.pagamento_dinheiro !==
+    false
+  ){
+
+    opcoes.push({
+
+      valor:"Dinheiro",
+
+      titulo:"Dinheiro",
+
+      descricao:
+      "Pagamento em dinheiro."
+
+    });
+
+  }
+
+
+  if(
+    configuracoesLoja.pagamento_entrega !==
+    false
+  ){
+
+    opcoes.push({
+
+      valor:
+      "Pagamento no ato da entrega",
+
+      titulo:
+      "Pagamento no ato da entrega",
+
+      descricao:
+      "Pague quando o pedido for entregue."
+
+    });
+
+  }
+
+
+  if(
+    !opcoes.length
   ){
 
     area.innerHTML = `
 
-      <div class="foto-ajuda">
-        Nenhuma cor ou estampa adicionada. Se o produto não tiver variações, use somente o estoque geral.
+      <div class="sem-pagamento">
+        Nenhuma forma de pagamento está disponível no momento.
       </div>
 
     `;
 
 
-    atualizarEstoqueVariantes();
-
     return;
 
   }
 
 
   area.innerHTML =
-  opcoesFormulario.map(
+  opcoes.map(
     (
       opcao,
       index
-    ) => {
+    ) => `
 
-      const foto =
-      opcao.preview ||
-      opcao.foto_url ||
-      "";
+      <label class="pagamento-opcao">
 
-
-      const opcoesCores =
-      CORES_SALI.map(
-        cor => `
-
-          <option
-            value="${cor}"
-            ${
-              opcao.cor === cor
-              ?
-              "selected"
-              :
-              ""
-            }
-          >
-            ${cor}
-          </option>
-
-        `
-      )
-      .join("");
-
-
-      const linhasTamanho =
-      TAMANHOS.map(
-        tamanho => {
-
-          const dados =
-          opcao.tamanhos[
-            tamanho.valor
-          ];
-
-
-          return `
-
-            <div class="tamanho-linha">
-
-              <label class="tamanho-check">
-
-                <input
-                  type="checkbox"
-                  ${
-                    dados.ativo
-                    ?
-                    "checked"
-                    :
-                    ""
-                  }
-                  onchange="alterarTamanho(${index},'${tamanho.valor}',this.checked)"
-                >
-
-                ${tamanho.nome}
-
-              </label>
-
-
-              <input
-                type="number"
-                min="0"
-                class="estoque-tamanho"
-                value="${Number(dados.estoque || 0)}"
-                ${
-                  dados.ativo
-                  ?
-                  ""
-                  :
-                  "disabled"
-                }
-                placeholder="Estoque"
-                onchange="alterarEstoqueTamanho(${index},'${tamanho.valor}',this.value)"
-              >
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join("");
-
-
-      return `
-
-        <div class="opcao-card">
-
-          <div class="opcao-topo">
-
-            <strong>
-              Opção ${index + 1}
-            </strong>
-
-
-            <button
-              type="button"
-              class="remover-opcao"
-              onclick="removerOpcao(${index})"
-            >
-              REMOVER
-            </button>
-
-          </div>
-
-
-          <div class="tipo-opcao">
-
-            <button
-              type="button"
-              class="${
-                opcao.tipo === "cor"
-                ?
-                "selecionado"
-                :
-                ""
-              }"
-              onclick="alterarTipoOpcao(${index},'cor')"
-            >
-              🎨 COR
-            </button>
-
-
-            <button
-              type="button"
-              class="${
-                opcao.tipo === "estampa"
-                ?
-                "selecionado"
-                :
-                ""
-              }"
-              onclick="alterarTipoOpcao(${index},'estampa')"
-            >
-              🌸 ESTAMPA
-            </button>
-
-          </div>
-
-
+        <input
+          type="radio"
+          name="pagamento"
+          value="${escaparHtml(opcao.valor)}"
           ${
-            opcao.tipo === "cor"
+            selecionado ===
+            opcao.valor
+            ||
+            (
+              !selecionado
+              &&
+              index === 0
+            )
             ?
-            `
-
-              <div class="campo">
-
-                <label>
-                  Cor
-                </label>
-
-
-                <select
-                  onchange="atualizarOpcao(${index},'cor',this.value)"
-                >
-
-                  ${opcoesCores}
-
-
-                  <option
-                    value="Outra cor"
-                    ${
-                      opcao.cor ===
-                      "Outra cor"
-                      ?
-                      "selected"
-                      :
-                      ""
-                    }
-                  >
-                    ➕ Outra cor
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              ${
-                opcao.cor ===
-                "Outra cor"
-                ?
-                `
-
-                  <div class="campo">
-
-                    <label>
-                      Nome da cor
-                    </label>
-
-                    <input
-                      type="text"
-                      value="${escaparHtml(opcao.corPersonalizada)}"
-                      placeholder="Ex.: Azul petróleo"
-                      onchange="atualizarOpcao(${index},'corPersonalizada',this.value)"
-                    >
-
-                  </div>
-
-                `
-                :
-                ""
-              }
-
-            `
+            "checked"
             :
-            `
-
-              <div class="campo">
-
-                <label>
-                  Nome da estampa
-                </label>
-
-                <input
-                  type="text"
-                  value="${escaparHtml(opcao.estampa)}"
-                  placeholder="Ex.: Estampa 01"
-                  onchange="atualizarOpcao(${index},'estampa',this.value)"
-                >
-
-              </div>
-
-            `
+            ""
           }
-
-
-          <div class="foto-opcao-area">
-
-            <label>
-              📸 Foto ${
-                opcao.tipo ===
-                "cor"
-                ?
-                "desta cor"
-                :
-                "desta estampa"
-              }
-            </label>
-
-
-            <input
-              type="file"
-              accept="image/*"
-              onchange="escolherFotoOpcao(${index},this)"
-            >
-
-
-            <div class="foto-ajuda">
-              Esta foto será usada na miniatura que a cliente toca na loja.
-            </div>
-
-
-            ${
-              foto
-              ?
-              `
-
-                <div class="preview-opcao">
-
-                  <img
-                    src="${foto}"
-                    alt="Opção do produto"
-                  >
-
-
-                  <button
-                    type="button"
-                    class="remover-foto-opcao"
-                    onclick="removerFotoOpcao(${index})"
-                  >
-                    REMOVER FOTO
-                  </button>
-
-                </div>
-
-              `
-              :
-              ""
-            }
-
-          </div>
-
-
-          <div class="tamanhos-titulo">
-            📏 Tamanhos disponíveis
-          </div>
-
-
-          <div class="tamanhos-grade">
-            ${linhasTamanho}
-          </div>
-
-        </div>
-
-      `;
-
-    }
-  )
-  .join("");
-
-
-  atualizarEstoqueVariantes();
-
-}
-
-
-/* =========================================
-   PRODUTOS - CARREGAR / LISTA
-========================================= */
-
-async function carregarProdutos(){
-
-  const lista =
-  document.getElementById(
-    "listaProdutos"
-  );
-
-
-  if(lista){
-
-    lista.innerHTML =
-    '<div class="sem-dados">Carregando produtos...</div>';
-
-  }
-
-
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-  .from(
-    "Produtos"
-  )
-  .select("*")
-  .order(
-    "created_at",
-    {
-      ascending:false
-    }
-  );
-
-
-  if(error){
-
-    console.error(
-      error
-    );
-
-
-    if(lista){
-
-      lista.innerHTML = `
-
-        <div class="sem-dados">
-
-          Erro ao carregar produtos.
-
-          <br><br>
-
-          ${escaparHtml(
-            error.message
-          )}
-
-        </div>
-
-      `;
-
-    }
-
-
-    produtos = [];
-
-
-    atualizarDashboard();
-
-    return;
-
-  }
-
-
-  produtos =
-  data || [];
-
-
-  renderizarProdutos(
-    produtos
-  );
-
-
-  atualizarDashboard();
-
-}
-
-
-function renderizarProdutos(
-  lista
-){
-
-  const area =
-  document.getElementById(
-    "listaProdutos"
-  );
-
-
-  if(!area){
-    return;
-  }
-
-
-  if(
-    !lista.length
-  ){
-
-    area.innerHTML =
-    '<div class="sem-dados">Nenhum produto encontrado.</div>';
-
-    return;
-
-  }
-
-
-  area.innerHTML =
-  lista.map(
-    produto => {
-
-      const imagem =
-      produto.foto_url
-      ?
-      `
-        <img
-          src="${produto.foto_url}"
-          alt="Produto"
         >
-      `
-      :
-      '<div class="sem-foto">Sem foto</div>';
 
 
-      return `
+        <span>
 
-        <div class="produto-card">
+          <strong>
+            ${escaparHtml(opcao.titulo)}
+          </strong>
 
-          ${imagem}
+          <small>
+            ${escaparHtml(opcao.descricao)}
+          </small>
 
+        </span>
 
-          <div class="produto-info">
+      </label>
 
-            <h4>
-              ${escaparHtml(
-                produto.nome ||
-                "Sem nome"
-              )}
-            </h4>
-
-
-            <div class="preco">
-              ${moeda(
-                produto.preco
-              )}
-            </div>
-
-
-            <div class="detalhes">
-
-              Categoria:
-              ${escaparHtml(
-                produto.categoria ||
-                "Não informada"
-              )}
-
-              <br>
-
-              Estoque:
-              ${Number(
-                produto.estoque ||
-                0
-              )}
-
-            </div>
-
-
-            <span
-              class="status-produto ${
-                produto.ativo
-                ?
-                "ativo"
-                :
-                "inativo"
-              }"
-            >
-
-              ${
-                produto.ativo
-                ?
-                "ATIVO"
-                :
-                "INATIVO"
-              }
-
-            </span>
-
-
-            <div class="acoes">
-
-              <button
-                class="editar"
-                onclick="editarProduto(${produto.id})"
-              >
-                EDITAR
-              </button>
-
-
-              <button
-                class="alternar"
-                onclick="alternarProduto(${produto.id},${produto.ativo})"
-              >
-
-                ${
-                  produto.ativo
-                  ?
-                  "DESATIVAR"
-                  :
-                  "ATIVAR"
-                }
-
-              </button>
-
-
-              <button
-                class="excluir"
-                onclick="excluirProduto(${produto.id})"
-              >
-                EXCLUIR
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }
+    `
   )
   .join("");
 
 }
+  /* =========================================
+   ALTERAR ENTREGA
+========================================= */
 
+function alterarEntrega(){
 
-function filtrarProdutos(){
-
-  const busca =
+  const entrega =
   document.getElementById(
-    "busca"
-  )
-  .value
-  .trim()
-  .toLowerCase();
-
-
-  if(
-    !busca
-  ){
-
-    renderizarProdutos(
-      produtos
-    );
-
-    return;
-
-  }
-
-
-  const filtrados =
-  produtos.filter(
-    produto =>
-      String(
-        produto.nome || ""
-      )
-      .toLowerCase()
-      .includes(
-        busca
-      )
-      ||
-      String(
-        produto.categoria || ""
-      )
-      .toLowerCase()
-      .includes(
-        busca
-      )
-  );
-
-
-  renderizarProdutos(
-    filtrados
-  );
-
-}
-
-
-/* =========================================
-   SALVAR FOTOS
-========================================= */
-
-async function salvarFotosProduto(
-  produtoId,
-  fotoAntiga = null
-){
-
-  const registros = [];
-
-
-  for(
-    let i = 0;
-    i < fotosFormulario.length;
-    i++
-  ){
-
-    const foto =
-    fotosFormulario[i];
-
-
-    let url =
-    foto.foto_url ||
-    null;
-
-
-    if(
-      foto.arquivo
-    ){
-
-      url =
-      await enviarArquivoImagem(
-        foto.arquivo,
-        "galeria"
-      );
-
-    }
-
-
-    if(!url){
-      continue;
-    }
-
-
-    registros.push({
-
-      produto_id:
-      Number(
-        produtoId
-      ),
-
-      foto_url:
-      url,
-
-      ordem:
-      i,
-
-      principal:
-      Boolean(
-        foto.principal
-      )
-
-    });
-
-  }
-
-
-  if(
-    !registros.length
-    &&
-    fotoAntiga
-  ){
-
-    registros.push({
-
-      produto_id:
-      Number(
-        produtoId
-      ),
-
-      foto_url:
-      fotoAntiga,
-
-      ordem:0,
-
-      principal:true
-
-    });
-
-  }
-
-
-  if(
-    registros.length
-    &&
-    !registros.some(
-      foto => foto.principal
-    )
-  ){
-
-    registros[0]
-    .principal =
-    true;
-
-  }
-
-
-  let encontrou =
-  false;
-
-
-  registros.forEach(
-    foto => {
-
-      if(
-        foto.principal
-        &&
-        !encontrou
-      ){
-
-        encontrou =
-        true;
-
-      }else if(
-        foto.principal
-      ){
-
-        foto.principal =
-        false;
-
-      }
-
-    }
-  );
-
-
-  const {
-    error:
-    erroExcluir
-  } =
-  await supabaseClient
-  .from(
-    "Fotos_Produtos"
-  )
-  .delete()
-  .eq(
-    "produto_id",
-    Number(
-      produtoId
-    )
-  );
-
-
-  if(
-    erroExcluir
-  ){
-
-    throw new Error(
-      "Erro ao atualizar fotos: " +
-      erroExcluir.message
-    );
-
-  }
-
-
-  if(
-    registros.length
-  ){
-
-    const {
-      error
-    } =
-    await supabaseClient
-    .from(
-      "Fotos_Produtos"
-    )
-    .insert(
-      registros
-    );
-
-
-    if(error){
-
-      throw new Error(
-        "Erro ao salvar fotos: " +
-        error.message
-      );
-
-    }
-
-  }
-
-
-  return (
-    registros.find(
-      foto => foto.principal
-    )?.foto_url
-    ||
-    registros[0]?.foto_url
-    ||
-    null
-  );
-
-}
-
-
-/* =========================================
-   SALVAR VARIANTES
-========================================= */
-
-async function salvarVariantesProduto(
-  produtoId
-){
-
-  const registros = [];
-
-
-  for(
-    const opcao
-    of opcoesFormulario
-  ){
-
-    let fotoUrl =
-    opcao.foto_url ||
-    null;
-
-
-    if(
-      opcao.arquivo
-    ){
-
-      fotoUrl =
-      await enviarArquivoImagem(
-        opcao.arquivo,
-        "variantes"
-      );
-
-    }
-
-
-    const cor =
-    opcao.tipo ===
-    "cor"
-    ?
-    obterNomeCor(
-      opcao
-    )
-    :
-    null;
-
-
-    const estampa =
-    opcao.tipo ===
-    "estampa"
-    ?
-    String(
-      opcao.estampa ||
-      ""
-    ).trim()
-    :
-    null;
-
-
-    for(
-      const tamanho
-      of TAMANHOS
-    ){
-
-      const dados =
-      opcao.tamanhos[
-        tamanho.valor
-      ];
-
-
-      if(
-        !dados ||
-        !dados.ativo
-      ){
-        continue;
-      }
-
-
-      registros.push({
-
-        produto_id:
-        Number(
-          produtoId
-        ),
-
-        cor:
-        cor || null,
-
-        estampa:
-        estampa || null,
-
-        tamanho:
-        tamanho.valor,
-
-        estoque:
-        Math.max(
-          0,
-          Number(
-            dados.estoque ||
-            0
-          )
-        ),
-
-        ativo:true,
-
-        foto_url:
-        fotoUrl
-
-      });
-
-    }
-
-  }
-
-
-  const {
-    error:
-    erroExcluir
-  } =
-  await supabaseClient
-  .from(
-    "Variantes"
-  )
-  .delete()
-  .eq(
-    "produto_id",
-    Number(
-      produtoId
-    )
-  );
-
-
-  if(
-    erroExcluir
-  ){
-
-    throw new Error(
-      "Erro ao atualizar variantes: " +
-      erroExcluir.message
-    );
-
-  }
-
-
-  if(
-    registros.length
-  ){
-
-    const {
-      error
-    } =
-    await supabaseClient
-    .from(
-      "Variantes"
-    )
-    .insert(
-      registros
-    );
-
-
-    if(error){
-
-      throw new Error(
-        "Erro ao salvar variantes: " +
-        error.message
-      );
-
-    }
-
-  }
-
-
-  return registros;
-
-}
-
-
-/* =========================================
-   SALVAR PRODUTO
-========================================= */
-
-async function salvarProduto(){
-
-  const id =
-  document.getElementById(
-    "produtoId"
+    "entrega"
   ).value;
 
+
+  tipoEntrega =
+  entrega;
+
+
+  const enderecoArea =
+  document.getElementById(
+    "enderecoArea"
+  );
+
+
+  const barcoArea =
+  document.getElementById(
+    "barcoArea"
+  );
+
+
+  const freteInfo =
+  document.getElementById(
+    "freteInfo"
+  );
+
+
+  enderecoArea.style.display =
+  "none";
+
+
+  barcoArea.style.display =
+  "none";
+
+
+  freteInfo.style.display =
+  "block";
+
+
+  if(
+    entrega ===
+    ""
+  ){
+
+    valorFrete =
+    0;
+
+
+    freteInfo.style.display =
+    "none";
+
+  }
+
+
+  else if(
+    entrega ===
+    "retirada"
+  ){
+
+    valorFrete =
+    Number(
+      configuracoesLoja.taxa_retirada ??
+      0
+    );
+
+
+    freteInfo.innerHTML = `
+
+      <strong>
+        Retirada na loja
+      </strong>
+
+      <br>
+
+      Taxa:
+      ${
+        valorFrete === 0
+        ?
+        "Grátis"
+        :
+        moeda(valorFrete)
+      }
+
+    `;
+
+  }
+
+
+  else if(
+    entrega ===
+    "cidade"
+  ){
+
+    valorFrete =
+    Number(
+      configuracoesLoja.taxa_cidade ??
+      5
+    );
+
+
+    enderecoArea.style.display =
+    "block";
+
+
+    freteInfo.innerHTML = `
+
+      <strong>
+        Entrega dentro da cidade
+      </strong>
+
+      <br>
+
+      Taxa:
+      ${moeda(valorFrete)}
+
+    `;
+
+  }
+
+
+  else if(
+    entrega ===
+    "bola"
+  ){
+
+    valorFrete =
+    Number(
+      configuracoesLoja.taxa_bola ??
+      8
+    );
+
+
+    enderecoArea.style.display =
+    "block";
+
+
+    freteInfo.innerHTML = `
+
+      <strong>
+        Bola até o Novo Manacá
+      </strong>
+
+      <br>
+
+      Taxa:
+      ${moeda(valorFrete)}
+
+    `;
+
+  }
+
+
+  else if(
+    entrega ===
+    "caixa"
+  ){
+
+    valorFrete =
+    Number(
+      configuracoesLoja.taxa_caixa ??
+      10
+    );
+
+
+    enderecoArea.style.display =
+    "block";
+
+
+    freteInfo.innerHTML = `
+
+      <strong>
+        Caixa d’Água pra lá
+      </strong>
+
+      <br>
+
+      Taxa:
+      ${moeda(valorFrete)}
+
+    `;
+
+  }
+
+
+  else if(
+    entrega ===
+    "barcos"
+  ){
+
+    valorFrete =
+    Number(
+      configuracoesLoja.taxa_barcos ??
+      5
+    );
+
+
+    barcoArea.style.display =
+    "block";
+
+
+    freteInfo.innerHTML = `
+
+      <strong>
+        Entrega em barcos e jatos
+      </strong>
+
+      <br>
+
+      Taxa:
+      ${moeda(valorFrete)}
+
+    `;
+
+  }
+
+
+  atualizarCheckout();
+
+}
+
+
+/* =========================================
+   ATUALIZAR CHECKOUT
+========================================= */
+
+function atualizarCheckout(){
+
+  const resumo =
+  document.getElementById(
+    "resumoCheckout"
+  );
+
+
+  resumo.innerHTML =
+  carrinho.map(
+    item => {
+
+      const detalhes = [
+
+        item.cor
+        ?
+        "Cor: " +
+        escaparHtml(
+          item.cor
+        )
+        :
+        "",
+
+        item.estampa
+        ?
+        "Estampa: " +
+        escaparHtml(
+          item.estampa
+        )
+        :
+        "",
+
+        item.tamanho
+        ?
+        "Tamanho: " +
+        escaparHtml(
+          item.tamanho
+        )
+        :
+        ""
+
+      ]
+      .filter(
+        Boolean
+      )
+      .join(
+        " • "
+      );
+
+
+      return `
+
+        <div class="resumo-item">
+
+          <span>
+
+            ${Number(item.quantidade || 0)}x
+
+            ${escaparHtml(item.nome)}
+
+            ${
+              detalhes
+              ?
+              `<small
+                style="
+                  display:block;
+                  margin-top:3px;
+                  color:#777;
+                "
+              >
+                ${detalhes}
+              </small>`
+              :
+              ""
+            }
+
+          </span>
+
+
+          <strong>
+
+            ${moeda(
+              Number(
+                item.preco ||
+                0
+              )
+              *
+              Number(
+                item.quantidade ||
+                0
+              )
+            )}
+
+          </strong>
+
+        </div>
+
+      `;
+
+    }
+  )
+  .join("");
+
+
+  const subtotal =
+  calcularSubtotal();
+
+
+  const total =
+  subtotal +
+  Number(
+    valorFrete ||
+    0
+  );
+
+
+  document.getElementById(
+    "subtotalCheckout"
+  ).textContent =
+  moeda(
+    subtotal
+  );
+
+
+  document.getElementById(
+    "freteCheckout"
+  ).textContent =
+  Number(
+    valorFrete ||
+    0
+  ) === 0
+  ?
+  "Grátis"
+  :
+  moeda(
+    valorFrete
+  );
+
+
+  document.getElementById(
+    "totalCheckout"
+  ).textContent =
+  moeda(
+    total
+  );
+
+}
+
+
+/* =========================================
+   CONFIRMAR PEDIDO
+========================================= */
+
+async function confirmarPedido(){
 
   const nome =
   document.getElementById(
-    "produtoNome"
+    "nome"
   ).value.trim();
 
 
-  const preco =
-  Number(
-    document.getElementById(
-      "produtoPreco"
-    ).value
-  );
-
-
-  const estoqueGeral =
-  Math.max(
-    0,
-    Number(
-      document.getElementById(
-        "produtoEstoque"
-      ).value ||
-      0
-    )
-  );
-
-
-  const categoria =
+  const telefone =
   document.getElementById(
-    "produtoCategoria"
+    "telefone"
+  ).value.trim();
+
+
+  const entrega =
+  document.getElementById(
+    "entrega"
   ).value;
 
 
-  const descricao =
-  document.getElementById(
-    "produtoDescricao"
-  ).value.trim();
-
-
-  const ativo =
-  document.getElementById(
-    "produtoAtivo"
-  ).checked;
+  const pagamento =
+  document.querySelector(
+    'input[name="pagamento"]:checked'
+  )?.value ||
+  "";
 
 
   if(
@@ -9836,7 +3295,7 @@ async function salvarProduto(){
   ){
 
     alert(
-      "Digite o nome do produto."
+      "Digite seu nome."
     );
 
     return;
@@ -9845,12 +3304,11 @@ async function salvarProduto(){
 
 
   if(
-    !preco ||
-    preco <= 0
+    !telefone
   ){
 
     alert(
-      "Digite um preço válido."
+      "Digite seu WhatsApp."
     );
 
     return;
@@ -9859,11 +3317,11 @@ async function salvarProduto(){
 
 
   if(
-    !categoria
+    !entrega
   ){
 
     alert(
-      "Escolha uma categoria."
+      "Escolha uma opção de entrega ou retirada."
     );
 
     return;
@@ -9871,92 +3329,144 @@ async function salvarProduto(){
   }
 
 
-  for(
-    let i = 0;
-    i < opcoesFormulario.length;
-    i++
+  if(
+    !pagamento
   ){
 
-    const opcao =
-    opcoesFormulario[i];
+    alert(
+      "Escolha uma forma de pagamento."
+    );
+
+    return;
+
+  }
 
 
-    const temTamanho =
-    Object.values(
-      opcao.tamanhos
-    )
-    .some(
-      tamanho =>
-        tamanho.ativo
+  const entregaAtiva = {
+
+    retirada:
+    configuracoesLoja.mostrar_retirada !==
+    false,
+
+    cidade:
+    configuracoesLoja.mostrar_cidade !==
+    false,
+
+    bola:
+    configuracoesLoja.mostrar_bola !==
+    false,
+
+    caixa:
+    configuracoesLoja.mostrar_caixa !==
+    false,
+
+    barcos:
+    configuracoesLoja.mostrar_barcos !==
+    false
+
+  };
+
+
+  if(
+    entregaAtiva[
+      entrega
+    ] ===
+    false
+  ){
+
+    alert(
+      "Esta forma de entrega não está mais disponível. Escolha outra opção."
     );
 
 
+    montarOpcoesEntrega();
+
+    alterarEntrega();
+
+    return;
+
+  }
+
+
+  const pagamentosAtivos = {
+
+    "Pix":
+    configuracoesLoja.pagamento_pix !==
+    false,
+
+    "Cartão":
+    configuracoesLoja.pagamento_cartao !==
+    false,
+
+    "Dinheiro":
+    configuracoesLoja.pagamento_dinheiro !==
+    false,
+
+    "Pagamento no ato da entrega":
+    configuracoesLoja.pagamento_entrega !==
+    false
+
+  };
+
+
+  if(
+    pagamentosAtivos[
+      pagamento
+    ] ===
+    false
+  ){
+
+    alert(
+      "Esta forma de pagamento não está mais disponível. Escolha outra opção."
+    );
+
+
+    montarOpcoesPagamento();
+
+    return;
+
+  }
+
+
+  if(
+    entrega ===
+    "cidade"
+    ||
+    entrega ===
+    "bola"
+    ||
+    entrega ===
+    "caixa"
+  ){
+
+    const endereco =
+    document.getElementById(
+      "endereco"
+    ).value.trim();
+
+
+    const numero =
+    document.getElementById(
+      "numero"
+    ).value.trim();
+
+
+    const bairro =
+    document.getElementById(
+      "bairro"
+    ).value.trim();
+
+
     if(
-      !temTamanho
+      !endereco
+      ||
+      !numero
+      ||
+      !bairro
     ){
 
       alert(
-        "Na opção " +
-        (i + 1) +
-        ", selecione pelo menos um tamanho."
-      );
-
-      return;
-
-    }
-
-
-    if(
-      opcao.tipo ===
-      "cor"
-      &&
-      !obterNomeCor(
-        opcao
-      )
-    ){
-
-      alert(
-        "Informe a cor da opção " +
-        (i + 1) +
-        "."
-      );
-
-      return;
-
-    }
-
-
-    if(
-      opcao.tipo ===
-      "estampa"
-      &&
-      !String(
-        opcao.estampa ||
-        ""
-      ).trim()
-    ){
-
-      alert(
-        "Informe o nome da estampa da opção " +
-        (i + 1) +
-        "."
-      );
-
-      return;
-
-    }
-
-
-    if(
-      !opcao.arquivo
-      &&
-      !opcao.foto_url
-    ){
-
-      alert(
-        "Adicione uma foto para a opção " +
-        (i + 1) +
-        "."
+        "Preencha o endereço completo para entrega."
       );
 
       return;
@@ -9966,622 +3476,401 @@ async function salvarProduto(){
   }
 
 
-  const estoqueVariantes =
-  calcularEstoqueVariantes();
+  if(
+    entrega ===
+    "barcos"
+  ){
+
+    const destino =
+    document.getElementById(
+      "barcoDestino"
+    ).value.trim();
 
 
-  const estoqueFinal =
-  opcoesFormulario.length
-  ?
-  estoqueVariantes
-  :
-  estoqueGeral;
+    if(
+      !destino
+    ){
+
+      alert(
+        "Informe o barco, jato ou destino da entrega."
+      );
+
+      return;
+
+    }
+
+  }
 
 
-  const botao =
-  document.getElementById(
-    "botaoSalvar"
+  const subtotal =
+  calcularSubtotal();
+
+
+  const total =
+  subtotal +
+  Number(
+    valorFrete ||
+    0
   );
 
 
-  botao.disabled =
-  true;
+  const numeroPedido =
+  "SALI-" +
+  Date.now()
+  .toString()
+  .slice(
+    -6
+  );
 
 
-  botao.textContent =
-  "SALVANDO...";
-
-
-  try{
-
-    let produtoId =
-    id
-    ?
-    Number(
-      id
-    )
-    :
-    null;
-
-
-    let fotoAntiga =
-    null;
-
-
-    if(id){
-
-      const anterior =
-      produtos.find(
-        produto =>
-          Number(
-            produto.id
-          ) ===
-          Number(
-            id
-          )
-      );
-
-
-      fotoAntiga =
-      anterior?.foto_url ||
-      null;
-
-    }
-
-
-    const dadosProduto = {
-
-      nome,
-
-      preco,
-
-      categoria,
-
-      descricao,
-
-      ativo,
-
-      estoque:
-      estoqueFinal
-
-    };
-
-
-    if(
-      produtoId
-    ){
-
-      const {
-        error
-      } =
-      await supabaseClient
-      .from(
-        "Produtos"
-      )
-      .update(
-        dadosProduto
-      )
-      .eq(
-        "id",
-        produtoId
-      );
-
-
-      if(error){
-        throw error;
-      }
-
-    }else{
-
-      const {
-        data,
-        error
-      } =
-      await supabaseClient
-      .from(
-        "Produtos"
-      )
-      .insert([
-        {
-          ...dadosProduto,
-          foto_url:null
-        }
-      ])
-      .select(
-        "id"
-      )
-      .single();
-
-
-      if(error){
-        throw error;
-      }
-
-
-      produtoId =
-      data.id;
-
-    }
-
-
-    const fotoPrincipal =
-    await salvarFotosProduto(
-      produtoId,
-      fotoAntiga
-    );
-
-
-    await salvarVariantesProduto(
-      produtoId
-    );
-
-
-    const {
-      error:
-      erroFinal
-    } =
-    await supabaseClient
-    .from(
-      "Produtos"
-    )
-    .update({
-
-      foto_url:
-      fotoPrincipal,
-
-      estoque:
-      estoqueFinal
-
-    })
-    .eq(
-      "id",
-      produtoId
-    );
-
-
-    if(
-      erroFinal
-    ){
-      throw erroFinal;
-    }
-
+  if(
+    !window.supabaseClient
+  ){
 
     alert(
-      id
-      ?
-      "Produto atualizado com sucesso! ✅"
-      :
-      "Produto cadastrado com sucesso! ✅"
+      "Aguarde alguns segundos e tente confirmar o pedido novamente."
     );
 
-
-    limparFormulario();
-
-
-    await carregarProdutos();
-
-  }catch(error){
-
-    console.error(
-      error
-    );
-
-
-    alert(
-      "Erro: " +
-      (
-        error.message ||
-        "Não foi possível salvar o produto."
-      )
-    );
-
-  }finally{
-
-    botao.disabled =
-    false;
-
-
-    botao.textContent =
-    document.getElementById(
-      "produtoId"
-    ).value
-    ?
-    "SALVAR ALTERAÇÕES"
-    :
-    "CADASTRAR PRODUTO";
+    return;
 
   }
+
+
+  let enderecoPedido =
+  "Retirada na loja";
+
+
+  if(
+    entrega ===
+    "cidade"
+    ||
+    entrega ===
+    "bola"
+    ||
+    entrega ===
+    "caixa"
+  ){
+
+    const ruaPedido =
+    document.getElementById(
+      "endereco"
+    )?.value.trim() ||
+    "";
+
+
+    const numeroPedidoEndereco =
+    document.getElementById(
+      "numero"
+    )?.value.trim() ||
+    "";
+
+
+    const bairroPedido =
+    document.getElementById(
+      "bairro"
+    )?.value.trim() ||
+    "";
+
+
+    const complementoPedido =
+    document.getElementById(
+      "complemento"
+    )?.value.trim() ||
+    "";
+
+
+    enderecoPedido =
+
+    ruaPedido +
+
+    ", nº " +
+
+    numeroPedidoEndereco +
+
+    ", " +
+
+    bairroPedido +
+
+    (
+      complementoPedido
+      ?
+      " — " +
+      complementoPedido
+      :
+      ""
+    );
+
+  }
+
+
+  if(
+    entrega ===
+    "barcos"
+  ){
+
+    const destino =
+    document.getElementById(
+      "barcoDestino"
+    )?.value.trim() ||
+    "Barco/Jato";
+
+
+    const observacao =
+    document.getElementById(
+      "barcoObservacao"
+    )?.value.trim() ||
+    "";
+
+
+    enderecoPedido =
+
+    destino +
+
+    (
+      observacao
+      ?
+      " — " +
+      observacao
+      :
+      ""
+    );
+
+  }
+
+
+  const {
+    error:
+    erroPedido
+  } =
+  await window.supabaseClient
+  .from(
+    "Pedidos"
+  )
+  .insert([{
+
+    numero_pedido:
+    numeroPedido,
+
+    nome_cliente:
+    nome,
+
+    Telefone:
+    telefone,
+
+    endereco:
+    enderecoPedido,
+
+    tipo_entrega:
+    entrega,
+
+    valor_entrega:
+    Number(
+      valorFrete ||
+      0
+    ),
+
+    produtos:
+    JSON.stringify(
+      carrinho
+    ),
+
+    subtotal,
+
+    total,
+
+    forma_pagamento:
+    pagamento,
+
+    status:
+    "Novo"
+
+  }]);
+
+
+  if(
+    erroPedido
+  ){
+
+    console.error(
+      "Erro ao salvar pedido:",
+      erroPedido
+    );
+
+
+    alert(
+      "Não foi possível confirmar o pedido. " +
+      (
+        erroPedido.message ||
+        ""
+      )
+    );
+
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    "numeroPedido"
+  ).textContent =
+  "Pedido #" +
+  numeroPedido;
+
+
+  document.getElementById(
+    "resumoSucesso"
+  ).innerHTML = `
+
+    Total do pedido:
+
+    <strong>
+      ${moeda(total)}
+    </strong>
+
+    <br><br>
+
+    Pagamento:
+
+    <strong>
+      ${escaparHtml(pagamento)}
+    </strong>
+
+  `;
+
+
+  document.getElementById(
+    "checkout"
+  )
+  .classList.remove(
+    "ativo"
+  );
+
+
+  document.getElementById(
+    "sucesso"
+  )
+  .classList.add(
+    "ativo"
+  );
+
+
+  carrinho =
+  [];
+
+
+  valorFrete =
+  0;
+
+
+  tipoEntrega =
+  "";
+
+
+  salvarCarrinho();
 
 }
 
 
 /* =========================================
-   EDITAR PRODUTO
+   VOLTAR PARA LOJA
 ========================================= */
 
-async function editarProduto(
-  id
-){
+function voltarLoja(){
 
-  abrirPagina(
-    "produtos"
+  document.getElementById(
+    "sucesso"
+  )
+  .classList.remove(
+    "ativo"
   );
 
 
-  const produto =
-  produtos.find(
-    item =>
-      Number(
-        item.id
-      ) ===
-      Number(
-        id
-      )
-  );
-
-
-  if(!produto){
-    return;
-  }
-
-
   document.getElementById(
-    "produtoId"
+    "nome"
   ).value =
-  produto.id;
-
-
-  document.getElementById(
-    "produtoNome"
-  ).value =
-  produto.nome ||
   "";
 
 
   document.getElementById(
-    "produtoPreco"
+    "telefone"
   ).value =
-  produto.preco ||
   "";
 
 
   document.getElementById(
-    "produtoEstoque"
+    "entrega"
   ).value =
-  produto.estoque ??
+  "";
+
+
+  document.getElementById(
+    "endereco"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "numero"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "bairro"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "complemento"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "barcoDestino"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "barcoObservacao"
+  ).value =
+  "";
+
+
+  document.getElementById(
+    "enderecoArea"
+  ).style.display =
+  "none";
+
+
+  document.getElementById(
+    "barcoArea"
+  ).style.display =
+  "none";
+
+
+  document.getElementById(
+    "freteInfo"
+  ).style.display =
+  "none";
+
+
+  valorFrete =
   0;
 
 
-  document.getElementById(
-    "produtoCategoria"
-  ).value =
-  produto.categoria ||
+  tipoEntrega =
   "";
 
 
-  document.getElementById(
-    "produtoDescricao"
-  ).value =
-  produto.descricao ||
-  "";
+  montarOpcoesEntrega();
 
+  montarOpcoesPagamento();
 
-  document.getElementById(
-    "produtoAtivo"
-  ).checked =
-  produto.ativo !==
-  false;
-
-
-  document.getElementById(
-    "tituloFormulario"
-  ).textContent =
-  "✏️ Editar produto";
-
-
-  document.getElementById(
-    "botaoSalvar"
-  ).textContent =
-  "SALVAR ALTERAÇÕES";
-
-
-  document.getElementById(
-    "botaoCancelar"
-  ).style.display =
-  "block";
-
-
-  const {
-    data:
-    fotos,
-
-    error:
-    erroFotos
-  } =
-  await supabasePublico
-  .from(
-    "Fotos_Produtos"
-  )
-  .select("*")
-  .eq(
-    "produto_id",
-    Number(
-      id
-    )
-  )
-  .order(
-    "ordem",
-    {
-      ascending:true
-    }
-  );
-
-
-  if(
-    erroFotos
-  ){
-
-    console.error(
-      "Erro fotos:",
-      erroFotos
-    );
-
-  }
-
-
-  fotosFormulario =
-  (fotos || [])
-  .map(
-    foto => ({
-
-      id:
-      foto.id,
-
-      foto_url:
-      foto.foto_url,
-
-      arquivo:null,
-
-      preview:null,
-
-      principal:
-      Boolean(
-        foto.principal
-      )
-
-    })
-  );
-
-
-  if(
-    !fotosFormulario.length
-    &&
-    produto.foto_url
-  ){
-
-    fotosFormulario.push({
-
-      id:null,
-
-      foto_url:
-      produto.foto_url,
-
-      arquivo:null,
-
-      preview:null,
-
-      principal:true
-
-    });
-
-  }
-
-
-  if(
-    fotosFormulario.length
-    &&
-    !fotosFormulario.some(
-      foto => foto.principal
-    )
-  ){
-
-    fotosFormulario[0]
-    .principal =
-    true;
-
-  }
-
-
-  renderizarFotosFormulario();
-
-
-  const {
-    data:
-    variantes,
-
-    error:
-    erroVariantes
-  } =
-  await supabasePublico
-  .from(
-    "Variantes"
-  )
-  .select("*")
-  .eq(
-    "produto_id",
-    Number(
-      id
-    )
-  )
-  .order(
-    "id",
-    {
-      ascending:true
-    }
-  );
-
-
-  if(
-    erroVariantes
-  ){
-
-    console.error(
-      "Erro variantes:",
-      erroVariantes
-    );
-
-  }
-
-
-  const mapa =
-  new Map();
-
-
-  (variantes || [])
-  .forEach(
-    variante => {
-
-      const tipo =
-      variante.estampa
-      ?
-      "estampa"
-      :
-      "cor";
-
-
-      const nome =
-      variante.estampa ||
-      variante.cor ||
-      "";
-
-
-      const chave =
-      tipo +
-      "|||" +
-      nome +
-      "|||" +
-      String(
-        variante.foto_url ||
-        ""
-      );
-
-
-      if(
-        !mapa.has(
-          chave
-        )
-      ){
-
-        let corSelect =
-        "Preto";
-
-
-        let corPersonalizada =
-        "";
-
-
-        if(
-          tipo ===
-          "cor"
-        ){
-
-          if(
-            CORES_SALI.includes(
-              variante.cor
-            )
-          ){
-
-            corSelect =
-            variante.cor;
-
-          }else{
-
-            corSelect =
-            "Outra cor";
-
-
-            corPersonalizada =
-            variante.cor ||
-            "";
-
-          }
-
-        }
-
-
-        mapa.set(
-          chave,
-          {
-
-            tipo,
-
-            cor:
-            corSelect,
-
-            corPersonalizada,
-
-            estampa:
-            variante.estampa ||
-            "",
-
-            foto_url:
-            variante.foto_url ||
-            null,
-
-            arquivo:null,
-
-            preview:null,
-
-            tamanhos:
-            criarMapaTamanhos()
-
-          }
-        );
-
-      }
-
-
-      const opcao =
-      mapa.get(
-        chave
-      );
-
-
-      if(
-        opcao.tamanhos[
-          variante.tamanho
-        ]
-      ){
-
-        opcao.tamanhos[
-          variante.tamanho
-        ] = {
-
-          ativo:
-          variante.ativo !==
-          false,
-
-          estoque:
-          Number(
-            variante.estoque ||
-            0
-          )
-
-        };
-
-      }
-
-    }
-  );
-
-
-  opcoesFormulario =
-  Array.from(
-    mapa.values()
-  );
-
-
-  renderizarOpcoes();
+  atualizarCheckout();
 
 
   window.scrollTo({
@@ -10593,265 +3882,339 @@ async function editarProduto(
 
 
 /* =========================================
-   LIMPAR FORMULÁRIO
+   APLICAR CONFIGURAÇÕES DO ADM
 ========================================= */
 
-function cancelarEdicao(){
-
-  limparFormulario();
-
-}
-
-
-function limparFormulario(){
-
-  document.getElementById(
-    "produtoId"
-  ).value =
-  "";
-
-
-  document.getElementById(
-    "produtoNome"
-  ).value =
-  "";
-
-
-  document.getElementById(
-    "produtoPreco"
-  ).value =
-  "";
-
-
-  document.getElementById(
-    "produtoEstoque"
-  ).value =
-  "0";
-
-
-  document.getElementById(
-    "produtoCategoria"
-  ).value =
-  "";
-
-
-  document.getElementById(
-    "produtoDescricao"
-  ).value =
-  "";
-
-
-  document.getElementById(
-    "produtoFotosArquivos"
-  ).value =
-  "";
-
-
-  document.getElementById(
-    "produtoAtivo"
-  ).checked =
-  true;
-
-
-  fotosFormulario = [];
-
-  opcoesFormulario = [];
-
-
-  renderizarFotosFormulario();
-
-  renderizarOpcoes();
-
-
-  document.getElementById(
-    "tituloFormulario"
-  ).textContent =
-  "➕ Cadastrar produto";
-
-
-  document.getElementById(
-    "botaoSalvar"
-  ).textContent =
-  "CADASTRAR PRODUTO";
-
-
-  document.getElementById(
-    "botaoCancelar"
-  ).style.display =
-  "none";
-
-}
-
-
-/* =========================================
-   ATIVAR / DESATIVAR / EXCLUIR
-========================================= */
-
-async function alternarProduto(
-  id,
-  ativoAtual
+function aplicarConfiguracoesLoja(
+  config
 ){
-
-  const {
-    error
-  } =
-  await supabaseClient
-  .from(
-    "Produtos"
-  )
-  .update({
-    ativo:
-    !ativoAtual
-  })
-  .eq(
-    "id",
-    id
-  );
-
-
-  if(error){
-
-    alert(
-      "Erro ao alterar produto: " +
-      error.message
-    );
-
-    return;
-
-  }
-
-
-  await carregarProdutos();
-
-}
-
-
-async function excluirProduto(
-  id
-){
-
-  const produto =
-  produtos.find(
-    item =>
-      Number(
-        item.id
-      ) ===
-      Number(
-        id
-      )
-  );
-
-
-  const confirmar =
-  confirm(
-    "Tem certeza que deseja excluir " +
-    (
-      produto?.nome ||
-      "este produto"
-    ) +
-    "?"
-  );
-
 
   if(
-    !confirmar
+    !config
   ){
     return;
   }
 
 
-  try{
+  configuracoesLoja = {
 
-    const {
-      error:
-      erroVariantes
-    } =
-    await supabaseClient
-    .from(
-      "Variantes"
-    )
-    .delete()
-    .eq(
-      "produto_id",
-      Number(
-        id
-      )
+    ...configuracoesLoja,
+
+    ...config
+
+  };
+
+
+  const corPrincipal =
+  config.cor_principal ||
+  "#d92f82";
+
+
+  const corSecundaria =
+  config.cor_secundaria ||
+  "#111111";
+
+
+  const corFundo =
+  config.cor_fundo ||
+  "#ffffff";
+
+
+  document.documentElement
+  .style
+  .setProperty(
+    "--pink",
+    corPrincipal
+  );
+
+
+  document.documentElement
+  .style
+  .setProperty(
+    "--black",
+    corSecundaria
+  );
+
+
+  document.documentElement
+  .style
+  .setProperty(
+    "--white",
+    corFundo
+  );
+
+
+  document.body.style.background =
+  corFundo;
+
+
+  const nomeLoja =
+  config.nome_loja ||
+  "SALI STORE";
+
+
+  document.getElementById(
+    "nomeLojaCabecalho"
+  ).textContent =
+  nomeLoja;
+
+
+  document.getElementById(
+    "nomeLojaRodape"
+  ).textContent =
+  nomeLoja;
+
+
+  document.getElementById(
+    "tituloPagina"
+  ).textContent =
+  nomeLoja +
+  " | Moda Feminina";
+
+
+  document.getElementById(
+    "subtituloLojaCabecalho"
+  ).textContent =
+  config.subtitulo_loja ||
+  "Moda feminina • Manacapuru";
+
+
+  document.getElementById(
+    "rodapeLocal"
+  ).textContent =
+  nomeLoja +
+  " • Manacapuru, Amazonas";
+
+
+  document.getElementById(
+    "barraTopoLoja"
+  ).textContent =
+  config.texto_topo ||
+  "NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS";
+
+
+  document.getElementById(
+    "heroTituloLoja"
+  ).textContent =
+  config.hero_titulo ||
+  "Seu look começa aqui.";
+
+
+  document.getElementById(
+    "heroSubtituloLoja"
+  ).textContent =
+  config.hero_subtitulo ||
+  "Novidades, tendências e peças selecionadas para você.";
+
+
+  const barraTopo =
+  document.getElementById(
+    "barraTopoLoja"
+  );
+
+
+  barraTopo.style.display =
+  config.mostrar_barra_topo ===
+  false
+  ?
+  "none"
+  :
+  "block";
+
+
+  const beneficios =
+  document.getElementById(
+    "secaoBeneficios"
+  );
+
+
+  beneficios.style.display =
+  config.mostrar_beneficios ===
+  false
+  ?
+  "none"
+  :
+  "grid";
+
+
+  const categorias =
+  document.getElementById(
+    "categorias"
+  );
+
+
+  const linkCategorias =
+  document.getElementById(
+    "linkCategorias"
+  );
+
+
+  const botaoCategorias =
+  document.getElementById(
+    "botaoVerCategorias"
+  );
+
+
+  if(
+    config.mostrar_categorias ===
+    false
+  ){
+
+    categorias.style.display =
+    "none";
+
+
+    linkCategorias.style.display =
+    "none";
+
+
+    botaoCategorias.style.display =
+    "none";
+
+  }else{
+
+    categorias.style.display =
+    "";
+
+
+    linkCategorias.style.display =
+    "";
+
+
+    botaoCategorias.style.display =
+    "";
+
+  }
+
+
+  const hero =
+  document.getElementById(
+    "inicio"
+  );
+
+
+  if(
+    config.banner_url
+  ){
+
+    hero.style.backgroundImage =
+
+    `linear-gradient(
+      180deg,
+      rgba(0,0,0,.10),
+      rgba(0,0,0,.58)
+    ),
+    url("${config.banner_url}")`;
+
+
+    hero.classList.add(
+      "com-banner"
     );
 
+  }else{
 
-    if(
-      erroVariantes
-    ){
-      throw erroVariantes;
-    }
+    hero.style.backgroundImage =
+
+    `linear-gradient(
+      180deg,
+      rgba(0,0,0,.04),
+      rgba(0,0,0,.52)
+    ),
+    linear-gradient(
+      135deg,
+      #f2d4e3,
+      #d891b6 45%,
+      #1b1b1d 115%
+    )`;
 
 
-    const {
-      error:
-      erroFotos
-    } =
-    await supabaseClient
-    .from(
-      "Fotos_Produtos"
-    )
-    .delete()
-    .eq(
-      "produto_id",
-      Number(
-        id
-      )
+    hero.classList.remove(
+      "com-banner"
     );
 
-
-    if(
-      erroFotos
-    ){
-      throw erroFotos;
-    }
+  }
 
 
-    const {
-      error
-    } =
-    await supabaseClient
-    .from(
-      "Produtos"
-    )
-    .delete()
-    .eq(
-      "id",
-      Number(
-        id
-      )
+  if(
+    config.instagram
+  ){
+
+    document.body.setAttribute(
+      "data-instagram",
+      config.instagram
     );
 
-
-    if(error){
-      throw error;
-    }
+  }
 
 
-    alert(
-      "Produto excluído. ✅"
-    );
+  montarOpcoesEntrega();
+
+  montarOpcoesPagamento();
+
+}
 
 
-    limparFormulario();
+/* =========================================
+   BUSCAR CONFIGURAÇÕES NO SUPABASE
+========================================= */
+
+async function carregarConfiguracoesLoja(){
+
+  if(
+    !window.supabaseClient
+  ){
+    return;
+  }
 
 
-    await carregarProdutos();
+  const {
+    data,
+    error
+  } =
+  await window.supabaseClient
+  .from(
+    "Configuracoes_Loja"
+  )
+  .select("*")
+  .eq(
+    "id",
+    1
+  )
+  .maybeSingle();
 
-  }catch(error){
+
+  if(
+    error
+  ){
 
     console.error(
+      "Erro ao carregar configurações da loja:",
       error
     );
 
 
-    alert(
-      "Erro ao excluir: " +
-      error.message
+    montarOpcoesEntrega();
+
+    montarOpcoesPagamento();
+
+    return;
+
+  }
+
+
+  if(
+    data
+  ){
+
+    aplicarConfiguracoesLoja(
+      data
     );
+
+  }else{
+
+    montarOpcoesEntrega();
+
+    montarOpcoesPagamento();
 
   }
 
@@ -10859,38 +4222,64 @@ async function excluirProduto(
 
 
 /* =========================================
-   MODAL - FECHAR AO TOCAR FORA
+   PRIMEIRA RENDERIZAÇÃO
 ========================================= */
 
-document.getElementById(
-  "modalPedidoOverlay"
-)
-.addEventListener(
-  "click",
-  function(event){
+atualizarCarrinho();
 
-    if(
-      event.target ===
-      this
-    ){
+montarOpcoesEntrega();
 
-      fecharModalPedido();
-
-    }
-
-  }
-);
-
-
-/* =========================================
-   INICIALIZAÇÃO
-========================================= */
-
-renderizarOpcoes();
-
-verificarSessao();
+montarOpcoesPagamento();
 
 </script>
+<!-- =========================================
+     SUPABASE
+========================================= -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<script>
+
+(function(){
+
+  const saliSupabaseUrl =
+  "https://uubslcjoybeehinnwhtg.supabase.co";
+
+
+  const saliSupabaseKey =
+  "sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
+
+
+  window.supabaseClient =
+  window.supabase.createClient(
+    saliSupabaseUrl,
+    saliSupabaseKey,
+    {
+      auth:{
+        persistSession:false,
+        autoRefreshToken:false,
+        detectSessionInUrl:false
+      }
+    }
+  );
+
+
+  carregarConfiguracoesLoja();
+
+})();
+
+</script>
+
+
+<!-- =========================================
+     PRODUTOS
+========================================= -->
+
+<script src="produtos.js?v=18"></script>
+
 
 </body>
 
