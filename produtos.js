@@ -1,7 +1,6 @@
 /* =========================================
    SALI STORE
    PRODUTOS + VARIANTES VISUAIS
-   FOTO + NOME DA COR / ESTAMPA
 ========================================= */
 
 const SALI_SUPABASE_URL =
@@ -80,6 +79,61 @@ function adicionarEstilosSali(){
       border-radius:12px;
       font-weight:900;
       cursor:pointer;
+    }
+
+
+    /* CORES / ESTAMPAS NA VITRINE */
+
+    .sali-card-variantes{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      min-height:24px;
+      margin:7px 0 9px;
+    }
+
+    .sali-card-cor{
+      width:21px;
+      height:21px;
+      border-radius:50%;
+      border:1px solid #cfcfcf;
+      padding:0;
+      flex:0 0 21px;
+      cursor:pointer;
+      box-shadow:0 0 0 2px #fff;
+      transition:.15s;
+    }
+
+    .sali-card-cor:active{
+      transform:scale(.92);
+    }
+
+    .sali-card-cor.estampa{
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    .sali-card-mais{
+      font-size:11px;
+      color:#555;
+      font-weight:700;
+      margin-left:1px;
+      white-space:nowrap;
+    }
+
+    @media(max-width:480px){
+
+      .sali-card-variantes{
+        gap:5px;
+      }
+
+      .sali-card-cor{
+        width:20px;
+        height:20px;
+        flex-basis:20px;
+      }
+
     }
 
 
@@ -198,9 +252,7 @@ function adicionarEstilosSali(){
     }
 
 
-    /* =====================================
-       MINIATURAS COM NOME
-    ===================================== */
+    /* MINIATURAS COM NOME */
 
     .sali-visuais{
       display:flex;
@@ -381,7 +433,6 @@ function adicionarEstilosSali(){
       cursor:not-allowed;
     }
 
-
     body.sali-modal-aberto{
       overflow:hidden;
     }
@@ -483,6 +534,7 @@ function moedaProduto(
 
 }
 
+
 function textoSeguro(
   valor
 ){
@@ -492,6 +544,7 @@ function textoSeguro(
   ).trim();
 
 }
+
 
 function tamanhoExibicao(
   valor
@@ -509,9 +562,10 @@ function tamanhoExibicao(
   const normalizado =
   tamanho
   .toLowerCase()
-  .replaceAll(
-    "ú",
-    "u"
+  .normalize("NFD")
+  .replace(
+    /[\u0300-\u036f]/g,
+    ""
   );
 
   if(
@@ -534,6 +588,7 @@ function tamanhoExibicao(
 
 }
 
+
 function ehTamanhoUnico(
   valor
 ){
@@ -547,6 +602,7 @@ function ehTamanhoUnico(
   );
 
 }
+
 
 function chaveVisual(
   variante
@@ -566,6 +622,7 @@ function chaveVisual(
 
 }
 
+
 function nomeVisual(
   variante
 ){
@@ -580,25 +637,90 @@ function nomeVisual(
     variante.cor
   );
 
-  /*
-    Se for estampa,
-    mostra somente Estampa 01 etc.
-  */
-
   if(estampa){
     return estampa;
   }
-
-  /*
-    Se for cor,
-    mostra Preto, Rosa, Vinho etc.
-  */
 
   if(cor){
     return cor;
   }
 
   return "";
+
+}
+
+
+function normalizarCorSali(
+  valor
+){
+
+  return textoSeguro(
+    valor
+  )
+  .toLowerCase()
+  .normalize(
+    "NFD"
+  )
+  .replace(
+    /[\u0300-\u036f]/g,
+    ""
+  );
+
+}
+
+
+function codigoCorSali(
+  nome
+){
+
+  const cor =
+  normalizarCorSali(
+    nome
+  );
+
+
+  const mapa = {
+
+    "preto":"#111111",
+    "branco":"#ffffff",
+    "off white":"#f6f1e7",
+    "bege":"#d7c1a5",
+    "nude":"#d7ad95",
+    "marrom":"#6e4938",
+    "caramelo":"#b97844",
+
+    "rosa":"#e99ab9",
+    "pink":"#e52d86",
+    "rosa bebe":"#f5c8d9",
+
+    "vermelho":"#c51f32",
+    "vinho":"#72243a",
+
+    "azul":"#3867d6",
+    "azul bebe":"#a9d7ee",
+    "azul marinho":"#182a4d",
+
+    "verde":"#4b8a61",
+    "verde militar":"#596044",
+    "verde bandeira":"#168447",
+
+    "amarelo":"#f2cf43",
+    "laranja":"#e88736",
+
+    "roxo":"#744995",
+    "lilas":"#b596cf",
+
+    "cinza":"#9c9c9c",
+    "prata":"#c6c8ca",
+    "dourado":"#c9a45b"
+
+  };
+
+
+  return (
+    mapa[cor] ||
+    "#d9d9d9"
+  );
 
 }
 
@@ -629,9 +751,11 @@ async function buscarProdutos(){
     }
   );
 
+
   if(error){
     throw error;
   }
+
 
   return data || [];
 
@@ -652,6 +776,7 @@ async function buscarVariantes(
     return [];
   }
 
+
   const ids =
   produtos.map(
     produto =>
@@ -659,6 +784,7 @@ async function buscarVariantes(
         produto.id
       )
   );
+
 
   const {
     data,
@@ -693,6 +819,7 @@ async function buscarVariantes(
     }
   );
 
+
   if(error){
 
     console.error(
@@ -704,13 +831,14 @@ async function buscarVariantes(
 
   }
 
+
   return data || [];
 
 }
 
 
 /* =========================================
-   AGRUPAR
+   AGRUPAR VARIANTES
 ========================================= */
 
 function agruparVariantes(
@@ -718,6 +846,7 @@ function agruparVariantes(
 ){
 
   const mapa = {};
+
 
   variantes.forEach(
     variante => {
@@ -727,6 +856,7 @@ function agruparVariantes(
         variante.produto_id
       );
 
+
       if(
         !mapa[id]
       ){
@@ -735,6 +865,7 @@ function agruparVariantes(
 
       }
 
+
       mapa[id].push(
         variante
       );
@@ -742,1201 +873,15 @@ function agruparVariantes(
     }
   );
 
+
   return mapa;
 
 }
 
 
 /* =========================================
-   MODAL
+   BOLINHAS DO CARD
 ========================================= */
-
-function garantirModal(){
-
-  if(
-    document.getElementById(
-      "saliModalOverlay"
-    )
-  ){
-    return;
-  }
-
-  const overlay =
-  document.createElement(
-    "div"
-  );
-
-  overlay.id =
-  "saliModalOverlay";
-
-  overlay.className =
-  "sali-modal-overlay";
-
-  overlay.innerHTML = `
-
-    <div class="sali-modal">
-
-      <button
-        type="button"
-        class="sali-modal-fechar"
-        onclick="fecharModalProduto()"
-      >
-        ×
-      </button>
-
-      <img
-        id="saliModalFoto"
-        class="sali-modal-foto"
-        alt="Produto SALI"
-      >
-
-      <div class="sali-modal-info">
-
-        <h2
-          id="saliModalNome"
-        ></h2>
-
-        <div
-          id="saliModalPreco"
-          class="sali-modal-preco"
-        ></div>
-
-        <div
-          id="saliAreaEstampas"
-          class="sali-secao-opcao"
-        ></div>
-
-        <div
-          id="saliAreaTamanhos"
-          class="sali-secao-opcao"
-        ></div>
-
-        <div
-          id="saliModalStatus"
-          class="sali-status-modal"
-        ></div>
-
-        <button
-          type="button"
-          id="saliModalAdicionar"
-          class="sali-modal-adicionar"
-        >
-          ADICIONAR AO CARRINHO
-        </button>
-
-      </div>
-
-    </div>
-
-  `;
-
-  overlay.addEventListener(
-    "click",
-    function(event){
-
-      if(
-        event.target ===
-        overlay
-      ){
-
-        fecharModalProduto();
-
-      }
-
-    }
-  );
-
-  document.body.appendChild(
-    overlay
-  );
-
-}
-
-function fecharModalProduto(){
-
-  const overlay =
-  document.getElementById(
-    "saliModalOverlay"
-  );
-
-  if(overlay){
-
-    overlay.classList.remove(
-      "ativo"
-    );
-
-  }
-
-  document.body.classList.remove(
-    "sali-modal-aberto"
-  );
-
-}
-
-
-/* =========================================
-   ABRIR MODAL
-========================================= */
-
-function abrirModalProduto(
-  produto,
-  variantes
-){
-
-  garantirModal();
-
-  const overlay =
-  document.getElementById(
-    "saliModalOverlay"
-  );
-
-  const fotoPrincipal =
-  document.getElementById(
-    "saliModalFoto"
-  );
-
-  const nome =
-  document.getElementById(
-    "saliModalNome"
-  );
-
-  const preco =
-  document.getElementById(
-    "saliModalPreco"
-  );
-
-  const areaVisuais =
-  document.getElementById(
-    "saliAreaEstampas"
-  );
-
-  const areaTamanhos =
-  document.getElementById(
-    "saliAreaTamanhos"
-  );
-
-  const status =
-  document.getElementById(
-    "saliModalStatus"
-  );
-
-  const botaoAdicionar =
-  document.getElementById(
-    "saliModalAdicionar"
-  );
-
-  fotoPrincipal.src =
-  produto.foto_url ||
-  "";
-
-  nome.textContent =
-  produto.nome ||
-  "Produto SALI";
-
-  preco.textContent =
-  moedaProduto(
-    produto.preco
-  );
-
-  areaVisuais.innerHTML =
-  "";
-
-  areaTamanhos.innerHTML =
-  "";
-
-  status.textContent =
-  "";
-
-  botaoAdicionar.disabled =
-  true;
-
-  let visualSelecionado =
-  null;
-
-  let tamanhoSelecionado =
-  null;
-
-  /* =====================================
-     AGRUPAR COR / ESTAMPA
-  ===================================== */
-
-  const visuais = [];
-
-  const chaves =
-  new Set();
-
-  variantes.forEach(
-    variante => {
-
-      const chave =
-      chaveVisual(
-        variante
-      );
-
-      const nome =
-      nomeVisual(
-        variante
-      );
-
-      if(!nome){
-        return;
-      }
-
-      if(
-        chaves.has(
-          chave
-        )
-      ){
-        return;
-      }
-
-      chaves.add(
-        chave
-      );
-
-      const grupo =
-      variantes.filter(
-        item =>
-          chaveVisual(
-            item
-          ) === chave
-      );
-
-      /*
-        A FOTO DA VARIANTE É PRIORIDADE.
-      */
-
-      const fotoVariante =
-      grupo.find(
-        item =>
-          textoSeguro(
-            item.foto_url
-          )
-      )?.foto_url ||
-      "";
-
-      const temEstoque =
-      grupo.some(
-        item =>
-          Number(
-            item.estoque ||
-            0
-          ) > 0
-      );
-
-      visuais.push({
-
-        chave,
-
-        nome,
-
-        foto:
-          fotoVariante,
-
-        temEstoque
-
-      });
-
-    }
-  );
-
-  /* =====================================
-     MOSTRAR MINIATURAS + NOME
-  ===================================== */
-
-  if(
-    visuais.length
-  ){
-
-    const titulo =
-    document.createElement(
-      "div"
-    );
-
-    titulo.className =
-    "sali-titulo-opcao";
-
-    const temEstampa =
-    variantes.some(
-      item =>
-        textoSeguro(
-          item.estampa
-        )
-    );
-
-    const temCor =
-    variantes.some(
-      item =>
-        textoSeguro(
-          item.cor
-        )
-    );
-
-    if(
-      temEstampa &&
-      !temCor
-    ){
-
-      titulo.textContent =
-      "Escolha a estampa";
-
-    }else if(
-      temCor &&
-      !temEstampa
-    ){
-
-      titulo.textContent =
-      "Escolha a cor";
-
-    }else{
-
-      titulo.textContent =
-      "Escolha a opção";
-
-    }
-
-    const grade =
-    document.createElement(
-      "div"
-    );
-
-    grade.className =
-    "sali-visuais";
-
-    visuais.forEach(
-      visual => {
-
-        const botao =
-        document.createElement(
-          "button"
-        );
-
-        botao.type =
-        "button";
-
-        botao.className =
-        "sali-visual-item";
-
-        botao.title =
-        visual.nome;
-
-        if(
-          !visual.temEstoque
-        ){
-
-          botao.classList.add(
-            "esgotada"
-          );
-
-          botao.disabled =
-          true;
-
-        }
-
-        const caixaFoto =
-        document.createElement(
-          "div"
-        );
-
-        caixaFoto.className =
-        "sali-visual-foto";
-
-        if(
-          visual.foto
-        ){
-
-          const img =
-          document.createElement(
-            "img"
-          );
-
-          img.src =
-          visual.foto;
-
-          img.alt =
-          visual.nome;
-
-          caixaFoto.appendChild(
-            img
-          );
-
-        }else{
-
-          const semFoto =
-          document.createElement(
-            "div"
-          );
-
-          semFoto.className =
-          "sali-sem-foto-visual";
-
-          semFoto.textContent =
-          "Sem foto";
-
-          caixaFoto.appendChild(
-            semFoto
-          );
-
-        }
-
-        const legenda =
-        document.createElement(
-          "span"
-        );
-
-        legenda.className =
-        "sali-visual-nome";
-
-        legenda.textContent =
-        visual.nome;
-
-        botao.appendChild(
-          caixaFoto
-        );
-
-        botao.appendChild(
-          legenda
-        );
-
-        botao.addEventListener(
-          "click",
-          function(){
-
-            if(
-              !visual.temEstoque
-            ){
-              return;
-            }
-
-            visualSelecionado =
-            visual.chave;
-
-            tamanhoSelecionado =
-            null;
-
-            areaVisuais
-            .querySelectorAll(
-              ".sali-visual-item"
-            )
-            .forEach(
-              item =>
-                item.classList.remove(
-                  "selecionada"
-                )
-            );
-
-            botao.classList.add(
-              "selecionada"
-            );
-
-            if(
-              visual.foto
-            ){
-
-              fotoPrincipal.src =
-              visual.foto;
-
-            }
-
-            renderizarTamanhos();
-
-            atualizarEstado();
-
-          }
-        );
-
-        grade.appendChild(
-          botao
-        );
-
-      }
-    );
-
-    areaVisuais.appendChild(
-      titulo
-    );
-
-    areaVisuais.appendChild(
-      grade
-    );
-
-  }
-
-  /* =====================================
-     VARIANTES ATUAIS
-  ===================================== */
-
-  function variantesAtuais(){
-
-    if(
-      visuais.length &&
-      !visualSelecionado
-    ){
-
-      return [];
-
-    }
-
-    if(
-      !visuais.length
-    ){
-
-      return [
-        ...variantes
-      ];
-
-    }
-
-    return variantes.filter(
-      variante =>
-        chaveVisual(
-          variante
-        ) ===
-        visualSelecionado
-    );
-
-  }
-
-  /* =====================================
-     TAMANHOS
-  ===================================== */
-
-  function renderizarTamanhos(){
-
-    areaTamanhos.innerHTML =
-    "";
-
-    if(
-      visuais.length &&
-      !visualSelecionado
-    ){
-      return;
-    }
-
-    const lista =
-    variantesAtuais();
-
-    const tamanhos = [];
-
-    lista.forEach(
-      variante => {
-
-        const tamanho =
-        textoSeguro(
-          variante.tamanho
-        );
-
-        if(!tamanho){
-          return;
-        }
-
-        if(
-          tamanhos.some(
-            item =>
-              item.valor ===
-              tamanho
-          )
-        ){
-          return;
-        }
-
-        const grupo =
-        lista.filter(
-          item =>
-            textoSeguro(
-              item.tamanho
-            ) ===
-            tamanho
-        );
-
-        const temEstoque =
-        grupo.some(
-          item =>
-            Number(
-              item.estoque ||
-              0
-            ) > 0
-        );
-
-        tamanhos.push({
-
-          valor:
-            tamanho,
-
-          nome:
-            tamanhoExibicao(
-              tamanho
-            ),
-
-          temEstoque
-
-        });
-
-      }
-    );
-
-    if(
-      !tamanhos.length
-    ){
-      return;
-    }
-
-    const titulo =
-    document.createElement(
-      "div"
-    );
-
-    titulo.className =
-    "sali-titulo-opcao";
-
-    titulo.textContent =
-    tamanhos.length === 1
-    ? "Tamanho"
-    : "Escolha o tamanho";
-
-    const grade =
-    document.createElement(
-      "div"
-    );
-
-    grade.className =
-    "sali-tamanhos";
-
-    tamanhos.forEach(
-      tamanho => {
-
-        const botao =
-        document.createElement(
-          "button"
-        );
-
-        botao.type =
-        "button";
-
-        botao.className =
-        "sali-tamanho-botao";
-
-        if(
-          ehTamanhoUnico(
-            tamanho.valor
-          )
-        ){
-
-          botao.classList.add(
-            "unico"
-          );
-
-        }
-
-        botao.textContent =
-        tamanho.nome;
-
-        if(
-          !tamanho.temEstoque
-        ){
-
-          botao.disabled =
-          true;
-
-          botao.classList.add(
-            "esgotado"
-          );
-
-        }
-
-        botao.addEventListener(
-          "click",
-          function(){
-
-            if(
-              !tamanho.temEstoque
-            ){
-              return;
-            }
-
-            tamanhoSelecionado =
-            tamanho.valor;
-
-            areaTamanhos
-            .querySelectorAll(
-              ".sali-tamanho-botao"
-            )
-            .forEach(
-              item =>
-                item.classList.remove(
-                  "selecionado"
-                )
-            );
-
-            botao.classList.add(
-              "selecionado"
-            );
-
-            atualizarEstado();
-
-          }
-        );
-
-        grade.appendChild(
-          botao
-        );
-
-      }
-    );
-
-    areaTamanhos.appendChild(
-      titulo
-    );
-
-    areaTamanhos.appendChild(
-      grade
-    );
-
-    /*
-      Um único tamanho disponível:
-      seleciona automaticamente.
-    */
-
-    const disponiveis =
-    tamanhos.filter(
-      tamanho =>
-        tamanho.temEstoque
-    );
-
-    if(
-      disponiveis.length ===
-      1
-    ){
-
-      tamanhoSelecionado =
-      disponiveis[0].valor;
-
-      const botaoUnico =
-      grade.querySelector(
-        ".sali-tamanho-botao:not(.esgotado)"
-      );
-
-      if(botaoUnico){
-
-        botaoUnico.classList.add(
-          "selecionado"
-        );
-
-      }
-
-    }
-
-  }
-
-  /* =====================================
-     VARIANTE SELECIONADA
-  ===================================== */
-
-  function obterVarianteSelecionada(){
-
-    let lista =
-    variantesAtuais();
-
-    if(
-      visuais.length &&
-      !visualSelecionado
-    ){
-
-      return null;
-
-    }
-
-    if(
-      tamanhoSelecionado
-    ){
-
-      lista =
-      lista.filter(
-        variante =>
-          textoSeguro(
-            variante.tamanho
-          ) ===
-          tamanhoSelecionado
-      );
-
-    }
-
-    const possuiTamanho =
-    lista.some(
-      variante =>
-        textoSeguro(
-          variante.tamanho
-        )
-    );
-
-    if(
-      possuiTamanho &&
-      !tamanhoSelecionado
-    ){
-
-      return null;
-
-    }
-
-    return (
-      lista.find(
-        variante =>
-          Number(
-            variante.estoque ||
-            0
-          ) > 0
-      )
-      ||
-      null
-    );
-
-  }
-
-  /* =====================================
-     STATUS
-  ===================================== */
-
-  function atualizarEstado(){
-
-    const variante =
-    obterVarianteSelecionada();
-
-    if(!variante){
-
-      botaoAdicionar.disabled =
-      true;
-
-      if(
-        visuais.length &&
-        !visualSelecionado
-      ){
-
-        status.textContent =
-        "Escolha uma opção.";
-
-      }else{
-
-        status.textContent =
-        "Escolha o tamanho.";
-
-      }
-
-      status.className =
-      "sali-status-modal";
-
-      return;
-
-    }
-
-    const estoque =
-    Number(
-      variante.estoque ||
-      0
-    );
-
-    if(
-      estoque <= 0
-    ){
-
-      botaoAdicionar.disabled =
-      true;
-
-      status.textContent =
-      "Produto esgotado";
-
-      status.className =
-      "sali-status-modal esgotado";
-
-      return;
-
-    }
-
-    botaoAdicionar.disabled =
-    false;
-
-    if(
-      estoque === 1
-    ){
-
-      status.textContent =
-      "🔥 Última unidade";
-
-      status.className =
-      "sali-status-modal disponivel";
-
-    }else if(
-      estoque <= 3
-    ){
-
-      status.textContent =
-      "⚠️ Poucas unidades disponíveis";
-
-      status.className =
-      "sali-status-modal alerta";
-
-    }else{
-
-      status.textContent =
-      "✅ Disponível";
-
-      status.className =
-      "sali-status-modal disponivel";
-
-    }
-
-  }
-
-  /* =====================================
-     CARRINHO
-  ===================================== */
-
-  botaoAdicionar.onclick =
-  function(){
-
-    const variante =
-    obterVarianteSelecionada();
-
-    if(!variante){
-
-      alert(
-        "Escolha a opção e o tamanho."
-      );
-
-      return;
-
-    }
-
-    const detalhes = [];
-
-    const visual =
-    nomeVisual(
-      variante
-    );
-
-    if(visual){
-
-      detalhes.push(
-        visual
-      );
-
-    }
-
-    const tamanho =
-    tamanhoExibicao(
-      variante.tamanho
-    );
-
-    if(tamanho){
-
-      detalhes.push(
-        tamanho
-      );
-
-    }
-
-    const nomeCarrinho =
-    detalhes.length
-    ? (
-        produto.nome +
-        " - " +
-        detalhes.join(
-          " | "
-        )
-      )
-    : produto.nome;
-
-    const fotoCarrinho =
-    variante.foto_url
-    ||
-    fotoPrincipal.src
-    ||
-    produto.foto_url;
-
-    const idCarrinho =
-    String(
-      produto.id
-    )
-    +
-    "-v"
-    +
-    String(
-      variante.id
-    );
-
-    adicionarProduto(
-      idCarrinho,
-      nomeCarrinho,
-      Number(
-        produto.preco
-      ),
-      fotoCarrinho
-    );
-
-    fecharModalProduto();
-
-  };
-
-  /* =====================================
-     PRIMEIRA OPÇÃO AUTOMÁTICA
-  ===================================== */
-
-  const primeira =
-  visuais.find(
-    visual =>
-      visual.temEstoque
-  );
-
-  if(primeira){
-
-    visualSelecionado =
-    primeira.chave;
-
-    const botoes =
-    areaVisuais
-    .querySelectorAll(
-      ".sali-visual-item"
-    );
-
-    const indice =
-    visuais.findIndex(
-      visual =>
-        visual.chave ===
-        primeira.chave
-    );
-
-    if(
-      botoes[indice]
-    ){
-
-      botoes[indice]
-      .classList.add(
-        "selecionada"
-      );
-
-    }
-
-    if(
-      primeira.foto
-    ){
-
-      fotoPrincipal.src =
-      primeira.foto;
-
-    }
-
-  }
-
-  renderizarTamanhos();
-
-  atualizarEstado();
-
-  overlay.classList.add(
-    "ativo"
-  );
-
-  document.body.classList.add(
-    "sali-modal-aberto"
-  );
-
-  const modal =
-  overlay.querySelector(
-    ".sali-modal"
-  );
-
-  if(modal){
-
-    modal.scrollTop =
-    0;
-
-  }
-
-}
-
-/* =========================================
-   BOLINHAS DE COR / ESTAMPA NA VITRINE
-========================================= */
-
-function normalizarCorSali(valor){
-
-  return textoSeguro(valor)
-  .toLowerCase()
-  .normalize("NFD")
-  .replace(
-    /[\u0300-\u036f]/g,
-    ""
-  );
-
-}
-
-
-function codigoCorSali(nome){
-
-  const cor =
-  normalizarCorSali(nome);
-
-  const mapa = {
-
-    "preto":"#111111",
-
-    "branco":"#ffffff",
-
-    "off white":"#f6f1e7",
-
-    "bege":"#d7c1a5",
-
-    "nude":"#d7ad95",
-
-    "marrom":"#6e4938",
-
-    "caramelo":"#b97844",
-
-    "rosa":"#e99ab9",
-
-    "pink":"#e52d86",
-
-    "rosa bebe":"#f5c8d9",
-
-    "vermelho":"#c51f32",
-
-    "vinho":"#72243a",
-
-    "azul":"#3867d6",
-
-    "azul bebe":"#a9d7ee",
-
-    "azul marinho":"#182a4d",
-
-    "verde":"#4b8a61",
-
-    "verde militar":"#596044",
-
-    "verde bandeira":"#168447",
-
-    "amarelo":"#f2cf43",
-
-    "laranja":"#e88736",
-
-    "roxo":"#744995",
-
-    "lilas":"#b596cf",
-
-    "cinza":"#9c9c9c",
-
-    "prata":"#c6c8ca",
-
-    "dourado":"#c9a45b"
-
-  };
-
-
-  return (
-    mapa[cor]
-    ||
-    "#d9d9d9"
-  );
-
-}
-
 
 function criarAmostrasCard(
   variantes,
@@ -1948,13 +893,17 @@ function criarAmostrasCard(
     "div"
   );
 
+
   area.className =
   "sali-card-variantes";
 
 
   if(
-    !variantes ||
-    !variantes.length
+    !Array.isArray(
+      variantes
+    )
+    ||
+    variantes.length === 0
   ){
 
     return area;
@@ -1971,19 +920,19 @@ function criarAmostrasCard(
   variantes.forEach(
     variante => {
 
-      /*
-        Só mostra opções
-        que possuem estoque.
-      */
+      if(
+        variante.ativo === false
+      ){
+        return;
+      }
+
 
       if(
         Number(
           variante.estoque || 0
         ) <= 0
       ){
-
         return;
-
       }
 
 
@@ -2003,9 +952,7 @@ function criarAmostrasCard(
         !cor &&
         !estampa
       ){
-
         return;
-
       }
 
 
@@ -2018,15 +965,17 @@ function criarAmostrasCard(
 
 
       if(
-        chaves.has(chave)
+        chaves.has(
+          chave
+        )
       ){
-
         return;
-
       }
 
 
-      chaves.add(chave);
+      chaves.add(
+        chave
+      );
 
 
       opcoes.push({
@@ -2052,11 +1001,6 @@ function criarAmostrasCard(
     }
   );
 
-
-  /*
-    Máximo de 4 bolinhas
-    visíveis no card.
-  */
 
   const limite =
   4;
@@ -2111,6 +1055,11 @@ function criarAmostrasCard(
           bolinha.style.backgroundImage =
           `url("${opcao.foto}")`;
 
+        }else{
+
+          bolinha.style.background =
+          "#eeeeee";
+
         }
 
       }else{
@@ -2122,11 +1071,6 @@ function criarAmostrasCard(
 
       }
 
-
-      /*
-        Ao tocar na bolinha,
-        troca a foto do card.
-      */
 
       bolinha.addEventListener(
         "click",
@@ -2193,6 +1137,1093 @@ function criarAmostrasCard(
 
 }
 /* =========================================
+   MODAL
+========================================= */
+
+function garantirModal(){
+
+  if(
+    document.getElementById(
+      "saliModalOverlay"
+    )
+  ){
+    return;
+  }
+
+
+  const overlay =
+  document.createElement(
+    "div"
+  );
+
+
+  overlay.id =
+  "saliModalOverlay";
+
+
+  overlay.className =
+  "sali-modal-overlay";
+
+
+  overlay.innerHTML = `
+
+    <div class="sali-modal">
+
+      <button
+        type="button"
+        class="sali-modal-fechar"
+        onclick="fecharModalProduto()"
+      >
+        ×
+      </button>
+
+
+      <img
+        id="saliModalFoto"
+        class="sali-modal-foto"
+        alt="Produto SALI"
+      >
+
+
+      <div class="sali-modal-info">
+
+        <h2
+          id="saliModalNome"
+        ></h2>
+
+
+        <div
+          id="saliModalPreco"
+          class="sali-modal-preco"
+        ></div>
+
+
+        <div
+          id="saliModalOpcoes"
+        ></div>
+
+
+        <div
+          id="saliModalStatus"
+          class="sali-status-modal"
+        ></div>
+
+
+        <button
+          id="saliModalAdicionar"
+          type="button"
+          class="sali-modal-adicionar"
+        >
+          ADICIONAR AO CARRINHO
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  overlay.addEventListener(
+    "click",
+    function(event){
+
+      if(
+        event.target ===
+        overlay
+      ){
+
+        fecharModalProduto();
+
+      }
+
+    }
+  );
+
+
+  document.body.appendChild(
+    overlay
+  );
+
+}
+
+
+function fecharModalProduto(){
+
+  const overlay =
+  document.getElementById(
+    "saliModalOverlay"
+  );
+
+
+  if(overlay){
+
+    overlay.classList.remove(
+      "ativo"
+    );
+
+  }
+
+
+  document.body.classList.remove(
+    "sali-modal-aberto"
+  );
+
+}
+
+
+/* =========================================
+   ABRIR MODAL
+========================================= */
+
+function abrirModalProduto(
+  produto,
+  variantes
+){
+
+  garantirModal();
+
+
+  const overlay =
+  document.getElementById(
+    "saliModalOverlay"
+  );
+
+
+  const foto =
+  document.getElementById(
+    "saliModalFoto"
+  );
+
+
+  const nome =
+  document.getElementById(
+    "saliModalNome"
+  );
+
+
+  const preco =
+  document.getElementById(
+    "saliModalPreco"
+  );
+
+
+  const areaOpcoes =
+  document.getElementById(
+    "saliModalOpcoes"
+  );
+
+
+  const status =
+  document.getElementById(
+    "saliModalStatus"
+  );
+
+
+  const botaoAdicionar =
+  document.getElementById(
+    "saliModalAdicionar"
+  );
+
+
+  const variantesAtivas =
+  Array.isArray(
+    variantes
+  )
+  ?
+  variantes.filter(
+    variante =>
+      variante.ativo !== false
+  )
+  :
+  [];
+
+
+  let varianteVisualSelecionada =
+  null;
+
+
+  let varianteFinalSelecionada =
+  null;
+
+
+  let tamanhoSelecionado =
+  "";
+
+
+  foto.src =
+  produto.foto_url ||
+  variantesAtivas.find(
+    variante =>
+      variante.foto_url
+  )?.foto_url ||
+  "";
+
+
+  nome.textContent =
+  textoSeguro(
+    produto.nome
+  );
+
+
+  preco.textContent =
+  moedaProduto(
+    produto.preco
+  );
+
+
+  areaOpcoes.innerHTML =
+  "";
+
+
+  status.textContent =
+  "";
+
+
+  status.className =
+  "sali-status-modal";
+
+
+  botaoAdicionar.disabled =
+  false;
+
+
+  /* =========================================
+     PRODUTO SEM VARIANTES
+  ========================================= */
+
+  if(
+    variantesAtivas.length === 0
+  ){
+
+    const estoqueProduto =
+    Number(
+      produto.estoque || 0
+    );
+
+
+    if(
+      estoqueProduto <= 0
+    ){
+
+      status.textContent =
+      "Produto esgotado";
+
+      status.className =
+      "sali-status-modal esgotado";
+
+      botaoAdicionar.disabled =
+      true;
+
+    }else{
+
+      status.textContent =
+      estoqueProduto <= 3
+      ?
+      "Últimas unidades disponíveis"
+      :
+      "Disponível";
+
+
+      status.className =
+      estoqueProduto <= 3
+      ?
+      "sali-status-modal alerta"
+      :
+      "sali-status-modal disponivel";
+
+    }
+
+
+    botaoAdicionar.onclick =
+    function(){
+
+      if(
+        botaoAdicionar.disabled
+      ){
+        return;
+      }
+
+
+      adicionarProduto(
+        produto.id,
+        produto.nome,
+        Number(
+          produto.preco || 0
+        ),
+        foto.src,
+        "",
+        "",
+        ""
+      );
+
+
+      fecharModalProduto();
+
+    };
+
+
+    overlay.classList.add(
+      "ativo"
+    );
+
+
+    document.body.classList.add(
+      "sali-modal-aberto"
+    );
+
+
+    return;
+
+  }
+
+
+  /* =========================================
+     AGRUPAR CORES / ESTAMPAS
+  ========================================= */
+
+  const mapaVisuais =
+  new Map();
+
+
+  variantesAtivas.forEach(
+    variante => {
+
+      const chave =
+      chaveVisual(
+        variante
+      );
+
+
+      if(
+        !mapaVisuais.has(
+          chave
+        )
+      ){
+
+        mapaVisuais.set(
+          chave,
+          []
+        );
+
+      }
+
+
+      mapaVisuais
+      .get(
+        chave
+      )
+      .push(
+        variante
+      );
+
+    }
+  );
+
+
+  const gruposVisuais =
+  Array.from(
+    mapaVisuais.entries()
+  );
+
+
+  const precisaVisual =
+  gruposVisuais.some(
+    ([chave]) =>
+      chave.replaceAll(
+        "|",
+        ""
+      ).trim() !== ""
+  );
+
+
+  /* =========================================
+     VISUAIS
+  ========================================= */
+
+  if(
+    precisaVisual
+  ){
+
+    const secaoVisual =
+    document.createElement(
+      "div"
+    );
+
+
+    secaoVisual.className =
+    "sali-secao-opcao";
+
+
+    const titulo =
+    document.createElement(
+      "div"
+    );
+
+
+    titulo.className =
+    "sali-titulo-opcao";
+
+
+    titulo.textContent =
+    "Escolha a cor ou estampa";
+
+
+    secaoVisual.appendChild(
+      titulo
+    );
+
+
+    const visuais =
+    document.createElement(
+      "div"
+    );
+
+
+    visuais.className =
+    "sali-visuais";
+
+
+    gruposVisuais.forEach(
+      ([chave,grupo]) => {
+
+        const base =
+        grupo[0];
+
+
+        const nomeOpcao =
+        nomeVisual(
+          base
+        ) ||
+        "Opção";
+
+
+        const estoqueGrupo =
+        grupo.reduce(
+          (soma,variante) =>
+            soma +
+            Number(
+              variante.estoque || 0
+            ),
+          0
+        );
+
+
+        const botao =
+        document.createElement(
+          "button"
+        );
+
+
+        botao.type =
+        "button";
+
+
+        botao.className =
+        "sali-visual-item";
+
+
+        if(
+          estoqueGrupo <= 0
+        ){
+
+          botao.classList.add(
+            "esgotada"
+          );
+
+        }
+
+
+        const caixaFoto =
+        document.createElement(
+          "div"
+        );
+
+
+        caixaFoto.className =
+        "sali-visual-foto";
+
+
+        const fotoOpcao =
+        textoSeguro(
+          grupo.find(
+            variante =>
+              variante.foto_url
+          )?.foto_url
+        );
+
+
+        if(
+          fotoOpcao
+        ){
+
+          const img =
+          document.createElement(
+            "img"
+          );
+
+
+          img.src =
+          fotoOpcao;
+
+
+          img.alt =
+          nomeOpcao;
+
+
+          caixaFoto.appendChild(
+            img
+          );
+
+        }else{
+
+          const semFoto =
+          document.createElement(
+            "div"
+          );
+
+
+          semFoto.className =
+          "sali-sem-foto-visual";
+
+
+          semFoto.textContent =
+          nomeOpcao;
+
+
+          caixaFoto.appendChild(
+            semFoto
+          );
+
+        }
+
+
+        const label =
+        document.createElement(
+          "span"
+        );
+
+
+        label.className =
+        "sali-visual-nome";
+
+
+        label.textContent =
+        nomeOpcao;
+
+
+        botao.appendChild(
+          caixaFoto
+        );
+
+
+        botao.appendChild(
+          label
+        );
+
+
+        botao.addEventListener(
+          "click",
+          function(){
+
+            if(
+              estoqueGrupo <= 0
+            ){
+              return;
+            }
+
+
+            document
+            .querySelectorAll(
+              ".sali-visual-item"
+            )
+            .forEach(
+              item =>
+                item.classList.remove(
+                  "selecionada"
+                )
+            );
+
+
+            botao.classList.add(
+              "selecionada"
+            );
+
+
+            varianteVisualSelecionada =
+            {
+              chave,
+              grupo,
+              nome:nomeOpcao
+            };
+
+
+            tamanhoSelecionado =
+            "";
+
+
+            varianteFinalSelecionada =
+            null;
+
+
+            const fotoGrupo =
+            grupo.find(
+              variante =>
+                variante.foto_url
+            )?.foto_url;
+
+
+            if(
+              fotoGrupo
+            ){
+
+              foto.src =
+              fotoGrupo;
+
+            }
+
+
+            renderizarTamanhos();
+
+          }
+        );
+
+
+        visuais.appendChild(
+          botao
+        );
+
+      }
+    );
+
+
+    secaoVisual.appendChild(
+      visuais
+    );
+
+
+    areaOpcoes.appendChild(
+      secaoVisual
+    );
+
+  }
+
+
+  /* =========================================
+     ÁREA DE TAMANHOS
+  ========================================= */
+
+  const secaoTamanhos =
+  document.createElement(
+    "div"
+  );
+
+
+  secaoTamanhos.className =
+  "sali-secao-opcao";
+
+
+  const tituloTamanho =
+  document.createElement(
+    "div"
+  );
+
+
+  tituloTamanho.className =
+  "sali-titulo-opcao";
+
+
+  tituloTamanho.textContent =
+  "Escolha o tamanho";
+
+
+  const areaTamanhos =
+  document.createElement(
+    "div"
+  );
+
+
+  areaTamanhos.className =
+  "sali-tamanhos";
+
+
+  secaoTamanhos.appendChild(
+    tituloTamanho
+  );
+
+
+  secaoTamanhos.appendChild(
+    areaTamanhos
+  );
+
+
+  areaOpcoes.appendChild(
+    secaoTamanhos
+  );
+
+
+  /* =========================================
+     RENDERIZAR TAMANHOS
+  ========================================= */
+
+  function renderizarTamanhos(){
+
+    areaTamanhos.innerHTML =
+    "";
+
+
+    status.textContent =
+    "";
+
+
+    status.className =
+    "sali-status-modal";
+
+
+    botaoAdicionar.disabled =
+    true;
+
+
+    let grupoBase =
+    variantesAtivas;
+
+
+    if(
+      precisaVisual
+    ){
+
+      if(
+        !varianteVisualSelecionada
+      ){
+
+        tituloTamanho.textContent =
+        "Primeiro escolha a cor ou estampa";
+
+
+        return;
+
+      }
+
+
+      grupoBase =
+      varianteVisualSelecionada.grupo;
+
+
+      tituloTamanho.textContent =
+      "Escolha o tamanho";
+
+    }
+
+
+    const mapaTamanhos =
+    new Map();
+
+
+    grupoBase.forEach(
+      variante => {
+
+        const tamanho =
+        textoSeguro(
+          variante.tamanho
+        ) ||
+        "Tamanho único";
+
+
+        if(
+          !mapaTamanhos.has(
+            tamanho
+          )
+        ){
+
+          mapaTamanhos.set(
+            tamanho,
+            []
+          );
+
+        }
+
+
+        mapaTamanhos
+        .get(
+          tamanho
+        )
+        .push(
+          variante
+        );
+
+      }
+    );
+
+
+    mapaTamanhos.forEach(
+      (grupo,tamanho) => {
+
+        const estoqueTamanho =
+        grupo.reduce(
+          (soma,variante) =>
+            soma +
+            Number(
+              variante.estoque || 0
+            ),
+          0
+        );
+
+
+        const botao =
+        document.createElement(
+          "button"
+        );
+
+
+        botao.type =
+        "button";
+
+
+        botao.className =
+        "sali-tamanho-botao";
+
+
+        if(
+          ehTamanhoUnico(
+            tamanho
+          )
+        ){
+
+          botao.classList.add(
+            "unico"
+          );
+
+        }
+
+
+        if(
+          estoqueTamanho <= 0
+        ){
+
+          botao.classList.add(
+            "esgotado"
+          );
+
+        }
+
+
+        botao.textContent =
+        tamanhoExibicao(
+          tamanho
+        );
+
+
+        botao.addEventListener(
+          "click",
+          function(){
+
+            if(
+              estoqueTamanho <= 0
+            ){
+              return;
+            }
+
+
+            areaTamanhos
+            .querySelectorAll(
+              ".sali-tamanho-botao"
+            )
+            .forEach(
+              item =>
+                item.classList.remove(
+                  "selecionado"
+                )
+            );
+
+
+            botao.classList.add(
+              "selecionado"
+            );
+
+
+            tamanhoSelecionado =
+            tamanho;
+
+
+            varianteFinalSelecionada =
+            grupo.find(
+              variante =>
+                Number(
+                  variante.estoque || 0
+                ) > 0
+            )
+            ||
+            grupo[0];
+
+
+            const estoqueFinal =
+            Number(
+              varianteFinalSelecionada
+              ?.estoque || 0
+            );
+
+
+            if(
+              varianteFinalSelecionada
+              ?.foto_url
+            ){
+
+              foto.src =
+              varianteFinalSelecionada
+              .foto_url;
+
+            }
+
+
+            if(
+              estoqueFinal <= 0
+            ){
+
+              status.textContent =
+              "Essa opção está esgotada";
+
+              status.className =
+              "sali-status-modal esgotado";
+
+              botaoAdicionar.disabled =
+              true;
+
+              return;
+
+            }
+
+
+            if(
+              estoqueFinal <= 3
+            ){
+
+              status.textContent =
+              "Últimas " +
+              estoqueFinal +
+              " unidade(s)";
+
+              status.className =
+              "sali-status-modal alerta";
+
+            }else{
+
+              status.textContent =
+              "Disponível";
+
+              status.className =
+              "sali-status-modal disponivel";
+
+            }
+
+
+            botaoAdicionar.disabled =
+            false;
+
+          }
+        );
+
+
+        areaTamanhos.appendChild(
+          botao
+        );
+
+      }
+    );
+
+  }
+
+
+  renderizarTamanhos();
+
+
+  /* =========================================
+     ADICIONAR AO CARRINHO
+  ========================================= */
+
+  botaoAdicionar.onclick =
+  function(){
+
+    if(
+      botaoAdicionar.disabled
+    ){
+      return;
+    }
+
+
+    if(
+      precisaVisual &&
+      !varianteVisualSelecionada
+    ){
+
+      alert(
+        "Escolha a cor ou estampa."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      !varianteFinalSelecionada
+    ){
+
+      alert(
+        "Escolha o tamanho."
+      );
+
+      return;
+
+    }
+
+
+    const cor =
+    textoSeguro(
+      varianteFinalSelecionada.cor
+    );
+
+
+    const estampa =
+    textoSeguro(
+      varianteFinalSelecionada.estampa
+    );
+
+
+    const tamanho =
+    tamanhoExibicao(
+      tamanhoSelecionado
+    );
+
+
+    adicionarProduto(
+      varianteFinalSelecionada.id,
+      produto.nome,
+      Number(
+        produto.preco || 0
+      ),
+      foto.src,
+      tamanho,
+      estampa,
+      cor
+    );
+
+
+    fecharModalProduto();
+
+  };
+
+
+  overlay.classList.add(
+    "ativo"
+  );
+
+
+  document.body.classList.add(
+    "sali-modal-aberto"
+  );
+
+}
+/* =========================================
    CARD DO PRODUTO
 ========================================= */
 
@@ -2208,6 +2239,7 @@ function criarCardProduto(
 
   card.className =
   "produto";
+
 
   const imagem =
   document.createElement(
@@ -2225,6 +2257,7 @@ function criarCardProduto(
   imagem.loading =
   "lazy";
 
+
   const info =
   document.createElement(
     "div"
@@ -2232,6 +2265,7 @@ function criarCardProduto(
 
   info.className =
   "info";
+
 
   const nome =
   document.createElement(
@@ -2241,6 +2275,7 @@ function criarCardProduto(
   nome.textContent =
   produto.nome ||
   "Produto SALI";
+
 
   const preco =
   document.createElement(
@@ -2254,11 +2289,15 @@ function criarCardProduto(
   moedaProduto(
     produto.preco
   );
+
+
   const amostras =
   criarAmostrasCard(
     variantes,
     imagem
   );
+
+
   const botao =
   document.createElement(
     "button"
@@ -2266,6 +2305,9 @@ function criarCardProduto(
 
   botao.type =
   "button";
+
+
+  /* PRODUTO COM VARIANTES */
 
   if(
     variantes.length
@@ -2279,6 +2321,7 @@ function criarCardProduto(
           0
         ) > 0
     );
+
 
     if(
       !temEstoque
@@ -2304,6 +2347,7 @@ function criarCardProduto(
       botao.textContent =
       "ESCOLHER OPÇÕES";
 
+
       botao.addEventListener(
         "click",
         function(){
@@ -2318,16 +2362,22 @@ function criarCardProduto(
 
     }
 
-  }else{
+  }
+
+  /* PRODUTO SEM VARIANTES */
+
+  else{
 
     botao.className =
     "adicionar";
+
 
     const estoque =
     Number(
       produto.estoque ||
       0
     );
+
 
     if(
       estoque <= 0
@@ -2346,6 +2396,7 @@ function criarCardProduto(
 
       botao.textContent =
       "ADICIONAR AO CARRINHO";
+
 
       botao.addEventListener(
         "click",
@@ -2367,10 +2418,13 @@ function criarCardProduto(
 
   }
 
-    info.appendChild(
+
+  info.appendChild(
     nome
   );
 
+
+  /* BOLINHAS DE COR / ESTAMPA */
 
   if(
     amostras.children.length
@@ -2387,17 +2441,21 @@ function criarCardProduto(
     preco
   );
 
+
   info.appendChild(
     botao
   );
+
 
   card.appendChild(
     imagem
   );
 
+
   card.appendChild(
     info
   );
+
 
   return card;
 
@@ -2415,13 +2473,16 @@ async function carregarProdutos(){
     "listaProdutos"
   );
 
+
   if(!lista){
     return;
   }
 
+
   adicionarEstilosSali();
 
   garantirModal();
+
 
   lista.innerHTML = `
 
@@ -2436,7 +2497,10 @@ async function carregarProdutos(){
 
   `;
 
-  let tentativas = 0;
+
+  let tentativas =
+  0;
+
 
   while(
     !conectarProdutosSali()
@@ -2452,9 +2516,11 @@ async function carregarProdutos(){
         )
     );
 
+
     tentativas++;
 
   }
+
 
   if(
     !clienteProdutosSali
@@ -2476,10 +2542,12 @@ async function carregarProdutos(){
 
   }
 
+
   try{
 
     const produtos =
     await buscarProdutos();
+
 
     if(
       !produtos.length
@@ -2502,18 +2570,22 @@ async function carregarProdutos(){
 
     }
 
+
     const variantes =
     await buscarVariantes(
       produtos
     );
+
 
     const mapa =
     agruparVariantes(
       variantes
     );
 
+
     lista.innerHTML =
     "";
+
 
     produtos.forEach(
       produto => {
@@ -2527,11 +2599,13 @@ async function carregarProdutos(){
         ||
         [];
 
+
         const card =
         criarCardProduto(
           produto,
           variantesProduto
         );
+
 
         lista.appendChild(
           card
@@ -2546,6 +2620,7 @@ async function carregarProdutos(){
       "Erro ao carregar loja:",
       error
     );
+
 
     lista.innerHTML = `
 
