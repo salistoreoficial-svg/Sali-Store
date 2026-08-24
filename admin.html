@@ -2,13 +2,15 @@
 <html lang="pt-BR">
 
 <head>
-  <link rel="manifest" href="manifest-admin.json?v=6">
-<link rel="apple-touch-icon" sizes="180x180" href="sali-icon-180.png?v=5">
-<link rel="icon" type="image/png" sizes="512x512" href="sali-icon-512.png?v=5">
+
+<link rel="manifest" href="manifest-admin.json?v=8">
+<link rel="apple-touch-icon" sizes="180x180" href="sali-icon-180.png?v=8">
+<link rel="icon" type="image/png" sizes="512x512" href="sali-icon-512.png?v=8">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="SALI ADM">
+
 <meta charset="UTF-8">
 
 <meta
@@ -21,9 +23,7 @@
   content="#000000"
 >
 
-<title>
-  Painel SALI STORE
-</title>
+<title>Painel SALI STORE</title>
 
 <style>
 
@@ -670,1261 +670,8 @@ a{
 
 .detalhe-box{
   background:#f7f7f7;
-  border-radius:12px;
-  padding:12px;
-  margin-bottom:10px;
-}
-
-.detalhe-box strong{
-  display:block;
-  margin-bottom:5px;
-}
-
-.item-pedido{
-  display:grid;
-  grid-template-columns:54px 1fr auto;
-  gap:10px;
-  align-items:center;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
-}
-
-.item-pedido:last-child{
-  border-bottom:0;
-}
-
-.item-pedido img{
-  width:54px;
-  height:68px;
-  object-fit:cover;
-  border-radius:8px;
-  background:#eee;
-}
-
-.item-pedido .nome{
-  font-size:13px;
-  font-weight:800;
-  line-height:1.3;
-}
-
-.item-pedido .qtd{
-  font-size:11px;
-  color:#777;
-  margin-top:4px;
-}
-
-.item-pedido .valor{
-  font-size:13px;
-  font-weight:900;
-}
-
-.linha-total{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:6px 0;
-  font-size:14px;
-}
-
-.linha-total.final{
-  font-size:18px;
-  font-weight:900;
-  border-top:1px solid #ddd;
-  margin-top:5px;
-  padding-top:11px;
-}
-
-.status-select{
-  width:100%;
-  padding:12px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  background:#fff;
-}
-
-.salvar-status{
-  width:100%;
-  margin-top:10px;
-  border:0;
-  background:#000;
-  color:#fff;
-  padding:14px;
-  border-radius:11px;
-  font-weight:900;
-}
-
-
-/* =========================
-   PRODUTOS
-========================= */
-
-.escolher-foto{
-  display:block;
-  width:100%;
-  background:#111;
-  color:#fff;
-  padding:14px;
-  text-align:center;
-  border-radius:11px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-#produtoFotosArquivos{
-  display:none;
-}
-
-.galeria-edicao{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:15px;
-}
-
-.foto-card{
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:8px;
-  background:#fff;
-  position:relative;
-}
-
-.foto-card.principal{
-  border:2px solid var(--rosa);
-}
-
-.foto-card img{
-  width:100%;
-  aspect-ratio:3/4;
-  object-fit:cover;
-  border-radius:9px;
-  display:block;
-  background:#eee;
-}
-
-.badge-principal{
-  position:absolute;
-  top:14px;
-  left:14px;
-  background:var(--rosa);
-  color:#fff;
-  padding:5px 8px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:900;
-}
-
-.foto-acoes{
-  display:grid;
-  gap:6px;
-  margin-top:8px;
-}
-
-.foto-acoes button{
-  border:0;
-  border-radius:8px;
-  padding:8px;
-  font-size:11px;
-  font-weight:800;
-}
-
-.definir-principal{
-  background:var(--rosa-claro);
-  color:var(--rosa-escuro);
-}
-
-.excluir-foto{
-  background:#ffe8e8;
-  color:#b80000;
-}
-
-.opcoes-area{
-  display:grid;
-  gap:15px;
-}
-
-.opcao-card{
-  border:1px solid #ddd;
-  border-radius:16px;
-  padding:15px;
-  background:#fafafa;
-}
-
-.opcao-topo{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:14px;
-}
-
-.remover-opcao{
-  border:0;
-  background:#ffe5e5;
-  color:#bd0000;
-  padding:8px 10px;
-  border-radius:8px;
-  font-weight:800;
-}
-
-.tipo-opcao{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-bottom:15px;
-}
-
-.tipo-opcao button{
-  padding:12px;
-  border:2px solid #ddd;
-  border-radius:10px;
-  background:#fff;
-  font-weight:900;
-}
-
-.tipo-opcao button.selecionado{
-  border-color:var(--rosa);
-  background:var(--rosa-claro);
-  color:var(--rosa-escuro);
-}
-
-.foto-opcao-area{
-  margin:10px 0 15px;
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:12px;
-}
-
-.foto-opcao-area label{
-  display:block;
-  font-size:14px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.preview-opcao{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  margin-top:10px;
-}
-
-.preview-opcao img{
-  width:95px;
-  height:125px;
-  object-fit:cover;
-  border-radius:10px;
-  background:#eee;
-}
-
-.remover-foto-opcao{
-  border:0;
-  background:#ffe8e8;
-  color:#b80000;
-  padding:9px 11px;
-  border-radius:8px;
-  font-weight:800;
-}
-
-.tamanhos-titulo{
-  font-size:14px;
-  font-weight:900;
-  margin:10px 0;
-}
-
-.tamanhos-grade{
-  display:grid;
-  gap:8px;
-}
-
-.tamanho-linha{
-  display:grid;
-  grid-template-columns:1fr 110px;
-  gap:10px;
-  align-items:center;
-  padding:10px;
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:10px;
-}
-
-.tamanho-check{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-weight:800;
-}
-
-.tamanho-check input{
-  width:20px;
-  height:20px;
-}
-
-.estoque-tamanho{
-  width:100%;
-  border:1px solid #ccc;
-  border-radius:8px;
-  padding:9px;
-}
-
-.estoque-tamanho:disabled{
-  background:#eee;
-  opacity:.55;
-}
-
-.adicionar-opcao{
-  width:100%;
-  border:1px dashed var(--rosa);
-  background:var(--rosa-claro);
-  color:var(--rosa-escuro);
-  padding:14px;
-  border-radius:11px;
-  font-weight:900;
-  margin-top:14px;
-}
-
-.estoque-calculado{
-  background:#f4f4f4;
-  padding:12px;
-  border-radius:10px;
-  margin-top:14px;
-  font-size:14px;
-}
-
-.estoque-calculado strong{
-  color:var(--rosa);
-}
-
-.ativo-area{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:15px 0 20px;
-  font-weight:700;
-}
-
-.ativo-area input{
-  width:20px;
-  height:20px;
-}
-
-.botoes-form{
-  display:flex;
-  gap:10px;
-}
-
-.salvar{
-  flex:1;
-  border:0;
-  background:var(--rosa);
-  color:#fff;
-  padding:14px;
-  border-radius:11px;
-  font-weight:900;
-}
-
-.salvar:disabled{
-  opacity:.6;
-}
-
-.cancelar{
-  display:none;
-  border:1px solid #ccc;
-  background:#fff;
-  padding:14px;
-  border-radius:11px;
-  font-weight:800;
-}
-
-.cabecalho-lista{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.buscar{
-  width:100%;
-  max-width:330px;
-  padding:11px;
-  border:1px solid #ccc;
-  border-radius:10px;
-}
-
-.lista-produtos{
-  display:grid;
-  gap:12px;
-}
-
-.produto-card{
-  display:grid;
-  grid-template-columns:90px 1fr;
-  gap:14px;
-  border:1px solid #eee;
-  padding:12px;
-  border-radius:14px;
-  background:#fff;
-}
-
-.produto-card img{
-  width:90px;
-  height:120px;
-  object-fit:cover;
-  border-radius:10px;
-  background:#eee;
-}
-
-.sem-foto{
-  width:90px;
-  height:120px;
-  background:#eee;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#999;
-  font-size:12px;
-  text-align:center;
-}
-
-.produto-info h4{
-  margin-bottom:6px;
-  font-size:18px;
-}
-
-.produto-info .preco{
-  color:var(--rosa);
-  font-size:18px;
-  font-weight:900;
-  margin-bottom:6px;
-}
-
-.detalhes{
-  color:#666;
-  font-size:13px;
-  line-height:1.6;
-}
-
-.status-produto{
-  display:inline-block;
-  margin-top:7px;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:800;
-}
-
-.status-produto.ativo{
-  background:#e4f8e8;
-  color:#167329;
-}
-
-.status-produto.inativo{
-  background:#f3f3f3;
-  color:#777;
-}
-
-.acoes{
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-  flex-wrap:wrap;
-}
-
-.acoes button{
-  border:0;
-  padding:9px 13px;
-  border-radius:8px;
-  font-weight:800;
-}
-
-.editar{
-  background:#000;
-  color:#fff;
-}
-
-.alternar{
-  background:#fff1f7;
-  color:#be1763;
-}
-
-.excluir{
-  background:#ffe6e6;
-  color:#c80000;
-}
-
-
-/* =========================
-   LAYOUT / MAIS
-========================= */
-
-.layout-card,
-.entrega-config-card,
-.pagamento-config-card{
-  border:1px solid #eee;
-  border-radius:15px;
-  padding:15px;
-  margin-bottom:12px;
-  background:#fff;
-}
-
-.layout-card h4{
-  font-size:16px;
-  margin-bottom:5px;
-}
-
-.layout-card > p{
-  color:#777;
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:15px;
-}
-
-.layout-toggle,
-.entrega-config-topo,
-.pagamento-config-card{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.layout-toggle{
-  padding:13px 0;
-  border-bottom:1px solid #eee;
-}
-
-.layout-toggle:last-child{
-  border-bottom:0;
-}
-
-.layout-toggle-texto{
-  flex:1;
-}
-
-.layout-toggle-texto strong,
-.entrega-config-topo strong,
-.pagamento-config-card strong{
-  display:block;
-  font-size:14px;
-  margin-bottom:3px;
-}
-
-.layout-toggle-texto small,
-.entrega-config-topo p,
-.pagamento-config-card p{
-  color:#777;
-  font-size:12px;
-  line-height:1.4;
-}
-
-.switch{
-  position:relative;
-  display:inline-block;
-  width:52px;
-  height:30px;
-  flex:0 0 auto;
-}
-
-.switch input{
-  opacity:0;
-  width:0;
-  height:0;
-}
-
-.slider{
-  position:absolute;
-  cursor:pointer;
-  inset:0;
-  background:#ccc;
-  transition:.2s;
-  border-radius:30px;
-}
-
-.slider:before{
-  position:absolute;
-  content:"";
-  width:24px;
-  height:24px;
-  left:3px;
-  bottom:3px;
-  background:#fff;
-  transition:.2s;
-  border-radius:50%;
-  box-shadow:0 1px 4px rgba(0,0,0,.2);
-}
-
-.switch input:checked + .slider{
-  background:var(--rosa);
-}
-
-.switch input:checked + .slider:before{
-  transform:translateX(22px);
-}
-
-.grade-cores{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.cor-config{
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:10px;
-  background:#fafafa;
-}
-
-.cor-config label{
-  display:block;
-  font-size:11px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.cor-config input[type="color"]{
-  width:100%;
-  height:45px;
-  border:0;
-  background:transparent;
-}
-
-.preview-banner{
-  margin-top:12px;
-  border:1px dashed #ccc;
-  border-radius:13px;
-  overflow:hidden;
-  background:#f7f7f7;
-  min-height:120px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.preview-banner img{
-  width:100%;
-  max-height:280px;
-  object-fit:cover;
-  display:block;
-}
-
-.preview-banner-vazio{
-  color:#999;
-  font-size:12px;
-  padding:30px;
-  text-align:center;
-}
-
-#layoutBannerArquivo{
-  display:none;
-}
-
-.botao-banner,
-.botao-loja{
-  display:block;
-  width:100%;
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:13px;
-  border:0;
-  border-radius:10px;
-  font-size:12px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.remover-banner{
-  width:100%;
-  margin-top:9px;
-  border:0;
-  background:#ffe8e8;
-  color:#b60000;
-  padding:11px;
-  border-radius:10px;
-  font-weight:900;
-}
-
-.salvar-layout,
-.salvar-entregas{
-  width:100%;
-  border:0;
-  color:#fff;
-  padding:15px;
-  border-radius:12px;
-  font-weight:900;
-}
-
-.salvar-layout{
-  background:var(--rosa);
-}
-
-.salvar-entregas{
-  background:#000;
-}
-
-.status-layout,
-.status-entregas{
-  margin-top:10px;
-  font-size:13px;
-  font-weight:800;
-}
-
-.status-layout.sucesso,
-.status-entregas.sucesso{
-  color:#197330;
-}
-
-.status-layout.erro,
-.status-entregas.erro{
-  color:#ba0000;
-}
-
-.entrega-config-topo{
-  align-items:flex-start;
-  margin-bottom:13px;
-}
-
-.taxa-area{
-  background:#f8f8f8;
-  border-radius:11px;
-  padding:12px;
-}
-
-.taxa-area label{
-  display:block;
-  font-size:12px;
-  font-weight:900;
-  margin-bottom:7px;
-}
-
-.taxa-input-wrap{
-  display:flex;
-  align-items:center;
-  border:1px solid #ccc;
-  border-radius:10px;
-  background:#fff;
-  overflow:hidden;
-}
-
-.taxa-input-wrap span{
-  padding-left:12px;
-  font-size:14px;
-  font-weight:900;
-  color:#555;
-}
-
-.taxa-input-wrap input{
-  flex:1;
-  border:0;
-  padding:12px 10px;
-  outline:none;
-  min-width:0;
-}
-
-
-/* =========================
-   RESPONSIVO
-========================= */
-
-@media(min-width:820px){
-
-  body{
-    padding-bottom:0;
-  }
-
-  .nav-admin{
-    top:70px;
-    bottom:auto;
-    left:20px;
-    right:auto;
-    width:190px;
-    display:flex;
-    flex-direction:column;
-    border:0;
-    border-radius:16px;
-    padding:8px;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
-  }
-
-  .nav-item{
-    flex-direction:row;
-    justify-content:flex-start;
-    gap:10px;
-    padding:11px;
-    font-size:13px;
-  }
-
-  .conteudo{
-    padding-left:225px;
-  }
-
-  .dashboard-grade{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .atalhos{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-}
-
-@media(max-width:650px){
-
-  .duplo{
-    grid-template-columns:1fr;
-  }
-
-  .tamanho-linha{
-    grid-template-columns:1fr 95px;
-  }
-
-  .cabecalho-lista{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .buscar{
-    max-width:none;
-  }
-
-  .grade-cores{
-    grid-template-columns:1fr;
-  }
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-
-<!-- LOGIN -->
-
-<section
-  class="login-tela"
-  id="loginTela"
->
-
-  <div class="login-box">
-
-    <div class="login-logo">
-
-      <h1>
-        SALI STORE
-      </h1>
-
-      <p>
-        Painel administrativo
-      </p>
-
-    </div>
-
-    <div class="campo">
-
-      <label>
-        E-mail
-      </label>
-
-      <input
-        type="email"
-        id="email"
-        placeholder="Digite seu e-mail"
-      >
-
-    </div>
-
-    <div class="campo">
-
-      <label>
-        Senha
-      </label>
-
-      <input
-        type="password"
-        id="senha"
-        placeholder="Digite sua senha"
-      >
-
-    </div>
-
-    <button
-      class="botao-login"
-      onclick="entrar()"
-    >
-      ENTRAR NO PAINEL
-    </button>
-
-    <div
-      class="erro-login"
-      id="erroLogin"
-    ></div>
-
-  </div>
-
-</section>
-
-
-<!-- PAINEL -->
-
-<section
-  class="painel"
-  id="painel"
->
-
-<header class="topo">
-
-  <div class="topo-conteudo">
-
-    <div class="marca-admin">
-
-      <div class="marca-icone">
-        S
-      </div>
-
-      <div>
-
-        <h1>
-          SALI STORE
-        </h1>
-
-        <small>
-          Painel de controle
-        </small>
-
-      </div>
-
-    </div>
-
-    <button
-      class="sair"
-      onclick="sair()"
-    >
-      SAIR
-    </button>
-
-  </div>
-
-</header>
-
-
-<!-- MENU -->
-
-<nav class="nav-admin">
-
-  <button
-    class="nav-item ativo"
-    data-pagina="inicio"
-    onclick="abrirPagina('inicio',this)"
-  >
-    <span class="icone">🏠</span>
-    <span>Início</span>
-  </button>
-
-  <button
-    class="nav-item"
-    data-pagina="pedidos"
-    onclick="abrirPagina('pedidos',this)"
-  >
-    <span class="icone">🧾</span>
-    <span>Pedidos</span>
-  </button>
-
-  <button
-    class="nav-item"
-    data-pagina="produtos"
-    onclick="abrirPagina('produtos',this)"
-  >
-    <span class="icone">👗</span>
-    <span>Produtos</span>
-  </button>
-
-  <button
-    class="nav-item"
-    data-pagina="cancelamentos"
-    onclick="abrirPagina('cancelamentos',this)"
-  >
-    <span class="icone">❌</span>
-    <span>Cancelados</span>
-  </button>
-
-  <button
-    class="nav-item"
-    data-pagina="mais"
-    onclick="abrirPagina('mais',this)"
-  >
-    <span class="icone">☰</span>
-    <span>Mais</span>
-  </button>
-
-</nav>
-
-
-<main class="conteudo">
-
-
-<!-- INÍCIO -->
-
-<section
-  class="pagina ativa"
-  id="pagina-inicio"
->
-
-  <div class="titulo-pagina">
-
-    <h2>
-      Visão geral
-    </h2>
-
-    <p>
-      Acompanhe os pedidos, vendas e estoque da SALI.
-    </p>
-
-  </div>
-
-
-  <div class="dashboard-grade">
-
-    <div class="dash-card destaque">
-
-      <small>
-        Vendas de hoje
-      </small>
-
-      <strong id="dashVendasHoje">
-        R$ 0,00
-      </strong>
-
-      <span
-        class="mini"
-        id="dashPedidosHoje"
-      >
-        0 pedidos hoje
-      </span>
-
-    </div>
-
-
-    <div class="dash-card">
-
-      <small>
-        Pedidos novos
-      </small>
-
-      <strong id="dashNovos">
-        0
-      </strong>
-
-      <span class="mini">
-        Aguardando atendimento
-      </span>
-
-    </div>
-
-
-    <div class="dash-card">
-
-      <small>
-        Em andamento
-      </small>
-
-      <strong id="dashAndamento">
-        0
-      </strong>
-
-      <span class="mini">
-        Confirmados / separação / entrega
-      </span>
-
-    </div>
-
-
-    <div class="dash-card">
-
-      <small>
-        Estoque total
-      </small>
-
-      <strong id="dashEstoque">
-        0
-      </strong>
-
-      <span
-        class="mini"
-        id="dashProdutos"
-      >
-        0 produtos cadastrados
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <h3>
-      ⚡ Atalhos
-    </h3>
-
-    <div class="atalhos">
-
-      <button
-        class="atalho"
-        onclick="abrirPagina('pedidos')"
-      >
-        <span>🧾</span>
-        Ver pedidos
-      </button>
-
-      <button
-        class="atalho"
-        onclick="abrirPagina('produtos')"
-      >
-        <span>➕</span>
-        Cadastrar produto
-      </button>
-
-      <button
-        class="atalho"
-        onclick="abrirPagina('cancelamentos')"
-      >
-        <span>❌</span>
-        Cancelamentos
-      </button>
-
-      <button
-        class="atalho"
-        onclick="abrirLojaVisitante()"
-      >
-        <span>🌐</span>
-        Ver minha loja
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <h3>
-      🆕 Últimos pedidos
-    </h3>
-
-    <div id="ultimosPedidos"></div>
-
-  </div>
-
-</section>
-
-
-<!-- PEDIDOS -->
-
-<section
-  class="pagina"
-  id="pagina-pedidos"
->
-
-  <div class="titulo-pagina">
-
-    <h2>
-      Pedidos
-    </h2>
-
-    <p>
-      Gerencie o atendimento desde o pedido recebido até a entrega.
-    </p>
-
-  </div>
-
-
-  <div
-    class="filtros-scroll"
-    id="filtrosPedidos"
-  >
-
-    <button
-      class="filtro-pedido ativo"
-      onclick="filtrarPedidosStatus('Todos',this)"
-    >
-      Todos
-    </button>
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Novo',this)"
-    >
-      Novos
-    </button>
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Confirmado',this)"
-    >
-      Confirmados
-    </button>
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Em separação',this)"
-    >
-      Em separação
-    </button>
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Saiu para entrega',this)"
-    >
-      Em entrega
-    </button>
-
-    <button
-      class="filtro-pedido"
-      onclick="filtrarPedidosStatus('Entregue',this)"
-    >
-      Entregues
-    </button>
-
-  </div>
-
-
-  <div class="bloco">
-
-    <div
-      class="campo"
-      style="margin-bottom:12px"
-    >
-
-      <input
-        type="search"
-        id="buscaPedidos"
-        placeholder="Buscar número, cliente ou telefone..."
-        oninput="renderizarPedidos()"
-      >
-
-    </div>
-
-
-    <div
-      class="lista-pedidos"
-      id="listaPedidos"
-    >
-
-      <div class="sem-dados">
-        Carregando pedidos...
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-<!-- CANCELAMENTOS -->
+  border
+  <!-- CANCELAMENTOS -->
 
 <section
   class="pagina"
@@ -1933,16 +680,13 @@ a{
 
   <div class="titulo-pagina">
 
-    <h2>
-      Cancelamentos
-    </h2>
+    <h2>Cancelamentos</h2>
 
     <p>
       Pedidos cancelados aparecem automaticamente aqui.
     </p>
 
   </div>
-
 
   <div class="bloco">
 
@@ -1971,9 +715,7 @@ a{
 
   <div class="titulo-pagina">
 
-    <h2>
-      Produtos
-    </h2>
+    <h2>Produtos</h2>
 
     <p>
       Cadastre fotos, cores, estampas, tamanhos e estoque.
@@ -1988,7 +730,6 @@ a{
       ➕ Cadastrar produto
     </h3>
 
-
     <input
       type="hidden"
       id="produtoId"
@@ -1997,9 +738,7 @@ a{
 
     <div class="campo">
 
-      <label>
-        Nome do produto
-      </label>
+      <label>Nome do produto</label>
 
       <input
         type="text"
@@ -2014,9 +753,7 @@ a{
 
       <div class="campo">
 
-        <label>
-          Preço
-        </label>
+        <label>Preço</label>
 
         <input
           type="number"
@@ -2031,9 +768,7 @@ a{
 
       <div class="campo">
 
-        <label>
-          Estoque geral
-        </label>
+        <label>Estoque geral</label>
 
         <input
           type="number"
@@ -2048,7 +783,7 @@ a{
 
 
     <div class="foto-ajuda">
-      Se o produto possuir cores ou estampas, o estoque será calculado pelas variantes.
+      Se houver cores ou estampas, o estoque será calculado pelas variantes.
     </div>
 
 
@@ -2057,43 +792,18 @@ a{
 
     <div class="campo">
 
-      <label>
-        Categoria
-      </label>
+      <label>Categoria</label>
 
       <select id="produtoCategoria">
 
-        <option value="">
-          Selecione
-        </option>
-
-        <option value="Novidades">
-          Novidades
-        </option>
-
-        <option value="Vestidos">
-          Vestidos
-        </option>
-
-        <option value="Conjuntos">
-          Conjuntos
-        </option>
-
-        <option value="Blusas">
-          Blusas
-        </option>
-
-        <option value="Calças">
-          Calças
-        </option>
-
-        <option value="Body">
-          Body
-        </option>
-
-        <option value="Plus Size">
-          Plus Size
-        </option>
+        <option value="">Selecione</option>
+        <option value="Novidades">Novidades</option>
+        <option value="Vestidos">Vestidos</option>
+        <option value="Conjuntos">Conjuntos</option>
+        <option value="Blusas">Blusas</option>
+        <option value="Calças">Calças</option>
+        <option value="Body">Body</option>
+        <option value="Plus Size">Plus Size</option>
 
       </select>
 
@@ -2102,9 +812,7 @@ a{
 
     <div class="campo">
 
-      <label>
-        Descrição
-      </label>
+      <label>Descrição</label>
 
       <textarea
         id="produtoDescricao"
@@ -2116,12 +824,10 @@ a{
 
     <div class="subtitulo">
 
-      <h4>
-        📸 Fotos do produto
-      </h4>
+      <h4>📸 Fotos do produto</h4>
 
       <p>
-        Selecione várias fotos e defina uma como principal.
+        Selecione várias fotos e escolha uma como principal.
       </p>
 
     </div>
@@ -2152,12 +858,10 @@ a{
 
     <div class="subtitulo">
 
-      <h4>
-        🎨 Cores / estampas
-      </h4>
+      <h4>🎨 Cores / estampas</h4>
 
       <p>
-        Escolha COR ou ESTAMPA e adicione uma foto para cada opção.
+        Adicione as opções disponíveis e o estoque de cada tamanho.
       </p>
 
     </div>
@@ -2212,7 +916,6 @@ a{
         CADASTRAR PRODUTO
       </button>
 
-
       <button
         class="cancelar"
         id="botaoCancelar"
@@ -2230,10 +933,7 @@ a{
 
     <div class="cabecalho-lista">
 
-      <h3>
-        📦 Produtos cadastrados
-      </h3>
-
+      <h3>📦 Produtos cadastrados</h3>
 
       <input
         class="buscar"
@@ -2271,9 +971,7 @@ a{
 
   <div class="titulo-pagina">
 
-    <h2>
-      Mais
-    </h2>
+    <h2>Mais</h2>
 
     <p>
       Configurações e ferramentas da SALI STORE.
@@ -2286,32 +984,26 @@ a{
 
   <div class="bloco">
 
-    <h3>
-      🎨 Layout e aparência
-    </h3>
+    <h3>🎨 Layout e aparência</h3>
 
 
     <div class="alerta-box rosa">
-      Altere textos, cores, banner e seções da página inicial.
+      Altere textos, cores e seções da página inicial.
     </div>
 
 
     <div class="layout-card">
 
-      <h4>
-        🏪 Identidade da loja
-      </h4>
+      <h4>🏪 Identidade da loja</h4>
 
       <p>
-        Edite o nome e o texto que aparecem no cabeçalho.
+        Informações exibidas na loja.
       </p>
 
 
       <div class="campo">
 
-        <label>
-          Nome da loja
-        </label>
+        <label>Nome da loja</label>
 
         <input
           type="text"
@@ -2324,9 +1016,7 @@ a{
 
       <div class="campo">
 
-        <label>
-          Subtítulo
-        </label>
+        <label>Subtítulo</label>
 
         <input
           type="text"
@@ -2339,9 +1029,7 @@ a{
 
       <div class="campo">
 
-        <label>
-          Instagram
-        </label>
+        <label>Instagram</label>
 
         <input
           type="text"
@@ -2356,20 +1044,16 @@ a{
 
     <div class="layout-card">
 
-      <h4>
-        📢 Barra superior
-      </h4>
+      <h4>📢 Barra superior</h4>
 
 
       <div class="campo">
 
-        <label>
-          Texto da barra
-        </label>
+        <label>Texto da barra</label>
 
         <textarea
           id="layoutTextoTopo"
-          placeholder="NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS"
+          placeholder="Novidades toda semana!"
         ></textarea>
 
       </div>
@@ -2384,7 +1068,7 @@ a{
           </strong>
 
           <small>
-            Desative para esconder a faixa.
+            Liga ou desliga a faixa no topo da loja.
           </small>
 
         </div>
@@ -2409,16 +1093,12 @@ a{
 
     <div class="layout-card">
 
-      <h4>
-        ✨ Banner principal
-      </h4>
+      <h4>✨ Banner principal</h4>
 
 
       <div class="campo">
 
-        <label>
-          Título principal
-        </label>
+        <label>Título principal</label>
 
         <input
           type="text"
@@ -2431,9 +1111,7 @@ a{
 
       <div class="campo">
 
-        <label>
-          Texto abaixo do título
-        </label>
+        <label>Texto abaixo do título</label>
 
         <textarea
           id="layoutHeroSubtitulo"
@@ -2486,18 +1164,14 @@ a{
 
     <div class="layout-card">
 
-      <h4>
-        🎨 Cores da loja
-      </h4>
+      <h4>🎨 Cores da loja</h4>
 
 
       <div class="grade-cores">
 
         <div class="cor-config">
 
-          <label>
-            Cor principal
-          </label>
+          <label>Cor principal</label>
 
           <input
             type="color"
@@ -2510,9 +1184,7 @@ a{
 
         <div class="cor-config">
 
-          <label>
-            Cor secundária
-          </label>
+          <label>Cor secundária</label>
 
           <input
             type="color"
@@ -2525,9 +1197,7 @@ a{
 
         <div class="cor-config">
 
-          <label>
-            Cor de fundo
-          </label>
+          <label>Cor de fundo</label>
 
           <input
             type="color"
@@ -2544,21 +1214,17 @@ a{
 
     <div class="layout-card">
 
-      <h4>
-        👁️ Seções da página inicial
-      </h4>
+      <h4>👁️ Seções da página inicial</h4>
 
 
       <div class="layout-toggle">
 
         <div class="layout-toggle-texto">
 
-          <strong>
-            Benefícios
-          </strong>
+          <strong>Benefícios</strong>
 
           <small>
-            Mostra os diferenciais da loja.
+            Exibe entrega, retirada, novidades e compra segura.
           </small>
 
         </div>
@@ -2583,12 +1249,10 @@ a{
 
         <div class="layout-toggle-texto">
 
-          <strong>
-            Categorias
-          </strong>
+          <strong>Categorias</strong>
 
           <small>
-            Mostra os cards de categorias.
+            Exibe a área “Compre por categoria”.
           </small>
 
         </div>
@@ -2632,13 +1296,11 @@ a{
 
   <div class="bloco">
 
-    <h3>
-      🚚 Entregas
-    </h3>
+    <h3>🚚 Entregas</h3>
 
 
     <div class="alerta-box verde">
-      Ative ou desative cada opção e altere o valor da taxa quando quiser.
+      Ative ou desative cada opção e altere a taxa.
     </div>
 
 
@@ -2648,12 +1310,10 @@ a{
 
         <div>
 
-          <strong>
-            Retirada na loja
-          </strong>
+          <strong>Retirada na loja</strong>
 
           <p>
-            Cliente retira diretamente na loja.
+            Cliente retira diretamente na SALI.
           </p>
 
         </div>
@@ -2676,15 +1336,11 @@ a{
 
       <div class="taxa-area">
 
-        <label>
-          Taxa
-        </label>
+        <label>Taxa</label>
 
         <div class="taxa-input-wrap">
 
-          <span>
-            R$
-          </span>
+          <span>R$</span>
 
           <input
             type="number"
@@ -2707,9 +1363,7 @@ a{
 
         <div>
 
-          <strong>
-            Entrega dentro da cidade
-          </strong>
+          <strong>Entrega dentro da cidade</strong>
 
           <p>
             Entrega local padrão.
@@ -2735,15 +1389,11 @@ a{
 
       <div class="taxa-area">
 
-        <label>
-          Taxa
-        </label>
+        <label>Taxa</label>
 
         <div class="taxa-input-wrap">
 
-          <span>
-            R$
-          </span>
+          <span>R$</span>
 
           <input
             type="number"
@@ -2766,9 +1416,7 @@ a{
 
         <div>
 
-          <strong>
-            Bola até Novo Manacá
-          </strong>
+          <strong>Bola até Novo Manacá</strong>
 
           <p>
             Faixa de entrega cadastrada.
@@ -2794,15 +1442,11 @@ a{
 
       <div class="taxa-area">
 
-        <label>
-          Taxa
-        </label>
+        <label>Taxa</label>
 
         <div class="taxa-input-wrap">
 
-          <span>
-            R$
-          </span>
+          <span>R$</span>
 
           <input
             type="number"
@@ -2825,9 +1469,7 @@ a{
 
         <div>
 
-          <strong>
-            Caixa d’Água pra lá
-          </strong>
+          <strong>Caixa d’Água pra lá</strong>
 
           <p>
             Faixa de entrega cadastrada.
@@ -2853,15 +1495,11 @@ a{
 
       <div class="taxa-area">
 
-        <label>
-          Taxa
-        </label>
+        <label>Taxa</label>
 
         <div class="taxa-input-wrap">
 
-          <span>
-            R$
-          </span>
+          <span>R$</span>
 
           <input
             type="number"
@@ -2884,12 +1522,10 @@ a{
 
         <div>
 
-          <strong>
-            Barcos / jatos
-          </strong>
+          <strong>Barcos / jatos</strong>
 
           <p>
-            Entrega em embarcações e transporte fluvial.
+            Entrega para transporte fluvial.
           </p>
 
         </div>
@@ -2912,15 +1548,11 @@ a{
 
       <div class="taxa-area">
 
-        <label>
-          Taxa
-        </label>
+        <label>Taxa</label>
 
         <div class="taxa-input-wrap">
 
-          <span>
-            R$
-          </span>
+          <span>R$</span>
 
           <input
             type="number"
@@ -2939,12 +1571,10 @@ a{
 
     <div class="subtitulo">
 
-      <h4>
-        💳 Formas de pagamento
-      </h4>
+      <h4>💳 Formas de pagamento</h4>
 
       <p>
-        Desative uma opção para ela deixar de aparecer no checkout.
+        Controle quais opções aparecem no checkout.
       </p>
 
     </div>
@@ -2954,13 +1584,9 @@ a{
 
       <div>
 
-        <strong>
-          Pix
-        </strong>
+        <strong>Pix</strong>
 
-        <p>
-          Pagamento via Pix.
-        </p>
+        <p>Pagamento via Pix.</p>
 
       </div>
 
@@ -2984,13 +1610,9 @@ a{
 
       <div>
 
-        <strong>
-          Cartão
-        </strong>
+        <strong>Cartão</strong>
 
-        <p>
-          Pagamento com cartão.
-        </p>
+        <p>Pagamento com cartão.</p>
 
       </div>
 
@@ -3014,13 +1636,9 @@ a{
 
       <div>
 
-        <strong>
-          Dinheiro
-        </strong>
+        <strong>Dinheiro</strong>
 
-        <p>
-          Pagamento em dinheiro.
-        </p>
+        <p>Pagamento em dinheiro.</p>
 
       </div>
 
@@ -3044,12 +1662,10 @@ a{
 
       <div>
 
-        <strong>
-          Pagamento no ato da entrega
-        </strong>
+        <strong>Pagamento no ato da entrega</strong>
 
         <p>
-          Cliente paga quando o pedido for entregue.
+          Cliente paga quando o pedido for recebido.
         </p>
 
       </div>
@@ -3089,9 +1705,7 @@ a{
 
   <div class="bloco">
 
-    <h3>
-      🌐 Loja como visitante
-    </h3>
+    <h3>🌐 Loja como visitante</h3>
 
     <button
       class="botao-loja"
@@ -3149,11 +1763,13 @@ const SUPABASE_KEY =
 const BUCKET_FOTOS =
 "produtos";
 
+
 const supabaseClient =
 window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
+
 
 const supabasePublico =
 window.supabase.createClient(
@@ -3168,71 +1784,167 @@ window.supabase.createClient(
   }
 );
 
+
 let produtos = [];
+
 let pedidos = [];
-let filtroStatusPedidos = "Todos";
+
+let filtroStatusPedidos =
+"Todos";
+
 let fotosFormulario = [];
+
 let opcoesFormulario = [];
-let configuracoesLoja = null;
-let bannerLayoutArquivo = null;
-let bannerLayoutPreview = null;
-let removerBannerAtual = false;
+
+let configuracoesLoja =
+null;
+
+let bannerLayoutArquivo =
+null;
+
+let bannerLayoutPreview =
+null;
+
+let removerBannerAtual =
+false;
+
 
 const STATUS_PEDIDOS = [
+
   "Novo",
+
   "Confirmado",
+
   "Em separação",
+
   "Saiu para entrega",
+
   "Entregue",
+
   "Cancelado"
+
 ];
+
 
 const CORES_SALI = [
+
   "Preto",
+
   "Branco",
+
   "Off White",
+
   "Bege",
+
   "Nude",
+
   "Marrom",
+
   "Caramelo",
+
   "Rosa",
+
   "Pink",
+
   "Rosa bebê",
+
   "Vermelho",
+
   "Vinho",
+
   "Azul",
+
   "Azul bebê",
+
   "Azul marinho",
+
   "Verde",
+
   "Verde militar",
+
   "Verde bandeira",
+
   "Amarelo",
+
   "Laranja",
+
   "Roxo",
+
   "Lilás",
+
   "Cinza",
+
   "Prata",
+
   "Dourado"
+
 ];
 
+
 const TAMANHOS = [
-  {valor:"P",nome:"P"},
-  {valor:"M",nome:"M"},
-  {valor:"G",nome:"G"},
-  {valor:"GG",nome:"GG"},
-  {valor:"36",nome:"36"},
-  {valor:"38",nome:"38"},
-  {valor:"40",nome:"40"},
-  {valor:"42",nome:"42"},
-  {valor:"44",nome:"44"},
-  {valor:"46",nome:"46"},
-  {valor:"48",nome:"48"},
+
+  {
+    valor:"P",
+    nome:"P"
+  },
+
+  {
+    valor:"M",
+    nome:"M"
+  },
+
+  {
+    valor:"G",
+    nome:"G"
+  },
+
+  {
+    valor:"GG",
+    nome:"GG"
+  },
+
+  {
+    valor:"36",
+    nome:"36"
+  },
+
+  {
+    valor:"38",
+    nome:"38"
+  },
+
+  {
+    valor:"40",
+    nome:"40"
+  },
+
+  {
+    valor:"42",
+    nome:"42"
+  },
+
+  {
+    valor:"44",
+    nome:"44"
+  },
+
+  {
+    valor:"46",
+    nome:"46"
+  },
+
+  {
+    valor:"48",
+    nome:"48"
+  },
+
   {
     valor:"Tamanho único",
     nome:"Tamanho único • veste 36 ao 42"
   }
+
 ];
-  /* =========================
+ /* =========================
    LOGIN
 ========================= */
 
@@ -3736,7 +2448,7 @@ function classeStatusPedido(
 
 
 /* =========================
-   NOMES AMIGÁVEIS DE ENTREGA
+   ENTREGA
 ========================= */
 
 function nomeEntrega(
@@ -3778,7 +2490,7 @@ function nomeEntrega(
 
 
 /* =========================
-   PRÓXIMO STATUS
+   FLUXO DE STATUS
 ========================= */
 
 function proximoStatus(
@@ -3818,10 +2530,6 @@ function proximoStatus(
 
 }
 
-
-/* =========================
-   TEXTO DO BOTÃO DE AVANÇO
-========================= */
 
 function textoBotaoProximoStatus(
   statusAtual
@@ -4025,11 +2733,6 @@ async function carregarConfiguracoesLoja(){
       error
     );
 
-    mostrarStatusLayout(
-      "Não foi possível carregar as configurações.",
-      "erro"
-    );
-
     return;
 
   }
@@ -4046,7 +2749,7 @@ async function carregarConfiguracoesLoja(){
     "Moda feminina • Manacapuru",
 
     texto_topo:
-    "NOVOS DROPS TODA SEMANA • RETIRADA E ENTREGA DISPONÍVEIS",
+    "Novidades toda semana!",
 
     hero_titulo:
     "Seu look começa aqui.",
@@ -4305,7 +3008,7 @@ function preencherEntregasPagamentos(){
 
 
 /* =========================
-   STATUS CONFIG
+   STATUS DAS CONFIGURAÇÕES
 ========================= */
 
 function mostrarStatusLayout(
@@ -4393,6 +3096,7 @@ function selecionarBannerLayout(){
   ){
 
     input.value = "";
+
     return;
 
   }
@@ -4597,8 +3301,11 @@ async function salvarConfiguracoesLoja(){
 
   mostrarStatusLayout("");
 
-  botao.disabled = true;
-  botao.textContent = "SALVANDO...";
+  botao.disabled =
+  true;
+
+  botao.textContent =
+  "SALVANDO...";
 
   try{
 
@@ -4738,10 +3445,7 @@ async function salvarConfiguracoesLoja(){
 
   }catch(error){
 
-    console.error(
-      "Erro ao salvar layout:",
-      error
-    );
+    console.error(error);
 
     mostrarStatusLayout(
       error.message ||
@@ -4751,7 +3455,8 @@ async function salvarConfiguracoesLoja(){
 
   }finally{
 
-    botao.disabled = false;
+    botao.disabled =
+    false;
 
     botao.textContent =
     "💾 SALVAR LAYOUT E APARÊNCIA";
@@ -4762,7 +3467,7 @@ async function salvarConfiguracoesLoja(){
 
 
 /* =========================
-   SALVAR ENTREGA E PAGAMENTOS
+   SALVAR ENTREGA/PAGAMENTO
 ========================= */
 
 async function salvarEntregasPagamentos(){
@@ -4921,10 +3626,7 @@ async function salvarEntregasPagamentos(){
 
   }catch(error){
 
-    console.error(
-      "Erro ao salvar entregas:",
-      error
-    );
+    console.error(error);
 
     mostrarStatusEntregas(
       error.message ||
@@ -4946,7 +3648,7 @@ async function salvarEntregasPagamentos(){
 
 
 /* =========================
-   PEDIDOS - CARREGAR
+   CARREGAR PEDIDOS
 ========================= */
 
 async function carregarPedidos(){
@@ -4993,9 +3695,13 @@ async function carregarPedidos(){
       area.innerHTML = `
 
         <div class="sem-dados">
+
           Não foi possível carregar os pedidos.
+
           <br><br>
+
           ${escaparHtml(error.message)}
+
         </div>
 
       `;
@@ -5003,6 +3709,7 @@ async function carregarPedidos(){
     }
 
     atualizarDashboard();
+
     return;
 
   }
@@ -5011,15 +3718,18 @@ async function carregarPedidos(){
   data || [];
 
   renderizarPedidos();
+
   renderizarCancelamentos();
+
   renderizarUltimosPedidos();
+
   atualizarDashboard();
 
 }
 
 
 /* =========================
-   FILTRO PEDIDOS
+   FILTROS DE PEDIDOS
 ========================= */
 
 function filtrarPedidosStatus(
@@ -5043,9 +3753,11 @@ function filtrarPedidosStatus(
   );
 
   if(botao){
+
     botao.classList.add(
       "ativo"
     );
+
   }
 
   renderizarPedidos();
@@ -5143,7 +3855,8 @@ function renderizarPedidos(){
 
 
 /* =========================
-   CARD PEDIDO
+   CARD DO PEDIDO
+   CORRIGIDO
 ========================= */
 
 function criarHtmlPedido(
@@ -5182,6 +3895,11 @@ function criarHtmlPedido(
     0
   );
 
+  const idPedido =
+  Number(
+    pedido.id
+  );
+
   return `
 
     <div class="pedido-card">
@@ -5191,36 +3909,44 @@ function criarHtmlPedido(
         <div>
 
           <div class="pedido-numero">
+
             ${escaparHtml(
               pedido.numero_pedido ||
               ("Pedido #" + pedido.id)
             )}
+
           </div>
 
           <div class="pedido-data">
+
             ${escaparHtml(
               dataHoraBR(
                 pedido.created_at
               )
             )}
+
           </div>
 
         </div>
 
         <div class="pedido-total">
+
           ${moeda(
             pedido.total
           )}
+
         </div>
 
       </div>
 
 
       <div class="pedido-cliente">
+
         ${escaparHtml(
           pedido.nome_cliente ||
           "Cliente não informado"
         )}
+
       </div>
 
 
@@ -5248,7 +3974,11 @@ function criarHtmlPedido(
       <div class="pedido-entrega">
 
         <strong>
-          🚚 ${escaparHtml(tipoEntrega)}
+
+          🚚 ${escaparHtml(
+            tipoEntrega
+          )}
+
         </strong>
 
         ${
@@ -5261,6 +3991,12 @@ function criarHtmlPedido(
 
         ${
           endereco
+          &&
+          String(
+            pedido.tipo_entrega ||
+            ""
+          ).toLowerCase() !==
+          "retirada"
           ?
           `<br>📍 ${escaparHtml(endereco)}`
           :
@@ -5273,26 +4009,36 @@ function criarHtmlPedido(
       <span
         class="status-pedido ${classeStatusPedido(status)}"
       >
-        ${escaparHtml(status)}
+
+        ${escaparHtml(
+          status
+        )}
+
       </span>
 
 
       <div class="pedido-acoes">
 
         <button
+          type="button"
           class="ver-pedido"
-          onclick="abrirPedido(${Number(pedido.id)})"
+          data-id="${idPedido}"
+          onclick="abrirPedidoPorBotao(this)"
         >
           VER PEDIDO
         </button>
+
 
         ${
           prox
           ?
           `
             <button
+              type="button"
               class="avancar-pedido"
-              onclick="mudarStatusRapido(${Number(pedido.id)},${JSON.stringify(prox)})"
+              data-id="${idPedido}"
+              data-status="${escaparHtml(prox)}"
+              onclick="mudarStatusPorBotao(this)"
             >
               ${escaparHtml(textoProximo)}
             </button>
@@ -5301,15 +4047,21 @@ function criarHtmlPedido(
           ""
         }
 
+
         ${
-          status !== "Cancelado"
+          status !==
+          "Cancelado"
           &&
-          status !== "Entregue"
+          status !==
+          "Entregue"
           ?
           `
             <button
+              type="button"
               class="cancelar-pedido"
-              onclick="mudarStatusRapido(${Number(pedido.id)},'Cancelado')"
+              data-id="${idPedido}"
+              data-status="Cancelado"
+              onclick="mudarStatusPorBotao(this)"
             >
               CANCELAR
             </button>
@@ -5323,6 +4075,68 @@ function criarHtmlPedido(
     </div>
 
   `;
+
+}
+
+
+/* =========================
+   BOTÕES SEGUROS
+========================= */
+
+function abrirPedidoPorBotao(
+  botao
+){
+
+  const id =
+  Number(
+    botao.dataset.id
+  );
+
+  abrirPedido(
+    id
+  );
+
+}
+
+
+async function mudarStatusPorBotao(
+  botao
+){
+
+  const id =
+  Number(
+    botao.dataset.id
+  );
+
+  const status =
+  String(
+    botao.dataset.status ||
+    ""
+  ).trim();
+
+  if(
+    !id ||
+    !status
+  ){
+    return;
+  }
+
+  botao.disabled =
+  true;
+
+  try{
+
+    await mudarStatusRapido(
+      id,
+      status
+    );
+
+  }finally{
+
+    botao.disabled =
+    false;
+
+  }
 
 }
 
@@ -5378,36 +4192,46 @@ function renderizarUltimosPedidos(){
             <div>
 
               <div class="pedido-numero">
+
                 ${escaparHtml(
                   pedido.numero_pedido ||
                   ("Pedido #" + pedido.id)
                 )}
+
               </div>
 
               <div class="pedido-data">
+
                 ${escaparHtml(
                   dataHoraBR(
                     pedido.created_at
                   )
                 )}
+
               </div>
 
             </div>
 
             <div class="pedido-total">
+
               ${moeda(
                 pedido.total
               )}
+
             </div>
 
           </div>
 
+
           <div class="pedido-cliente">
+
             ${escaparHtml(
               pedido.nome_cliente ||
               "Cliente"
             )}
+
           </div>
+
 
           <div class="pedido-resumo">
 
@@ -5428,10 +4252,15 @@ function renderizarUltimosPedidos(){
 
           </div>
 
+
           <span
             class="status-pedido ${classeStatusPedido(status)}"
           >
-            ${escaparHtml(status)}
+
+            ${escaparHtml(
+              status
+            )}
+
           </span>
 
         </div>
@@ -5489,36 +4318,46 @@ function renderizarCancelamentos(){
           <div>
 
             <div class="pedido-numero">
+
               ${escaparHtml(
                 pedido.numero_pedido ||
                 ("Pedido #" + pedido.id)
               )}
+
             </div>
 
             <div class="pedido-data">
+
               ${escaparHtml(
                 dataHoraBR(
                   pedido.created_at
                 )
               )}
+
             </div>
 
           </div>
 
           <div class="pedido-total">
+
             ${moeda(
               pedido.total
             )}
+
           </div>
 
         </div>
 
+
         <div class="pedido-cliente">
+
           ${escaparHtml(
             pedido.nome_cliente ||
             "Cliente"
           )}
+
         </div>
+
 
         <div class="pedido-resumo">
 
@@ -5539,22 +4378,32 @@ function renderizarCancelamentos(){
 
         </div>
 
-        <span class="status-pedido cancelado">
+
+        <span
+          class="status-pedido cancelado"
+        >
           Cancelado
         </span>
+
 
         <div class="pedido-acoes">
 
           <button
+            type="button"
             class="ver-pedido"
-            onclick="abrirPedido(${Number(pedido.id)})"
+            data-id="${Number(pedido.id)}"
+            onclick="abrirPedidoPorBotao(this)"
           >
             VER PEDIDO
           </button>
 
+
           <button
+            type="button"
             class="avancar-pedido"
-            onclick="mudarStatusRapido(${Number(pedido.id)},'Novo')"
+            data-id="${Number(pedido.id)}"
+            data-status="Novo"
+            onclick="mudarStatusPorBotao(this)"
           >
             REATIVAR PEDIDO
           </button>
@@ -5568,7 +4417,7 @@ function renderizarCancelamentos(){
   .join("");
 
 }
-/* =========================
+ /* =========================
    ABRIR PEDIDO
 ========================= */
 
@@ -5596,6 +4445,7 @@ function abrirPedido(
   normalizarStatus(
     pedido.status
   );
+
 
   const itensHtml =
   itens.length
@@ -5632,6 +4482,7 @@ function abrirPedido(
       .filter(Boolean)
       .join(" • ");
 
+
       return `
 
         <div class="item-pedido">
@@ -5658,13 +4509,17 @@ function abrirPedido(
             `
           }
 
+
           <div>
 
             <div class="nome">
+
               ${escaparHtml(
                 nomeItemPedido(item)
               )}
+
             </div>
+
 
             <div class="qtd">
 
@@ -5684,11 +4539,14 @@ function abrirPedido(
 
           </div>
 
+
           <div class="valor">
+
             ${moeda(
               precoItemPedido(item) *
               qtdItemPedido(item)
             )}
+
           </div>
 
         </div>
@@ -5707,7 +4565,7 @@ function abrirPedido(
     item => `
 
       <option
-        value="${item}"
+        value="${escaparHtml(item)}"
         ${
           item === status
           ?
@@ -5716,7 +4574,7 @@ function abrirPedido(
           ""
         }
       >
-        ${item}
+        ${escaparHtml(item)}
       </option>
 
     `
@@ -5724,22 +4582,35 @@ function abrirPedido(
   .join("");
 
 
+  const retirada =
+  String(
+    pedido.tipo_entrega ||
+    ""
+  ).toLowerCase() ===
+  "retirada";
+
+
   document.getElementById(
     "conteudoModalPedido"
   ).innerHTML = `
 
     <h3>
+
       ${escaparHtml(
         pedido.nome_cliente ||
         "Cliente"
       )}
+
     </h3>
 
+
     <div class="numero">
+
       ${escaparHtml(
         pedido.numero_pedido ||
         ("Pedido #" + pedido.id)
       )}
+
     </div>
 
 
@@ -5771,18 +4642,20 @@ function abrirPedido(
         )
       )}
 
+      <br>
+
       ${
         Number(
           pedido.valor_entrega ||
           0
         ) > 0
         ?
-        "<br>Taxa: " +
+        "Taxa: " +
         moeda(
           pedido.valor_entrega
         )
         :
-        "<br>Sem taxa"
+        "Sem taxa"
       }
 
     </div>
@@ -5794,10 +4667,16 @@ function abrirPedido(
         📍 Endereço / destino
       </strong>
 
-      ${escaparHtml(
-        pedido.endereco ||
+      ${
+        retirada
+        ?
         "Retirada na loja"
-      )}
+        :
+        escaparHtml(
+          pedido.endereco ||
+          "Não informado"
+        )
+      }
 
     </div>
 
@@ -5862,7 +4741,7 @@ function abrirPedido(
       <div class="linha-total final">
 
         <span>
-          Total
+          TOTAL
         </span>
 
         <span>
@@ -5893,8 +4772,10 @@ function abrirPedido(
 
 
     <button
+      type="button"
       class="salvar-status"
-      onclick="salvarStatusPedido(${Number(pedido.id)})"
+      data-id="${Number(pedido.id)}"
+      onclick="salvarStatusPorBotao(this)"
     >
       SALVAR STATUS
     </button>
@@ -5931,24 +4812,62 @@ function fecharModalPedido(){
 }
 
 
-async function salvarStatusPedido(
-  id
+async function salvarStatusPorBotao(
+  botao
 ){
 
-  const status =
+  const id =
+  Number(
+    botao.dataset.id
+  );
+
+  const seletor =
   document.getElementById(
     "statusPedidoModal"
-  ).value;
+  );
 
+  if(
+    !id ||
+    !seletor
+  ){
+    return;
+  }
+
+  const status =
+  seletor.value;
+
+  botao.disabled =
+  true;
+
+  botao.textContent =
+  "SALVANDO...";
+
+  const sucesso =
   await atualizarStatusPedido(
     id,
     status
   );
 
-  fecharModalPedido();
+  if(sucesso){
+
+    fecharModalPedido();
+
+  }else{
+
+    botao.disabled =
+    false;
+
+    botao.textContent =
+    "SALVAR STATUS";
+
+  }
 
 }
 
+
+/* =========================
+   ALTERAR STATUS
+========================= */
 
 async function mudarStatusRapido(
   id,
@@ -5966,12 +4885,14 @@ async function mudarStatusRapido(
     );
 
     if(!confirmar){
-      return;
+
+      return false;
+
     }
 
   }
 
-  await atualizarStatusPedido(
+  return await atualizarStatusPedido(
     id,
     status
   );
@@ -5984,49 +4905,74 @@ async function atualizarStatusPedido(
   status
 ){
 
-  const {
-    error
-  } =
-  await supabaseClient
-  .from(
-    "Pedidos"
-  )
-  .update({
-    status
-  })
-  .eq(
-    "id",
-    Number(id)
-  );
+  try{
 
-  if(error){
+    const {
+      error
+    } =
+    await supabaseClient
+    .from(
+      "Pedidos"
+    )
+    .update({
+      status
+    })
+    .eq(
+      "id",
+      Number(id)
+    );
 
-    console.error(error);
+    if(error){
+
+      throw error;
+
+    }
+
+
+    const pedido =
+    pedidos.find(
+      item =>
+        Number(item.id) ===
+        Number(id)
+    );
+
+    if(pedido){
+
+      pedido.status =
+      status;
+
+    }
+
+
+    renderizarPedidos();
+
+    renderizarCancelamentos();
+
+    renderizarUltimosPedidos();
+
+    atualizarDashboard();
+
+
+    return true;
+
+  }catch(error){
+
+    console.error(
+      "Erro ao atualizar status:",
+      error
+    );
 
     alert(
       "Não foi possível alterar o status do pedido.\n\n" +
-      error.message
+      (
+        error.message ||
+        "Erro desconhecido."
+      )
     );
 
-    return;
+    return false;
 
   }
-
-  const pedido =
-  pedidos.find(
-    item =>
-      Number(item.id) ===
-      Number(id)
-  );
-
-  if(pedido){
-    pedido.status = status;
-  }
-
-  renderizarPedidos();
-  renderizarCancelamentos();
-  renderizarUltimosPedidos();
-  atualizarDashboard();
 
 }
 
@@ -6042,17 +4988,21 @@ function atualizarDashboard(){
     new Date()
   );
 
+
   const pedidosHoje =
   pedidos.filter(
     pedido =>
       somenteDataLocal(
         pedido.created_at
-      ) === hoje
+      ) ===
+      hoje
       &&
       normalizarStatus(
         pedido.status
-      ) !== "Cancelado"
+      ) !==
+      "Cancelado"
   );
+
 
   const vendasHoje =
   pedidosHoje.reduce(
@@ -6062,18 +5012,22 @@ function atualizarDashboard(){
     ) =>
       soma +
       Number(
-        pedido.total || 0
+        pedido.total ||
+        0
       ),
     0
   );
+
 
   const novos =
   pedidos.filter(
     pedido =>
       normalizarStatus(
         pedido.status
-      ) === "Novo"
+      ) ===
+      "Novo"
   ).length;
+
 
   const andamento =
   pedidos.filter(
@@ -6090,6 +5044,7 @@ function atualizarDashboard(){
       )
   ).length;
 
+
   const estoque =
   produtos.reduce(
     (
@@ -6098,10 +5053,12 @@ function atualizarDashboard(){
     ) =>
       soma +
       Number(
-        produto.estoque || 0
+        produto.estoque ||
+        0
       ),
     0
   );
+
 
   document.getElementById(
     "dashVendasHoje"
@@ -6109,6 +5066,7 @@ function atualizarDashboard(){
   moeda(
     vendasHoje
   );
+
 
   document.getElementById(
     "dashPedidosHoje"
@@ -6122,20 +5080,24 @@ function atualizarDashboard(){
     " pedidos hoje"
   );
 
+
   document.getElementById(
     "dashNovos"
   ).textContent =
   novos;
+
 
   document.getElementById(
     "dashAndamento"
   ).textContent =
   andamento;
 
+
   document.getElementById(
     "dashEstoque"
   ).textContent =
   estoque;
+
 
   document.getElementById(
     "dashProdutos"
@@ -6153,7 +5115,7 @@ function atualizarDashboard(){
 
 
 /* =========================
-   UPLOAD
+   UPLOAD DE IMAGEM
 ========================= */
 
 async function enviarArquivoImagem(
@@ -6165,18 +5127,27 @@ async function enviarArquivoImagem(
     return null;
   }
 
+
   let extensao =
-  arquivo.name
+  String(
+    arquivo.name ||
+    ""
+  )
   .split(".")
   .pop()
   .toLowerCase();
+
 
   if(
     !extensao ||
     extensao.length > 6
   ){
-    extensao = "jpg";
+
+    extensao =
+    "jpg";
+
   }
+
 
   const caminho =
   pasta +
@@ -6186,6 +5157,7 @@ async function enviarArquivoImagem(
   gerarIdentificador() +
   "." +
   extensao;
+
 
   const {
     error
@@ -6207,6 +5179,7 @@ async function enviarArquivoImagem(
     }
   );
 
+
   if(error){
 
     throw new Error(
@@ -6215,6 +5188,7 @@ async function enviarArquivoImagem(
     );
 
   }
+
 
   const {
     data
@@ -6228,7 +5202,11 @@ async function enviarArquivoImagem(
     caminho
   );
 
-  return data.publicUrl;
+
+  return (
+    data.publicUrl ||
+    null
+  );
 
 }
 
@@ -6244,10 +5222,13 @@ function adicionarNovasFotos(){
     "produtoFotosArquivos"
   );
 
+
   const arquivos =
   Array.from(
-    input.files || []
+    input.files ||
+    []
   );
+
 
   arquivos.forEach(
     arquivo => {
@@ -6260,10 +5241,13 @@ function adicionarNovasFotos(){
         return;
       }
 
+
       fotosFormulario.push({
 
         id:null,
+
         foto_url:null,
+
         arquivo,
 
         preview:
@@ -6278,6 +5262,7 @@ function adicionarNovasFotos(){
     }
   );
 
+
   if(
     fotosFormulario.length
     &&
@@ -6286,11 +5271,16 @@ function adicionarNovasFotos(){
         foto.principal
     )
   ){
+
     fotosFormulario[0].principal =
     true;
+
   }
 
-  input.value = "";
+
+  input.value =
+  "";
+
 
   renderizarFotosFormulario();
 
@@ -6304,14 +5294,18 @@ function renderizarFotosFormulario(){
     "galeriaFotos"
   );
 
+
   if(
     !fotosFormulario.length
   ){
 
-    area.innerHTML = "";
+    area.innerHTML =
+    "";
+
     return;
 
   }
+
 
   area.innerHTML =
   fotosFormulario.map(
@@ -6324,6 +5318,7 @@ function renderizarFotosFormulario(){
       foto.preview ||
       foto.foto_url ||
       "";
+
 
       return `
 
@@ -6345,10 +5340,12 @@ function renderizarFotosFormulario(){
             ""
           }
 
+
           <img
             src="${escaparHtml(url)}"
             alt="Foto do produto"
           >
+
 
           <div class="foto-acoes">
 
@@ -6367,6 +5364,7 @@ function renderizarFotosFormulario(){
               :
               ""
             }
+
 
             <button
               type="button"
@@ -6400,9 +5398,11 @@ function definirFotoPrincipal(
       index
     ) => ({
       ...foto,
-      principal:index === indice
+      principal:
+      index === indice
     })
   );
+
 
   renderizarFotosFormulario();
 
@@ -6418,19 +5418,24 @@ function removerFotoFormulario(
     indice
   ]?.principal;
 
+
   fotosFormulario.splice(
     indice,
     1
   );
+
 
   if(
     eraPrincipal
     &&
     fotosFormulario.length
   ){
+
     fotosFormulario[0].principal =
     true;
+
   }
+
 
   renderizarFotosFormulario();
 
@@ -6438,12 +5443,13 @@ function removerFotoFormulario(
 
 
 /* =========================
-   OPÇÕES / VARIANTES
+   VARIANTES
 ========================= */
 
 function criarMapaTamanhos(){
 
   const mapa = {};
+
 
   TAMANHOS.forEach(
     item => {
@@ -6451,12 +5457,16 @@ function criarMapaTamanhos(){
       mapa[
         item.valor
       ] = {
+
         ativo:false,
+
         estoque:0
+
       };
 
     }
   );
+
 
   return mapa;
 
@@ -6468,12 +5478,17 @@ function proximoNomeEstampa(){
   const total =
   opcoesFormulario.filter(
     item =>
-      item.tipo === "estampa"
+      item.tipo ===
+      "estampa"
   ).length + 1;
+
 
   return (
     "Estampa " +
-    String(total).padStart(
+    String(
+      total
+    )
+    .padStart(
       2,
       "0"
     )
@@ -6487,12 +5502,19 @@ function novaOpcao(){
   return {
 
     tipo:"cor",
+
     cor:"Preto",
+
     corPersonalizada:"",
+
     estampa:"",
+
     foto_url:null,
+
     arquivo:null,
+
     preview:null,
+
     tamanhos:
     criarMapaTamanhos()
 
@@ -6507,6 +5529,7 @@ function adicionarOpcao(){
     novaOpcao()
   );
 
+
   renderizarOpcoes();
 
 }
@@ -6516,18 +5539,22 @@ function removerOpcao(
   indice
 ){
 
-  if(
-    !confirm(
-      "Remover esta opção?"
-    )
-  ){
+  const confirmar =
+  confirm(
+    "Remover esta opção?"
+  );
+
+
+  if(!confirmar){
     return;
   }
+
 
   opcoesFormulario.splice(
     indice,
     1
   );
+
 
   renderizarOpcoes();
 
@@ -6544,34 +5571,50 @@ function alterarTipoOpcao(
     indice
   ];
 
+
   if(!opcao){
     return;
   }
 
+
   opcao.tipo =
   tipo;
 
+
   if(
-    tipo === "cor"
+    tipo ===
+    "cor"
   ){
 
-    opcao.estampa = "";
+    opcao.estampa =
+    "";
+
 
     if(!opcao.cor){
-      opcao.cor = "Preto";
+
+      opcao.cor =
+      "Preto";
+
     }
 
   }else{
 
-    opcao.cor = "";
-    opcao.corPersonalizada = "";
+    opcao.cor =
+    "";
+
+    opcao.corPersonalizada =
+    "";
+
 
     if(!opcao.estampa){
+
       opcao.estampa =
       proximoNomeEstampa();
+
     }
 
   }
+
 
   renderizarOpcoes();
 
@@ -6589,14 +5632,17 @@ function atualizarOpcao(
     indice
   ];
 
+
   if(!opcao){
     return;
   }
+
 
   opcao[
     campo
   ] =
   valor;
+
 
   renderizarOpcoes();
 
@@ -6619,6 +5665,7 @@ function obterNomeCor(
 
   }
 
+
   return String(
     opcao.cor ||
     ""
@@ -6638,9 +5685,11 @@ function alterarTamanho(
     indiceOpcao
   ];
 
+
   if(!opcao){
     return;
   }
+
 
   opcao.tamanhos[
     tamanho
@@ -6648,6 +5697,7 @@ function alterarTamanho(
   Boolean(
     marcado
   );
+
 
   if(!marcado){
 
@@ -6657,6 +5707,7 @@ function alterarTamanho(
     0;
 
   }
+
 
   renderizarOpcoes();
 
@@ -6674,9 +5725,11 @@ function alterarEstoqueTamanho(
     indiceOpcao
   ];
 
+
   if(!opcao){
     return;
   }
+
 
   opcao.tamanhos[
     tamanho
@@ -6684,9 +5737,11 @@ function alterarEstoqueTamanho(
   Math.max(
     0,
     Number(
-      valor || 0
+      valor ||
+      0
     )
   );
+
 
   atualizarEstoqueVariantes();
 
@@ -6701,9 +5756,11 @@ function escolherFotoOpcao(
   const arquivo =
   input.files?.[0];
 
+
   if(!arquivo){
     return;
   }
+
 
   if(
     !validarArquivoImagem(
@@ -6711,23 +5768,29 @@ function escolherFotoOpcao(
     )
   ){
 
-    input.value = "";
+    input.value =
+    "";
+
     return;
 
   }
+
 
   const opcao =
   opcoesFormulario[
     indice
   ];
 
+
   opcao.arquivo =
   arquivo;
+
 
   opcao.preview =
   URL.createObjectURL(
     arquivo
   );
+
 
   renderizarOpcoes();
 
@@ -6743,18 +5806,23 @@ function removerFotoOpcao(
     indice
   ];
 
+
   if(!opcao){
     return;
   }
 
+
   opcao.arquivo =
   null;
+
 
   opcao.preview =
   null;
 
+
   opcao.foto_url =
   null;
+
 
   renderizarOpcoes();
 
@@ -6763,7 +5831,9 @@ function removerFotoOpcao(
 
 function calcularEstoqueVariantes(){
 
-  let total = 0;
+  let total =
+  0;
+
 
   opcoesFormulario.forEach(
     opcao => {
@@ -6774,11 +5844,14 @@ function calcularEstoqueVariantes(){
       .forEach(
         tamanho => {
 
-          if(tamanho.ativo){
+          if(
+            tamanho.ativo
+          ){
 
             total +=
             Number(
-              tamanho.estoque || 0
+              tamanho.estoque ||
+              0
             );
 
           }
@@ -6788,6 +5861,7 @@ function calcularEstoqueVariantes(){
 
     }
   );
+
 
   return total;
 
@@ -6811,6 +5885,7 @@ function renderizarOpcoes(){
     "opcoesArea"
   );
 
+
   if(
     !opcoesFormulario.length
   ){
@@ -6818,15 +5893,24 @@ function renderizarOpcoes(){
     area.innerHTML = `
 
       <div class="foto-ajuda">
-        Nenhuma cor ou estampa adicionada. Se o produto não tiver variações, use somente o estoque geral.
+
+        Nenhuma cor ou estampa adicionada.
+
+        Se o produto não tiver variações,
+        use somente o estoque geral.
+
       </div>
 
     `;
 
+
     atualizarEstoqueVariantes();
+
+
     return;
 
   }
+
 
   area.innerHTML =
   opcoesFormulario.map(
@@ -6840,6 +5924,7 @@ function renderizarOpcoes(){
       opcao.foto_url ||
       "";
 
+
       const opcoesCores =
       CORES_SALI.map(
         cor => `
@@ -6847,7 +5932,8 @@ function renderizarOpcoes(){
           <option
             value="${escaparHtml(cor)}"
             ${
-              opcao.cor === cor
+              opcao.cor ===
+              cor
               ?
               "selected"
               :
@@ -6861,6 +5947,7 @@ function renderizarOpcoes(){
       )
       .join("");
 
+
       const linhasTamanho =
       TAMANHOS.map(
         tamanho => {
@@ -6869,6 +5956,7 @@ function renderizarOpcoes(){
           opcao.tamanhos[
             tamanho.valor
           ];
+
 
           return `
 
@@ -6888,9 +5976,12 @@ function renderizarOpcoes(){
                   onchange="alterarTamanho(${index},${JSON.stringify(tamanho.valor)},this.checked)"
                 >
 
-                ${escaparHtml(tamanho.nome)}
+                ${escaparHtml(
+                  tamanho.nome
+                )}
 
               </label>
+
 
               <input
                 type="number"
@@ -6916,6 +6007,7 @@ function renderizarOpcoes(){
       )
       .join("");
 
+
       return `
 
         <div class="opcao-card">
@@ -6925,6 +6017,7 @@ function renderizarOpcoes(){
             <strong>
               Opção ${index + 1}
             </strong>
+
 
             <button
               type="button"
@@ -6942,7 +6035,8 @@ function renderizarOpcoes(){
             <button
               type="button"
               class="${
-                opcao.tipo === "cor"
+                opcao.tipo ===
+                "cor"
                 ?
                 "selecionado"
                 :
@@ -6953,10 +6047,12 @@ function renderizarOpcoes(){
               🎨 COR
             </button>
 
+
             <button
               type="button"
               class="${
-                opcao.tipo === "estampa"
+                opcao.tipo ===
+                "estampa"
                 ?
                 "selecionado"
                 :
@@ -6971,7 +6067,8 @@ function renderizarOpcoes(){
 
 
           ${
-            opcao.tipo === "cor"
+            opcao.tipo ===
+            "cor"
             ?
             `
 
@@ -6980,6 +6077,7 @@ function renderizarOpcoes(){
                 <label>
                   Cor
                 </label>
+
 
                 <select
                   onchange="atualizarOpcao(${index},'cor',this.value)"
@@ -7004,6 +6102,7 @@ function renderizarOpcoes(){
                 </select>
 
               </div>
+
 
               ${
                 opcao.cor ===
@@ -7057,14 +6156,18 @@ function renderizarOpcoes(){
           <div class="foto-opcao-area">
 
             <label>
+
               📸 Foto ${
-                opcao.tipo === "cor"
+                opcao.tipo ===
+                "cor"
                 ?
                 "desta cor"
                 :
                 "desta estampa"
               }
+
             </label>
+
 
             <input
               type="file"
@@ -7072,9 +6175,13 @@ function renderizarOpcoes(){
               onchange="escolherFotoOpcao(${index},this)"
             >
 
+
             <div class="foto-ajuda">
-              Esta foto será usada na miniatura que a cliente toca na loja.
+
+              Esta foto será usada quando a cliente selecionar esta opção.
+
             </div>
+
 
             ${
               foto
@@ -7085,8 +6192,9 @@ function renderizarOpcoes(){
 
                   <img
                     src="${escaparHtml(foto)}"
-                    alt="Opção do produto"
+                    alt="Foto da opção"
                   >
+
 
                   <button
                     type="button"
@@ -7107,11 +6215,16 @@ function renderizarOpcoes(){
 
 
           <div class="tamanhos-titulo">
+
             📏 Tamanhos disponíveis
+
           </div>
 
+
           <div class="tamanhos-grade">
+
             ${linhasTamanho}
+
           </div>
 
         </div>
@@ -7122,28 +6235,31 @@ function renderizarOpcoes(){
   )
   .join("");
 
+
   atualizarEstoqueVariantes();
 
 }
 
 
 /* =========================
-   PRODUTOS
+   CARREGAR PRODUTOS
 ========================= */
 
 async function carregarProdutos(){
 
-  const lista =
+  const area =
   document.getElementById(
     "listaProdutos"
   );
 
-  if(lista){
 
-    lista.innerHTML =
+  if(area){
+
+    area.innerHTML =
     '<div class="sem-dados">Carregando produtos...</div>';
 
   }
+
 
   const {
     data,
@@ -7161,23 +6277,30 @@ async function carregarProdutos(){
     }
   );
 
+
   if(error){
 
-    console.error(error);
+    console.error(
+      "Erro ao carregar produtos:",
+      error
+    );
 
-    if(lista){
 
-      lista.innerHTML = `
+    produtos =
+    [];
+
+
+    if(area){
+
+      area.innerHTML = `
 
         <div class="sem-dados">
 
-          Erro ao carregar produtos.
+          Não foi possível carregar os produtos.
 
           <br><br>
 
-          ${escaparHtml(
-            error.message
-          )}
+          ${escaparHtml(error.message)}
 
         </div>
 
@@ -7185,20 +6308,24 @@ async function carregarProdutos(){
 
     }
 
-    produtos = [];
 
     atualizarDashboard();
+
 
     return;
 
   }
 
+
   produtos =
-  data || [];
+  data ||
+  [];
+
 
   renderizarProdutos(
     produtos
   );
+
 
   atualizarDashboard();
 
@@ -7214,18 +6341,24 @@ function renderizarProdutos(
     "listaProdutos"
   );
 
+
   if(!area){
     return;
   }
 
-  if(!lista.length){
+
+  if(
+    !lista.length
+  ){
 
     area.innerHTML =
     '<div class="sem-dados">Nenhum produto encontrado.</div>';
 
+
     return;
 
   }
+
 
   area.innerHTML =
   lista.map(
@@ -7241,7 +6374,12 @@ function renderizarProdutos(
         >
       `
       :
-      '<div class="sem-foto">Sem foto</div>';
+      `
+        <div class="sem-foto">
+          Sem foto
+        </div>
+      `;
+
 
       return `
 
@@ -7249,20 +6387,27 @@ function renderizarProdutos(
 
           ${imagem}
 
+
           <div class="produto-info">
 
             <h4>
+
               ${escaparHtml(
                 produto.nome ||
                 "Sem nome"
               )}
+
             </h4>
 
+
             <div class="preco">
+
               ${moeda(
                 produto.preco
               )}
+
             </div>
+
 
             <div class="detalhes">
 
@@ -7276,10 +6421,12 @@ function renderizarProdutos(
 
               Estoque:
               ${Number(
-                produto.estoque || 0
+                produto.estoque ||
+                0
               )}
 
             </div>
+
 
             <span
               class="status-produto ${
@@ -7301,19 +6448,24 @@ function renderizarProdutos(
 
             </span>
 
+
             <div class="acoes">
 
               <button
+                type="button"
                 class="editar"
                 onclick="editarProduto(${Number(produto.id)})"
               >
                 EDITAR
               </button>
 
+
               <button
+                type="button"
                 class="alternar"
                 onclick="alternarProduto(${Number(produto.id)},${Boolean(produto.ativo)})"
               >
+
                 ${
                   produto.ativo
                   ?
@@ -7321,9 +6473,12 @@ function renderizarProdutos(
                   :
                   "ATIVAR"
                 }
+
               </button>
 
+
               <button
+                type="button"
                 class="excluir"
                 onclick="excluirProduto(${Number(produto.id)})"
               >
@@ -7355,21 +6510,25 @@ function filtrarProdutos(){
   .trim()
   .toLowerCase();
 
+
   if(!busca){
 
     renderizarProdutos(
       produtos
     );
 
+
     return;
 
   }
+
 
   const filtrados =
   produtos.filter(
     produto =>
       String(
-        produto.nome || ""
+        produto.nome ||
+        ""
       )
       .toLowerCase()
       .includes(
@@ -7377,13 +6536,15 @@ function filtrarProdutos(){
       )
       ||
       String(
-        produto.categoria || ""
+        produto.categoria ||
+        ""
       )
       .toLowerCase()
       .includes(
         busca
       )
   );
+
 
   renderizarProdutos(
     filtrados
@@ -7401,7 +6562,9 @@ async function salvarFotosProduto(
   fotoAntiga = null
 ){
 
-  const registros = [];
+  const registros =
+  [];
+
 
   for(
     let i = 0;
@@ -7412,11 +6575,15 @@ async function salvarFotosProduto(
     const foto =
     fotosFormulario[i];
 
+
     let url =
     foto.foto_url ||
     null;
 
-    if(foto.arquivo){
+
+    if(
+      foto.arquivo
+    ){
 
       url =
       await enviarArquivoImagem(
@@ -7426,14 +6593,18 @@ async function salvarFotosProduto(
 
     }
 
+
     if(!url){
       continue;
     }
 
+
     registros.push({
 
       produto_id:
-      Number(produtoId),
+      Number(
+        produtoId
+      ),
 
       foto_url:
       url,
@@ -7450,6 +6621,7 @@ async function salvarFotosProduto(
 
   }
 
+
   if(
     !registros.length
     &&
@@ -7459,7 +6631,9 @@ async function salvarFotosProduto(
     registros.push({
 
       produto_id:
-      Number(produtoId),
+      Number(
+        produtoId
+      ),
 
       foto_url:
       fotoAntiga,
@@ -7472,6 +6646,7 @@ async function salvarFotosProduto(
 
   }
 
+
   if(
     registros.length
     &&
@@ -7480,12 +6655,16 @@ async function salvarFotosProduto(
         foto.principal
     )
   ){
+
     registros[0].principal =
     true;
+
   }
 
-  let encontrou =
+
+  let principalEncontrada =
   false;
+
 
   registros.forEach(
     foto => {
@@ -7493,10 +6672,11 @@ async function salvarFotosProduto(
       if(
         foto.principal
         &&
-        !encontrou
+        !principalEncontrada
       ){
 
-        encontrou = true;
+        principalEncontrada =
+        true;
 
       }else if(
         foto.principal
@@ -7510,6 +6690,7 @@ async function salvarFotosProduto(
     }
   );
 
+
   const {
     error:
     erroExcluir
@@ -7521,10 +6702,15 @@ async function salvarFotosProduto(
   .delete()
   .eq(
     "produto_id",
-    Number(produtoId)
+    Number(
+      produtoId
+    )
   );
 
-  if(erroExcluir){
+
+  if(
+    erroExcluir
+  ){
 
     throw new Error(
       "Erro ao atualizar fotos: " +
@@ -7533,7 +6719,10 @@ async function salvarFotosProduto(
 
   }
 
-  if(registros.length){
+
+  if(
+    registros.length
+  ){
 
     const {
       error
@@ -7546,6 +6735,7 @@ async function salvarFotosProduto(
       registros
     );
 
+
     if(error){
 
       throw new Error(
@@ -7556,6 +6746,7 @@ async function salvarFotosProduto(
     }
 
   }
+
 
   return (
     registros.find(
@@ -7579,7 +6770,9 @@ async function salvarVariantesProduto(
   produtoId
 ){
 
-  const registros = [];
+  const registros =
+  [];
+
 
   for(
     const opcao
@@ -7590,7 +6783,10 @@ async function salvarVariantesProduto(
     opcao.foto_url ||
     null;
 
-    if(opcao.arquivo){
+
+    if(
+      opcao.arquivo
+    ){
 
       fotoUrl =
       await enviarArquivoImagem(
@@ -7600,8 +6796,10 @@ async function salvarVariantesProduto(
 
     }
 
+
     const cor =
-    opcao.tipo === "cor"
+    opcao.tipo ===
+    "cor"
     ?
     obterNomeCor(
       opcao
@@ -7609,14 +6807,18 @@ async function salvarVariantesProduto(
     :
     null;
 
+
     const estampa =
-    opcao.tipo === "estampa"
+    opcao.tipo ===
+    "estampa"
     ?
     String(
-      opcao.estampa || ""
+      opcao.estampa ||
+      ""
     ).trim()
     :
     null;
+
 
     for(
       const tamanho
@@ -7628,23 +6830,30 @@ async function salvarVariantesProduto(
         tamanho.valor
       ];
 
+
       if(
-        !dados ||
+        !dados
+        ||
         !dados.ativo
       ){
         continue;
       }
 
+
       registros.push({
 
         produto_id:
-        Number(produtoId),
+        Number(
+          produtoId
+        ),
 
         cor:
-        cor || null,
+        cor ||
+        null,
 
         estampa:
-        estampa || null,
+        estampa ||
+        null,
 
         tamanho:
         tamanho.valor,
@@ -7653,7 +6862,8 @@ async function salvarVariantesProduto(
         Math.max(
           0,
           Number(
-            dados.estoque || 0
+            dados.estoque ||
+            0
           )
         ),
 
@@ -7668,6 +6878,7 @@ async function salvarVariantesProduto(
 
   }
 
+
   const {
     error:
     erroExcluir
@@ -7679,10 +6890,15 @@ async function salvarVariantesProduto(
   .delete()
   .eq(
     "produto_id",
-    Number(produtoId)
+    Number(
+      produtoId
+    )
   );
 
-  if(erroExcluir){
+
+  if(
+    erroExcluir
+  ){
 
     throw new Error(
       "Erro ao atualizar variantes: " +
@@ -7691,7 +6907,10 @@ async function salvarVariantesProduto(
 
   }
 
-  if(registros.length){
+
+  if(
+    registros.length
+  ){
 
     const {
       error
@@ -7704,6 +6923,7 @@ async function salvarVariantesProduto(
       registros
     );
 
+
     if(error){
 
       throw new Error(
@@ -7714,6 +6934,7 @@ async function salvarVariantesProduto(
     }
 
   }
+
 
   return registros;
 
@@ -7731,10 +6952,12 @@ async function salvarProduto(){
     "produtoId"
   ).value;
 
+
   const nome =
   document.getElementById(
     "produtoNome"
   ).value.trim();
+
 
   const preco =
   Number(
@@ -7743,30 +6966,36 @@ async function salvarProduto(){
     ).value
   );
 
+
   const estoqueGeral =
   Math.max(
     0,
     Number(
       document.getElementById(
         "produtoEstoque"
-      ).value || 0
+      ).value ||
+      0
     )
   );
+
 
   const categoria =
   document.getElementById(
     "produtoCategoria"
   ).value;
 
+
   const descricao =
   document.getElementById(
     "produtoDescricao"
   ).value.trim();
 
+
   const ativo =
   document.getElementById(
     "produtoAtivo"
   ).checked;
+
 
   if(!nome){
 
@@ -7778,8 +7007,10 @@ async function salvarProduto(){
 
   }
 
+
   if(
-    !preco ||
+    !preco
+    ||
     preco <= 0
   ){
 
@@ -7791,6 +7022,7 @@ async function salvarProduto(){
 
   }
 
+
   if(!categoria){
 
     alert(
@@ -7801,6 +7033,7 @@ async function salvarProduto(){
 
   }
 
+
   for(
     let i = 0;
     i < opcoesFormulario.length;
@@ -7809,6 +7042,7 @@ async function salvarProduto(){
 
     const opcao =
     opcoesFormulario[i];
+
 
     const temTamanho =
     Object.values(
@@ -7819,11 +7053,14 @@ async function salvarProduto(){
         tamanho.ativo
     );
 
+
     if(!temTamanho){
 
       alert(
         "Na opção " +
-        (i + 1) +
+        (
+          i + 1
+        ) +
         ", selecione pelo menos um tamanho."
       );
 
@@ -7831,8 +7068,10 @@ async function salvarProduto(){
 
     }
 
+
     if(
-      opcao.tipo === "cor"
+      opcao.tipo ===
+      "cor"
       &&
       !obterNomeCor(
         opcao
@@ -7841,7 +7080,9 @@ async function salvarProduto(){
 
       alert(
         "Informe a cor da opção " +
-        (i + 1) +
+        (
+          i + 1
+        ) +
         "."
       );
 
@@ -7849,33 +7090,22 @@ async function salvarProduto(){
 
     }
 
+
     if(
-      opcao.tipo === "estampa"
+      opcao.tipo ===
+      "estampa"
       &&
       !String(
-        opcao.estampa || ""
+        opcao.estampa ||
+        ""
       ).trim()
     ){
 
       alert(
         "Informe o nome da estampa da opção " +
-        (i + 1) +
-        "."
-      );
-
-      return;
-
-    }
-
-    if(
-      !opcao.arquivo
-      &&
-      !opcao.foto_url
-    ){
-
-      alert(
-        "Adicione uma foto para a opção " +
-        (i + 1) +
+        (
+          i + 1
+        ) +
         "."
       );
 
@@ -7885,8 +7115,10 @@ async function salvarProduto(){
 
   }
 
+
   const estoqueVariantes =
   calcularEstoqueVariantes();
+
 
   const estoqueFinal =
   opcoesFormulario.length
@@ -7895,37 +7127,50 @@ async function salvarProduto(){
   :
   estoqueGeral;
 
+
   const botao =
   document.getElementById(
     "botaoSalvar"
   );
 
+
   botao.disabled =
   true;
 
+
   botao.textContent =
   "SALVANDO...";
+
 
   try{
 
     let produtoId =
     id
     ?
-    Number(id)
+    Number(
+      id
+    )
     :
     null;
 
+
     let fotoAntiga =
     null;
+
 
     if(id){
 
       const anterior =
       produtos.find(
         produto =>
-          Number(produto.id) ===
-          Number(id)
+          Number(
+            produto.id
+          ) ===
+          Number(
+            id
+          )
       );
+
 
       fotoAntiga =
       anterior?.foto_url ||
@@ -7933,19 +7178,28 @@ async function salvarProduto(){
 
     }
 
+
     const dadosProduto = {
 
       nome,
+
       preco,
+
       categoria,
+
       descricao,
+
       ativo,
+
       estoque:
       estoqueFinal
 
     };
 
-    if(produtoId){
+
+    if(
+      produtoId
+    ){
 
       const {
         error
@@ -7961,6 +7215,7 @@ async function salvarProduto(){
         "id",
         produtoId
       );
+
 
       if(error){
         throw error;
@@ -7987,14 +7242,17 @@ async function salvarProduto(){
       )
       .single();
 
+
       if(error){
         throw error;
       }
+
 
       produtoId =
       data.id;
 
     }
+
 
     const fotoPrincipal =
     await salvarFotosProduto(
@@ -8002,9 +7260,11 @@ async function salvarProduto(){
       fotoAntiga
     );
 
+
     await salvarVariantesProduto(
       produtoId
     );
+
 
     const {
       error:
@@ -8028,9 +7288,13 @@ async function salvarProduto(){
       produtoId
     );
 
-    if(erroFinal){
+
+    if(
+      erroFinal
+    ){
       throw erroFinal;
     }
+
 
     alert(
       id
@@ -8040,13 +7304,19 @@ async function salvarProduto(){
       "Produto cadastrado com sucesso! ✅"
     );
 
+
     limparFormulario();
+
 
     await carregarProdutos();
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Erro ao salvar produto:",
+      error
+    );
+
 
     alert(
       "Erro: " +
@@ -8060,6 +7330,7 @@ async function salvarProduto(){
 
     botao.disabled =
     false;
+
 
     botao.textContent =
     document.getElementById(
@@ -8083,25 +7354,33 @@ async function editarProduto(
   id
 ){
 
-  abrirPagina(
-    "produtos"
-  );
-
   const produto =
   produtos.find(
     item =>
-      Number(item.id) ===
-      Number(id)
+      Number(
+        item.id
+      ) ===
+      Number(
+        id
+      )
   );
+
 
   if(!produto){
     return;
   }
 
+
+  abrirPagina(
+    "produtos"
+  );
+
+
   document.getElementById(
     "produtoId"
   ).value =
   produto.id;
+
 
   document.getElementById(
     "produtoNome"
@@ -8109,11 +7388,13 @@ async function editarProduto(
   produto.nome ||
   "";
 
+
   document.getElementById(
     "produtoPreco"
   ).value =
   produto.preco ||
   "";
+
 
   document.getElementById(
     "produtoEstoque"
@@ -8121,11 +7402,13 @@ async function editarProduto(
   produto.estoque ??
   0;
 
+
   document.getElementById(
     "produtoCategoria"
   ).value =
   produto.categoria ||
   "";
+
 
   document.getElementById(
     "produtoDescricao"
@@ -8133,21 +7416,25 @@ async function editarProduto(
   produto.descricao ||
   "";
 
+
   document.getElementById(
     "produtoAtivo"
   ).checked =
   produto.ativo !==
   false;
 
+
   document.getElementById(
     "tituloFormulario"
   ).textContent =
   "✏️ Editar produto";
 
+
   document.getElementById(
     "botaoSalvar"
   ).textContent =
   "SALVAR ALTERAÇÕES";
+
 
   document.getElementById(
     "botaoCancelar"
@@ -8168,7 +7455,9 @@ async function editarProduto(
   .select("*")
   .eq(
     "produto_id",
-    Number(id)
+    Number(
+      id
+    )
   )
   .order(
     "ordem",
@@ -8177,15 +7466,24 @@ async function editarProduto(
     }
   );
 
-  if(erroFotos){
+
+  if(
+    erroFotos
+  ){
+
     console.error(
-      "Erro fotos:",
+      "Erro ao carregar fotos:",
       erroFotos
     );
+
   }
 
+
   fotosFormulario =
-  (fotos || [])
+  (
+    fotos ||
+    []
+  )
   .map(
     foto => ({
 
@@ -8196,6 +7494,7 @@ async function editarProduto(
       foto.foto_url,
 
       arquivo:null,
+
       preview:null,
 
       principal:
@@ -8205,6 +7504,7 @@ async function editarProduto(
 
     })
   );
+
 
   if(
     !fotosFormulario.length
@@ -8220,6 +7520,7 @@ async function editarProduto(
       produto.foto_url,
 
       arquivo:null,
+
       preview:null,
 
       principal:true
@@ -8227,6 +7528,7 @@ async function editarProduto(
     });
 
   }
+
 
   if(
     fotosFormulario.length
@@ -8236,9 +7538,12 @@ async function editarProduto(
         foto.principal
     )
   ){
+
     fotosFormulario[0].principal =
     true;
+
   }
+
 
   renderizarFotosFormulario();
 
@@ -8256,7 +7561,9 @@ async function editarProduto(
   .select("*")
   .eq(
     "produto_id",
-    Number(id)
+    Number(
+      id
+    )
   )
   .order(
     "id",
@@ -8265,17 +7572,27 @@ async function editarProduto(
     }
   );
 
-  if(erroVariantes){
+
+  if(
+    erroVariantes
+  ){
+
     console.error(
-      "Erro variantes:",
+      "Erro ao carregar variantes:",
       erroVariantes
     );
+
   }
+
 
   const mapa =
   new Map();
 
-  (variantes || [])
+
+  (
+    variantes ||
+    []
+  )
   .forEach(
     variante => {
 
@@ -8286,10 +7603,12 @@ async function editarProduto(
       :
       "cor";
 
+
       const nome =
       variante.estampa ||
       variante.cor ||
       "";
+
 
       const chave =
       tipo +
@@ -8297,8 +7616,10 @@ async function editarProduto(
       nome +
       "|||" +
       String(
-        variante.foto_url || ""
+        variante.foto_url ||
+        ""
       );
+
 
       if(
         !mapa.has(
@@ -8309,11 +7630,14 @@ async function editarProduto(
         let corSelect =
         "Preto";
 
+
         let corPersonalizada =
         "";
 
+
         if(
-          tipo === "cor"
+          tipo ===
+          "cor"
         ){
 
           if(
@@ -8338,6 +7662,7 @@ async function editarProduto(
 
         }
 
+
         mapa.set(
           chave,
           {
@@ -8358,6 +7683,7 @@ async function editarProduto(
             null,
 
             arquivo:null,
+
             preview:null,
 
             tamanhos:
@@ -8368,10 +7694,12 @@ async function editarProduto(
 
       }
 
+
       const opcao =
       mapa.get(
         chave
       );
+
 
       if(
         opcao.tamanhos[
@@ -8389,7 +7717,8 @@ async function editarProduto(
 
           estoque:
           Number(
-            variante.estoque || 0
+            variante.estoque ||
+            0
           )
 
         };
@@ -8399,12 +7728,15 @@ async function editarProduto(
     }
   );
 
+
   opcoesFormulario =
   Array.from(
     mapa.values()
   );
 
+
   renderizarOpcoes();
+
 
   window.scrollTo({
     top:0,
@@ -8429,54 +7761,77 @@ function limparFormulario(){
 
   document.getElementById(
     "produtoId"
-  ).value = "";
+  ).value =
+  "";
+
 
   document.getElementById(
     "produtoNome"
-  ).value = "";
+  ).value =
+  "";
+
 
   document.getElementById(
     "produtoPreco"
-  ).value = "";
+  ).value =
+  "";
+
 
   document.getElementById(
     "produtoEstoque"
-  ).value = "0";
+  ).value =
+  "0";
+
 
   document.getElementById(
     "produtoCategoria"
-  ).value = "";
+  ).value =
+  "";
+
 
   document.getElementById(
     "produtoDescricao"
-  ).value = "";
+  ).value =
+  "";
+
 
   document.getElementById(
     "produtoFotosArquivos"
-  ).value = "";
+  ).value =
+  "";
+
 
   document.getElementById(
     "produtoAtivo"
   ).checked =
   true;
 
-  fotosFormulario = [];
 
-  opcoesFormulario = [];
+  fotosFormulario =
+  [];
+
+
+  opcoesFormulario =
+  [];
+
 
   renderizarFotosFormulario();
 
+
   renderizarOpcoes();
+
 
   document.getElementById(
     "tituloFormulario"
   ).textContent =
   "➕ Cadastrar produto";
 
+
   document.getElementById(
     "botaoSalvar"
   ).textContent =
   "CADASTRAR PRODUTO";
+
 
   document.getElementById(
     "botaoCancelar"
@@ -8508,8 +7863,11 @@ async function alternarProduto(
   })
   .eq(
     "id",
-    id
+    Number(
+      id
+    )
   );
+
 
   if(error){
 
@@ -8518,9 +7876,11 @@ async function alternarProduto(
       error.message
     );
 
+
     return;
 
   }
+
 
   await carregarProdutos();
 
@@ -8538,9 +7898,14 @@ async function excluirProduto(
   const produto =
   produtos.find(
     item =>
-      Number(item.id) ===
-      Number(id)
+      Number(
+        item.id
+      ) ===
+      Number(
+        id
+      )
   );
+
 
   const confirmar =
   confirm(
@@ -8552,9 +7917,11 @@ async function excluirProduto(
     "?"
   );
 
+
   if(!confirmar){
     return;
   }
+
 
   try{
 
@@ -8569,12 +7936,18 @@ async function excluirProduto(
     .delete()
     .eq(
       "produto_id",
-      Number(id)
+      Number(
+        id
+      )
     );
 
-    if(erroVariantes){
+
+    if(
+      erroVariantes
+    ){
       throw erroVariantes;
     }
+
 
     const {
       error:
@@ -8587,12 +7960,18 @@ async function excluirProduto(
     .delete()
     .eq(
       "produto_id",
-      Number(id)
+      Number(
+        id
+      )
     );
 
-    if(erroFotos){
+
+    if(
+      erroFotos
+    ){
       throw erroFotos;
     }
+
 
     const {
       error
@@ -8604,28 +7983,41 @@ async function excluirProduto(
     .delete()
     .eq(
       "id",
-      Number(id)
+      Number(
+        id
+      )
     );
+
 
     if(error){
       throw error;
     }
 
+
     alert(
       "Produto excluído. ✅"
     );
 
+
     limparFormulario();
+
 
     await carregarProdutos();
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      "Erro ao excluir:",
+      error
+    );
+
 
     alert(
       "Erro ao excluir: " +
-      error.message
+      (
+        error.message ||
+        "Erro desconhecido."
+      )
     );
 
   }
@@ -8634,7 +8026,7 @@ async function excluirProduto(
 
 
 /* =========================
-   FECHAR MODAL AO TOCAR FORA
+   MODAL
 ========================= */
 
 document.getElementById(
@@ -8642,10 +8034,13 @@ document.getElementById(
 )
 .addEventListener(
   "click",
-  function(event){
+  function(
+    event
+  ){
 
     if(
-      event.target === this
+      event.target ===
+      this
     ){
 
       fecharModalPedido();
@@ -8668,4 +8063,4 @@ verificarSessao();
 
 </body>
 
-</html>  
+</html>   
