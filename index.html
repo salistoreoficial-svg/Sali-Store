@@ -12,9 +12,14 @@
 
 <meta
   name="theme-color"
-  content="#ffffff"
+ content="#000000"
 >
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="815BCB89-C59E-479D-83FF-454243870EB3.png">
 
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SALI STORE">
 <title id="tituloPagina">
   SALI STORE | Moda Feminina
 </title>
@@ -4280,7 +4285,17 @@ montarOpcoesPagamento();
 
 <script src="produtos.js?v=18"></script>
 
-
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("./sw.js")
+      .catch(function (erro) {
+        console.error("Erro ao registrar Service Worker:", erro);
+      });
+  });
+}
+</script>
 </body>
 
 </html>
