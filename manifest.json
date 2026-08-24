@@ -8,17 +8,18 @@
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "orientation": "portrait",
-"icons": [
-  {
-    "src": "sali-icon-180.png",
-    "sizes": "180x180",
-    "type": "image/png",
-    "purpose": "any"
-  },
-  {
-    "src": "sali-icon-512.png",
-    "sizes": "512x512",
-    "type": "image/png",
-    "purpose": "any maskable"
-  }
-]
+  "icons": [
+    {
+      "src": "/Sali-Store/sali-icon-180.png?v=4",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Sali-Store/sali-icon-512.png?v=4",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
