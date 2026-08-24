@@ -1,0 +1,19 @@
+{
+  "name": "SALI STORE",
+  "short_name": "SALI",
+  "description": "SALI STORE - Moda feminina em Manacapuru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "815BCB89-C59E-479D-83FF-454243870EB3.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
