@@ -1,24 +1,5717 @@
-{
-  "name": "SALI ADM",
-  "short_name": "SALI ADM",
-  "description": "Painel administrativo SALI STORE",
-  "start_url": "./admin.html",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
-  "icons": [
-    {
-      "src": "/Sali-Store/sali-icon-180.png?v=6",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/Sali-Store/sali-icon-512.png?v=6",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SALI ADM">
+
+<link rel="manifest" href="manifest-admin.json?v=9">
+<link rel="apple-touch-icon" sizes="180x180" href="sali-icon-180.png?v=9">
+<link rel="icon" type="image/png" sizes="512x512" href="sali-icon-512.png?v=9">
+
+<title>SALI ADM</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
+
+:root{
+  --rosa:#e52d86;
+  --rosa2:#bd1762;
+  --rosaClaro:#fff0f7;
+  --preto:#000;
+  --cinza:#f5f5f5;
+  --borda:#e5e5e5;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5f5;
+  color:#111;
+  padding-bottom:85px;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.login-tela{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#ffd4e6,#ff87bb);
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:20px;
+  padding:28px 22px;
+  box-shadow:0 10px 35px rgba(0,0,0,.15);
+}
+
+.login-logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.login-logo h1{
+  color:var(--rosa);
+  font-size:32px;
+}
+
+.login-logo p{
+  color:#777;
+  margin-top:6px;
+}
+
+.campo{
+  margin-bottom:15px;
+}
+
+.campo label{
+  display:block;
+  font-weight:800;
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:10px;
+  padding:13px;
+  background:#fff;
+  outline:none;
+}
+
+.campo textarea{
+  min-height:90px;
+}
+
+.botao-login{
+  width:100%;
+  border:0;
+  border-radius:11px;
+  background:#000;
+  color:#fff;
+  padding:15px;
+  font-weight:900;
+}
+
+.erro-login{
+  color:#bd0000;
+  text-align:center;
+  margin-top:12px;
+  font-size:13px;
+}
+
+.painel{
+  display:none;
+}
+
+.topo{
+  position:sticky;
+  top:0;
+  z-index:900;
+  background:#000;
+  color:#fff;
+  padding:12px 15px;
+  padding-top:max(12px,env(safe-area-inset-top));
+}
+
+.topo-conteudo{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.marca-admin{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.marca-icone{
+  width:38px;
+  height:38px;
+  background:var(--rosa);
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+
+.marca-admin h1{
+  font-size:17px;
+}
+
+.marca-admin small{
+  display:block;
+  color:#aaa;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.sair{
+  background:#292929;
+  color:#fff;
+  border:0;
+  border-radius:9px;
+  padding:9px 12px;
+  font-weight:800;
+}
+
+.nav-admin{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:1000;
+  background:#fff;
+  border-top:1px solid #ddd;
+  padding:6px 5px max(7px,env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+
+.nav-item{
+  border:0;
+  background:transparent;
+  color:#777;
+  border-radius:9px;
+  padding:7px 2px;
+  font-size:10px;
+  font-weight:800;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+}
+
+.nav-item span:first-child{
+  font-size:20px;
+}
+
+.nav-item.ativo{
+  color:var(--rosa);
+  background:var(--rosaClaro);
+}
+
+.conteudo{
+  max-width:1150px;
+  margin:auto;
+  padding:18px 14px 40px;
+}
+
+.pagina{
+  display:none;
+}
+
+.pagina.ativa{
+  display:block;
+}
+
+.titulo-pagina{
+  margin-bottom:17px;
+}
+
+.titulo-pagina h2{
+  font-size:25px;
+  margin-bottom:4px;
+}
+
+.titulo-pagina p{
+  color:#777;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.bloco{
+  background:#fff;
+  border-radius:15px;
+  padding:16px;
+  margin-bottom:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.bloco h3{
+  margin-bottom:14px;
+}
+
+.dashboard-grade{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.dash-card{
+  background:#fff;
+  border-radius:14px;
+  padding:14px;
+  min-height:100px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.dash-card small{
+  color:#777;
+  font-weight:700;
+}
+
+.dash-card strong{
+  display:block;
+  font-size:23px;
+  margin-top:8px;
+}
+
+.dash-card span{
+  display:block;
+  color:#888;
+  font-size:10px;
+  margin-top:5px;
+}
+
+.dash-card.destaque{
+  background:#000;
+  color:#fff;
+}
+
+.dash-card.destaque small,
+.dash-card.destaque span{
+  color:#bbb;
+}
+
+.atalhos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.atalho{
+  border:1px solid #eee;
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  font-weight:900;
+  text-align:left;
+}
+
+.atalho span{
+  display:block;
+  font-size:23px;
+  margin-bottom:6px;
+}
+
+.filtros-scroll{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+
+.filtros-scroll::-webkit-scrollbar{
+  display:none;
+}
+
+.filtro-pedido{
+  flex:0 0 auto;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:999px;
+  padding:9px 12px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.filtro-pedido.ativo{
+  background:#000;
+  color:#fff;
+  border-color:#000;
+}
+
+.lista-pedidos,
+.lista-produtos{
+  display:grid;
+  gap:11px;
+}
+
+.pedido-card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:14px;
+}
+
+.pedido-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.pedido-numero{
+  font-size:15px;
+  font-weight:900;
+}
+
+.pedido-data{
+  color:#888;
+  font-size:10px;
+  margin-top:4px;
+}
+
+.pedido-total{
+  font-size:17px;
+  font-weight:900;
+  color:var(--rosa);
+}
+
+.pedido-cliente{
+  font-weight:900;
+  margin-top:11px;
+}
+
+.pedido-resumo{
+  color:#666;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:6px;
+}
+
+.pedido-entrega{
+  background:#f7f7f7;
+  padding:9px 10px;
+  border-radius:9px;
+  margin-top:8px;
+  font-size:12px;
+  line-height:1.45;
+}
+
+.pedido-entrega strong{
+  display:block;
+  margin-bottom:2px;
+}
+
+.status-pedido{
+  display:inline-block;
+  margin-top:9px;
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.status-pedido.novo{
+  background:#fff0f7;
+  color:#b31860;
+}
+
+.status-pedido.confirmado{
+  background:#e8f2ff;
+  color:#1c5c9e;
+}
+
+.status-pedido.separacao{
+  background:#fff5d9;
+  color:#8a5a00;
+}
+
+.status-pedido.entrega{
+  background:#eee9ff;
+  color:#5a37a3;
+}
+
+.status-pedido.entregue{
+  background:#e5f7e9;
+  color:#197232;
+}
+
+.status-pedido.cancelado{
+  background:#ffe8e8;
+  color:#ad0000;
+}
+
+.pedido-acoes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:11px;
+}
+
+.pedido-acoes button{
+  border:0;
+  border-radius:8px;
+  padding:10px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.ver-pedido{
+  background:#000;
+  color:#fff;
+}
+
+.avancar-pedido{
+  background:var(--rosaClaro);
+  color:var(--rosa2);
+}
+
+.cancelar-pedido{
+  background:#ffe8e8;
+  color:#a90000;
+}
+
+.sem-dados{
+  padding:28px 10px;
+  text-align:center;
+  color:#777;
+}
+
+.modal-pedido-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:rgba(0,0,0,.7);
+  align-items:flex-end;
+  justify-content:center;
+  padding:8px;
+}
+
+.modal-pedido-overlay.ativo{
+  display:flex;
+}
+
+.modal-pedido{
+  width:100%;
+  max-width:600px;
+  max-height:92vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:22px 22px 15px 15px;
+  padding:18px;
+  position:relative;
+}
+
+.modal-fechar{
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:37px;
+  height:37px;
+  border:0;
+  border-radius:50%;
+  background:#000;
+  color:#fff;
+  font-size:21px;
+}
+
+.modal-pedido h3{
+  padding-right:48px;
+}
+
+.modal-pedido .numero{
+  color:var(--rosa);
+  font-weight:900;
+  margin:4px 0 15px;
+}
+
+.detalhe-box{
+  background:#f7f7f7;
+  border-radius:11px;
+  padding:11px;
+  margin-bottom:9px;
+  line-height:1.45;
+  font-size:13px;
+}
+
+.detalhe-box strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.item-pedido{
+  display:grid;
+  grid-template-columns:52px 1fr auto;
+  gap:9px;
+  align-items:center;
+  padding:9px 0;
+  border-bottom:1px solid #eee;
+}
+
+.item-pedido:last-child{
+  border-bottom:0;
+}
+
+.item-pedido img{
+  width:52px;
+  height:66px;
+  border-radius:8px;
+  object-fit:cover;
+}
+
+.item-pedido .nome{
+  font-weight:800;
+  font-size:12px;
+}
+
+.item-pedido .qtd{
+  color:#777;
+  font-size:10px;
+  margin-top:3px;
+}
+
+.item-pedido .valor{
+  font-size:12px;
+  font-weight:900;
+}
+
+.linha-total{
+  display:flex;
+  justify-content:space-between;
+  padding:5px 0;
+}
+
+.linha-total.final{
+  border-top:1px solid #ddd;
+  margin-top:5px;
+  padding-top:10px;
+  font-size:17px;
+  font-weight:900;
+}
+
+.status-select{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:10px;
+  padding:12px;
+  background:#fff;
+}
+
+.salvar-status{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
+  padding:14px;
+  margin-top:9px;
+  font-weight:900;
+}
+
+.duplo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.escolher-foto{
+  display:block;
+  width:100%;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:13px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+#produtoFotosArquivos{
+  display:none;
+}
+
+.foto-ajuda{
+  color:#777;
+  font-size:11px;
+  line-height:1.45;
+  margin-top:6px;
+}
+
+.galeria-edicao{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+
+.foto-card{
+  border:1px solid #ddd;
+  border-radius:11px;
+  padding:7px;
+  position:relative;
+}
+
+.foto-card.principal{
+  border:2px solid var(--rosa);
+}
+
+.foto-card img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.badge-principal{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:var(--rosa);
+  color:#fff;
+  border-radius:999px;
+  padding:4px 7px;
+  font-size:9px;
+  font-weight:900;
+}
+
+.foto-acoes{
+  display:grid;
+  gap:5px;
+  margin-top:6px;
+}
+
+.foto-acoes button{
+  border:0;
+  border-radius:7px;
+  padding:8px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.definir-principal{
+  background:var(--rosaClaro);
+  color:var(--rosa2);
+}
+
+.excluir-foto{
+  background:#ffe8e8;
+  color:#ad0000;
+}
+
+.subtitulo{
+  border-top:1px solid #eee;
+  padding-top:18px;
+  margin:22px 0 11px;
+}
+
+.subtitulo h4{
+  font-size:17px;
+  margin-bottom:4px;
+}
+
+.subtitulo p{
+  color:#777;
+  font-size:11px;
+  line-height:1.45;
+}
+
+.opcoes-area{
+  display:grid;
+  gap:12px;
+}
+
+.opcao-card{
+  border:1px solid #ddd;
+  background:#fafafa;
+  border-radius:13px;
+  padding:13px;
+}
+
+.opcao-topo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:11px;
+}
+
+.remover-opcao{
+  border:0;
+  background:#ffe7e7;
+  color:#a90000;
+  padding:8px;
+  border-radius:7px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.tipo-opcao{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin-bottom:12px;
+}
+
+.tipo-opcao button{
+  border:2px solid #ddd;
+  background:#fff;
+  border-radius:9px;
+  padding:10px;
+  font-weight:900;
+}
+
+.tipo-opcao button.selecionado{
+  border-color:var(--rosa);
+  background:var(--rosaClaro);
+  color:var(--rosa2);
+}
+
+.tamanhos-grade{
+  display:grid;
+  gap:7px;
+}
+
+.tamanho-linha{
+  display:grid;
+  grid-template-columns:1fr 100px;
+  gap:8px;
+  align-items:center;
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:9px;
+  padding:8px;
+}
+
+.tamanho-check{
+  display:flex;
+  gap:7px;
+  align-items:center;
+  font-weight:800;
+  font-size:12px;
+}
+
+.tamanho-check input{
+  width:19px;
+  height:19px;
+}
+
+.estoque-tamanho{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:7px;
+  padding:8px;
+}
+
+.estoque-tamanho:disabled{
+  opacity:.5;
+  background:#eee;
+}
+
+.foto-opcao-area{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:10px;
+  padding:10px;
+  margin:10px 0;
+}
+
+.preview-opcao{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  margin-top:9px;
+}
+
+.preview-opcao img{
+  width:85px;
+  height:110px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.remover-foto-opcao{
+  border:0;
+  background:#ffe8e8;
+  color:#a90000;
+  border-radius:7px;
+  padding:8px;
+  font-weight:800;
+}
+
+.adicionar-opcao{
+  width:100%;
+  border:1px dashed var(--rosa);
+  color:var(--rosa2);
+  background:var(--rosaClaro);
+  border-radius:10px;
+  padding:13px;
+  margin-top:12px;
+  font-weight:900;
+}
+
+.estoque-calculado{
+  background:#f5f5f5;
+  border-radius:9px;
+  padding:11px;
+  margin-top:11px;
+}
+
+.estoque-calculado strong{
+  color:var(--rosa);
+}
+
+.ativo-area{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin:14px 0;
+  font-weight:800;
+}
+
+.ativo-area input{
+  width:19px;
+  height:19px;
+}
+
+.botoes-form{
+  display:flex;
+  gap:8px;
+}
+
+.salvar{
+  flex:1;
+  border:0;
+  background:var(--rosa);
+  color:#fff;
+  border-radius:10px;
+  padding:13px;
+  font-weight:900;
+}
+
+.cancelar{
+  display:none;
+  border:1px solid #ccc;
+  background:#fff;
+  border-radius:10px;
+  padding:13px;
+  font-weight:900;
+}
+
+.cabecalho-lista{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:9px;
+  margin-bottom:12px;
+}
+
+.buscar{
+  width:100%;
+  max-width:300px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  padding:10px;
+}
+
+.produto-card{
+  display:grid;
+  grid-template-columns:85px 1fr;
+  gap:11px;
+  padding:10px;
+  border:1px solid #eee;
+  border-radius:12px;
+}
+
+.produto-card img,
+.sem-foto{
+  width:85px;
+  height:112px;
+  border-radius:9px;
+}
+
+.produto-card img{
+  object-fit:cover;
+}
+
+.sem-foto{
+  background:#eee;
+  color:#999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:10px;
+}
+
+.produto-info h4{
+  margin-bottom:4px;
+}
+
+.preco{
+  color:var(--rosa);
+  font-weight:900;
+  margin-bottom:4px;
+}
+
+.detalhes{
+  color:#666;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.status-produto{
+  display:inline-block;
+  margin-top:6px;
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.status-produto.ativo{
+  background:#e6f7ea;
+  color:#197330;
+}
+
+.status-produto.inativo{
+  background:#eee;
+  color:#666;
+}
+
+.acoes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:8px;
+}
+
+.acoes button{
+  border:0;
+  border-radius:7px;
+  padding:8px;
+  font-size:9px;
+  font-weight:900;
+}
+
+.editar{
+  background:#000;
+  color:#fff;
+}
+
+.alternar{
+  background:var(--rosaClaro);
+  color:var(--rosa2);
+}
+
+.excluir{
+  background:#ffe8e8;
+  color:#a90000;
+}
+
+.layout-card,
+.entrega-config-card,
+.pagamento-config-card{
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:13px;
+  margin-bottom:11px;
+}
+
+.layout-toggle,
+.entrega-config-topo,
+.pagamento-config-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.layout-toggle{
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+.layout-toggle:last-child{
+  border-bottom:0;
+}
+
+.switch{
+  position:relative;
+  width:50px;
+  height:28px;
+  flex:0 0 auto;
+}
+
+.switch input{
+  opacity:0;
+  width:0;
+  height:0;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#ccc;
+  border-radius:30px;
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  left:3px;
+  top:3px;
+  border-radius:50%;
+  background:#fff;
+  transition:.2s;
+}
+
+.switch input:checked + .slider{
+  background:var(--rosa);
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(22px);
+}
+
+.grade-cores{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.cor-config{
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:9px;
+  padding:8px;
+}
+
+.cor-config label{
+  display:block;
+  font-size:10px;
+  font-weight:900;
+  margin-bottom:5px;
+}
+
+.cor-config input{
+  width:100%;
+  height:42px;
+  border:0;
+}
+
+.taxa-area{
+  background:#f7f7f7;
+  border-radius:9px;
+  padding:10px;
+  margin-top:10px;
+}
+
+.taxa-input-wrap{
+  display:flex;
+  align-items:center;
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:9px;
+  overflow:hidden;
+}
+
+.taxa-input-wrap span{
+  padding-left:10px;
+  font-weight:900;
+}
+
+.taxa-input-wrap input{
+  flex:1;
+  border:0;
+  padding:10px;
+  outline:none;
+  min-width:0;
+}
+
+.salvar-layout,
+.salvar-entregas,
+.botao-loja{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:14px;
+  color:#fff;
+  font-weight:900;
+}
+
+.salvar-layout{
+  background:var(--rosa);
+}
+
+.salvar-entregas,
+.botao-loja{
+  background:#000;
+}
+
+.status-layout,
+.status-entregas{
+  margin-top:8px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.sucesso{
+  color:#197330;
+}
+
+.erro{
+  color:#b60000;
+}
+
+@media(max-width:650px){
+  .duplo,
+  .grade-cores{
+    grid-template-columns:1fr;
+  }
+
+  .cabecalho-lista{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .buscar{
+    max-width:none;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="login-tela" id="loginTela">
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      <h1>SALI STORE</h1>
+      <p>Painel administrativo</p>
+    </div>
+
+    <div class="campo">
+      <label>E-mail</label>
+      <input type="email" id="email">
+    </div>
+
+    <div class="campo">
+      <label>Senha</label>
+      <input type="password" id="senha">
+    </div>
+
+    <button class="botao-login" onclick="entrar()">
+      ENTRAR NO PAINEL
+    </button>
+
+    <div class="erro-login" id="erroLogin"></div>
+
+  </div>
+
+</section>
+
+<section class="painel" id="painel">
+
+<header class="topo">
+
+  <div class="topo-conteudo">
+
+    <div class="marca-admin">
+
+      <div class="marca-icone">S</div>
+
+      <div>
+        <h1>SALI STORE</h1>
+        <small>Painel de controle</small>
+      </div>
+
+    </div>
+
+    <button class="sair" onclick="sair()">
+      SAIR
+    </button>
+
+  </div>
+
+</header>
+
+<nav class="nav-admin">
+
+  <button class="nav-item ativo" data-pagina="inicio" onclick="abrirPagina('inicio',this)">
+    <span>🏠</span>
+    <span>Início</span>
+  </button>
+
+  <button class="nav-item" data-pagina="pedidos" onclick="abrirPagina('pedidos',this)">
+    <span>🧾</span>
+    <span>Pedidos</span>
+  </button>
+
+  <button class="nav-item" data-pagina="produtos" onclick="abrirPagina('produtos',this)">
+    <span>👗</span>
+    <span>Produtos</span>
+  </button>
+
+  <button class="nav-item" data-pagina="cancelamentos" onclick="abrirPagina('cancelamentos',this)">
+    <span>❌</span>
+    <span>Cancelados</span>
+  </button>
+
+  <button class="nav-item" data-pagina="mais" onclick="abrirPagina('mais',this)">
+    <span>☰</span>
+    <span>Mais</span>
+  </button>
+
+</nav>
+
+<main class="conteudo">
+
+<section class="pagina ativa" id="pagina-inicio">
+
+  <div class="titulo-pagina">
+    <h2>Visão geral</h2>
+    <p>Acompanhe pedidos, vendas e estoque.</p>
+  </div>
+
+  <div class="dashboard-grade">
+
+    <div class="dash-card destaque">
+      <small>Vendas de hoje</small>
+      <strong id="dashVendasHoje">R$ 0,00</strong>
+      <span id="dashPedidosHoje">0 pedidos hoje</span>
+    </div>
+
+    <div class="dash-card">
+      <small>Pedidos novos</small>
+      <strong id="dashNovos">0</strong>
+      <span>Aguardando atendimento</span>
+    </div>
+
+    <div class="dash-card">
+      <small>Em andamento</small>
+      <strong id="dashAndamento">0</strong>
+      <span>Confirmados / separação / entrega</span>
+    </div>
+
+    <div class="dash-card">
+      <small>Estoque total</small>
+      <strong id="dashEstoque">0</strong>
+      <span id="dashProdutos">0 produtos cadastrados</span>
+    </div>
+
+  </div>
+
+  <div class="bloco">
+
+    <h3>⚡ Atalhos</h3>
+
+    <div class="atalhos">
+
+      <button class="atalho" onclick="abrirPagina('pedidos')">
+        <span>🧾</span>
+        Ver pedidos
+      </button>
+
+      <button class="atalho" onclick="abrirPagina('produtos')">
+        <span>➕</span>
+        Cadastrar produto
+      </button>
+
+      <button class="atalho" onclick="abrirPagina('cancelamentos')">
+        <span>❌</span>
+        Cancelamentos
+      </button>
+
+      <button class="atalho" onclick="abrirLojaVisitante()">
+        <span>🌐</span>
+        Ver minha loja
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="bloco">
+    <h3>🆕 Últimos pedidos</h3>
+    <div id="ultimosPedidos"></div>
+  </div>
+
+</section>
+
+<section class="pagina" id="pagina-pedidos">
+
+  <div class="titulo-pagina">
+    <h2>Pedidos</h2>
+    <p>Gerencie os pedidos até a entrega.</p>
+  </div>
+
+  <div class="filtros-scroll">
+
+    <button class="filtro-pedido ativo" onclick="filtrarPedidosStatus('Todos',this)">
+      Todos
+    </button>
+
+    <button class="filtro-pedido" onclick="filtrarPedidosStatus('Novo',this)">
+      Novos
+    </button>
+
+    <button class="filtro-pedido" onclick="filtrarPedidosStatus('Confirmado',this)">
+      Confirmados
+    </button>
+
+    <button class="filtro-pedido" onclick="filtrarPedidosStatus('Em separação',this)">
+      Em separação
+    </button>
+
+    <button class="filtro-pedido" onclick="filtrarPedidosStatus('Saiu para entrega',this)">
+      Em entrega
+    </button>
+
+    <button class="filtro-pedido" onclick="filtrarPedidosStatus('Entregue',this)">
+      Entregues
+    </button>
+
+  </div>
+
+  <div class="bloco">
+
+    <div class="campo">
+      <input
+        type="search"
+        id="buscaPedidos"
+        placeholder="Buscar pedido, cliente ou telefone..."
+        oninput="renderizarPedidos()"
+      >
+    </div>
+
+    <div class="lista-pedidos" id="listaPedidos">
+      <div class="sem-dados">Carregando pedidos...</div>
+    </div>
+
+  </div>
+
+</section>
+<section class="pagina" id="pagina-cancelamentos">
+
+  <div class="titulo-pagina">
+    <h2>Cancelamentos</h2>
+    <p>Pedidos cancelados aparecem aqui.</p>
+  </div>
+
+  <div class="bloco">
+    <div class="lista-pedidos" id="listaCancelamentos">
+      <div class="sem-dados">Nenhum pedido cancelado.</div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="pagina" id="pagina-produtos">
+
+  <div class="titulo-pagina">
+    <h2>Produtos</h2>
+    <p>Cadastre e edite os produtos da loja.</p>
+  </div>
+
+  <div class="bloco">
+
+    <h3 id="tituloFormulario">
+      ➕ Cadastrar produto
+    </h3>
+
+    <input type="hidden" id="produtoId">
+
+    <div class="campo">
+      <label>Nome do produto</label>
+      <input
+        type="text"
+        id="produtoNome"
+        placeholder="Ex.: Vestido longo"
+      >
+    </div>
+
+    <div class="duplo">
+
+      <div class="campo">
+        <label>Preço</label>
+        <input
+          type="number"
+          id="produtoPreco"
+          step="0.01"
+          min="0"
+          placeholder="59.99"
+        >
+      </div>
+
+      <div class="campo">
+        <label>Estoque geral</label>
+        <input
+          type="number"
+          id="produtoEstoque"
+          min="0"
+          value="0"
+        >
+      </div>
+
+    </div>
+
+    <div class="campo">
+      <label>Categoria</label>
+
+      <select id="produtoCategoria">
+        <option value="">Selecione</option>
+        <option value="Novidades">Novidades</option>
+        <option value="Vestidos">Vestidos</option>
+        <option value="Conjuntos">Conjuntos</option>
+        <option value="Blusas">Blusas</option>
+        <option value="Calças">Calças</option>
+        <option value="Body">Body</option>
+        <option value="Plus Size">Plus Size</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Descrição</label>
+      <textarea
+        id="produtoDescricao"
+        placeholder="Descreva o produto..."
+      ></textarea>
+    </div>
+
+    <div class="subtitulo">
+      <h4>📸 Fotos do produto</h4>
+      <p>Escolha várias fotos e defina uma como principal.</p>
+    </div>
+
+    <label class="escolher-foto" for="produtoFotosArquivos">
+      📷 ESCOLHER FOTOS
+    </label>
+
+    <input
+      type="file"
+      id="produtoFotosArquivos"
+      accept="image/*"
+      multiple
+      onchange="adicionarNovasFotos()"
+    >
+
+    <div
+      class="galeria-edicao"
+      id="galeriaFotos"
+    ></div>
+
+    <div class="subtitulo">
+      <h4>🎨 Cores / estampas</h4>
+      <p>Cadastre as opções e o estoque por tamanho.</p>
+    </div>
+
+    <div
+      class="opcoes-area"
+      id="opcoesArea"
+    ></div>
+
+    <button
+      type="button"
+      class="adicionar-opcao"
+      onclick="adicionarOpcao()"
+    >
+      + ADICIONAR COR / ESTAMPA
+    </button>
+
+    <div class="estoque-calculado">
+      Estoque total das variantes:
+      <strong id="estoqueVariantes">0</strong>
+    </div>
+
+    <label class="ativo-area">
+      <input
+        type="checkbox"
+        id="produtoAtivo"
+        checked
+      >
+      Produto ativo no site
+    </label>
+
+    <div class="botoes-form">
+
+      <button
+        class="salvar"
+        id="botaoSalvar"
+        onclick="salvarProduto()"
+      >
+        CADASTRAR PRODUTO
+      </button>
+
+      <button
+        class="cancelar"
+        id="botaoCancelar"
+        onclick="cancelarEdicao()"
+      >
+        CANCELAR
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <div class="cabecalho-lista">
+
+      <h3>📦 Produtos cadastrados</h3>
+
+      <input
+        type="search"
+        class="buscar"
+        id="busca"
+        placeholder="Buscar produto..."
+        oninput="filtrarProdutos()"
+      >
+
+    </div>
+
+    <div
+      class="lista-produtos"
+      id="listaProdutos"
+    >
+      <div class="sem-dados">Carregando produtos...</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="pagina" id="pagina-mais">
+
+  <div class="titulo-pagina">
+    <h2>Mais</h2>
+    <p>Configurações da loja.</p>
+  </div>
+
+  <div class="bloco">
+
+    <h3>🎨 Layout da loja</h3>
+
+    <div class="layout-card">
+
+      <div class="campo">
+        <label>Nome da loja</label>
+        <input
+          type="text"
+          id="layoutNomeLoja"
+          placeholder="SALI STORE"
+        >
+      </div>
+
+      <div class="campo">
+        <label>Subtítulo</label>
+        <input
+          type="text"
+          id="layoutSubtituloLoja"
+          placeholder="Moda feminina • Manacapuru"
+        >
+      </div>
+
+      <div class="campo">
+        <label>Instagram</label>
+        <input
+          type="text"
+          id="layoutInstagram"
+          placeholder="@salimanacapuru"
+        >
+      </div>
+
+      <div class="campo">
+        <label>Texto da barra superior</label>
+        <textarea id="layoutTextoTopo"></textarea>
+      </div>
+
+      <div class="campo">
+        <label>Título principal</label>
+        <input
+          type="text"
+          id="layoutHeroTitulo"
+        >
+      </div>
+
+      <div class="campo">
+        <label>Subtítulo principal</label>
+        <textarea id="layoutHeroSubtitulo"></textarea>
+      </div>
+
+      <div class="grade-cores">
+
+        <div class="cor-config">
+          <label>Cor principal</label>
+          <input
+            type="color"
+            id="layoutCorPrincipal"
+            value="#d92f82"
+          >
+        </div>
+
+        <div class="cor-config">
+          <label>Cor secundária</label>
+          <input
+            type="color"
+            id="layoutCorSecundaria"
+            value="#111111"
+          >
+        </div>
+
+        <div class="cor-config">
+          <label>Cor de fundo</label>
+          <input
+            type="color"
+            id="layoutCorFundo"
+            value="#ffffff"
+          >
+        </div>
+
+      </div>
+
+      <br>
+
+      <div class="layout-toggle">
+
+        <div>
+          <strong>Barra superior</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="layoutMostrarBarraTopo"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="layout-toggle">
+
+        <div>
+          <strong>Benefícios</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="layoutMostrarBeneficios"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="layout-toggle">
+
+        <div>
+          <strong>Categorias</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="layoutMostrarCategorias"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+    </div>
+
+    <button
+      class="salvar-layout"
+      id="botaoSalvarLayout"
+      onclick="salvarConfiguracoesLoja()"
+    >
+      💾 SALVAR LAYOUT
+    </button>
+
+    <div
+      class="status-layout"
+      id="statusLayout"
+    ></div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>🚚 Entregas</h3>
+
+    <div class="entrega-config-card">
+
+      <div class="entrega-config-topo">
+
+        <div>
+          <strong>Retirada na loja</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="mostrarRetirada"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="taxa-area">
+        <div class="taxa-input-wrap">
+          <span>R$</span>
+          <input
+            type="number"
+            id="taxaRetirada"
+            min="0"
+            step="0.01"
+            value="0"
+          >
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="entrega-config-card">
+
+      <div class="entrega-config-topo">
+
+        <div>
+          <strong>Entrega dentro da cidade</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="mostrarCidade"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="taxa-area">
+        <div class="taxa-input-wrap">
+          <span>R$</span>
+          <input
+            type="number"
+            id="taxaCidade"
+            min="0"
+            step="0.01"
+            value="5"
+          >
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="entrega-config-card">
+
+      <div class="entrega-config-topo">
+
+        <div>
+          <strong>Bola até Novo Manacá</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="mostrarBola"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="taxa-area">
+        <div class="taxa-input-wrap">
+          <span>R$</span>
+          <input
+            type="number"
+            id="taxaBola"
+            min="0"
+            step="0.01"
+            value="8"
+          >
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="entrega-config-card">
+
+      <div class="entrega-config-topo">
+
+        <div>
+          <strong>Caixa d’Água pra lá</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="mostrarCaixa"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="taxa-area">
+        <div class="taxa-input-wrap">
+          <span>R$</span>
+          <input
+            type="number"
+            id="taxaCaixa"
+            min="0"
+            step="0.01"
+            value="10"
+          >
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="entrega-config-card">
+
+      <div class="entrega-config-topo">
+
+        <div>
+          <strong>Barcos / jatos</strong>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="mostrarBarcos"
+            checked
+          >
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+      <div class="taxa-area">
+        <div class="taxa-input-wrap">
+          <span>R$</span>
+          <input
+            type="number"
+            id="taxaBarcos"
+            min="0"
+            step="0.01"
+            value="5"
+          >
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="subtitulo">
+      <h4>💳 Formas de pagamento</h4>
+    </div>
+
+
+    <div class="pagamento-config-card">
+
+      <strong>Pix</strong>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          id="pagamentoPix"
+          checked
+        >
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
+
+    <div class="pagamento-config-card">
+
+      <strong>Cartão</strong>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          id="pagamentoCartao"
+          checked
+        >
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
+
+    <div class="pagamento-config-card">
+
+      <strong>Dinheiro</strong>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          id="pagamentoDinheiro"
+          checked
+        >
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
+
+    <div class="pagamento-config-card">
+
+      <strong>Pagamento no ato da entrega</strong>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          id="pagamentoEntrega"
+          checked
+        >
+        <span class="slider"></span>
+      </label>
+
+    </div>
+
+    <button
+      class="salvar-entregas"
+      id="botaoSalvarEntregas"
+      onclick="salvarEntregasPagamentos()"
+    >
+      💾 SALVAR ENTREGA E PAGAMENTOS
+    </button>
+
+    <div
+      class="status-entregas"
+      id="statusEntregas"
+    ></div>
+
+  </div>
+
+
+  <div class="bloco">
+
+    <h3>🌐 Loja</h3>
+
+    <button
+      class="botao-loja"
+      onclick="abrirLojaVisitante()"
+    >
+      ABRIR MINHA LOJA
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+</section>
+
+
+<div
+  class="modal-pedido-overlay"
+  id="modalPedidoOverlay"
+>
+
+  <div class="modal-pedido">
+
+    <button
+      class="modal-fechar"
+      onclick="fecharModalPedido()"
+    >
+      ×
+    </button>
+
+    <div id="conteudoModalPedido"></div>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://uubslcjoybeehinnwhtg.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_hJ_G5ZdzwAKR_zs7q4luqA_RIa-0Qiz";
+
+const BUCKET_FOTOS =
+"produtos";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const supabasePublico =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY,
+  {
+    auth:{
+      persistSession:false,
+      autoRefreshToken:false,
+      detectSessionInUrl:false
+    }
+  }
+);
+
+let produtos = [];
+let pedidos = [];
+let filtroStatusPedidos = "Todos";
+let fotosFormulario = [];
+let opcoesFormulario = [];
+let configuracoesLoja = null;
+
+const STATUS_PEDIDOS = [
+  "Novo",
+  "Confirmado",
+  "Em separação",
+  "Saiu para entrega",
+  "Entregue",
+  "Cancelado"
+];
+
+const CORES_SALI = [
+  "Preto",
+  "Branco",
+  "Off White",
+  "Bege",
+  "Nude",
+  "Marrom",
+  "Caramelo",
+  "Rosa",
+  "Pink",
+  "Rosa bebê",
+  "Vermelho",
+  "Vinho",
+  "Azul",
+  "Azul bebê",
+  "Azul marinho",
+  "Verde",
+  "Verde militar",
+  "Verde bandeira",
+  "Amarelo",
+  "Laranja",
+  "Roxo",
+  "Lilás",
+  "Cinza",
+  "Prata",
+  "Dourado"
+];
+
+const TAMANHOS = [
+  {valor:"P",nome:"P"},
+  {valor:"M",nome:"M"},
+  {valor:"G",nome:"G"},
+  {valor:"GG",nome:"GG"},
+  {valor:"36",nome:"36"},
+  {valor:"38",nome:"38"},
+  {valor:"40",nome:"40"},
+  {valor:"42",nome:"42"},
+  {valor:"44",nome:"44"},
+  {valor:"46",nome:"46"},
+  {valor:"48",nome:"48"},
+  {
+    valor:"Tamanho único",
+    nome:"Tamanho único • veste 36 ao 42"
+  }
+];
+  async function entrar(){
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const senha =
+  document.getElementById("senha").value;
+
+  const erro =
+  document.getElementById("erroLogin");
+
+  erro.textContent = "";
+
+  if(!email || !senha){
+    erro.textContent = "Digite o e-mail e a senha.";
+    return;
+  }
+
+  const {data,error} =
+  await supabaseClient.auth.signInWithPassword({
+    email,
+    password:senha
+  });
+
+  if(error){
+    console.error(error);
+    erro.textContent =
+    "Não foi possível entrar. Verifique o e-mail e a senha.";
+    return;
+  }
+
+  if(data.session){
+    mostrarPainel();
+  }
+
+}
+
+
+async function verificarSessao(){
+
+  const {data} =
+  await supabaseClient.auth.getSession();
+
+  if(data.session){
+    mostrarPainel();
+  }else{
+    mostrarLogin();
+  }
+
+}
+
+
+async function mostrarPainel(){
+
+  document.getElementById("loginTela").style.display =
+  "none";
+
+  document.getElementById("painel").style.display =
+  "block";
+
+  await Promise.all([
+    carregarProdutos(),
+    carregarPedidos(),
+    carregarConfiguracoesLoja()
+  ]);
+
+}
+
+
+function mostrarLogin(){
+
+  document.getElementById("loginTela").style.display =
+  "flex";
+
+  document.getElementById("painel").style.display =
+  "none";
+
+}
+
+
+async function sair(){
+
+  await supabaseClient.auth.signOut();
+
+  mostrarLogin();
+
+}
+
+
+function abrirPagina(pagina,botao=null){
+
+  document.querySelectorAll(".pagina")
+  .forEach(item=>{
+    item.classList.remove("ativa");
+  });
+
+  const destino =
+  document.getElementById("pagina-" + pagina);
+
+  if(destino){
+    destino.classList.add("ativa");
+  }
+
+  document.querySelectorAll(".nav-item")
+  .forEach(item=>{
+    item.classList.remove("ativo");
+  });
+
+  if(botao){
+    botao.classList.add("ativo");
+  }else{
+
+    const itemMenu =
+    document.querySelector(
+      `.nav-item[data-pagina="${pagina}"]`
+    );
+
+    if(itemMenu){
+      itemMenu.classList.add("ativo");
+    }
+
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function abrirLojaVisitante(){
+
+  window.open(
+    "https://salistoreoficial-svg.github.io/Sali-Store/",
+    "_blank"
+  );
+
+}
+
+
+function moeda(valor){
+
+  return Number(valor || 0)
+  .toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+}
+
+
+function escaparHtml(valor){
+
+  return String(valor ?? "")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+function dataHoraBR(valor){
+
+  if(!valor){
+    return "";
+  }
+
+  try{
+
+    return new Date(valor)
+    .toLocaleString(
+      "pt-BR",
+      {
+        dateStyle:"short",
+        timeStyle:"short"
+      }
+    );
+
+  }catch(error){
+
+    return String(valor);
+
+  }
+
+}
+
+
+function somenteDataLocal(valor){
+
+  const data =
+  valor instanceof Date
+  ?
+  valor
+  :
+  new Date(valor);
+
+  if(Number.isNaN(data.getTime())){
+    return "";
+  }
+
+  const ano =
+  data.getFullYear();
+
+  const mes =
+  String(data.getMonth()+1)
+  .padStart(2,"0");
+
+  const dia =
+  String(data.getDate())
+  .padStart(2,"0");
+
+  return `${ano}-${mes}-${dia}`;
+
+}
+
+
+function telefoneFormatado(valor){
+
+  const digitos =
+  String(valor || "")
+  .replace(/\D/g,"");
+
+  if(digitos.length === 11){
+
+    return (
+      "(" +
+      digitos.slice(0,2) +
+      ") " +
+      digitos.slice(2,7) +
+      "-" +
+      digitos.slice(7)
+    );
+
+  }
+
+  return valor || "Não informado";
+
+}
+
+
+function normalizarStatus(status){
+
+  return String(
+    status || "Novo"
+  ).trim() || "Novo";
+
+}
+
+
+function classeStatusPedido(status){
+
+  const s =
+  normalizarStatus(status)
+  .toLowerCase();
+
+  if(s === "novo"){
+    return "novo";
+  }
+
+  if(s === "confirmado"){
+    return "confirmado";
+  }
+
+  if(s.includes("separa")){
+    return "separacao";
+  }
+
+  if(
+    s.includes("entrega")
+    &&
+    !s.includes("entregue")
+  ){
+    return "entrega";
+  }
+
+  if(s === "entregue"){
+    return "entregue";
+  }
+
+  if(s === "cancelado"){
+    return "cancelado";
+  }
+
+  return "";
+
+}
+
+
+function nomeEntrega(tipo){
+
+  const mapa = {
+    retirada:"Retirada na loja",
+    cidade:"Entrega dentro da cidade",
+    bola:"Bola até o Novo Manacá",
+    caixa:"Caixa d’Água pra lá",
+    barcos:"Barcos / jatos"
+  };
+
+  return (
+    mapa[String(tipo || "").toLowerCase()]
+    ||
+    tipo
+    ||
+    "Não informado"
+  );
+
+}
+
+
+function proximoStatus(statusAtual){
+
+  const fluxo = [
+    "Novo",
+    "Confirmado",
+    "Em separação",
+    "Saiu para entrega",
+    "Entregue"
+  ];
+
+  const status =
+  normalizarStatus(statusAtual);
+
+  const indice =
+  fluxo.indexOf(status);
+
+  if(
+    indice === -1
+    ||
+    indice === fluxo.length - 1
+  ){
+    return null;
+  }
+
+  return fluxo[indice + 1];
+
+}
+
+
+function textoBotaoProximoStatus(statusAtual){
+
+  const status =
+  normalizarStatus(statusAtual);
+
+  if(status === "Novo"){
+    return "CONFIRMAR PEDIDO";
+  }
+
+  if(status === "Confirmado"){
+    return "ENVIAR PARA SEPARAÇÃO";
+  }
+
+  if(status === "Em separação"){
+    return "SAIU PARA ENTREGA";
+  }
+
+  if(status === "Saiu para entrega"){
+    return "MARCAR COMO ENTREGUE";
+  }
+
+  return "";
+
+}
+
+
+function lerProdutosPedido(valor){
+
+  if(Array.isArray(valor)){
+    return valor;
+  }
+
+  if(
+    valor &&
+    typeof valor === "object"
+  ){
+
+    return Array.isArray(valor.items)
+    ?
+    valor.items
+    :
+    [valor];
+
+  }
+
+  const texto =
+  String(valor || "").trim();
+
+  if(!texto){
+    return [];
+  }
+
+  try{
+
+    const dados =
+    JSON.parse(texto);
+
+    return Array.isArray(dados)
+    ?
+    dados
+    :
+    [dados];
+
+  }catch(error){
+
+    return [{
+      nome:texto,
+      quantidade:1,
+      preco:0
+    }];
+
+  }
+
+}
+
+
+function nomeItemPedido(item){
+
+  return (
+    item.nome
+    ||
+    item.name
+    ||
+    item.produto
+    ||
+    "Produto"
+  );
+
+}
+
+
+function qtdItemPedido(item){
+
+  return Number(
+    item.quantidade
+    ??
+    item.qtd
+    ??
+    item.quantity
+    ??
+    1
+  ) || 1;
+
+}
+
+
+function precoItemPedido(item){
+
+  return Number(
+    item.preco
+    ??
+    item.price
+    ??
+    item.valor
+    ??
+    0
+  ) || 0;
+
+}
+
+
+function fotoItemPedido(item){
+
+  return (
+    item.foto
+    ||
+    item.foto_url
+    ||
+    item.imagem
+    ||
+    item.image
+    ||
+    ""
+  );
+
+}
+
+
+/* CONFIGURAÇÕES */
+
+async function carregarConfiguracoesLoja(){
+
+  const {data,error} =
+  await supabaseClient
+  .from("Configuracoes_Loja")
+  .select("*")
+  .eq("id",1)
+  .maybeSingle();
+
+  if(error){
+    console.error(error);
+    return;
+  }
+
+  configuracoesLoja =
+  data || {};
+
+  preencherFormularioLayout();
+  preencherEntregasPagamentos();
+
+}
+
+
+function preencherFormularioLayout(){
+
+  document.getElementById("layoutNomeLoja").value =
+  configuracoesLoja.nome_loja || "SALI STORE";
+
+  document.getElementById("layoutSubtituloLoja").value =
+  configuracoesLoja.subtitulo_loja || "";
+
+  document.getElementById("layoutInstagram").value =
+  configuracoesLoja.instagram || "";
+
+  document.getElementById("layoutTextoTopo").value =
+  configuracoesLoja.texto_topo || "";
+
+  document.getElementById("layoutHeroTitulo").value =
+  configuracoesLoja.hero_titulo || "";
+
+  document.getElementById("layoutHeroSubtitulo").value =
+  configuracoesLoja.hero_subtitulo || "";
+
+  document.getElementById("layoutCorPrincipal").value =
+  configuracoesLoja.cor_principal || "#d92f82";
+
+  document.getElementById("layoutCorSecundaria").value =
+  configuracoesLoja.cor_secundaria || "#111111";
+
+  document.getElementById("layoutCorFundo").value =
+  configuracoesLoja.cor_fundo || "#ffffff";
+
+  document.getElementById("layoutMostrarBarraTopo").checked =
+  configuracoesLoja.mostrar_barra_topo !== false;
+
+  document.getElementById("layoutMostrarBeneficios").checked =
+  configuracoesLoja.mostrar_beneficios !== false;
+
+  document.getElementById("layoutMostrarCategorias").checked =
+  configuracoesLoja.mostrar_categorias !== false;
+
+}
+
+
+function preencherEntregasPagamentos(){
+
+  document.getElementById("taxaRetirada").value =
+  Number(configuracoesLoja.taxa_retirada ?? 0);
+
+  document.getElementById("taxaCidade").value =
+  Number(configuracoesLoja.taxa_cidade ?? 5);
+
+  document.getElementById("taxaBola").value =
+  Number(configuracoesLoja.taxa_bola ?? 8);
+
+  document.getElementById("taxaCaixa").value =
+  Number(configuracoesLoja.taxa_caixa ?? 10);
+
+  document.getElementById("taxaBarcos").value =
+  Number(configuracoesLoja.taxa_barcos ?? 5);
+
+  document.getElementById("mostrarRetirada").checked =
+  configuracoesLoja.mostrar_retirada !== false;
+
+  document.getElementById("mostrarCidade").checked =
+  configuracoesLoja.mostrar_cidade !== false;
+
+  document.getElementById("mostrarBola").checked =
+  configuracoesLoja.mostrar_bola !== false;
+
+  document.getElementById("mostrarCaixa").checked =
+  configuracoesLoja.mostrar_caixa !== false;
+
+  document.getElementById("mostrarBarcos").checked =
+  configuracoesLoja.mostrar_barcos !== false;
+
+  document.getElementById("pagamentoPix").checked =
+  configuracoesLoja.pagamento_pix !== false;
+
+  document.getElementById("pagamentoCartao").checked =
+  configuracoesLoja.pagamento_cartao !== false;
+
+  document.getElementById("pagamentoDinheiro").checked =
+  configuracoesLoja.pagamento_dinheiro !== false;
+
+  document.getElementById("pagamentoEntrega").checked =
+  configuracoesLoja.pagamento_entrega !== false;
+
+}
+
+
+async function salvarConfiguracoesLoja(){
+
+  const botao =
+  document.getElementById("botaoSalvarLayout");
+
+  botao.disabled = true;
+  botao.textContent = "SALVANDO...";
+
+  try{
+
+    const dados = {
+
+      id:1,
+
+      nome_loja:
+      document.getElementById("layoutNomeLoja").value.trim(),
+
+      subtitulo_loja:
+      document.getElementById("layoutSubtituloLoja").value.trim(),
+
+      instagram:
+      document.getElementById("layoutInstagram").value.trim(),
+
+      texto_topo:
+      document.getElementById("layoutTextoTopo").value.trim(),
+
+      hero_titulo:
+      document.getElementById("layoutHeroTitulo").value.trim(),
+
+      hero_subtitulo:
+      document.getElementById("layoutHeroSubtitulo").value.trim(),
+
+      cor_principal:
+      document.getElementById("layoutCorPrincipal").value,
+
+      cor_secundaria:
+      document.getElementById("layoutCorSecundaria").value,
+
+      cor_fundo:
+      document.getElementById("layoutCorFundo").value,
+
+      mostrar_barra_topo:
+      document.getElementById("layoutMostrarBarraTopo").checked,
+
+      mostrar_beneficios:
+      document.getElementById("layoutMostrarBeneficios").checked,
+
+      mostrar_categorias:
+      document.getElementById("layoutMostrarCategorias").checked,
+
+      updated_at:
+      new Date().toISOString()
+
+    };
+
+    const {data,error} =
+    await supabaseClient
+    .from("Configuracoes_Loja")
+    .upsert(
+      dados,
+      {
+        onConflict:"id"
+      }
+    )
+    .select("*")
+    .single();
+
+    if(error){
+      throw error;
+    }
+
+    configuracoesLoja = data;
+
+    document.getElementById("statusLayout").textContent =
+    "Layout salvo com sucesso! ✅";
+
+    document.getElementById("statusLayout").className =
+    "status-layout sucesso";
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById("statusLayout").textContent =
+    error.message || "Erro ao salvar.";
+
+    document.getElementById("statusLayout").className =
+    "status-layout erro";
+
+  }finally{
+
+    botao.disabled = false;
+    botao.textContent = "💾 SALVAR LAYOUT";
+
+  }
+
+}
+
+
+async function salvarEntregasPagamentos(){
+
+  const botao =
+  document.getElementById("botaoSalvarEntregas");
+
+  botao.disabled = true;
+  botao.textContent = "SALVANDO...";
+
+  try{
+
+    const dados = {
+
+      id:1,
+
+      taxa_retirada:
+      Number(document.getElementById("taxaRetirada").value || 0),
+
+      taxa_cidade:
+      Number(document.getElementById("taxaCidade").value || 0),
+
+      taxa_bola:
+      Number(document.getElementById("taxaBola").value || 0),
+
+      taxa_caixa:
+      Number(document.getElementById("taxaCaixa").value || 0),
+
+      taxa_barcos:
+      Number(document.getElementById("taxaBarcos").value || 0),
+
+      mostrar_retirada:
+      document.getElementById("mostrarRetirada").checked,
+
+      mostrar_cidade:
+      document.getElementById("mostrarCidade").checked,
+
+      mostrar_bola:
+      document.getElementById("mostrarBola").checked,
+
+      mostrar_caixa:
+      document.getElementById("mostrarCaixa").checked,
+
+      mostrar_barcos:
+      document.getElementById("mostrarBarcos").checked,
+
+      pagamento_pix:
+      document.getElementById("pagamentoPix").checked,
+
+      pagamento_cartao:
+      document.getElementById("pagamentoCartao").checked,
+
+      pagamento_dinheiro:
+      document.getElementById("pagamentoDinheiro").checked,
+
+      pagamento_entrega:
+      document.getElementById("pagamentoEntrega").checked,
+
+      updated_at:
+      new Date().toISOString()
+
+    };
+
+    const {data,error} =
+    await supabaseClient
+    .from("Configuracoes_Loja")
+    .upsert(
+      dados,
+      {
+        onConflict:"id"
+      }
+    )
+    .select("*")
+    .single();
+
+    if(error){
+      throw error;
+    }
+
+    configuracoesLoja = {
+      ...configuracoesLoja,
+      ...data
+    };
+
+    document.getElementById("statusEntregas").textContent =
+    "Entrega e pagamentos salvos! ✅";
+
+    document.getElementById("statusEntregas").className =
+    "status-entregas sucesso";
+
+  }catch(error){
+
+    console.error(error);
+
+    document.getElementById("statusEntregas").textContent =
+    error.message || "Erro ao salvar.";
+
+    document.getElementById("statusEntregas").className =
+    "status-entregas erro";
+
+  }finally{
+
+    botao.disabled = false;
+
+    botao.textContent =
+    "💾 SALVAR ENTREGA E PAGAMENTOS";
+
+  }
+
+}
+
+
+/* PEDIDOS */
+
+async function carregarPedidos(){
+
+  const {data,error} =
+  await supabaseClient
+  .from("Pedidos")
+  .select("*")
+  .order(
+    "created_at",
+    {
+      ascending:false
+    }
+  );
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById("listaPedidos").innerHTML =
+    `<div class="sem-dados">${escaparHtml(error.message)}</div>`;
+
+    return;
+
+  }
+
+  pedidos = data || [];
+
+  renderizarPedidos();
+  renderizarCancelamentos();
+  renderizarUltimosPedidos();
+  atualizarDashboard();
+
+}
+
+
+function filtrarPedidosStatus(status,botao){
+
+  filtroStatusPedidos = status;
+
+  document.querySelectorAll(".filtro-pedido")
+  .forEach(item=>{
+    item.classList.remove("ativo");
+  });
+
+  if(botao){
+    botao.classList.add("ativo");
+  }
+
+  renderizarPedidos();
+
+}
+
+
+function renderizarPedidos(){
+
+  const area =
+  document.getElementById("listaPedidos");
+
+  const busca =
+  String(
+    document.getElementById("buscaPedidos")?.value || ""
+  )
+  .trim()
+  .toLowerCase();
+
+  const lista =
+  pedidos.filter(pedido=>{
+
+    const status =
+    normalizarStatus(pedido.status);
+
+    if(status === "Cancelado"){
+      return false;
+    }
+
+    if(
+      filtroStatusPedidos !== "Todos"
+      &&
+      status !== filtroStatusPedidos
+    ){
+      return false;
+    }
+
+    if(!busca){
+      return true;
+    }
+
+    const texto = [
+      pedido.numero_pedido,
+      pedido.nome_cliente,
+      pedido.Telefone,
+      pedido.telefone
+    ]
+    .join(" ")
+    .toLowerCase();
+
+    return texto.includes(busca);
+
+  });
+
+  if(!lista.length){
+
+    area.innerHTML =
+    '<div class="sem-dados">Nenhum pedido encontrado.</div>';
+
+    return;
+
+  }
+
+  area.innerHTML =
+  lista.map(criarHtmlPedido).join("");
+
+}
+
+
+function criarHtmlPedido(pedido){
+
+  const status =
+  normalizarStatus(pedido.status);
+
+  const prox =
+  proximoStatus(status);
+
+  const textoProximo =
+  textoBotaoProximoStatus(status);
+
+  const tipoEntrega =
+  nomeEntrega(pedido.tipo_entrega);
+
+  const endereco =
+  String(pedido.endereco || "").trim();
+
+  const valorEntrega =
+  Number(pedido.valor_entrega || 0);
+
+  const idPedido =
+  Number(pedido.id);
+
+  return `
+
+    <div class="pedido-card">
+
+      <div class="pedido-topo">
+
+        <div>
+
+          <div class="pedido-numero">
+            ${escaparHtml(
+              pedido.numero_pedido
+              ||
+              ("Pedido #" + pedido.id)
+            )}
+          </div>
+
+          <div class="pedido-data">
+            ${escaparHtml(
+              dataHoraBR(pedido.created_at)
+            )}
+          </div>
+
+        </div>
+
+        <div class="pedido-total">
+          ${moeda(pedido.total)}
+        </div>
+
+      </div>
+
+      <div class="pedido-cliente">
+        ${escaparHtml(
+          pedido.nome_cliente
+          ||
+          "Cliente não informado"
+        )}
+      </div>
+
+      <div class="pedido-resumo">
+
+        📱
+        ${escaparHtml(
+          telefoneFormatado(
+            pedido.Telefone
+            ??
+            pedido.telefone
+          )
+        )}
+
+        <br>
+
+        💳
+        ${escaparHtml(
+          pedido.forma_pagamento
+          ||
+          "Não informado"
+        )}
+
+      </div>
+
+      <div class="pedido-entrega">
+
+        <strong>
+          🚚 ${escaparHtml(tipoEntrega)}
+        </strong>
+
+        ${
+          valorEntrega > 0
+          ?
+          `Taxa: ${moeda(valorEntrega)}`
+          :
+          "Sem taxa"
+        }
+
+        ${
+          endereco
+          &&
+          String(pedido.tipo_entrega || "").toLowerCase()
+          !==
+          "retirada"
+          ?
+          `<br>📍 ${escaparHtml(endereco)}`
+          :
+          ""
+        }
+
+      </div>
+
+      <span
+        class="status-pedido ${classeStatusPedido(status)}"
+      >
+        ${escaparHtml(status)}
+      </span>
+
+      <div class="pedido-acoes">
+
+        <button
+          type="button"
+          class="ver-pedido"
+          data-id="${idPedido}"
+          onclick="abrirPedidoPorBotao(this)"
+        >
+          VER PEDIDO
+        </button>
+
+        ${
+          prox
+          ?
+          `
+            <button
+              type="button"
+              class="avancar-pedido"
+              data-id="${idPedido}"
+              data-status="${escaparHtml(prox)}"
+              onclick="mudarStatusPorBotao(this)"
+            >
+              ${escaparHtml(textoProximo)}
+            </button>
+          `
+          :
+          ""
+        }
+
+        ${
+          status !== "Entregue"
+          &&
+          status !== "Cancelado"
+          ?
+          `
+            <button
+              type="button"
+              class="cancelar-pedido"
+              data-id="${idPedido}"
+              data-status="Cancelado"
+              onclick="mudarStatusPorBotao(this)"
+            >
+              CANCELAR
+            </button>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function abrirPedidoPorBotao(botao){
+
+  abrirPedido(
+    Number(botao.dataset.id)
+  );
+
+}
+
+
+async function mudarStatusPorBotao(botao){
+
+  const id =
+  Number(botao.dataset.id);
+
+  const status =
+  String(
+    botao.dataset.status || ""
+  ).trim();
+
+  if(!id || !status){
+    return;
+  }
+
+  botao.disabled = true;
+
+  try{
+
+    await mudarStatusRapido(
+      id,
+      status
+    );
+
+  }finally{
+
+    botao.disabled = false;
+
+  }
+
+}
+function renderizarUltimosPedidos(){
+
+  const area =
+  document.getElementById("ultimosPedidos");
+
+  if(!area){
+    return;
+  }
+
+  const lista =
+  pedidos.slice(0,3);
+
+  if(!lista.length){
+
+    area.innerHTML =
+    '<div class="sem-dados">Nenhum pedido recebido ainda.</div>';
+
+    return;
+
+  }
+
+  area.innerHTML =
+  lista.map(pedido=>{
+
+    const status =
+    normalizarStatus(pedido.status);
+
+    return `
+
+      <div class="pedido-card">
+
+        <div class="pedido-topo">
+
+          <div>
+
+            <div class="pedido-numero">
+              ${escaparHtml(
+                pedido.numero_pedido
+                ||
+                ("Pedido #" + pedido.id)
+              )}
+            </div>
+
+            <div class="pedido-data">
+              ${escaparHtml(
+                dataHoraBR(pedido.created_at)
+              )}
+            </div>
+
+          </div>
+
+          <div class="pedido-total">
+            ${moeda(pedido.total)}
+          </div>
+
+        </div>
+
+        <div class="pedido-cliente">
+          ${escaparHtml(
+            pedido.nome_cliente
+            ||
+            "Cliente"
+          )}
+        </div>
+
+        <div class="pedido-resumo">
+
+          🚚
+          ${escaparHtml(
+            nomeEntrega(pedido.tipo_entrega)
+          )}
+
+          <br>
+
+          💳
+          ${escaparHtml(
+            pedido.forma_pagamento
+            ||
+            "Não informado"
+          )}
+
+        </div>
+
+        <span
+          class="status-pedido ${classeStatusPedido(status)}"
+        >
+          ${escaparHtml(status)}
+        </span>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+
+function renderizarCancelamentos(){
+
+  const area =
+  document.getElementById("listaCancelamentos");
+
+  if(!area){
+    return;
+  }
+
+  const lista =
+  pedidos.filter(
+    pedido =>
+      normalizarStatus(pedido.status)
+      ===
+      "Cancelado"
+  );
+
+  if(!lista.length){
+
+    area.innerHTML =
+    '<div class="sem-dados">Nenhum pedido cancelado. ✅</div>';
+
+    return;
+
+  }
+
+  area.innerHTML =
+  lista.map(pedido=>`
+
+    <div class="pedido-card">
+
+      <div class="pedido-topo">
+
+        <div>
+
+          <div class="pedido-numero">
+            ${escaparHtml(
+              pedido.numero_pedido
+              ||
+              ("Pedido #" + pedido.id)
+            )}
+          </div>
+
+          <div class="pedido-data">
+            ${escaparHtml(
+              dataHoraBR(pedido.created_at)
+            )}
+          </div>
+
+        </div>
+
+        <div class="pedido-total">
+          ${moeda(pedido.total)}
+        </div>
+
+      </div>
+
+      <div class="pedido-cliente">
+        ${escaparHtml(
+          pedido.nome_cliente
+          ||
+          "Cliente"
+        )}
+      </div>
+
+      <div class="pedido-resumo">
+
+        🚚
+        ${escaparHtml(
+          nomeEntrega(pedido.tipo_entrega)
+        )}
+
+        <br>
+
+        💳
+        ${escaparHtml(
+          pedido.forma_pagamento
+          ||
+          "Não informado"
+        )}
+
+      </div>
+
+      <span class="status-pedido cancelado">
+        Cancelado
+      </span>
+
+      <div class="pedido-acoes">
+
+        <button
+          type="button"
+          class="ver-pedido"
+          data-id="${Number(pedido.id)}"
+          onclick="abrirPedidoPorBotao(this)"
+        >
+          VER PEDIDO
+        </button>
+
+        <button
+          type="button"
+          class="avancar-pedido"
+          data-id="${Number(pedido.id)}"
+          data-status="Novo"
+          onclick="mudarStatusPorBotao(this)"
+        >
+          REATIVAR PEDIDO
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+function abrirPedido(id){
+
+  const pedido =
+  pedidos.find(
+    item =>
+      Number(item.id)
+      ===
+      Number(id)
+  );
+
+  if(!pedido){
+    return;
+  }
+
+  const status =
+  normalizarStatus(pedido.status);
+
+  const itens =
+  lerProdutosPedido(pedido.produtos);
+
+  const retirada =
+  String(
+    pedido.tipo_entrega || ""
+  ).toLowerCase()
+  ===
+  "retirada";
+
+  const itensHtml =
+  itens.length
+  ?
+  itens.map(item=>{
+
+    const foto =
+    fotoItemPedido(item);
+
+    const detalhes = [];
+
+    if(item.cor){
+      detalhes.push(
+        "Cor: " + item.cor
+      );
+    }
+
+    if(item.estampa){
+      detalhes.push(
+        "Estampa: " + item.estampa
+      );
+    }
+
+    if(item.tamanho){
+      detalhes.push(
+        "Tamanho: " + item.tamanho
+      );
+    }
+
+    return `
+
+      <div class="item-pedido">
+
+        ${
+          foto
+          ?
+          `
+            <img
+              src="${escaparHtml(foto)}"
+              alt="Produto"
+            >
+          `
+          :
+          `
+            <div
+              style="
+                width:52px;
+                height:66px;
+                border-radius:8px;
+                background:#eee;
+              "
+            ></div>
+          `
+        }
+
+        <div>
+
+          <div class="nome">
+            ${escaparHtml(
+              nomeItemPedido(item)
+            )}
+          </div>
+
+          <div class="qtd">
+
+            Quantidade:
+            ${qtdItemPedido(item)}
+
+            ${
+              detalhes.length
+              ?
+              `<br>${escaparHtml(
+                detalhes.join(" • ")
+              )}`
+              :
+              ""
+            }
+
+          </div>
+
+        </div>
+
+        <div class="valor">
+          ${moeda(
+            precoItemPedido(item)
+            *
+            qtdItemPedido(item)
+          )}
+        </div>
+
+      </div>
+
+    `;
+
+  }).join("")
+  :
+  '<div class="sem-dados">Itens não identificados.</div>';
+
+  const opcoesStatus =
+  STATUS_PEDIDOS.map(item=>`
+
+    <option
+      value="${escaparHtml(item)}"
+      ${item === status ? "selected" : ""}
+    >
+      ${escaparHtml(item)}
+    </option>
+
+  `).join("");
+
+  document.getElementById("conteudoModalPedido").innerHTML = `
+
+    <h3>
+      ${escaparHtml(
+        pedido.nome_cliente
+        ||
+        "Cliente"
+      )}
+    </h3>
+
+    <div class="numero">
+      ${escaparHtml(
+        pedido.numero_pedido
+        ||
+        ("Pedido #" + pedido.id)
+      )}
+    </div>
+
+    <div class="detalhe-box">
+
+      <strong>📱 Telefone</strong>
+
+      ${escaparHtml(
+        telefoneFormatado(
+          pedido.Telefone
+          ??
+          pedido.telefone
+        )
+      )}
+
+    </div>
+
+    <div class="detalhe-box">
+
+      <strong>🚚 Forma de entrega</strong>
+
+      ${escaparHtml(
+        nomeEntrega(
+          pedido.tipo_entrega
+        )
+      )}
+
+      <br>
+
+      ${
+        Number(
+          pedido.valor_entrega || 0
+        ) > 0
+        ?
+        "Taxa: " + moeda(
+          pedido.valor_entrega
+        )
+        :
+        "Sem taxa"
+      }
+
+    </div>
+
+    <div class="detalhe-box">
+
+      <strong>📍 Endereço / destino</strong>
+
+      ${
+        retirada
+        ?
+        "Retirada na loja"
+        :
+        escaparHtml(
+          pedido.endereco
+          ||
+          "Não informado"
+        )
+      }
+
+    </div>
+
+    <div class="detalhe-box">
+
+      <strong>💳 Pagamento</strong>
+
+      ${escaparHtml(
+        pedido.forma_pagamento
+        ||
+        "Não informado"
+      )}
+
+    </div>
+
+    <div class="detalhe-box">
+
+      <strong>🛍️ Produtos</strong>
+
+      ${itensHtml}
+
+    </div>
+
+    <div class="detalhe-box">
+
+      <div class="linha-total">
+
+        <span>Subtotal</span>
+
+        <strong>
+          ${moeda(pedido.subtotal)}
+        </strong>
+
+      </div>
+
+      <div class="linha-total">
+
+        <span>Entrega</span>
+
+        <strong>
+          ${moeda(pedido.valor_entrega)}
+        </strong>
+
+      </div>
+
+      <div class="linha-total final">
+
+        <span>Total</span>
+
+        <span>
+          ${moeda(pedido.total)}
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="campo">
+
+      <label>Status do pedido</label>
+
+      <select
+        id="statusPedidoModal"
+        class="status-select"
+      >
+        ${opcoesStatus}
+      </select>
+
+    </div>
+
+    <button
+      type="button"
+      class="salvar-status"
+      data-id="${Number(pedido.id)}"
+      onclick="salvarStatusPorBotao(this)"
+    >
+      SALVAR STATUS
+    </button>
+
+  `;
+
+  document.getElementById("modalPedidoOverlay")
+  .classList.add("ativo");
+
+  document.body.style.overflow =
+  "hidden";
+
+}
+
+
+function fecharModalPedido(){
+
+  document.getElementById("modalPedidoOverlay")
+  .classList.remove("ativo");
+
+  document.body.style.overflow =
+  "";
+
+}
+
+
+async function salvarStatusPorBotao(botao){
+
+  const id =
+  Number(botao.dataset.id);
+
+  const seletor =
+  document.getElementById("statusPedidoModal");
+
+  if(!id || !seletor){
+    return;
+  }
+
+  const status =
+  seletor.value;
+
+  botao.disabled = true;
+  botao.textContent = "SALVANDO...";
+
+  const sucesso =
+  await atualizarStatusPedido(
+    id,
+    status
+  );
+
+  if(sucesso){
+
+    fecharModalPedido();
+
+  }else{
+
+    botao.disabled = false;
+    botao.textContent = "SALVAR STATUS";
+
+  }
+
+}
+
+
+async function mudarStatusRapido(id,status){
+
+  if(status === "Cancelado"){
+
+    const confirmar =
+    confirm(
+      "Tem certeza que deseja cancelar este pedido?"
+    );
+
+    if(!confirmar){
+      return false;
+    }
+
+  }
+
+  return await atualizarStatusPedido(
+    id,
+    status
+  );
+
+}
+
+
+async function atualizarStatusPedido(id,status){
+
+  try{
+
+    const {data,error} =
+    await supabaseClient
+    .from("Pedidos")
+    .update({
+      status:status
+    })
+    .eq(
+      "id",
+      Number(id)
+    )
+    .select("id,status");
+
+    if(error){
+      throw error;
+    }
+
+    if(!data || data.length === 0){
+
+      throw new Error(
+        "O pedido não foi atualizado no banco."
+      );
+
+    }
+
+    const pedido =
+    pedidos.find(
+      item =>
+        Number(item.id)
+        ===
+        Number(id)
+    );
+
+    if(pedido){
+      pedido.status = status;
+    }
+
+    renderizarPedidos();
+    renderizarCancelamentos();
+    renderizarUltimosPedidos();
+    atualizarDashboard();
+
+    return true;
+
+  }catch(error){
+
+    console.error(
+      "Erro ao alterar status:",
+      error
+    );
+
+    alert(
+      "Não foi possível alterar o status do pedido.\n\n"
+      +
+      (
+        error.message
+        ||
+        "Erro desconhecido."
+      )
+    );
+
+    return false;
+
+  }
+
+}
+
+
+function atualizarDashboard(){
+
+  const hoje =
+  somenteDataLocal(
+    new Date()
+  );
+
+  const pedidosHoje =
+  pedidos.filter(pedido=>{
+
+    return (
+      somenteDataLocal(
+        pedido.created_at
+      )
+      ===
+      hoje
+      &&
+      normalizarStatus(
+        pedido.status
+      )
+      !==
+      "Cancelado"
+    );
+
+  });
+
+  const vendasHoje =
+  pedidosHoje.reduce(
+    (soma,pedido)=>
+      soma
+      +
+      Number(
+        pedido.total || 0
+      ),
+    0
+  );
+
+  const novos =
+  pedidos.filter(
+    pedido =>
+      normalizarStatus(
+        pedido.status
+      )
+      ===
+      "Novo"
+  ).length;
+
+  const andamento =
+  pedidos.filter(
+    pedido =>
+      [
+        "Confirmado",
+        "Em separação",
+        "Saiu para entrega"
+      ]
+      .includes(
+        normalizarStatus(
+          pedido.status
+        )
+      )
+  ).length;
+
+  const estoque =
+  produtos.reduce(
+    (soma,produto)=>
+      soma
+      +
+      Number(
+        produto.estoque || 0
+      ),
+    0
+  );
+
+  document.getElementById("dashVendasHoje").textContent =
+  moeda(vendasHoje);
+
+  document.getElementById("dashPedidosHoje").textContent =
+  pedidosHoje.length
+  +
+  (
+    pedidosHoje.length === 1
+    ?
+    " pedido hoje"
+    :
+    " pedidos hoje"
+  );
+
+  document.getElementById("dashNovos").textContent =
+  novos;
+
+  document.getElementById("dashAndamento").textContent =
+  andamento;
+
+  document.getElementById("dashEstoque").textContent =
+  estoque;
+
+  document.getElementById("dashProdutos").textContent =
+  produtos.length
+  +
+  (
+    produtos.length === 1
+    ?
+    " produto cadastrado"
+    :
+    " produtos cadastrados"
+  );
+
+}
+  async function enviarArquivoImagem(
+  arquivo,
+  pasta = "produtos"
+){
+
+  if(!arquivo){
+    return null;
+  }
+
+  const partesNome =
+  String(arquivo.name || "")
+  .split(".");
+
+  let extensao =
+  partesNome.length > 1
+  ?
+  partesNome.pop().toLowerCase()
+  :
+  "jpg";
+
+  if(
+    !extensao
+    ||
+    extensao.length > 6
+  ){
+    extensao = "jpg";
+  }
+
+  const caminho =
+  pasta
+  + "/"
+  + Date.now()
+  + "-"
+  + Math.random().toString(36).slice(2)
+  + "."
+  + extensao;
+
+  const {error} =
+  await supabaseClient
+  .storage
+  .from(BUCKET_FOTOS)
+  .upload(
+    caminho,
+    arquivo,
+    {
+      cacheControl:"3600",
+      upsert:false,
+      contentType:
+      arquivo.type || "image/jpeg"
+    }
+  );
+
+  if(error){
+    throw error;
+  }
+
+  const {data} =
+  supabaseClient
+  .storage
+  .from(BUCKET_FOTOS)
+  .getPublicUrl(caminho);
+
+  return data.publicUrl || null;
+
+}
+
+
+function validarArquivoImagem(arquivo){
+
+  if(!arquivo){
+    return false;
+  }
+
+  if(
+    !String(arquivo.type || "")
+    .startsWith("image/")
+  ){
+    alert("Selecione uma imagem válida.");
+    return false;
+  }
+
+  return true;
+
+}
+
+
+function adicionarNovasFotos(){
+
+  const input =
+  document.getElementById(
+    "produtoFotosArquivos"
+  );
+
+  const arquivos =
+  Array.from(
+    input.files || []
+  );
+
+  arquivos.forEach(arquivo=>{
+
+    if(!validarArquivoImagem(arquivo)){
+      return;
+    }
+
+    fotosFormulario.push({
+      id:null,
+      foto_url:null,
+      arquivo:arquivo,
+      preview:
+      URL.createObjectURL(arquivo),
+      principal:false
+    });
+
+  });
+
+  if(
+    fotosFormulario.length
+    &&
+    !fotosFormulario.some(
+      foto=>foto.principal
+    )
+  ){
+    fotosFormulario[0].principal = true;
+  }
+
+  input.value = "";
+
+  renderizarFotosFormulario();
+
+}
+
+
+function renderizarFotosFormulario(){
+
+  const area =
+  document.getElementById(
+    "galeriaFotos"
+  );
+
+  if(!fotosFormulario.length){
+    area.innerHTML = "";
+    return;
+  }
+
+  area.innerHTML =
+  fotosFormulario.map(
+    (foto,index)=>{
+
+      const url =
+      foto.preview
+      ||
+      foto.foto_url
+      ||
+      "";
+
+      return `
+
+        <div
+          class="foto-card ${
+            foto.principal
+            ?
+            "principal"
+            :
+            ""
+          }"
+        >
+
+          ${
+            foto.principal
+            ?
+            '<span class="badge-principal">PRINCIPAL</span>'
+            :
+            ""
+          }
+
+          <img
+            src="${escaparHtml(url)}"
+            alt="Foto do produto"
+          >
+
+          <div class="foto-acoes">
+
+            ${
+              !foto.principal
+              ?
+              `
+                <button
+                  type="button"
+                  class="definir-principal"
+                  onclick="definirFotoPrincipal(${index})"
+                >
+                  ⭐ PRINCIPAL
+                </button>
+              `
+              :
+              ""
+            }
+
+            <button
+              type="button"
+              class="excluir-foto"
+              onclick="removerFotoFormulario(${index})"
+            >
+              REMOVER
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  ).join("");
+
+}
+
+
+function definirFotoPrincipal(indice){
+
+  fotosFormulario.forEach(
+    (foto,index)=>{
+      foto.principal =
+      index === indice;
+    }
+  );
+
+  renderizarFotosFormulario();
+
+}
+
+
+function removerFotoFormulario(indice){
+
+  const eraPrincipal =
+  fotosFormulario[indice]?.principal;
+
+  fotosFormulario.splice(
+    indice,
+    1
+  );
+
+  if(
+    eraPrincipal
+    &&
+    fotosFormulario.length
+  ){
+    fotosFormulario[0].principal = true;
+  }
+
+  renderizarFotosFormulario();
+
+}
+
+
+function criarMapaTamanhos(){
+
+  const mapa = {};
+
+  TAMANHOS.forEach(item=>{
+
+    mapa[item.valor] = {
+      ativo:false,
+      estoque:0
+    };
+
+  });
+
+  return mapa;
+
+}
+
+
+function novaOpcao(){
+
+  return {
+    tipo:"cor",
+    cor:"Preto",
+    corPersonalizada:"",
+    estampa:"",
+    foto_url:null,
+    arquivo:null,
+    preview:null,
+    tamanhos:
+    criarMapaTamanhos()
+  };
+
+}
+
+
+function adicionarOpcao(){
+
+  opcoesFormulario.push(
+    novaOpcao()
+  );
+
+  renderizarOpcoes();
+
+}
+
+
+function removerOpcao(indice){
+
+  opcoesFormulario.splice(
+    indice,
+    1
+  );
+
+  renderizarOpcoes();
+
+}
+
+
+function alterarTipoOpcao(
+  indice,
+  tipo
+){
+
+  const opcao =
+  opcoesFormulario[indice];
+
+  if(!opcao){
+    return;
+  }
+
+  opcao.tipo = tipo;
+
+  if(tipo === "cor"){
+
+    opcao.estampa = "";
+
+    if(!opcao.cor){
+      opcao.cor = "Preto";
+    }
+
+  }else{
+
+    opcao.cor = "";
+
+    if(!opcao.estampa){
+
+      const quantidade =
+      opcoesFormulario.filter(
+        item=>item.tipo === "estampa"
+      ).length;
+
+      opcao.estampa =
+      "Estampa "
+      +
+      String(quantidade)
+      .padStart(2,"0");
+
+    }
+
+  }
+
+  renderizarOpcoes();
+
+}
+
+
+function atualizarOpcao(
+  indice,
+  campo,
+  valor
+){
+
+  const opcao =
+  opcoesFormulario[indice];
+
+  if(!opcao){
+    return;
+  }
+
+  opcao[campo] =
+  valor;
+
+}
+
+
+function alterarTamanho(
+  indice,
+  tamanho,
+  marcado
+){
+
+  const opcao =
+  opcoesFormulario[indice];
+
+  if(!opcao){
+    return;
+  }
+
+  opcao.tamanhos[tamanho].ativo =
+  marcado;
+
+  if(!marcado){
+    opcao.tamanhos[tamanho].estoque = 0;
+  }
+
+  renderizarOpcoes();
+
+}
+
+
+function alterarEstoqueTamanho(
+  indice,
+  tamanho,
+  valor
+){
+
+  const opcao =
+  opcoesFormulario[indice];
+
+  if(!opcao){
+    return;
+  }
+
+  opcao.tamanhos[tamanho].estoque =
+  Math.max(
+    0,
+    Number(valor || 0)
+  );
+
+  atualizarEstoqueVariantes();
+
+}
+
+
+function escolherFotoOpcao(
+  indice,
+  input
+){
+
+  const arquivo =
+  input.files?.[0];
+
+  if(!arquivo){
+    return;
+  }
+
+  if(!validarArquivoImagem(arquivo)){
+    return;
+  }
+
+  const opcao =
+  opcoesFormulario[indice];
+
+  if(!opcao){
+    return;
+  }
+
+  opcao.arquivo = arquivo;
+
+  opcao.preview =
+  URL.createObjectURL(arquivo);
+
+  renderizarOpcoes();
+
+}
+
+
+function removerFotoOpcao(indice){
+
+  const opcao =
+  opcoesFormulario[indice];
+
+  if(!opcao){
+    return;
+  }
+
+  opcao.arquivo = null;
+  opcao.preview = null;
+  opcao.foto_url = null;
+
+  renderizarOpcoes();
+
+}
+
+
+function calcularEstoqueVariantes(){
+
+  let total = 0;
+
+  opcoesFormulario.forEach(opcao=>{
+
+    Object.values(
+      opcao.tamanhos
+    )
+    .forEach(tamanho=>{
+
+      if(tamanho.ativo){
+
+        total +=
+        Number(
+          tamanho.estoque || 0
+        );
+
+      }
+
+    });
+
+  });
+
+  return total;
+
+}
+
+
+function atualizarEstoqueVariantes(){
+
+  document.getElementById(
+    "estoqueVariantes"
+  ).textContent =
+  calcularEstoqueVariantes();
+
+}
+
+
+function renderizarOpcoes(){
+
+  const area =
+  document.getElementById(
+    "opcoesArea"
+  );
+
+  if(!opcoesFormulario.length){
+
+    area.innerHTML =
+    '<div class="foto-ajuda">Nenhuma cor ou estampa adicionada.</div>';
+
+    atualizarEstoqueVariantes();
+
+    return;
+
+  }
+
+  area.innerHTML =
+  opcoesFormulario.map(
+    (opcao,index)=>{
+
+      const opcoesCores =
+      CORES_SALI.map(cor=>`
+
+        <option
+          value="${escaparHtml(cor)}"
+          ${
+            opcao.cor === cor
+            ?
+            "selected"
+            :
+            ""
+          }
+        >
+          ${escaparHtml(cor)}
+        </option>
+
+      `).join("");
+
+      const tamanhos =
+      TAMANHOS.map(tamanho=>{
+
+        const dados =
+        opcao.tamanhos[tamanho.valor];
+
+        return `
+
+          <div class="tamanho-linha">
+
+            <label class="tamanho-check">
+
+              <input
+                type="checkbox"
+                ${
+                  dados.ativo
+                  ?
+                  "checked"
+                  :
+                  ""
+                }
+                onchange="alterarTamanho(${index},'${tamanho.valor}',this.checked)"
+              >
+
+              ${escaparHtml(tamanho.nome)}
+
+            </label>
+
+            <input
+              type="number"
+              class="estoque-tamanho"
+              min="0"
+              value="${Number(dados.estoque || 0)}"
+              ${
+                dados.ativo
+                ?
+                ""
+                :
+                "disabled"
+              }
+              onchange="alterarEstoqueTamanho(${index},'${tamanho.valor}',this.value)"
+            >
+
+          </div>
+
+        `;
+
+      }).join("");
+
+      const foto =
+      opcao.preview
+      ||
+      opcao.foto_url
+      ||
+      "";
+
+      return `
+
+        <div class="opcao-card">
+
+          <div class="opcao-topo">
+
+            <strong>
+              Opção ${index + 1}
+            </strong>
+
+            <button
+              type="button"
+              class="remover-opcao"
+              onclick="removerOpcao(${index})"
+            >
+              REMOVER
+            </button>
+
+          </div>
+
+          <div class="tipo-opcao">
+
+            <button
+              type="button"
+              class="${
+                opcao.tipo === "cor"
+                ?
+                "selecionado"
+                :
+                ""
+              }"
+              onclick="alterarTipoOpcao(${index},'cor')"
+            >
+              🎨 COR
+            </button>
+
+            <button
+              type="button"
+              class="${
+                opcao.tipo === "estampa"
+                ?
+                "selecionado"
+                :
+                ""
+              }"
+              onclick="alterarTipoOpcao(${index},'estampa')"
+            >
+              🌸 ESTAMPA
+            </button>
+
+          </div>
+
+          ${
+            opcao.tipo === "cor"
+            ?
+            `
+
+              <div class="campo">
+
+                <label>Cor</label>
+
+                <select
+                  onchange="atualizarOpcao(${index},'cor',this.value)"
+                >
+                  ${opcoesCores}
+                </select>
+
+              </div>
+
+            `
+            :
+            `
+
+              <div class="campo">
+
+                <label>Nome da estampa</label>
+
+                <input
+                  type="text"
+                  value="${escaparHtml(opcao.estampa)}"
+                  placeholder="Ex.: Estampa 01"
+                  onchange="atualizarOpcao(${index},'estampa',this.value)"
+                >
+
+              </div>
+
+            `
+          }
+
+          <div class="foto-opcao-area">
+
+            <strong>
+              📸 Foto desta opção
+            </strong>
+
+            <br><br>
+
+            <input
+              type="file"
+              accept="image/*"
+              onchange="escolherFotoOpcao(${index},this)"
+            >
+
+            ${
+              foto
+              ?
+              `
+
+                <div class="preview-opcao">
+
+                  <img
+                    src="${escaparHtml(foto)}"
+                    alt="Foto da opção"
+                  >
+
+                  <button
+                    type="button"
+                    class="remover-foto-opcao"
+                    onclick="removerFotoOpcao(${index})"
+                  >
+                    REMOVER FOTO
+                  </button>
+
+                </div>
+
+              `
+              :
+              ""
+            }
+
+          </div>
+
+          <div class="tamanhos-grade">
+            ${tamanhos}
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  ).join("");
+
+  atualizarEstoqueVariantes();
+
+}
+
+
+/* PRODUTOS */
+
+async function carregarProdutos(){
+
+  const {data,error} =
+  await supabaseClient
+  .from("Produtos")
+  .select("*")
+  .order(
+    "created_at",
+    {
+      ascending:false
+    }
+  );
+
+  if(error){
+
+    console.error(error);
+
+    produtos = [];
+
+    document.getElementById(
+      "listaProdutos"
+    ).innerHTML =
+    `<div class="sem-dados">${escaparHtml(error.message)}</div>`;
+
+    atualizarDashboard();
+
+    return;
+
+  }
+
+  produtos =
+  data || [];
+
+  renderizarProdutos(produtos);
+
+  atualizarDashboard();
+
+}
+
+
+function renderizarProdutos(lista){
+
+  const area =
+  document.getElementById(
+    "listaProdutos"
+  );
+
+  if(!lista.length){
+
+    area.innerHTML =
+    '<div class="sem-dados">Nenhum produto cadastrado.</div>';
+
+    return;
+
+  }
+
+  area.innerHTML =
+  lista.map(produto=>`
+
+    <div class="produto-card">
+
+      ${
+        produto.foto_url
+        ?
+        `
+          <img
+            src="${escaparHtml(produto.foto_url)}"
+            alt="Produto"
+          >
+        `
+        :
+        `
+          <div class="sem-foto">
+            Sem foto
+          </div>
+        `
+      }
+
+      <div class="produto-info">
+
+        <h4>
+          ${escaparHtml(
+            produto.nome || "Produto"
+          )}
+        </h4>
+
+        <div class="preco">
+          ${moeda(produto.preco)}
+        </div>
+
+        <div class="detalhes">
+
+          Categoria:
+          ${escaparHtml(
+            produto.categoria || "Não informada"
+          )}
+
+          <br>
+
+          Estoque:
+          ${Number(produto.estoque || 0)}
+
+        </div>
+
+        <span
+          class="status-produto ${
+            produto.ativo
+            ?
+            "ativo"
+            :
+            "inativo"
+          }"
+        >
+          ${
+            produto.ativo
+            ?
+            "ATIVO"
+            :
+            "INATIVO"
+          }
+        </span>
+
+        <div class="acoes">
+
+          <button
+            type="button"
+            class="editar"
+            onclick="editarProduto(${Number(produto.id)})"
+          >
+            EDITAR
+          </button>
+
+          <button
+            type="button"
+            class="alternar"
+            onclick="alternarProduto(${Number(produto.id)},${Boolean(produto.ativo)})"
+          >
+            ${
+              produto.ativo
+              ?
+              "DESATIVAR"
+              :
+              "ATIVAR"
+            }
+          </button>
+
+          <button
+            type="button"
+            class="excluir"
+            onclick="excluirProduto(${Number(produto.id)})"
+          >
+            EXCLUIR
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+function filtrarProdutos(){
+
+  const busca =
+  String(
+    document.getElementById("busca").value || ""
+  )
+  .trim()
+  .toLowerCase();
+
+  if(!busca){
+
+    renderizarProdutos(produtos);
+
+    return;
+
+  }
+
+  const lista =
+  produtos.filter(produto=>{
+
+    const texto =
+    (
+      String(produto.nome || "")
+      +
+      " "
+      +
+      String(produto.categoria || "")
+    )
+    .toLowerCase();
+
+    return texto.includes(busca);
+
+  });
+
+  renderizarProdutos(lista);
+
+}
+
+
+async function salvarProduto(){
+
+  const id =
+  document.getElementById("produtoId").value;
+
+  const nome =
+  document.getElementById("produtoNome").value.trim();
+
+  const preco =
+  Number(
+    document.getElementById("produtoPreco").value
+  );
+
+  const categoria =
+  document.getElementById("produtoCategoria").value;
+
+  const descricao =
+  document.getElementById("produtoDescricao").value.trim();
+
+  const ativo =
+  document.getElementById("produtoAtivo").checked;
+
+  const estoqueGeral =
+  Number(
+    document.getElementById("produtoEstoque").value || 0
+  );
+
+  if(!nome){
+
+    alert("Digite o nome do produto.");
+
+    return;
+
+  }
+
+  if(!preco || preco <= 0){
+
+    alert("Digite um preço válido.");
+
+    return;
+
+  }
+
+  if(!categoria){
+
+    alert("Selecione a categoria.");
+
+    return;
+
+  }
+
+  const estoque =
+  opcoesFormulario.length
+  ?
+  calcularEstoqueVariantes()
+  :
+  estoqueGeral;
+
+  const botao =
+  document.getElementById("botaoSalvar");
+
+  botao.disabled = true;
+  botao.textContent = "SALVANDO...";
+
+  try{
+
+    let produtoId =
+    id
+    ?
+    Number(id)
+    :
+    null;
+
+    const dadosProduto = {
+      nome,
+      preco,
+      categoria,
+      descricao,
+      ativo,
+      estoque
+    };
+
+    if(produtoId){
+
+      const {error} =
+      await supabaseClient
+      .from("Produtos")
+      .update(dadosProduto)
+      .eq("id",produtoId);
+
+      if(error){
+        throw error;
+      }
+
+    }else{
+
+      const {data,error} =
+      await supabaseClient
+      .from("Produtos")
+      .insert([
+        dadosProduto
+      ])
+      .select("id")
+      .single();
+
+      if(error){
+        throw error;
+      }
+
+      produtoId =
+      data.id;
+
+    }
+
+
+    const fotosSalvas = [];
+
+    for(
+      let i = 0;
+      i < fotosFormulario.length;
+      i++
+    ){
+
+      const foto =
+      fotosFormulario[i];
+
+      let url =
+      foto.foto_url || null;
+
+      if(foto.arquivo){
+
+        url =
+        await enviarArquivoImagem(
+          foto.arquivo,
+          "galeria"
+        );
+
+      }
+
+      if(!url){
+        continue;
+      }
+
+      fotosSalvas.push({
+        produto_id:produtoId,
+        foto_url:url,
+        ordem:i,
+        principal:
+        Boolean(foto.principal)
+      });
+
+    }
+
+    if(
+      fotosSalvas.length
+      &&
+      !fotosSalvas.some(
+        foto=>foto.principal
+      )
+    ){
+      fotosSalvas[0].principal = true;
+    }
+
+    const {error:erroExcluirFotos} =
+    await supabaseClient
+    .from("Fotos_Produtos")
+    .delete()
+    .eq("produto_id",produtoId);
+
+    if(erroExcluirFotos){
+      throw erroExcluirFotos;
+    }
+
+    if(fotosSalvas.length){
+
+      const {error:erroFotos} =
+      await supabaseClient
+      .from("Fotos_Produtos")
+      .insert(fotosSalvas);
+
+      if(erroFotos){
+        throw erroFotos;
+      }
+
+    }
+
+    const variantesSalvas = [];
+
+    for(const opcao of opcoesFormulario){
+
+      let fotoOpcao =
+      opcao.foto_url || null;
+
+      if(opcao.arquivo){
+
+        fotoOpcao =
+        await enviarArquivoImagem(
+          opcao.arquivo,
+          "variantes"
+        );
+
+      }
+
+      for(const tamanho of TAMANHOS){
+
+        const dados =
+        opcao.tamanhos[tamanho.valor];
+
+        if(
+          !dados
+          ||
+          !dados.ativo
+        ){
+          continue;
+        }
+
+        variantesSalvas.push({
+
+          produto_id:
+          produtoId,
+
+          cor:
+          opcao.tipo === "cor"
+          ?
+          opcao.cor
+          :
+          null,
+
+          estampa:
+          opcao.tipo === "estampa"
+          ?
+          opcao.estampa
+          :
+          null,
+
+          tamanho:
+          tamanho.valor,
+
+          estoque:
+          Number(dados.estoque || 0),
+
+          ativo:true,
+
+          foto_url:
+          fotoOpcao
+
+        });
+
+      }
+
+    }
+
+    const {error:erroExcluirVariantes} =
+    await supabaseClient
+    .from("Variantes")
+    .delete()
+    .eq("produto_id",produtoId);
+
+    if(erroExcluirVariantes){
+      throw erroExcluirVariantes;
+    }
+
+    if(variantesSalvas.length){
+
+      const {error:erroVariantes} =
+      await supabaseClient
+      .from("Variantes")
+      .insert(variantesSalvas);
+
+      if(erroVariantes){
+        throw erroVariantes;
+      }
+
+    }
+
+    const fotoPrincipal =
+    fotosSalvas.find(
+      foto=>foto.principal
+    )?.foto_url
+    ||
+    fotosSalvas[0]?.foto_url
+    ||
+    null;
+
+    const {error:erroAtualizacaoFinal} =
+    await supabaseClient
+    .from("Produtos")
+    .update({
+      estoque,
+      foto_url:fotoPrincipal
+    })
+    .eq("id",produtoId);
+
+    if(erroAtualizacaoFinal){
+      throw erroAtualizacaoFinal;
+    }
+
+    alert(
+      id
+      ?
+      "Produto atualizado! ✅"
+      :
+      "Produto cadastrado! ✅"
+    );
+
+    limparFormulario();
+
+    await carregarProdutos();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Erro ao salvar produto:\n\n"
+      +
+      (
+        error.message
+        ||
+        "Erro desconhecido."
+      )
+    );
+
+  }finally{
+
+    botao.disabled = false;
+
+    botao.textContent =
+    document.getElementById("produtoId").value
+    ?
+    "SALVAR ALTERAÇÕES"
+    :
+    "CADASTRAR PRODUTO";
+
+  }
+
+}
+
+
+async function editarProduto(id){
+
+  const produto =
+  produtos.find(
+    item=>
+      Number(item.id)
+      ===
+      Number(id)
+  );
+
+  if(!produto){
+    return;
+  }
+
+  abrirPagina("produtos");
+
+  document.getElementById("produtoId").value =
+  produto.id;
+
+  document.getElementById("produtoNome").value =
+  produto.nome || "";
+
+  document.getElementById("produtoPreco").value =
+  produto.preco || "";
+
+  document.getElementById("produtoEstoque").value =
+  produto.estoque || 0;
+
+  document.getElementById("produtoCategoria").value =
+  produto.categoria || "";
+
+  document.getElementById("produtoDescricao").value =
+  produto.descricao || "";
+
+  document.getElementById("produtoAtivo").checked =
+  produto.ativo !== false;
+
+  document.getElementById("tituloFormulario").textContent =
+  "✏️ Editar produto";
+
+  document.getElementById("botaoSalvar").textContent =
+  "SALVAR ALTERAÇÕES";
+
+  document.getElementById("botaoCancelar").style.display =
+  "block";
+
+  const {data:fotos} =
+  await supabasePublico
+  .from("Fotos_Produtos")
+  .select("*")
+  .eq("produto_id",Number(id))
+  .order(
+    "ordem",
+    {
+      ascending:true
+    }
+  );
+
+  fotosFormulario =
+  (fotos || []).map(foto=>({
+    id:foto.id,
+    foto_url:foto.foto_url,
+    arquivo:null,
+    preview:null,
+    principal:Boolean(foto.principal)
+  }));
+
+  if(
+    !fotosFormulario.length
+    &&
+    produto.foto_url
+  ){
+
+    fotosFormulario.push({
+      id:null,
+      foto_url:produto.foto_url,
+      arquivo:null,
+      preview:null,
+      principal:true
+    });
+
+  }
+
+  renderizarFotosFormulario();
+
+  const {data:variantes} =
+  await supabasePublico
+  .from("Variantes")
+  .select("*")
+  .eq("produto_id",Number(id))
+  .order(
+    "id",
+    {
+      ascending:true
+    }
+  );
+
+  const mapa =
+  new Map();
+
+  (variantes || []).forEach(variante=>{
+
+    const tipo =
+    variante.estampa
+    ?
+    "estampa"
+    :
+    "cor";
+
+    const nome =
+    variante.estampa
+    ||
+    variante.cor
+    ||
+    "";
+
+    const chave =
+    tipo
+    +
+    "|"
+    +
+    nome
+    +
+    "|"
+    +
+    String(variante.foto_url || "");
+
+    if(!mapa.has(chave)){
+
+      mapa.set(
+        chave,
+        {
+          tipo,
+          cor:
+          tipo === "cor"
+          ?
+          variante.cor
+          :
+          "",
+          estampa:
+          tipo === "estampa"
+          ?
+          variante.estampa
+          :
+          "",
+          foto_url:
+          variante.foto_url || null,
+          arquivo:null,
+          preview:null,
+          tamanhos:
+          criarMapaTamanhos()
+        }
+      );
+
+    }
+
+    const opcao =
+    mapa.get(chave);
+
+    if(
+      opcao.tamanhos[
+        variante.tamanho
+      ]
+    ){
+
+      opcao.tamanhos[
+        variante.tamanho
+      ] = {
+        ativo:
+        variante.ativo !== false,
+        estoque:
+        Number(variante.estoque || 0)
+      };
+
+    }
+
+  });
+
+  opcoesFormulario =
+  Array.from(
+    mapa.values()
+  );
+
+  renderizarOpcoes();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function limparFormulario(){
+
+  document.getElementById("produtoId").value = "";
+  document.getElementById("produtoNome").value = "";
+  document.getElementById("produtoPreco").value = "";
+  document.getElementById("produtoEstoque").value = "0";
+  document.getElementById("produtoCategoria").value = "";
+  document.getElementById("produtoDescricao").value = "";
+  document.getElementById("produtoAtivo").checked = true;
+  document.getElementById("produtoFotosArquivos").value = "";
+
+  fotosFormulario = [];
+  opcoesFormulario = [];
+
+  renderizarFotosFormulario();
+  renderizarOpcoes();
+
+  document.getElementById("tituloFormulario").textContent =
+  "➕ Cadastrar produto";
+
+  document.getElementById("botaoSalvar").textContent =
+  "CADASTRAR PRODUTO";
+
+  document.getElementById("botaoCancelar").style.display =
+  "none";
+
+}
+
+
+function cancelarEdicao(){
+
+  limparFormulario();
+
+}
+
+
+async function alternarProduto(
+  id,
+  ativoAtual
+){
+
+  const {error} =
+  await supabaseClient
+  .from("Produtos")
+  .update({
+    ativo:!ativoAtual
+  })
+  .eq(
+    "id",
+    Number(id)
+  );
+
+  if(error){
+
+    alert(error.message);
+
+    return;
+
+  }
+
+  await carregarProdutos();
+
+}
+
+
+async function excluirProduto(id){
+
+  const confirmar =
+  confirm(
+    "Tem certeza que deseja excluir este produto?"
+  );
+
+  if(!confirmar){
+    return;
+  }
+
+  try{
+
+    const {error:erroVariantes} =
+    await supabaseClient
+    .from("Variantes")
+    .delete()
+    .eq("produto_id",Number(id));
+
+    if(erroVariantes){
+      throw erroVariantes;
+    }
+
+    const {error:erroFotos} =
+    await supabaseClient
+    .from("Fotos_Produtos")
+    .delete()
+    .eq("produto_id",Number(id));
+
+    if(erroFotos){
+      throw erroFotos;
+    }
+
+    const {error} =
+    await supabaseClient
+    .from("Produtos")
+    .delete()
+    .eq("id",Number(id));
+
+    if(error){
+      throw error;
+    }
+
+    alert("Produto excluído. ✅");
+
+    await carregarProdutos();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Erro ao excluir:\n\n"
+      +
+      (
+        error.message
+        ||
+        "Erro desconhecido."
+      )
+    );
+
+  }
+
+}
+
+
+document
+.getElementById("modalPedidoOverlay")
+.addEventListener(
+  "click",
+  function(event){
+
+    if(event.target === this){
+      fecharModalPedido();
+    }
+
+  }
+);
+
+
+renderizarOpcoes();
+
+verificarSessao();
+
+</script>
+
+</body>
+</html>
