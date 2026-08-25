@@ -3299,7 +3299,10 @@ async function confirmarPedido(){
   document.getElementById(
     "telefone"
   ).value.trim();
-
+const email =
+document.getElementById(
+  "email"
+).value.trim();
 
   const entrega =
   document.getElementById(
@@ -3328,29 +3331,62 @@ async function confirmarPedido(){
 
 
   if(
-    !telefone
-  ){
+  !telefone
+){
 
-    alert(
-      "Digite seu WhatsApp."
-    );
+  alert(
+    "Digite seu WhatsApp."
+  );
 
-    return;
+  return;
 
-  }
+}
 
 
-  if(
-    !entrega
-  ){
+if(
+  !email
+){
 
-    alert(
-      "Escolha uma opção de entrega ou retirada."
-    );
+  alert(
+    "Digite seu e-mail."
+  );
 
-    return;
+  return;
 
-  }
+}
+
+
+if(
+  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+){
+
+  alert(
+    "Digite um e-mail válido."
+  );
+
+  return;
+
+}
+
+
+if(
+  !entrega
+){
+
+  alert(
+    "Escolha uma opção de entrega ou retirada."
+  );
+
+  return;
+
+}
+
+
+  
+
+    
+
+  
 
 
   if(
@@ -3734,7 +3770,247 @@ async function confirmarPedido(){
 
   }
 
+if(
+  pagamento ===
+  "Pix"
+){
 
+  let respostaPix;
+
+  try{
+
+    const resposta =
+    await fetch(
+      "/api/mercadopago",
+      {
+        method:
+        "POST",
+
+        headers:{
+          "Content-Type":
+          "application/json"
+        },
+
+        body:
+        JSON.stringify({
+
+          total:
+          Number(
+            total
+          ),
+
+          email:
+          email,
+
+          numeroPedido:
+          numeroPedido
+
+        })
+
+      }
+    );
+
+
+    respostaPix =
+    await resposta.json();
+
+
+    if(
+      !resposta.ok
+      ||
+      !respostaPix.sucesso
+    ){
+
+      console.error(
+        "Erro ao gerar Pix:",
+        respostaPix
+      );
+
+
+      alert(
+        respostaPix.error ||
+        "Não foi possível gerar o Pix. Tente novamente."
+      );
+
+
+      return;
+
+    }
+
+  }catch(
+    erroPix
+  ){
+
+    console.error(
+      "Erro ao conectar com Mercado Pago:",
+      erroPix
+    );
+
+
+    alert(
+      "Não foi possível conectar ao Mercado Pago. Tente novamente."
+    );
+
+
+    return;
+
+  }
+
+
+  const qrCode =
+  respostaPix.qr_code ||
+  "";
+
+
+  const qrCodeBase64 =
+  respostaPix.qr_code_base64 ||
+  "";
+
+
+  const ticketUrl =
+  respostaPix.ticket_url ||
+  "";
+
+
+  document.getElementById(
+    "numeroPedido"
+  ).textContent =
+  "Pedido #" +
+  numeroPedido;
+
+
+  document.getElementById(
+    "resumoSucesso"
+  ).innerHTML = `
+
+    <strong>
+      Pedido registrado!
+    </strong>
+
+    <br><br>
+
+    Total:
+
+    <strong>
+      ${moeda(total)}
+    </strong>
+
+    <br><br>
+
+    <strong>
+      Pague seu pedido via Pix
+    </strong>
+
+    <br><br>
+
+    ${
+      qrCodeBase64
+      ?
+      `
+        <img
+          src="data:image/png;base64,${qrCodeBase64}"
+          alt="QR Code Pix"
+          style="
+            width:220px;
+            max-width:100%;
+            display:block;
+            margin:15px auto;
+          "
+        >
+      `
+      :
+      ""
+    }
+
+    ${
+      qrCode
+      ?
+      `
+        <div
+          style="
+            margin-top:14px;
+            padding:12px;
+            background:#f7f7f8;
+            border-radius:9px;
+            word-break:break-all;
+            font-size:10px;
+          "
+        >
+          ${escaparHtml(qrCode)}
+        </div>
+
+        <button
+          type="button"
+          onclick='navigator.clipboard.writeText(${JSON.stringify(qrCode)}).then(() => alert("Pix copiado!"))'
+          style="
+            margin-top:10px;
+            border:0;
+            background:#d92f82;
+            color:#fff;
+            padding:11px 15px;
+            border-radius:8px;
+            font-weight:800;
+          "
+        >
+          COPIAR PIX
+        </button>
+      `
+      :
+      ""
+    }
+
+    ${
+      ticketUrl
+      ?
+      `
+        <br>
+
+        <a
+          href="${escaparHtml(ticketUrl)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="
+            display:inline-block;
+            margin-top:12px;
+            font-weight:800;
+            color:#d92f82;
+          "
+        >
+          Ver instruções do pagamento
+        </a>
+      `
+      :
+      ""
+    }
+
+    <br><br>
+
+    <small>
+      Após pagar, aguarde a confirmação do pagamento.
+    </small>
+
+  `;
+
+
+  document.getElementById(
+    "checkout"
+  )
+  .classList.remove(
+    "ativo"
+  );
+
+
+  document.getElementById(
+    "sucesso"
+  )
+  .classList.add(
+    "ativo"
+  );
+
+
+  return;
+
+}
   document.getElementById(
     "numeroPedido"
   ).textContent =
