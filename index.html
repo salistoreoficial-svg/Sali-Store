@@ -1586,7 +1586,20 @@ footer p{
         >
 
       </div>
+<div class="campo">
 
+  <label>
+    E-mail
+  </label>
+
+  <input
+    id="email"
+    type="email"
+    placeholder="seuemail@exemplo.com"
+    autocomplete="email"
+  >
+
+</div>
     </div>
 
 
@@ -1866,7 +1879,13 @@ footer p{
 
 </section>
 
+<script src="https://sdk.mercadopago.com/js/v2"></script>
 
+<script>
+const mercadoPago = new MercadoPago(
+  "APP_USR-0c334cf3-8b65-4dd5-8713-c1aa7a746e20"
+);
+</script>
 <!-- =========================================
      JAVASCRIPT PRINCIPAL
 ========================================= -->
