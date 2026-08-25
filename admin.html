@@ -3212,7 +3212,14 @@ function criarHtmlPedido(pedido){
         >
           VER PEDIDO
         </button>
-
+<button
+  type="button"
+  class="imprimir-pedido"
+  data-id="${idPedido}"
+  onclick="imprimirPedidoPorBotao(this)"
+>
+  🖨️ IMPRIMIR PEDIDO
+</button>
         ${
           prox
           ?
@@ -3267,7 +3274,476 @@ function abrirPedidoPorBotao(botao){
   );
 
 }
+function imprimirPedidoPorBotao(botao){
 
+  const id =
+  Number(botao.dataset.id);
+
+  imprimirPedido(id);
+
+}
+
+
+function imprimirPedido(id){
+
+  const pedido =
+  pedidos.find(
+    item =>
+      Number(item.id) === Number(id)
+  );
+
+  if(!pedido){
+
+    alert("Pedido não encontrado.");
+
+    return;
+
+  }
+
+  const itens =
+  lerProdutosPedido(
+    pedido.produtos
+  );
+
+  const nomeLoja =
+  configuracoesLoja?.nome_loja
+  ||
+  "SALI STORE";
+
+  const telefone =
+  telefoneFormatado(
+    pedido.Telefone
+    ??
+    pedido.telefone
+  );
+
+  const entrega =
+  nomeEntrega(
+    pedido.tipo_entrega
+  );
+
+  const endereco =
+  String(
+    pedido.endereco || ""
+  ).trim();
+
+  const retirada =
+  String(
+    pedido.tipo_entrega || ""
+  )
+  .toLowerCase()
+  ===
+  "retirada";
+
+  const itensHtml =
+  itens.length
+  ?
+  itens.map(item=>{
+
+    const quantidade =
+    qtdItemPedido(item);
+
+    const preco =
+    precoItemPedido(item);
+
+    const detalhes = [];
+
+    if(item.cor){
+      detalhes.push(
+        "Cor: " + item.cor
+      );
+    }
+
+    if(item.estampa){
+      detalhes.push(
+        "Estampa: " + item.estampa
+      );
+    }
+
+    if(item.tamanho){
+      detalhes.push(
+        "Tam: " + item.tamanho
+      );
+    }
+
+    return `
+
+      <div class="produto">
+
+        <div class="produto-nome">
+          ${escaparHtml(
+            nomeItemPedido(item)
+          )}
+        </div>
+
+        ${
+          detalhes.length
+          ?
+          `
+            <div class="detalhes">
+              ${escaparHtml(
+                detalhes.join(" | ")
+              )}
+            </div>
+          `
+          :
+          ""
+        }
+
+        <div class="produto-linha">
+
+          <span>
+            ${quantidade} x ${moeda(preco)}
+          </span>
+
+          <strong>
+            ${moeda(
+              quantidade * preco
+            )}
+          </strong>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }).join("")
+  :
+  '<div>Produtos não identificados</div>';
+
+  const numeroPedido =
+  pedido.numero_pedido
+  ||
+  ("Pedido #" + pedido.id);
+
+  const janela =
+  window.open(
+    "",
+    "_blank",
+    "width=420,height=700"
+  );
+
+  if(!janela){
+
+    alert(
+      "Não foi possível abrir a impressão."
+    );
+
+    return;
+
+  }
+
+  janela.document.open();
+
+  janela.document.write(`
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<title>
+${escaparHtml(numeroPedido)}
+</title>
+
+<style>
+
+@page{
+  size:80mm auto;
+  margin:3mm;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  background:#fff;
+}
+
+body{
+  width:74mm;
+  margin:0 auto;
+  font-family:"Courier New",Courier,monospace;
+  color:#000;
+  font-size:11px;
+  line-height:1.35;
+}
+
+.centro{
+  text-align:center;
+}
+
+.loja{
+  font-size:17px;
+  font-weight:900;
+}
+
+.nao-fiscal{
+  font-size:10px;
+  margin-top:3px;
+}
+
+.linha{
+  border-top:1px dashed #000;
+  margin:8px 0;
+}
+
+.info{
+  margin:3px 0;
+  word-break:break-word;
+}
+
+.info strong{
+  font-weight:900;
+}
+
+.titulo{
+  text-align:center;
+  font-weight:900;
+  margin:7px 0;
+}
+
+.produto{
+  padding:5px 0;
+  border-bottom:1px dotted #777;
+}
+
+.produto-nome{
+  font-weight:900;
+}
+
+.detalhes{
+  font-size:10px;
+  margin-top:2px;
+}
+
+.produto-linha{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:3px;
+}
+
+.total-linha{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin:3px 0;
+}
+
+.total-final{
+  font-size:15px;
+  font-weight:900;
+  margin-top:6px;
+}
+
+.rodape{
+  text-align:center;
+  margin-top:10px;
+  font-size:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div>
+
+  <div class="centro">
+
+    <div class="loja">
+      ${escaparHtml(nomeLoja)}
+    </div>
+
+    <div>
+      COMPROVANTE DE PEDIDO
+    </div>
+
+    <div class="nao-fiscal">
+      DOCUMENTO NÃO FISCAL
+    </div>
+
+  </div>
+
+  <div class="linha"></div>
+
+  <div class="info">
+    <strong>Pedido:</strong>
+    ${escaparHtml(numeroPedido)}
+  </div>
+
+  <div class="info">
+    <strong>Data:</strong>
+    ${escaparHtml(
+      dataHoraBR(
+        pedido.created_at
+      )
+    )}
+  </div>
+
+  <div class="info">
+    <strong>Status:</strong>
+    ${escaparHtml(
+      normalizarStatus(
+        pedido.status
+      )
+    )}
+  </div>
+
+  <div class="linha"></div>
+
+  <div class="titulo">
+    DADOS DA CLIENTE
+  </div>
+
+  <div class="info">
+    <strong>Nome:</strong>
+    ${escaparHtml(
+      pedido.nome_cliente
+      ||
+      "Não informado"
+    )}
+  </div>
+
+  <div class="info">
+    <strong>Telefone:</strong>
+    ${escaparHtml(telefone)}
+  </div>
+
+  <div class="linha"></div>
+
+  <div class="titulo">
+    ENTREGA
+  </div>
+
+  <div class="info">
+    <strong>Tipo:</strong>
+    ${escaparHtml(entrega)}
+  </div>
+
+  <div class="info">
+    <strong>Destino:</strong>
+    ${
+      retirada
+      ?
+      "Retirada na loja"
+      :
+      escaparHtml(
+        endereco
+        ||
+        "Não informado"
+      )
+    }
+  </div>
+
+  <div class="linha"></div>
+
+  <div class="titulo">
+    PRODUTOS
+  </div>
+
+  ${itensHtml}
+
+  <div class="linha"></div>
+
+  <div class="total-linha">
+
+    <span>Subtotal</span>
+
+    <strong>
+      ${moeda(
+        pedido.subtotal
+      )}
+    </strong>
+
+  </div>
+
+  <div class="total-linha">
+
+    <span>Entrega</span>
+
+    <strong>
+      ${moeda(
+        pedido.valor_entrega
+      )}
+    </strong>
+
+  </div>
+
+  <div class="total-linha total-final">
+
+    <span>TOTAL</span>
+
+    <span>
+      ${moeda(
+        pedido.total
+      )}
+    </span>
+
+  </div>
+
+  <div class="linha"></div>
+
+  <div class="info">
+    <strong>Pagamento:</strong>
+    ${escaparHtml(
+      pedido.forma_pagamento
+      ||
+      "Não informado"
+    )}
+  </div>
+
+  <div class="linha"></div>
+
+  <div class="rodape">
+
+    SALI STORE
+
+    <br>
+
+    Obrigada pela preferência ♡
+
+  </div>
+
+</div>
+
+<script>
+
+window.onload = function(){
+
+  setTimeout(
+    function(){
+      window.print();
+    },
+    300
+  );
+
+};
+
+<\/script>
+
+</body>
+</html>
+
+  `);
+
+  janela.document.close();
+
+}
 
 async function mudarStatusPorBotao(botao){
 
