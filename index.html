@@ -3698,77 +3698,133 @@ if(
   }
 
 
-  const {
-    error:
-    erroPedido
-  } =
-  await window.supabaseClient
-  .from(
-    "Pedidos"
-  )
-  .insert([{
+  let respostaPedido;
 
-    numero_pedido:
-    numeroPedido,
+try{
 
-    nome_cliente:
-    nome,
+  const resposta =
+  await fetch(
+    "/api/pedido",
+    {
+      method:
+        "POST",
 
-    Telefone:
-    telefone,
+      headers:{
+        "Content-Type":
+        "application/json"
+      },
 
-    endereco:
-    enderecoPedido,
+      body:
+      JSON.stringify({
 
-    tipo_entrega:
-    entrega,
+        numero_pedido:
+        numeroPedido,
 
-    valor_entrega:
-    Number(
-      valorFrete ||
-      0
-    ),
+        nome_cliente:
+        nome,
 
-    produtos:
-    JSON.stringify(
-      carrinho
-    ),
+        Telefone:
+        telefone,
 
-    subtotal,
+        endereco:
+        enderecoPedido,
 
-    total,
+        tipo_entrega:
+        entrega,
 
-    forma_pagamento:
-    pagamento,
+        valor_entrega:
+        Number(
+          valorFrete ||
+          0
+        ),
 
-    status:
-    "Novo"
+        produtos:
+        JSON.stringify(
+          carrinho
+        ),
 
-  }]);
+        subtotal:
+        subtotal,
+
+        total:
+        total,
+
+        forma_pagamento:
+        pagamento,
+
+        status:
+        pagamento === "Pix"
+        ?
+        "Aguardando pagamento"
+        :
+        "Novo"
+
+      })
+
+    }
+  );
+
+
+  respostaPedido =
+  await resposta.json();
 
 
   if(
-    erroPedido
+    !resposta.ok
+    ||
+    !respostaPedido.sucesso
   ){
 
     console.error(
       "Erro ao salvar pedido:",
-      erroPedido
+      respostaPedido
     );
-
 
     alert(
-      "Não foi possível confirmar o pedido. " +
-      (
-        erroPedido.message ||
-        ""
-      )
+      respostaPedido.error ||
+      "Não foi possível registrar o pedido."
     );
-
 
     return;
 
   }
+
+}catch(
+  erroPedido
+){
+
+  console.error(
+    "Erro ao conectar com o servidor:",
+    erroPedido
+  );
+
+  alert(
+    "Não foi possível registrar o pedido. Tente novamente."
+  );
+
+  return;
+
+}
+
+    }catch(
+  erroPedido
+){
+
+  console.error(
+    "Erro ao conectar com o servidor:",
+    erroPedido
+  );
+
+  alert(
+    "Não foi possível registrar o pedido. Tente novamente."
+  );
+
+  return;
+
+}
+
+
+
 
 if(
   pagamento ===
