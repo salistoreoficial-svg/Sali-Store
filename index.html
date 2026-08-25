@@ -12,14 +12,39 @@
 
 <meta
   name="theme-color"
- content="#000000"
+  content="#000000"
 >
+
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" sizes="180x180" href="/Sali-Store/sali-icon-180.png?v=4">
-<link rel="icon" type="image/png" sizes="512x512" href="/Sali-Store/sali-icon-512.png?v=4">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="SALI STORE">
+
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/Sali-Store/sali-icon-180.png?v=4"
+>
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="512x512"
+  href="/Sali-Store/sali-icon-512.png?v=4"
+>
+
+<meta
+  name="apple-mobile-web-app-capable"
+  content="yes"
+>
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black"
+>
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="SALI STORE"
+>
+
 <title id="tituloPagina">
   SALI STORE | Moda Feminina
 </title>
@@ -928,6 +953,7 @@ nav a{
   justify-content:center;
   text-align:center;
   padding:25px;
+  overflow-y:auto;
 }
 
 .sucesso.ativo{
@@ -936,6 +962,7 @@ nav a{
 
 .sucesso-box{
   max-width:430px;
+  width:100%;
 }
 
 .check{
@@ -1079,88 +1106,88 @@ footer p{
 
 <header>
 
-  <div class="cabecalho">
+<div class="cabecalho">
 
-    <div class="logo-area">
+<div class="logo-area">
 
-      <div class="logo-wrap">
+<div class="logo-wrap">
 
-        <img
-          class="logo"
-          src="815BCB89-C59E-479D-83FF-454243870EB3.png"
-          alt="SALI STORE"
-        >
+<img
+  class="logo"
+  src="815BCB89-C59E-479D-83FF-454243870EB3.png"
+  alt="SALI STORE"
+>
 
-        <div class="brand-copy">
+<div class="brand-copy">
 
-          <strong id="nomeLojaCabecalho">
-            SALI STORE
-          </strong>
+<strong id="nomeLojaCabecalho">
+SALI STORE
+</strong>
 
-          <span id="subtituloLojaCabecalho">
-            Moda feminina • Manacapuru
-          </span>
+<span id="subtituloLojaCabecalho">
+Moda feminina • Manacapuru
+</span>
 
-        </div>
+</div>
 
-      </div>
-
-
-      <button
-        class="carrinho-botao"
-        onclick="abrirCarrinho()"
-      >
-
-        Sacola
-
-        <span
-          class="contador"
-          id="contador"
-        >
-          0
-        </span>
-
-      </button>
-
-    </div>
+</div>
 
 
-    <nav>
+<button
+  class="carrinho-botao"
+  onclick="abrirCarrinho()"
+>
 
-      <a href="#inicio">
-        Início
-      </a>
+Sacola
 
-      <a href="#novidades">
-        Novidades
-      </a>
+<span
+  class="contador"
+  id="contador"
+>
+0
+</span>
 
-      <a
-        href="#categorias"
-        id="linkCategorias"
-      >
-        Categorias
-      </a>
+</button>
 
-      <a href="#novidades">
-        Vestidos
-      </a>
+</div>
 
-      <a href="#novidades">
-        Conjuntos
-      </a>
 
-      <a href="#novidades">
-        Blusas
-      </a>
+<nav>
 
-      <a href="#novidades">
-        Calças
-      </a>
+<a href="#inicio">
+Início
+</a>
 
-    </nav>
+<a href="#novidades">
+Novidades
+</a>
 
-  </div>
+<a
+  href="#categorias"
+  id="linkCategorias"
+>
+Categorias
+</a>
+
+<a href="#novidades">
+Vestidos
+</a>
+
+<a href="#novidades">
+Conjuntos
+</a>
+
+<a href="#novidades">
+Blusas
+</a>
+
+<a href="#novidades">
+Calças
+</a>
+
+</nav>
+
+</div>
 
 </header>
 
@@ -1170,45 +1197,45 @@ footer p{
   id="inicio"
 >
 
-  <div class="hero-conteudo">
+<div class="hero-conteudo">
 
-    <div class="hero-copy">
+<div class="hero-copy">
 
-      <span class="hero-eyebrow">
-        NOVA COLEÇÃO • SALI STORE
-      </span>
+<span class="hero-eyebrow">
+NOVA COLEÇÃO • SALI STORE
+</span>
 
-      <h1 id="heroTituloLoja">
-        Seu look começa aqui.
-      </h1>
+<h1 id="heroTituloLoja">
+Seu look começa aqui.
+</h1>
 
-      <p id="heroSubtituloLoja">
-        Novidades, tendências e peças selecionadas para você.
-      </p>
+<p id="heroSubtituloLoja">
+Novidades, tendências e peças selecionadas para você.
+</p>
 
 
-      <div class="hero-actions">
+<div class="hero-actions">
 
-        <button
-          class="botao-principal"
-          onclick="document.getElementById('novidades').scrollIntoView()"
-        >
-          COMPRAR AGORA
-        </button>
+<button
+  class="botao-principal"
+  onclick="document.getElementById('novidades').scrollIntoView()"
+>
+COMPRAR AGORA
+</button>
 
-        <button
-          class="botao-secundario"
-          id="botaoVerCategorias"
-          onclick="document.getElementById('categorias').scrollIntoView()"
-        >
-          VER CATEGORIAS
-        </button>
+<button
+  class="botao-secundario"
+  id="botaoVerCategorias"
+  onclick="document.getElementById('categorias').scrollIntoView()"
+>
+VER CATEGORIAS
+</button>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -1218,56 +1245,56 @@ footer p{
   id="secaoBeneficios"
 >
 
-  <div class="beneficio">
+<div class="beneficio">
 
-    <strong>
-      Entrega local
-    </strong>
+<strong>
+Entrega local
+</strong>
 
-    <span>
-      Receba seu pedido com praticidade.
-    </span>
+<span>
+Receba seu pedido com praticidade.
+</span>
 
-  </div>
-
-
-  <div class="beneficio">
-
-    <strong>
-      Retirada na loja
-    </strong>
-
-    <span>
-      Escolha retirar diretamente na SALI.
-    </span>
-
-  </div>
+</div>
 
 
-  <div class="beneficio">
+<div class="beneficio">
 
-    <strong>
-      Novidades semanais
-    </strong>
+<strong>
+Retirada na loja
+</strong>
 
-    <span>
-      Novos modelos chegando sempre.
-    </span>
+<span>
+Escolha retirar diretamente na SALI.
+</span>
 
-  </div>
+</div>
 
 
-  <div class="beneficio">
+<div class="beneficio">
 
-    <strong>
-      Compra segura
-    </strong>
+<strong>
+Novidades semanais
+</strong>
 
-    <span>
-      Seu pedido registrado e acompanhado.
-    </span>
+<span>
+Novos modelos chegando sempre.
+</span>
 
-  </div>
+</div>
+
+
+<div class="beneficio">
+
+<strong>
+Compra segura
+</strong>
+
+<span>
+Seu pedido registrado e acompanhado.
+</span>
+
+</div>
 
 </section>
 
@@ -1277,85 +1304,85 @@ footer p{
   id="categorias"
 >
 
-  <div class="section-head">
+<div class="section-head">
 
-    <div>
+<div>
 
-      <h2>
-        Compre por categoria
-      </h2>
+<h2>
+Compre por categoria
+</h2>
 
-    </div>
+</div>
 
-    <p>
-      Encontre rapidamente o estilo que combina com você.
-    </p>
+<p>
+Encontre rapidamente o estilo que combina com você.
+</p>
 
-  </div>
-
-
-  <div class="categorias-grid">
-
-    <a
-      class="cat"
-      href="#novidades"
-    >
-
-      <span>
-        Vestidos
-        <small>
-          Do casual ao marcante
-        </small>
-      </span>
-
-    </a>
+</div>
 
 
-    <a
-      class="cat"
-      href="#novidades"
-    >
+<div class="categorias-grid">
 
-      <span>
-        Conjuntos
-        <small>
-          Looks prontos para vestir
-        </small>
-      </span>
+<a
+  class="cat"
+  href="#novidades"
+>
 
-    </a>
+<span>
+Vestidos
+<small>
+Do casual ao marcante
+</small>
+</span>
 
-
-    <a
-      class="cat"
-      href="#novidades"
-    >
-
-      <span>
-        Blusas
-        <small>
-          Essenciais com personalidade
-        </small>
-      </span>
-
-    </a>
+</a>
 
 
-    <a
-      class="cat"
-      href="#novidades"
-    >
+<a
+  class="cat"
+  href="#novidades"
+>
 
-      <span>
-        Calças
-        <small>
-          Modelagens que valorizam
-        </small>
-      </span>
+<span>
+Conjuntos
+<small>
+Looks prontos para vestir
+</small>
+</span>
 
-    </a>
+</a>
 
-  </div>
+
+<a
+  class="cat"
+  href="#novidades"
+>
+
+<span>
+Blusas
+<small>
+Essenciais com personalidade
+</small>
+</span>
+
+</a>
+
+
+<a
+  class="cat"
+  href="#novidades"
+>
+
+<span>
+Calças
+<small>
+Modelagens que valorizam
+</small>
+</span>
+
+</a>
+
+</div>
 
 </section>
 
@@ -1365,100 +1392,100 @@ footer p{
   id="novidades"
 >
 
-  <h2>
-    Novidades
-  </h2>
+<h2>
+Novidades
+</h2>
 
-  <p class="produtos-sub">
-    Os últimos lançamentos da SALI.
-  </p>
+<p class="produtos-sub">
+Os últimos lançamentos da SALI.
+</p>
 
-  <div
-    class="grade"
-    id="listaProdutos"
-  ></div>
+<div
+  class="grade"
+  id="listaProdutos"
+></div>
 
 </section>
+
+
 <section class="editorial">
 
-  <div class="editorial-inner">
+<div class="editorial-inner">
 
-    <div>
+<div>
 
-      <div class="line"></div>
+<div class="line"></div>
 
-      <h2>
-        Moda que representa.<br>
-        Estilo que encanta.
-      </h2>
+<h2>
+Moda que representa.<br>
+Estilo que encanta.
+</h2>
 
-    </div>
+</div>
 
 
-    <p>
-      A SALI nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
-    </p>
+<p>
+A SALI nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
+</p>
 
-  </div>
+</div>
 
 </section>
 
 
 <section class="cta">
 
-  <div class="cta-card">
+<div class="cta-card">
 
-    <h3>
-      Encontrou a sua favorita?
-    </h3>
+<h3>
+Encontrou a sua favorita?
+</h3>
 
-    <p>
-      Adicione à sacola, escolha como deseja receber e finalize seu pedido pelo próprio site.
-    </p>
+<p>
+Adicione à sacola, escolha como deseja receber e finalize seu pedido pelo próprio site.
+</p>
 
-    <button
-      onclick="document.getElementById('novidades').scrollIntoView()"
-    >
-      VER PRODUTOS
-    </button>
+<button
+  onclick="document.getElementById('novidades').scrollIntoView()"
+>
+VER PRODUTOS
+</button>
 
-  </div>
+</div>
 
 </section>
 
 
 <footer>
 
-  <div class="footer-inner">
+<div class="footer-inner">
 
-    <div>
+<div>
 
-      <h3 id="nomeLojaRodape">
-        SALI STORE
-      </h3>
+<h3 id="nomeLojaRodape">
+SALI STORE
+</h3>
 
-      <p>
-        Moda feminina com identidade, novidades e praticidade para comprar online.
-      </p>
+<p>
+Moda feminina com identidade, novidades e praticidade para comprar online.
+</p>
 
-    </div>
+</div>
 
 
-    <div
-      class="footer-mini"
-      id="rodapeLocal"
-    >
-      SALI STORE • Manacapuru, Amazonas
-    </div>
+<div
+  class="footer-mini"
+  id="rodapeLocal"
+>
+SALI STORE • Manacapuru, Amazonas
+</div>
 
-  </div>
+</div>
 
 </footer>
 
 
-<!-- =========================================
-     CARRINHO
-========================================= -->
+<!-- CARRINHO -->
 
 <div
   class="overlay"
@@ -1472,429 +1499,401 @@ footer p{
   id="carrinho"
 >
 
-  <div class="carrinho-topo">
+<div class="carrinho-topo">
 
-    <h2>
-      Sua sacola
-    </h2>
+<h2>
+Sua sacola
+</h2>
 
-    <button
-      class="fechar"
-      onclick="fecharCarrinho()"
-    >
-      ×
-    </button>
+<button
+  class="fechar"
+  onclick="fecharCarrinho()"
+>
+×
+</button>
 
-  </div>
-
-
-  <div
-    class="itens"
-    id="itensCarrinho"
-  ></div>
+</div>
 
 
-  <div class="carrinho-rodape">
-
-    <div class="total-linha">
-
-      <span>
-        Produtos
-      </span>
-
-      <span id="totalCarrinho">
-        R$ 0,00
-      </span>
-
-    </div>
+<div
+  class="itens"
+  id="itensCarrinho"
+></div>
 
 
-    <button
-      class="finalizar"
-      onclick="abrirCheckout()"
-    >
-      FINALIZAR PEDIDO
-    </button>
+<div class="carrinho-rodape">
 
-  </div>
+<div class="total-linha">
+
+<span>
+Produtos
+</span>
+
+<span id="totalCarrinho">
+R$ 0,00
+</span>
+
+</div>
+
+
+<button
+  class="finalizar"
+  onclick="abrirCheckout()"
+>
+FINALIZAR PEDIDO
+</button>
+
+</div>
 
 </aside>
 
 
-<!-- =========================================
-     CHECKOUT
-========================================= -->
+<!-- CHECKOUT -->
 
 <section
   class="checkout"
   id="checkout"
 >
 
-  <div class="checkout-conteudo">
+<div class="checkout-conteudo">
 
+<div class="checkout-topo">
 
-    <div class="checkout-topo">
+<button
+  class="voltar"
+  onclick="fecharCheckout()"
+>
+←
+</button>
 
-      <button
-        class="voltar"
-        onclick="fecharCheckout()"
-      >
-        ←
-      </button>
-
-      <h2>
-        Finalizar pedido
-      </h2>
-
-    </div>
-
-
-    <!-- DADOS -->
-
-    <div class="bloco">
-
-      <h3>
-        Seus dados
-      </h3>
-
-
-      <div class="campo">
-
-        <label>
-          Nome completo
-        </label>
-
-        <input
-          id="nome"
-          type="text"
-          placeholder="Digite seu nome"
-        >
-
-      </div>
-
-
-      <div class="campo">
-
-        <label>
-          WhatsApp
-        </label>
-
-        <input
-          id="telefone"
-          type="tel"
-          placeholder="(92) 99999-9999"
-        >
-
-      </div>
-<div class="campo">
-
-  <label>
-    E-mail
-  </label>
-
-  <input
-    id="email"
-    type="email"
-    placeholder="seuemail@exemplo.com"
-    autocomplete="email"
-  >
+<h2>
+Finalizar pedido
+</h2>
 
 </div>
-    </div>
 
 
-    <!-- ENTREGA -->
+<div class="bloco">
 
-    <div class="bloco">
+<h3>
+Seus dados
+</h3>
 
-      <h3>
-        Entrega ou retirada
-      </h3>
 
+<div class="campo">
 
-      <div class="campo">
+<label>
+Nome completo
+</label>
 
-        <label>
-          Como deseja receber?
-        </label>
+<input
+  id="nome"
+  type="text"
+  placeholder="Digite seu nome"
+>
 
+</div>
 
-        <select
-          id="entrega"
-          onchange="alterarEntrega()"
-        >
 
-          <option value="">
-            Selecione
-          </option>
+<div class="campo">
 
-        </select>
+<label>
+WhatsApp
+</label>
 
-      </div>
+<input
+  id="telefone"
+  type="tel"
+  placeholder="(92) 99999-9999"
+>
 
+</div>
 
-      <div
-        class="frete-info"
-        id="freteInfo"
-        style="display:none"
-      ></div>
 
+<div class="campo">
 
-      <div
-        id="enderecoArea"
-        style="display:none;margin-top:15px"
-      >
+<label>
+E-mail
+</label>
 
-        <div class="campo">
+<input
+  id="email"
+  type="email"
+  placeholder="seuemail@exemplo.com"
+  autocomplete="email"
+>
 
-          <label>
-            Rua / Avenida
-          </label>
+</div>
 
-          <input
-            id="endereco"
-            type="text"
-            placeholder="Digite o endereço"
-          >
+</div>
 
-        </div>
 
+<div class="bloco">
 
-        <div class="duplo">
+<h3>
+Entrega ou retirada
+</h3>
 
-          <div class="campo">
 
-            <label>
-              Número
-            </label>
+<div class="campo">
 
-            <input
-              id="numero"
-              type="text"
-              placeholder="Nº"
-            >
+<label>
+Como deseja receber?
+</label>
 
-          </div>
+<select
+  id="entrega"
+  onchange="alterarEntrega()"
+>
 
+<option value="">
+Selecione
+</option>
 
-          <div class="campo">
+</select>
 
-            <label>
-              Bairro
-            </label>
+</div>
 
-            <input
-              id="bairro"
-              type="text"
-              placeholder="Bairro"
-            >
 
-          </div>
+<div
+  class="frete-info"
+  id="freteInfo"
+  style="display:none"
+></div>
 
-        </div>
 
+<div
+  id="enderecoArea"
+  style="display:none;margin-top:15px"
+>
 
-        <div class="campo">
+<div class="campo">
 
-          <label>
-            Complemento / referência
-          </label>
+<label>
+Rua / Avenida
+</label>
 
-          <textarea
-            id="complemento"
-            placeholder="Ex.: próximo ao mercado, casa rosa..."
-          ></textarea>
+<input
+  id="endereco"
+  type="text"
+  placeholder="Digite o endereço"
+>
 
-        </div>
+</div>
 
-      </div>
 
+<div class="duplo">
 
-      <div
-        id="barcoArea"
-        style="display:none;margin-top:15px"
-      >
+<div class="campo">
 
-        <div class="campo">
+<label>
+Número
+</label>
 
-          <label>
-            Nome do barco, jato ou destino
-          </label>
+<input
+  id="numero"
+  type="text"
+  placeholder="Nº"
+>
 
-          <input
-            id="barcoDestino"
-            type="text"
-            placeholder="Informe onde será entregue"
-          >
+</div>
 
-        </div>
 
+<div class="campo">
 
-        <div class="campo">
+<label>
+Bairro
+</label>
 
-          <label>
-            Observação
-          </label>
+<input
+  id="bairro"
+  type="text"
+  placeholder="Bairro"
+>
 
-          <textarea
-            id="barcoObservacao"
-            placeholder="Nome do passageiro, horário, identificação etc."
-          ></textarea>
+</div>
 
-        </div>
+</div>
 
-      </div>
 
-    </div>
+<div class="campo">
 
+<label>
+Complemento / referência
+</label>
 
-    <!-- RESUMO -->
+<textarea
+  id="complemento"
+  placeholder="Ex.: próximo ao mercado, casa rosa..."
+></textarea>
 
-    <div class="bloco">
+</div>
 
-      <h3>
-        Resumo do pedido
-      </h3>
+</div>
 
 
-      <div id="resumoCheckout"></div>
+<div
+  id="barcoArea"
+  style="display:none;margin-top:15px"
+>
 
+<div class="campo">
 
-      <div class="resumo-linha">
+<label>
+Nome do barco, jato ou destino
+</label>
 
-        <span>
-          Subtotal
-        </span>
+<input
+  id="barcoDestino"
+  type="text"
+  placeholder="Informe onde será entregue"
+>
 
-        <strong id="subtotalCheckout">
-          R$ 0,00
-        </strong>
+</div>
 
-      </div>
 
+<div class="campo">
 
-      <div class="resumo-linha">
+<label>
+Observação
+</label>
 
-        <span>
-          Entrega
-        </span>
+<textarea
+  id="barcoObservacao"
+  placeholder="Nome do passageiro, horário, identificação etc."
+></textarea>
 
-        <strong id="freteCheckout">
-          R$ 0,00
-        </strong>
+</div>
 
-      </div>
+</div>
 
+</div>
 
-      <div class="resumo-total">
 
-        <span>
-          TOTAL
-        </span>
+<div class="bloco">
 
-        <span id="totalCheckout">
-          R$ 0,00
-        </span>
+<h3>
+Resumo do pedido
+</h3>
 
-      </div>
+<div id="resumoCheckout"></div>
 
-    </div>
 
+<div class="resumo-linha">
 
-    <!-- PAGAMENTO -->
+<span>
+Subtotal
+</span>
 
-    <div class="bloco">
+<strong id="subtotalCheckout">
+R$ 0,00
+</strong>
 
-      <h3>
-        Forma de pagamento
-      </h3>
+</div>
 
 
-      <div
-        class="pagamento-opcoes"
-        id="pagamentoOpcoes"
-      >
+<div class="resumo-linha">
 
-        <div class="sem-pagamento">
-          Carregando formas de pagamento...
-        </div>
+<span>
+Entrega
+</span>
 
-      </div>
+<strong id="freteCheckout">
+R$ 0,00
+</strong>
 
-    </div>
+</div>
 
 
-    <button
-      class="confirmar-pedido"
-      onclick="confirmarPedido()"
-    >
-      CONFIRMAR PEDIDO
-    </button>
+<div class="resumo-total">
 
-  </div>
+<span>
+TOTAL
+</span>
+
+<span id="totalCheckout">
+R$ 0,00
+</span>
+
+</div>
+
+</div>
+
+
+<div class="bloco">
+
+<h3>
+Forma de pagamento
+</h3>
+
+<div
+  class="pagamento-opcoes"
+  id="pagamentoOpcoes"
+>
+
+<div class="sem-pagamento">
+Carregando formas de pagamento...
+</div>
+
+</div>
+
+</div>
+
+
+<button
+  class="confirmar-pedido"
+  onclick="confirmarPedido()"
+>
+CONFIRMAR PEDIDO
+</button>
+
+</div>
 
 </section>
 
 
-<!-- =========================================
-     SUCESSO
-========================================= -->
+<!-- SUCESSO -->
 
 <section
   class="sucesso"
   id="sucesso"
 >
 
-  <div class="sucesso-box">
+<div class="sucesso-box">
 
-    <div class="check">
-      ✓
-    </div>
+<div class="check">
+✓
+</div>
 
-    <h2>
-      Pedido confirmado!
-    </h2>
+<h2>
+Pedido confirmado!
+</h2>
 
-    <p>
-      Obrigada por comprar na SALI STORE 💕
-    </p>
+<p>
+Obrigada por comprar na SALI STORE 💕
+</p>
 
+<div
+  class="numero-pedido"
+  id="numeroPedido"
+></div>
 
-    <div
-      class="numero-pedido"
-      id="numeroPedido"
-    ></div>
+<p id="resumoSucesso"></p>
 
+<button
+  onclick="voltarLoja()"
+>
+VOLTAR PARA A LOJA
+</button>
 
-    <p id="resumoSucesso"></p>
-
-
-    <button
-      onclick="voltarLoja()"
-    >
-      VOLTAR PARA A LOJA
-    </button>
-
-  </div>
+</div>
 
 </section>
 
-<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+<!-- JAVASCRIPT PRINCIPAL -->
 
 <script>
-const mercadoPago = new MercadoPago(
-  "APP_USR-0c334cf3-8b65-4dd5-8713-c1aa7a746e20"
-);
-</script>
-<!-- =========================================
-     JAVASCRIPT PRINCIPAL
-========================================= -->
-
-<script>
-
-/* =========================================
-   ESTADO DA LOJA
-========================================= */
 
 let carrinho =
 JSON.parse(
@@ -1904,57 +1903,37 @@ JSON.parse(
 ) || [];
 
 
-let valorFrete =
-0;
-
-
-let tipoEntrega =
-"";
+let valorFrete = 0;
+let tipoEntrega = "";
 
 
 let configuracoesLoja = {
 
   taxa_retirada:0,
-
   taxa_cidade:5,
-
   taxa_bola:8,
-
   taxa_caixa:10,
-
   taxa_barcos:5,
 
   mostrar_retirada:true,
-
   mostrar_cidade:true,
-
   mostrar_bola:true,
-
   mostrar_caixa:true,
-
   mostrar_barcos:true,
 
   pagamento_pix:true,
-
   pagamento_cartao:true,
-
   pagamento_dinheiro:true,
-
   pagamento_entrega:true
 
 };
 
 
-/* =========================================
-   CORREÇÃO DE CARRINHOS ANTIGOS
-========================================= */
+/* CORRIGIR CARRINHOS ANTIGOS */
 
 carrinho =
 carrinho.map(
-  (
-    item,
-    index
-  ) => {
+  (item,index) => {
 
     if(
       !item.chaveItem
@@ -1982,10 +1961,7 @@ carrinho.map(
           ""
         )
 
-      ]
-      .join(
-        "|||"
-      );
+      ].join("|||");
 
     }
 
@@ -2021,9 +1997,7 @@ localStorage.setItem(
 );
 
 
-/* =========================================
-   UTILIDADES
-========================================= */
+/* UTILIDADES */
 
 function salvarCarrinho(){
 
@@ -2034,21 +2008,17 @@ function salvarCarrinho(){
     )
   );
 
-
   atualizarCarrinho();
 
 }
 
 
-function moeda(
-  valor
-){
+function moeda(valor){
 
   return Number(
     valor ||
     0
-  )
-  .toLocaleString(
+  ).toLocaleString(
     "pt-BR",
     {
       style:"currency",
@@ -2062,10 +2032,7 @@ function moeda(
 function calcularSubtotal(){
 
   return carrinho.reduce(
-    (
-      soma,
-      item
-    ) =>
+    (soma,item) =>
       soma +
       Number(
         item.preco ||
@@ -2082,9 +2049,7 @@ function calcularSubtotal(){
 }
 
 
-function escaparHtml(
-  valor
-){
+function escaparHtml(valor){
 
   return String(
     valor ??
@@ -2114,9 +2079,7 @@ function escaparHtml(
 }
 
 
-/* =========================================
-   CARRINHO
-========================================= */
+/* CARRINHO */
 
 function adicionarProduto(
   id,
@@ -2150,10 +2113,7 @@ function adicionarProduto(
       ""
     )
 
-  ]
-  .join(
-    "|||"
-  );
+  ].join("|||");
 
 
   const existente =
@@ -2174,14 +2134,13 @@ function adicionarProduto(
 
     carrinho.push({
 
-      id,
+      id:id,
 
-      chaveItem,
+      chaveItem:chaveItem,
 
-      nome,
+      nome:nome,
 
-      preco:
-      Number(
+      preco:Number(
         preco ||
         0
       ),
@@ -2315,12 +2274,17 @@ function atualizarCarrinho(){
   );
 
 
+  if(
+    !area ||
+    !contador
+  ){
+    return;
+  }
+
+
   const quantidadeTotal =
   carrinho.reduce(
-    (
-      soma,
-      item
-    ) =>
+    (soma,item) =>
       soma +
       Number(
         item.quantidade ||
@@ -2346,9 +2310,7 @@ function atualizarCarrinho(){
     document.getElementById(
       "totalCarrinho"
     ).textContent =
-    moeda(
-      0
-    );
+    moeda(0);
 
 
     return;
@@ -2390,9 +2352,7 @@ function atualizarCarrinho(){
         ""
 
       ]
-      .filter(
-        Boolean
-      )
+      .filter(Boolean)
       .map(
         texto =>
           `<small class="item-detalhe">${texto}</small>`
@@ -2409,21 +2369,17 @@ function atualizarCarrinho(){
             alt="${escaparHtml(item.nome)}"
           >
 
-
           <div class="item-dados">
 
             <h4>
               ${escaparHtml(item.nome)}
             </h4>
 
-
             ${detalhes}
-
 
             <strong>
               ${moeda(item.preco)}
             </strong>
-
 
             <div class="quantidade">
 
@@ -2434,11 +2390,9 @@ function atualizarCarrinho(){
                 −
               </button>
 
-
               <span>
                 ${item.quantidade}
               </span>
-
 
               <button
                 type="button"
@@ -2448,7 +2402,6 @@ function atualizarCarrinho(){
               </button>
 
             </div>
-
 
             <button
               type="button"
@@ -2465,8 +2418,7 @@ function atualizarCarrinho(){
       `;
 
     }
-  )
-  .join("");
+  ).join("");
 
 
   document.getElementById(
@@ -2483,16 +2435,14 @@ function abrirCarrinho(){
 
   document.getElementById(
     "carrinho"
-  )
-  .classList.add(
+  ).classList.add(
     "aberto"
   );
 
 
   document.getElementById(
     "overlay"
-  )
-  .classList.add(
+  ).classList.add(
     "ativo"
   );
 
@@ -2503,16 +2453,14 @@ function fecharCarrinho(){
 
   document.getElementById(
     "carrinho"
-  )
-  .classList.remove(
+  ).classList.remove(
     "aberto"
   );
 
 
   document.getElementById(
     "overlay"
-  )
-  .classList.remove(
+  ).classList.remove(
     "ativo"
   );
 
@@ -2540,16 +2488,13 @@ function abrirCheckout(){
 
   document.getElementById(
     "checkout"
-  )
-  .classList.add(
+  ).classList.add(
     "ativo"
   );
 
 
   montarOpcoesEntrega();
-
   montarOpcoesPagamento();
-
   atualizarCheckout();
 
 }
@@ -2559,17 +2504,14 @@ function fecharCheckout(){
 
   document.getElementById(
     "checkout"
-  )
-  .classList.remove(
+  ).classList.remove(
     "ativo"
   );
 
 }
 
 
-/* =========================================
-   ENTREGA DINÂMICA
-========================================= */
+/* ENTREGA */
 
 function montarOpcoesEntrega(){
 
@@ -2579,17 +2521,19 @@ function montarOpcoesEntrega(){
   );
 
 
+  if(
+    !select
+  ){
+    return;
+  }
+
+
   const atual =
   select.value;
 
 
-  let html = `
-
-    <option value="">
-      Selecione
-    </option>
-
-  `;
+  let html =
+  '<option value="">Selecione</option>';
 
 
   if(
@@ -2704,8 +2648,7 @@ function montarOpcoesEntrega(){
   const aindaExiste =
   Array.from(
     select.options
-  )
-  .some(
+  ).some(
     opcao =>
       opcao.value ===
       atual
@@ -2721,23 +2664,16 @@ function montarOpcoesEntrega(){
 
   }else{
 
-    select.value =
-    "";
-
-    valorFrete =
-    0;
-
-    tipoEntrega =
-    "";
+    select.value = "";
+    valorFrete = 0;
+    tipoEntrega = "";
 
   }
 
 }
 
 
-/* =========================================
-   PAGAMENTO DINÂMICO
-========================================= */
+/* PAGAMENTO */
 
 function montarOpcoesPagamento(){
 
@@ -2745,6 +2681,13 @@ function montarOpcoesPagamento(){
   document.getElementById(
     "pagamentoOpcoes"
   );
+
+
+  if(
+    !area
+  ){
+    return;
+  }
 
 
   const selecionado =
@@ -2765,11 +2708,8 @@ function montarOpcoesPagamento(){
     opcoes.push({
 
       valor:"Pix",
-
       titulo:"Pix",
-
-      descricao:
-      "Pagamento via Pix."
+      descricao:"Pagamento via Pix."
 
     });
 
@@ -2784,11 +2724,8 @@ function montarOpcoesPagamento(){
     opcoes.push({
 
       valor:"Cartão",
-
       titulo:"Cartão",
-
-      descricao:
-      "Pagamento com cartão."
+      descricao:"Pagamento com cartão."
 
     });
 
@@ -2803,11 +2740,8 @@ function montarOpcoesPagamento(){
     opcoes.push({
 
       valor:"Dinheiro",
-
       titulo:"Dinheiro",
-
-      descricao:
-      "Pagamento em dinheiro."
+      descricao:"Pagamento em dinheiro."
 
     });
 
@@ -2847,7 +2781,6 @@ function montarOpcoesPagamento(){
 
     `;
 
-
     return;
 
   }
@@ -2855,10 +2788,7 @@ function montarOpcoesPagamento(){
 
   area.innerHTML =
   opcoes.map(
-    (
-      opcao,
-      index
-    ) => `
+    (opcao,index) => `
 
       <label class="pagamento-opcao">
 
@@ -2882,7 +2812,6 @@ function montarOpcoesPagamento(){
           }
         >
 
-
         <span>
 
           <strong>
@@ -2898,13 +2827,12 @@ function montarOpcoesPagamento(){
       </label>
 
     `
-  )
-  .join("");
+  ).join("");
 
 }
-  /* =========================================
-   ALTERAR ENTREGA
-========================================= */
+
+
+/* ALTERAR ENTREGA */
 
 function alterarEntrega(){
 
@@ -2953,9 +2881,7 @@ function alterarEntrega(){
     ""
   ){
 
-    valorFrete =
-    0;
-
+    valorFrete = 0;
 
     freteInfo.style.display =
     "none";
@@ -3130,9 +3056,7 @@ function alterarEntrega(){
 }
 
 
-/* =========================================
-   ATUALIZAR CHECKOUT
-========================================= */
+/* CHECKOUT */
 
 function atualizarCheckout(){
 
@@ -3140,6 +3064,13 @@ function atualizarCheckout(){
   document.getElementById(
     "resumoCheckout"
   );
+
+
+  if(
+    !resumo
+  ){
+    return;
+  }
 
 
   resumo.innerHTML =
@@ -3176,12 +3107,8 @@ function atualizarCheckout(){
         ""
 
       ]
-      .filter(
-        Boolean
-      )
-      .join(
-        " • "
-      );
+      .filter(Boolean)
+      .join(" • ");
 
 
       return `
@@ -3191,27 +3118,27 @@ function atualizarCheckout(){
           <span>
 
             ${Number(item.quantidade || 0)}x
-
             ${escaparHtml(item.nome)}
 
             ${
               detalhes
               ?
-              `<small
-                style="
-                  display:block;
-                  margin-top:3px;
-                  color:#777;
-                "
-              >
-                ${detalhes}
-              </small>`
+              `
+                <small
+                  style="
+                    display:block;
+                    margin-top:3px;
+                    color:#777;
+                  "
+                >
+                  ${detalhes}
+                </small>
+              `
               :
               ""
             }
 
           </span>
-
 
           <strong>
 
@@ -3234,8 +3161,7 @@ function atualizarCheckout(){
       `;
 
     }
-  )
-  .join("");
+  ).join("");
 
 
   const subtotal =
@@ -3253,9 +3179,7 @@ function atualizarCheckout(){
   document.getElementById(
     "subtotalCheckout"
   ).textContent =
-  moeda(
-    subtotal
-  );
+  moeda(subtotal);
 
 
   document.getElementById(
@@ -3264,7 +3188,8 @@ function atualizarCheckout(){
   Number(
     valorFrete ||
     0
-  ) === 0
+  ) ===
+  0
   ?
   "Grátis"
   :
@@ -3276,16 +3201,12 @@ function atualizarCheckout(){
   document.getElementById(
     "totalCheckout"
   ).textContent =
-  moeda(
-    total
-  );
+  moeda(total);
 
 }
 
 
-/* =========================================
-   CONFIRMAR PEDIDO
-========================================= */
+/* CONFIRMAR PEDIDO */
 
 async function confirmarPedido(){
 
@@ -3299,10 +3220,13 @@ async function confirmarPedido(){
   document.getElementById(
     "telefone"
   ).value.trim();
-const email =
-document.getElementById(
-  "email"
-).value.trim();
+
+
+  const email =
+  document.getElementById(
+    "email"
+  ).value.trim();
+
 
   const entrega =
   document.getElementById(
@@ -3331,62 +3255,57 @@ document.getElementById(
 
 
   if(
-  !telefone
-){
+    !telefone
+  ){
 
-  alert(
-    "Digite seu WhatsApp."
-  );
+    alert(
+      "Digite seu WhatsApp."
+    );
 
-  return;
+    return;
 
-}
-
-
-if(
-  !email
-){
-
-  alert(
-    "Digite seu e-mail."
-  );
-
-  return;
-
-}
+  }
 
 
-if(
-  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-){
+  if(
+    !email
+  ){
 
-  alert(
-    "Digite um e-mail válido."
-  );
+    alert(
+      "Digite seu e-mail."
+    );
 
-  return;
+    return;
 
-}
-
-
-if(
-  !entrega
-){
-
-  alert(
-    "Escolha uma opção de entrega ou retirada."
-  );
-
-  return;
-
-}
+  }
 
 
-  
+  if(
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+      email
+    )
+  ){
 
-    
+    alert(
+      "Digite um e-mail válido."
+    );
 
-  
+    return;
+
+  }
+
+
+  if(
+    !entrega
+  ){
+
+    alert(
+      "Escolha uma opção de entrega ou retirada."
+    );
+
+    return;
+
+  }
 
 
   if(
@@ -3438,9 +3357,7 @@ if(
       "Esta forma de entrega não está mais disponível. Escolha outra opção."
     );
 
-
     montarOpcoesEntrega();
-
     alterarEntrega();
 
     return;
@@ -3479,7 +3396,6 @@ if(
     alert(
       "Esta forma de pagamento não está mais disponível. Escolha outra opção."
     );
-
 
     montarOpcoesPagamento();
 
@@ -3578,22 +3494,7 @@ if(
   "SALI-" +
   Date.now()
   .toString()
-  .slice(
-    -6
-  );
-
-
-  if(
-    !window.supabaseClient
-  ){
-
-    alert(
-      "Aguarde alguns segundos e tente confirmar o pedido novamente."
-    );
-
-    return;
-
-  }
+  .slice(-6);
 
 
   let enderecoPedido =
@@ -3614,43 +3515,33 @@ if(
     const ruaPedido =
     document.getElementById(
       "endereco"
-    )?.value.trim() ||
-    "";
+    ).value.trim();
 
 
     const numeroPedidoEndereco =
     document.getElementById(
       "numero"
-    )?.value.trim() ||
-    "";
+    ).value.trim();
 
 
     const bairroPedido =
     document.getElementById(
       "bairro"
-    )?.value.trim() ||
-    "";
+    ).value.trim();
 
 
     const complementoPedido =
     document.getElementById(
       "complemento"
-    )?.value.trim() ||
-    "";
+    ).value.trim();
 
 
     enderecoPedido =
-
     ruaPedido +
-
     ", nº " +
-
     numeroPedidoEndereco +
-
     ", " +
-
     bairroPedido +
-
     (
       complementoPedido
       ?
@@ -3671,21 +3562,17 @@ if(
     const destino =
     document.getElementById(
       "barcoDestino"
-    )?.value.trim() ||
-    "Barco/Jato";
+    ).value.trim();
 
 
     const observacao =
     document.getElementById(
       "barcoObservacao"
-    )?.value.trim() ||
-    "";
+    ).value.trim();
 
 
     enderecoPedido =
-
     destino +
-
     (
       observacao
       ?
@@ -3698,149 +3585,18 @@ if(
   }
 
 
+  /* SALVAR PEDIDO */
+
   let respostaPedido;
 
-try{
-
-  const resposta =
-  await fetch(
-    "/api/pedido",
-    {
-      method:
-        "POST",
-
-      headers:{
-        "Content-Type":
-        "application/json"
-      },
-
-      body:
-      JSON.stringify({
-
-        numero_pedido:
-        numeroPedido,
-
-        nome_cliente:
-        nome,
-
-        Telefone:
-        telefone,
-
-        endereco:
-        enderecoPedido,
-
-        tipo_entrega:
-        entrega,
-
-        valor_entrega:
-        Number(
-          valorFrete ||
-          0
-        ),
-
-        produtos:
-        JSON.stringify(
-          carrinho
-        ),
-
-        subtotal:
-        subtotal,
-
-        total:
-        total,
-
-        forma_pagamento:
-        pagamento,
-
-        status:
-        pagamento === "Pix"
-        ?
-        "Aguardando pagamento"
-        :
-        "Novo"
-
-      })
-
-    }
-  );
-
-
-  respostaPedido =
-  await resposta.json();
-
-
-  if(
-    !resposta.ok
-    ||
-    !respostaPedido.sucesso
-  ){
-
-    console.error(
-      "Erro ao salvar pedido:",
-      respostaPedido
-    );
-
-    alert(
-      respostaPedido.error ||
-      "Não foi possível registrar o pedido."
-    );
-
-    return;
-
-  }
-
-}catch(
-  erroPedido
-){
-
-  console.error(
-    "Erro ao conectar com o servidor:",
-    erroPedido
-  );
-
-  alert(
-    "Não foi possível registrar o pedido. Tente novamente."
-  );
-
-  return;
-
-}
-
-    }catch(
-  erroPedido
-){
-
-  console.error(
-    "Erro ao conectar com o servidor:",
-    erroPedido
-  );
-
-  alert(
-    "Não foi possível registrar o pedido. Tente novamente."
-  );
-
-  return;
-
-}
-
-
-
-
-if(
-  pagamento ===
-  "Pix"
-){
-
-  let respostaPix;
 
   try{
 
     const resposta =
     await fetch(
-      "/api/mercadopago",
+      "/api/pedido",
       {
-        method:
-        "POST",
+        method:"POST",
 
         headers:{
           "Content-Type":
@@ -3850,16 +3606,48 @@ if(
         body:
         JSON.stringify({
 
-          total:
+          numero_pedido:
+          numeroPedido,
+
+          nome_cliente:
+          nome,
+
+          Telefone:
+          telefone,
+
+          endereco:
+          enderecoPedido,
+
+          tipo_entrega:
+          entrega,
+
+          valor_entrega:
           Number(
-            total
+            valorFrete ||
+            0
           ),
 
-          email:
-          email,
+          produtos:
+          JSON.stringify(
+            carrinho
+          ),
 
-          numeroPedido:
-          numeroPedido
+          subtotal:
+          subtotal,
+
+          total:
+          total,
+
+          forma_pagamento:
+          pagamento,
+
+          status:
+          pagamento ===
+          "Pix"
+          ?
+          "Aguardando pagamento"
+          :
+          "Novo"
 
         })
 
@@ -3867,25 +3655,46 @@ if(
     );
 
 
-    respostaPix =
-    await resposta.json();
+    try{
+
+      respostaPedido =
+      await resposta.json();
+
+    }catch(
+      erroJson
+    ){
+
+      console.error(
+        "Resposta inválida da API de pedido:",
+        erroJson
+      );
+
+
+      alert(
+        "O servidor respondeu de forma inválida ao registrar o pedido."
+      );
+
+
+      return;
+
+    }
 
 
     if(
       !resposta.ok
       ||
-      !respostaPix.sucesso
+      !respostaPedido.sucesso
     ){
 
       console.error(
-        "Erro ao gerar Pix:",
-        respostaPix
+        "Erro ao salvar pedido:",
+        respostaPedido
       );
 
 
       alert(
-        respostaPix.error ||
-        "Não foi possível gerar o Pix. Tente novamente."
+        respostaPedido.error ||
+        "Não foi possível registrar o pedido."
       );
 
 
@@ -3894,17 +3703,17 @@ if(
     }
 
   }catch(
-    erroPix
+    erroPedido
   ){
 
     console.error(
-      "Erro ao conectar com Mercado Pago:",
-      erroPix
+      "Erro ao conectar com o servidor:",
+      erroPedido
     );
 
 
     alert(
-      "Não foi possível conectar ao Mercado Pago. Tente novamente."
+      "Não foi possível registrar o pedido. Tente novamente."
     );
 
 
@@ -3913,160 +3722,324 @@ if(
   }
 
 
-  const qrCode =
-  respostaPix.qr_code ||
-  "";
+  /* PIX */
+
+  if(
+    pagamento ===
+    "Pix"
+  ){
+
+    let respostaPix;
 
 
-  const qrCodeBase64 =
-  respostaPix.qr_code_base64 ||
-  "";
+    try{
+
+      const resposta =
+      await fetch(
+        "/api/mercadopago",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+            "application/json"
+          },
+
+          body:
+          JSON.stringify({
+
+            total:
+            Number(
+              total
+            ),
+
+            email:
+            email,
+
+            numeroPedido:
+            numeroPedido
+
+          })
+
+        }
+      );
 
 
-  const ticketUrl =
-  respostaPix.ticket_url ||
-  "";
+      try{
+
+        respostaPix =
+        await resposta.json();
+
+      }catch(
+        erroJsonPix
+      ){
+
+        console.error(
+          "Resposta inválida do Mercado Pago:",
+          erroJsonPix
+        );
 
 
-  document.getElementById(
-    "numeroPedido"
-  ).textContent =
-  "Pedido #" +
-  numeroPedido;
+        alert(
+          "Não foi possível interpretar a resposta do Mercado Pago."
+        );
 
 
-  document.getElementById(
-    "resumoSucesso"
-  ).innerHTML = `
+        return;
 
-    <strong>
-      Pedido registrado!
-    </strong>
+      }
 
-    <br><br>
 
-    Total:
+      if(
+        !resposta.ok
+        ||
+        !respostaPix.sucesso
+      ){
 
-    <strong>
-      ${moeda(total)}
-    </strong>
+        console.error(
+          "Erro ao gerar Pix:",
+          respostaPix
+        );
 
-    <br><br>
 
-    <strong>
-      Pague seu pedido via Pix
-    </strong>
+        alert(
+          respostaPix.error ||
+          "Não foi possível gerar o Pix. Tente novamente."
+        );
 
-    <br><br>
 
-    ${
-      qrCodeBase64
-      ?
-      `
-        <img
-          src="data:image/png;base64,${qrCodeBase64}"
-          alt="QR Code Pix"
-          style="
-            width:220px;
-            max-width:100%;
-            display:block;
-            margin:15px auto;
-          "
-        >
-      `
-      :
-      ""
+        return;
+
+      }
+
+    }catch(
+      erroPix
+    ){
+
+      console.error(
+        "Erro ao conectar com Mercado Pago:",
+        erroPix
+      );
+
+
+      alert(
+        "Não foi possível conectar ao Mercado Pago. Tente novamente."
+      );
+
+
+      return;
+
     }
 
-    ${
+
+    const qrCode =
+    respostaPix.qr_code ||
+    "";
+
+
+    const qrCodeBase64 =
+    respostaPix.qr_code_base64 ||
+    "";
+
+
+    const ticketUrl =
+    respostaPix.ticket_url ||
+    "";
+
+
+    document.getElementById(
+      "numeroPedido"
+    ).textContent =
+    "Pedido #" +
+    numeroPedido;
+
+
+    document.getElementById(
+      "resumoSucesso"
+    ).innerHTML = `
+
+      <strong>
+        Pedido registrado!
+      </strong>
+
+      <br><br>
+
+      Total:
+
+      <strong>
+        ${moeda(total)}
+      </strong>
+
+      <br><br>
+
+      <strong>
+        Pague seu pedido via Pix
+      </strong>
+
+      <br><br>
+
+      ${
+        qrCodeBase64
+        ?
+        `
+          <img
+            src="data:image/png;base64,${qrCodeBase64}"
+            alt="QR Code Pix"
+            style="
+              width:220px;
+              max-width:100%;
+              display:block;
+              margin:15px auto;
+            "
+          >
+        `
+        :
+        ""
+      }
+
+      ${
+        qrCode
+        ?
+        `
+          <div
+            style="
+              margin-top:14px;
+              padding:12px;
+              background:#f7f7f8;
+              border-radius:9px;
+              word-break:break-all;
+              font-size:10px;
+            "
+          >
+            ${escaparHtml(qrCode)}
+          </div>
+
+          <button
+            type="button"
+            id="botaoCopiarPix"
+            style="
+              margin-top:10px;
+              border:0;
+              background:#d92f82;
+              color:#fff;
+              padding:11px 15px;
+              border-radius:8px;
+              font-weight:800;
+            "
+          >
+            COPIAR PIX
+          </button>
+        `
+        :
+        ""
+      }
+
+      ${
+        ticketUrl
+        ?
+        `
+          <br>
+
+          <a
+            href="${escaparHtml(ticketUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="
+              display:inline-block;
+              margin-top:12px;
+              font-weight:800;
+              color:#d92f82;
+            "
+          >
+            Ver instruções do pagamento
+          </a>
+        `
+        :
+        ""
+      }
+
+      <br><br>
+
+      <small>
+        Após pagar, aguarde a confirmação do pagamento.
+      </small>
+
+    `;
+
+
+    document.getElementById(
+      "checkout"
+    ).classList.remove(
+      "ativo"
+    );
+
+
+    document.getElementById(
+      "sucesso"
+    ).classList.add(
+      "ativo"
+    );
+
+
+    const botaoCopiarPix =
+    document.getElementById(
+      "botaoCopiarPix"
+    );
+
+
+    if(
+      botaoCopiarPix &&
       qrCode
-      ?
-      `
-        <div
-          style="
-            margin-top:14px;
-            padding:12px;
-            background:#f7f7f8;
-            border-radius:9px;
-            word-break:break-all;
-            font-size:10px;
-          "
-        >
-          ${escaparHtml(qrCode)}
-        </div>
+    ){
 
-        <button
-          type="button"
-          onclick='navigator.clipboard.writeText(${JSON.stringify(qrCode)}).then(() => alert("Pix copiado!"))'
-          style="
-            margin-top:10px;
-            border:0;
-            background:#d92f82;
-            color:#fff;
-            padding:11px 15px;
-            border-radius:8px;
-            font-weight:800;
-          "
-        >
-          COPIAR PIX
-        </button>
-      `
-      :
-      ""
+      botaoCopiarPix.addEventListener(
+        "click",
+        async function(){
+
+          try{
+
+            await navigator.clipboard.writeText(
+              qrCode
+            );
+
+            alert(
+              "Pix copiado!"
+            );
+
+          }catch(
+            erro
+          ){
+
+            console.error(
+              "Erro ao copiar Pix:",
+              erro
+            );
+
+            alert(
+              "Não foi possível copiar automaticamente. Pressione o código Pix para copiar."
+            );
+
+          }
+
+        }
+      );
+
     }
 
-    ${
-      ticketUrl
-      ?
-      `
-        <br>
 
-        <a
-          href="${escaparHtml(ticketUrl)}"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="
-            display:inline-block;
-            margin-top:12px;
-            font-weight:800;
-            color:#d92f82;
-          "
-        >
-          Ver instruções do pagamento
-        </a>
-      `
-      :
-      ""
-    }
+    carrinho = [];
+    valorFrete = 0;
+    tipoEntrega = "";
 
-    <br><br>
+    salvarCarrinho();
 
-    <small>
-      Após pagar, aguarde a confirmação do pagamento.
-    </small>
+    return;
 
-  `;
+  }
 
 
-  document.getElementById(
-    "checkout"
-  )
-  .classList.remove(
-    "ativo"
-  );
+  /* OUTRAS FORMAS DE PAGAMENTO */
 
-
-  document.getElementById(
-    "sucesso"
-  )
-  .classList.add(
-    "ativo"
-  );
-
-
-  return;
-
-}
   document.getElementById(
     "numeroPedido"
   ).textContent =
@@ -4097,103 +4070,86 @@ if(
 
   document.getElementById(
     "checkout"
-  )
-  .classList.remove(
+  ).classList.remove(
     "ativo"
   );
 
 
   document.getElementById(
     "sucesso"
-  )
-  .classList.add(
+  ).classList.add(
     "ativo"
   );
 
 
-  carrinho =
-  [];
-
-
-  valorFrete =
-  0;
-
-
-  tipoEntrega =
-  "";
-
+  carrinho = [];
+  valorFrete = 0;
+  tipoEntrega = "";
 
   salvarCarrinho();
 
 }
 
 
-/* =========================================
-   VOLTAR PARA LOJA
-========================================= */
+/* VOLTAR PARA LOJA */
 
 function voltarLoja(){
 
   document.getElementById(
     "sucesso"
-  )
-  .classList.remove(
+  ).classList.remove(
     "ativo"
   );
 
 
   document.getElementById(
     "nome"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "telefone"
-  ).value =
-  "";
+  ).value = "";
+
+
+  document.getElementById(
+    "email"
+  ).value = "";
 
 
   document.getElementById(
     "entrega"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "endereco"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "numero"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "bairro"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "complemento"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "barcoDestino"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
     "barcoObservacao"
-  ).value =
-  "";
+  ).value = "";
 
 
   document.getElementById(
@@ -4214,18 +4170,12 @@ function voltarLoja(){
   "none";
 
 
-  valorFrete =
-  0;
-
-
-  tipoEntrega =
-  "";
+  valorFrete = 0;
+  tipoEntrega = "";
 
 
   montarOpcoesEntrega();
-
   montarOpcoesPagamento();
-
   atualizarCheckout();
 
 
@@ -4237,9 +4187,7 @@ function voltarLoja(){
 }
 
 
-/* =========================================
-   APLICAR CONFIGURAÇÕES DO ADM
-========================================= */
+/* CONFIGURAÇÕES ADM */
 
 function aplicarConfiguracoesLoja(
   config
@@ -4255,7 +4203,6 @@ function aplicarConfiguracoesLoja(
   configuracoesLoja = {
 
     ...configuracoesLoja,
-
     ...config
 
   };
@@ -4419,10 +4366,8 @@ function aplicarConfiguracoesLoja(
     categorias.style.display =
     "none";
 
-
     linkCategorias.style.display =
     "none";
-
 
     botaoCategorias.style.display =
     "none";
@@ -4432,10 +4377,8 @@ function aplicarConfiguracoesLoja(
     categorias.style.display =
     "";
 
-
     linkCategorias.style.display =
     "";
-
 
     botaoCategorias.style.display =
     "";
@@ -4504,15 +4447,12 @@ function aplicarConfiguracoesLoja(
 
 
   montarOpcoesEntrega();
-
   montarOpcoesPagamento();
 
 }
 
 
-/* =========================================
-   BUSCAR CONFIGURAÇÕES NO SUPABASE
-========================================= */
+/* CARREGAR CONFIGURAÇÕES */
 
 async function carregarConfiguracoesLoja(){
 
@@ -4550,7 +4490,6 @@ async function carregarConfiguracoesLoja(){
 
 
     montarOpcoesEntrega();
-
     montarOpcoesPagamento();
 
     return;
@@ -4569,7 +4508,6 @@ async function carregarConfiguracoesLoja(){
   }else{
 
     montarOpcoesEntrega();
-
     montarOpcoesPagamento();
 
   }
@@ -4577,20 +4515,16 @@ async function carregarConfiguracoesLoja(){
 }
 
 
-/* =========================================
-   PRIMEIRA RENDERIZAÇÃO
-========================================= */
+/* PRIMEIRA RENDERIZAÇÃO */
 
 atualizarCarrinho();
-
 montarOpcoesEntrega();
-
 montarOpcoesPagamento();
 
 </script>
-<!-- =========================================
-     SUPABASE
-========================================= -->
+
+
+<!-- SUPABASE -->
 
 <script
   src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
@@ -4630,23 +4564,45 @@ montarOpcoesPagamento();
 </script>
 
 
-<!-- =========================================
-     PRODUTOS
-========================================= -->
+<!-- PRODUTOS -->
 
-<script src="produtos.js?v=18"></script>
+<script src="produtos.js?v=19"></script>
+
 
 <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker
-      .register("./sw.js")
-      .catch(function (erro) {
-        console.error("Erro ao registrar Service Worker:", erro);
-      });
-  });
+
+if(
+  "serviceWorker" in navigator
+){
+
+  window.addEventListener(
+    "load",
+    function(){
+
+      navigator.serviceWorker
+      .register(
+        "./sw.js"
+      )
+      .catch(
+        function(
+          erro
+        ){
+
+          console.error(
+            "Erro ao registrar Service Worker:",
+            erro
+          );
+
+        }
+      );
+
+    }
+  );
+
 }
+
 </script>
+
 </body>
 
 </html>
