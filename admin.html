@@ -1201,6 +1201,8 @@ button{
   }
 }
 
+/* CMS visual TROPICANAZ */
+.cms-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.cms-editor{display:grid;gap:16px}.cms-card,.cms-side-card{background:#fff;border:1px solid #e8e3d8;border-radius:14px;padding:18px;box-shadow:0 3px 14px rgba(50,50,35,.05)}.cms-card h3{margin:0 0 14px;color:#555b3d}.cms-upload-row{display:flex;gap:16px;align-items:center;margin-bottom:14px}.cms-preview-logo{width:150px;height:90px;background:#fffdf8;border:1px dashed #c9c2b3;border-radius:12px;display:grid;place-items:center;overflow:hidden}.cms-preview-logo img{max-width:95%;max-height:85px;object-fit:contain}.cms-upload-btn{display:inline-block;background:#62664a;color:white;padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.cms-upload-row small{display:block;margin-top:7px;color:#777}.cms-banner-preview{height:170px;border-radius:12px;background:#f3efe5;overflow:hidden;margin-bottom:10px}.cms-banner-preview img{width:100%;height:100%;object-fit:cover}.cms-side{position:sticky;top:14px;display:grid;gap:12px}.cms-side-card button,.cms-publicar{width:100%;border:0;border-radius:10px;padding:13px;font-weight:800;cursor:pointer}.cms-side-card button{background:#f1eee5;color:#555b3d}.cms-publicar{background:#555b3d;color:#fff}.cms-help{color:#777;font-size:13px}.cms-secoes{display:grid;gap:8px}.cms-secao{display:flex;align-items:center;gap:8px;border:1px solid #e7e1d5;border-radius:10px;padding:10px 12px;background:#fffdf8}.cms-secao b{flex:1;color:#3f432e}.cms-secao button{width:34px;height:32px;border:1px solid #d8d0c1;border-radius:8px;background:#fff;color:#555b3d;cursor:pointer}.cms-check{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece4}.cms-check input{accent-color:#555b3d;width:18px;height:18px}.cms-card select{width:100%;padding:11px;border:1px solid #ddd6ca;border-radius:9px;background:#fff}.nav-admin{overflow-x:auto}.nav-item{min-width:86px}@media(max-width:850px){.cms-shell{grid-template-columns:1fr}.cms-side{position:static}.cms-banner-preview{height:145px}}
 </style>
 </head>
 
@@ -3619,9 +3621,6 @@ body{
   font-size:10px;
 }
 
-
-/* CMS visual TROPICANAZ */
-.cms-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.cms-editor{display:grid;gap:16px}.cms-card,.cms-side-card{background:#fff;border:1px solid #e8e3d8;border-radius:14px;padding:18px;box-shadow:0 3px 14px rgba(50,50,35,.05)}.cms-card h3{margin:0 0 14px;color:#555b3d}.cms-upload-row{display:flex;gap:16px;align-items:center;margin-bottom:14px}.cms-preview-logo{width:150px;height:90px;background:#fffdf8;border:1px dashed #c9c2b3;border-radius:12px;display:grid;place-items:center;overflow:hidden}.cms-preview-logo img{max-width:95%;max-height:85px;object-fit:contain}.cms-upload-btn{display:inline-block;background:#62664a;color:white;padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.cms-upload-row small{display:block;margin-top:7px;color:#777}.cms-banner-preview{height:170px;border-radius:12px;background:#f3efe5;overflow:hidden;margin-bottom:10px}.cms-banner-preview img{width:100%;height:100%;object-fit:cover}.cms-side{position:sticky;top:14px;display:grid;gap:12px}.cms-side-card button,.cms-publicar{width:100%;border:0;border-radius:10px;padding:13px;font-weight:800;cursor:pointer}.cms-side-card button{background:#f1eee5;color:#555b3d}.cms-publicar{background:#555b3d;color:#fff}.cms-help{color:#777;font-size:13px}.cms-secoes{display:grid;gap:8px}.cms-secao{display:flex;align-items:center;gap:8px;border:1px solid #e7e1d5;border-radius:10px;padding:10px 12px;background:#fffdf8}.cms-secao b{flex:1;color:#3f432e}.cms-secao button{width:34px;height:32px;border:1px solid #d8d0c1;border-radius:8px;background:#fff;color:#555b3d;cursor:pointer}.cms-check{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece4}.cms-check input{accent-color:#555b3d;width:18px;height:18px}.cms-card select{width:100%;padding:11px;border:1px solid #ddd6ca;border-radius:9px;background:#fff}.nav-admin{overflow-x:auto}.nav-item{min-width:86px}@media(max-width:850px){.cms-shell{grid-template-columns:1fr}.cms-side{position:static}.cms-banner-preview{height:145px}}
 </style>
 
 </head>
@@ -3803,27 +3802,6 @@ window.onload = function(){
 
 <\/script>
 
-
-<script>
-const CMS_SECOES_PADRAO=[
- {id:'inicio',nome:'Banner principal'},
- {id:'secaoBeneficios',nome:'Benefícios'},
- {id:'categorias',nome:'Compre por categoria'},
- {id:'novidades',nome:'Novidades'},
- {id:'editorial',nome:'Editorial'},
- {id:'cta',nome:'Chamada final'}
-];
-let cmsOrdem=[];
-function cmsValor(id){return document.getElementById(id)}
-function cmsPreviewArquivo(input,imgId){const f=input.files&&input.files[0];if(!f)return;const img=cmsValor(imgId);img.src=URL.createObjectURL(f);}
-function cmsRenderSecoes(){const box=cmsValor('cmsSecoes');if(!box)return;box.innerHTML='';cmsOrdem.forEach((id,i)=>{const def=CMS_SECOES_PADRAO.find(x=>x.id===id);if(!def)return;const el=document.createElement('div');el.className='cms-secao';el.innerHTML=`<span>⋮⋮</span><b>${def.nome}</b><button type="button" title="Subir" onclick="cmsMoverSecao(${i},-1)">↑</button><button type="button" title="Descer" onclick="cmsMoverSecao(${i},1)">↓</button>`;box.appendChild(el);});}
-function cmsMoverSecao(i,d){const j=i+d;if(j<0||j>=cmsOrdem.length)return;[cmsOrdem[i],cmsOrdem[j]]=[cmsOrdem[j],cmsOrdem[i]];cmsRenderSecoes();}
-function cmsPreencher(){if(!cmsValor('cmsNomeLoja'))return;const c=configuracoesLoja||{};cmsValor('cmsNomeLoja').value=c.nome_loja||'TROPICANAZ';cmsValor('cmsHeroTitulo').value=c.hero_titulo||'';cmsValor('cmsHeroSubtitulo').value=c.hero_subtitulo||'';cmsValor('cmsCorPrincipal').value=c.cor_principal||'#62664a';cmsValor('cmsCorDourada').value=c.cor_dourada||'#b58b45';cmsValor('cmsCorFundo').value=c.cor_fundo||'#fffdf8';cmsValor('cmsFonteTitulo').value=c.fonte_titulo||'Georgia,serif';cmsValor('cmsFonteTexto').value=c.fonte_texto||'Arial,sans-serif';cmsValor('cmsMostrarTopo').checked=c.mostrar_barra_topo!==false;cmsValor('cmsMostrarBeneficios').checked=c.mostrar_beneficios!==false;cmsValor('cmsMostrarCategorias').checked=c.mostrar_categorias!==false;cmsValor('cmsMostrarNovidades').checked=c.mostrar_novidades!==false;if(c.logo_url)cmsValor('cmsLogoPreview').src=c.logo_url;if(c.banner_url)cmsValor('cmsBannerPreview').src=c.banner_url;cmsOrdem=Array.isArray(c.ordem_secoes)?c.ordem_secoes:[...CMS_SECOES_PADRAO.map(x=>x.id)];cmsRenderSecoes();}
-async function cmsPublicarAlteracoes(){const btn=cmsValor('cmsPublicar'),st=cmsValor('cmsStatus');btn.disabled=true;btn.textContent='PUBLICANDO...';st.textContent='';try{let logo=configuracoesLoja.logo_url||null,banner=configuracoesLoja.banner_url||null;const lf=cmsValor('cmsLogoArquivo').files[0],bf=cmsValor('cmsBannerArquivo').files[0];if(lf){if(!validarArquivoImagem(lf))throw new Error('Logo inválida');logo=await enviarArquivoImagem(lf,'layout/logo')}if(bf){if(!validarArquivoImagem(bf))throw new Error('Banner inválido');banner=await enviarArquivoImagem(bf,'layout/banner')}
-const dados={id:1,nome_loja:cmsValor('cmsNomeLoja').value.trim()||'TROPICANAZ',hero_titulo:cmsValor('cmsHeroTitulo').value.trim(),hero_subtitulo:cmsValor('cmsHeroSubtitulo').value.trim(),cor_principal:cmsValor('cmsCorPrincipal').value,cor_dourada:cmsValor('cmsCorDourada').value,cor_fundo:cmsValor('cmsCorFundo').value,fonte_titulo:cmsValor('cmsFonteTitulo').value,fonte_texto:cmsValor('cmsFonteTexto').value,logo_url:logo,banner_url:banner,ordem_secoes:cmsOrdem,mostrar_barra_topo:cmsValor('cmsMostrarTopo').checked,mostrar_beneficios:cmsValor('cmsMostrarBeneficios').checked,mostrar_categorias:cmsValor('cmsMostrarCategorias').checked,mostrar_novidades:cmsValor('cmsMostrarNovidades').checked,updated_at:new Date().toISOString()};const {data,error}=await supabaseClient.from('Configuracoes_Loja').upsert(dados,{onConflict:'id'}).select('*').single();if(error)throw error;configuracoesLoja=data;st.textContent='Alterações publicadas com sucesso ✅';st.className='status-layout sucesso';cmsPreencher();}catch(e){console.error(e);st.textContent='Não foi possível publicar: '+(e.message||e);st.className='status-layout erro';}finally{btn.disabled=false;btn.textContent='PUBLICAR ALTERAÇÕES';}}
-const _abrirPaginaCms=window.abrirPagina;window.abrirPagina=function(p,b){const r=_abrirPaginaCms.apply(this,arguments);if(p==='personalizar')setTimeout(cmsPreencher,0);return r;};
-const _carregarConfigCms=window.carregarConfiguracoesLoja;window.carregarConfiguracoesLoja=async function(){const r=await _carregarConfigCms.apply(this,arguments);cmsPreencher();return r;};
-</script>
 </body>
 </html>
 
@@ -6278,6 +6256,27 @@ renderizarOpcoes();
 
 verificarSessao();
 
+
+
+// Editor visual TROPICANAZ
+const CMS_SECOES_PADRAO=[
+ {id:'inicio',nome:'Banner principal'},
+ {id:'secaoBeneficios',nome:'Benefícios'},
+ {id:'categorias',nome:'Compre por categoria'},
+ {id:'novidades',nome:'Novidades'},
+ {id:'editorial',nome:'Editorial'},
+ {id:'cta',nome:'Chamada final'}
+];
+let cmsOrdem=[];
+function cmsValor(id){return document.getElementById(id)}
+function cmsPreviewArquivo(input,imgId){const f=input.files&&input.files[0];if(!f)return;const img=cmsValor(imgId);img.src=URL.createObjectURL(f);}
+function cmsRenderSecoes(){const box=cmsValor('cmsSecoes');if(!box)return;box.innerHTML='';cmsOrdem.forEach((id,i)=>{const def=CMS_SECOES_PADRAO.find(x=>x.id===id);if(!def)return;const el=document.createElement('div');el.className='cms-secao';el.innerHTML=`<span>⋮⋮</span><b>${def.nome}</b><button type="button" title="Subir" onclick="cmsMoverSecao(${i},-1)">↑</button><button type="button" title="Descer" onclick="cmsMoverSecao(${i},1)">↓</button>`;box.appendChild(el);});}
+function cmsMoverSecao(i,d){const j=i+d;if(j<0||j>=cmsOrdem.length)return;[cmsOrdem[i],cmsOrdem[j]]=[cmsOrdem[j],cmsOrdem[i]];cmsRenderSecoes();}
+function cmsPreencher(){if(!cmsValor('cmsNomeLoja'))return;const c=configuracoesLoja||{};cmsValor('cmsNomeLoja').value=c.nome_loja||'TROPICANAZ';cmsValor('cmsHeroTitulo').value=c.hero_titulo||'';cmsValor('cmsHeroSubtitulo').value=c.hero_subtitulo||'';cmsValor('cmsCorPrincipal').value=c.cor_principal||'#62664a';cmsValor('cmsCorDourada').value=c.cor_dourada||'#b58b45';cmsValor('cmsCorFundo').value=c.cor_fundo||'#fffdf8';cmsValor('cmsFonteTitulo').value=c.fonte_titulo||'Georgia,serif';cmsValor('cmsFonteTexto').value=c.fonte_texto||'Arial,sans-serif';cmsValor('cmsMostrarTopo').checked=c.mostrar_barra_topo!==false;cmsValor('cmsMostrarBeneficios').checked=c.mostrar_beneficios!==false;cmsValor('cmsMostrarCategorias').checked=c.mostrar_categorias!==false;cmsValor('cmsMostrarNovidades').checked=c.mostrar_novidades!==false;if(c.logo_url)cmsValor('cmsLogoPreview').src=c.logo_url;if(c.banner_url)cmsValor('cmsBannerPreview').src=c.banner_url;cmsOrdem=Array.isArray(c.ordem_secoes)?c.ordem_secoes:[...CMS_SECOES_PADRAO.map(x=>x.id)];cmsRenderSecoes();}
+async function cmsPublicarAlteracoes(){const btn=cmsValor('cmsPublicar'),st=cmsValor('cmsStatus');btn.disabled=true;btn.textContent='PUBLICANDO...';st.textContent='';try{let logo=configuracoesLoja.logo_url||null,banner=configuracoesLoja.banner_url||null;const lf=cmsValor('cmsLogoArquivo').files[0],bf=cmsValor('cmsBannerArquivo').files[0];if(lf){if(!validarArquivoImagem(lf))throw new Error('Logo inválida');logo=await enviarArquivoImagem(lf,'layout/logo')}if(bf){if(!validarArquivoImagem(bf))throw new Error('Banner inválido');banner=await enviarArquivoImagem(bf,'layout/banner')}
+const dados={id:1,nome_loja:cmsValor('cmsNomeLoja').value.trim()||'TROPICANAZ',hero_titulo:cmsValor('cmsHeroTitulo').value.trim(),hero_subtitulo:cmsValor('cmsHeroSubtitulo').value.trim(),cor_principal:cmsValor('cmsCorPrincipal').value,cor_dourada:cmsValor('cmsCorDourada').value,cor_fundo:cmsValor('cmsCorFundo').value,fonte_titulo:cmsValor('cmsFonteTitulo').value,fonte_texto:cmsValor('cmsFonteTexto').value,logo_url:logo,banner_url:banner,ordem_secoes:cmsOrdem,mostrar_barra_topo:cmsValor('cmsMostrarTopo').checked,mostrar_beneficios:cmsValor('cmsMostrarBeneficios').checked,mostrar_categorias:cmsValor('cmsMostrarCategorias').checked,mostrar_novidades:cmsValor('cmsMostrarNovidades').checked,updated_at:new Date().toISOString()};const {data,error}=await supabaseClient.from('Configuracoes_Loja').upsert(dados,{onConflict:'id'}).select('*').single();if(error)throw error;configuracoesLoja=data;st.textContent='Alterações publicadas com sucesso ✅';st.className='status-layout sucesso';cmsPreencher();}catch(e){console.error(e);st.textContent='Não foi possível publicar: '+(e.message||e);st.className='status-layout erro';}finally{btn.disabled=false;btn.textContent='PUBLICAR ALTERAÇÕES';}}
+const _abrirPaginaCms=window.abrirPagina;window.abrirPagina=function(p,b){const r=_abrirPaginaCms.apply(this,arguments);if(p==='personalizar')setTimeout(cmsPreencher,0);return r;};
+const _carregarConfigCms=window.carregarConfiguracoesLoja;window.carregarConfiguracoesLoja=async function(){const r=await _carregarConfigCms.apply(this,arguments);cmsPreencher();return r;};
 </script>
 
 </body>
