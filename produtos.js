@@ -2539,8 +2539,10 @@ function criarCardProduto(
   parcelamento.className =
   "sali-parcelamento-card";
 
+  const valorParcelaCard = (Number(produto.preco || 0) / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+
   parcelamento.textContent =
-  "3x sem juros";
+  `ou 3x de R$ ${valorParcelaCard} sem juros`;
 
 
   const amostras =
