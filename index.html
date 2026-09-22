@@ -1230,6 +1230,7 @@ nav{justify-content:center;gap:30px;padding:5px 0 7px}nav a{font-size:12px;font-
 
 </style>
 
+<!-- TROPICANAZ V7.12 - CAPAS CATEGORIAS SINCRONIZADAS -->
 </head>
 
 
@@ -4745,6 +4746,35 @@ montarOpcoesPagamento();
   sincronizarBannerPrincipal();
   window.addEventListener("pageshow",sincronizarBannerPrincipal);
   document.addEventListener("visibilitychange",()=>{ if(!document.hidden) sincronizarBannerPrincipal(); });
+
+  // V7.12: sincroniza as capas das categorias diretamente do banco.
+  // Funciona de forma independente das demais configuracoes e força atualização no mobile.
+  async function sincronizarCapasCategorias(){
+    try{
+      const {data,error}=await window.supabaseClient
+        .from("Configuracoes_Loja")
+        .select("capas_categorias,updated_at")
+        .eq("id",1)
+        .maybeSingle();
+      if(error) throw error;
+      const capas=(data&&data.capas_categorias)||{};
+      const mapa={catVestidos:"vestidos",catConjuntos:"conjuntos",catBlusas:"blusas",catCalcas:"calcas"};
+      Object.entries(mapa).forEach(([id,chave])=>{
+        const el=document.getElementById(id);
+        const url=capas[chave];
+        if(!el || !url) return;
+        const sep=String(url).includes("?")?"&":"?";
+        const versao=encodeURIComponent((data&&data.updated_at)||Date.now());
+        const finalUrl=String(url)+sep+"v="+versao;
+        el.style.setProperty("background-image",`url("${finalUrl.replace(/"/g,'%22')}")`,"important");
+        el.style.setProperty("background-size","cover","important");
+        el.style.setProperty("background-position","center","important");
+      });
+    }catch(e){ console.error("Erro ao sincronizar capas das categorias:",e); }
+  }
+  sincronizarCapasCategorias();
+  window.addEventListener("pageshow",sincronizarCapasCategorias);
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) sincronizarCapasCategorias(); });
 
 })();
 
