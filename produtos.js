@@ -178,11 +178,11 @@ function adicionarEstilosSali(){
       }
 
       .sali-card-cor{
-        width:18px;
-        height:18px;
-        min-width:18px;
-        min-height:18px;
-        flex-basis:18px;
+        width:36px;
+        height:36px;
+        min-width:36px;
+        min-height:36px;
+        flex-basis:36px;
       }
 
     }
