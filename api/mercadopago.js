@@ -76,7 +76,7 @@ export default async function handler(req, res) {
               valor,
 
             description:
-              `Pedido ${numeroPedido} - SALI STORE`,
+              `Pedido ${numeroPedido} - TROPICANAZ`,
 
             payment_method_id:
               "pix",

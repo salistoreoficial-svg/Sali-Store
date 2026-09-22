@@ -1,4 +1,4 @@
-const CACHE_NAME = "tropicanaz-store-v4";
+const CACHE_NAME = "tropicanaz-v5";
 
 const ARQUIVOS = [
   "./",
