@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+<meta name="tropicanaz-version" content="7.13-mobile-capas">
 
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -4764,17 +4765,25 @@ montarOpcoesPagamento();
         const url=capas[chave];
         if(!el || !url) return;
         const sep=String(url).includes("?")?"&":"?";
-        const versao=encodeURIComponent((data&&data.updated_at)||Date.now());
-        const finalUrl=String(url)+sep+"v="+versao;
+        const versao=Date.now();
+        const finalUrl=String(url)+sep+"v713="+versao;
         el.style.setProperty("background-image",`url("${finalUrl.replace(/"/g,'%22')}")`,"important");
         el.style.setProperty("background-size","cover","important");
         el.style.setProperty("background-position","center","important");
       });
     }catch(e){ console.error("Erro ao sincronizar capas das categorias:",e); }
   }
-  sincronizarCapasCategorias();
-  window.addEventListener("pageshow",sincronizarCapasCategorias);
-  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) sincronizarCapasCategorias(); });
+  // V7.13 MOBILE: aplica as capas e repete a leitura após a renderização.
+  // O timestamp também impede o Safari/iPhone de reaproveitar a imagem anterior.
+  async function atualizarCapasMobile(){
+    await sincronizarCapasCategorias();
+    setTimeout(sincronizarCapasCategorias, 350);
+    setTimeout(sincronizarCapasCategorias, 1200);
+  }
+  atualizarCapasMobile();
+  window.addEventListener("pageshow", atualizarCapasMobile);
+  window.addEventListener("focus", atualizarCapasMobile);
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) atualizarCapasMobile(); });
 
 })();
 

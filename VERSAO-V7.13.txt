@@ -1,0 +1,2 @@
+V7.13 - correção de cache mobile das capas de categorias.
+Inclui vercel.json com no-store e recarregamento das capas ao abrir/voltar/focar a página.
