@@ -8,13 +8,13 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="SALI ADM">
+<meta name="apple-mobile-web-app-title" content="TROPICANAZ ADM">
 
 <link rel="manifest" href="manifest-admin.json?v=9">
-<link rel="apple-touch-icon" sizes="180x180" href="sali-icon-180.png?v=9">
-<link rel="icon" type="image/png" sizes="512x512" href="sali-icon-512.png?v=9">
+<link rel="apple-touch-icon" sizes="180x180" href="tropicanaz-icon-180.png?v=1">
+<link rel="icon" type="image/png" sizes="512x512" href="tropicanaz-icon-512.png?v=1">
 
-<title>SALI ADM</title>
+<title>TROPICANAZ ADM</title>
 
 <style>
 
@@ -25,9 +25,9 @@
 }
 
 :root{
-  --rosa:#e52d86;
-  --rosa2:#bd1762;
-  --rosaClaro:#fff0f7;
+  --rosa:#62664a;
+  --rosa2:#4d5139;
+  --rosaClaro:#f6f3ea;
   --preto:#000;
   --cinza:#f5f5f5;
   --borda:#e5e5e5;
@@ -57,7 +57,7 @@ button{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:linear-gradient(135deg,#ffd4e6,#ff87bb);
+  background:linear-gradient(135deg,#f7f3e8,#c4a36b);
 }
 
 .login-box{
@@ -428,7 +428,7 @@ button{
 }
 
 .status-pedido.novo{
-  background:#fff0f7;
+  background:#f6f3ea;
   color:#b31860;
 }
 
@@ -1211,7 +1211,7 @@ button{
   <div class="login-box">
 
     <div class="login-logo">
-      <h1>SALI STORE</h1>
+      <h1>TROPICANAZ</h1>
       <p>Painel administrativo</p>
     </div>
 
@@ -1246,7 +1246,7 @@ button{
       <div class="marca-icone">S</div>
 
       <div>
-        <h1>SALI STORE</h1>
+        <h1>TROPICANAZ</h1>
         <small>Painel de controle</small>
       </div>
 
@@ -1627,7 +1627,7 @@ button{
         <input
           type="text"
           id="layoutNomeLoja"
-          placeholder="SALI STORE"
+          placeholder="TROPICANAZ"
         >
       </div>
 
@@ -1645,7 +1645,7 @@ button{
         <input
           type="text"
           id="layoutInstagram"
-          placeholder="@salimanacapuru"
+          placeholder="@tropicanaz"
         >
       </div>
 
@@ -1674,7 +1674,7 @@ button{
           <input
             type="color"
             id="layoutCorPrincipal"
-            value="#d92f82"
+            value="#62664a"
           >
         </div>
 
@@ -2675,7 +2675,7 @@ async function carregarConfiguracoesLoja(){
 function preencherFormularioLayout(){
 
   document.getElementById("layoutNomeLoja").value =
-  configuracoesLoja.nome_loja || "SALI STORE";
+  configuracoesLoja.nome_loja || "TROPICANAZ";
 
   document.getElementById("layoutSubtituloLoja").value =
   configuracoesLoja.subtitulo_loja || "";
@@ -2693,7 +2693,7 @@ function preencherFormularioLayout(){
   configuracoesLoja.hero_subtitulo || "";
 
   document.getElementById("layoutCorPrincipal").value =
-  configuracoesLoja.cor_principal || "#d92f82";
+  configuracoesLoja.cor_principal || "#62664a";
 
   document.getElementById("layoutCorSecundaria").value =
   configuracoesLoja.cor_secundaria || "#111111";
@@ -3308,7 +3308,7 @@ function imprimirPedido(id){
   const nomeLoja =
   configuracoesLoja?.nome_loja
   ||
-  "SALI STORE";
+  "TROPICANAZ";
 
   const telefone =
   telefoneFormatado(
@@ -3711,7 +3711,7 @@ body{
 
   <div class="rodape">
 
-    SALI STORE
+    TROPICANAZ
 
     <br>
 

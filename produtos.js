@@ -1,5 +1,5 @@
 /* =========================================
-   SALI STORE
+   TROPICANAZ
    PRODUTOS + VARIANTES VISUAIS
 ========================================= */
 
@@ -144,7 +144,7 @@ function adicionarEstilosSali(){
 
       box-shadow:
         0 0 0 2px #fff,
-        0 0 0 4px #e52d86;
+        0 0 0 4px #62664a;
 
       transform:scale(1.03);
     }

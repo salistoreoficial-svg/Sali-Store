@@ -1,12 +1,12 @@
-const CACHE_NAME = "sali-store-v3";
+const CACHE_NAME = "tropicanaz-store-v1";
 
 const ARQUIVOS = [
   "./",
   "./index.html",
   "./produtos.js",
   "./manifest.json",
-  "./sali-icon-180.png",
-  "./sali-icon-512.png"
+  "./tropicanaz-icon-180.png",
+  "./tropicanaz-icon-512.png"
 ];
 
 self.addEventListener("install", event => {

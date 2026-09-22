@@ -20,14 +20,14 @@
 <link
   rel="apple-touch-icon"
   sizes="180x180"
-  href="/Sali-Store/sali-icon-180.png?v=4"
+  href="/Sali-Store/tropicanaz-icon-180.png?v=1"
 >
 
 <link
   rel="icon"
   type="image/png"
   sizes="512x512"
-  href="/Sali-Store/sali-icon-512.png?v=4"
+  href="/Sali-Store/tropicanaz-icon-512.png?v=1"
 >
 
 <meta
@@ -42,11 +42,11 @@
 
 <meta
   name="apple-mobile-web-app-title"
-  content="SALI STORE"
+  content="TROPICANAZ"
 >
 
 <title id="tituloPagina">
-  SALI STORE | Moda Feminina
+  TROPICANAZ | Moda Feminina
 </title>
 
 
@@ -59,15 +59,15 @@
 }
 
 :root{
-  --pink:#d92f82;
-  --pink-dark:#a91c5f;
-  --pink-soft:#fff3f8;
-  --black:#111111;
-  --text:#1b1b1e;
-  --muted:#727278;
-  --line:#e9e9ec;
-  --bg:#f7f7f8;
-  --white:#ffffff;
+  --pink:#62664a;
+  --pink-dark:#4d5139;
+  --pink-soft:#f6f3ea;
+  --black:#62664a;
+  --text:#33362b;
+  --muted:#777565;
+  --line:#e8e1d2;
+  --bg:#f7f5ef;
+  --white:#fffdf8;
 }
 
 html{
@@ -1114,14 +1114,14 @@ footer p{
 
 <img
   class="logo"
-  src="815BCB89-C59E-479D-83FF-454243870EB3.png"
-  alt="SALI STORE"
+  src="tropicanaz-logo.png"
+  alt="TROPICANAZ Moda Feminina"
 >
 
 <div class="brand-copy">
 
 <strong id="nomeLojaCabecalho">
-SALI STORE
+TROPICANAZ
 </strong>
 
 <span id="subtituloLojaCabecalho">
@@ -1202,7 +1202,7 @@ Calças
 <div class="hero-copy">
 
 <span class="hero-eyebrow">
-NOVA COLEÇÃO • SALI STORE
+NOVA COLEÇÃO • TROPICANAZ
 </span>
 
 <h1 id="heroTituloLoja">
@@ -1265,7 +1265,7 @@ Retirada na loja
 </strong>
 
 <span>
-Escolha retirar diretamente na SALI.
+Escolha retirar diretamente na TROPICANAZ.
 </span>
 
 </div>
@@ -1397,7 +1397,7 @@ Novidades
 </h2>
 
 <p class="produtos-sub">
-Os últimos lançamentos da SALI.
+Os últimos lançamentos da TROPICANAZ.
 </p>
 
 <div
@@ -1425,7 +1425,7 @@ Estilo que encanta.
 
 
 <p>
-A SALI nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
+A TROPICANAZ nasceu para transformar o momento de se vestir em uma experiência mais leve, bonita e confiante. Escolha suas favoritas e monte o seu look.
 </p>
 
 </div>
@@ -1463,7 +1463,7 @@ VER PRODUTOS
 <div>
 
 <h3 id="nomeLojaRodape">
-SALI STORE
+TROPICANAZ
 </h3>
 
 <p>
@@ -1477,7 +1477,7 @@ Moda feminina com identidade, novidades e praticidade para comprar online.
   class="footer-mini"
   id="rodapeLocal"
 >
-SALI STORE • Manacapuru, Amazonas
+TROPICANAZ • Manacapuru, Amazonas
 </div>
 
 </div>
@@ -1870,7 +1870,7 @@ Pedido confirmado!
 </h2>
 
 <p>
-Obrigada por comprar na SALI STORE 💕
+Obrigada por comprar na TROPICANAZ ✨
 </p>
 
 <div
@@ -3920,7 +3920,7 @@ async function confirmarPedido(){
             style="
               margin-top:10px;
               border:0;
-              background:#d92f82;
+              background:#62664a;
               color:#fff;
               padding:11px 15px;
               border-radius:8px;
@@ -3948,7 +3948,7 @@ async function confirmarPedido(){
               display:inline-block;
               margin-top:12px;
               font-weight:800;
-              color:#d92f82;
+              color:#62664a;
             "
           >
             Ver instruções do pagamento
@@ -4209,18 +4209,21 @@ function aplicarConfiguracoesLoja(
 
 
   const corPrincipal =
-  config.cor_principal ||
-  "#d92f82";
+  (!config.cor_principal || config.cor_principal.toLowerCase() === "#d92f82")
+    ? "#62664a"
+    : config.cor_principal;
 
 
   const corSecundaria =
-  config.cor_secundaria ||
-  "#111111";
+  (!config.cor_secundaria || config.cor_secundaria.toLowerCase() === "#111111")
+    ? "#62664a"
+    : config.cor_secundaria;
 
 
   const corFundo =
-  config.cor_fundo ||
-  "#ffffff";
+  (!config.cor_fundo || config.cor_fundo.toLowerCase() === "#ffffff")
+    ? "#fffdf8"
+    : config.cor_fundo;
 
 
   document.documentElement
@@ -4252,8 +4255,9 @@ function aplicarConfiguracoesLoja(
 
 
   const nomeLoja =
-  config.nome_loja ||
-  "SALI STORE";
+  (!config.nome_loja || config.nome_loja.trim().toUpperCase() === "SALI STORE")
+    ? "TROPICANAZ"
+    : config.nome_loja;
 
 
   document.getElementById(
