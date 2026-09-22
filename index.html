@@ -4660,6 +4660,30 @@ montarOpcoesPagamento();
 
   carregarConfiguracoesLoja();
 
+  // V7.3: sincroniza o banner diretamente do banco e força a imagem dinâmica
+  async function sincronizarBannerPrincipal(){
+    try{
+      const {data,error}=await window.supabaseClient
+        .from("Configuracoes_Loja")
+        .select("banner_url,updated_at")
+        .eq("id",1)
+        .maybeSingle();
+      if(error) throw error;
+      if(!data || !data.banner_url) return;
+      const hero=document.getElementById("inicio");
+      if(!hero) return;
+      const sep=data.banner_url.includes("?")?"&":"?";
+      const versao=encodeURIComponent(data.updated_at || Date.now());
+      const banner=data.banner_url + sep + "v=" + versao;
+      const bg=`linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.58)),url("${banner}")`;
+      hero.style.setProperty("background-image",bg,"important");
+      hero.classList.add("com-banner");
+    }catch(e){ console.error("Erro ao sincronizar banner:",e); }
+  }
+  sincronizarBannerPrincipal();
+  window.addEventListener("pageshow",sincronizarBannerPrincipal);
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden) sincronizarBannerPrincipal(); });
+
 })();
 
 </script>

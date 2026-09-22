@@ -1,12 +1,12 @@
-const CACHE_NAME = "tropicanaz-v6-2";
+const CACHE_NAME = "tropicanaz-v7-3";
 
 const ARQUIVOS = [
   "./",
   "./index.html",
   "./produtos.js",
   "./manifest.json",
-  "./tropicanaz-v6-2",
-  "./tropicanaz-v6-2"
+  "./tropicanaz-v7-3",
+  "./tropicanaz-v7-3"
 ];
 
 self.addEventListener("install", event => {
