@@ -1202,7 +1202,7 @@ button{
 }
 
 /* CMS visual TROPICANAZ */
-.cms-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.cms-editor{display:grid;gap:16px}.cms-card,.cms-side-card{background:#fff;border:1px solid #e8e3d8;border-radius:14px;padding:18px;box-shadow:0 3px 14px rgba(50,50,35,.05)}.cms-card h3{margin:0 0 14px;color:#555b3d}.cms-upload-row{display:flex;gap:16px;align-items:center;margin-bottom:14px}.cms-preview-logo{width:150px;height:90px;background:#fffdf8;border:1px dashed #c9c2b3;border-radius:12px;display:grid;place-items:center;overflow:hidden}.cms-preview-logo img{max-width:95%;max-height:85px;object-fit:contain}.cms-upload-btn{display:inline-block;background:#62664a;color:white;padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.cms-upload-row small{display:block;margin-top:7px;color:#777}.cms-banner-preview{height:170px;border-radius:12px;background:#f3efe5;overflow:hidden;margin-bottom:10px}.cms-banner-preview img{width:100%;height:100%;object-fit:cover}.cms-side{position:sticky;top:14px;display:grid;gap:12px}.cms-side-card button,.cms-publicar{width:100%;border:0;border-radius:10px;padding:13px;font-weight:800;cursor:pointer}.cms-side-card button{background:#f1eee5;color:#555b3d}.cms-publicar{background:#555b3d;color:#fff}.cms-help{color:#777;font-size:13px}.cms-secoes{display:grid;gap:8px}.cms-secao{display:flex;align-items:center;gap:8px;border:1px solid #e7e1d5;border-radius:10px;padding:10px 12px;background:#fffdf8}.cms-secao b{flex:1;color:#3f432e}.cms-secao button{width:34px;height:32px;border:1px solid #d8d0c1;border-radius:8px;background:#fff;color:#555b3d;cursor:pointer}.cms-check{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece4}.cms-check input{accent-color:#555b3d;width:18px;height:18px}.cms-card select{width:100%;padding:11px;border:1px solid #ddd6ca;border-radius:9px;background:#fff}.nav-admin{overflow-x:auto}.nav-item{min-width:86px}@media(max-width:850px){.cms-shell{grid-template-columns:1fr}.cms-side{position:static}.cms-banner-preview{height:145px}}
+.cms-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.cms-editor{display:grid;gap:16px}.cms-card,.cms-side-card{background:#fff;border:1px solid #e8e3d8;border-radius:14px;padding:18px;box-shadow:0 3px 14px rgba(50,50,35,.05)}.cms-card h3{margin:0 0 14px;color:#555b3d}.cms-upload-row{display:flex;gap:16px;align-items:center;margin-bottom:14px}.cms-preview-logo{width:150px;height:90px;background:#fffdf8;border:1px dashed #c9c2b3;border-radius:12px;display:grid;place-items:center;overflow:hidden}.cms-preview-logo img{max-width:95%;max-height:85px;object-fit:contain}.cms-upload-btn{display:inline-block;background:#62664a;color:white;padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.cms-upload-row small{display:block;margin-top:7px;color:#777}.cms-banner-preview{height:170px;border-radius:12px;background:#f3efe5;overflow:hidden;margin-bottom:10px}.cms-banner-preview img{width:100%;height:100%;object-fit:cover}.cms-side{position:sticky;top:14px;display:grid;gap:12px}.cms-side-card button,.cms-publicar{width:100%;border:0;border-radius:10px;padding:13px;font-weight:800;cursor:pointer}.cms-side-card button{background:#f1eee5;color:#555b3d}.cms-publicar{background:#555b3d;color:#fff}.cms-help{color:#777;font-size:13px}.cms-upload-status{font-size:13px;margin:8px 0 2px;color:#666;font-weight:700}.cms-upload-status.ok{color:#3f6d3f}.cms-upload-status.erro{color:#a12c2c}.cms-upload-btn.carregando{opacity:.65;pointer-events:none}.cms-secoes{display:grid;gap:8px}.cms-secao{display:flex;align-items:center;gap:8px;border:1px solid #e7e1d5;border-radius:10px;padding:10px 12px;background:#fffdf8}.cms-secao b{flex:1;color:#3f432e}.cms-secao button{width:34px;height:32px;border:1px solid #d8d0c1;border-radius:8px;background:#fff;color:#555b3d;cursor:pointer}.cms-check{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece4}.cms-check input{accent-color:#555b3d;width:18px;height:18px}.cms-card select{width:100%;padding:11px;border:1px solid #ddd6ca;border-radius:9px;background:#fff}.nav-admin{overflow-x:auto}.nav-item{min-width:86px}@media(max-width:850px){.cms-shell{grid-template-columns:1fr}.cms-side{position:static}.cms-banner-preview{height:145px}}
 </style>
 </head>
 
@@ -1628,7 +1628,7 @@ button{
         <h3>🏷️ Marca</h3>
         <div class="cms-upload-row">
           <div class="cms-preview-logo"><img id="cmsLogoPreview" src="tropicanaz-logo-oficial.png" alt="Logo"></div>
-          <div><label class="cms-upload-btn">Trocar logo<input type="file" id="cmsLogoArquivo" accept="image/*" hidden onchange="cmsPreviewArquivo(this,'cmsLogoPreview')"></label><small>PNG transparente recomendado</small></div>
+          <div><label class="cms-upload-btn">Trocar logo<input type="file" id="cmsLogoArquivo" accept="image/*" hidden onchange="cmsTrocarImagemDireta(this,'logo_url','cmsLogoPreview','cmsLogoStatus','layout/logo')"></label><small>PNG transparente recomendado</small><div id="cmsLogoStatus" class="cms-upload-status"></div></div>
         </div>
         <div class="campo"><label>Nome da loja</label><input id="cmsNomeLoja" type="text" placeholder="TROPICANAZ"></div>
       </div>
@@ -1636,7 +1636,7 @@ button{
       <div class="cms-card">
         <h3>🖼️ Banner principal</h3>
         <div class="cms-banner-preview"><img id="cmsBannerPreview" alt="Prévia do banner"></div>
-        <label class="cms-upload-btn">Trocar imagem<input type="file" id="cmsBannerArquivo" accept="image/*" hidden onchange="cmsPreviewArquivo(this,'cmsBannerPreview')"></label>
+        <label class="cms-upload-btn">Trocar imagem<input type="file" id="cmsBannerArquivo" accept="image/*" hidden onchange="cmsTrocarImagemDireta(this,'banner_url','cmsBannerPreview','cmsBannerStatus','layout/banner')"></label><div id="cmsBannerStatus" class="cms-upload-status"></div>
         <div class="campo"><label>Título</label><input id="cmsHeroTitulo" type="text"></div>
         <div class="campo"><label>Texto</label><textarea id="cmsHeroSubtitulo"></textarea></div>
       </div>
@@ -6270,6 +6270,23 @@ const CMS_SECOES_PADRAO=[
 let cmsOrdem=[];
 function cmsValor(id){return document.getElementById(id)}
 function cmsPreviewArquivo(input,imgId){const f=input.files&&input.files[0];if(!f)return;const img=cmsValor(imgId);img.src=URL.createObjectURL(f);}
+async function cmsTrocarImagemDireta(input,campo,imgId,statusId,pasta){
+ const f=input.files&&input.files[0]; if(!f)return;
+ const img=cmsValor(imgId), st=cmsValor(statusId), label=input.closest('.cms-upload-btn');
+ const anterior=img?img.src:''; const previa=URL.createObjectURL(f); if(img)img.src=previa;
+ if(st){st.textContent='Enviando imagem...';st.className='cms-upload-status';}
+ if(label)label.classList.add('carregando'); input.disabled=true;
+ try{
+   if(!validarArquivoImagem(f))throw new Error('Selecione uma imagem válida.');
+   const url=await enviarArquivoImagem(f,pasta);
+   if(!url)throw new Error('Não foi possível obter a URL da imagem.');
+   const payload={id:1,updated_at:new Date().toISOString()}; payload[campo]=url;
+   const {data,error}=await supabaseClient.from('Configuracoes_Loja').upsert(payload,{onConflict:'id'}).select('*').single();
+   if(error)throw error; configuracoesLoja={...(configuracoesLoja||{}),...(data||{}),[campo]:url};
+   if(img)img.src=url; if(st){st.textContent='Imagem publicada no site ✓';st.className='cms-upload-status ok';}
+ }catch(e){console.error(e);if(img&&anterior)img.src=anterior;if(st){st.textContent='Erro ao publicar: '+(e.message||e);st.className='cms-upload-status erro';}}
+ finally{input.disabled=false;if(label)label.classList.remove('carregando');try{URL.revokeObjectURL(previa)}catch(_){}}
+}
 function cmsRenderSecoes(){const box=cmsValor('cmsSecoes');if(!box)return;box.innerHTML='';cmsOrdem.forEach((id,i)=>{const def=CMS_SECOES_PADRAO.find(x=>x.id===id);if(!def)return;const el=document.createElement('div');el.className='cms-secao';el.innerHTML=`<span>⋮⋮</span><b>${def.nome}</b><button type="button" title="Subir" onclick="cmsMoverSecao(${i},-1)">↑</button><button type="button" title="Descer" onclick="cmsMoverSecao(${i},1)">↓</button>`;box.appendChild(el);});}
 function cmsMoverSecao(i,d){const j=i+d;if(j<0||j>=cmsOrdem.length)return;[cmsOrdem[i],cmsOrdem[j]]=[cmsOrdem[j],cmsOrdem[i]];cmsRenderSecoes();}
 function cmsPreencher(){if(!cmsValor('cmsNomeLoja'))return;const c=configuracoesLoja||{};cmsValor('cmsNomeLoja').value=c.nome_loja||'TROPICANAZ';cmsValor('cmsHeroTitulo').value=c.hero_titulo||'';cmsValor('cmsHeroSubtitulo').value=c.hero_subtitulo||'';cmsValor('cmsCorPrincipal').value=c.cor_principal||'#62664a';cmsValor('cmsCorDourada').value=c.cor_dourada||'#b58b45';cmsValor('cmsCorFundo').value=c.cor_fundo||'#fffdf8';cmsValor('cmsFonteTitulo').value=c.fonte_titulo||'Georgia,serif';cmsValor('cmsFonteTexto').value=c.fonte_texto||'Arial,sans-serif';cmsValor('cmsMostrarTopo').checked=c.mostrar_barra_topo!==false;cmsValor('cmsMostrarBeneficios').checked=c.mostrar_beneficios!==false;cmsValor('cmsMostrarCategorias').checked=c.mostrar_categorias!==false;cmsValor('cmsMostrarNovidades').checked=c.mostrar_novidades!==false;if(c.logo_url)cmsValor('cmsLogoPreview').src=c.logo_url;if(c.banner_url)cmsValor('cmsBannerPreview').src=c.banner_url;cmsOrdem=Array.isArray(c.ordem_secoes)?c.ordem_secoes:[...CMS_SECOES_PADRAO.map(x=>x.id)];cmsRenderSecoes();}
