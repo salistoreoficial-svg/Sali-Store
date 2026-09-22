@@ -299,7 +299,7 @@ function adicionarEstilosSali(){
 
 
     .sali-modal-preco{
-      color:#e52d86;
+      color:#5f6349;
       font-size:25px;
       font-weight:900;
       margin-bottom:15px;
@@ -386,7 +386,7 @@ function adicionarEstilosSali(){
 
     .sali-visual-item.selecionada
     .sali-visual-foto{
-      border:3px solid #e52d86;
+      border:3px solid #5f6349;
       transform:scale(1.03);
     }
 
@@ -409,7 +409,7 @@ function adicionarEstilosSali(){
       align-items:center;
       justify-content:center;
 
-      background:#e52d86;
+      background:#5f6349;
       color:#fff;
 
       font-size:13px;
@@ -421,7 +421,7 @@ function adicionarEstilosSali(){
 
     .sali-visual-item.selecionada
     .sali-visual-nome{
-      color:#bd1762;
+      color:#4e523c;
       font-weight:900;
     }
 
@@ -486,9 +486,9 @@ function adicionarEstilosSali(){
 
 
     .sali-tamanho-botao.selecionado{
-      border-color:#e52d86;
-      background:#fff0f7;
-      color:#bd1762;
+      border-color:#5f6349;
+      background:#f3f0e5;
+      color:#4e523c;
     }
 
 
@@ -553,6 +553,33 @@ function adicionarEstilosSali(){
     body.sali-modal-aberto{
       overflow:hidden;
     }
+
+    /* TROPICANAZ V6.3 — produto conforme identidade oficial */
+    .sali-modal-info h2{
+      color:#5f6349;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:700;
+    }
+    .sali-modal-preco{
+      display:inline-block;
+      width:auto;
+      color:#fff!important;
+      background:#5f6349;
+      border-radius:14px;
+      padding:9px 15px;
+      margin:4px 0 18px;
+      font-size:25px;
+      font-weight:900;
+      line-height:1.15;
+    }
+    .sali-titulo-opcao,.sali-status-modal{color:#5f6349}
+    .sali-visual-item.selecionada .sali-visual-foto{border-color:#5f6349}
+    .sali-visual-item.selecionada .sali-visual-foto::after{background:#5f6349}
+    .sali-visual-item.selecionada .sali-visual-nome{color:#4e523c}
+    .sali-tamanho-botao.selecionado{border-color:#5f6349;background:#f3f0e5;color:#4e523c}
+    .sali-modal-adicionar{background:#5f6349;color:#fff;border-radius:13px}
+    .sali-modal-adicionar:not(:disabled):hover{background:#4e523c}
+
 
 
     /* CELULAR */
@@ -832,7 +859,7 @@ function codigoCorSali(
     "caramelo":"#b97844",
 
     "rosa":"#e99ab9",
-    "pink":"#e52d86",
+    "pink":"#5f6349",
     "rosa bebe":"#f5c8d9",
 
     "vermelho":"#c51f32",
