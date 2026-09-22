@@ -1442,6 +1442,7 @@ Encontre rapidamente o estilo que combina com você.
 
 <a
   class="cat"
+  id="catVestidos"
   href="#novidades"
 >
 
@@ -1457,6 +1458,7 @@ Do casual ao marcante
 
 <a
   class="cat"
+  id="catConjuntos"
   href="#novidades"
 >
 
@@ -1472,6 +1474,7 @@ Looks prontos para vestir
 
 <a
   class="cat"
+  id="catBlusas"
   href="#novidades"
 >
 
@@ -1487,6 +1490,7 @@ Essenciais com personalidade
 
 <a
   class="cat"
+  id="catCalcas"
   href="#novidades"
 >
 
@@ -4481,6 +4485,13 @@ function aplicarConfiguracoesLoja(
   :
   "grid";
 
+
+  const capasCategorias = config.capas_categorias || {};
+  const mapaCapasCategorias = {catVestidos:'vestidos',catConjuntos:'conjuntos',catBlusas:'blusas',catCalcas:'calcas'};
+  Object.entries(mapaCapasCategorias).forEach(([id,chave])=>{
+    const el=document.getElementById(id);
+    if(el && capasCategorias[chave]) el.style.backgroundImage=`url("${String(capasCategorias[chave]).replace(/"/g,'%22')}")`;
+  });
 
   const categorias =
   document.getElementById(
