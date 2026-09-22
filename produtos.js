@@ -2531,6 +2531,18 @@ function criarCardProduto(
   );
 
 
+  const parcelamento =
+  document.createElement(
+    "small"
+  );
+
+  parcelamento.className =
+  "sali-parcelamento-card";
+
+  parcelamento.textContent =
+  "3x sem juros";
+
+
   const amostras =
   criarAmostrasCard(
     variantes,
@@ -2677,6 +2689,11 @@ function criarCardProduto(
 
   info.appendChild(
     preco
+  );
+
+
+  info.appendChild(
+    parcelamento
   );
 
 
