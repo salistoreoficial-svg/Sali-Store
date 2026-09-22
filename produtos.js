@@ -1,3 +1,4 @@
+/* TROPICANAZ V7.6 — preço elegante + atualização forçada de assets */
 /* =========================================
    TROPICANAZ
    PRODUTOS + VARIANTES VISUAIS
