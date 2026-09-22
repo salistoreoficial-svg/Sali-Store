@@ -1475,7 +1475,7 @@ Os últimos lançamentos da TROPICANAZ.
 </section>
 
 
-<section class="editorial">
+<section class="editorial" id="editorial">
 
 <div class="editorial-inner">
 
@@ -1500,7 +1500,7 @@ A TROPICANAZ nasceu para transformar o momento de se vestir em uma experiência 
 </section>
 
 
-<section class="cta">
+<section class="cta" id="cta">
 
 <div class="cta-card">
 
@@ -4294,6 +4294,10 @@ function aplicarConfiguracoesLoja(
     : config.cor_secundaria;
 
 
+  const corDourada = config.cor_dourada || "#b58b45";
+  const fonteTitulo = config.fonte_titulo || "Georgia,serif";
+  const fonteTexto = config.fonte_texto || "Arial,sans-serif";
+
   const corFundo =
   (!config.cor_fundo || config.cor_fundo.toLowerCase() === "#ffffff")
     ? "#fffdf8"
@@ -4324,8 +4328,17 @@ function aplicarConfiguracoesLoja(
   );
 
 
+  document.documentElement.style.setProperty("--gold",corDourada);
+  document.documentElement.style.setProperty("--font-title",fonteTitulo);
+  document.documentElement.style.setProperty("--font-body",fonteTexto);
+  document.body.style.fontFamily=fonteTexto;
+  document.querySelectorAll("h1,h2,h3,.preco,.price-tag").forEach(el=>el.style.fontFamily=fonteTitulo);
+
   document.body.style.background =
   corFundo;
+
+  const logoEl=document.querySelector(".logo");
+  if(logoEl && config.logo_url){ logoEl.src=config.logo_url; }
 
 
   const nomeLoja =
@@ -4523,6 +4536,16 @@ function aplicarConfiguracoesLoja(
 
   }
 
+
+  const novidades=document.getElementById("novidades");
+  if(novidades) novidades.style.display=config.mostrar_novidades===false?"none":"";
+
+  if(Array.isArray(config.ordem_secoes)){
+    const ids=config.ordem_secoes;
+    const primeiro=ids.map(id=>document.getElementById(id)).find(Boolean);
+    const pai=primeiro&&primeiro.parentNode;
+    if(pai){ ids.forEach(id=>{const el=document.getElementById(id);if(el)pai.appendChild(el);}); }
+  }
 
   montarOpcoesEntrega();
   montarOpcoesPagamento();
