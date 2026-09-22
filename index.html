@@ -132,28 +132,37 @@ header{
 .cabecalho{
   max-width:1200px;
   margin:auto;
-  padding:11px 16px;
+  padding:10px 16px;
+  position:relative;
+}
+
+.logo-area .carrinho-botao{
+  position:absolute;
+  right:16px;
+  top:18px;
 }
 
 .logo-area{
   display:flex;
-  justify-content:space-between;
+  flex-direction:column;
+  justify-content:center;
   align-items:center;
-  gap:14px;
+  gap:8px;
 }
 
 .logo-wrap{
   display:flex;
+  justify-content:center;
   align-items:center;
-  gap:10px;
+  width:100%;
 }
 
 .logo{
-  width:56px;
-  height:56px;
-  object-fit:cover;
-  border-radius:14px;
-  background:#111;
+  width:180px;
+  height:180px;
+  object-fit:contain;
+  border-radius:0;
+  background:transparent;
 }
 
 .brand-copy strong{
@@ -1118,17 +1127,7 @@ footer p{
   alt="TROPICANAZ Moda Feminina"
 >
 
-<div class="brand-copy">
 
-<strong id="nomeLojaCabecalho">
-TROPICANAZ
-</strong>
-
-<span id="subtituloLojaCabecalho">
-Moda feminina • Manacapuru
-</span>
-
-</div>
 
 </div>
 
