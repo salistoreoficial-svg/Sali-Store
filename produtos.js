@@ -2421,6 +2421,23 @@ function criarCardProduto(
   imagem.loading =
   "lazy";
 
+  // A foto do card também abre os detalhes/estampas do produto.
+  imagem.setAttribute("role", "button");
+  imagem.setAttribute("tabindex", "0");
+  imagem.setAttribute("aria-label", "Ver estampas e opções de " + (produto.nome || "produto"));
+
+  const abrirPelaFoto = function(){
+    abrirModalProduto(produto, variantes);
+  };
+
+  imagem.addEventListener("click", abrirPelaFoto);
+  imagem.addEventListener("keydown", function(event){
+    if(event.key === "Enter" || event.key === " "){
+      event.preventDefault();
+      abrirPelaFoto();
+    }
+  });
+
 
   const info =
   document.createElement(

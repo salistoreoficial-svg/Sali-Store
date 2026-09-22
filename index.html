@@ -1097,6 +1097,38 @@ footer p{
 
 }
 
+/* TROPICANAZ — layout editorial v3 */
+:root{--olive:#555b3d;--olive2:#707454;--gold:#bd8d45;--cream:#fbf8f0;--ink:#292c23;--sand:#eee6d6}
+body{background:var(--cream);color:var(--ink)}
+.topo{display:none}
+header{background:rgba(251,248,240,.97);border-bottom:1px solid #e8e0d1;position:sticky;top:0}
+.cabecalho{padding:8px 14px 7px}
+.logo-area{min-height:72px;position:relative;display:flex;justify-content:center}
+.logo{width:116px;height:72px;object-fit:contain}
+.menu-mobile{display:block;position:absolute;left:2px;top:22px;border:0;background:transparent;color:var(--ink);font-size:23px;line-height:1;z-index:2}
+.logo-area .carrinho-botao{right:2px;top:17px;background:transparent;color:var(--olive);border:0;font-size:20px;padding:7px}
+.contador{position:absolute;right:0;top:1px;background:var(--olive);color:#fff;min-width:18px;height:18px;font-size:9px;margin:0}
+nav{padding:7px 0 4px;gap:24px;justify-content:flex-start}
+nav a{font-size:12px;color:var(--ink);font-weight:650}
+.hero{min-height:590px;padding:0;align-items:flex-end;background-image:linear-gradient(180deg,rgba(25,25,18,.02) 35%,rgba(25,25,18,.68) 100%),url('1F51613E-DBE2-4D72-83EC-C461362D065D.jpeg');background-position:center 22%;}
+.hero:before{display:none}.hero-conteudo{width:100%;max-width:1200px;margin:auto;padding:36px 22px 42px}
+.hero-copy{max-width:510px;color:white}.hero-eyebrow{border:0;padding:0;color:#fff;font-family:Georgia,serif;letter-spacing:.14em;font-size:12px}
+.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:43px;line-height:1.02;font-weight:400;letter-spacing:-.025em;max-width:470px;margin-top:12px}
+.hero p{font-size:14px;line-height:1.5;color:rgba(255,255,255,.9);max-width:390px}
+.botao-principal{background:var(--olive)!important;border-color:var(--olive)!important;color:#fff!important;border-radius:4px!important;padding:14px 18px!important}
+.botao-secundario{display:none}
+.beneficios{background:#fffaf0;border:0;grid-template-columns:repeat(4,1fr);max-width:1200px;margin:auto;padding:0}
+.beneficio{padding:24px 12px;text-align:center;border-right:1px solid #e9e1d2}.beneficio:last-child{border:0}.beneficio strong{font-size:12px}.beneficio span{font-size:9px}.benefit-icon{display:block;font-size:25px;color:var(--olive);margin-bottom:8px;font-weight:400}
+.categorias,.produtos{padding:48px 18px}.section-head{display:block;text-align:center;margin-bottom:24px}.section-head h2,.produtos h2{font-family:Georgia,serif;text-transform:uppercase;letter-spacing:.04em;font-weight:400;font-size:29px;text-align:center}.section-head p,.produtos-sub{text-align:center;margin-top:8px;font-size:11px}
+.categorias-grid{gap:10px}.cat{min-height:230px;border-radius:12px;background-size:cover;background-position:center;position:relative}.cat:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(25,28,20,.7));border-radius:inherit}.cat span{position:relative;z-index:1;font-family:Georgia,serif;font-size:18px;letter-spacing:.05em}.cat small{font-family:Arial,sans-serif;font-size:9px}.cat:nth-child(1){background-image:url('1F51613E-DBE2-4D72-83EC-C461362D065D.jpeg')}.cat:nth-child(2){background-image:url('AB0ECD64-5FFA-4265-92D5-9167066B51FE.png')}.cat:nth-child(3){background-image:url('1F51613E-DBE2-4D72-83EC-C461362D065D.jpeg');background-position:35% center}.cat:nth-child(4){background-image:url('AB0ECD64-5FFA-4265-92D5-9167066B51FE.png');background-position:65% center}
+.produtos{background:#fff}.grade{gap:14px}.produto{border-radius:10px;overflow:hidden;background:#fff}.produto>img{border-radius:10px;aspect-ratio:3/4}.info{padding:10px 2px 16px}.info h3{font-size:12px}.preco{color:var(--ink);font-size:17px}.adicionar,.sali-escolher-opcoes{background:#555b3d!important;border-color:#555b3d!important;color:white!important;border-radius:6px!important}.sali-escolher-opcoes:hover,.adicionar:hover{background:#454a32!important}.produto>img{cursor:pointer}.produto>img:active{opacity:.92}
+.editorial{background:linear-gradient(135deg,#e9dfca,#f8f3e8);color:var(--ink);margin:0}.editorial h2{font-family:Georgia,serif;font-weight:400}.editorial p{color:#6c6a5c}.editorial .line{background:var(--gold)}
+.cta-card{background:linear-gradient(135deg,#f5efdf,#e5d7ba);border-color:#dfd1b7;text-align:center}.cta-card h3{font-family:Georgia,serif;font-weight:400}.cta-card button{background:var(--olive)}
+footer{background:var(--ink)!important}.mobile-bottom-nav{display:none}
+@media(max-width:700px){
+ body{padding-bottom:66px}.cabecalho{padding-bottom:4px}.logo{width:108px;height:68px}nav{display:none;padding:12px 2px 8px;flex-wrap:wrap;gap:15px 22px}nav.menu-aberto{display:flex}.hero{min-height:570px;background-position:center top}.hero h1{font-size:39px}.hero-conteudo{padding:34px 20px}.beneficios{grid-template-columns:repeat(3,1fr)}.beneficio:nth-child(3){display:none}.beneficio{padding:18px 7px}.beneficio span{font-size:8px;line-height:1.3}.categorias-grid{grid-template-columns:repeat(2,1fr);gap:9px}.cat{min-height:190px}.grade{grid-template-columns:repeat(2,1fr);gap:11px}.produtos,.categorias{padding:38px 14px}.mobile-bottom-nav{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;height:62px;background:rgba(255,253,248,.98);border-top:1px solid #e4dccd;z-index:45;padding-bottom:env(safe-area-inset-bottom)}.mobile-bottom-nav a,.mobile-bottom-nav button{border:0;background:transparent;color:#56574a;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;gap:2px}.mobile-bottom-nav span{font-size:20px;color:var(--olive)}
+}
+
 </style>
 
 </head>
@@ -1118,12 +1150,13 @@ footer p{
 <div class="cabecalho">
 
 <div class="logo-area">
+<button class="menu-mobile" type="button" onclick="document.querySelector('nav').classList.toggle('menu-aberto')" aria-label="Menu">☰</button>
 
 <div class="logo-wrap">
 
 <img
   class="logo"
-  src="tropicanaz-logo.png"
+  src="tropicanaz-logo.jpg"
   alt="TROPICANAZ Moda Feminina"
 >
 
@@ -1137,7 +1170,7 @@ footer p{
   onclick="abrirCarrinho()"
 >
 
-Sacola
+🛍️
 
 <span
   class="contador"
@@ -1205,11 +1238,11 @@ NOVA COLEÇÃO • TROPICANAZ
 </span>
 
 <h1 id="heroTituloLoja">
-Seu look começa aqui.
+Para mulheres reais, em todos os seus momentos.
 </h1>
 
 <p id="heroSubtituloLoja">
-Novidades, tendências e peças selecionadas para você.
+Elegância, leveza e personalidade em cada escolha.
 </p>
 
 
@@ -1219,7 +1252,7 @@ Novidades, tendências e peças selecionadas para você.
   class="botao-principal"
   onclick="document.getElementById('novidades').scrollIntoView()"
 >
-COMPRAR AGORA
+VER NOVIDADES
 </button>
 
 <button
@@ -1246,8 +1279,8 @@ VER CATEGORIAS
 
 <div class="beneficio">
 
-<strong>
-Entrega local
+<b class="benefit-icon">♧</b><strong>
+Entrega em Manacapuru
 </strong>
 
 <span>
@@ -1259,7 +1292,7 @@ Receba seu pedido com praticidade.
 
 <div class="beneficio">
 
-<strong>
+<b class="benefit-icon">♧</b><strong>
 Retirada na loja
 </strong>
 
@@ -1272,7 +1305,7 @@ Escolha retirar diretamente na TROPICANAZ.
 
 <div class="beneficio">
 
-<strong>
+<b class="benefit-icon">✦</b><strong>
 Novidades semanais
 </strong>
 
@@ -1285,7 +1318,7 @@ Novos modelos chegando sempre.
 
 <div class="beneficio">
 
-<strong>
+<b class="benefit-icon">◇</b><strong>
 Compra segura
 </strong>
 
@@ -1485,6 +1518,13 @@ TROPICANAZ • Manacapuru, Amazonas
 
 
 <!-- CARRINHO -->
+
+<div class="mobile-bottom-nav">
+<a href="#inicio"><span>⌂</span>Início</a>
+<a href="#novidades"><span>⌕</span>Buscar</a>
+<a href="#categorias"><span>▦</span>Categorias</a>
+<button type="button" onclick="abrirCarrinho()"><span>♧</span>Carrinho</button>
+</div>
 
 <div
   class="overlay"
@@ -4303,14 +4343,14 @@ function aplicarConfiguracoesLoja(
     "heroTituloLoja"
   ).textContent =
   config.hero_titulo ||
-  "Seu look começa aqui.";
+  "Para mulheres reais, em todos os seus momentos.";
 
 
   document.getElementById(
     "heroSubtituloLoja"
   ).textContent =
   config.hero_subtitulo ||
-  "Novidades, tendências e peças selecionadas para você.";
+  "Elegância, leveza e personalidade em cada escolha.";
 
 
   const barraTopo =
