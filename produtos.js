@@ -556,21 +556,39 @@ function adicionarEstilosSali(){
 
     /* TROPICANAZ V6.3 — produto conforme identidade oficial */
     .sali-modal-info h2{
-      color:#5f6349;
+      color:#26281f;
       font-family:Georgia,"Times New Roman",serif;
       font-weight:700;
     }
     .sali-modal-preco{
-      display:inline-block;
+      display:flex;
+      align-items:baseline;
+      gap:6px;
       width:auto;
-      color:#fff!important;
-      background:#5f6349;
-      border-radius:14px;
-      padding:9px 15px;
-      margin:4px 0 18px;
-      font-size:25px;
-      font-weight:900;
-      line-height:1.15;
+      color:#5f6349!important;
+      background:transparent;
+      border:0;
+      border-radius:0;
+      padding:0;
+      margin:10px 0 2px;
+      font-family:Arial,sans-serif;
+      font-size:34px;
+      font-weight:800;
+      letter-spacing:-.03em;
+      line-height:1.05;
+    }
+    .sali-modal-preco .sali-preco-cifrao{
+      font-size:.58em;
+      font-weight:700;
+      letter-spacing:0;
+    }
+    .sali-modal-parcelamento{
+      color:#777;
+      font-family:Arial,sans-serif;
+      font-size:14px;
+      font-weight:400;
+      margin:5px 0 24px;
+      line-height:1.35;
     }
     .sali-titulo-opcao,.sali-status-modal{color:#5f6349}
     .sali-visual-item.selecionada .sali-visual-foto{border-color:#5f6349}
@@ -611,8 +629,12 @@ function adicionarEstilosSali(){
 
 
       .sali-modal-preco{
-        font-size:23px;
-        margin-bottom:10px;
+        font-size:31px;
+        margin:8px 0 2px;
+      }
+      .sali-modal-parcelamento{
+        font-size:13px;
+        margin:5px 0 20px;
       }
 
 
@@ -1388,6 +1410,10 @@ function garantirModal(){
           class="sali-modal-preco"
         ></div>
 
+        <div
+          id="saliModalParcelamento"
+          class="sali-modal-parcelamento"
+        ></div>
 
         <div
           id="saliModalOpcoes"
@@ -1557,10 +1583,15 @@ function abrirModalProduto(
   );
 
 
-  preco.textContent =
-  moedaProduto(
-    produto.preco
-  );
+  const valorProduto = Number(produto.preco || 0);
+  const valorFormatado = valorProduto.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+  preco.innerHTML = `<span class="sali-preco-cifrao">R$</span><span>${valorFormatado}</span>`;
+
+  const parcelamento = document.getElementById("saliModalParcelamento");
+  if(parcelamento){
+    const parcela = (valorProduto / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+    parcelamento.textContent = `ou 3x de R$ ${parcela} sem juros`;
+  }
 
 
   areaOpcoes.innerHTML =
