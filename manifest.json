@@ -1,25 +1,23 @@
 {
-  "name": "TROPICANAZ",
-  "short_name": "TROPICANAZ",
-  "description": "TROPICANAZ - Moda feminina em Manacapuru",
+  "name": "SALI STORE",
+  "short_name": "SALI STORE",
+  "description": "SALI STORE - Moda feminina em Manacapuru",
   "start_url": "./admin.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fffdf8",
-  "theme_color": "#62664a",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/Sali-Store/tropicanaz-icon-180.png?v=1",
+      "src": "/sali-icon-180.png?v=2",
       "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "/Sali-Store/tropicanaz-icon-512.png?v=1",
+      "src": "/sali-icon-512.png?v=2",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

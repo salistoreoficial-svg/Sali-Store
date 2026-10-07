@@ -1,6 +1,6 @@
-/* TROPICANAZ V7.6 — preço elegante + atualização forçada de assets */
+/* SALI STORE V7.6 — preço elegante + atualização forçada de assets */
 /* =========================================
-   TROPICANAZ
+   SALI STORE
    PRODUTOS + VARIANTES VISUAIS
 ========================================= */
 
@@ -145,7 +145,7 @@ function adicionarEstilosSali(){
 
       box-shadow:
         0 0 0 2px #fff,
-        0 0 0 4px #62664a;
+        0 0 0 4px #ff008c;
 
       transform:scale(1.03);
     }
@@ -300,7 +300,7 @@ function adicionarEstilosSali(){
 
 
     .sali-modal-preco{
-      color:#5f6349;
+      color:#ff008c;
       font-size:25px;
       font-weight:900;
       margin-bottom:15px;
@@ -387,7 +387,7 @@ function adicionarEstilosSali(){
 
     .sali-visual-item.selecionada
     .sali-visual-foto{
-      border:3px solid #5f6349;
+      border:3px solid #ff008c;
       transform:scale(1.03);
     }
 
@@ -410,7 +410,7 @@ function adicionarEstilosSali(){
       align-items:center;
       justify-content:center;
 
-      background:#5f6349;
+      background:#ff008c;
       color:#fff;
 
       font-size:13px;
@@ -422,7 +422,7 @@ function adicionarEstilosSali(){
 
     .sali-visual-item.selecionada
     .sali-visual-nome{
-      color:#4e523c;
+      color:#d90076;
       font-weight:900;
     }
 
@@ -487,9 +487,9 @@ function adicionarEstilosSali(){
 
 
     .sali-tamanho-botao.selecionado{
-      border-color:#5f6349;
+      border-color:#ff008c;
       background:#f3f0e5;
-      color:#4e523c;
+      color:#d90076;
     }
 
 
@@ -555,7 +555,7 @@ function adicionarEstilosSali(){
       overflow:hidden;
     }
 
-    /* TROPICANAZ V6.3 — produto conforme identidade oficial */
+    /* SALI STORE V6.3 — produto conforme identidade oficial */
     .sali-modal-info h2{
       color:#26281f;
       font-family:Georgia,"Times New Roman",serif;
@@ -566,7 +566,7 @@ function adicionarEstilosSali(){
       align-items:baseline;
       gap:6px;
       width:auto;
-      color:#5f6349!important;
+      color:#ff008c!important;
       background:transparent;
       border:0;
       border-radius:0;
@@ -591,13 +591,13 @@ function adicionarEstilosSali(){
       margin:5px 0 24px;
       line-height:1.35;
     }
-    .sali-titulo-opcao,.sali-status-modal{color:#5f6349}
-    .sali-visual-item.selecionada .sali-visual-foto{border-color:#5f6349}
-    .sali-visual-item.selecionada .sali-visual-foto::after{background:#5f6349}
-    .sali-visual-item.selecionada .sali-visual-nome{color:#4e523c}
-    .sali-tamanho-botao.selecionado{border-color:#5f6349;background:#f3f0e5;color:#4e523c}
-    .sali-modal-adicionar{background:#5f6349;color:#fff;border-radius:13px}
-    .sali-modal-adicionar:not(:disabled):hover{background:#4e523c}
+    .sali-titulo-opcao,.sali-status-modal{color:#ff008c}
+    .sali-visual-item.selecionada .sali-visual-foto{border-color:#ff008c}
+    .sali-visual-item.selecionada .sali-visual-foto::after{background:#ff008c}
+    .sali-visual-item.selecionada .sali-visual-nome{color:#d90076}
+    .sali-tamanho-botao.selecionado{border-color:#ff008c;background:#f3f0e5;color:#d90076}
+    .sali-modal-adicionar{background:#ff008c;color:#fff;border-radius:13px}
+    .sali-modal-adicionar:not(:disabled):hover{background:#d90076}
 
 
 
@@ -882,7 +882,7 @@ function codigoCorSali(
     "caramelo":"#b97844",
 
     "rosa":"#e99ab9",
-    "pink":"#5f6349",
+    "pink":"#ff008c",
     "rosa bebe":"#f5c8d9",
 
     "vermelho":"#c51f32",
@@ -893,7 +893,7 @@ function codigoCorSali(
     "azul marinho":"#182a4d",
 
     "verde":"#4b8a61",
-    "verde militar":"#596044",
+    "verde militar":"#ff008c",
     "verde bandeira":"#168447",
 
     "amarelo":"#f2cf43",

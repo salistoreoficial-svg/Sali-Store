@@ -1,4 +1,4 @@
-const CACHE_NAME = "tropicanaz-v7-4-clean";
+const CACHE_NAME = "sali-store-v7-4-clean";
 
 self.addEventListener("install", event => {
   self.skipWaiting();

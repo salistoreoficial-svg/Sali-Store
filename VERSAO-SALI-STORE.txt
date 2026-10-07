@@ -1,0 +1,3 @@
+SALI STORE — Rebranding pink + preto
+Base: V7.13
+Atualização: logo, nome, paleta, textos, PWA e admin visual.
