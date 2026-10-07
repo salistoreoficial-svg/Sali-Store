@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000000">
+<meta name="sali-release" content="2026-10-07-v2">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -1203,6 +1204,17 @@ button{
 
 /* CMS visual SALI STORE */
 .cms-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.cms-editor{display:grid;gap:16px}.cms-card,.cms-side-card{background:#fff;border:1px solid #e8e3d8;border-radius:14px;padding:18px;box-shadow:0 3px 14px rgba(50,50,35,.05)}.cms-card h3{margin:0 0 14px;color:#ff008c}.cms-upload-row{display:flex;gap:16px;align-items:center;margin-bottom:14px}.cms-preview-logo{width:150px;height:90px;background:#ffffff;border:1px dashed #c9c2b3;border-radius:12px;display:grid;place-items:center;overflow:hidden}.cms-preview-logo img{max-width:95%;max-height:85px;object-fit:contain}.cms-upload-btn{display:inline-block;background:#ff008c;color:white;padding:10px 14px;border-radius:9px;font-weight:700;cursor:pointer}.cms-upload-row small{display:block;margin-top:7px;color:#777}.cms-banner-preview{height:170px;border-radius:12px;background:#f3efe5;overflow:hidden;margin-bottom:10px}.cms-banner-preview img{width:100%;height:100%;object-fit:cover}.cms-cat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.cms-cat-item{border:1px solid #e8e3d8;border-radius:12px;padding:12px;background:#ffffff}.cms-cat-item strong{display:block;margin-bottom:8px;color:#222222}.cms-cat-preview{height:150px;border-radius:10px;overflow:hidden;background:#f3efe5;margin-bottom:9px}.cms-cat-preview img{width:100%;height:100%;object-fit:cover}.cms-cat-item .cms-upload-btn{width:100%;text-align:center;box-sizing:border-box}@media(max-width:600px){.cms-cat-grid{grid-template-columns:1fr 1fr;gap:9px}.cms-cat-preview{height:125px}.cms-cat-item{padding:9px}.cms-cat-item .cms-upload-btn{font-size:12px;padding:9px 6px}}.cms-side{position:sticky;top:14px;display:grid;gap:12px}.cms-side-card button,.cms-publicar{width:100%;border:0;border-radius:10px;padding:13px;font-weight:800;cursor:pointer}.cms-side-card button{background:#f1eee5;color:#ff008c}.cms-publicar{background:#ff008c;color:#fff}.cms-help{color:#777;font-size:13px}.cms-upload-status{font-size:13px;margin:8px 0 2px;color:#666;font-weight:700}.cms-upload-status.ok{color:#3f6d3f}.cms-upload-status.erro{color:#a12c2c}.cms-upload-btn.carregando{opacity:.65;pointer-events:none}.cms-secoes{display:grid;gap:8px}.cms-secao{display:flex;align-items:center;gap:8px;border:1px solid #e7e1d5;border-radius:10px;padding:10px 12px;background:#ffffff}.cms-secao b{flex:1;color:#222222}.cms-secao button{width:34px;height:32px;border:1px solid #d8d0c1;border-radius:8px;background:#fff;color:#ff008c;cursor:pointer}.cms-check{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f0ece4}.cms-check input{accent-color:#ff008c;width:18px;height:18px}.cms-card select{width:100%;padding:11px;border:1px solid #ddd6ca;border-radius:9px;background:#fff}.nav-admin{overflow-x:auto}.nav-item{min-width:86px}@media(max-width:850px){.cms-shell{grid-template-columns:1fr}.cms-side{position:static}.cms-banner-preview{height:145px}}
+
+/* SALI STORE — identidade oficial do painel */
+.marca-icone{background:#000!important;border:1px solid #ff008c!important;overflow:hidden;padding:0!important}
+.marca-icone img{width:100%;height:100%;object-fit:cover;display:block}
+.topo{background:#000!important;border-bottom:1px solid rgba(255,0,140,.4)}
+.marca-admin h1{color:#fff!important;letter-spacing:.02em}
+.marca-admin small{color:#ff9acd!important}
+.sair{background:#ff008c!important;color:#fff!important}
+.nav-item.ativo{color:#ff008c!important;background:#fff0f8!important}
+input[type=checkbox],input[type=radio]{accent-color:#ff008c}
+
 </style>
 </head>
 
@@ -1245,7 +1257,7 @@ button{
 
     <div class="marca-admin">
 
-      <div class="marca-icone">S</div>
+      <div class="marca-icone"><img src="sali-icon-180.png?v=20261007b" alt="SALI STORE"></div>
 
       <div>
         <h1>SALI STORE</h1>
@@ -2740,8 +2752,15 @@ async function carregarConfiguracoesLoja(){
     return;
   }
 
-  configuracoesLoja =
-  data || {};
+  configuracoesLoja = data || {};
+
+  // Neutraliza valores legados da antiga identidade Tropicanaz no painel.
+  if (!configuracoesLoja.nome_loja || /tropicanaz/i.test(String(configuracoesLoja.nome_loja))) configuracoesLoja.nome_loja = "SALI STORE";
+  if (!configuracoesLoja.hero_titulo || /tropicanaz/i.test(String(configuracoesLoja.hero_titulo))) configuracoesLoja.hero_titulo = "SALI STORE";
+  configuracoesLoja.cor_principal = "#ff008c";
+  configuracoesLoja.cor_secundaria = "#000000";
+  configuracoesLoja.cor_dourada = "#ff008c";
+  if (!configuracoesLoja.logo_url || /tropicanaz/i.test(String(configuracoesLoja.logo_url))) configuracoesLoja.logo_url = "sali-logo-oficial.png?v=20261007b";
 
   preencherFormularioLayout();
   preencherEntregasPagamentos();
@@ -6315,7 +6334,7 @@ async function cmsTrocarCapaCategoria(input,chave,imgId,statusId){
 }
 function cmsRenderSecoes(){const box=cmsValor('cmsSecoes');if(!box)return;box.innerHTML='';cmsOrdem.forEach((id,i)=>{const def=CMS_SECOES_PADRAO.find(x=>x.id===id);if(!def)return;const el=document.createElement('div');el.className='cms-secao';el.innerHTML=`<span>⋮⋮</span><b>${def.nome}</b><button type="button" title="Subir" onclick="cmsMoverSecao(${i},-1)">↑</button><button type="button" title="Descer" onclick="cmsMoverSecao(${i},1)">↓</button>`;box.appendChild(el);});}
 function cmsMoverSecao(i,d){const j=i+d;if(j<0||j>=cmsOrdem.length)return;[cmsOrdem[i],cmsOrdem[j]]=[cmsOrdem[j],cmsOrdem[i]];cmsRenderSecoes();}
-function cmsPreencher(){if(!cmsValor('cmsNomeLoja'))return;const c=configuracoesLoja||{};cmsValor('cmsNomeLoja').value=c.nome_loja||'SALI STORE';cmsValor('cmsHeroTitulo').value=c.hero_titulo||'';cmsValor('cmsHeroSubtitulo').value=c.hero_subtitulo||'';cmsValor('cmsCorPrincipal').value=c.cor_principal||'#ff008c';cmsValor('cmsCorDourada').value=c.cor_dourada||'#ff008c';cmsValor('cmsCorFundo').value=c.cor_fundo||'#ffffff';cmsValor('cmsFonteTitulo').value=c.fonte_titulo||'Georgia,serif';cmsValor('cmsFonteTexto').value=c.fonte_texto||'Arial,sans-serif';cmsValor('cmsMostrarTopo').checked=c.mostrar_barra_topo!==false;cmsValor('cmsMostrarBeneficios').checked=c.mostrar_beneficios!==false;cmsValor('cmsMostrarCategorias').checked=c.mostrar_categorias!==false;cmsValor('cmsMostrarNovidades').checked=c.mostrar_novidades!==false;if(c.logo_url)cmsValor('cmsLogoPreview').src=c.logo_url;if(c.banner_url)cmsValor('cmsBannerPreview').src=c.banner_url;const capas=c.capas_categorias||{};const mapas={vestidos:'cmsCatVestidosPreview',conjuntos:'cmsCatConjuntosPreview',blusas:'cmsCatBlusasPreview',calcas:'cmsCatCalcasPreview'};Object.entries(mapas).forEach(([k,id])=>{const el=cmsValor(id);if(el&&capas[k])el.src=capas[k];});cmsOrdem=Array.isArray(c.ordem_secoes)?c.ordem_secoes:[...CMS_SECOES_PADRAO.map(x=>x.id)];cmsRenderSecoes();}
+function cmsPreencher(){if(!cmsValor('cmsNomeLoja'))return;const c=configuracoesLoja||{};cmsValor('cmsNomeLoja').value=(!c.nome_loja||/tropicanaz/i.test(String(c.nome_loja)))?'SALI STORE':c.nome_loja;cmsValor('cmsHeroTitulo').value=c.hero_titulo||'';cmsValor('cmsHeroSubtitulo').value=c.hero_subtitulo||'';cmsValor('cmsCorPrincipal').value=c.cor_principal||'#ff008c';cmsValor('cmsCorDourada').value=c.cor_dourada||'#ff008c';cmsValor('cmsCorFundo').value=c.cor_fundo||'#ffffff';cmsValor('cmsFonteTitulo').value=c.fonte_titulo||'Georgia,serif';cmsValor('cmsFonteTexto').value=c.fonte_texto||'Arial,sans-serif';cmsValor('cmsMostrarTopo').checked=c.mostrar_barra_topo!==false;cmsValor('cmsMostrarBeneficios').checked=c.mostrar_beneficios!==false;cmsValor('cmsMostrarCategorias').checked=c.mostrar_categorias!==false;cmsValor('cmsMostrarNovidades').checked=c.mostrar_novidades!==false;cmsValor('cmsLogoPreview').src=(!c.logo_url||/tropicanaz/i.test(String(c.logo_url)))?'sali-logo-oficial.png?v=20261007b':c.logo_url;if(c.banner_url)cmsValor('cmsBannerPreview').src=c.banner_url;const capas=c.capas_categorias||{};const mapas={vestidos:'cmsCatVestidosPreview',conjuntos:'cmsCatConjuntosPreview',blusas:'cmsCatBlusasPreview',calcas:'cmsCatCalcasPreview'};Object.entries(mapas).forEach(([k,id])=>{const el=cmsValor(id);if(el&&capas[k])el.src=capas[k];});cmsOrdem=Array.isArray(c.ordem_secoes)?c.ordem_secoes:[...CMS_SECOES_PADRAO.map(x=>x.id)];cmsRenderSecoes();}
 async function cmsPublicarAlteracoes(){const btn=cmsValor('cmsPublicar'),st=cmsValor('cmsStatus');btn.disabled=true;btn.textContent='PUBLICANDO...';st.textContent='';try{let logo=configuracoesLoja.logo_url||null,banner=configuracoesLoja.banner_url||null;const lf=cmsValor('cmsLogoArquivo').files[0],bf=cmsValor('cmsBannerArquivo').files[0];if(lf){if(!validarArquivoImagem(lf))throw new Error('Logo inválida');logo=await enviarArquivoImagem(lf,'layout/logo')}if(bf){if(!validarArquivoImagem(bf))throw new Error('Banner inválido');banner=await enviarArquivoImagem(bf,'layout/banner')}
 const dados={id:1,nome_loja:cmsValor('cmsNomeLoja').value.trim()||'SALI STORE',hero_titulo:cmsValor('cmsHeroTitulo').value.trim(),hero_subtitulo:cmsValor('cmsHeroSubtitulo').value.trim(),cor_principal:cmsValor('cmsCorPrincipal').value,cor_dourada:cmsValor('cmsCorDourada').value,cor_fundo:cmsValor('cmsCorFundo').value,fonte_titulo:cmsValor('cmsFonteTitulo').value,fonte_texto:cmsValor('cmsFonteTexto').value,logo_url:logo,banner_url:banner,ordem_secoes:cmsOrdem,mostrar_barra_topo:cmsValor('cmsMostrarTopo').checked,mostrar_beneficios:cmsValor('cmsMostrarBeneficios').checked,mostrar_categorias:cmsValor('cmsMostrarCategorias').checked,mostrar_novidades:cmsValor('cmsMostrarNovidades').checked,updated_at:new Date().toISOString()};const {data,error}=await supabaseClient.from('Configuracoes_Loja').upsert(dados,{onConflict:'id'}).select('*').single();if(error)throw error;configuracoesLoja=data;st.textContent='Alterações publicadas com sucesso ✅';st.className='status-layout sucesso';cmsPreencher();}catch(e){console.error(e);st.textContent='Não foi possível publicar: '+(e.message||e);st.className='status-layout erro';}finally{btn.disabled=false;btn.textContent='PUBLICAR ALTERAÇÕES';}}
 const _abrirPaginaCms=window.abrirPagina;window.abrirPagina=function(p,b){const r=_abrirPaginaCms.apply(this,arguments);if(p==='personalizar')setTimeout(cmsPreencher,0);return r;};

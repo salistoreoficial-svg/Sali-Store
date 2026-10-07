@@ -1,21 +1,21 @@
 {
-  "name": "TROPICANAZ ADM",
-  "short_name": "TROPICANAZ ADM",
-  "description": "Painel administrativo TROPICANAZ",
+  "name": "SALI STORE ADM",
+  "short_name": "SALI STORE ADM",
+  "description": "Painel administrativo SALI STORE",
   "start_url": "./admin.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fffdf8",
-  "theme_color": "#62664a",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
     {
-      "src": "/Sali-Store/tropicanaz-icon-180.png?v=1",
+      "src": "/sali-icon-180.png?v=20261007b",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Sali-Store/tropicanaz-icon-512.png?v=1",
+      "src": "/sali-icon-512.png?v=20261007b",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

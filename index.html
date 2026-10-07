@@ -1288,7 +1288,7 @@ footer{background:#050505!important;color:#fff!important;border-top:2px solid #f
 
 <img
   class="logo"
-  src="sali-logo-oficial.png?v=1"
+  src="sali-logo-oficial.png?v=20261007b"
   alt="SALI STORE Moda Feminina"
 >
 
@@ -4370,20 +4370,14 @@ function aplicarConfiguracoesLoja(
   };
 
 
-  const corPrincipalRaw = (config.cor_principal || "").toLowerCase();
-  const coresLegadas = ["#62664a","#5f6349","#596044","#555b3d","#d92f82"];
-  const corPrincipal = (!corPrincipalRaw || coresLegadas.includes(corPrincipalRaw))
-    ? "#ff008c"
-    : config.cor_principal;
+  // Identidade oficial SALI STORE — não permitir que configurações antigas da Tropicanaz sobrescrevam a marca.
+  const corPrincipal = "#ff008c";
 
 
-  const corSecundariaRaw = (config.cor_secundaria || "").toLowerCase();
-  const corSecundaria = (!corSecundariaRaw || ["#62664a","#5f6349","#596044","#555b3d","#111111"].includes(corSecundariaRaw))
-    ? "#000000"
-    : config.cor_secundaria;
+  const corSecundaria = "#000000";
 
 
-  const corDourada = config.cor_dourada || "#ff008c";
+  const corDourada = "#ff008c";
   const fonteTitulo = config.fonte_titulo || "Georgia,serif";
   const fonteTexto = config.fonte_texto || "Arial,sans-serif";
 
@@ -4428,16 +4422,12 @@ function aplicarConfiguracoesLoja(
 
   const logoEl=document.querySelector(".logo");
   if(logoEl){
-    const logoConfigurada = String(config.logo_url || "");
-    const usaLogoLegada = !logoConfigurada || /tropicanaz|sali-logo-oficial/i.test(logoConfigurada);
-    logoEl.src = usaLogoLegada ? "sali-logo-oficial.png?v=1" : logoConfigurada;
+    logoEl.src = "sali-logo-oficial.png?v=20261007b";
+    logoEl.alt = "SALI STORE";
   }
 
 
-  const nomeOriginal = String(config.nome_loja || "").trim();
-  const nomeLoja = (!nomeOriginal || nomeOriginal.toUpperCase() === "TROPICANAZ")
-    ? "SALI STORE"
-    : nomeOriginal;
+  const nomeLoja = "SALI STORE";
 
 
   const nomeCabecalhoEl=document.getElementById("nomeLojaCabecalho");
@@ -4477,9 +4467,7 @@ function aplicarConfiguracoesLoja(
 
   const heroTituloOriginal = String(config.hero_titulo || "").trim();
   document.getElementById("heroTituloLoja").textContent =
-  (!heroTituloOriginal || heroTituloOriginal.toUpperCase() === "TROPICANAZ")
-    ? "SALI STORE"
-    : heroTituloOriginal;
+  (!heroTituloOriginal || /TROPICANAZ/i.test(heroTituloOriginal)) ? "SALI STORE" : heroTituloOriginal;
 
 
   const heroSubtituloOriginal = String(config.hero_subtitulo || "").trim();

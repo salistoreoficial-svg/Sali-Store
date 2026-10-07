@@ -10,12 +10,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/sali-icon-180.png?v=2",
+      "src": "/sali-icon-180.png?v=20261007b",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/sali-icon-512.png?v=2",
+      "src": "/sali-icon-512.png?v=20261007b",
       "sizes": "512x512",
       "type": "image/png"
     }
