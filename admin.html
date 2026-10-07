@@ -1215,6 +1215,16 @@ button{
 .nav-item.ativo{color:#ff008c!important;background:#fff0f8!important}
 input[type=checkbox],input[type=radio]{accent-color:#ff008c}
 
+
+/* V6 — Áreas de entrega editáveis */
+.areas-entrega-lista{display:flex;flex-direction:column;gap:14px;margin-top:12px}
+.area-entrega-editavel{border:1px solid #eee;border-radius:18px;padding:16px;background:#fff}
+.area-entrega-linha{display:grid;grid-template-columns:1fr 120px auto;gap:10px;align-items:center}
+.area-entrega-linha input[type=text],.area-entrega-linha input[type=number]{width:100%;padding:14px;border:1px solid #d7d7d7;border-radius:12px;font-size:16px;background:#fafafa}
+.area-entrega-acoes{display:flex;gap:8px;align-items:center}
+.btn-excluir-area{border:0;background:#fff0f6;color:#d6006f;border-radius:12px;padding:12px;font-weight:800}
+.btn-add-area{width:100%;margin:14px 0;border:2px dashed #ff008c;background:#fff0f7;color:#ff008c;border-radius:16px;padding:16px;font-weight:900;font-size:15px}
+@media(max-width:560px){.area-entrega-linha{grid-template-columns:1fr 95px}.area-entrega-acoes{grid-column:1/-1;justify-content:space-between}.btn-excluir-area{margin-left:auto}}
 </style>
 </head>
 
@@ -1897,145 +1907,12 @@ input[type=checkbox],input[type=radio]{accent-color:#ff008c}
     </div>
 
 
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-          <strong>Entrega dentro da cidade</strong>
-        </div>
-
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="mostrarCidade"
-            checked
-          >
-          <span class="slider"></span>
-        </label>
-
-      </div>
-
-      <div class="taxa-area">
-        <div class="taxa-input-wrap">
-          <span>R$</span>
-          <input
-            type="number"
-            id="taxaCidade"
-            min="0"
-            step="0.01"
-            value="5"
-          >
-        </div>
-      </div>
-
+    <div style="margin:18px 0 8px">
+      <strong>Áreas de entrega</strong>
+      <p style="margin:6px 0 0;color:#777;font-size:14px">Edite o nome e a taxa, ative/desative ou adicione quantas áreas precisar.</p>
     </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-          <strong>Bola até Novo Manacá</strong>
-        </div>
-
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="mostrarBola"
-            checked
-          >
-          <span class="slider"></span>
-        </label>
-
-      </div>
-
-      <div class="taxa-area">
-        <div class="taxa-input-wrap">
-          <span>R$</span>
-          <input
-            type="number"
-            id="taxaBola"
-            min="0"
-            step="0.01"
-            value="8"
-          >
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-          <strong>Caixa d’Água pra lá</strong>
-        </div>
-
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="mostrarCaixa"
-            checked
-          >
-          <span class="slider"></span>
-        </label>
-
-      </div>
-
-      <div class="taxa-area">
-        <div class="taxa-input-wrap">
-          <span>R$</span>
-          <input
-            type="number"
-            id="taxaCaixa"
-            min="0"
-            step="0.01"
-            value="10"
-          >
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="entrega-config-card">
-
-      <div class="entrega-config-topo">
-
-        <div>
-          <strong>Barcos / jatos</strong>
-        </div>
-
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="mostrarBarcos"
-            checked
-          >
-          <span class="slider"></span>
-        </label>
-
-      </div>
-
-      <div class="taxa-area">
-        <div class="taxa-input-wrap">
-          <span>R$</span>
-          <input
-            type="number"
-            id="taxaBarcos"
-            min="0"
-            step="0.01"
-            value="5"
-          >
-        </div>
-      </div>
-
-    </div>
-
+    <div id="areasEntregaLista" class="areas-entrega-lista"></div>
+    <button type="button" class="btn-add-area" onclick="adicionarAreaEntrega()">＋ ADICIONAR NOVA ÁREA DE ENTREGA</button>
 
     <div class="subtitulo">
       <h4>💳 Formas de pagamento</h4>
@@ -2809,50 +2686,37 @@ function preencherFormularioLayout(){
 }
 
 
+function areasEntregaAtuais(){
+  const salvas = configuracoesLoja?.capas_categorias?._areas_entrega;
+  if(Array.isArray(salvas) && salvas.length) return salvas;
+  return [
+    {id:"cidade",nome:"Entrega dentro da cidade",taxa:Number(configuracoesLoja.taxa_cidade??5),ativo:configuracoesLoja.mostrar_cidade!==false},
+    {id:"bola",nome:"Bola até Novo Manacá",taxa:Number(configuracoesLoja.taxa_bola??8),ativo:configuracoesLoja.mostrar_bola!==false},
+    {id:"caixa",nome:"Caixa d’Água pra lá",taxa:Number(configuracoesLoja.taxa_caixa??10),ativo:configuracoesLoja.mostrar_caixa!==false},
+    {id:"barcos",nome:"Barcos / jatos",taxa:Number(configuracoesLoja.taxa_barcos??13),ativo:configuracoesLoja.mostrar_barcos!==false}
+  ];
+}
+let areasEntregaEditor=[];
+function renderAreasEntrega(){
+  const box=document.getElementById("areasEntregaLista"); if(!box)return;
+  box.innerHTML=areasEntregaEditor.map((x,idx)=>`<div class="area-entrega-editavel"><div class="area-entrega-linha">
+    <input type="text" value="${String(x.nome||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" placeholder="Nome do bairro ou região" oninput="areasEntregaEditor[${idx}].nome=this.value">
+    <input type="number" min="0" step="0.01" value="${Number(x.taxa||0)}" aria-label="Taxa" oninput="areasEntregaEditor[${idx}].taxa=Number(this.value||0)">
+    <div class="area-entrega-acoes"><label class="switch"><input type="checkbox" ${x.ativo!==false?'checked':''} onchange="areasEntregaEditor[${idx}].ativo=this.checked"><span class="slider"></span></label><button type="button" class="btn-excluir-area" onclick="removerAreaEntrega(${idx})">Excluir</button></div>
+  </div></div>`).join('');
+}
+function adicionarAreaEntrega(){
+  areasEntregaEditor.push({id:'area_'+Date.now(),nome:'Nova área',taxa:0,ativo:true}); renderAreasEntrega();
+}
+function removerAreaEntrega(idx){ if(confirm('Excluir esta área de entrega?')){areasEntregaEditor.splice(idx,1);renderAreasEntrega();} }
 function preencherEntregasPagamentos(){
-
-  document.getElementById("taxaRetirada").value =
-  Number(configuracoesLoja.taxa_retirada ?? 0);
-
-  document.getElementById("taxaCidade").value =
-  Number(configuracoesLoja.taxa_cidade ?? 5);
-
-  document.getElementById("taxaBola").value =
-  Number(configuracoesLoja.taxa_bola ?? 8);
-
-  document.getElementById("taxaCaixa").value =
-  Number(configuracoesLoja.taxa_caixa ?? 10);
-
-  document.getElementById("taxaBarcos").value =
-  Number(configuracoesLoja.taxa_barcos ?? 5);
-
-  document.getElementById("mostrarRetirada").checked =
-  configuracoesLoja.mostrar_retirada !== false;
-
-  document.getElementById("mostrarCidade").checked =
-  configuracoesLoja.mostrar_cidade !== false;
-
-  document.getElementById("mostrarBola").checked =
-  configuracoesLoja.mostrar_bola !== false;
-
-  document.getElementById("mostrarCaixa").checked =
-  configuracoesLoja.mostrar_caixa !== false;
-
-  document.getElementById("mostrarBarcos").checked =
-  configuracoesLoja.mostrar_barcos !== false;
-
-  document.getElementById("pagamentoPix").checked =
-  configuracoesLoja.pagamento_pix !== false;
-
-  document.getElementById("pagamentoCartao").checked =
-  configuracoesLoja.pagamento_cartao !== false;
-
-  document.getElementById("pagamentoDinheiro").checked =
-  configuracoesLoja.pagamento_dinheiro !== false;
-
-  document.getElementById("pagamentoEntrega").checked =
-  configuracoesLoja.pagamento_entrega !== false;
-
+  document.getElementById("taxaRetirada").value=Number(configuracoesLoja.taxa_retirada??0);
+  document.getElementById("mostrarRetirada").checked=configuracoesLoja.mostrar_retirada!==false;
+  areasEntregaEditor=areasEntregaAtuais().map(x=>({...x})); renderAreasEntrega();
+  document.getElementById("pagamentoPix").checked=configuracoesLoja.pagamento_pix!==false;
+  document.getElementById("pagamentoCartao").checked=configuracoesLoja.pagamento_cartao!==false;
+  document.getElementById("pagamentoDinheiro").checked=configuracoesLoja.pagamento_dinheiro!==false;
+  document.getElementById("pagamentoEntrega").checked=configuracoesLoja.pagamento_entrega!==false;
 }
 
 
@@ -2956,112 +2820,16 @@ async function salvarConfiguracoesLoja(){
 
 
 async function salvarEntregasPagamentos(){
-
-  const botao =
-  document.getElementById("botaoSalvarEntregas");
-
-  botao.disabled = true;
-  botao.textContent = "SALVANDO...";
-
+  const botao=document.getElementById("botaoSalvarEntregas"); botao.disabled=true; botao.textContent="SALVANDO...";
   try{
-
-    const dados = {
-
-      id:1,
-
-      taxa_retirada:
-      Number(document.getElementById("taxaRetirada").value || 0),
-
-      taxa_cidade:
-      Number(document.getElementById("taxaCidade").value || 0),
-
-      taxa_bola:
-      Number(document.getElementById("taxaBola").value || 0),
-
-      taxa_caixa:
-      Number(document.getElementById("taxaCaixa").value || 0),
-
-      taxa_barcos:
-      Number(document.getElementById("taxaBarcos").value || 0),
-
-      mostrar_retirada:
-      document.getElementById("mostrarRetirada").checked,
-
-      mostrar_cidade:
-      document.getElementById("mostrarCidade").checked,
-
-      mostrar_bola:
-      document.getElementById("mostrarBola").checked,
-
-      mostrar_caixa:
-      document.getElementById("mostrarCaixa").checked,
-
-      mostrar_barcos:
-      document.getElementById("mostrarBarcos").checked,
-
-      pagamento_pix:
-      document.getElementById("pagamentoPix").checked,
-
-      pagamento_cartao:
-      document.getElementById("pagamentoCartao").checked,
-
-      pagamento_dinheiro:
-      document.getElementById("pagamentoDinheiro").checked,
-
-      pagamento_entrega:
-      document.getElementById("pagamentoEntrega").checked,
-
-      updated_at:
-      new Date().toISOString()
-
-    };
-
-    const {data,error} =
-    await supabaseClient
-    .from("Configuracoes_Loja")
-    .upsert(
-      dados,
-      {
-        onConflict:"id"
-      }
-    )
-    .select("*")
-    .single();
-
-    if(error){
-      throw error;
-    }
-
-    configuracoesLoja = {
-      ...configuracoesLoja,
-      ...data
-    };
-
-    document.getElementById("statusEntregas").textContent =
-    "Entrega e pagamentos salvos! ✅";
-
-    document.getElementById("statusEntregas").className =
-    "status-entregas sucesso";
-
-  }catch(error){
-
-    console.error(error);
-
-    document.getElementById("statusEntregas").textContent =
-    error.message || "Erro ao salvar.";
-
-    document.getElementById("statusEntregas").className =
-    "status-entregas erro";
-
-  }finally{
-
-    botao.disabled = false;
-
-    botao.textContent =
-    "💾 SALVAR ENTREGA E PAGAMENTOS";
-
-  }
-
+    const areas=areasEntregaEditor.map((x,idx)=>({id:String(x.id||('area_'+idx)),nome:String(x.nome||'').trim()||('Área '+(idx+1)),taxa:Number(x.taxa||0),ativo:x.ativo!==false}));
+    const capas={...((configuracoesLoja&&configuracoesLoja.capas_categorias)||{}),_areas_entrega:areas};
+    const dados={id:1,taxa_retirada:Number(document.getElementById("taxaRetirada").value||0),mostrar_retirada:document.getElementById("mostrarRetirada").checked,pagamento_pix:document.getElementById("pagamentoPix").checked,pagamento_cartao:document.getElementById("pagamentoCartao").checked,pagamento_dinheiro:document.getElementById("pagamentoDinheiro").checked,pagamento_entrega:document.getElementById("pagamentoEntrega").checked,capas_categorias:capas,updated_at:new Date().toISOString()};
+    const {data,error}=await supabaseClient.from("Configuracoes_Loja").upsert(dados,{onConflict:"id"}).select("*").single(); if(error)throw error;
+    configuracoesLoja={...configuracoesLoja,...data}; areasEntregaEditor=areas; renderAreasEntrega();
+    const st=document.getElementById("statusEntregas"); st.textContent="Áreas, taxas e pagamentos salvos! ✅"; st.className="status-entregas sucesso";
+  }catch(error){console.error(error);const st=document.getElementById("statusEntregas");st.textContent=error.message||"Erro ao salvar.";st.className="status-entregas erro";}
+  finally{botao.disabled=false;botao.textContent="💾 SALVAR ENTREGA E PAGAMENTOS";}
 }
 
 

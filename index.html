@@ -2081,6 +2081,18 @@ let configuracoesLoja = {
 
 };
 
+function obterAreasEntrega(){
+  const salvas=configuracoesLoja?.capas_categorias?._areas_entrega;
+  if(Array.isArray(salvas)&&salvas.length)return salvas;
+  return [
+    {id:"cidade",nome:"Entrega dentro da cidade",taxa:Number(configuracoesLoja.taxa_cidade??5),ativo:configuracoesLoja.mostrar_cidade!==false},
+    {id:"bola",nome:"Bola até Novo Manacá",taxa:Number(configuracoesLoja.taxa_bola??8),ativo:configuracoesLoja.mostrar_bola!==false},
+    {id:"caixa",nome:"Caixa d’Água pra lá",taxa:Number(configuracoesLoja.taxa_caixa??10),ativo:configuracoesLoja.mostrar_caixa!==false},
+    {id:"barcos",nome:"Barcos / jatos",taxa:Number(configuracoesLoja.taxa_barcos??13),ativo:configuracoesLoja.mostrar_barcos!==false}
+  ];
+}
+function areaEntregaPorId(id){return obterAreasEntrega().find(x=>String(x.id)===String(id));}
+
 
 /* CORRIGIR CARRINHOS ANTIGOS */
 
@@ -2667,164 +2679,21 @@ function fecharCheckout(){
 /* ENTREGA */
 
 function montarOpcoesEntrega(){
-
-  const select =
-  document.getElementById(
-    "entrega"
-  );
-
-
-  if(
-    !select
-  ){
-    return;
+  const select=document.getElementById("entrega"); if(!select)return;
+  const atual=select.value; let html='<option value="">Selecione</option>';
+  if(configuracoesLoja.mostrar_retirada!==false){
+    const taxa=Number(configuracoesLoja.taxa_retirada??0);
+    html+=`<option value="retirada">Retirada na loja — ${taxa===0?'Grátis':moeda(taxa)}</option>`;
   }
-
-
-  const atual =
-  select.value;
-
-
-  let html =
-  '<option value="">Selecione</option>';
-
-
-  if(
-    configuracoesLoja.mostrar_retirada !==
-    false
-  ){
-
-    const taxa =
-    Number(
-      configuracoesLoja.taxa_retirada ??
-      0
-    );
-
-
-    html += `
-
-      <option value="retirada">
-        Retirada na loja — ${
-          taxa === 0
-          ?
-          "Grátis"
-          :
-          moeda(taxa)
-        }
-      </option>
-
-    `;
-
-  }
-
-
-  if(
-    configuracoesLoja.mostrar_cidade !==
-    false
-  ){
-
-    html += `
-
-      <option value="cidade">
-        Entrega dentro da cidade — ${moeda(
-          configuracoesLoja.taxa_cidade ??
-          5
-        )}
-      </option>
-
-    `;
-
-  }
-
-
-  if(
-    configuracoesLoja.mostrar_bola !==
-    false
-  ){
-
-    html += `
-
-      <option value="bola">
-        Bola até o Novo Manacá — ${moeda(
-          configuracoesLoja.taxa_bola ??
-          8
-        )}
-      </option>
-
-    `;
-
-  }
-
-
-  if(
-    configuracoesLoja.mostrar_caixa !==
-    false
-  ){
-
-    html += `
-
-      <option value="caixa">
-        Caixa d’Água pra lá — ${moeda(
-          configuracoesLoja.taxa_caixa ??
-          10
-        )}
-      </option>
-
-    `;
-
-  }
-
-
-  if(
-    configuracoesLoja.mostrar_barcos !==
-    false
-  ){
-
-    html += `
-
-      <option value="barcos">
-        Entrega em barcos e jatos — ${moeda(
-          configuracoesLoja.taxa_barcos ??
-          5
-        )}
-      </option>
-
-    `;
-
-  }
-
-
-  select.innerHTML =
-  html;
-
-
-  const aindaExiste =
-  Array.from(
-    select.options
-  ).some(
-    opcao =>
-      opcao.value ===
-      atual
-  );
-
-
-  if(
-    aindaExiste
-  ){
-
-    select.value =
-    atual;
-
-  }else{
-
-    select.value = "";
-    valorFrete = 0;
-    tipoEntrega = "";
-
-  }
-
+  obterAreasEntrega().filter(x=>x.ativo!==false).forEach(x=>{
+    const id=String(x.id||'').replace(/"/g,'&quot;');
+    const nome=String(x.nome||'Área de entrega').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    html+=`<option value="${id}">${nome} — ${moeda(Number(x.taxa||0))}</option>`;
+  });
+  select.innerHTML=html;
+  if(Array.from(select.options).some(o=>o.value===atual))select.value=atual;
+  else{select.value="";valorFrete=0;tipoEntrega="";}
 }
-
 
 /* PAGAMENTO */
 
@@ -2988,228 +2857,14 @@ function montarOpcoesPagamento(){
 /* ALTERAR ENTREGA */
 
 function alterarEntrega(){
-
-  const entrega =
-  document.getElementById(
-    "entrega"
-  ).value;
-
-
-  tipoEntrega =
-  entrega;
-
-
-  const enderecoArea =
-  document.getElementById(
-    "enderecoArea"
-  );
-
-
-  const barcoArea =
-  document.getElementById(
-    "barcoArea"
-  );
-
-
-  const freteInfo =
-  document.getElementById(
-    "freteInfo"
-  );
-
-
-  enderecoArea.style.display =
-  "none";
-
-
-  barcoArea.style.display =
-  "none";
-
-
-  freteInfo.style.display =
-  "block";
-
-
-  if(
-    entrega ===
-    ""
-  ){
-
-    valorFrete = 0;
-
-    freteInfo.style.display =
-    "none";
-
-  }
-
-
-  else if(
-    entrega ===
-    "retirada"
-  ){
-
-    valorFrete =
-    Number(
-      configuracoesLoja.taxa_retirada ??
-      0
-    );
-
-
-    freteInfo.innerHTML = `
-
-      <strong>
-        Retirada na loja
-      </strong>
-
-      <br>
-
-      Taxa:
-      ${
-        valorFrete === 0
-        ?
-        "Grátis"
-        :
-        moeda(valorFrete)
-      }
-
-    `;
-
-  }
-
-
-  else if(
-    entrega ===
-    "cidade"
-  ){
-
-    valorFrete =
-    Number(
-      configuracoesLoja.taxa_cidade ??
-      5
-    );
-
-
-    enderecoArea.style.display =
-    "block";
-
-
-    freteInfo.innerHTML = `
-
-      <strong>
-        Entrega dentro da cidade
-      </strong>
-
-      <br>
-
-      Taxa:
-      ${moeda(valorFrete)}
-
-    `;
-
-  }
-
-
-  else if(
-    entrega ===
-    "bola"
-  ){
-
-    valorFrete =
-    Number(
-      configuracoesLoja.taxa_bola ??
-      8
-    );
-
-
-    enderecoArea.style.display =
-    "block";
-
-
-    freteInfo.innerHTML = `
-
-      <strong>
-        Bola até o Novo Manacá
-      </strong>
-
-      <br>
-
-      Taxa:
-      ${moeda(valorFrete)}
-
-    `;
-
-  }
-
-
-  else if(
-    entrega ===
-    "caixa"
-  ){
-
-    valorFrete =
-    Number(
-      configuracoesLoja.taxa_caixa ??
-      10
-    );
-
-
-    enderecoArea.style.display =
-    "block";
-
-
-    freteInfo.innerHTML = `
-
-      <strong>
-        Caixa d’Água pra lá
-      </strong>
-
-      <br>
-
-      Taxa:
-      ${moeda(valorFrete)}
-
-    `;
-
-  }
-
-
-  else if(
-    entrega ===
-    "barcos"
-  ){
-
-    valorFrete =
-    Number(
-      configuracoesLoja.taxa_barcos ??
-      5
-    );
-
-
-    barcoArea.style.display =
-    "block";
-
-
-    freteInfo.innerHTML = `
-
-      <strong>
-        Entrega em barcos e jatos
-      </strong>
-
-      <br>
-
-      Taxa:
-      ${moeda(valorFrete)}
-
-    `;
-
-  }
-
-
-  atualizarCheckout();
-
+  const entrega=document.getElementById("entrega").value; tipoEntrega=entrega;
+  const enderecoArea=document.getElementById("enderecoArea"); const barcoArea=document.getElementById("barcoArea"); const freteInfo=document.getElementById("freteInfo");
+  enderecoArea.style.display="none"; barcoArea.style.display="none"; freteInfo.style.display="block";
+  if(entrega===""){valorFrete=0;freteInfo.style.display="none";}
+  else if(entrega==="retirada"){valorFrete=Number(configuracoesLoja.taxa_retirada??0);freteInfo.innerHTML=`<strong>Retirada na loja</strong><br>Taxa: ${valorFrete===0?'Grátis':moeda(valorFrete)}`;}
+  else{const area=areaEntregaPorId(entrega);valorFrete=Number(area?.taxa||0);const nome=area?.nome||'Entrega';enderecoArea.style.display="block";if(/barco|jato/i.test(nome))barcoArea.style.display="block";freteInfo.innerHTML=`<strong>${String(nome).replace(/</g,'&lt;')}</strong><br>Taxa: ${moeda(valorFrete)}`;}
+  atualizarResumo();
 }
-
-
-/* CHECKOUT */
 
 function atualizarCheckout(){
 
@@ -3395,7 +3050,7 @@ async function confirmarPedido(){
     const data=await resposta.json().catch(()=>({}));
     if(!resposta.ok||!data.sucesso){console.warn("Pedido não registrado no painel; continuando para o WhatsApp.", data);}
   }catch(e){console.warn("Falha ao registrar no painel; continuando para o WhatsApp.",e);}
-  const nomesEntrega={retirada:"Retirada na loja",cidade:"Entrega na cidade",bola:"Bola / proximidades",caixa:"Caixa d’Água / proximidades",barcos:"Barcos / jatos"};
+  const nomesEntrega={retirada:"Retirada na loja"}; obterAreasEntrega().forEach(a=>nomesEntrega[String(a.id)]=a.nome);
   const itens=carrinho.map((item,i)=>{const nomeItem=item.nome||item.titulo||item.produto||"Produto";const qtd=Number(item.quantidade||item.qtd||1);const variacoes=[item.cor&&`Cor: ${item.cor}`,item.tamanho&&`Tamanho: ${item.tamanho}`,item.estampa&&`Estampa: ${item.estampa}`].filter(Boolean).join(" | ");const preco=Number(item.preco||item.valor||0);return `${i+1}x ${nomeItem}${variacoes?" — "+variacoes:""} — ${moeda(preco*qtd)}`;}).join("\n");
   let msg=`🛍️ *NOVO PEDIDO — SALI STORE*\n\n*Pedido:* #${numeroPedido}\n\n*CLIENTE*\nNome: ${nome}\nWhatsApp: ${telefone}\n\n*PEDIDO*\n${itens}\n\n*ENTREGA*\nModalidade: ${nomesEntrega[entrega]||entrega}\n${entrega!=="retirada"?`Endereço/Destino: ${enderecoPedido}\n`:""}${bairroPedido?`Bairro: ${bairroPedido}\n`:""}\n*PAGAMENTO*\nForma: ${pagamento}${pagamento==="Dinheiro"?`\nTroco: ${precisaTroco?"Sim, para R$ "+Number(trocoPara).toFixed(2).replace(".",","):"Não"}`:""}\n\n*Subtotal:* ${moeda(subtotal)}\n*Taxa de entrega:* ${moeda(Number(valorFrete||0))}\n*TOTAL:* ${moeda(total)}\n\n💗 Pedido montado pelo site SALI STORE.\nGostaria de confirmar e finalizar meu pedido.`;
   // Distribui automaticamente os pedidos entre as vendedoras da SALI STORE.
