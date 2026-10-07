@@ -3391,10 +3391,10 @@ async function confirmarPedido(){
   const trocoPara=document.getElementById("trocoPara")?.value||"";
   if(pagamento==="Dinheiro" && precisaTroco && !trocoPara){alert("Informe para quanto precisa de troco.");return;}
   try{
-    const resposta=await fetch("/api/pedido",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({numero_pedido:numeroPedido,nome_cliente:nome,Telefone:telefone,endereco:enderecoPedido,tipo_entrega:entrega,valor_entrega:Number(valorFrete||0),produtos:JSON.stringify(carrinho),subtotal,total,forma_pagamento:pagamento,status:"Aguardando confirmação no WhatsApp"})});
+    const resposta=await fetch("/api/pedido",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({numero_pedido:numeroPedido,nome_cliente:nome,Telefone:telefone,endereco:enderecoPedido,tipo_entrega:entrega,valor_entrega:Number(valorFrete||0),produtos:JSON.stringify(carrinho),subtotal,total,forma_pagamento:pagamento,status:"Novo"})});
     const data=await resposta.json().catch(()=>({}));
-    if(!resposta.ok||!data.sucesso){alert(data.error||"Não foi possível registrar o pedido.");return;}
-  }catch(e){console.error(e);alert("Não foi possível registrar o pedido. Tente novamente.");return;}
+    if(!resposta.ok||!data.sucesso){console.warn("Pedido não registrado no painel; continuando para o WhatsApp.", data);}
+  }catch(e){console.warn("Falha ao registrar no painel; continuando para o WhatsApp.",e);}
   const nomesEntrega={retirada:"Retirada na loja",cidade:"Entrega na cidade",bola:"Bola / proximidades",caixa:"Caixa d’Água / proximidades",barcos:"Barcos / jatos"};
   const itens=carrinho.map((item,i)=>{const nomeItem=item.nome||item.titulo||item.produto||"Produto";const qtd=Number(item.quantidade||item.qtd||1);const variacoes=[item.cor&&`Cor: ${item.cor}`,item.tamanho&&`Tamanho: ${item.tamanho}`,item.estampa&&`Estampa: ${item.estampa}`].filter(Boolean).join(" | ");const preco=Number(item.preco||item.valor||0);return `${i+1}x ${nomeItem}${variacoes?" — "+variacoes:""} — ${moeda(preco*qtd)}`;}).join("\n");
   let msg=`🛍️ *NOVO PEDIDO — SALI STORE*\n\n*Pedido:* #${numeroPedido}\n\n*CLIENTE*\nNome: ${nome}\nWhatsApp: ${telefone}\n\n*PEDIDO*\n${itens}\n\n*ENTREGA*\nModalidade: ${nomesEntrega[entrega]||entrega}\n${entrega!=="retirada"?`Endereço/Destino: ${enderecoPedido}\n`:""}${bairroPedido?`Bairro: ${bairroPedido}\n`:""}\n*PAGAMENTO*\nForma: ${pagamento}${pagamento==="Dinheiro"?`\nTroco: ${precisaTroco?"Sim, para R$ "+Number(trocoPara).toFixed(2).replace(".",","):"Não"}`:""}\n\n*Subtotal:* ${moeda(subtotal)}\n*Taxa de entrega:* ${moeda(Number(valorFrete||0))}\n*TOTAL:* ${moeda(total)}\n\n💗 Pedido montado pelo site SALI STORE.\nGostaria de confirmar e finalizar meu pedido.`;
