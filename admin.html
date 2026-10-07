@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<meta name="sali-release" content="2026-10-07-v2">
+<meta name="sali-release" content="2026-10-07-v3-areas-entrega">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -2820,16 +2820,73 @@ async function salvarConfiguracoesLoja(){
 
 
 async function salvarEntregasPagamentos(){
-  const botao=document.getElementById("botaoSalvarEntregas"); botao.disabled=true; botao.textContent="SALVANDO...";
+  const botao=document.getElementById("botaoSalvarEntregas");
+  const st=document.getElementById("statusEntregas");
+  botao.disabled=true;
+  botao.textContent="SALVANDO...";
+  if(st){ st.textContent="Salvando áreas de entrega..."; st.className="status-entregas"; }
+
   try{
-    const areas=areasEntregaEditor.map((x,idx)=>({id:String(x.id||('area_'+idx)),nome:String(x.nome||'').trim()||('Área '+(idx+1)),taxa:Number(x.taxa||0),ativo:x.ativo!==false}));
-    const capas={...((configuracoesLoja&&configuracoesLoja.capas_categorias)||{}),_areas_entrega:areas};
-    const dados={id:1,taxa_retirada:Number(document.getElementById("taxaRetirada").value||0),mostrar_retirada:document.getElementById("mostrarRetirada").checked,pagamento_pix:document.getElementById("pagamentoPix").checked,pagamento_cartao:document.getElementById("pagamentoCartao").checked,pagamento_dinheiro:document.getElementById("pagamentoDinheiro").checked,pagamento_entrega:document.getElementById("pagamentoEntrega").checked,capas_categorias:capas,updated_at:new Date().toISOString()};
-    const {data,error}=await supabaseClient.from("Configuracoes_Loja").upsert(dados,{onConflict:"id"}).select("*").single(); if(error)throw error;
-    configuracoesLoja={...configuracoesLoja,...data}; areasEntregaEditor=areas; renderAreasEntrega();
-    const st=document.getElementById("statusEntregas"); st.textContent="Áreas, taxas e pagamentos salvos! ✅"; st.className="status-entregas sucesso";
-  }catch(error){console.error(error);const st=document.getElementById("statusEntregas");st.textContent=error.message||"Erro ao salvar.";st.className="status-entregas erro";}
-  finally{botao.disabled=false;botao.textContent="💾 SALVAR ENTREGA E PAGAMENTOS";}
+    const areas=areasEntregaEditor
+      .map((x,idx)=>({
+        id:String(x.id||('area_'+Date.now()+'_'+idx)),
+        nome:String(x.nome||'').trim()||('Área '+(idx+1)),
+        taxa:Math.max(0,Number(x.taxa||0)),
+        ativo:x.ativo!==false
+      }));
+
+    if(!areas.length){
+      throw new Error("Adicione pelo menos uma área de entrega.");
+    }
+
+    const capasAtuais=(configuracoesLoja&&typeof configuracoesLoja.capas_categorias==='object'&&configuracoesLoja.capas_categorias)
+      ? configuracoesLoja.capas_categorias
+      : {};
+    const capas={...capasAtuais,_areas_entrega:areas};
+
+    const dados={
+      taxa_retirada:Number(document.getElementById("taxaRetirada").value||0),
+      mostrar_retirada:document.getElementById("mostrarRetirada").checked,
+      pagamento_pix:document.getElementById("pagamentoPix").checked,
+      pagamento_cartao:document.getElementById("pagamentoCartao").checked,
+      pagamento_dinheiro:document.getElementById("pagamentoDinheiro").checked,
+      pagamento_entrega:document.getElementById("pagamentoEntrega").checked,
+      capas_categorias:capas,
+      updated_at:new Date().toISOString()
+    };
+
+    // A configuração id=1 já existe. UPDATE evita o problema de permissão de INSERT
+    // que pode acontecer com UPSERT no Supabase/RLS.
+    const {data,error}=await supabaseClient
+      .from("Configuracoes_Loja")
+      .update(dados)
+      .eq("id",1)
+      .select("*")
+      .single();
+
+    if(error) throw error;
+
+    configuracoesLoja={...configuracoesLoja,...data,capas_categorias:capas};
+    areasEntregaEditor=areas.map(x=>({...x}));
+    renderAreasEntrega();
+
+    if(st){
+      st.textContent="Áreas, nomes, taxas e pagamentos salvos! As opções já estão disponíveis no checkout. ✅";
+      st.className="status-entregas sucesso";
+    }
+  }catch(error){
+    console.error(error);
+    if(st){
+      const msg=String(error?.message||error||"");
+      st.textContent=msg.includes("capas_categorias")
+        ? "Não foi possível salvar as áreas. O campo capas_categorias precisa estar ativo no Supabase."
+        : (msg||"Erro ao salvar as áreas de entrega.");
+      st.className="status-entregas erro";
+    }
+  }finally{
+    botao.disabled=false;
+    botao.textContent="💾 SALVAR ENTREGA E PAGAMENTOS";
+  }
 }
 
 

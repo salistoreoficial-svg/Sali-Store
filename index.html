@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-<meta name="sali-version" content="7.13-mobile-capas">
+<meta name="sali-version" content="7.14-areas-entrega-dinamicas">
 
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -3025,21 +3025,33 @@ async function confirmarPedido(){
   if(!telefone){alert("Digite seu WhatsApp.");return;}
   if(!entrega){alert("Escolha uma opção de entrega ou retirada.");return;}
   if(!pagamento){alert("Escolha uma forma de pagamento.");return;}
-  const entregaAtiva={retirada:configuracoesLoja.mostrar_retirada!==false,cidade:configuracoesLoja.mostrar_cidade!==false,bola:configuracoesLoja.mostrar_bola!==false,caixa:configuracoesLoja.mostrar_caixa!==false,barcos:configuracoesLoja.mostrar_barcos!==false};
-  if(entregaAtiva[entrega]===false){alert("Esta forma de entrega não está mais disponível.");montarOpcoesEntrega();alterarEntrega();return;}
+  const areaSelecionada=entrega==="retirada"?null:areaEntregaPorId(entrega);
+  const entregaDisponivel=entrega==="retirada"
+    ? configuracoesLoja.mostrar_retirada!==false
+    : !!areaSelecionada && areaSelecionada.ativo!==false;
+  if(!entregaDisponivel){alert("Esta forma de entrega não está mais disponível.");montarOpcoesEntrega();alterarEntrega();return;}
   const pagamentosAtivos={"Pix":configuracoesLoja.pagamento_pix!==false,"Cartão":configuracoesLoja.pagamento_cartao!==false,"Dinheiro":configuracoesLoja.pagamento_dinheiro!==false,"Pagamento no ato da entrega":configuracoesLoja.pagamento_entrega!==false};
   if(pagamentosAtivos[pagamento]===false){alert("Esta forma de pagamento não está mais disponível.");montarOpcoesPagamento();return;}
   let enderecoPedido="Retirada na loja";
   let bairroPedido="";
-  if(["cidade","bola","caixa"].includes(entrega)){
-    const rua=document.getElementById("endereco").value.trim(), numero=document.getElementById("numero").value.trim(), bairro=document.getElementById("bairro").value.trim(), complemento=document.getElementById("complemento").value.trim();
-    if(!rua||!numero||!bairro){alert("Preencha o endereço completo para entrega.");return;}
-    bairroPedido=bairro; enderecoPedido=`${rua}, nº ${numero}, ${bairro}${complemento?" — "+complemento:""}`;
-  }
-  if(entrega==="barcos"){
-    const destino=document.getElementById("barcoDestino").value.trim(), obs=document.getElementById("barcoObservacao").value.trim();
-    if(!destino){alert("Informe o barco, jato ou destino da entrega.");return;}
-    enderecoPedido=destino+(obs?" — "+obs:"");
+  if(entrega!=="retirada"){
+    const nomeArea=String(areaSelecionada?.nome||"");
+    const ehBarco=/barco|jato/i.test(nomeArea);
+
+    if(ehBarco){
+      const destino=document.getElementById("barcoDestino").value.trim();
+      const obs=document.getElementById("barcoObservacao").value.trim();
+      if(!destino){alert("Informe o barco, jato ou destino da entrega.");return;}
+      enderecoPedido=destino+(obs?" — "+obs:"");
+    }else{
+      const rua=document.getElementById("endereco").value.trim();
+      const numero=document.getElementById("numero").value.trim();
+      const bairro=document.getElementById("bairro").value.trim();
+      const complemento=document.getElementById("complemento").value.trim();
+      if(!rua||!numero||!bairro){alert("Preencha o endereço completo para entrega.");return;}
+      bairroPedido=bairro;
+      enderecoPedido=`${rua}, nº ${numero}, ${bairro}${complemento?" — "+complemento:""}`;
+    }
   }
   const subtotal=calcularSubtotal(), total=subtotal+Number(valorFrete||0), numeroPedido="SALI-"+Date.now().toString().slice(-6);
   const precisaTroco=document.getElementById("precisaTroco")?.value==="sim";
