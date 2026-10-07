@@ -1772,20 +1772,6 @@ WhatsApp
 </div>
 
 
-<div class="campo">
-
-<label>
-E-mail
-</label>
-
-<input
-  id="email"
-  type="email"
-  placeholder="seuemail@exemplo.com"
-  autocomplete="email"
->
-
-</div>
 
 </div>
 
@@ -1999,14 +1985,19 @@ Carregando formas de pagamento...
 
 </div>
 
+<div id="trocoArea" class="bloco" style="display:none">
+<h3>Troco</h3>
+<div class="campo"><label>Precisa de troco?</label><select id="precisaTroco" onchange="alterarTroco()"><option value="nao">Não</option><option value="sim">Sim</option></select></div>
+<div class="campo" id="trocoValorArea" style="display:none"><label>Troco para quanto?</label><input id="trocoPara" type="number" min="0" step="0.01" placeholder="Ex.: 100,00"></div>
 </div>
 
+</div>
 
 <button
   class="confirmar-pedido"
   onclick="confirmarPedido()"
 >
-CONFIRMAR PEDIDO
+FINALIZAR PELO WHATSAPP 💬
 </button>
 
 </div>
@@ -3371,885 +3362,60 @@ function atualizarCheckout(){
 /* CONFIRMAR PEDIDO */
 
 async function confirmarPedido(){
-
-  const nome =
-  document.getElementById(
-    "nome"
-  ).value.trim();
-
-
-  const telefone =
-  document.getElementById(
-    "telefone"
-  ).value.trim();
-
-
-  const email =
-  document.getElementById(
-    "email"
-  ).value.trim();
-
-
-  const entrega =
-  document.getElementById(
-    "entrega"
-  ).value;
-
-
-  const pagamento =
-  document.querySelector(
-    'input[name="pagamento"]:checked'
-  )?.value ||
-  "";
-
-
-  if(
-    !nome
-  ){
-
-    alert(
-      "Digite seu nome."
-    );
-
-    return;
-
+  const nome=document.getElementById("nome").value.trim();
+  const telefone=document.getElementById("telefone").value.trim();
+  const entrega=document.getElementById("entrega").value;
+  const pagamento=document.querySelector('input[name="pagamento"]:checked')?.value||"";
+  if(!nome){alert("Digite seu nome.");return;}
+  if(!telefone){alert("Digite seu WhatsApp.");return;}
+  if(!entrega){alert("Escolha uma opção de entrega ou retirada.");return;}
+  if(!pagamento){alert("Escolha uma forma de pagamento.");return;}
+  const entregaAtiva={retirada:configuracoesLoja.mostrar_retirada!==false,cidade:configuracoesLoja.mostrar_cidade!==false,bola:configuracoesLoja.mostrar_bola!==false,caixa:configuracoesLoja.mostrar_caixa!==false,barcos:configuracoesLoja.mostrar_barcos!==false};
+  if(entregaAtiva[entrega]===false){alert("Esta forma de entrega não está mais disponível.");montarOpcoesEntrega();alterarEntrega();return;}
+  const pagamentosAtivos={"Pix":configuracoesLoja.pagamento_pix!==false,"Cartão":configuracoesLoja.pagamento_cartao!==false,"Dinheiro":configuracoesLoja.pagamento_dinheiro!==false,"Pagamento no ato da entrega":configuracoesLoja.pagamento_entrega!==false};
+  if(pagamentosAtivos[pagamento]===false){alert("Esta forma de pagamento não está mais disponível.");montarOpcoesPagamento();return;}
+  let enderecoPedido="Retirada na loja";
+  let bairroPedido="";
+  if(["cidade","bola","caixa"].includes(entrega)){
+    const rua=document.getElementById("endereco").value.trim(), numero=document.getElementById("numero").value.trim(), bairro=document.getElementById("bairro").value.trim(), complemento=document.getElementById("complemento").value.trim();
+    if(!rua||!numero||!bairro){alert("Preencha o endereço completo para entrega.");return;}
+    bairroPedido=bairro; enderecoPedido=`${rua}, nº ${numero}, ${bairro}${complemento?" — "+complemento:""}`;
   }
-
-
-  if(
-    !telefone
-  ){
-
-    alert(
-      "Digite seu WhatsApp."
-    );
-
-    return;
-
+  if(entrega==="barcos"){
+    const destino=document.getElementById("barcoDestino").value.trim(), obs=document.getElementById("barcoObservacao").value.trim();
+    if(!destino){alert("Informe o barco, jato ou destino da entrega.");return;}
+    enderecoPedido=destino+(obs?" — "+obs:"");
   }
-
-
-  if(
-    !email
-  ){
-
-    alert(
-      "Digite seu e-mail."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-      email
-    )
-  ){
-
-    alert(
-      "Digite um e-mail válido."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !entrega
-  ){
-
-    alert(
-      "Escolha uma opção de entrega ou retirada."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !pagamento
-  ){
-
-    alert(
-      "Escolha uma forma de pagamento."
-    );
-
-    return;
-
-  }
-
-
-  const entregaAtiva = {
-
-    retirada:
-    configuracoesLoja.mostrar_retirada !==
-    false,
-
-    cidade:
-    configuracoesLoja.mostrar_cidade !==
-    false,
-
-    bola:
-    configuracoesLoja.mostrar_bola !==
-    false,
-
-    caixa:
-    configuracoesLoja.mostrar_caixa !==
-    false,
-
-    barcos:
-    configuracoesLoja.mostrar_barcos !==
-    false
-
-  };
-
-
-  if(
-    entregaAtiva[
-      entrega
-    ] ===
-    false
-  ){
-
-    alert(
-      "Esta forma de entrega não está mais disponível. Escolha outra opção."
-    );
-
-    montarOpcoesEntrega();
-    alterarEntrega();
-
-    return;
-
-  }
-
-
-  const pagamentosAtivos = {
-
-    "Pix":
-    configuracoesLoja.pagamento_pix !==
-    false,
-
-    "Cartão":
-    configuracoesLoja.pagamento_cartao !==
-    false,
-
-    "Dinheiro":
-    configuracoesLoja.pagamento_dinheiro !==
-    false,
-
-    "Pagamento no ato da entrega":
-    configuracoesLoja.pagamento_entrega !==
-    false
-
-  };
-
-
-  if(
-    pagamentosAtivos[
-      pagamento
-    ] ===
-    false
-  ){
-
-    alert(
-      "Esta forma de pagamento não está mais disponível. Escolha outra opção."
-    );
-
-    montarOpcoesPagamento();
-
-    return;
-
-  }
-
-
-  if(
-    entrega ===
-    "cidade"
-    ||
-    entrega ===
-    "bola"
-    ||
-    entrega ===
-    "caixa"
-  ){
-
-    const endereco =
-    document.getElementById(
-      "endereco"
-    ).value.trim();
-
-
-    const numero =
-    document.getElementById(
-      "numero"
-    ).value.trim();
-
-
-    const bairro =
-    document.getElementById(
-      "bairro"
-    ).value.trim();
-
-
-    if(
-      !endereco
-      ||
-      !numero
-      ||
-      !bairro
-    ){
-
-      alert(
-        "Preencha o endereço completo para entrega."
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  if(
-    entrega ===
-    "barcos"
-  ){
-
-    const destino =
-    document.getElementById(
-      "barcoDestino"
-    ).value.trim();
-
-
-    if(
-      !destino
-    ){
-
-      alert(
-        "Informe o barco, jato ou destino da entrega."
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  const subtotal =
-  calcularSubtotal();
-
-
-  const total =
-  subtotal +
-  Number(
-    valorFrete ||
-    0
-  );
-
-
-  const numeroPedido =
-  "SALI-" +
-  Date.now()
-  .toString()
-  .slice(-6);
-
-
-  let enderecoPedido =
-  "Retirada na loja";
-
-
-  if(
-    entrega ===
-    "cidade"
-    ||
-    entrega ===
-    "bola"
-    ||
-    entrega ===
-    "caixa"
-  ){
-
-    const ruaPedido =
-    document.getElementById(
-      "endereco"
-    ).value.trim();
-
-
-    const numeroPedidoEndereco =
-    document.getElementById(
-      "numero"
-    ).value.trim();
-
-
-    const bairroPedido =
-    document.getElementById(
-      "bairro"
-    ).value.trim();
-
-
-    const complementoPedido =
-    document.getElementById(
-      "complemento"
-    ).value.trim();
-
-
-    enderecoPedido =
-    ruaPedido +
-    ", nº " +
-    numeroPedidoEndereco +
-    ", " +
-    bairroPedido +
-    (
-      complementoPedido
-      ?
-      " — " +
-      complementoPedido
-      :
-      ""
-    );
-
-  }
-
-
-  if(
-    entrega ===
-    "barcos"
-  ){
-
-    const destino =
-    document.getElementById(
-      "barcoDestino"
-    ).value.trim();
-
-
-    const observacao =
-    document.getElementById(
-      "barcoObservacao"
-    ).value.trim();
-
-
-    enderecoPedido =
-    destino +
-    (
-      observacao
-      ?
-      " — " +
-      observacao
-      :
-      ""
-    );
-
-  }
-
-
-  /* SALVAR PEDIDO */
-
-  let respostaPedido;
-
-
+  const subtotal=calcularSubtotal(), total=subtotal+Number(valorFrete||0), numeroPedido="SALI-"+Date.now().toString().slice(-6);
+  const precisaTroco=document.getElementById("precisaTroco")?.value==="sim";
+  const trocoPara=document.getElementById("trocoPara")?.value||"";
+  if(pagamento==="Dinheiro" && precisaTroco && !trocoPara){alert("Informe para quanto precisa de troco.");return;}
   try{
-
-    const resposta =
-    await fetch(
-      "/api/pedido",
-      {
-        method:"POST",
-
-        headers:{
-          "Content-Type":
-          "application/json"
-        },
-
-        body:
-        JSON.stringify({
-
-          numero_pedido:
-          numeroPedido,
-
-          nome_cliente:
-          nome,
-
-          Telefone:
-          telefone,
-
-          endereco:
-          enderecoPedido,
-
-          tipo_entrega:
-          entrega,
-
-          valor_entrega:
-          Number(
-            valorFrete ||
-            0
-          ),
-
-          produtos:
-          JSON.stringify(
-            carrinho
-          ),
-
-          subtotal:
-          subtotal,
-
-          total:
-          total,
-
-          forma_pagamento:
-          pagamento,
-
-          status:
-          pagamento ===
-          "Pix"
-          ?
-          "Aguardando pagamento"
-          :
-          "Novo"
-
-        })
-
-      }
-    );
-
-
-    try{
-
-      respostaPedido =
-      await resposta.json();
-
-    }catch(
-      erroJson
-    ){
-
-      console.error(
-        "Resposta inválida da API de pedido:",
-        erroJson
-      );
-
-
-      alert(
-        "O servidor respondeu de forma inválida ao registrar o pedido."
-      );
-
-
-      return;
-
-    }
-
-
-    if(
-      !resposta.ok
-      ||
-      !respostaPedido.sucesso
-    ){
-
-      console.error(
-        "Erro ao salvar pedido:",
-        respostaPedido
-      );
-
-
-      alert(
-        respostaPedido.error ||
-        "Não foi possível registrar o pedido."
-      );
-
-
-      return;
-
-    }
-
-  }catch(
-    erroPedido
-  ){
-
-    console.error(
-      "Erro ao conectar com o servidor:",
-      erroPedido
-    );
-
-
-    alert(
-      "Não foi possível registrar o pedido. Tente novamente."
-    );
-
-
-    return;
-
-  }
-
-
-  /* PIX */
-
-  if(
-    pagamento ===
-    "Pix"
-  ){
-
-    let respostaPix;
-
-
-    try{
-
-      const resposta =
-      await fetch(
-        "/api/mercadopago",
-        {
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-            "application/json"
-          },
-
-          body:
-          JSON.stringify({
-
-            total:
-            Number(
-              total
-            ),
-
-            email:
-            email,
-
-            numeroPedido:
-            numeroPedido
-
-          })
-
-        }
-      );
-
-
-      try{
-
-        respostaPix =
-        await resposta.json();
-
-      }catch(
-        erroJsonPix
-      ){
-
-        console.error(
-          "Resposta inválida do Mercado Pago:",
-          erroJsonPix
-        );
-
-
-        alert(
-          "Não foi possível interpretar a resposta do Mercado Pago."
-        );
-
-
-        return;
-
-      }
-
-
-      if(
-        !resposta.ok
-        ||
-        !respostaPix.sucesso
-      ){
-
-        console.error(
-          "Erro ao gerar Pix:",
-          respostaPix
-        );
-
-
-        alert(
-          respostaPix.error ||
-          "Não foi possível gerar o Pix. Tente novamente."
-        );
-
-
-        return;
-
-      }
-
-    }catch(
-      erroPix
-    ){
-
-      console.error(
-        "Erro ao conectar com Mercado Pago:",
-        erroPix
-      );
-
-
-      alert(
-        "Não foi possível conectar ao Mercado Pago. Tente novamente."
-      );
-
-
-      return;
-
-    }
-
-
-    const qrCode =
-    respostaPix.qr_code ||
-    "";
-
-
-    const qrCodeBase64 =
-    respostaPix.qr_code_base64 ||
-    "";
-
-
-    const ticketUrl =
-    respostaPix.ticket_url ||
-    "";
-
-
-    document.getElementById(
-      "numeroPedido"
-    ).textContent =
-    "Pedido #" +
-    numeroPedido;
-
-
-    document.getElementById(
-      "resumoSucesso"
-    ).innerHTML = `
-
-      <strong>
-        Pedido registrado!
-      </strong>
-
-      <br><br>
-
-      Total:
-
-      <strong>
-        ${moeda(total)}
-      </strong>
-
-      <br><br>
-
-      <strong>
-        Pague seu pedido via Pix
-      </strong>
-
-      <br><br>
-
-      ${
-        qrCodeBase64
-        ?
-        `
-          <img
-            src="data:image/png;base64,${qrCodeBase64}"
-            alt="QR Code Pix"
-            style="
-              width:220px;
-              max-width:100%;
-              display:block;
-              margin:15px auto;
-            "
-          >
-        `
-        :
-        ""
-      }
-
-      ${
-        qrCode
-        ?
-        `
-          <div
-            style="
-              margin-top:14px;
-              padding:12px;
-              background:#f7f7f8;
-              border-radius:9px;
-              word-break:break-all;
-              font-size:10px;
-            "
-          >
-            ${escaparHtml(qrCode)}
-          </div>
-
-          <button
-            type="button"
-            id="botaoCopiarPix"
-            style="
-              margin-top:10px;
-              border:0;
-              background:#ff008c;
-              color:#fff;
-              padding:11px 15px;
-              border-radius:8px;
-              font-weight:800;
-            "
-          >
-            COPIAR PIX
-          </button>
-        `
-        :
-        ""
-      }
-
-      ${
-        ticketUrl
-        ?
-        `
-          <br>
-
-          <a
-            href="${escaparHtml(ticketUrl)}"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="
-              display:inline-block;
-              margin-top:12px;
-              font-weight:800;
-              color:#ff008c;
-            "
-          >
-            Ver instruções do pagamento
-          </a>
-        `
-        :
-        ""
-      }
-
-      <br><br>
-
-      <small>
-        Após pagar, aguarde a confirmação do pagamento.
-      </small>
-
-    `;
-
-
-    document.getElementById(
-      "checkout"
-    ).classList.remove(
-      "ativo"
-    );
-
-
-    document.getElementById(
-      "sucesso"
-    ).classList.add(
-      "ativo"
-    );
-
-
-    const botaoCopiarPix =
-    document.getElementById(
-      "botaoCopiarPix"
-    );
-
-
-    if(
-      botaoCopiarPix &&
-      qrCode
-    ){
-
-      botaoCopiarPix.addEventListener(
-        "click",
-        async function(){
-
-          try{
-
-            await navigator.clipboard.writeText(
-              qrCode
-            );
-
-            alert(
-              "Pix copiado!"
-            );
-
-          }catch(
-            erro
-          ){
-
-            console.error(
-              "Erro ao copiar Pix:",
-              erro
-            );
-
-            alert(
-              "Não foi possível copiar automaticamente. Pressione o código Pix para copiar."
-            );
-
-          }
-
-        }
-      );
-
-    }
-
-
-    carrinho = [];
-    valorFrete = 0;
-    tipoEntrega = "";
-
-    salvarCarrinho();
-
-    return;
-
-  }
-
-
-  /* OUTRAS FORMAS DE PAGAMENTO */
-
-  document.getElementById(
-    "numeroPedido"
-  ).textContent =
-  "Pedido #" +
-  numeroPedido;
-
-
-  document.getElementById(
-    "resumoSucesso"
-  ).innerHTML = `
-
-    Total do pedido:
-
-    <strong>
-      ${moeda(total)}
-    </strong>
-
-    <br><br>
-
-    Pagamento:
-
-    <strong>
-      ${escaparHtml(pagamento)}
-    </strong>
-
-  `;
-
-
-  document.getElementById(
-    "checkout"
-  ).classList.remove(
-    "ativo"
-  );
-
-
-  document.getElementById(
-    "sucesso"
-  ).classList.add(
-    "ativo"
-  );
-
-
-  carrinho = [];
-  valorFrete = 0;
-  tipoEntrega = "";
-
-  salvarCarrinho();
-
+    const resposta=await fetch("/api/pedido",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({numero_pedido:numeroPedido,nome_cliente:nome,Telefone:telefone,endereco:enderecoPedido,tipo_entrega:entrega,valor_entrega:Number(valorFrete||0),produtos:JSON.stringify(carrinho),subtotal,total,forma_pagamento:pagamento,status:"Aguardando confirmação no WhatsApp"})});
+    const data=await resposta.json().catch(()=>({}));
+    if(!resposta.ok||!data.sucesso){alert(data.error||"Não foi possível registrar o pedido.");return;}
+  }catch(e){console.error(e);alert("Não foi possível registrar o pedido. Tente novamente.");return;}
+  const nomesEntrega={retirada:"Retirada na loja",cidade:"Entrega na cidade",bola:"Bola / proximidades",caixa:"Caixa d’Água / proximidades",barcos:"Barcos / jatos"};
+  const itens=carrinho.map((item,i)=>{const nomeItem=item.nome||item.titulo||item.produto||"Produto";const qtd=Number(item.quantidade||item.qtd||1);const variacoes=[item.cor&&`Cor: ${item.cor}`,item.tamanho&&`Tamanho: ${item.tamanho}`,item.estampa&&`Estampa: ${item.estampa}`].filter(Boolean).join(" | ");const preco=Number(item.preco||item.valor||0);return `${i+1}x ${nomeItem}${variacoes?" — "+variacoes:""} — ${moeda(preco*qtd)}`;}).join("\n");
+  let msg=`🛍️ *NOVO PEDIDO — SALI STORE*\n\n*Pedido:* #${numeroPedido}\n\n*CLIENTE*\nNome: ${nome}\nWhatsApp: ${telefone}\n\n*PEDIDO*\n${itens}\n\n*ENTREGA*\nModalidade: ${nomesEntrega[entrega]||entrega}\n${entrega!=="retirada"?`Endereço/Destino: ${enderecoPedido}\n`:""}${bairroPedido?`Bairro: ${bairroPedido}\n`:""}\n*PAGAMENTO*\nForma: ${pagamento}${pagamento==="Dinheiro"?`\nTroco: ${precisaTroco?"Sim, para R$ "+Number(trocoPara).toFixed(2).replace(".",","):"Não"}`:""}\n\n*Subtotal:* ${moeda(subtotal)}\n*Taxa de entrega:* ${moeda(Number(valorFrete||0))}\n*TOTAL:* ${moeda(total)}\n\n💗 Pedido montado pelo site SALI STORE.\nGostaria de confirmar e finalizar meu pedido.`;
+  // Distribui automaticamente os pedidos entre as vendedoras da SALI STORE.
+  const vendedorasWhatsApp = [
+    { nome: "Grazi", numero: "5592985428531" },
+    { nome: "Gisele", numero: "5592985949004" }
+  ];
+  let indiceVendedora = Number(localStorage.getItem("sali_proxima_vendedora") || 0);
+  if (!Number.isInteger(indiceVendedora) || indiceVendedora < 0 || indiceVendedora >= vendedorasWhatsApp.length) indiceVendedora = 0;
+  const vendedora = vendedorasWhatsApp[indiceVendedora];
+  localStorage.setItem("sali_proxima_vendedora", String((indiceVendedora + 1) % vendedorasWhatsApp.length));
+  msg += `\n\n*Atendimento direcionado para:* ${vendedora.nome}`;
+  const numeroWhats = vendedora.numero;
+  const url=`https://wa.me/${numeroWhats}?text=${encodeURIComponent(msg)}`;
+  window.location.href=url;
+}
+
+function alterarTroco(){
+  const area=document.getElementById("trocoValorArea");
+  if(area) area.style.display=document.getElementById("precisaTroco")?.value==="sim"?"block":"none";
 }
 
 
@@ -4833,6 +3999,14 @@ if ("serviceWorker" in navigator) {
   });
 }
 
+
+
+document.addEventListener("change",function(e){
+  if(e.target && e.target.name==="pagamento"){
+    const area=document.getElementById("trocoArea");
+    if(area) area.style.display=e.target.value==="Dinheiro"?"block":"none";
+  }
+});
 </script>
 
 </body>
