@@ -2070,6 +2070,21 @@ window.supabase.createClient(
   }
 );
 
+let papelAtual = null;
+let acessoVersao = 0;
+function podeProdutos(){return papelAtual === 'admin' || papelAtual === 'produtos';}
+function podeAdmin(){return papelAtual === 'admin';}
+function aplicarAcesso(){
+  document.querySelectorAll('.nav-item[data-pagina]').forEach(el=>{
+    el.hidden = !podeAdmin() && el.dataset.pagina !== 'produtos';
+    el.style.display = el.hidden ? 'none' : '';
+  });
+  document.querySelectorAll('.pagina').forEach(el=>{
+    el.hidden = !podeAdmin() && el.id !== 'pagina-produtos';
+  });
+  document.querySelector('.marca-admin small').textContent = podeAdmin()
+    ? 'Painel de controle' : 'Acesso: produtos';
+}
 let produtos = [];
 let pedidos = [];
 let filtroStatusPedidos = "Todos";
@@ -2184,23 +2199,43 @@ async function verificarSessao(){
 
 
 async function mostrarPainel(){
-
-  document.getElementById("loginTela").style.display =
-  "none";
-
-  document.getElementById("painel").style.display =
-  "block";
-
-  await Promise.all([
-    carregarProdutos(),
-    carregarPedidos(),
-    carregarConfiguracoesLoja()
-  ]);
-
+  mostrarLogin();
+  const versao = acessoVersao;
+  try {
+    const {data,error} = await supabaseClient.rpc('sali_meu_papel');
+    if(versao !== acessoVersao) return;
+    if(error || !['admin','produtos'].includes(data)) {
+      document.getElementById('erroLogin').textContent = error
+        ? 'Não foi possível verificar suas permissões. Tente novamente ou fale com Jéssica.'
+        : 'Sua conta não tem acesso ao painel. Fale com Jéssica.';
+      return;
+    }
+    papelAtual = data;
+    aplicarAcesso();
+    abrirPagina(podeAdmin() ? 'inicio' : 'produtos');
+    document.getElementById('loginTela').style.display = 'none';
+    document.getElementById('painel').style.display = 'block';
+    const tarefas = [carregarProdutos()];
+    if(podeAdmin()) tarefas.push(carregarPedidos(),carregarConfiguracoesLoja());
+    await Promise.all(tarefas);
+  } catch(e) {
+    if(versao !== acessoVersao) return;
+    mostrarLogin();
+    document.getElementById('erroLogin').textContent = 'Falha ao verificar acesso. Tente novamente.';
+  }
 }
 
-
 function mostrarLogin(){
+  acessoVersao++;
+  papelAtual = null;
+  produtos = []; pedidos = []; configuracoesLoja = null;
+  fotosFormulario = []; opcoesFormulario = [];
+  ['listaPedidos','listaCancelamentos','listaProdutos','ultimosPedidos','modalPedidoConteudo'].forEach(id=>{
+    const el=document.getElementById(id); if(el)el.replaceChildren();
+  });
+  fecharModalPedido();
+  limparFormulario();
+  aplicarAcesso();
 
   document.getElementById("loginTela").style.display =
   "flex";
@@ -2221,6 +2256,7 @@ async function sair(){
 
 
 function abrirPagina(pagina,botao=null){
+  if(!podeProdutos() || (!podeAdmin() && pagina !== 'produtos')) return;
 
   document.querySelectorAll(".pagina")
   .forEach(item=>{
@@ -2616,6 +2652,7 @@ function fotoItemPedido(item){
 /* CONFIGURAÇÕES */
 
 async function carregarConfiguracoesLoja(){
+  if(!podeAdmin()) return;
 
   const {data,error} =
   await supabaseClient
@@ -2721,6 +2758,7 @@ function preencherEntregasPagamentos(){
 
 
 async function salvarConfiguracoesLoja(){
+  if(!podeAdmin()) return;
 
   const botao =
   document.getElementById("botaoSalvarLayout");
@@ -2820,6 +2858,7 @@ async function salvarConfiguracoesLoja(){
 
 
 async function salvarEntregasPagamentos(){
+  if(!podeAdmin()) return;
   const botao=document.getElementById("botaoSalvarEntregas");
   const st=document.getElementById("statusEntregas");
   botao.disabled=true;
@@ -2893,6 +2932,7 @@ async function salvarEntregasPagamentos(){
 /* PEDIDOS */
 
 async function carregarPedidos(){
+  if(!podeAdmin()) return;
 
   const {data,error} =
   await supabaseClient
@@ -4283,6 +4323,7 @@ async function mudarStatusRapido(id,status){
 
 
 async function atualizarStatusPedido(id,status){
+  if(!podeAdmin()) return;
 
   try{
 
@@ -4354,6 +4395,7 @@ async function atualizarStatusPedido(id,status){
 
 
 function atualizarDashboard(){
+  if(!podeAdmin()) return;
 
   const hoje =
   somenteDataLocal(
@@ -4466,6 +4508,7 @@ function atualizarDashboard(){
   pasta = "produtos"
 ){
 
+  if(!podeProdutos() || (!podeAdmin() && !["produtos","galeria","variantes"].includes(pasta))) throw new Error("Sem permissão para enviar esta imagem.");
   if(!arquivo){
     return null;
   }
@@ -5227,6 +5270,7 @@ function renderizarOpcoes(){
 /* PRODUTOS */
 
 async function carregarProdutos(){
+  if(!podeProdutos()) return;
 
   const {data,error} =
   await supabaseClient
@@ -5431,6 +5475,7 @@ function filtrarProdutos(){
 
 
 async function salvarProduto(){
+  if(!podeProdutos()) return;
 
   const id =
   document.getElementById("produtoId").value;
@@ -5770,6 +5815,7 @@ async function salvarProduto(){
 
 
 async function editarProduto(id){
+  if(!podeProdutos()) return;
 
   const produto =
   produtos.find(
@@ -6002,6 +6048,7 @@ async function alternarProduto(
   id,
   ativoAtual
 ){
+  if(!podeProdutos()) return;
 
   const {error} =
   await supabaseClient
@@ -6028,6 +6075,7 @@ async function alternarProduto(
 
 
 async function excluirProduto(id){
+  if(!podeProdutos()) return;
 
   const confirmar =
   confirm(
@@ -6109,6 +6157,9 @@ document
 
 renderizarOpcoes();
 
+supabaseClient.auth.onAuthStateChange((event)=>{
+  if(event === 'SIGNED_OUT') mostrarLogin();
+});
 verificarSessao();
 
 
@@ -6126,6 +6177,7 @@ let cmsOrdem=[];
 function cmsValor(id){return document.getElementById(id)}
 function cmsPreviewArquivo(input,imgId){const f=input.files&&input.files[0];if(!f)return;const img=cmsValor(imgId);img.src=URL.createObjectURL(f);}
 async function cmsTrocarImagemDireta(input,campo,imgId,statusId,pasta){
+  if(!podeAdmin()) return;
  const f=input.files&&input.files[0]; if(!f)return;
  const img=cmsValor(imgId), st=cmsValor(statusId), label=input.closest('.cms-upload-btn');
  const anterior=img?img.src:''; const previa=URL.createObjectURL(f); if(img)img.src=previa;
@@ -6143,6 +6195,7 @@ async function cmsTrocarImagemDireta(input,campo,imgId,statusId,pasta){
  finally{input.disabled=false;if(label)label.classList.remove('carregando');try{URL.revokeObjectURL(previa)}catch(_){}}
 }
 async function cmsTrocarCapaCategoria(input,chave,imgId,statusId){
+  if(!podeAdmin()) return;
  const f=input.files&&input.files[0]; if(!f)return;
  const img=cmsValor(imgId),st=cmsValor(statusId),label=input.closest('.cms-upload-btn');
  const anterior=img?img.src:'';const previa=URL.createObjectURL(f);if(img)img.src=previa;
@@ -6160,7 +6213,8 @@ async function cmsTrocarCapaCategoria(input,chave,imgId,statusId){
 function cmsRenderSecoes(){const box=cmsValor('cmsSecoes');if(!box)return;box.innerHTML='';cmsOrdem.forEach((id,i)=>{const def=CMS_SECOES_PADRAO.find(x=>x.id===id);if(!def)return;const el=document.createElement('div');el.className='cms-secao';el.innerHTML=`<span>⋮⋮</span><b>${def.nome}</b><button type="button" title="Subir" onclick="cmsMoverSecao(${i},-1)">↑</button><button type="button" title="Descer" onclick="cmsMoverSecao(${i},1)">↓</button>`;box.appendChild(el);});}
 function cmsMoverSecao(i,d){const j=i+d;if(j<0||j>=cmsOrdem.length)return;[cmsOrdem[i],cmsOrdem[j]]=[cmsOrdem[j],cmsOrdem[i]];cmsRenderSecoes();}
 function cmsPreencher(){if(!cmsValor('cmsNomeLoja'))return;const c=configuracoesLoja||{};cmsValor('cmsNomeLoja').value=(!c.nome_loja||/tropicanaz/i.test(String(c.nome_loja)))?'SALI STORE':c.nome_loja;cmsValor('cmsHeroTitulo').value=c.hero_titulo||'';cmsValor('cmsHeroSubtitulo').value=c.hero_subtitulo||'';cmsValor('cmsCorPrincipal').value=c.cor_principal||'#ff008c';cmsValor('cmsCorDourada').value=c.cor_dourada||'#ff008c';cmsValor('cmsCorFundo').value=c.cor_fundo||'#ffffff';cmsValor('cmsFonteTitulo').value=c.fonte_titulo||'Georgia,serif';cmsValor('cmsFonteTexto').value=c.fonte_texto||'Arial,sans-serif';cmsValor('cmsMostrarTopo').checked=c.mostrar_barra_topo!==false;cmsValor('cmsMostrarBeneficios').checked=c.mostrar_beneficios!==false;cmsValor('cmsMostrarCategorias').checked=c.mostrar_categorias!==false;cmsValor('cmsMostrarNovidades').checked=c.mostrar_novidades!==false;cmsValor('cmsLogoPreview').src=(!c.logo_url||/tropicanaz/i.test(String(c.logo_url)))?'sali-logo-oficial.png?v=20261007b':c.logo_url;if(c.banner_url)cmsValor('cmsBannerPreview').src=c.banner_url;const capas=c.capas_categorias||{};const mapas={vestidos:'cmsCatVestidosPreview',conjuntos:'cmsCatConjuntosPreview',blusas:'cmsCatBlusasPreview',calcas:'cmsCatCalcasPreview'};Object.entries(mapas).forEach(([k,id])=>{const el=cmsValor(id);if(el&&capas[k])el.src=capas[k];});cmsOrdem=Array.isArray(c.ordem_secoes)?c.ordem_secoes:[...CMS_SECOES_PADRAO.map(x=>x.id)];cmsRenderSecoes();}
-async function cmsPublicarAlteracoes(){const btn=cmsValor('cmsPublicar'),st=cmsValor('cmsStatus');btn.disabled=true;btn.textContent='PUBLICANDO...';st.textContent='';try{let logo=configuracoesLoja.logo_url||null,banner=configuracoesLoja.banner_url||null;const lf=cmsValor('cmsLogoArquivo').files[0],bf=cmsValor('cmsBannerArquivo').files[0];if(lf){if(!validarArquivoImagem(lf))throw new Error('Logo inválida');logo=await enviarArquivoImagem(lf,'layout/logo')}if(bf){if(!validarArquivoImagem(bf))throw new Error('Banner inválido');banner=await enviarArquivoImagem(bf,'layout/banner')}
+async function cmsPublicarAlteracoes(){
+  if(!podeAdmin()) return;const btn=cmsValor('cmsPublicar'),st=cmsValor('cmsStatus');btn.disabled=true;btn.textContent='PUBLICANDO...';st.textContent='';try{let logo=configuracoesLoja.logo_url||null,banner=configuracoesLoja.banner_url||null;const lf=cmsValor('cmsLogoArquivo').files[0],bf=cmsValor('cmsBannerArquivo').files[0];if(lf){if(!validarArquivoImagem(lf))throw new Error('Logo inválida');logo=await enviarArquivoImagem(lf,'layout/logo')}if(bf){if(!validarArquivoImagem(bf))throw new Error('Banner inválido');banner=await enviarArquivoImagem(bf,'layout/banner')}
 const dados={id:1,nome_loja:cmsValor('cmsNomeLoja').value.trim()||'SALI STORE',hero_titulo:cmsValor('cmsHeroTitulo').value.trim(),hero_subtitulo:cmsValor('cmsHeroSubtitulo').value.trim(),cor_principal:cmsValor('cmsCorPrincipal').value,cor_dourada:cmsValor('cmsCorDourada').value,cor_fundo:cmsValor('cmsCorFundo').value,fonte_titulo:cmsValor('cmsFonteTitulo').value,fonte_texto:cmsValor('cmsFonteTexto').value,logo_url:logo,banner_url:banner,ordem_secoes:cmsOrdem,mostrar_barra_topo:cmsValor('cmsMostrarTopo').checked,mostrar_beneficios:cmsValor('cmsMostrarBeneficios').checked,mostrar_categorias:cmsValor('cmsMostrarCategorias').checked,mostrar_novidades:cmsValor('cmsMostrarNovidades').checked,updated_at:new Date().toISOString()};const {data,error}=await supabaseClient.from('Configuracoes_Loja').upsert(dados,{onConflict:'id'}).select('*').single();if(error)throw error;configuracoesLoja=data;st.textContent='Alterações publicadas com sucesso ✅';st.className='status-layout sucesso';cmsPreencher();}catch(e){console.error(e);st.textContent='Não foi possível publicar: '+(e.message||e);st.className='status-layout erro';}finally{btn.disabled=false;btn.textContent='PUBLICAR ALTERAÇÕES';}}
 const _abrirPaginaCms=window.abrirPagina;window.abrirPagina=function(p,b){const r=_abrirPaginaCms.apply(this,arguments);if(p==='personalizar')setTimeout(cmsPreencher,0);return r;};
 const _carregarConfigCms=window.carregarConfiguracoesLoja;window.carregarConfiguracoesLoja=async function(){const r=await _carregarConfigCms.apply(this,arguments);cmsPreencher();return r;};

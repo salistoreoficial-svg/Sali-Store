@@ -1,4 +1,4 @@
-const CACHE_NAME = "sali-store-20261007-v2";
+const CACHE_NAME = "sali-store-20261008-acesso-v1";
 
 self.addEventListener("install", event => {
   self.skipWaiting();
