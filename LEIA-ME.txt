@@ -15,3 +15,9 @@ Arquivos atualizados:
 
 ## Publicação
 Substitua os arquivos correspondentes na raiz do projeto `Sali-Store`. Mantenha a pasta `api/` e os demais arquivos do projeto como estão.
+
+
+ATUALIZAÇÃO V81 — PARCELAMENTO
+- A partir de R$ 69,99: 2x sem juros.
+- A partir de R$ 99,99: 3x sem juros.
+- Abaixo de R$ 69,99: não exibe parcelamento.

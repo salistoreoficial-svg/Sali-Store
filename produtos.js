@@ -17,6 +17,23 @@ let clienteProdutosSali = null;
    SUPABASE
 ========================================= */
 
+
+function obterTextoParcelamentoSali(valor){
+  const total = Number(valor || 0);
+
+  if(total >= 99.99){
+    const parcela = (total / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+    return `ou 3x de R$ ${parcela} sem juros`;
+  }
+
+  if(total >= 69.99){
+    const parcela = (total / 2).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+    return `ou 2x de R$ ${parcela} sem juros`;
+  }
+
+  return "";
+}
+
 function conectarProdutosSali(){
 
   if(clienteProdutosSali){
@@ -1590,8 +1607,9 @@ function abrirModalProduto(
 
   const parcelamento = document.getElementById("saliModalParcelamento");
   if(parcelamento){
-    const parcela = (valorProduto / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
-    parcelamento.textContent = `ou 3x de R$ ${parcela} sem juros`;
+    const textoParcelamento = obterTextoParcelamentoSali(valorProduto);
+    parcelamento.textContent = textoParcelamento;
+    parcelamento.style.display = textoParcelamento ? "block" : "none";
   }
 
 
@@ -2539,10 +2557,10 @@ function criarCardProduto(
   parcelamento.className =
   "sali-parcelamento-card";
 
-  const valorParcelaCard = (Number(produto.preco || 0) / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+  const textoParcelamentoCard = obterTextoParcelamentoSali(Number(produto.preco || 0));
 
-  parcelamento.textContent =
-  `ou 3x de R$ ${valorParcelaCard} sem juros`;
+  parcelamento.textContent = textoParcelamentoCard;
+  parcelamento.style.display = textoParcelamentoCard ? "block" : "none";
 
 
   const amostras =
@@ -2964,8 +2982,9 @@ function criarCardProduto(produto, variantesIgnoradas){
 
   const parcelamento = document.createElement("small");
   parcelamento.className = "sali-parcelamento-card";
-  const valorParcela = (Number(produto.preco || 0) / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
-  parcelamento.textContent = `ou 3x de R$ ${valorParcela} sem juros`;
+  const textoParcelamento = obterTextoParcelamentoSali(Number(produto.preco || 0));
+  parcelamento.textContent = textoParcelamento;
+  parcelamento.style.display = textoParcelamento ? "block" : "none";
 
   const aviso = document.createElement("small");
   aviso.style.display = "block";
