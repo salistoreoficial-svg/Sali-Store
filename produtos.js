@@ -3002,7 +3002,7 @@ function criarCardProduto(produto, variantesIgnoradas){
   aviso.style.fontSize = "11px";
   aviso.style.lineHeight = "1.35";
   aviso.style.color = "#ffd1e8";
-  aviso.textContent = "Cores e estampas: confirme as opções disponíveis pelo WhatsApp antes de finalizar.";
+  aviso.textContent = "Cores e estampas disponíveis pelo WhatsApp";
 
   const botao = document.createElement("button");
   botao.type = "button";
