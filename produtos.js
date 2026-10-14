@@ -2916,3 +2916,124 @@ if(
   carregarProdutos();
 
 }
+
+
+/* =========================================
+   SALI STORE V80 — VENDA ASSISTIDA NO WHATSAPP
+   - Cor/estampa não é exigida no site
+   - O cliente adiciona o MODELO à sacola
+   - Estoque usa Produtos.estoque
+   - ?produto=ID abre exatamente o modelo compartilhado
+========================================= */
+
+function saliLinkProduto(produtoId){
+  return `${window.location.origin}${window.location.pathname}?produto=${encodeURIComponent(produtoId)}`;
+}
+
+function criarCardProduto(produto, variantesIgnoradas){
+  const card = document.createElement("div");
+  card.className = "produto";
+  card.dataset.produtoId = String(produto.id);
+
+  const imagem = document.createElement("img");
+  imagem.src = produto.foto_url || "";
+  imagem.alt = produto.nome || "Produto SALI";
+  imagem.loading = "lazy";
+  imagem.setAttribute("role", "button");
+  imagem.setAttribute("tabindex", "0");
+  imagem.setAttribute("aria-label", "Ver modelo " + (produto.nome || "produto"));
+
+  const abrir = ()=>abrirModalProduto(produto, []);
+  imagem.addEventListener("click", abrir);
+  imagem.addEventListener("keydown", e=>{
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      abrir();
+    }
+  });
+
+  const info = document.createElement("div");
+  info.className = "info";
+
+  const nome = document.createElement("h3");
+  nome.textContent = produto.nome || "Produto SALI";
+
+  const preco = document.createElement("div");
+  preco.className = "preco";
+  preco.textContent = moedaProduto(produto.preco);
+
+  const parcelamento = document.createElement("small");
+  parcelamento.className = "sali-parcelamento-card";
+  const valorParcela = (Number(produto.preco || 0) / 3).toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+  parcelamento.textContent = `ou 3x de R$ ${valorParcela} sem juros`;
+
+  const aviso = document.createElement("small");
+  aviso.style.display = "block";
+  aviso.style.margin = "8px 0 10px";
+  aviso.style.fontSize = "11px";
+  aviso.style.lineHeight = "1.35";
+  aviso.style.color = "#666";
+  aviso.textContent = "Cores e estampas são confirmadas no WhatsApp.";
+
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.className = "adicionar";
+
+  const estoque = Number(produto.estoque || 0);
+  if(estoque <= 0){
+    botao.textContent = "ESGOTADO";
+    botao.disabled = true;
+    botao.style.opacity = ".5";
+  }else{
+    botao.textContent = "ADICIONAR À SACOLA";
+    botao.addEventListener("click", ()=>{
+      adicionarProduto(produto.id, produto.nome, Number(produto.preco || 0), produto.foto_url || "", "", "", "");
+    });
+  }
+
+  const consultar = document.createElement("a");
+  consultar.href = saliLinkProduto(produto.id);
+  consultar.textContent = `Código SALI-${produto.id}`;
+  consultar.style.display = "inline-block";
+  consultar.style.marginTop = "8px";
+  consultar.style.fontSize = "10px";
+  consultar.style.color = "#777";
+  consultar.style.textDecoration = "none";
+
+  info.appendChild(nome);
+  info.appendChild(preco);
+  info.appendChild(parcelamento);
+  info.appendChild(aviso);
+  info.appendChild(botao);
+  info.appendChild(consultar);
+  card.appendChild(imagem);
+  card.appendChild(info);
+  return card;
+}
+
+function saliAbrirProdutoCompartilhado(){
+  const id = new URLSearchParams(window.location.search).get("produto");
+  if(!id) return;
+  const lista = document.getElementById("listaProdutos");
+  if(!lista) return;
+
+  const tentar = ()=>{
+    const card = lista.querySelector(`[data-produto-id="${CSS.escape(String(id))}"]`);
+    if(card){
+      card.scrollIntoView({behavior:"smooth", block:"center"});
+      setTimeout(()=>card.querySelector("img")?.click(), 350);
+      return true;
+    }
+    return false;
+  };
+  if(tentar()) return;
+
+  const obs = new MutationObserver(()=>{
+    if(tentar()) obs.disconnect();
+  });
+  obs.observe(lista, {childList:true, subtree:true});
+  setTimeout(()=>obs.disconnect(), 12000);
+}
+
+document.addEventListener("DOMContentLoaded", saliAbrirProdutoCompartilhado);
+if(document.readyState !== "loading") saliAbrirProdutoCompartilhado();

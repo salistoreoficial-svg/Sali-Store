@@ -1499,7 +1499,7 @@ input[type=checkbox],input[type=radio]{accent-color:#ff008c}
       </div>
 
       <div class="campo">
-        <label>Estoque geral</label>
+        <label>Estoque do modelo</label>
         <input
           type="number"
           id="produtoEstoque"
@@ -1556,26 +1556,18 @@ input[type=checkbox],input[type=radio]{accent-color:#ff008c}
     ></div>
 
     <div class="subtitulo">
-      <h4>🎨 Cores / estampas</h4>
-      <p>Cadastre as opções e o estoque por tamanho.</p>
+      <h4>💬 Cores e estampas</h4>
+      <p>Não precisa cadastrar cores ou estampas. A cliente escolhe o modelo e confirma as opções disponíveis diretamente com a vendedora no WhatsApp.</p>
     </div>
 
-    <div
-      class="opcoes-area"
-      id="opcoesArea"
-    ></div>
+    <div class="foto-ajuda" style="margin-bottom:14px">
+      A foto principal será usada para identificar o modelo. No pedido, a vendedora receberá o nome, código do produto e um link direto para visualizar a peça.
+    </div>
 
-    <button
-      type="button"
-      class="adicionar-opcao"
-      onclick="adicionarOpcao()"
-    >
-      + ADICIONAR COR / ESTAMPA
-    </button>
-
-    <div class="estoque-calculado">
-      Estoque total das variantes:
-      <strong id="estoqueVariantes">0</strong>
+    <div style="display:none" aria-hidden="true">
+      <div class="opcoes-area" id="opcoesArea"></div>
+      <button type="button" class="adicionar-opcao" onclick="adicionarOpcao()">+ ADICIONAR COR / ESTAMPA</button>
+      <div class="estoque-calculado">Estoque total das variantes: <strong id="estoqueVariantes">0</strong></div>
     </div>
 
     <label class="ativo-area">
@@ -5526,12 +5518,15 @@ async function salvarProduto(){
 
   }
 
-  const estoque =
-  opcoesFormulario.length
-  ?
-  calcularEstoqueVariantes()
-  :
-  estoqueGeral;
+  if(!fotosFormulario.length){
+
+    alert("Adicione pelo menos uma foto do produto.");
+
+    return;
+
+  }
+
+  const estoque = estoqueGeral;
 
   const botao =
   document.getElementById("botaoSalvar");

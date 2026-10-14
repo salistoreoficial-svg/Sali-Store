@@ -1,0 +1,17 @@
+# SALI STORE — Atualização WhatsApp / Modelos
+
+Arquivos atualizados:
+- `admin.html` — cadastro simplificado: foto, nome, preço, categoria e estoque do modelo; cor/estampa deixam de ser obrigatórias.
+- `index.html` — pedido enviado ao WhatsApp com código SALI-ID e link direto de cada modelo.
+- `produtos.js` — cliente adiciona o modelo à sacola sem selecionar cor/estampa; link `?produto=ID` abre o modelo exato.
+- `pedido.js` — mantido sem alteração funcional.
+
+## Fluxo
+1. Cadastrar uma foto principal, nome, preço, categoria e estoque do modelo.
+2. Cliente adiciona o modelo à sacola.
+3. Cliente preenche entrega/pagamento e finaliza.
+4. O WhatsApp é aberto para Grazi/Gisele em rodízio, com os modelos, códigos e links.
+5. A vendedora abre o link, vê a peça exata e envia as cores/estampas disponíveis.
+
+## Publicação
+Substitua os arquivos correspondentes na raiz do projeto `Sali-Store`. Mantenha a pasta `api/` e os demais arquivos do projeto como estão.
