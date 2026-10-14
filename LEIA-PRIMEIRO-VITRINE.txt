@@ -1,0 +1,6 @@
+SALI STORE - VITRINE PREMIUM
+Arquivos para subir na raiz do repositorio GitHub, nao envie o ZIP como arquivo do site.
+Mudancas concentradas em index.html; painel, pedidos e estoque preservados.
+Confira imagens/categorias e teste em branch antes de publicar.
+Categorias extras Saias e Bodys apontam para Novidades ate serem vinculadas ao filtro real.
+Parcelamento: 2x desde R$69,99; 3x desde R$99,99.
