@@ -1335,6 +1335,13 @@ header{background:#000!important;border-bottom:0!important}
 </style>
 
 <!-- SALI STORE V7.12 - CAPAS CATEGORIAS SINCRONIZADAS -->
+<style>
+.sali-aviso-cores{display:flex;align-items:flex-start;gap:7px;background:#291622;border:1px solid #a72c70;border-radius:9px;padding:10px!important;margin:11px 0!important;color:#ffd1e8!important;font-size:12px!important;line-height:1.4!important}
+.sali-aviso-cores:before{content:"✦";color:#ff1493;font-size:16px}
+#saliVerTodos{display:inline-block;background:transparent;border:1px solid #ff1493;color:#ff7fc0;border-radius:22px;padding:9px 15px;margin:10px 0 18px;cursor:pointer}
+#saliVerTodos[hidden]{display:none!important}
+.cat[data-sali-categoria]{cursor:pointer}.cat.sali-cat-ativa{outline:3px solid #ff1493;outline-offset:3px}
+</style>
 </head>
 
 
@@ -1547,6 +1554,7 @@ Encontre rapidamente o estilo que combina com você.
   class="cat"
   id="catVestidos"
   href="#novidades"
+  data-sali-categoria="longos"
 >
 
 <span>
@@ -1563,6 +1571,7 @@ Do casual ao marcante
   class="cat"
   id="catConjuntos"
   href="#novidades"
+  data-sali-categoria="curtos"
 >
 
 <span>
@@ -1579,6 +1588,7 @@ Looks prontos para vestir
   class="cat"
   id="catBlusas"
   href="#novidades"
+  data-sali-categoria="blusas"
 >
 
 <span>
@@ -1595,6 +1605,7 @@ Essenciais com personalidade
   class="cat"
   id="catCalcas"
   href="#novidades"
+  data-sali-categoria="conjuntos"
 >
 
 <span>
@@ -1606,8 +1617,8 @@ Modelagens que valorizam
 
 </a>
 
-<a class="cat sali-extra-cat" href="#novidades" style="background-image:url('2FB4D351-BB4F-4790-8933-22B8592A6FEC.png')"><span>Saias</span></a>
-<a class="cat sali-extra-cat" href="#novidades" style="background-image:url('815BCB89-C59E-479D-83FF-454243870EB3.png')"><span>Bodys</span></a>
+<a class="cat sali-extra-cat" data-sali-categoria="saias" href="#novidades" style="background-image:url('2FB4D351-BB4F-4790-8933-22B8592A6FEC.png')"><span>Saias</span></a>
+<a class="cat sali-extra-cat" data-sali-categoria="bodys" href="#novidades" style="background-image:url('815BCB89-C59E-479D-83FF-454243870EB3.png')"><span>Bodys</span></a>
 </div>
 
 </section>
@@ -1619,13 +1630,12 @@ Modelagens que valorizam
   id="novidades"
 >
 
-<h2>
-Novidades
-</h2>
+<h2 id="saliTituloProdutos">Novidades</h2>
+<button type="button" id="saliVerTodos" hidden>← Ver todos os produtos</button>
 <div class="category-ornament novidades-ornament" aria-hidden="true"><span></span><b>✦</b><span></span></div>
 
 <p class="produtos-sub">
-Os últimos lançamentos da SALI STORE.
+<span id="saliDescricaoProdutos">Os últimos lançamentos da SALI STORE.</span>
 </p>
 
 <div

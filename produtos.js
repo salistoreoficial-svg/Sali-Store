@@ -2741,6 +2741,39 @@ function criarCardProduto(
    CARREGAR LOJA
 ========================================= */
 
+// SALI STORE: filtro de categorias na vitrine, sem alterar dados no banco.
+let saliCategoriaSelecionada = "";
+let saliProdutosEmMemoria = [];
+const saliNomesCategorias = {longos:"Vestidos longos",curtos:"Vestidos curtos",blusas:"Blusas",conjuntos:"Conjuntos",saias:"Saias",bodys:"Bodys"};
+function saliNormalizarTexto(v){return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();}
+function saliProdutoDaCategoria(produto, chave){
+  if(!chave)return true;
+  const categoria=saliNormalizarTexto(produto.categoria);
+  const nome=saliNormalizarTexto(produto.nome);
+  const texto=categoria || nome;
+  if(chave==="longos")return /vestido/.test(texto)&&(/longo|longa/.test(texto)||(!categoria&&/longo/.test(nome)));
+  if(chave==="curtos")return /vestido/.test(texto)&&(/curto|curta/.test(texto)||(!categoria&&/curto/.test(nome)));
+  const regras={blusas:/blusa|camisa|cropped|top/,conjuntos:/conjunto|scuba/,saias:/saia/,bodys:/body|bodies|bodys/};
+  return regras[chave]?.test(texto)||false;
+}
+function saliExibirProdutosFiltrados(){
+ const lista=document.getElementById("listaProdutos");if(!lista)return;
+ const filtrados=saliProdutosEmMemoria.filter(p=>saliProdutoDaCategoria(p,saliCategoriaSelecionada));
+ lista.replaceChildren();
+ if(!filtrados.length){const aviso=document.createElement("p");aviso.style.cssText="grid-column:1/-1;text-align:center;color:#ddd;padding:35px 12px";aviso.textContent="Nenhum produto disponível nesta categoria no momento.";lista.appendChild(aviso);}
+ filtrados.forEach(p=>lista.appendChild(criarCardProduto(p,[])));
+ const titulo=document.getElementById("saliTituloProdutos"),descricao=document.getElementById("saliDescricaoProdutos"),voltar=document.getElementById("saliVerTodos");
+ if(titulo)titulo.textContent=saliCategoriaSelecionada?saliNomesCategorias[saliCategoriaSelecionada]:"Novidades";
+ if(descricao)descricao.textContent=saliCategoriaSelecionada?`${filtrados.length} produto(s) disponível(is) nesta categoria.`:"Os últimos lançamentos da SALI STORE.";
+ if(voltar)voltar.hidden=!saliCategoriaSelecionada;
+ document.querySelectorAll("[data-sali-categoria]").forEach(el=>el.classList.toggle("sali-cat-ativa",el.dataset.saliCategoria===saliCategoriaSelecionada));
+}
+document.addEventListener("click",e=>{
+ const cat=e.target.closest("[data-sali-categoria]");
+ if(cat){e.preventDefault();saliCategoriaSelecionada=cat.dataset.saliCategoria;saliExibirProdutosFiltrados();document.getElementById("novidades")?.scrollIntoView({behavior:"smooth"});}
+ if(e.target.closest("#saliVerTodos")){saliCategoriaSelecionada="";saliExibirProdutosFiltrados();}
+});
+
 async function carregarProdutos(){
 
   const lista =
@@ -2862,32 +2895,8 @@ async function carregarProdutos(){
     "";
 
 
-    produtos.forEach(
-      produto => {
-
-        const variantesProduto =
-        mapa[
-          String(
-            produto.id
-          )
-        ]
-        ||
-        [];
-
-
-        const card =
-        criarCardProduto(
-          produto,
-          variantesProduto
-        );
-
-
-        lista.appendChild(
-          card
-        );
-
-      }
-    );
+    saliProdutosEmMemoria = produtos;
+    saliExibirProdutosFiltrados();
 
   }catch(error){
 
@@ -2987,12 +2996,13 @@ function criarCardProduto(produto, variantesIgnoradas){
   parcelamento.style.display = textoParcelamento ? "block" : "none";
 
   const aviso = document.createElement("small");
+  aviso.className = "sali-aviso-cores";
   aviso.style.display = "block";
   aviso.style.margin = "8px 0 10px";
   aviso.style.fontSize = "11px";
   aviso.style.lineHeight = "1.35";
-  aviso.style.color = "#666";
-  aviso.textContent = "Cores e estampas são confirmadas no WhatsApp.";
+  aviso.style.color = "#ffd1e8";
+  aviso.textContent = "Cores e estampas: confirme as opções disponíveis pelo WhatsApp antes de finalizar.";
 
   const botao = document.createElement("button");
   botao.type = "button";
