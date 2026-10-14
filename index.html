@@ -1332,6 +1332,12 @@ header{background:#000!important;border-bottom:0!important}
  .sali-faixa-parcelamento{margin-top:10px!important}
  #novidades .grade{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
+
+/* SALI: contador de unidades legível no carrinho */
+.carrinho .quantidade{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:nowrap!important}
+.carrinho .quantidade span{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:42px!important;height:36px!important;padding:0 8px!important;background:#fff!important;color:#171717!important;border:1px solid #f1b2d1!important;border-radius:8px!important;font-size:16px!important;font-weight:800!important;opacity:1!important;visibility:visible!important}
+.carrinho .quantidade button{min-width:36px!important;height:36px!important;color:#ed168a!important;background:#fff!important;border:1px solid #efb7d4!important}
+.carrinho .item-dados h4{color:#161616!important}
 </style>
 
 <!-- SALI STORE V7.12 - CAPAS CATEGORIAS SINCRONIZADAS -->
@@ -3148,7 +3154,7 @@ async function confirmarPedido(){
   const nomesEntrega={retirada:"Retirada na loja"}; obterAreasEntrega().forEach(a=>nomesEntrega[String(a.id)]=a.nome);
   const baseProdutoUrl = `${window.location.origin}${window.location.pathname}`;
   const itens=carrinho.map((item,i)=>{const nomeItem=item.nome||item.titulo||item.produto||"Produto";const qtd=Number(item.quantidade||item.qtd||1);const preco=Number(item.preco||item.valor||0);const codigo=`SALI-${item.id}`;const linkProduto=`${baseProdutoUrl}?produto=${encodeURIComponent(item.id)}`;return `${i+1}x ${nomeItem} — ${moeda(preco*qtd)}\nCódigo: ${codigo}\nVer modelo: ${linkProduto}`;}).join("\n\n");
-  let msg=`🛍️ *NOVO PEDIDO — SALI STORE*\n\n*Pedido:* #${numeroPedido}\n\n*CLIENTE*\nNome: ${nome}\nWhatsApp: ${telefone}\n\n*MODELOS ESCOLHIDOS*\n${itens}\n\n💬 *Quero ver as cores e estampas disponíveis desses modelos.*\n\n*ENTREGA*\nModalidade: ${nomesEntrega[entrega]||entrega}\n${entrega!=="retirada"?`Endereço/Destino: ${enderecoPedido}\n`:""}${bairroPedido?`Bairro: ${bairroPedido}\n`:""}\n*PAGAMENTO*\nForma: ${pagamento}${pagamento==="Dinheiro"?`\nTroco: ${precisaTroco?"Sim, para R$ "+Number(trocoPara).toFixed(2).replace(".",","):"Não"}`:""}\n\n*Subtotal:* ${moeda(subtotal)}\n*Taxa de entrega:* ${moeda(Number(valorFrete||0))}\n*TOTAL:* ${moeda(total)}\n\n💗 Pedido montado pelo site SALI STORE.\nA vendedora confirma as cores/estampas disponíveis antes de finalizar o pedido.`;
+  let msg=`🛍️ *NOVO PEDIDO — SALI STORE*\n\n*Pedido:* #${numeroPedido}\n\n*CLIENTE*\nNome: ${nome}\nWhatsApp: ${telefone}\n\n*MODELOS ESCOLHIDOS*\n${itens}\n\n💬 *Cores e estampas disponíveis pelo WhatsApp.*\n\n*ENTREGA*\nModalidade: ${nomesEntrega[entrega]||entrega}\n${entrega!=="retirada"?`Endereço/Destino: ${enderecoPedido}\n`:""}${bairroPedido?`Bairro: ${bairroPedido}\n`:""}\n*PAGAMENTO*\nForma: ${pagamento}${pagamento==="Dinheiro"?`\nTroco: ${precisaTroco?"Sim, para R$ "+Number(trocoPara).toFixed(2).replace(".",","):"Não"}`:""}\n\n*Subtotal:* ${moeda(subtotal)}\n*Taxa de entrega:* ${moeda(Number(valorFrete||0))}\n*TOTAL:* ${moeda(total)}\n\n💗 Pedido montado pelo site SALI STORE.\nCores e estampas disponíveis pelo WhatsApp.`;
   // Distribui automaticamente os pedidos entre as vendedoras da SALI STORE.
   const vendedorasWhatsApp = [
     { nome: "Grazi", numero: "5592985428531" },
