@@ -1368,6 +1368,41 @@ header{background:#000!important;border-bottom:0!important}
 #saliVerTodos[hidden]{display:none!important}
 .cat[data-sali-categoria]{cursor:pointer}.cat.sali-cat-ativa{outline:3px solid #ff1493;outline-offset:3px}
 </style>
+<!-- SALI STORE — carrossel horizontal de categorias -->
+<style>
+#categorias .categorias-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  grid-template-columns: none !important;
+  gap: 14px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 5px 5px 52px !important;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+#categorias .categorias-grid::-webkit-scrollbar { display: none; }
+#categorias .categorias-grid > .cat {
+  flex: 0 0 112px !important;
+  width: 112px !important;
+  height: 112px !important;
+  min-width: 112px !important;
+  aspect-ratio: 1 / 1 !important;
+  margin-bottom: 0 !important;
+  scroll-snap-align: start;
+}
+@media (max-width: 700px) {
+  #categorias .categorias-grid { gap: 10px !important; }
+  #categorias .categorias-grid > .cat {
+    flex-basis: 94px !important;
+    width: 94px !important;
+    min-width: 94px !important;
+    height: 94px !important;
+  }
+}
+</style>
 </head>
 
 
