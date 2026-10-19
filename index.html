@@ -3726,6 +3726,27 @@ montarOpcoesPagamento();
     setTimeout(sincronizarCapasCategorias, 1200);
   }
   atualizarCapasMobile();
+
+  // SALI: sincroniza as seis capas existentes e as categorias novas do painel.
+  async function saliSincronizarCategoriasNovas(){
+   try{
+    const {data,error}=await window.supabaseClient.from('sali_categorias').select('nome,imagem_url,ordem').order('ordem',{ascending:true});
+    if(error)throw error;
+    const grid=document.querySelector('#categorias .categorias-grid');if(!grid)return;
+    const base={'vestidos longos':'catVestidos','vestidos curtos':'catConjuntos','blusas':'catBlusas','conjuntos':'catCalcas','saias':'saias','bodys':'bodys'};
+    const normalizar=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    grid.querySelectorAll('[data-sali-dinamica="1"]').forEach(el=>el.remove());
+    for(const cat of data||[]){
+     const nome=normalizar(cat.nome);const alvo=base[nome];
+     let el=alvo?.startsWith('cat')?document.getElementById(alvo):[...grid.querySelectorAll('.cat')].find(x=>normalizar(x.dataset.saliCategoria)===alvo);
+     if(!el){el=document.createElement('a');el.className='cat sali-extra-cat';el.href='#novidades';el.dataset.saliCategoria=nome.replace(/\s+/g,'-');el.dataset.saliDinamica='1';const span=document.createElement('span');span.textContent=cat.nome;el.append(span);grid.append(el);}
+     if(cat.imagem_url)el.style.setProperty('background-image',`url("${String(cat.imagem_url).replace(/"/g,'%22')}")`,'important');
+    }
+   }catch(e){console.warn('Categorias adicionais indisponíveis:',e);}
+  }
+  saliSincronizarCategoriasNovas();
+  window.addEventListener('pageshow',saliSincronizarCategoriasNovas);
+
   window.addEventListener("pageshow", atualizarCapasMobile);
   window.addEventListener("focus", atualizarCapasMobile);
   document.addEventListener("visibilitychange",()=>{ if(!document.hidden) atualizarCapasMobile(); });

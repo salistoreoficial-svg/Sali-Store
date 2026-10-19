@@ -1,0 +1,6 @@
+1. No Supabase SQL Editor, execute ATUALIZAR-CATEGORIAS-CAPAS.sql uma vez.
+2. No GitHub, substitua admin.html e index.html pelos arquivos desta pasta, mantendo os mesmos nomes.
+3. Aguarde o deploy da Vercel e reabra o aplicativo.
+4. Em Personalizar, use Adicionar categoria e capa ou Trocar capa.
+5. Verifique o aviso de quota do Supabase: ele pode restringir o projeto.
+Observação: notificações push não foram implementadas nesta atualização.

@@ -1659,12 +1659,11 @@ input[type=checkbox],input[type=radio]{accent-color:#ff008c}
       <div class="cms-card">
         <h3>🛍️ Capas das categorias</h3>
         <p class="cms-help">Troque as imagens que aparecem em “Compre por categoria”. A alteração é publicada automaticamente.</p>
-        <div class="cms-cat-grid">
-          <div class="cms-cat-item"><strong>Vestidos</strong><div class="cms-cat-preview"><img id="cmsCatVestidosPreview" alt="Capa Vestidos"></div><label class="cms-upload-btn">Trocar capa<input type="file" accept="image/*" hidden onchange="cmsTrocarCapaCategoria(this,'vestidos','cmsCatVestidosPreview','cmsCatVestidosStatus')"></label><div id="cmsCatVestidosStatus" class="cms-upload-status"></div></div>
-          <div class="cms-cat-item"><strong>Conjuntos</strong><div class="cms-cat-preview"><img id="cmsCatConjuntosPreview" alt="Capa Conjuntos"></div><label class="cms-upload-btn">Trocar capa<input type="file" accept="image/*" hidden onchange="cmsTrocarCapaCategoria(this,'conjuntos','cmsCatConjuntosPreview','cmsCatConjuntosStatus')"></label><div id="cmsCatConjuntosStatus" class="cms-upload-status"></div></div>
-          <div class="cms-cat-item"><strong>Blusas</strong><div class="cms-cat-preview"><img id="cmsCatBlusasPreview" alt="Capa Blusas"></div><label class="cms-upload-btn">Trocar capa<input type="file" accept="image/*" hidden onchange="cmsTrocarCapaCategoria(this,'blusas','cmsCatBlusasPreview','cmsCatBlusasStatus')"></label><div id="cmsCatBlusasStatus" class="cms-upload-status"></div></div>
-          <div class="cms-cat-item"><strong>Calças</strong><div class="cms-cat-preview"><img id="cmsCatCalcasPreview" alt="Capa Calças"></div><label class="cms-upload-btn">Trocar capa<input type="file" accept="image/*" hidden onchange="cmsTrocarCapaCategoria(this,'calcas','cmsCatCalcasPreview','cmsCatCalcasStatus')"></label><div id="cmsCatCalcasStatus" class="cms-upload-status"></div></div>
-        </div>
+        <div class="cms-cat-grid" id="saliCapasDinamicas"></div>
+        <div class="campo" style="margin-top:18px"><label for="saliNomeCategoriaCapa">Nova categoria</label><input id="saliNomeCategoriaCapa" placeholder="Ex.: Moda Festa" maxlength="70"></div>
+        <div class="campo"><label for="saliFotoCategoriaCapa">Foto da capa</label><input id="saliFotoCategoriaCapa" type="file" accept="image/*"></div>
+        <button type="button" class="cms-upload-btn" style="border:0;width:100%;cursor:pointer" onclick="saliCriarCategoriaCapa()">＋ Adicionar categoria e capa</button>
+        <div id="saliCapasMensagem" class="cms-upload-status" aria-live="polite"></div>
       </div>
 
       <div class="cms-card">
@@ -6233,6 +6232,58 @@ async function saliAdicionarCategoria(){
  if(!error){el.value='';await saliCarregarCategorias();}
 }
 document.addEventListener('DOMContentLoaded',()=>{saliCarregarCategorias();});
+
+// SALI: gerenciamento dinamico das categorias na aba Personalizar.
+const SALI_CATS_BASE=[['Vestidos longos','vestidos','catVestidos'],['Vestidos curtos','conjuntos','catConjuntos'],['Blusas','blusas','catBlusas'],['Conjuntos','calcas','catCalcas'],['Saias','saias',null],['Bodys','bodys',null]];
+let saliCategoriasPainel=[];
+function saliCatMensagem(msg){const e=document.getElementById('saliCapasMensagem');if(e)e.textContent=msg;}
+function saliChaveNome(nome){return String(nome||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+async function saliListarCapas(){
+ if(!podeAdmin())return;
+ const box=document.getElementById('saliCapasDinamicas');if(!box)return;
+ const {data,error}=await supabaseClient.from('sali_categorias').select('id,nome,imagem_url,ordem').order('ordem',{ascending:true});
+ if(error){saliCatMensagem('Não foi possível ler as categorias: '+error.message);return;}
+ saliCategoriasPainel=data||[];box.replaceChildren();
+ const bases=SALI_CATS_BASE.map(([nome,chave,id])=>({nome,chave,id,registro:saliCategoriasPainel.find(c=>saliChaveNome(c.nome)===saliChaveNome(nome))}));
+ const extras=saliCategoriasPainel.filter(c=>!bases.some(b=>b.registro?.id===c.id)).map(c=>({nome:c.nome,chave:saliChaveNome(c.nome),registro:c}));
+ for(const item of [...bases,...extras]){
+  const el=document.createElement('div');el.className='cms-cat-item';
+  const titulo=document.createElement('strong');titulo.textContent=item.nome;el.append(titulo);
+  const preview=document.createElement('div');preview.className='cms-cat-preview';const img=document.createElement('img');img.alt='Capa '+item.nome;
+  const capas=configuracoesLoja?.capas_categorias||{};
+  const fallback={saias:'2FB4D351-BB4F-4790-8933-22B8592A6FEC.png',bodys:'815BCB89-C59E-479D-83FF-454243870EB3.png'};
+  img.src=item.registro?.imagem_url||capas[item.chave]||fallback[item.chave]||'sali-logo-oficial.png';preview.append(img);el.append(preview);
+  const label=document.createElement('label');label.className='cms-upload-btn';label.textContent='Trocar capa';const input=document.createElement('input');input.type='file';input.accept='image/*';input.hidden=true;
+  const status=document.createElement('div');status.className='cms-upload-status';
+  input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;input.disabled=true;status.textContent='Enviando...';try{
+   if(!validarArquivoImagem(file))throw new Error('Foto inválida');
+   const url=await enviarArquivoImagem(file,'layout/categorias/'+item.chave);
+   if(!url)throw new Error('Falha no envio da foto');
+   if(item.registro){const {error}=await supabaseClient.from('sali_categorias').update({imagem_url:url}).eq('id',item.registro.id);if(error)throw error;}
+   else {const {error}=await supabaseClient.from('sali_categorias').insert({nome:item.nome,imagem_url:url,ordem:SALI_CATS_BASE.findIndex(b=>b[0]===item.nome)+1});if(error)throw error;}
+   // Mantem compatibilidade com a sincronizacao antiga das quatro capas.
+   const capasAtualizadas={...(configuracoesLoja?.capas_categorias||{}),[item.chave]:url};
+   const {error:erroConfig}=await supabaseClient.from('Configuracoes_Loja').update({capas_categorias:capasAtualizadas,updated_at:new Date().toISOString()}).eq('id',1);
+   if(erroConfig)console.warn('A capa foi salva na categoria, mas nao no cache legado:',erroConfig);
+   else configuracoesLoja={...(configuracoesLoja||{}),capas_categorias:capasAtualizadas};
+   img.src=url;status.textContent='Capa publicada ✓';await saliListarCapas();
+  }catch(e){status.textContent='Erro: '+e.message;}finally{input.disabled=false;input.value='';}});
+  label.append(input);el.append(label,status);
+  if(item.registro && !bases.some(b=>b.nome===item.nome)){
+   const excluir=document.createElement('button');excluir.type='button';excluir.textContent='Remover da vitrine';excluir.style.cssText='background:transparent;color:#a33;border:0;padding:8px;cursor:pointer';
+   excluir.onclick=async()=>{if(!confirm('Remover a categoria '+item.nome+' da vitrine? Os produtos não serão apagados.'))return;const {error}=await supabaseClient.from('sali_categorias').delete().eq('id',item.registro.id);if(error)saliCatMensagem(error.message);else await saliListarCapas();};el.append(excluir);
+  }
+  box.append(el);
+ }
+}
+async function saliCriarCategoriaCapa(){
+ if(!podeAdmin())return;const campo=document.getElementById('saliNomeCategoriaCapa'),foto=document.getElementById('saliFotoCategoriaCapa');const nome=campo.value.trim();
+ if(!nome||!foto.files?.[0]){saliCatMensagem('Informe o nome e escolha uma foto.');return;}
+ if(saliCategoriasPainel.some(c=>saliChaveNome(c.nome)===saliChaveNome(nome))||SALI_CATS_BASE.some(c=>saliChaveNome(c[0])===saliChaveNome(nome))){saliCatMensagem('Esta categoria já existe. Use Trocar capa.');return;}
+ saliCatMensagem('Salvando categoria e foto...');try{const arquivo=foto.files[0];if(!validarArquivoImagem(arquivo))throw new Error('Foto inválida');const url=await enviarArquivoImagem(arquivo,'layout/categorias/'+saliChaveNome(nome));if(!url)throw new Error('Falha no envio');const {error}=await supabaseClient.from('sali_categorias').insert({nome,imagem_url:url,ordem:100+saliCategoriasPainel.length});if(error)throw error;campo.value='';foto.value='';await saliCarregarCategorias();await saliListarCapas();saliCatMensagem('Categoria adicionada à vitrine ✓');}catch(e){saliCatMensagem('Erro: '+e.message);}
+}
+const saliAbrirPaginaAnterior=window.abrirPagina;
+window.abrirPagina=function(p,b){const r=saliAbrirPaginaAnterior.apply(this,arguments);if(p==='personalizar')setTimeout(saliListarCapas,150);return r;};
 </script>
 
 </body>
