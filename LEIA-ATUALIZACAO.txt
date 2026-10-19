@@ -1,0 +1,1 @@
+VERSÃO PRELIMINAR — adição de categorias no cadastro de produtos. Execute CONFIGURAR-CATEGORIAS-SALI.sql no Supabase. Categorias novas ainda não aparecem automaticamente nos blocos fixos da vitrine. Notificações push ainda não foram implementadas. Faça backup e teste antes de publicar.

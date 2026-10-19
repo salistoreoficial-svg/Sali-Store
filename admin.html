@@ -1525,6 +1525,7 @@ input[type=checkbox],input[type=radio]{accent-color:#ff008c}
       </select>
     </div>
 
+    <div class="campo" id="saliGerenciarCategorias"><label>Adicionar categoria</label><div style="display:flex;gap:8px"><input id="saliNovaCategoria" placeholder="Nova categoria"><button type="button" onclick="saliAdicionarCategoria()">+ Adicionar</button></div><small id="saliCategoriaAviso"></small></div>
     <div class="campo">
       <label>Descrição</label>
       <textarea
@@ -6213,6 +6214,25 @@ async function cmsPublicarAlteracoes(){
 const dados={id:1,nome_loja:cmsValor('cmsNomeLoja').value.trim()||'SALI STORE',hero_titulo:cmsValor('cmsHeroTitulo').value.trim(),hero_subtitulo:cmsValor('cmsHeroSubtitulo').value.trim(),cor_principal:cmsValor('cmsCorPrincipal').value,cor_dourada:cmsValor('cmsCorDourada').value,cor_fundo:cmsValor('cmsCorFundo').value,fonte_titulo:cmsValor('cmsFonteTitulo').value,fonte_texto:cmsValor('cmsFonteTexto').value,logo_url:logo,banner_url:banner,ordem_secoes:cmsOrdem,mostrar_barra_topo:cmsValor('cmsMostrarTopo').checked,mostrar_beneficios:cmsValor('cmsMostrarBeneficios').checked,mostrar_categorias:cmsValor('cmsMostrarCategorias').checked,mostrar_novidades:cmsValor('cmsMostrarNovidades').checked,updated_at:new Date().toISOString()};const {data,error}=await supabaseClient.from('Configuracoes_Loja').upsert(dados,{onConflict:'id'}).select('*').single();if(error)throw error;configuracoesLoja=data;st.textContent='Alterações publicadas com sucesso ✅';st.className='status-layout sucesso';cmsPreencher();}catch(e){console.error(e);st.textContent='Não foi possível publicar: '+(e.message||e);st.className='status-layout erro';}finally{btn.disabled=false;btn.textContent='PUBLICAR ALTERAÇÕES';}}
 const _abrirPaginaCms=window.abrirPagina;window.abrirPagina=function(p,b){const r=_abrirPaginaCms.apply(this,arguments);if(p==='personalizar')setTimeout(cmsPreencher,0);return r;};
 const _carregarConfigCms=window.carregarConfiguracoesLoja;window.carregarConfiguracoesLoja=async function(){const r=await _carregarConfigCms.apply(this,arguments);cmsPreencher();return r;};
+
+// Categorias adicionais compartilhadas via Supabase; somente administradores podem criar.
+async function saliCarregarCategorias(){
+ const select=document.getElementById('produtoCategoria');if(!select)return;
+ const atual=select.value;
+ const {data,error}=await supabaseClient.from('sali_categorias').select('nome').order('nome');
+ if(error){console.warn('Categorias personalizadas não ativadas:',error.message);return;}
+ for(const c of data||[]){if(![...select.options].some(o=>o.value===c.nome))select.add(new Option(c.nome,c.nome));}
+ select.value=atual;
+}
+async function saliAdicionarCategoria(){
+ if(!podeAdmin())return;
+ const el=document.getElementById('saliNovaCategoria'),nome=el.value.trim(),aviso=document.getElementById('saliCategoriaAviso');
+ if(!nome)return;
+ const {error}=await supabaseClient.from('sali_categorias').insert({nome});
+ aviso.textContent=error?'Erro: '+error.message:'Categoria adicionada!';
+ if(!error){el.value='';await saliCarregarCategorias();}
+}
+document.addEventListener('DOMContentLoaded',()=>{saliCarregarCategorias();});
 </script>
 
 </body>
